@@ -290,7 +290,7 @@ calculate_cskill(player pl)
     
     if(pl.health > 0 || pl.booked % 10 > 0)
 	cskill_factor = 0.0;
-	
+    
     if(pl.pos != pl.cpos)
     	cskill_factor = 0.75;
 
@@ -300,8 +300,11 @@ calculate_cskill(player pl)
 	cskill_factor = 0.5;
     else if(abs(pl.cpos - pl.pos) == 2)
 	cskill_factor = 0.65;
-	
-    return MIN(pl.talent * cskill_factor, pl.skill);
+    
+    if(pl.cpos != pl.pos)
+	return MIN(pl.talent * cskill_factor, pl.skill);
+    else
+	return pl.skill;
 }
 
 /* update a player's skill depending on age, talent
