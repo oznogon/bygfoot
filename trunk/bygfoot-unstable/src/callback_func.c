@@ -702,6 +702,7 @@ enum
     ZERO_ONE8,
     ZERO_ONE9,
     ZERO_ONE10,
+    ZERO_ONE11,
     ZERO_ONE12,
     ZERO_ONE13,
     ZERO_ONE14,
@@ -768,6 +769,10 @@ get_option_widgets(GtkWidget *opt_window,
     zero_one_widgets[ZERO_ONE10] =
 	lookup_widget(opt_window, "checkbutton_xml");
     zero_one_options[ZERO_ONE10] = &options[OPT_XML];
+
+    zero_one_widgets[ZERO_ONE11] =
+	lookup_widget(opt_window, "checkbutton_compress_bg");
+    zero_one_options[ZERO_ONE11] = &options[OPT_COMPRESS_BG];
 
     zero_one_widgets[ZERO_ONE12] =
 	lookup_widget(opt_window, "check_jobs");
@@ -856,10 +861,9 @@ set_up_options_window(GtkWidget *opt_window, gint read)
     gint *zero_one_options[ZERO_ONE_END];
     GtkWidget *zero_one_widgets[ZERO_ONE_END];
     GtkWidget *radio_buttons[5];
+    GtkWidget *hbox52 = lookup_widget(opt_window, "hbox52");
     GtkWidget *checkbutton_notify =
 	lookup_widget(opt_window, "checkbutton_notify");
-    GtkWidget *button_notify = 
-	lookup_widget(opt_window, "button_notify");
     GtkWidget *spin_live_duration =
 	lookup_widget(opt_window, "spin_live_duration");
     GtkWidget *entry_team_name =
@@ -874,11 +878,15 @@ set_up_options_window(GtkWidget *opt_window, gint read)
 	lookup_widget(opt_window, "checkbutton_sort_asc");
     GtkWidget *checkbutton_save_conf = 
 	lookup_widget(opt_window, "checkbutton_save_conf");
+    GtkWidget *optionmenu_compression = 
+	lookup_widget(opt_window, "optionmenu_compression");
     GtkWidget *radiobutton_sort[SORT_END - 1];
    
     get_option_widgets(opt_window, zero_one_options,
 		       zero_one_widgets, radio_buttons,
 		       radiobutton_sort);
+
+    set_up_transfer_notify(opt_window, read);
 
     if(read == 1)
     {
@@ -906,8 +914,7 @@ set_up_options_window(GtkWidget *opt_window, gint read)
 	
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbutton_notify),
 				     options[OPT_NOTIFY]);
-	gtk_widget_set_sensitive(button_notify,
-				 options[OPT_NOTIFY]);
+	gtk_widget_set_sensitive(hbox52, options[OPT_NOTIFY]);
 
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbutton_autosave),
 				     (options[OPT_AUTOSAVE] > 0));
@@ -929,7 +936,9 @@ set_up_options_window(GtkWidget *opt_window, gint read)
 	for(i=0;i<SORT_END - 1;i++)
 	    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(radiobutton_sort[i]),
 					 (abs(options[OPT_SORT_TRANSFERS]) % 10 == i + 1));
-	
+
+	gtk_option_menu_set_history(GTK_OPTION_MENU(optionmenu_compression),
+				    options[OPT_COMPRESSION]);
 	return;
     }    
 
@@ -986,6 +995,9 @@ set_up_options_window(GtkWidget *opt_window, gint read)
 	show_popup_window("Your scout's not good enough, he doesn't know the age of the players on the transfer list. Sorting the transfer list is switched off. ", NULL);
     }
 
+    options[OPT_COMPRESSION] = 
+	gtk_option_menu_get_history(GTK_OPTION_MENU(optionmenu_compression));
+    
     /* save options to the conf file if
        necessary */
     if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton_save_conf)))
@@ -1026,76 +1038,76 @@ enum
 };
 
 void
-get_check_widgets(GtkWidget *notify_window, GtkWidget **notify_check)
+get_check_widgets(GtkWidget *opt_window, GtkWidget **notify_check)
 {
     notify_check[NOTIFY_CHECK_AGE] =
-	lookup_widget(notify_window, "checkbutton_notify_age");
+	lookup_widget(opt_window, "checkbutton_notify_age");
     notify_check[NOTIFY_CHECK_SKILL] =
-	lookup_widget(notify_window, "checkbutton_notify_skill");
+	lookup_widget(opt_window, "checkbutton_notify_skill");
     notify_check[NOTIFY_CHECK_ETAL] =
-	lookup_widget(notify_window, "checkbutton_notify_etal");
+	lookup_widget(opt_window, "checkbutton_notify_etal");
     notify_check[NOTIFY_CHECK_VALUE] =
-	lookup_widget(notify_window, "checkbutton_notify_value");
+	lookup_widget(opt_window, "checkbutton_notify_value");
     notify_check[NOTIFY_CHECK_POS] =
-	lookup_widget(notify_window, "checkbutton_notify_positions");
+	lookup_widget(opt_window, "checkbutton_notify_positions");
     notify_check[NOTIFY_CHECK_LEAGUE] =
-	lookup_widget(notify_window, "checkbutton_notify_league");
+	lookup_widget(opt_window, "checkbutton_notify_league");
 
     notify_check[NOTIFY_CHECK_POS0] =
-	lookup_widget(notify_window, "checkbutton_notify_pos0");
+	lookup_widget(opt_window, "checkbutton_notify_pos0");
     notify_check[NOTIFY_CHECK_POS1] =
-	lookup_widget(notify_window, "checkbutton_notify_pos1");
+	lookup_widget(opt_window, "checkbutton_notify_pos1");
     notify_check[NOTIFY_CHECK_POS2] =
-	lookup_widget(notify_window, "checkbutton_notify_pos2");
+	lookup_widget(opt_window, "checkbutton_notify_pos2");
     notify_check[NOTIFY_CHECK_POS3] =
-	lookup_widget(notify_window, "checkbutton_notify_pos3");
+	lookup_widget(opt_window, "checkbutton_notify_pos3");
 
     notify_check[NOTIFY_CHECK_LEAGUE1] = 
-	lookup_widget(notify_window, "checkbutton_notify_league1");
+	lookup_widget(opt_window, "checkbutton_notify_league1");
     notify_check[NOTIFY_CHECK_LEAGUE2] = 
-	lookup_widget(notify_window, "checkbutton_notify_league2");
+	lookup_widget(opt_window, "checkbutton_notify_league2");
     notify_check[NOTIFY_CHECK_LEAGUE3] = 
-	lookup_widget(notify_window, "checkbutton_notify_league3");
+	lookup_widget(opt_window, "checkbutton_notify_league3");
     notify_check[NOTIFY_CHECK_LEAGUE4] = 
-	lookup_widget(notify_window, "checkbutton_notify_league4");
+	lookup_widget(opt_window, "checkbutton_notify_league4");
     notify_check[NOTIFY_CHECK_LEAGUE4] = 
-	lookup_widget(notify_window, "checkbutton_notify_league4");
+	lookup_widget(opt_window, "checkbutton_notify_league4");
     notify_check[NOTIFY_CHECK_LEAGUE5] = 
-	lookup_widget(notify_window, "checkbutton_notify_league5");
+	lookup_widget(opt_window, "checkbutton_notify_league5");
     notify_check[NOTIFY_CHECK_LEAGUE6] = 
-	lookup_widget(notify_window, "checkbutton_notify_league6");
+	lookup_widget(opt_window, "checkbutton_notify_league6");
 }
 
 void
-get_spin_widgets(GtkWidget *notify_window, 
+get_spin_widgets(GtkWidget *opt_window, 
 		      GtkWidget **notify_spin)
 {
     notify_spin[NOTIFY_SPIN_SKILL1] = 
-	lookup_widget(notify_window, "spinbutton_notify_skill1");
+	lookup_widget(opt_window, "spinbutton_notify_skill1");
     notify_spin[NOTIFY_SPIN_SKILL2] = 
-	lookup_widget(notify_window, "spinbutton_notify_skill2");
+	lookup_widget(opt_window, "spinbutton_notify_skill2");
     notify_spin[NOTIFY_SPIN_ETAL1] = 
-	lookup_widget(notify_window, "spinbutton_notify_etal1");
+	lookup_widget(opt_window, "spinbutton_notify_etal1");
     notify_spin[NOTIFY_SPIN_ETAL2] = 
-	lookup_widget(notify_window, "spinbutton_notify_etal2");
+	lookup_widget(opt_window, "spinbutton_notify_etal2");
     notify_spin[NOTIFY_SPIN_AGE1] = 
-	lookup_widget(notify_window, "spinbutton_notify_age1");
+	lookup_widget(opt_window, "spinbutton_notify_age1");
     notify_spin[NOTIFY_SPIN_AGE2] = 
-	lookup_widget(notify_window, "spinbutton_notify_age2");
+	lookup_widget(opt_window, "spinbutton_notify_age2");
     notify_spin[NOTIFY_SPIN_VALUE] = 
-	lookup_widget(notify_window, "spinbutton_notify_value");
+	lookup_widget(opt_window, "spinbutton_notify_value");
 }
 
-/* just like the set_up_options_window, only for the notify window */
+/* set up all the criterie for transfer list notification */
 void
-set_up_notify_window(GtkWidget *notify_window, gint read)
+set_up_transfer_notify(GtkWidget *opt_window, gint read)
 {
     gint i;
     GtkWidget *notify_check[NOTIFY_CHECK_END];
     GtkWidget *notify_spin[NOTIFY_SPIN_END];
 
-    get_check_widgets(notify_window, notify_check);
-    get_spin_widgets(notify_window, notify_spin);
+    get_check_widgets(opt_window, notify_check);
+    get_spin_widgets(opt_window, notify_spin);
 
     if(read == 1)
     {

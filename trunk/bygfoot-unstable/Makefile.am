@@ -1,5 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 
+AM_CFLAGS = -Wall
+
 SUBDIRS = src po
 
 EXTRA_DIST = \

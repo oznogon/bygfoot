@@ -64,6 +64,7 @@ write_opt_names(gchar opt_names[][50])
     strcpy(opt_names[OPT_SHOW_LIVE], "show_live_game");
     strcpy(opt_names[OPT_LIVE_DURATION], "live_game_duration");
     strcpy(opt_names[OPT_LIVE_TENDENCY], "show_tendency_bar");
+
     strcpy(opt_names[OPT_NOTIFY], "notify_transfer");
     strcpy(opt_names[OPT_NOTIFY_POS0], "notify_goalie");
     strcpy(opt_names[OPT_NOTIFY_POS1], "notify_defender");
@@ -81,10 +82,16 @@ write_opt_names(gchar opt_names[][50])
     strcpy(opt_names[OPT_NOTIFY_VALUE], "notify_value");
     strcpy(opt_names[OPT_NOTIFY_POS], "notify_position");
     strcpy(opt_names[OPT_NOTIFY_LEAGUE], "notify_league_bool");
+
     strcpy(opt_names[OPT_JOBS], "show_job_offers");
     strcpy(opt_names[OPT_MESS], "message_style");
     strcpy(opt_names[OPT_PREFER_MESS], "prefer_messages");
+
     strcpy(opt_names[OPT_AUTOSAVE], "autosave");
+    strcpy(opt_names[OPT_COMPRESSION], "savegame_compression");
+    strcpy(opt_names[OPT_COMPRESS_BG], "savegame_compress_bg");
+    strcpy(opt_names[OPT_XML], "save_xml");
+
     strcpy(opt_names[OPT_SKIP_WEEKS], "skip_weeks");
     strcpy(opt_names[OPT_SORT_TRANSFERS], "sort_transfer_list");
     strcpy(opt_names[OPT_REARRANGE], "reaarrange_adapts");
@@ -108,7 +115,6 @@ write_opt_names(gchar opt_names[][50])
     strcpy(opt_names[OPT_ATT_WAGE], "show_attribute_wage");
     strcpy(opt_names[OPT_ATT_TEAM], "show_attribute_team");
     strcpy(opt_names[OPT_ATT_LEAGUE], "show_attribute_league");
-    strcpy(opt_names[OPT_XML], "save_xml");
 }
 
 /* write the game options to the file

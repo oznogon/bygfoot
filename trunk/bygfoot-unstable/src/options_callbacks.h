@@ -28,18 +28,6 @@ on_spin_live_duration_activate         (GtkEntry        *entry,
                                         gpointer         user_data);
 
 void
-on_button_notify_clicked               (GtkButton       *button,
-                                        gpointer         user_data);
-
-void
-on_button_notify_ok_clicked            (GtkButton       *button,
-                                        gpointer         user_data);
-
-void
-on_button_notify_cancel_clicked        (GtkButton       *button,
-                                        gpointer         user_data);
-
-void
 on_checkbutton_notify_toggled          (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 

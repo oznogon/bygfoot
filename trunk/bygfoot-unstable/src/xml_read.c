@@ -60,9 +60,6 @@ void
 read_xml_save(char * file_name)
 /* Read the XML save file and set all variables */
 {
-    /* The XML file must be clean.*/
-    assert (check_xml_save(file_name));
-
     gint stadium_index = 0;
     gint team_index = 0;
     gint transfer_index = 0;

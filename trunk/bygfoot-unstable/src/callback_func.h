@@ -125,9 +125,9 @@ void
 get_spin_widgets(GtkWidget *notify_window, 
 		      GtkWidget **notify_spin);
 
-/* just like the set_up_options_window, only for the notify window */
+/* set up all the criterie for transfer list notification */
 void
-set_up_notify_window(GtkWidget *notify_window, gint read);
+set_up_transfer_notify(GtkWidget *opt_window, gint read);
 
 /* handle a click on the OK button of the stadium capacity increase window */
 void

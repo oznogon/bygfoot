@@ -142,9 +142,8 @@ on_button_fsel_ok_clicked              (GtkButton       *button,
     }
     else if(status == 800000)
     {
-	if(check_save_game(file_name))
+	if(load_game(file_name))
 	{
-	    load_game(file_name);
 	    set_save(1);
 	    on_button_back_to_main_clicked(NULL, NULL);
 	}
@@ -157,9 +156,8 @@ on_button_fsel_ok_clicked              (GtkButton       *button,
     }
     else if(status == 800002)
     {
-	if(check_save_game(file_name))
+	if(load_game(file_name))
 	{
-	    load_game(file_name);
 	    gtk_widget_show(main_window);
 	    on_button_back_to_main_clicked(NULL, NULL);
 	    set_save(1);

@@ -126,6 +126,8 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 
+AM_CFLAGS = -Wall
+
 SUBDIRS = src po
 
 EXTRA_DIST = \

@@ -59,7 +59,6 @@ bygfoot_init(gint argc, gchar *argv[])
 {
     gint i;
     gchar buf[SMALL];
-    gchar *buf2;
 
     /* initialize the random nr generator */
     srandom((unsigned)time(NULL));
@@ -115,20 +114,8 @@ bygfoot_init(gint argc, gchar *argv[])
 	   strcmp(argv[i - 1], "-f") != 0 &&
 	   strcmp(argv[i], "-f") != 0)
 	{
-	    sprintf(buf, "%s", argv[i]);
-	    buf2 = find_support_file(buf);
-
-	    if(buf2 == NULL || argv[i][0] == '/')
-		g_string_printf(save_file, "%s", argv[i]);
-	    else
-		g_string_printf(save_file, "%s", buf2);
-
-	    if(buf2 != NULL)
-		g_free(buf2);
-		
-	    if(check_save_game(save_file->str))
-	    {
-		load_game(save_file->str);		
+	    if(load_game(argv[i]))
+	    {				
 		on_button_back_to_main_clicked(NULL, NULL);
 		gtk_widget_show(main_window);
 		set_save(1);

@@ -8,21 +8,122 @@
 #include "xml_read.h"
 #include "xml_write.h"
 
-/* find out whether a file ends with '.xml' */
-gboolean is_xml_file(gchar *file_name)
+/* try to find out which file the user wants to load
+   if the input isn't correct (e.g. path omitted) */
+gboolean
+find_save_file(gchar *file_name)
+{
+    gint i, j;
+    gchar buf[SMALL];
+    gchar *endings[6] =
+	{"",
+	 ".gz",
+	 ".bz2",
+	 ".xml",
+	 ".xml.gz",
+	 ".xml.bz2"};
+    gchar paths[2][SMALL];
+
+    if(g_file_test(file_name, G_FILE_TEST_EXISTS))
+    {
+	g_string_printf(save_file, "%s", file_name);
+	return TRUE;
+    }
+
+    sprintf(paths[0], "%s/%s", getenv("PWD"), file_name);
+    sprintf(paths[1], "%s/.bygfoot/saves/%s", getenv("HOME"), file_name);
+
+    for(j=0;j<2;j++)
+	for(i=0;i<6;i++)
+	{
+	    sprintf(buf, "%s%s", paths[j], endings[i]);
+
+	    if(g_file_test(buf, G_FILE_TEST_EXISTS))
+	    {
+		strcpy(file_name, buf);
+		g_string_printf(save_file, "%s", file_name);
+		return TRUE;
+	    }
+	}
+
+    return FALSE;
+}
+
+/* find out whether a file ends with 'ending' */
+gboolean
+file_has_ending(gchar *file_name, gchar *ending)
 {
     gchar buf[SMALL];
     gint i;
 
-    for(i=0;i<4;i++)
-	buf[i] = file_name[strlen(file_name) - 1 - i];
+    for(i=0;i<strlen(ending);i++)
+	buf[i] = file_name[strlen(file_name) - strlen(ending) + i];
 
-    buf[4] = '\0';
+    buf[strlen(ending)] = '\0';
 
-    if(strcmp(buf, "lmx.") == 0)
+    if(strcmp(buf, ending) == 0)
 	return TRUE;
 
     return FALSE;
+}
+
+/* find out depending on the file ending whether the user wants to use
+   compression and what save format he wants */
+void
+set_local_options_from_filename(gchar *file_name,
+				gint *local_options, gchar *local_file)
+{
+    if(file_has_ending(file_name, ".gz"))
+    {
+	local_options[0] = COMPRESSION_GZIP;
+	strncpy(local_file, file_name, strlen(file_name) - 3);
+	local_file[strlen(file_name) - 3] = '\0';
+    }
+    else if(file_has_ending(file_name, ".bz2"))
+    {
+	local_options[0] = COMPRESSION_BZIP;
+	strncpy(local_file, file_name, strlen(file_name) - 4);
+	local_file[strlen(file_name) - 4] = '\0';
+    }
+    else
+    {
+	local_options[0] = COMPRESSION_NONE;
+	strcpy(local_file, file_name);
+    }
+
+    if(file_has_ending(local_file, ".xml"))
+	local_options[1] = OPT_XML;
+    else if(options[OPT_XML])
+    {
+	strcat(local_file, ".xml");
+	local_options[1] = OPT_XML;
+    }
+}
+
+/* compress or decompress a file */
+void
+compress_file(gchar *file_name, gint compression, gboolean decompression)
+{
+    gchar buf[SMALL];
+    gchar decomp[SMALL];
+
+    if(compression == COMPRESSION_NONE)
+	return;
+
+    if(decompression)
+	strcpy(decomp, "-d");
+    else
+	strcpy(decomp, "");	
+
+    if(compression == COMPRESSION_GZIP)
+	sprintf(buf, "gzip %s %s", file_name, decomp);
+    else
+	sprintf(buf, "bzip2 %s %s", file_name, decomp);
+
+    if(!decompression && options[OPT_COMPRESS_BG])
+	g_spawn_command_line_async(buf, NULL);
+    else
+	g_spawn_command_line_sync(buf, NULL, NULL, NULL, NULL);
 }
 
 /* check whether a file is a binary or xml
@@ -30,7 +131,7 @@ gboolean is_xml_file(gchar *file_name)
 gboolean
 check_save_game(gchar *file_name)
 {
-    if(is_xml_file(file_name))
+    if(file_has_ending(file_name, ".xml"))
        return check_xml_save(file_name);
 
     return check_save_game_binary(file_name);
@@ -528,36 +629,12 @@ load_options(FILE *fil)
     }
 }
 
+/* load a savegame in binary format */
 void
-save_game(gchar *file_name)
+write_binary_save(gchar *filename)
 {
-    FILE *fil;
-    gchar local_file[SMALL];
+    FILE *fil = fopen(filename, "wb");
 
-    sprintf(local_file, "%s", file_name);
-
-    if(options[OPT_XML] == 1)
-	if(!is_xml_file(file_name))
-	    strcat(local_file, ".xml");
-
-    fil = fopen(local_file, "ab");
-    if(fil == NULL)
-    {
-	g_print("save_game: could not open file: %s\n", local_file);
-	return;
-    }
-
-    fclose(fil);
-
-    g_string_printf(save_file, "%s", local_file);
-
-    if(is_xml_file(local_file))
-    {
-	write_xml_save(local_file);
-	return;
-    }
-    
-    fil = fopen(local_file, "wb");
     save_options(fil);
     save_transfers(fil);
     save_stadiums(fil);
@@ -568,31 +645,12 @@ save_game(gchar *file_name)
     fclose(fil);
 }
 
+/* load a savegame in binary format */
 void
-load_game(gchar *file_name)
+read_binary_save(gchar *filename)
 {
-    FILE *fil;
-    gchar local_file[SMALL];
+    FILE *fil = fopen(filename, "rb");
 
-    sprintf(local_file, "%s", file_name);
-
-    fil = fopen(local_file, "rb");
-
-    if(fil == NULL)
-    {
-	g_print("load_game: could not open file: %s\n", local_file);
-	return;
-    }
-
-    g_string_printf(save_file, "%s", local_file);
-
-    if(is_xml_file(local_file))
-    {
-	fclose(fil);    
-	read_xml_save(local_file);
-	return;
-    }
-    
     load_options(fil);
     load_transfers(fil);
     load_stadiums(fil);
@@ -601,4 +659,69 @@ load_game(gchar *file_name)
     load_history(fil);
 
     fclose(fil);
+}
+
+void
+save_game(gchar *file_name)
+{
+    FILE *fil;
+    gchar local_file[SMALL];
+    gint local_options[2] = {-1, -1};
+
+    /* find out depending on the file ending whether the user wants to use
+       compression and what save format he wants */
+    set_local_options_from_filename(file_name, local_options, local_file);
+
+    fil = fopen(local_file, "ab");
+    if(fil == NULL)
+    {
+	g_print("save_game: could not open file: %s\n", local_file);
+	return;
+    }
+
+    fclose(fil);
+
+    g_string_printf(save_file, "%s", file_name);
+
+    if(local_options[1] == OPT_XML)
+	write_xml_save(local_file);
+    else
+	write_binary_save(local_file);
+
+    compress_file(local_file, local_options[0], FALSE);
+}
+
+gboolean
+load_game(gchar *file_name)
+{
+    FILE *fil;
+    gchar local_file[SMALL];
+    gint local_options[2];
+
+    if(!find_save_file(file_name))
+	return FALSE;
+
+    set_local_options_from_filename(file_name, local_options, local_file);
+
+    compress_file(file_name, local_options[0], TRUE);
+
+    fil = fopen(local_file, "rb");
+    if(fil == NULL)
+    {
+	g_print("load_game: could not open file: %s\n", local_file);
+	return FALSE;
+    }
+    fclose(fil);
+
+    if(!check_save_game(local_file))
+	return FALSE;
+
+    if(local_options[1] == OPT_XML)
+	read_xml_save(local_file);
+    else
+	read_binary_save(local_file);
+
+    compress_file(local_file, local_options[0], FALSE);
+
+    return TRUE;
 }

@@ -111,46 +111,10 @@ on_spin_live_duration_activate         (GtkEntry        *entry,
 }
 
 void
-on_button_notify_clicked               (GtkButton       *button,
-                                        gpointer         user_data)
-{
-    show_notify_window();    
-}
-
-
-void
-on_button_notify_ok_clicked            (GtkButton       *button,
-                                        gpointer         user_data)
-{
-    GtkWidget *notify_window = 
-	lookup_widget(GTK_WIDGET(button), "notify_window");
-
-    set_up_notify_window(notify_window, 0);
-    
-    on_button_notify_cancel_clicked(button, NULL);
-}
-
-
-void
-on_button_notify_cancel_clicked        (GtkButton       *button,
-                                        gpointer         user_data)
-{
-    GtkWidget *notify_window =
-	lookup_widget(GTK_WIDGET(button), "notify_window");
-
-    change_popups_active(-1);
-    gtk_widget_destroy(notify_window);
-}
-
-
-void
 on_checkbutton_notify_toggled          (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-    GtkWidget *button_notify =
-	lookup_widget(GTK_WIDGET(togglebutton), "button_notify");
-   
-    gtk_widget_set_sensitive(button_notify,
+    gtk_widget_set_sensitive(lookup_widget(GTK_WIDGET(togglebutton), "hbox52"),
 			     gtk_toggle_button_get_active(togglebutton));
 }
 

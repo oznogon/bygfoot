@@ -30,16 +30,9 @@ GtkWidget*
 create_opt_window (void)
 {
   GtkWidget *opt_window;
-  GtkWidget *vbox22;
-  GtkWidget *label41;
-  GtkWidget *hseparator3;
-  GtkWidget *hbox59;
-  GtkWidget *check_conf_new_week;
-  GtkWidget *check_conf_unfit;
-  GtkWidget *check_conf_quit;
-  GtkWidget *hseparator4;
-  GtkWidget *label42;
-  GtkWidget *hseparator5;
+  GtkWidget *vbox39;
+  GtkWidget *notebook1;
+  GtkWidget *frame1;
   GtkWidget *hbox65;
   GtkWidget *vbox32;
   GtkWidget *label53;
@@ -81,8 +74,97 @@ create_opt_window (void)
   GtkWidget *checkbutton_rearrange;
   GtkWidget *checkbutton_swap;
   GtkWidget *checkbutton_fit_colors;
-  GtkWidget *hseparator9;
-  GtkWidget *label49;
+  GtkWidget *label89;
+  GtkWidget *label83;
+  GtkWidget *frame2;
+  GtkWidget *vbox35;
+  GtkWidget *check_overwrite;
+  GtkWidget *hbox62;
+  GtkWidget *checkbutton_autosave;
+  GtkObject *spinbutton_autosave_adj;
+  GtkWidget *spinbutton_autosave;
+  GtkWidget *label82;
+  GtkWidget *checkbutton_xml;
+  GtkWidget *label96;
+  GtkWidget *optionmenu_compression;
+  GtkWidget *menu1;
+  GtkWidget *none1;
+  GtkWidget *gzip1;
+  GtkWidget *bzip1;
+  GtkWidget *checkbutton_compress_bg;
+  GtkWidget *label90;
+  GtkWidget *label84;
+  GtkWidget *frame3;
+  GtkWidget *vbox36;
+  GtkWidget *hbox63;
+  GtkWidget *checkbutton_sort_transfers;
+  GtkWidget *hbox64;
+  GtkWidget *radiobutton_sort_pos;
+  GSList *radiobutton_sort_pos_group = NULL;
+  GtkWidget *radiobutton_sort_skill;
+  GtkWidget *radiobutton_sort_age;
+  GtkWidget *radiobutton_sort_etal;
+  GtkWidget *radiobutton_sort_league;
+  GtkWidget *vseparator1;
+  GtkWidget *checkbutton_sort_asc;
+  GtkWidget *hseparator11;
+  GtkWidget *checkbutton_notify;
+  GtkWidget *frame7;
+  GtkWidget *hbox52;
+  GtkWidget *vbox28;
+  GtkWidget *checkbutton_notify_skill;
+  GtkWidget *checkbutton_notify_etal;
+  GtkWidget *checkbutton_notify_age;
+  GtkWidget *checkbutton_notify_value;
+  GtkWidget *checkbutton_notify_positions;
+  GtkWidget *checkbutton_notify_league;
+  GtkWidget *label78;
+  GtkWidget *vbox29;
+  GtkObject *spinbutton_notify_skill1_adj;
+  GtkWidget *spinbutton_notify_skill1;
+  GtkObject *spinbutton_notify_etal1_adj;
+  GtkWidget *spinbutton_notify_etal1;
+  GtkObject *spinbutton_notify_age1_adj;
+  GtkWidget *spinbutton_notify_age1;
+  GtkObject *spinbutton_notify_value_adj;
+  GtkWidget *spinbutton_notify_value;
+  GtkWidget *checkbutton_notify_pos0;
+  GtkWidget *checkbutton_notify_league1;
+  GtkWidget *checkbutton_notify_league4;
+  GtkWidget *vbox30;
+  GtkWidget *label73;
+  GtkWidget *label74;
+  GtkWidget *label75;
+  GtkWidget *label76;
+  GtkWidget *hbox54;
+  GtkWidget *checkbutton_notify_pos1;
+  GtkWidget *checkbutton_notify_pos2;
+  GtkWidget *checkbutton_notify_league2;
+  GtkWidget *checkbutton_notify_league5;
+  GtkWidget *vboxa31;
+  GtkObject *spinbutton_notify_skill2_adj;
+  GtkWidget *spinbutton_notify_skill2;
+  GtkObject *spinbutton_notify_etal2_adj;
+  GtkWidget *spinbutton_notify_etal2;
+  GtkObject *spinbutton_notify_age2_adj;
+  GtkWidget *spinbutton_notify_age2;
+  GtkWidget *label77;
+  GtkWidget *hbox53;
+  GtkWidget *checkbutton_notify_pos3;
+  GtkWidget *checkbutton_notify_league3;
+  GtkWidget *checkbutton_notify_league6;
+  GtkWidget *label95;
+  GtkWidget *label91;
+  GtkWidget *label85;
+  GtkWidget *frame4;
+  GtkWidget *vbox37;
+  GtkWidget *check_conf_new_week;
+  GtkWidget *check_conf_unfit;
+  GtkWidget *check_conf_quit;
+  GtkWidget *label92;
+  GtkWidget *label86;
+  GtkWidget *frame5;
+  GtkWidget *vbox38;
   GtkWidget *hbox28;
   GtkWidget *check_att_pos;
   GtkWidget *check_att_skill;
@@ -96,39 +178,13 @@ create_opt_window (void)
   GtkWidget *check_att_booked;
   GtkWidget *check_att_value;
   GtkWidget *check_att_wage;
-  GtkWidget *hseparator6;
-  GtkWidget *label44;
-  GtkWidget *hseparator7;
-  GtkWidget *hbox60;
-  GtkWidget *check_overwrite;
-  GtkWidget *hbox61;
-  GtkWidget *eventbox1;
-  GtkWidget *hbox62;
-  GtkWidget *checkbutton_autosave;
-  GtkObject *spinbutton_autosave_adj;
-  GtkWidget *spinbutton_autosave;
-  GtkWidget *label82;
-  GtkWidget *checkbutton_xml;
-  GtkWidget *hbox48;
-  GtkWidget *checkbutton_notify;
-  GtkWidget *button_notify;
-  GtkWidget *alignment12;
-  GtkWidget *hbox58;
-  GtkWidget *image33;
-  GtkWidget *label81;
-  GtkWidget *eventbox2;
-  GtkWidget *hbox63;
-  GtkWidget *checkbutton_sort_transfers;
-  GtkWidget *hbox64;
-  GtkWidget *radiobutton_sort_pos;
-  GSList *radiobutton_sort_pos_group = NULL;
-  GtkWidget *radiobutton_sort_skill;
-  GtkWidget *radiobutton_sort_age;
-  GtkWidget *radiobutton_sort_etal;
-  GtkWidget *radiobutton_sort_league;
-  GtkWidget *vseparator1;
-  GtkWidget *checkbutton_sort_asc;
+  GtkWidget *label93;
+  GtkWidget *label87;
+  GtkWidget *frame6;
+  GtkWidget *vbox40;
   GtkWidget *checkbutton_skip_weeks;
+  GtkWidget *label94;
+  GtkWidget *label88;
   GtkWidget *hseparator8;
   GtkWidget *hbox25;
   GtkWidget *checkbutton_save_conf;
@@ -150,66 +206,28 @@ create_opt_window (void)
   accel_group = gtk_accel_group_new ();
 
   opt_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_container_set_border_width (GTK_CONTAINER (opt_window), 10);
-  gtk_window_set_title (GTK_WINDOW (opt_window), _("Bygfoot Options"));
+  gtk_container_set_border_width (GTK_CONTAINER (opt_window), 5);
+  gtk_window_set_title (GTK_WINDOW (opt_window), _("window1"));
   gtk_window_set_position (GTK_WINDOW (opt_window), GTK_WIN_POS_CENTER);
 
-  vbox22 = gtk_vbox_new (FALSE, 5);
-  gtk_widget_show (vbox22);
-  gtk_container_add (GTK_CONTAINER (opt_window), vbox22);
+  vbox39 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox39);
+  gtk_container_add (GTK_CONTAINER (opt_window), vbox39);
 
-  label41 = gtk_label_new (_("Confirmations"));
-  gtk_widget_show (label41);
-  gtk_box_pack_start (GTK_BOX (vbox22), label41, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label41), GTK_JUSTIFY_LEFT);
+  notebook1 = gtk_notebook_new ();
+  gtk_widget_show (notebook1);
+  gtk_box_pack_start (GTK_BOX (vbox39), notebook1, TRUE, TRUE, 0);
 
-  hseparator3 = gtk_hseparator_new ();
-  gtk_widget_show (hseparator3);
-  gtk_box_pack_start (GTK_BOX (vbox22), hseparator3, FALSE, TRUE, 0);
-  gtk_widget_set_size_request (hseparator3, 1, 5);
-
-  hbox59 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox59);
-  gtk_box_pack_start (GTK_BOX (vbox22), hbox59, FALSE, FALSE, 0);
-
-  check_conf_new_week = gtk_check_button_new_with_mnemonic (_("New week"));
-  gtk_widget_show (check_conf_new_week);
-  gtk_box_pack_start (GTK_BOX (hbox59), check_conf_new_week, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (check_conf_new_week), 2);
-  gtk_tooltips_set_tip (tooltips, check_conf_new_week, _("Show a warning before beginning a new week"), NULL);
-
-  check_conf_unfit = gtk_check_button_new_with_mnemonic (_("Unfit players in the team"));
-  gtk_widget_show (check_conf_unfit);
-  gtk_box_pack_start (GTK_BOX (hbox59), check_conf_unfit, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (check_conf_unfit), 2);
-  gtk_tooltips_set_tip (tooltips, check_conf_unfit, _("Show a warning when injured or banned players are in the team when beginning a new week"), NULL);
-
-  check_conf_quit = gtk_check_button_new_with_mnemonic (_("Quit when not saved"));
-  gtk_widget_show (check_conf_quit);
-  gtk_box_pack_start (GTK_BOX (hbox59), check_conf_quit, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (check_conf_quit), 2);
-  gtk_tooltips_set_tip (tooltips, check_conf_quit, _("Show a warning if I want to quit with a game that isn't saved"), NULL);
-
-  hseparator4 = gtk_hseparator_new ();
-  gtk_widget_show (hseparator4);
-  gtk_box_pack_start (GTK_BOX (vbox22), hseparator4, FALSE, TRUE, 0);
-  gtk_widget_set_size_request (hseparator4, 1, 5);
-
-  label42 = gtk_label_new (_("Look & Feel"));
-  gtk_widget_show (label42);
-  gtk_box_pack_start (GTK_BOX (vbox22), label42, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label42), GTK_JUSTIFY_LEFT);
-
-  hseparator5 = gtk_hseparator_new ();
-  gtk_widget_show (hseparator5);
-  gtk_box_pack_start (GTK_BOX (vbox22), hseparator5, FALSE, TRUE, 0);
-  gtk_widget_set_size_request (hseparator5, 1, 5);
+  frame1 = gtk_frame_new (NULL);
+  gtk_widget_show (frame1);
+  gtk_container_add (GTK_CONTAINER (notebook1), frame1);
+  gtk_container_set_border_width (GTK_CONTAINER (frame1), 5);
 
   hbox65 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox65);
-  gtk_box_pack_start (GTK_BOX (vbox22), hbox65, FALSE, TRUE, 0);
+  gtk_container_add (GTK_CONTAINER (frame1), hbox65);
 
-  vbox32 = gtk_vbox_new (FALSE, 0);
+  vbox32 = gtk_vbox_new (FALSE, 3);
   gtk_widget_show (vbox32);
   gtk_box_pack_start (GTK_BOX (hbox65), vbox32, FALSE, TRUE, 0);
 
@@ -245,11 +263,11 @@ create_opt_window (void)
 
   vbox34 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox34);
-  gtk_box_pack_start (GTK_BOX (vbox32), vbox34, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox32), vbox34, FALSE, TRUE, 0);
 
   hbox21 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox21);
-  gtk_box_pack_start (GTK_BOX (vbox34), hbox21, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox34), hbox21, FALSE, TRUE, 0);
 
   label43 = gtk_label_new (_("       Live game duration factor   "));
   gtk_widget_show (label43);
@@ -266,7 +284,7 @@ create_opt_window (void)
 
   hbox39 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox39);
-  gtk_box_pack_start (GTK_BOX (vbox34), hbox39, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox34), hbox39, FALSE, TRUE, 0);
 
   label58 = gtk_label_new (_("       "));
   gtk_widget_show (label58);
@@ -280,7 +298,7 @@ create_opt_window (void)
 
   hbox34 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox34);
-  gtk_box_pack_start (GTK_BOX (vbox32), hbox34, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox32), hbox34, FALSE, TRUE, 0);
 
   button_opt_change_font = gtk_button_new ();
   gtk_widget_show (button_opt_change_font);
@@ -312,7 +330,7 @@ create_opt_window (void)
 
   hbox46 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox46);
-  gtk_box_pack_start (GTK_BOX (vbox32), hbox46, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox32), hbox46, FALSE, TRUE, 0);
 
   label71 = gtk_label_new (_("Change team name "));
   gtk_widget_show (label71);
@@ -330,7 +348,7 @@ create_opt_window (void)
   gtk_box_pack_start (GTK_BOX (hbox65), vseparator3, FALSE, TRUE, 0);
   gtk_widget_set_size_request (vseparator3, 10, 1);
 
-  vbox33 = gtk_vbox_new (FALSE, 0);
+  vbox33 = gtk_vbox_new (FALSE, 3);
   gtk_widget_show (vbox33);
   gtk_box_pack_start (GTK_BOX (hbox65), vbox33, FALSE, FALSE, 0);
 
@@ -397,105 +415,33 @@ create_opt_window (void)
   gtk_tooltips_set_tip (tooltips, checkbutton_fit_colors, _("Whether fitness percentage is shown in green and red shades"), NULL);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton_fit_colors), TRUE);
 
-  hseparator9 = gtk_hseparator_new ();
-  gtk_widget_show (hseparator9);
-  gtk_box_pack_start (GTK_BOX (vbox22), hseparator9, FALSE, TRUE, 0);
-  gtk_widget_set_size_request (hseparator9, 1, 5);
+  label89 = gtk_label_new ("");
+  gtk_widget_show (label89);
+  gtk_frame_set_label_widget (GTK_FRAME (frame1), label89);
+  gtk_label_set_justify (GTK_LABEL (label89), GTK_JUSTIFY_LEFT);
 
-  label49 = gtk_label_new (_("Player attributes shown in the player list"));
-  gtk_widget_show (label49);
-  gtk_box_pack_start (GTK_BOX (vbox22), label49, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label49), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (label49), 0, 0.5);
+  label83 = gtk_label_new (_("Look & Feel"));
+  gtk_widget_show (label83);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 0), label83);
+  gtk_label_set_justify (GTK_LABEL (label83), GTK_JUSTIFY_LEFT);
 
-  hbox28 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox28);
-  gtk_box_pack_start (GTK_BOX (vbox22), hbox28, FALSE, TRUE, 0);
+  frame2 = gtk_frame_new (NULL);
+  gtk_widget_show (frame2);
+  gtk_container_add (GTK_CONTAINER (notebook1), frame2);
+  gtk_container_set_border_width (GTK_CONTAINER (frame2), 5);
 
-  check_att_pos = gtk_check_button_new_with_mnemonic (_("Position"));
-  gtk_widget_show (check_att_pos);
-  gtk_box_pack_start (GTK_BOX (hbox28), check_att_pos, FALSE, FALSE, 0);
-
-  check_att_skill = gtk_check_button_new_with_mnemonic (_("Skill"));
-  gtk_widget_show (check_att_skill);
-  gtk_box_pack_start (GTK_BOX (hbox28), check_att_skill, FALSE, FALSE, 0);
-
-  check_att_fit = gtk_check_button_new_with_mnemonic (_("Fitness"));
-  gtk_widget_show (check_att_fit);
-  gtk_box_pack_start (GTK_BOX (hbox28), check_att_fit, FALSE, FALSE, 0);
-
-  check_att_games = gtk_check_button_new_with_mnemonic (_("Games"));
-  gtk_widget_show (check_att_games);
-  gtk_box_pack_start (GTK_BOX (hbox28), check_att_games, FALSE, FALSE, 0);
-
-  check_att_goals = gtk_check_button_new_with_mnemonic (_("Goals"));
-  gtk_widget_show (check_att_goals);
-  gtk_box_pack_start (GTK_BOX (hbox28), check_att_goals, FALSE, FALSE, 0);
-
-  check_att_status = gtk_check_button_new_with_mnemonic (_("Status"));
-  gtk_widget_show (check_att_status);
-  gtk_box_pack_start (GTK_BOX (hbox28), check_att_status, FALSE, FALSE, 0);
-
-  hbox29 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox29);
-  gtk_box_pack_start (GTK_BOX (vbox22), hbox29, FALSE, TRUE, 0);
-
-  check_att_age = gtk_check_button_new_with_mnemonic (_("Age"));
-  gtk_widget_show (check_att_age);
-  gtk_box_pack_start (GTK_BOX (hbox29), check_att_age, FALSE, FALSE, 0);
-
-  check_att_etal = gtk_check_button_new_with_mnemonic (_("Estimated talent"));
-  gtk_widget_show (check_att_etal);
-  gtk_box_pack_start (GTK_BOX (hbox29), check_att_etal, FALSE, FALSE, 0);
-
-  check_att_booked = gtk_check_button_new_with_mnemonic (_("Yellow cards"));
-  gtk_widget_show (check_att_booked);
-  gtk_box_pack_start (GTK_BOX (hbox29), check_att_booked, FALSE, FALSE, 0);
-
-  check_att_value = gtk_check_button_new_with_mnemonic (_("Value"));
-  gtk_widget_show (check_att_value);
-  gtk_box_pack_start (GTK_BOX (hbox29), check_att_value, FALSE, FALSE, 0);
-
-  check_att_wage = gtk_check_button_new_with_mnemonic (_("Wage"));
-  gtk_widget_show (check_att_wage);
-  gtk_box_pack_start (GTK_BOX (hbox29), check_att_wage, FALSE, FALSE, 0);
-
-  hseparator6 = gtk_hseparator_new ();
-  gtk_widget_show (hseparator6);
-  gtk_box_pack_start (GTK_BOX (vbox22), hseparator6, FALSE, TRUE, 0);
-  gtk_widget_set_size_request (hseparator6, 1, 5);
-
-  label44 = gtk_label_new (_("Miscellaneous options"));
-  gtk_widget_show (label44);
-  gtk_box_pack_start (GTK_BOX (vbox22), label44, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label44), GTK_JUSTIFY_LEFT);
-
-  hseparator7 = gtk_hseparator_new ();
-  gtk_widget_show (hseparator7);
-  gtk_box_pack_start (GTK_BOX (vbox22), hseparator7, FALSE, TRUE, 0);
-  gtk_widget_set_size_request (hseparator7, 1, 5);
-
-  hbox60 = gtk_hbox_new (FALSE, 5);
-  gtk_widget_show (hbox60);
-  gtk_box_pack_start (GTK_BOX (vbox22), hbox60, FALSE, FALSE, 0);
+  vbox35 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox35);
+  gtk_container_add (GTK_CONTAINER (frame2), vbox35);
 
   check_overwrite = gtk_check_button_new_with_mnemonic (_("Save overwrites old savegame"));
   gtk_widget_show (check_overwrite);
-  gtk_box_pack_start (GTK_BOX (hbox60), check_overwrite, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox35), check_overwrite, FALSE, FALSE, 0);
   gtk_tooltips_set_tip (tooltips, check_overwrite, _("If you uncheck this, clicking on 'Save' will pop up a 'Save as' window"), NULL);
-
-  hbox61 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox61);
-  gtk_box_pack_start (GTK_BOX (hbox60), hbox61, FALSE, TRUE, 0);
-
-  eventbox1 = gtk_event_box_new ();
-  gtk_widget_show (eventbox1);
-  gtk_box_pack_start (GTK_BOX (hbox61), eventbox1, FALSE, TRUE, 0);
-  gtk_tooltips_set_tip (tooltips, eventbox1, _("Save game regularly to $HOME/.bygfoot/saves/autosave (weeks means in this case weeks that don't get skipped)"), NULL);
 
   hbox62 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox62);
-  gtk_container_add (GTK_CONTAINER (eventbox1), hbox62);
+  gtk_box_pack_start (GTK_BOX (vbox35), hbox62, FALSE, TRUE, 0);
 
   checkbutton_autosave = gtk_check_button_new_with_mnemonic (_("Autosave every "));
   gtk_widget_show (checkbutton_autosave);
@@ -515,50 +461,64 @@ create_opt_window (void)
 
   checkbutton_xml = gtk_check_button_new_with_mnemonic (_("XML save / load"));
   gtk_widget_show (checkbutton_xml);
-  gtk_box_pack_start (GTK_BOX (hbox60), checkbutton_xml, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox35), checkbutton_xml, FALSE, FALSE, 0);
   gtk_tooltips_set_tip (tooltips, checkbutton_xml, _("Set savegame format to XML (instead of binary). XML savegames will automatically have a '.xml' ending, and files with '.xml' ending will be loaded as XML savegames. Files with '.xml' ending will be saved automatically as XML savegames."), NULL);
 
-  hbox48 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox48);
-  gtk_box_pack_start (GTK_BOX (vbox22), hbox48, FALSE, TRUE, 0);
+  label96 = gtk_label_new (_("Savegame compression:"));
+  gtk_widget_show (label96);
+  gtk_box_pack_start (GTK_BOX (vbox35), label96, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label96), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label96), 0, 0.5);
 
-  checkbutton_notify = gtk_check_button_new_with_mnemonic (_("Notify me whenever a player appears on the transfer list who fulfills "));
-  gtk_widget_show (checkbutton_notify);
-  gtk_box_pack_start (GTK_BOX (hbox48), checkbutton_notify, FALSE, FALSE, 0);
-  gtk_tooltips_set_tip (tooltips, checkbutton_notify, _("Check this if you want Bygfoot to keep an eye on the transfer list for you."), NULL);
+  optionmenu_compression = gtk_option_menu_new ();
+  gtk_widget_show (optionmenu_compression);
+  gtk_box_pack_start (GTK_BOX (vbox35), optionmenu_compression, FALSE, FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (optionmenu_compression), 2);
+  gtk_tooltips_set_tip (tooltips, optionmenu_compression, _("Whether to compress save files and what kind of program to use. Compressing savegames can lead to a lot longer save / load times."), NULL);
 
-  button_notify = gtk_button_new ();
-  gtk_widget_show (button_notify);
-  gtk_box_pack_start (GTK_BOX (hbox48), button_notify, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (button_notify), 2);
-  gtk_widget_set_sensitive (button_notify, FALSE);
-  gtk_tooltips_set_tip (tooltips, button_notify, _("Here you can specify which players on the transfer list trigger a notification."), NULL);
+  menu1 = gtk_menu_new ();
 
-  alignment12 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment12);
-  gtk_container_add (GTK_CONTAINER (button_notify), alignment12);
+  none1 = gtk_menu_item_new_with_mnemonic (_("None"));
+  gtk_widget_show (none1);
+  gtk_container_add (GTK_CONTAINER (menu1), none1);
 
-  hbox58 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox58);
-  gtk_container_add (GTK_CONTAINER (alignment12), hbox58);
+  gzip1 = gtk_menu_item_new_with_mnemonic (_("Gzip"));
+  gtk_widget_show (gzip1);
+  gtk_container_add (GTK_CONTAINER (menu1), gzip1);
 
-  image33 = gtk_image_new_from_stock ("gtk-index", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image33);
-  gtk_box_pack_start (GTK_BOX (hbox58), image33, FALSE, FALSE, 0);
+  bzip1 = gtk_menu_item_new_with_mnemonic (_("Bzip2"));
+  gtk_widget_show (bzip1);
+  gtk_container_add (GTK_CONTAINER (menu1), bzip1);
 
-  label81 = gtk_label_new_with_mnemonic (_("my conditions"));
-  gtk_widget_show (label81);
-  gtk_box_pack_start (GTK_BOX (hbox58), label81, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label81), GTK_JUSTIFY_LEFT);
+  gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu_compression), menu1);
 
-  eventbox2 = gtk_event_box_new ();
-  gtk_widget_show (eventbox2);
-  gtk_box_pack_start (GTK_BOX (vbox22), eventbox2, FALSE, TRUE, 0);
-  gtk_tooltips_set_tip (tooltips, eventbox2, _("Default sort order is descending. You can re-sort the list temporarily by clicking on the column header of any of these attributes."), NULL);
+  checkbutton_compress_bg = gtk_check_button_new_with_mnemonic (_("Allow compressing in the background"));
+  gtk_widget_show (checkbutton_compress_bg);
+  gtk_box_pack_start (GTK_BOX (vbox35), checkbutton_compress_bg, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, checkbutton_compress_bg, _("Checking this speeds up saving and loading games when compression is selected, but you might experience problems."), NULL);
+
+  label90 = gtk_label_new ("");
+  gtk_widget_show (label90);
+  gtk_frame_set_label_widget (GTK_FRAME (frame2), label90);
+  gtk_label_set_justify (GTK_LABEL (label90), GTK_JUSTIFY_LEFT);
+
+  label84 = gtk_label_new (_("Load & Save"));
+  gtk_widget_show (label84);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 1), label84);
+  gtk_label_set_justify (GTK_LABEL (label84), GTK_JUSTIFY_LEFT);
+
+  frame3 = gtk_frame_new (NULL);
+  gtk_widget_show (frame3);
+  gtk_container_add (GTK_CONTAINER (notebook1), frame3);
+  gtk_container_set_border_width (GTK_CONTAINER (frame3), 5);
+
+  vbox36 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox36);
+  gtk_container_add (GTK_CONTAINER (frame3), vbox36);
 
   hbox63 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox63);
-  gtk_container_add (GTK_CONTAINER (eventbox2), hbox63);
+  gtk_box_pack_start (GTK_BOX (vbox36), hbox63, FALSE, TRUE, 0);
 
   checkbutton_sort_transfers = gtk_check_button_new_with_mnemonic (_("Sort transfer list by"));
   gtk_widget_show (checkbutton_sort_transfers);
@@ -609,315 +569,25 @@ create_opt_window (void)
   gtk_widget_show (checkbutton_sort_asc);
   gtk_box_pack_start (GTK_BOX (hbox64), checkbutton_sort_asc, FALSE, FALSE, 0);
 
-  checkbutton_skip_weeks = gtk_check_button_new_with_mnemonic (_("Skip weeks when my team doesn't play"));
-  gtk_widget_show (checkbutton_skip_weeks);
-  gtk_box_pack_start (GTK_BOX (vbox22), checkbutton_skip_weeks, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (checkbutton_skip_weeks), 2);
-  gtk_tooltips_set_tip (tooltips, checkbutton_skip_weeks, _("Unchecking this is particularly useful if you only play an international cup and want to keep a close eye on the transfer list.\nThere's also a drawback: player wages get deduced each week."), NULL);
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton_skip_weeks), TRUE);
+  hseparator11 = gtk_hseparator_new ();
+  gtk_widget_show (hseparator11);
+  gtk_box_pack_start (GTK_BOX (vbox36), hseparator11, FALSE, TRUE, 0);
+  gtk_widget_set_size_request (hseparator11, 1, 10);
 
-  hseparator8 = gtk_hseparator_new ();
-  gtk_widget_show (hseparator8);
-  gtk_box_pack_start (GTK_BOX (vbox22), hseparator8, FALSE, TRUE, 0);
-  gtk_widget_set_size_request (hseparator8, 1, 5);
+  checkbutton_notify = gtk_check_button_new_with_mnemonic (_("Notify me whenever a player appears on the transfer list who fulfills my conditions:"));
+  gtk_widget_show (checkbutton_notify);
+  gtk_box_pack_start (GTK_BOX (vbox36), checkbutton_notify, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, checkbutton_notify, _("Check this if you want Bygfoot to keep an eye on the transfer list for you."), NULL);
 
-  hbox25 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox25);
-  gtk_box_pack_start (GTK_BOX (vbox22), hbox25, FALSE, TRUE, 0);
-
-  checkbutton_save_conf = gtk_check_button_new_with_mnemonic (_("Save to file"));
-  gtk_widget_show (checkbutton_save_conf);
-  gtk_box_pack_start (GTK_BOX (hbox25), checkbutton_save_conf, FALSE, FALSE, 0);
-  gtk_tooltips_set_tip (tooltips, checkbutton_save_conf, _("Save options to $HOME/.bygfoot/bygfoot.conf. If you start Bygfoot again, they get loaded from the file."), NULL);
-
-  button_opt_ok = gtk_button_new ();
-  gtk_widget_show (button_opt_ok);
-  gtk_box_pack_start (GTK_BOX (hbox25), button_opt_ok, TRUE, TRUE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (button_opt_ok), 3);
-  gtk_tooltips_set_tip (tooltips, button_opt_ok, _("Return"), NULL);
-  gtk_widget_add_accelerator (button_opt_ok, "clicked", accel_group,
-                              GDK_Return, 0,
-                              GTK_ACCEL_VISIBLE);
-
-  alignment4 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment4);
-  gtk_container_add (GTK_CONTAINER (button_opt_ok), alignment4);
-
-  hbox26 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox26);
-  gtk_container_add (GTK_CONTAINER (alignment4), hbox26);
-
-  image25 = gtk_image_new_from_stock ("gtk-apply", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image25);
-  gtk_box_pack_start (GTK_BOX (hbox26), image25, FALSE, FALSE, 0);
-
-  label47 = gtk_label_new_with_mnemonic (_("OK"));
-  gtk_widget_show (label47);
-  gtk_box_pack_start (GTK_BOX (hbox26), label47, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label47), GTK_JUSTIFY_LEFT);
-
-  button_opt_cancel = gtk_button_new ();
-  gtk_widget_show (button_opt_cancel);
-  gtk_box_pack_start (GTK_BOX (hbox25), button_opt_cancel, TRUE, TRUE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (button_opt_cancel), 3);
-  gtk_tooltips_set_tip (tooltips, button_opt_cancel, _("Esc"), NULL);
-  gtk_widget_add_accelerator (button_opt_cancel, "clicked", accel_group,
-                              GDK_Escape, 0,
-                              GTK_ACCEL_VISIBLE);
-
-  alignment5 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment5);
-  gtk_container_add (GTK_CONTAINER (button_opt_cancel), alignment5);
-
-  hbox27 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox27);
-  gtk_container_add (GTK_CONTAINER (alignment5), hbox27);
-
-  image26 = gtk_image_new_from_stock ("gtk-cancel", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image26);
-  gtk_box_pack_start (GTK_BOX (hbox27), image26, FALSE, FALSE, 0);
-
-  label48 = gtk_label_new_with_mnemonic (_("Cancel"));
-  gtk_widget_show (label48);
-  gtk_box_pack_start (GTK_BOX (hbox27), label48, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label48), GTK_JUSTIFY_LEFT);
-
-  g_signal_connect ((gpointer) opt_window, "delete_event",
-                    G_CALLBACK (on_button_opt_cancel_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) check_show_live, "toggled",
-                    G_CALLBACK (on_check_show_live_toggled),
-                    NULL);
-  g_signal_connect ((gpointer) spin_live_duration, "activate",
-                    G_CALLBACK (on_spin_live_duration_activate),
-                    NULL);
-  g_signal_connect ((gpointer) button_opt_change_font, "clicked",
-                    G_CALLBACK (on_button_opt_change_font_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) checkbutton_autosave, "toggled",
-                    G_CALLBACK (on_checkbutton_autosave_toggled),
-                    NULL);
-  g_signal_connect ((gpointer) checkbutton_notify, "toggled",
-                    G_CALLBACK (on_checkbutton_notify_toggled),
-                    NULL);
-  g_signal_connect ((gpointer) button_notify, "clicked",
-                    G_CALLBACK (on_button_notify_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) checkbutton_sort_transfers, "toggled",
-                    G_CALLBACK (on_checkbutton_sort_transfers_toggled),
-                    NULL);
-  g_signal_connect ((gpointer) button_opt_ok, "clicked",
-                    G_CALLBACK (on_button_opt_ok_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) button_opt_cancel, "clicked",
-                    G_CALLBACK (on_button_opt_cancel_clicked),
-                    NULL);
-
-  /* Store pointers to all widgets, for use by lookup_widget(). */
-  GLADE_HOOKUP_OBJECT_NO_REF (opt_window, opt_window, "opt_window");
-  GLADE_HOOKUP_OBJECT (opt_window, vbox22, "vbox22");
-  GLADE_HOOKUP_OBJECT (opt_window, label41, "label41");
-  GLADE_HOOKUP_OBJECT (opt_window, hseparator3, "hseparator3");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox59, "hbox59");
-  GLADE_HOOKUP_OBJECT (opt_window, check_conf_new_week, "check_conf_new_week");
-  GLADE_HOOKUP_OBJECT (opt_window, check_conf_unfit, "check_conf_unfit");
-  GLADE_HOOKUP_OBJECT (opt_window, check_conf_quit, "check_conf_quit");
-  GLADE_HOOKUP_OBJECT (opt_window, hseparator4, "hseparator4");
-  GLADE_HOOKUP_OBJECT (opt_window, label42, "label42");
-  GLADE_HOOKUP_OBJECT (opt_window, hseparator5, "hseparator5");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox65, "hbox65");
-  GLADE_HOOKUP_OBJECT (opt_window, vbox32, "vbox32");
-  GLADE_HOOKUP_OBJECT (opt_window, label53, "label53");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox66, "hbox66");
-  GLADE_HOOKUP_OBJECT (opt_window, radio_show1, "radio_show1");
-  GLADE_HOOKUP_OBJECT (opt_window, radio_show2, "radio_show2");
-  GLADE_HOOKUP_OBJECT (opt_window, check_show_live, "check_show_live");
-  GLADE_HOOKUP_OBJECT (opt_window, vbox34, "vbox34");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox21, "hbox21");
-  GLADE_HOOKUP_OBJECT (opt_window, label43, "label43");
-  GLADE_HOOKUP_OBJECT (opt_window, spin_live_duration, "spin_live_duration");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox39, "hbox39");
-  GLADE_HOOKUP_OBJECT (opt_window, label58, "label58");
-  GLADE_HOOKUP_OBJECT (opt_window, check_live_tendency, "check_live_tendency");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox34, "hbox34");
-  GLADE_HOOKUP_OBJECT (opt_window, button_opt_change_font, "button_opt_change_font");
-  GLADE_HOOKUP_OBJECT (opt_window, alignment9, "alignment9");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox35, "hbox35");
-  GLADE_HOOKUP_OBJECT (opt_window, image30, "image30");
-  GLADE_HOOKUP_OBJECT (opt_window, label55, "label55");
-  GLADE_HOOKUP_OBJECT (opt_window, label54, "label54");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox46, "hbox46");
-  GLADE_HOOKUP_OBJECT (opt_window, label71, "label71");
-  GLADE_HOOKUP_OBJECT (opt_window, entry_team_name, "entry_team_name");
-  GLADE_HOOKUP_OBJECT (opt_window, vseparator3, "vseparator3");
-  GLADE_HOOKUP_OBJECT (opt_window, vbox33, "vbox33");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox22, "hbox22");
-  GLADE_HOOKUP_OBJECT (opt_window, label45, "label45");
-  GLADE_HOOKUP_OBJECT (opt_window, radio_mess1, "radio_mess1");
-  GLADE_HOOKUP_OBJECT (opt_window, radio_mess2, "radio_mess2");
-  GLADE_HOOKUP_OBJECT (opt_window, radio_mess3, "radio_mess3");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_prefer_mess, "checkbutton_prefer_mess");
-  GLADE_HOOKUP_OBJECT (opt_window, check_jobs, "check_jobs");
-  GLADE_HOOKUP_OBJECT (opt_window, eventbox3, "eventbox3");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox67, "hbox67");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_rearrange, "checkbutton_rearrange");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_swap, "checkbutton_swap");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_fit_colors, "checkbutton_fit_colors");
-  GLADE_HOOKUP_OBJECT (opt_window, hseparator9, "hseparator9");
-  GLADE_HOOKUP_OBJECT (opt_window, label49, "label49");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox28, "hbox28");
-  GLADE_HOOKUP_OBJECT (opt_window, check_att_pos, "check_att_pos");
-  GLADE_HOOKUP_OBJECT (opt_window, check_att_skill, "check_att_skill");
-  GLADE_HOOKUP_OBJECT (opt_window, check_att_fit, "check_att_fit");
-  GLADE_HOOKUP_OBJECT (opt_window, check_att_games, "check_att_games");
-  GLADE_HOOKUP_OBJECT (opt_window, check_att_goals, "check_att_goals");
-  GLADE_HOOKUP_OBJECT (opt_window, check_att_status, "check_att_status");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox29, "hbox29");
-  GLADE_HOOKUP_OBJECT (opt_window, check_att_age, "check_att_age");
-  GLADE_HOOKUP_OBJECT (opt_window, check_att_etal, "check_att_etal");
-  GLADE_HOOKUP_OBJECT (opt_window, check_att_booked, "check_att_booked");
-  GLADE_HOOKUP_OBJECT (opt_window, check_att_value, "check_att_value");
-  GLADE_HOOKUP_OBJECT (opt_window, check_att_wage, "check_att_wage");
-  GLADE_HOOKUP_OBJECT (opt_window, hseparator6, "hseparator6");
-  GLADE_HOOKUP_OBJECT (opt_window, label44, "label44");
-  GLADE_HOOKUP_OBJECT (opt_window, hseparator7, "hseparator7");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox60, "hbox60");
-  GLADE_HOOKUP_OBJECT (opt_window, check_overwrite, "check_overwrite");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox61, "hbox61");
-  GLADE_HOOKUP_OBJECT (opt_window, eventbox1, "eventbox1");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox62, "hbox62");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_autosave, "checkbutton_autosave");
-  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_autosave, "spinbutton_autosave");
-  GLADE_HOOKUP_OBJECT (opt_window, label82, "label82");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_xml, "checkbutton_xml");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox48, "hbox48");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify, "checkbutton_notify");
-  GLADE_HOOKUP_OBJECT (opt_window, button_notify, "button_notify");
-  GLADE_HOOKUP_OBJECT (opt_window, alignment12, "alignment12");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox58, "hbox58");
-  GLADE_HOOKUP_OBJECT (opt_window, image33, "image33");
-  GLADE_HOOKUP_OBJECT (opt_window, label81, "label81");
-  GLADE_HOOKUP_OBJECT (opt_window, eventbox2, "eventbox2");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox63, "hbox63");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_sort_transfers, "checkbutton_sort_transfers");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox64, "hbox64");
-  GLADE_HOOKUP_OBJECT (opt_window, radiobutton_sort_pos, "radiobutton_sort_pos");
-  GLADE_HOOKUP_OBJECT (opt_window, radiobutton_sort_skill, "radiobutton_sort_skill");
-  GLADE_HOOKUP_OBJECT (opt_window, radiobutton_sort_age, "radiobutton_sort_age");
-  GLADE_HOOKUP_OBJECT (opt_window, radiobutton_sort_etal, "radiobutton_sort_etal");
-  GLADE_HOOKUP_OBJECT (opt_window, radiobutton_sort_league, "radiobutton_sort_league");
-  GLADE_HOOKUP_OBJECT (opt_window, vseparator1, "vseparator1");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_sort_asc, "checkbutton_sort_asc");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_skip_weeks, "checkbutton_skip_weeks");
-  GLADE_HOOKUP_OBJECT (opt_window, hseparator8, "hseparator8");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox25, "hbox25");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_save_conf, "checkbutton_save_conf");
-  GLADE_HOOKUP_OBJECT (opt_window, button_opt_ok, "button_opt_ok");
-  GLADE_HOOKUP_OBJECT (opt_window, alignment4, "alignment4");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox26, "hbox26");
-  GLADE_HOOKUP_OBJECT (opt_window, image25, "image25");
-  GLADE_HOOKUP_OBJECT (opt_window, label47, "label47");
-  GLADE_HOOKUP_OBJECT (opt_window, button_opt_cancel, "button_opt_cancel");
-  GLADE_HOOKUP_OBJECT (opt_window, alignment5, "alignment5");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox27, "hbox27");
-  GLADE_HOOKUP_OBJECT (opt_window, image26, "image26");
-  GLADE_HOOKUP_OBJECT (opt_window, label48, "label48");
-  GLADE_HOOKUP_OBJECT_NO_REF (opt_window, tooltips, "tooltips");
-
-  gtk_window_add_accel_group (GTK_WINDOW (opt_window), accel_group);
-
-  return opt_window;
-}
-
-GtkWidget*
-create_notify_window (void)
-{
-  GtkWidget *notify_window;
-  GtkWidget *vbox31;
-  GtkWidget *vbox26;
-  GtkWidget *vbox27;
-  GtkWidget *hbox52;
-  GtkWidget *vbox28;
-  GtkWidget *checkbutton_notify_skill;
-  GtkWidget *checkbutton_notify_etal;
-  GtkWidget *checkbutton_notify_age;
-  GtkWidget *checkbutton_notify_value;
-  GtkWidget *checkbutton_notify_positions;
-  GtkWidget *checkbutton_notify_league;
-  GtkWidget *label78;
-  GtkWidget *vbox29;
-  GtkObject *spinbutton_notify_skill1_adj;
-  GtkWidget *spinbutton_notify_skill1;
-  GtkObject *spinbutton_notify_etal1_adj;
-  GtkWidget *spinbutton_notify_etal1;
-  GtkObject *spinbutton_notify_age1_adj;
-  GtkWidget *spinbutton_notify_age1;
-  GtkObject *spinbutton_notify_value_adj;
-  GtkWidget *spinbutton_notify_value;
-  GtkWidget *checkbutton_notify_pos0;
-  GtkWidget *checkbutton_notify_league1;
-  GtkWidget *checkbutton_notify_league4;
-  GtkWidget *vbox30;
-  GtkWidget *label73;
-  GtkWidget *label74;
-  GtkWidget *label75;
-  GtkWidget *label76;
-  GtkWidget *hbox54;
-  GtkWidget *checkbutton_notify_pos1;
-  GtkWidget *checkbutton_notify_pos2;
-  GtkWidget *checkbutton_notify_league2;
-  GtkWidget *checkbutton_notify_league5;
-  GtkWidget *vboxa31;
-  GtkObject *spinbutton_notify_skill2_adj;
-  GtkWidget *spinbutton_notify_skill2;
-  GtkObject *spinbutton_notify_etal2_adj;
-  GtkWidget *spinbutton_notify_etal2;
-  GtkObject *spinbutton_notify_age2_adj;
-  GtkWidget *spinbutton_notify_age2;
-  GtkWidget *label77;
-  GtkWidget *hbox53;
-  GtkWidget *checkbutton_notify_pos3;
-  GtkWidget *checkbutton_notify_league3;
-  GtkWidget *checkbutton_notify_league6;
-  GtkWidget *hseparator10;
-  GtkWidget *hbox55;
-  GtkWidget *button_notify_ok;
-  GtkWidget *alignment10;
-  GtkWidget *hbox56;
-  GtkWidget *image31;
-  GtkWidget *label79;
-  GtkWidget *button_notify_cancel;
-  GtkWidget *alignment11;
-  GtkWidget *hbox57;
-  GtkWidget *image32;
-  GtkWidget *label80;
-  GtkAccelGroup *accel_group;
-  GtkTooltips *tooltips;
-
-  tooltips = gtk_tooltips_new ();
-
-  accel_group = gtk_accel_group_new ();
-
-  notify_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_container_set_border_width (GTK_CONTAINER (notify_window), 6);
-  gtk_window_set_title (GTK_WINDOW (notify_window), _("Bygfoot Options - Transfer List Notification"));
-  gtk_window_set_position (GTK_WINDOW (notify_window), GTK_WIN_POS_CENTER);
-
-  vbox31 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox31);
-  gtk_container_add (GTK_CONTAINER (notify_window), vbox31);
-
-  vbox26 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox26);
-  gtk_box_pack_start (GTK_BOX (vbox31), vbox26, FALSE, TRUE, 0);
-
-  vbox27 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox27);
-  gtk_box_pack_start (GTK_BOX (vbox26), vbox27, FALSE, TRUE, 0);
+  frame7 = gtk_frame_new (NULL);
+  gtk_widget_show (frame7);
+  gtk_box_pack_start (GTK_BOX (vbox36), frame7, TRUE, TRUE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (frame7), 5);
 
   hbox52 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox52);
-  gtk_box_pack_start (GTK_BOX (vbox27), hbox52, FALSE, TRUE, 0);
+  gtk_container_add (GTK_CONTAINER (frame7), hbox52);
+  gtk_widget_set_sensitive (hbox52, FALSE);
 
   vbox28 = gtk_vbox_new (FALSE, 2);
   gtk_widget_show (vbox28);
@@ -1110,134 +780,408 @@ create_notify_window (void)
   gtk_box_pack_start (GTK_BOX (vboxa31), checkbutton_notify_league6, FALSE, FALSE, 0);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton_notify_league6), TRUE);
 
-  hseparator10 = gtk_hseparator_new ();
-  gtk_widget_show (hseparator10);
-  gtk_box_pack_start (GTK_BOX (vbox31), hseparator10, FALSE, FALSE, 0);
-  gtk_widget_set_size_request (hseparator10, 1, 10);
+  label95 = gtk_label_new ("");
+  gtk_widget_show (label95);
+  gtk_frame_set_label_widget (GTK_FRAME (frame7), label95);
+  gtk_label_set_justify (GTK_LABEL (label95), GTK_JUSTIFY_LEFT);
 
-  hbox55 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox55);
-  gtk_box_pack_start (GTK_BOX (vbox31), hbox55, TRUE, FALSE, 0);
+  label91 = gtk_label_new ("");
+  gtk_widget_show (label91);
+  gtk_frame_set_label_widget (GTK_FRAME (frame3), label91);
+  gtk_label_set_justify (GTK_LABEL (label91), GTK_JUSTIFY_LEFT);
 
-  button_notify_ok = gtk_button_new ();
-  gtk_widget_show (button_notify_ok);
-  gtk_box_pack_start (GTK_BOX (hbox55), button_notify_ok, TRUE, TRUE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (button_notify_ok), 2);
-  gtk_tooltips_set_tip (tooltips, button_notify_ok, _("Return"), NULL);
-  gtk_widget_add_accelerator (button_notify_ok, "clicked", accel_group,
+  label85 = gtk_label_new (_("Transfers"));
+  gtk_widget_show (label85);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 2), label85);
+  gtk_label_set_justify (GTK_LABEL (label85), GTK_JUSTIFY_LEFT);
+
+  frame4 = gtk_frame_new (NULL);
+  gtk_widget_show (frame4);
+  gtk_container_add (GTK_CONTAINER (notebook1), frame4);
+  gtk_container_set_border_width (GTK_CONTAINER (frame4), 5);
+
+  vbox37 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox37);
+  gtk_container_add (GTK_CONTAINER (frame4), vbox37);
+
+  check_conf_new_week = gtk_check_button_new_with_mnemonic (_("New week"));
+  gtk_widget_show (check_conf_new_week);
+  gtk_box_pack_start (GTK_BOX (vbox37), check_conf_new_week, FALSE, FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (check_conf_new_week), 2);
+  gtk_tooltips_set_tip (tooltips, check_conf_new_week, _("Show a warning before beginning a new week"), NULL);
+
+  check_conf_unfit = gtk_check_button_new_with_mnemonic (_("Unfit players in the team"));
+  gtk_widget_show (check_conf_unfit);
+  gtk_box_pack_start (GTK_BOX (vbox37), check_conf_unfit, FALSE, FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (check_conf_unfit), 2);
+  gtk_tooltips_set_tip (tooltips, check_conf_unfit, _("Show a warning when injured or banned players are in the team when beginning a new week"), NULL);
+
+  check_conf_quit = gtk_check_button_new_with_mnemonic (_("Quit when not saved"));
+  gtk_widget_show (check_conf_quit);
+  gtk_box_pack_start (GTK_BOX (vbox37), check_conf_quit, FALSE, FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (check_conf_quit), 2);
+  gtk_tooltips_set_tip (tooltips, check_conf_quit, _("Show a warning if I want to quit with a game that isn't saved"), NULL);
+
+  label92 = gtk_label_new ("");
+  gtk_widget_show (label92);
+  gtk_frame_set_label_widget (GTK_FRAME (frame4), label92);
+  gtk_label_set_justify (GTK_LABEL (label92), GTK_JUSTIFY_LEFT);
+
+  label86 = gtk_label_new (_("Confirmations"));
+  gtk_widget_show (label86);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 3), label86);
+  gtk_label_set_justify (GTK_LABEL (label86), GTK_JUSTIFY_LEFT);
+
+  frame5 = gtk_frame_new (NULL);
+  gtk_widget_show (frame5);
+  gtk_container_add (GTK_CONTAINER (notebook1), frame5);
+  gtk_container_set_border_width (GTK_CONTAINER (frame5), 5);
+
+  vbox38 = gtk_vbox_new (FALSE, 3);
+  gtk_widget_show (vbox38);
+  gtk_container_add (GTK_CONTAINER (frame5), vbox38);
+
+  hbox28 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox28);
+  gtk_box_pack_start (GTK_BOX (vbox38), hbox28, FALSE, TRUE, 0);
+
+  check_att_pos = gtk_check_button_new_with_mnemonic (_("Position"));
+  gtk_widget_show (check_att_pos);
+  gtk_box_pack_start (GTK_BOX (hbox28), check_att_pos, FALSE, FALSE, 0);
+
+  check_att_skill = gtk_check_button_new_with_mnemonic (_("Skill"));
+  gtk_widget_show (check_att_skill);
+  gtk_box_pack_start (GTK_BOX (hbox28), check_att_skill, FALSE, FALSE, 0);
+
+  check_att_fit = gtk_check_button_new_with_mnemonic (_("Fitness"));
+  gtk_widget_show (check_att_fit);
+  gtk_box_pack_start (GTK_BOX (hbox28), check_att_fit, FALSE, FALSE, 0);
+
+  check_att_games = gtk_check_button_new_with_mnemonic (_("Games"));
+  gtk_widget_show (check_att_games);
+  gtk_box_pack_start (GTK_BOX (hbox28), check_att_games, FALSE, FALSE, 0);
+
+  check_att_goals = gtk_check_button_new_with_mnemonic (_("Goals"));
+  gtk_widget_show (check_att_goals);
+  gtk_box_pack_start (GTK_BOX (hbox28), check_att_goals, FALSE, FALSE, 0);
+
+  check_att_status = gtk_check_button_new_with_mnemonic (_("Status"));
+  gtk_widget_show (check_att_status);
+  gtk_box_pack_start (GTK_BOX (hbox28), check_att_status, FALSE, FALSE, 0);
+
+  hbox29 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox29);
+  gtk_box_pack_start (GTK_BOX (vbox38), hbox29, FALSE, TRUE, 0);
+
+  check_att_age = gtk_check_button_new_with_mnemonic (_("Age"));
+  gtk_widget_show (check_att_age);
+  gtk_box_pack_start (GTK_BOX (hbox29), check_att_age, FALSE, FALSE, 0);
+
+  check_att_etal = gtk_check_button_new_with_mnemonic (_("Estimated talent"));
+  gtk_widget_show (check_att_etal);
+  gtk_box_pack_start (GTK_BOX (hbox29), check_att_etal, FALSE, FALSE, 0);
+
+  check_att_booked = gtk_check_button_new_with_mnemonic (_("Yellow cards"));
+  gtk_widget_show (check_att_booked);
+  gtk_box_pack_start (GTK_BOX (hbox29), check_att_booked, FALSE, FALSE, 0);
+
+  check_att_value = gtk_check_button_new_with_mnemonic (_("Value"));
+  gtk_widget_show (check_att_value);
+  gtk_box_pack_start (GTK_BOX (hbox29), check_att_value, FALSE, FALSE, 0);
+
+  check_att_wage = gtk_check_button_new_with_mnemonic (_("Wage"));
+  gtk_widget_show (check_att_wage);
+  gtk_box_pack_start (GTK_BOX (hbox29), check_att_wage, FALSE, FALSE, 0);
+
+  label93 = gtk_label_new ("");
+  gtk_widget_show (label93);
+  gtk_frame_set_label_widget (GTK_FRAME (frame5), label93);
+  gtk_label_set_justify (GTK_LABEL (label93), GTK_JUSTIFY_LEFT);
+
+  label87 = gtk_label_new (_("Player attributes"));
+  gtk_widget_show (label87);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 4), label87);
+  gtk_label_set_justify (GTK_LABEL (label87), GTK_JUSTIFY_LEFT);
+
+  frame6 = gtk_frame_new (NULL);
+  gtk_widget_show (frame6);
+  gtk_container_add (GTK_CONTAINER (notebook1), frame6);
+  gtk_container_set_border_width (GTK_CONTAINER (frame6), 5);
+
+  vbox40 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox40);
+  gtk_container_add (GTK_CONTAINER (frame6), vbox40);
+
+  checkbutton_skip_weeks = gtk_check_button_new_with_mnemonic (_("Skip weeks when my team doesn't play"));
+  gtk_widget_show (checkbutton_skip_weeks);
+  gtk_box_pack_start (GTK_BOX (vbox40), checkbutton_skip_weeks, FALSE, FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (checkbutton_skip_weeks), 2);
+  gtk_tooltips_set_tip (tooltips, checkbutton_skip_weeks, _("Unchecking this is particularly useful if you only play an international cup and want to keep a close eye on the transfer list.\nThere's also a drawback: player wages get deduced each week."), NULL);
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton_skip_weeks), TRUE);
+
+  label94 = gtk_label_new ("");
+  gtk_widget_show (label94);
+  gtk_frame_set_label_widget (GTK_FRAME (frame6), label94);
+  gtk_label_set_justify (GTK_LABEL (label94), GTK_JUSTIFY_LEFT);
+
+  label88 = gtk_label_new (_("Misc"));
+  gtk_widget_show (label88);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 5), label88);
+  gtk_label_set_justify (GTK_LABEL (label88), GTK_JUSTIFY_LEFT);
+
+  hseparator8 = gtk_hseparator_new ();
+  gtk_widget_show (hseparator8);
+  gtk_box_pack_start (GTK_BOX (vbox39), hseparator8, TRUE, TRUE, 0);
+  gtk_widget_set_size_request (hseparator8, 1, 10);
+
+  hbox25 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox25);
+  gtk_box_pack_start (GTK_BOX (vbox39), hbox25, TRUE, TRUE, 0);
+
+  checkbutton_save_conf = gtk_check_button_new_with_mnemonic (_("Save to file"));
+  gtk_widget_show (checkbutton_save_conf);
+  gtk_box_pack_start (GTK_BOX (hbox25), checkbutton_save_conf, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, checkbutton_save_conf, _("Save options to $HOME/.bygfoot/bygfoot.conf. If you start Bygfoot again, they get loaded from the file."), NULL);
+
+  button_opt_ok = gtk_button_new ();
+  gtk_widget_show (button_opt_ok);
+  gtk_box_pack_start (GTK_BOX (hbox25), button_opt_ok, TRUE, TRUE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (button_opt_ok), 3);
+  gtk_tooltips_set_tip (tooltips, button_opt_ok, _("Return"), NULL);
+  gtk_widget_add_accelerator (button_opt_ok, "clicked", accel_group,
                               GDK_Return, 0,
                               GTK_ACCEL_VISIBLE);
 
-  alignment10 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment10);
-  gtk_container_add (GTK_CONTAINER (button_notify_ok), alignment10);
+  alignment4 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment4);
+  gtk_container_add (GTK_CONTAINER (button_opt_ok), alignment4);
 
-  hbox56 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox56);
-  gtk_container_add (GTK_CONTAINER (alignment10), hbox56);
+  hbox26 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox26);
+  gtk_container_add (GTK_CONTAINER (alignment4), hbox26);
 
-  image31 = gtk_image_new_from_stock ("gtk-apply", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image31);
-  gtk_box_pack_start (GTK_BOX (hbox56), image31, FALSE, FALSE, 0);
+  image25 = gtk_image_new_from_stock ("gtk-apply", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image25);
+  gtk_box_pack_start (GTK_BOX (hbox26), image25, FALSE, FALSE, 0);
 
-  label79 = gtk_label_new_with_mnemonic (_("OK"));
-  gtk_widget_show (label79);
-  gtk_box_pack_start (GTK_BOX (hbox56), label79, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label79), GTK_JUSTIFY_LEFT);
+  label47 = gtk_label_new_with_mnemonic (_("OK"));
+  gtk_widget_show (label47);
+  gtk_box_pack_start (GTK_BOX (hbox26), label47, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label47), GTK_JUSTIFY_LEFT);
 
-  button_notify_cancel = gtk_button_new ();
-  gtk_widget_show (button_notify_cancel);
-  gtk_box_pack_start (GTK_BOX (hbox55), button_notify_cancel, TRUE, TRUE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (button_notify_cancel), 2);
-  gtk_tooltips_set_tip (tooltips, button_notify_cancel, _("Esc"), NULL);
-  gtk_widget_add_accelerator (button_notify_cancel, "clicked", accel_group,
+  button_opt_cancel = gtk_button_new ();
+  gtk_widget_show (button_opt_cancel);
+  gtk_box_pack_start (GTK_BOX (hbox25), button_opt_cancel, TRUE, TRUE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (button_opt_cancel), 3);
+  gtk_tooltips_set_tip (tooltips, button_opt_cancel, _("Esc"), NULL);
+  gtk_widget_add_accelerator (button_opt_cancel, "clicked", accel_group,
                               GDK_Escape, 0,
                               GTK_ACCEL_VISIBLE);
 
-  alignment11 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment11);
-  gtk_container_add (GTK_CONTAINER (button_notify_cancel), alignment11);
+  alignment5 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment5);
+  gtk_container_add (GTK_CONTAINER (button_opt_cancel), alignment5);
 
-  hbox57 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox57);
-  gtk_container_add (GTK_CONTAINER (alignment11), hbox57);
+  hbox27 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox27);
+  gtk_container_add (GTK_CONTAINER (alignment5), hbox27);
 
-  image32 = gtk_image_new_from_stock ("gtk-cancel", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image32);
-  gtk_box_pack_start (GTK_BOX (hbox57), image32, FALSE, FALSE, 0);
+  image26 = gtk_image_new_from_stock ("gtk-cancel", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image26);
+  gtk_box_pack_start (GTK_BOX (hbox27), image26, FALSE, FALSE, 0);
 
-  label80 = gtk_label_new_with_mnemonic (_("Cancel"));
-  gtk_widget_show (label80);
-  gtk_box_pack_start (GTK_BOX (hbox57), label80, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label80), GTK_JUSTIFY_LEFT);
+  label48 = gtk_label_new_with_mnemonic (_("Cancel"));
+  gtk_widget_show (label48);
+  gtk_box_pack_start (GTK_BOX (hbox27), label48, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label48), GTK_JUSTIFY_LEFT);
 
-  g_signal_connect ((gpointer) notify_window, "delete_event",
-                    G_CALLBACK (on_button_notify_cancel_clicked),
+  g_signal_connect ((gpointer) check_show_live, "toggled",
+                    G_CALLBACK (on_check_show_live_toggled),
                     NULL);
-  g_signal_connect ((gpointer) button_notify_ok, "clicked",
-                    G_CALLBACK (on_button_notify_ok_clicked),
+  g_signal_connect ((gpointer) spin_live_duration, "activate",
+                    G_CALLBACK (on_spin_live_duration_activate),
                     NULL);
-  g_signal_connect ((gpointer) button_notify_cancel, "clicked",
-                    G_CALLBACK (on_button_notify_cancel_clicked),
+  g_signal_connect ((gpointer) button_opt_change_font, "clicked",
+                    G_CALLBACK (on_button_opt_change_font_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) checkbutton_autosave, "toggled",
+                    G_CALLBACK (on_checkbutton_autosave_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) checkbutton_sort_transfers, "toggled",
+                    G_CALLBACK (on_checkbutton_sort_transfers_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) checkbutton_notify, "toggled",
+                    G_CALLBACK (on_checkbutton_notify_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) button_opt_ok, "clicked",
+                    G_CALLBACK (on_button_opt_ok_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) button_opt_cancel, "clicked",
+                    G_CALLBACK (on_button_opt_cancel_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
-  GLADE_HOOKUP_OBJECT_NO_REF (notify_window, notify_window, "notify_window");
-  GLADE_HOOKUP_OBJECT (notify_window, vbox31, "vbox31");
-  GLADE_HOOKUP_OBJECT (notify_window, vbox26, "vbox26");
-  GLADE_HOOKUP_OBJECT (notify_window, vbox27, "vbox27");
-  GLADE_HOOKUP_OBJECT (notify_window, hbox52, "hbox52");
-  GLADE_HOOKUP_OBJECT (notify_window, vbox28, "vbox28");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_skill, "checkbutton_notify_skill");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_etal, "checkbutton_notify_etal");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_age, "checkbutton_notify_age");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_value, "checkbutton_notify_value");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_positions, "checkbutton_notify_positions");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_league, "checkbutton_notify_league");
-  GLADE_HOOKUP_OBJECT (notify_window, label78, "label78");
-  GLADE_HOOKUP_OBJECT (notify_window, vbox29, "vbox29");
-  GLADE_HOOKUP_OBJECT (notify_window, spinbutton_notify_skill1, "spinbutton_notify_skill1");
-  GLADE_HOOKUP_OBJECT (notify_window, spinbutton_notify_etal1, "spinbutton_notify_etal1");
-  GLADE_HOOKUP_OBJECT (notify_window, spinbutton_notify_age1, "spinbutton_notify_age1");
-  GLADE_HOOKUP_OBJECT (notify_window, spinbutton_notify_value, "spinbutton_notify_value");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_pos0, "checkbutton_notify_pos0");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_league1, "checkbutton_notify_league1");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_league4, "checkbutton_notify_league4");
-  GLADE_HOOKUP_OBJECT (notify_window, vbox30, "vbox30");
-  GLADE_HOOKUP_OBJECT (notify_window, label73, "label73");
-  GLADE_HOOKUP_OBJECT (notify_window, label74, "label74");
-  GLADE_HOOKUP_OBJECT (notify_window, label75, "label75");
-  GLADE_HOOKUP_OBJECT (notify_window, label76, "label76");
-  GLADE_HOOKUP_OBJECT (notify_window, hbox54, "hbox54");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_pos1, "checkbutton_notify_pos1");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_pos2, "checkbutton_notify_pos2");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_league2, "checkbutton_notify_league2");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_league5, "checkbutton_notify_league5");
-  GLADE_HOOKUP_OBJECT (notify_window, vboxa31, "vboxa31");
-  GLADE_HOOKUP_OBJECT (notify_window, spinbutton_notify_skill2, "spinbutton_notify_skill2");
-  GLADE_HOOKUP_OBJECT (notify_window, spinbutton_notify_etal2, "spinbutton_notify_etal2");
-  GLADE_HOOKUP_OBJECT (notify_window, spinbutton_notify_age2, "spinbutton_notify_age2");
-  GLADE_HOOKUP_OBJECT (notify_window, label77, "label77");
-  GLADE_HOOKUP_OBJECT (notify_window, hbox53, "hbox53");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_pos3, "checkbutton_notify_pos3");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_league3, "checkbutton_notify_league3");
-  GLADE_HOOKUP_OBJECT (notify_window, checkbutton_notify_league6, "checkbutton_notify_league6");
-  GLADE_HOOKUP_OBJECT (notify_window, hseparator10, "hseparator10");
-  GLADE_HOOKUP_OBJECT (notify_window, hbox55, "hbox55");
-  GLADE_HOOKUP_OBJECT (notify_window, button_notify_ok, "button_notify_ok");
-  GLADE_HOOKUP_OBJECT (notify_window, alignment10, "alignment10");
-  GLADE_HOOKUP_OBJECT (notify_window, hbox56, "hbox56");
-  GLADE_HOOKUP_OBJECT (notify_window, image31, "image31");
-  GLADE_HOOKUP_OBJECT (notify_window, label79, "label79");
-  GLADE_HOOKUP_OBJECT (notify_window, button_notify_cancel, "button_notify_cancel");
-  GLADE_HOOKUP_OBJECT (notify_window, alignment11, "alignment11");
-  GLADE_HOOKUP_OBJECT (notify_window, hbox57, "hbox57");
-  GLADE_HOOKUP_OBJECT (notify_window, image32, "image32");
-  GLADE_HOOKUP_OBJECT (notify_window, label80, "label80");
-  GLADE_HOOKUP_OBJECT_NO_REF (notify_window, tooltips, "tooltips");
+  GLADE_HOOKUP_OBJECT_NO_REF (opt_window, opt_window, "opt_window");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox39, "vbox39");
+  GLADE_HOOKUP_OBJECT (opt_window, notebook1, "notebook1");
+  GLADE_HOOKUP_OBJECT (opt_window, frame1, "frame1");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox65, "hbox65");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox32, "vbox32");
+  GLADE_HOOKUP_OBJECT (opt_window, label53, "label53");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox66, "hbox66");
+  GLADE_HOOKUP_OBJECT (opt_window, radio_show1, "radio_show1");
+  GLADE_HOOKUP_OBJECT (opt_window, radio_show2, "radio_show2");
+  GLADE_HOOKUP_OBJECT (opt_window, check_show_live, "check_show_live");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox34, "vbox34");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox21, "hbox21");
+  GLADE_HOOKUP_OBJECT (opt_window, label43, "label43");
+  GLADE_HOOKUP_OBJECT (opt_window, spin_live_duration, "spin_live_duration");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox39, "hbox39");
+  GLADE_HOOKUP_OBJECT (opt_window, label58, "label58");
+  GLADE_HOOKUP_OBJECT (opt_window, check_live_tendency, "check_live_tendency");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox34, "hbox34");
+  GLADE_HOOKUP_OBJECT (opt_window, button_opt_change_font, "button_opt_change_font");
+  GLADE_HOOKUP_OBJECT (opt_window, alignment9, "alignment9");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox35, "hbox35");
+  GLADE_HOOKUP_OBJECT (opt_window, image30, "image30");
+  GLADE_HOOKUP_OBJECT (opt_window, label55, "label55");
+  GLADE_HOOKUP_OBJECT (opt_window, label54, "label54");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox46, "hbox46");
+  GLADE_HOOKUP_OBJECT (opt_window, label71, "label71");
+  GLADE_HOOKUP_OBJECT (opt_window, entry_team_name, "entry_team_name");
+  GLADE_HOOKUP_OBJECT (opt_window, vseparator3, "vseparator3");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox33, "vbox33");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox22, "hbox22");
+  GLADE_HOOKUP_OBJECT (opt_window, label45, "label45");
+  GLADE_HOOKUP_OBJECT (opt_window, radio_mess1, "radio_mess1");
+  GLADE_HOOKUP_OBJECT (opt_window, radio_mess2, "radio_mess2");
+  GLADE_HOOKUP_OBJECT (opt_window, radio_mess3, "radio_mess3");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_prefer_mess, "checkbutton_prefer_mess");
+  GLADE_HOOKUP_OBJECT (opt_window, check_jobs, "check_jobs");
+  GLADE_HOOKUP_OBJECT (opt_window, eventbox3, "eventbox3");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox67, "hbox67");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_rearrange, "checkbutton_rearrange");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_swap, "checkbutton_swap");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_fit_colors, "checkbutton_fit_colors");
+  GLADE_HOOKUP_OBJECT (opt_window, label89, "label89");
+  GLADE_HOOKUP_OBJECT (opt_window, label83, "label83");
+  GLADE_HOOKUP_OBJECT (opt_window, frame2, "frame2");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox35, "vbox35");
+  GLADE_HOOKUP_OBJECT (opt_window, check_overwrite, "check_overwrite");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox62, "hbox62");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_autosave, "checkbutton_autosave");
+  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_autosave, "spinbutton_autosave");
+  GLADE_HOOKUP_OBJECT (opt_window, label82, "label82");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_xml, "checkbutton_xml");
+  GLADE_HOOKUP_OBJECT (opt_window, label96, "label96");
+  GLADE_HOOKUP_OBJECT (opt_window, optionmenu_compression, "optionmenu_compression");
+  GLADE_HOOKUP_OBJECT (opt_window, menu1, "menu1");
+  GLADE_HOOKUP_OBJECT (opt_window, none1, "none1");
+  GLADE_HOOKUP_OBJECT (opt_window, gzip1, "gzip1");
+  GLADE_HOOKUP_OBJECT (opt_window, bzip1, "bzip1");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_compress_bg, "checkbutton_compress_bg");
+  GLADE_HOOKUP_OBJECT (opt_window, label90, "label90");
+  GLADE_HOOKUP_OBJECT (opt_window, label84, "label84");
+  GLADE_HOOKUP_OBJECT (opt_window, frame3, "frame3");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox36, "vbox36");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox63, "hbox63");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_sort_transfers, "checkbutton_sort_transfers");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox64, "hbox64");
+  GLADE_HOOKUP_OBJECT (opt_window, radiobutton_sort_pos, "radiobutton_sort_pos");
+  GLADE_HOOKUP_OBJECT (opt_window, radiobutton_sort_skill, "radiobutton_sort_skill");
+  GLADE_HOOKUP_OBJECT (opt_window, radiobutton_sort_age, "radiobutton_sort_age");
+  GLADE_HOOKUP_OBJECT (opt_window, radiobutton_sort_etal, "radiobutton_sort_etal");
+  GLADE_HOOKUP_OBJECT (opt_window, radiobutton_sort_league, "radiobutton_sort_league");
+  GLADE_HOOKUP_OBJECT (opt_window, vseparator1, "vseparator1");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_sort_asc, "checkbutton_sort_asc");
+  GLADE_HOOKUP_OBJECT (opt_window, hseparator11, "hseparator11");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify, "checkbutton_notify");
+  GLADE_HOOKUP_OBJECT (opt_window, frame7, "frame7");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox52, "hbox52");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox28, "vbox28");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_skill, "checkbutton_notify_skill");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_etal, "checkbutton_notify_etal");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_age, "checkbutton_notify_age");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_value, "checkbutton_notify_value");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_positions, "checkbutton_notify_positions");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_league, "checkbutton_notify_league");
+  GLADE_HOOKUP_OBJECT (opt_window, label78, "label78");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox29, "vbox29");
+  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_notify_skill1, "spinbutton_notify_skill1");
+  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_notify_etal1, "spinbutton_notify_etal1");
+  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_notify_age1, "spinbutton_notify_age1");
+  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_notify_value, "spinbutton_notify_value");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_pos0, "checkbutton_notify_pos0");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_league1, "checkbutton_notify_league1");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_league4, "checkbutton_notify_league4");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox30, "vbox30");
+  GLADE_HOOKUP_OBJECT (opt_window, label73, "label73");
+  GLADE_HOOKUP_OBJECT (opt_window, label74, "label74");
+  GLADE_HOOKUP_OBJECT (opt_window, label75, "label75");
+  GLADE_HOOKUP_OBJECT (opt_window, label76, "label76");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox54, "hbox54");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_pos1, "checkbutton_notify_pos1");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_pos2, "checkbutton_notify_pos2");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_league2, "checkbutton_notify_league2");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_league5, "checkbutton_notify_league5");
+  GLADE_HOOKUP_OBJECT (opt_window, vboxa31, "vboxa31");
+  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_notify_skill2, "spinbutton_notify_skill2");
+  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_notify_etal2, "spinbutton_notify_etal2");
+  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_notify_age2, "spinbutton_notify_age2");
+  GLADE_HOOKUP_OBJECT (opt_window, label77, "label77");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox53, "hbox53");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_pos3, "checkbutton_notify_pos3");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_league3, "checkbutton_notify_league3");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify_league6, "checkbutton_notify_league6");
+  GLADE_HOOKUP_OBJECT (opt_window, label95, "label95");
+  GLADE_HOOKUP_OBJECT (opt_window, label91, "label91");
+  GLADE_HOOKUP_OBJECT (opt_window, label85, "label85");
+  GLADE_HOOKUP_OBJECT (opt_window, frame4, "frame4");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox37, "vbox37");
+  GLADE_HOOKUP_OBJECT (opt_window, check_conf_new_week, "check_conf_new_week");
+  GLADE_HOOKUP_OBJECT (opt_window, check_conf_unfit, "check_conf_unfit");
+  GLADE_HOOKUP_OBJECT (opt_window, check_conf_quit, "check_conf_quit");
+  GLADE_HOOKUP_OBJECT (opt_window, label92, "label92");
+  GLADE_HOOKUP_OBJECT (opt_window, label86, "label86");
+  GLADE_HOOKUP_OBJECT (opt_window, frame5, "frame5");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox38, "vbox38");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox28, "hbox28");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_pos, "check_att_pos");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_skill, "check_att_skill");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_fit, "check_att_fit");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_games, "check_att_games");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_goals, "check_att_goals");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_status, "check_att_status");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox29, "hbox29");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_age, "check_att_age");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_etal, "check_att_etal");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_booked, "check_att_booked");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_value, "check_att_value");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_wage, "check_att_wage");
+  GLADE_HOOKUP_OBJECT (opt_window, label93, "label93");
+  GLADE_HOOKUP_OBJECT (opt_window, label87, "label87");
+  GLADE_HOOKUP_OBJECT (opt_window, frame6, "frame6");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox40, "vbox40");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_skip_weeks, "checkbutton_skip_weeks");
+  GLADE_HOOKUP_OBJECT (opt_window, label94, "label94");
+  GLADE_HOOKUP_OBJECT (opt_window, label88, "label88");
+  GLADE_HOOKUP_OBJECT (opt_window, hseparator8, "hseparator8");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox25, "hbox25");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_save_conf, "checkbutton_save_conf");
+  GLADE_HOOKUP_OBJECT (opt_window, button_opt_ok, "button_opt_ok");
+  GLADE_HOOKUP_OBJECT (opt_window, alignment4, "alignment4");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox26, "hbox26");
+  GLADE_HOOKUP_OBJECT (opt_window, image25, "image25");
+  GLADE_HOOKUP_OBJECT (opt_window, label47, "label47");
+  GLADE_HOOKUP_OBJECT (opt_window, button_opt_cancel, "button_opt_cancel");
+  GLADE_HOOKUP_OBJECT (opt_window, alignment5, "alignment5");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox27, "hbox27");
+  GLADE_HOOKUP_OBJECT (opt_window, image26, "image26");
+  GLADE_HOOKUP_OBJECT (opt_window, label48, "label48");
+  GLADE_HOOKUP_OBJECT_NO_REF (opt_window, tooltips, "tooltips");
 
-  gtk_window_add_accel_group (GTK_WINDOW (notify_window), accel_group);
+  gtk_window_add_accel_group (GTK_WINDOW (opt_window), accel_group);
 
-  return notify_window;
+  return opt_window;
 }
 

@@ -57,20 +57,6 @@ show_opt_window(void)
     gtk_widget_show(opt_window);
 }
 
-/* create and show notification options window */
-void
-show_notify_window(void)
-{
-    GtkWidget *notify_window =
-	create_notify_window();
-
-    set_up_notify_window(notify_window, 1);
-
-    change_popups_active(1);
-
-    gtk_widget_show(notify_window);
-}
-
 void
 get_fire_text(GtkWidget *popup_label, GtkWidget **radiobuttons,
 	      gint *status)

@@ -3,4 +3,3 @@
  */
 
 GtkWidget* create_opt_window (void);
-GtkWidget* create_notify_window (void);

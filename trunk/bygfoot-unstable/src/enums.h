@@ -176,6 +176,8 @@ enum
     OPT_MESS,
     OPT_PREFER_MESS,
     OPT_AUTOSAVE,
+    OPT_COMPRESSION,
+    OPT_COMPRESS_BG,
     OPT_SKIP_WEEKS,
     OPT_SORT_TRANSFERS,
     OPT_REARRANGE,
@@ -233,7 +235,6 @@ enum
     OPT_DUMMY31,
     OPT_DUMMY32,
     OPT_DUMMY33,
-    OPT_DUMMY34,
     OPT_END
 };
 
@@ -441,6 +442,15 @@ enum
     RES_DUMMY4,
     RES_DUMMY5,
     RES_END
+};
+
+/* compression type */
+enum
+{
+    COMPRESSION_NONE = 0,
+    COMPRESSION_GZIP,
+    COMPRESSION_BZIP,
+    COMPRESSION_END
 };
 
 #endif

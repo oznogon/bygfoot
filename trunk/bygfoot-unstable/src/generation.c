@@ -413,9 +413,14 @@ generate_teams(void)
     write_permutation(order, 0, 19);
     /* CL */
     teams[114].id = order[0];
+    strcpy(teams[114].name, "buh!");
     /* CWC */
     teams[130].id = order[1];
+    strcpy(teams[130].name, "buh!");
     /* UEFA */
     for(i=0;i<3;i++)
+    {
 	teams[175 + i].id = order[i + 2];
+	strcpy(teams[175 + i].name, "buh!");
+    }
 }
