@@ -1,0 +1,279 @@
+# ATENÇÃO: ESTE ARQUIVO ESTÁ CODIFICADO EM UTF-8
+# SE VOCÊ O FOR EDITAR, CERTIFIQUE-SE DE QUE SEU 
+# EDITOR DE TEXTOS NÃO VAI BAGUNÇAR TUDO.
+#
+# COPIE ESTE ARQUIVO E EDITE-O PARA CRIAR UMA 
+# NOVA 'LOCALIZAÇÃO' DE BYGFOOT. SE TERMINAR 
+# UMA LOCALIZAÇÃO, POR FAVOR ENVIE COMO ANEXO A
+# gyboth@gmx.de PARA QUE EU POSSA INCLUÍ-LA EM 
+# NOVAS VERSÕES DO JOGO.
+
+# LINHAS EM BRANCO OU COMENTADAS SÃO IGNORADAS
+# PELO JOGO. O SÍMBOLO # INDICA UM COMENTÁRIO.
+
+# CADA LINHA DEVE TER NO MÁXIMO 49 CARACTERES.
+
+# TENHA O CUIDADO DE MANTER A ESTRUTURA DESTE
+# ARQUIVO PARA NÃO PROVOCAR UM CONGELAMENTO 
+# DO JOGO DURANTE A EXECUÇÃO.
+
+# SE VOCÊ ENCONTRAR ALGUM ERRO NOS ARQUIVOS DE 
+# TIMES (ERROS ORTOGRÁFICOS OU EM NOMES DE 
+# CAMPEONATOS), SINTA-SE À VONTADE PARA CORRIGIR
+# E NÃO SE ESQUEÇA DE ME ENVIAR AS CORREÇÕES.
+
+# Os seguintes 114 times são os que participam 
+# dos campeonatos nacionais no Brasil.
+Atlético Mineiro
+Cruzeiro
+São Paulo
+Corinthians
+Palmeiras
+Santos
+Atlético Paranaense
+Coritiba
+Grêmio
+Internacional
+Paraná
+Figueirense
+Criciúma
+Juventude
+Ponte Preta
+Guarani
+São Caetano
+Vitória
+Goiás
+Flamengo
+Vasco da Gama
+Fluminense
+Botafogo
+Paysandu
+América-MG
+Sport Clube do Recife
+Santa Cruz
+Bahia
+Náutico
+Portuguesa de Desportos
+Atlético Goianiense
+Londrina
+Marília
+Jundiaí
+Americano
+Caxias
+Avaí
+Remo
+Fortaleza
+Ceará
+CRB
+América-RN
+15 de Novembro
+Joinville
+Botafogo-SP
+Ferroviário-CE
+Brasiliense
+Gama
+CSA
+Vila Nova-GO
+Tupi-MG
+Tubarão
+Caldense
+Botafogo-PB
+Tuna Luso
+São Raimundo
+Sampaio Corrêa
+Desportiva
+Portuguesa Santista
+Valeriodoce
+Maringá
+Guarani-SC
+ABC
+Treze
+Nacional-AM
+Vila Nova-MG
+Madureira
+URT
+Operário de Várzea Grande
+Goiatuba
+CRAC
+Uberlândia
+Moto Clube
+Fluminense de Feira
+ASA
+Oeste
+Comercial-SP
+Comercial-MS
+Uberaba
+Palmas
+Volta Redonda
+Rio Branco-ES
+São Gabriel
+Rio Branco-SP
+Rio Branco-MG
+Operário-MS
+Fast Club
+Goiânia
+Bangu
+Cabofriense
+Friburguense
+Brasil
+Pelotas
+Rio Branco-AC
+América-RJ
+América-AM
+Flamengo-PI
+Campinense
+Alecrim
+Galicia
+Sergipe
+Tiradentes
+Maranhão
+Rio Grande
+Santo André
+Francana
+Poções
+Itapipoca
+Chapecoense
+Ypiranga
+Rio Negro
+Juventus
+América-SP
+Internacional de Limeira
+Bragantino
+Confiança
+# Estes times jogam as copas sul-americanas. Para
+# que o Bygfoot reconheça os times corretamente é
+# imprescindível que eles estejam divididos em 16
+# seções.
+
+# **NOVO** Esta versão do country_br contém    só
+# times da América do Sul!!
+1
+Boca Juniors (ARG)
+River Plate (ARG)
+Independiente (ARG)
+Rosario Central (ARG)
+
+2
+Peñarol (URU)
+Fénix (URU)
+Bella Vista (URU)
+Defensor (URU)
+Wanderers (URU)
+
+3
+Colo Colo (CHI)
+Universidad Católica (CHI)
+Cobreloa (CHI)
+Santiago Wanderers (CHI)
+
+4
+Olimpia (PAR)
+Guarany (PAR)
+Cerro Porteño (PAR)
+19 de Julio (PAR)
+
+5
+Jorge Wilstermann (BOL)
+Bolívar (BOL)
+Oriente Petrolero (BOL)
+The Strongest (BOL)
+Aurora (BOL)
+
+6
+Sporting Cristal (PER)
+Cienciano (PER)
+Alianza (PER)
+Municipal (PER)
+Universitario (PER)
+Sport Boys (PER)
+
+7
+Liga Deportiva Universitaria (ECU)
+El Nacional (ECU)
+Emelec (ECU)
+Espoli (ECU)
+Barcelona (ECU)
+Aucas (ECU)
+
+8
+América de Cáli (COL)
+Junior (COL)
+Deportivo Cáli (COL)
+Independiente de Santa Fé (COL)
+
+9
+Mineros (VEN)
+Caracas (VEN)
+Táchira (VEN)
+Galicia (VEN)
+
+10
+Santos Laguna (MEX)
+América (MEX)
+Cruz Azul (MEX)
+Necaxa (MEX)
+Tigres (MEX)
+
+11
+Newell's Old Boys (ARG)
+Gimnasia y Esgrima (ARG)
+Estudiantes (ARG)
+Banfield (ARG)
+
+12
+Millonarios (COL)
+Independiente de Medellín (COL)
+Once Caldas (COL)
+Nacional de Medellín (COL)
+
+13
+Racing (ARG)
+San Lorenzo (ARG)
+Vélez Sarsfield (ARG)
+Lanús (ARG)
+Huracán (ARG)
+Talleres (ARG)
+
+14
+Coquimbo (CHI)
+Unión Española (CHI)
+Universidad Concepción (CHI)
+Universidad de Chile (CHI)
+Cobresal (CHI)
+
+15
+Defensor (PAR)
+Libertad (PAR)
+Luqueño (PAR)
+Sol de América (PAR)
+
+16
+Nacional (URU)
+River Plate (URU)
+Tacuarembó (URU)
+Artigas (URU)
+Central Español (URU)
+Huracán Buceo (URU)
+
+# Esta seção contém os nomes das Ligas e Copas.
+# O número '1000' logo abaixo é importante!!!!!
+# Ele diz a função de leitura que pare por aqui
+# e não deve ser apagado.
+1000
+# Campeonato Nacional
+Primeira Divisão
+Segunda Divisão
+Terceira Divisão
+Quarta Divisão
+Quinta Divisão
+
+# copas
+Taça Libertadores da América
+Copa Sul-Americana
+Copa Conmebol
+Copa do Brasil
+Copa Brasileira de Campeões
+Desafio dos Campeões
+Supercopa Sul-Americana
+Quadrangular de Acesso
+
