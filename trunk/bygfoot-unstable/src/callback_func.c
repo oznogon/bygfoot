@@ -964,8 +964,8 @@ callback_new_week(gboolean calculate)
     }
     
     
-
-    if(week == 49 && options[OPT_OBJECTIVE] == 1) {//check objective
+	
+    if(status < 900000 && week == 49 && options[OPT_OBJECTIVE] == 1) {//check objective
 	gint i=0;		
 		while(i<MAX_OBJECTIVE && objective_is_success(my_team,season_objective+i))
 			i++;
