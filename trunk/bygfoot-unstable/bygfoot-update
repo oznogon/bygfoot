@@ -1,0 +1,470 @@
+#!/bin/bash
+
+####################################################
+# Bygfoot Football Manager                         #
+# AUTHOR: Gyozo Both (gyboth@bygfoot.com)          #
+# http://www.bygfoot.com                           #
+####################################################
+
+# Skript that updates src packages of the Bygfoot Football Manager
+# using wget to retrieve patches from the homepage
+
+# version number
+version="0.4"
+
+# exit codes
+EXITOK=0
+EXITNOPROG=1
+EXITNOREV=2
+EXITABORT=3
+EXITWGETFAIL=4
+EXITUSR=6
+EXITNEWSCRIPT=7
+EXITCOUNTRY=8
+
+# variables
+
+# a variable we sometimes read something into
+tempvar=
+# the directory containing the Bygfoot src package
+packdir=
+# a directory we can write to and read from
+tmpdir=
+# destination for the country files
+countrydir=
+# the Bygfoot package type, stable or unstable
+type=
+# the current revision number of the user's package
+revnr=
+# revision numbers fetched from the homepage
+newrevnr=
+# number of new revisions found
+found=0
+# the arguments for the script
+args="$*"
+
+# options
+
+# whether all new patches should be applied automatically
+apply_all=0
+# whether we should skip some queries and assume standard values
+auto=0
+# whether we recompile automatically after patching
+recompile=0
+# whether we check for auxiliary programs and
+# newer update script versions
+check=1
+# whether country files are downloaded
+country_files=0
+
+# print a help text
+function print_help()
+{
+    cat <<END
+
+Usage: bygfoot-update [OPTIONS]
+If you call bygfoot-update without options, it sort of works
+interactively asking you for input whenever it's necessary.
+
+OPTIONS:
+-a|--apply-all             apply all new patches without prompting
+-c|--country-files         download country files with official team names
+                           and team definitions file
+-h|--help                  print help and exit
+-o|--country-dir DIR       set destination directory for the
+                           country files and def file to DIR
+-p|--package-dir DIR       set package directory to DIR
+-r|--recompile             run './configure && make' after updating
+-R|--no-recompile          don't recompile after updating
+-t|--temp-dir DIR          set temp directory to DIR
+-u|--auto                  assume [y] for all prompts
+-v|--version               print version information and exit
+
+END
+}
+
+# print program version
+function print_version()
+{
+    cat <<END
+
+bygfoot-update: A bash script keeping your Bygfoot Football Manager up-to-date.
+Version $version.
+See the file UPDATE for some more information.
+Call bygfoot-update -h|--help for usage information.
+
+END
+}
+
+# parse arguments
+function parse_args()
+{
+    TEMP=`getopt -o achNo:p:rRt:uv --long apply-all,auto,country-files,country-dir:,help,no-check,\
+no-recompile,package-dir:,recompile,temp-dir:,version -- $*`
+
+    if [ $? != 0 ]; then
+	echo "** b-u: There was an error parsing the arguments."
+	echo "** b-u: The arguments will be ignored."
+	return
+    fi
+
+    eval set -- "$TEMP"
+
+    while true; do
+	case "$1" in
+	    -a|--apply-all) apply_all=1; shift ;;
+	    -c|--country-files) country_files=1; shift ;;
+	    -h|--help) print_help; exit $EXITOK ;;	    
+	    -N|--no-check) check=0; shift ;;
+	    -o|--country-dir) pushd $2 &> /dev/null; countrydir=$PWD; popd &> /dev/null; shift 2 ;;
+	    -p|--package-dir) pushd $2 &> /dev/null; packdir=$PWD; popd &> /dev/null; shift 2 ;;
+	    -r|--recompile) recompile=1; shift ;;
+	    -R|--no-recompile) recompile=-1; shift ;;
+	    -t|--temp-dir) pushd $2 &> /dev/null; tmpdir=$PWD; popd &> /dev/null; shift 2 ;;
+	    -u|--auto) auto=1; apply_all=1; shift ;;
+	    -v|--version) print_version; exit $EXITOK ;;
+	    --) shift; break ;;
+	esac
+    done
+}
+
+# check for a newer version of the update script
+function check_update()
+{
+    if [ $check -eq 0 ]; then
+	return
+    fi
+
+    local old_script=$1
+
+    echo
+    echo "** b-u: Looking for new update script."
+
+    pushd $tmpdir &> /dev/null
+    rm -rf bygfoot-update
+    my_wget http://bygfoot.sourceforge.net/revisions/bygfoot-update.bz2
+    bunzip2 bygfoot-update.bz2
+    chmod 744 bygfoot-update
+    popd &> /dev/null
+
+    diff $old_script $tmpdir/bygfoot-update &> /dev/null
+
+    if [ $? -eq 0 ]; then
+	echo "** b-u: Your update script is up-to-date."
+	return
+
+    else
+	echo "** b-u: Found new update script. Replacing old one"
+	echo "** b-u: (saved to bygfoot-update.old) and starting"
+	echo "** b-u: new script."
+
+	mv -v $old_script $old_script.old
+	mv -v $tmpdir/bygfoot-update $old_script
+
+	$old_script $args -t $tmpdir -p $packdir -N
+
+	exit $EXITNEWSCRIPT
+    fi
+}
+
+# clean up in the temp dir
+function cleanup()
+{
+    echo
+    echo "** b-u: Cleaning up in the temp directory."
+    rm -rfv $tmpdir/bygfoot-update
+}
+
+# wget something, exit if it doesn't work
+function my_wget()
+{
+    if ! wget -v $1; then
+	echo
+	echo "** b-u: wget failure."
+	cleanup
+	exit $EXITWGETFAIL
+    fi
+}
+
+# check for the programs needed
+function check_progs()
+{
+    if [ $check -eq 0 ]; then
+	return
+    fi
+
+    echo
+    for i in sed tar bzip2 wget patch; do
+	echo -n "** b-u: checking for $i... "
+	if $i --help &> /dev/null; then
+	    echo "ok"
+	else
+	    echo "failed"
+	    echo "** b-u: Didn't find a working $i, maybe it's not in your PATH."
+	    echo "** b-u: Failure."
+	    exit $EXITNOPROG
+	fi
+    done
+}
+
+# get country files with official team names
+function get_country_files()
+{
+    if [ $country_files -eq 0 ]; then
+	return
+    fi
+
+    if [ -z $countrydir ]; then
+	if [ $auto -eq 0 ]; then
+	    echo
+	    echo "** b-u: Enter the directory I should unpack the country files"
+	    echo "** b-u: to (the default destination is strongly recommended):"
+	    echo "** b-u: [$HOME/.bygfoot/text_files]"
+	    
+	    read tempvar
+	    
+	    if [ ! -z $tempvar ]; then
+		pushd $tempvar; countrydir=$PWD; popd
+	    else
+		countrydir=$HOME/.bygfoot/text_files
+	    fi
+	else
+	    countrydir=$HOME/.bygfoot/text_files
+	fi
+    fi
+
+    echo
+    echo "** b-u: Country dir set to"
+    echo "** b-u: $countrydir"
+
+    echo
+    echo "** b-u: Fetching country files with official team names and"
+    echo "** b-u: team definitions file."
+
+    pushd $countrydir &>/dev/null
+
+    my_wget http://bygfoot.sourceforge.net/revisions/bygfoot-countries.tar.bz2
+
+    for i in country_* teams; do
+	mv -vf $i $i.old
+    done
+
+    tar xfjv bygfoot-countries.tar.bz2
+    rm -v bygfoot-countries.tar.bz2
+
+    popd
+
+    exit $EXITCOUNTRY
+
+    echo "** b-u: done."
+}
+
+# get the paths for a temp directory and
+# the location of the user's bygfoot src package
+function get_paths()
+{
+    if [ -z $packdir ]; then
+	if [ $auto -eq 0 ]; then
+	    echo
+	    echo "** b-u: Enter the directory containing your current Bygfoot src"
+	    echo "** b-u: package (e.g. (/home/john/compiled/bygfoot-1.6.1):"
+	    echo "** b-u: [default: $PWD]"
+	    
+	    read tempvar
+	    
+	    if [ ! -z $tempvar ]; then
+		pushd $tempvar; packdir=$PWD; popd
+	    else
+		packdir=$PWD
+	    fi
+	else
+	    packdir=$PWD
+	fi
+    fi
+
+    echo
+    echo "** b-u: Package dir set to"
+    echo "** b-u: $packdir"
+    
+    if [ -z $tmpdir ]; then
+	if [ $auto -eq 0 ]; then
+	    echo "** b-u: Enter temp directory I can use"
+	    echo "** b-u: (you need read/write permissions there): [/tmp]"
+
+	    read tempvar
+	    
+	    if [ ! -z $tempvar ]; then
+		pushd $tempvar; tmpdir=$PWD; popd
+	    else
+		tmpdir=/tmp
+	    fi
+
+	else
+	    tmpdir=/tmp
+	fi
+    fi
+
+    echo "** b-u: Temp dir set to"
+    echo "** b-u: $tmpdir"
+}
+
+# find out revision number and type
+function get_rev_type()
+{
+    echo
+    if [ ! -e $packdir/revision_number ]; then
+	echo "** b-u: I couldn't find the file containing your current"
+	echo "** b-u: revision number and type ($packdir/revision_number)."
+	echo
+	echo "** b-u: Failure."
+	exit $EXITNOREV
+    fi
+
+    type=$(cat $packdir/revision_number | sed s/[0-9]*//g)   
+    revnr=$(cat $packdir/revision_number | sed s/[a-z]*//g)
+
+    echo "** b-u: Your current revision is: $type $revnr."
+}
+
+function apply_rev()
+{
+    echo
+    echo "** b-u: Applying patch revision_$type$newrevnr"
+
+    cd $packdir
+    
+    if [ -e $newrevdir/prepatch ]; then
+	$newrevdir/prepatch
+    fi
+
+    patch -p1 < $newrevdir/patch*
+
+    if [ -e $newrevdir/postpatch ]; then
+	$newrevdir/postpatch
+    fi
+
+    cd $tmpdir/bygfoot-update
+}
+
+# fetch a revision archive from the homepage and
+# patch the src package
+function get_revision()
+{
+    local newrevdir=$tmpdir/bygfoot-update/revision_$type$newrevnr
+
+    echo
+    echo "** b-u: Retrieving revision_$type$newrevnr.tar.bz2."
+    my_wget http://bygfoot.sourceforge.net/revisions/$type/revision_$type$newrevnr.tar.bz2
+
+    mkdir $newrevdir
+    cd $newrevdir
+    tar xfjv ../revision_$type$newrevnr.tar.bz2
+    echo
+    echo "** b-u: Here's the revision description:"
+    echo "##############"
+    cat README
+    echo "##############"
+    echo
+    
+    if [ $apply_all -eq 0 ]; then
+	echo "** b-u: Would you like to apply the patch?"
+	echo "** b-u: (You can't apply newer ones if you don't apply"
+	echo "** b-u: this one because they depend on each other): ([y]es/(n)o/(a)ll)"
+
+	read tempvar
+	
+	if [ ! -z $tempvar ]; then
+	    if [ $tempvar = "a" ]; then
+		apply_all=1
+	    elif [ $tempvar != "y" ]; then
+		echo
+		cleanup
+		echo "** b-u: User abort."
+		exit $EXITUSR
+	    fi
+	fi
+    fi
+
+    apply_rev
+}
+
+# look for new revisions
+function get_revs()
+{
+    echo
+    cd $tmpdir
+    echo "** b-u: Cleaning up old update directories and creating a new one..."
+    rm -rfv bygfoot-update
+    mkdir -v bygfoot-update
+    cd bygfoot-update
+    echo
+    echo "** b-u: Fetching revision list..."
+    my_wget http://bygfoot.sourceforge.net/revisions/$type/revisions_$type
+
+    for i in $(cat revisions_$type); do
+	echo
+	newrevnr=$(echo $i | sed s/'[a-z_]*\([0-9]*\).*'/'\1'/g)
+	if [ $newrevnr -gt $revnr ]; then
+	    found=$[found + 1]
+	    get_revision
+	else
+	    echo "** b-u: $i is older than your revision..."
+	fi
+    done
+}
+
+# clean up etc.
+function update_end()
+{
+    echo
+    
+    cleanup
+    
+    if [ $found -ge 1 ]; then
+
+	echo "** b-u: $found new revisions found."
+	echo "** b-u: Your new revision number should be $[revnr + found]."
+	echo "** b-u: Have a look at the files README, ChangeLog and"
+	echo "** b-u: ReleaseNotes to see the changes that were made."
+	echo
+
+	if [ $recompile -eq 0 -a $auto -eq 0 ]; then
+	    echo "** b-u: Would you like me to execute 'configure && make' ? ([y]/n)"
+	    read tempvar
+	    if [ ! -z $tempvar ]; then
+		if [ $tempvar != "y" ]; then
+		    echo
+		    echo "** b-u: done."
+		    exit $EXITOK
+		fi
+	    fi
+	fi
+
+	if [ $recompile -ne -1 ]; then
+	    cd $packdir
+	    ./configure && make
+	fi
+	
+    else
+	echo "** b-u: No new revisions found. Your package seems"
+	echo "** b-u: to be up-to-date."
+    fi
+
+    echo
+    echo "** b-u: done."
+
+    exit $EXITOK
+}
+
+# what to do when user presses Ctrl-C
+trap 'echo; cleanup; echo "** b-u: User abort." & exit $EXITUSR' 2
+
+parse_args $*
+print_version
+check_progs
+get_country_files
+get_paths
+check_update $0
+get_rev_type
+get_revs
+update_end
