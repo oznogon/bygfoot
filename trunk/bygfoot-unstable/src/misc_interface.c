@@ -923,7 +923,7 @@ create_fsel_window (void)
 
   accel_group = gtk_accel_group_new ();
 
-  fsel_window = gtk_file_selection_new (_("Datei auswählen"));
+  fsel_window = gtk_file_selection_new (_("Datei auswahlen"));
   gtk_container_set_border_width (GTK_CONTAINER (fsel_window), 10);
   gtk_window_set_position (GTK_WINDOW (fsel_window), GTK_WIN_POS_CENTER);
 
