@@ -36,3 +36,8 @@ on_optionmenu_team_changed             (GtkOptionMenu   *optionmenu,
                                         gpointer         user_data);
 
 #endif
+
+gboolean
+on_job_offer_window_delete_event       (GtkWidget       *widget,
+                                        GdkEvent        *event,
+                                        gpointer         user_data);

@@ -17,7 +17,7 @@ AC_SUBST(PACKAGE_LIBS)
 
 GETTEXT_PACKAGE=bygfoot
 AC_SUBST(GETTEXT_PACKAGE)
-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package.])
 
 dnl Add the languages which your application supports here.
 ALL_LINGUAS="fr de ru ro hu pt_BR"

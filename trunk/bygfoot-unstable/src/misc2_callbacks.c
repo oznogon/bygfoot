@@ -110,3 +110,14 @@ on_optionmenu_team_changed             (GtkOptionMenu   *optionmenu,
 		       &teams[team_id], NULL, i);
 }
 
+
+gboolean
+on_job_offer_window_delete_event       (GtkWidget       *widget,
+                                        GdkEvent        *event,
+                                        gpointer         user_data)
+{
+    on_button_offer_cancel_clicked(GTK_BUTTON(lookup_widget(widget, "button_cancel")), NULL);
+
+    return FALSE;
+}
+

@@ -524,7 +524,6 @@ create_main_window (void)
   gtk_widget_show (optionmenu_figures);
   gtk_box_pack_start (GTK_BOX (hbox1), optionmenu_figures, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (optionmenu_figures), 2);
-  gtk_option_menu_set_history (GTK_OPTION_MENU (optionmenu_figures), 1);
 
   menu3 = gtk_menu_new ();
 
@@ -1181,7 +1180,7 @@ create_main_window (void)
   gtk_widget_show (label_spin);
   gtk_box_pack_start (GTK_BOX (vbox10), label_spin, FALSE, FALSE, 0);
 
-  spin_fee_adj = gtk_adjustment_new (1, 0, 20000000, 1000, 10000, 10);
+  spin_fee_adj = gtk_adjustment_new (1, 0, 2e+07, 1000, 10000, 10);
   spin_fee = gtk_spin_button_new (GTK_ADJUSTMENT (spin_fee_adj), 1, 0);
   gtk_widget_show (spin_fee);
   gtk_box_pack_start (GTK_BOX (vbox10), spin_fee, FALSE, FALSE, 0);
