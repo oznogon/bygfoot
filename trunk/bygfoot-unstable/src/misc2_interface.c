@@ -619,7 +619,8 @@ create_graph_window (void)
   GtkWidget *label41;
   GtkWidget *vbox11;
   GtkWidget *curve_graph;
-  GtkWidget *hruler_graph;
+  GtkWidget *hruler_week;
+  GtkWidget *hruler_season;
   GtkWidget *label33;
   GtkWidget *hseparator8;
   GtkWidget *hbox11;
@@ -722,12 +723,17 @@ create_graph_window (void)
   gtk_box_pack_start (GTK_BOX (vbox11), curve_graph, TRUE, TRUE, 0);
   gtk_curve_set_range (GTK_CURVE (curve_graph), 0, 1, 0, 1);
 
-  hruler_graph = gtk_hruler_new ();
-  gtk_widget_show (hruler_graph);
-  gtk_box_pack_start (GTK_BOX (vbox11), hruler_graph, FALSE, FALSE, 0);
-  gtk_ruler_set_range (GTK_RULER (hruler_graph), 0, 10, 3.05476, 10);
+  hruler_week = gtk_hruler_new ();
+  gtk_widget_show (hruler_week);
+  gtk_box_pack_start (GTK_BOX (vbox11), hruler_week, FALSE, FALSE, 0);
+  gtk_ruler_set_range (GTK_RULER (hruler_week), 0, 10, 4.75504, 10);
 
-  label33 = gtk_label_new (_("Weeks"));
+  hruler_season = gtk_hruler_new ();
+  gtk_widget_show (hruler_season);
+  gtk_box_pack_start (GTK_BOX (vbox11), hruler_season, FALSE, TRUE, 0);
+  gtk_ruler_set_range (GTK_RULER (hruler_season), 0, 10, 3.83285, 10);
+
+  label33 = gtk_label_new (_("Weeks / Seasons"));
   gtk_widget_show (label33);
   gtk_box_pack_start (GTK_BOX (vbox9), label33, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label33), GTK_JUSTIFY_LEFT);
@@ -867,7 +873,8 @@ create_graph_window (void)
   GLADE_HOOKUP_OBJECT (graph_window, label41, "label41");
   GLADE_HOOKUP_OBJECT (graph_window, vbox11, "vbox11");
   GLADE_HOOKUP_OBJECT (graph_window, curve_graph, "curve_graph");
-  GLADE_HOOKUP_OBJECT (graph_window, hruler_graph, "hruler_graph");
+  GLADE_HOOKUP_OBJECT (graph_window, hruler_week, "hruler_week");
+  GLADE_HOOKUP_OBJECT (graph_window, hruler_season, "hruler_season");
   GLADE_HOOKUP_OBJECT (graph_window, label33, "label33");
   GLADE_HOOKUP_OBJECT (graph_window, hseparator8, "hseparator8");
   GLADE_HOOKUP_OBJECT (graph_window, hbox11, "hbox11");

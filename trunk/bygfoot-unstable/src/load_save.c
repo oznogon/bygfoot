@@ -4,6 +4,7 @@
 
 #include "free.h"
 #include "game_gui.h"
+#include "history.h"
 #include "load_save.h"
 #include "misc.h"
 #include "xml_read.h"
@@ -16,6 +17,7 @@ find_save_file(gchar *file_name)
 {
     gint i, j;
     gchar buf[SMALL];
+    gchar *pwd = g_get_current_dir();
     gchar *endings[6] =
 	{"",
 	 ".gz",
@@ -31,8 +33,9 @@ find_save_file(gchar *file_name)
 	return TRUE;
     }
 
-    sprintf(paths[0], "%s/.bygfoot/saves/%s", getenv("HOME"), file_name);
-    sprintf(paths[1], "%s/%s", getenv("PWD"), file_name);
+    sprintf(paths[0], "%s/.bygfoot/saves/%s", g_get_home_dir(), file_name);
+    sprintf(paths[1], "%s/%s", pwd, file_name);
+    g_free(pwd);
 
     for(j=0;j<2;j++)
 	for(i=0;i<6;i++)
@@ -332,88 +335,151 @@ load_fixtures(FILE *fil)
 }
 
 void
-save_player(gint team_id, gint player_number, FILE *fil)
+save_player_history_element(player pl, gint idx, FILE *fil)
 {
-    fwrite((void*)&teams[team_id].players[player_number].name,
-	   19, 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].pos,
-	   sizeof(gint), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].cpos,
-	   sizeof(gint), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].health,
-	   sizeof(gint), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].booked,
-	   sizeof(gint), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].goals,
-	   sizeof(gint), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].games,
-	   sizeof(gint), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].value,
-	   sizeof(gint), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].wage,
-	   sizeof(gint), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].team_id,
-	   sizeof(gint), 1, fil);
+    gint i;
+    gint value;
 
-    fwrite((void*)&teams[team_id].players[player_number].skill,
-	   sizeof(gfloat), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].cskill,
-	   sizeof(gfloat), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].talent,
-	   sizeof(gfloat), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].etal,
-	   sizeof(gfloat), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].fitness,
-	   sizeof(gfloat), 1, fil);
-    fwrite((void*)&teams[team_id].
-	   players[player_number].last_skill_update,
-	   sizeof(gfloat), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].age,
-	   sizeof(gfloat), 1, fil);
-    fwrite((void*)&teams[team_id].players[player_number].peak_age,
-	   sizeof(gfloat), 1, fil);    
+    for(i=0;i<PLAYER_HISTORY_END;i++)
+    {
+	value = g_array_index(pl.history, player_history, idx).values[i];
+	fwrite((void*)&value, sizeof(gint), 1, fil);
+    }
 }
 
 void
-load_player(gint team_id, gint player_number, FILE *fil)
+load_player_history_element(player *pl, FILE *fil)
 {
-    fread((void*)&(teams[team_id].
-		   players[player_number].name), 19, 1, fil);
-    fread((void*)&teams[team_id].players[player_number].pos,
-	  sizeof(gint), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].cpos,
-	  sizeof(gint), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].health,
-	  sizeof(gint), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].booked,
-	  sizeof(gint), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].goals,
-	  sizeof(gint), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].games,
-	  sizeof(gint), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].value,
-	  sizeof(gint), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].wage,
-	  sizeof(gint), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].team_id,
-	  sizeof(gint), 1, fil);
+    gint i;
+    player_history new;
 
-    fread((void*)&teams[team_id].players[player_number].skill,
-	  sizeof(gfloat), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].cskill,
-	  sizeof(gfloat), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].talent,
-	  sizeof(gfloat), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].etal,
-	  sizeof(gfloat), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].fitness,
-	  sizeof(gfloat), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].last_skill_update,
-	  sizeof(gfloat), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].age,
-	  sizeof(gfloat), 1, fil);
-    fread((void*)&teams[team_id].players[player_number].peak_age,
-	  sizeof(gfloat), 1, fil);    
+    for(i=0;i<PLAYER_HISTORY_END;i++)
+	fread((void*)&new.values[i], sizeof(gint), 1, fil);
+
+    g_array_append_val(pl->history, new);
+}
+
+void
+save_player_history(player pl, FILE *fil)
+{
+    gint i;
+
+    fwrite((void*)&pl.history->len, sizeof(gint), 1, fil);
+
+    for(i=0;i<pl.history->len;i++)
+	save_player_history_element(pl, i, fil);
+}
+
+void
+load_player_history(player *pl, FILE *fil)
+{
+    gint length;
+    gint i;
+    reset_player_history(pl);
+
+    fread((void*)&length, sizeof(gint), 1, fil);
+
+    for(i=0;i<length;i++)
+	load_player_history_element(pl, fil);
+}
+
+void
+save_player(player pl, FILE *fil)
+{
+    fwrite((void*)&pl.name, 19, 1, fil);
+    fwrite((void*)&pl.pos, sizeof(gint), 1, fil);
+    fwrite((void*)&pl.cpos, sizeof(gint), 1, fil);
+    fwrite((void*)&pl.health, sizeof(gint), 1, fil);
+    fwrite((void*)&pl.booked, sizeof(gint), 1, fil);
+    fwrite((void*)&pl.goals, sizeof(gint), 1, fil);
+    fwrite((void*)&pl.games, sizeof(gint), 1, fil);
+    fwrite((void*)&pl.value, sizeof(gint), 1, fil);
+    fwrite((void*)&pl.wage, sizeof(gint), 1, fil);
+    fwrite((void*)&pl.team_id, sizeof(gint), 1, fil);
+
+    fwrite((void*)&pl.skill, sizeof(gfloat), 1, fil);
+    fwrite((void*)&pl.cskill, sizeof(gfloat), 1, fil);
+    fwrite((void*)&pl.talent, sizeof(gfloat), 1, fil);
+    fwrite((void*)&pl.etal, sizeof(gfloat), 1, fil);
+    fwrite((void*)&pl.fitness, sizeof(gfloat), 1, fil);
+    fwrite((void*)&pl.last_skill_update, sizeof(gfloat), 1, fil);
+    fwrite((void*)&pl.age, sizeof(gfloat), 1, fil);
+    fwrite((void*)&pl.peak_age, sizeof(gfloat), 1, fil);    
+
+    save_player_history(pl, fil);
+}
+
+void
+load_player(player *pl, FILE *fil)
+{
+    fread((void*)&(pl->name), 19, 1, fil);
+    fread((void*)&pl->pos, sizeof(gint), 1, fil);
+    fread((void*)&pl->cpos, sizeof(gint), 1, fil);
+    fread((void*)&pl->health, sizeof(gint), 1, fil);
+    fread((void*)&pl->booked, sizeof(gint), 1, fil);
+    fread((void*)&pl->goals, sizeof(gint), 1, fil);
+    fread((void*)&pl->games, sizeof(gint), 1, fil);
+    fread((void*)&pl->value, sizeof(gint), 1, fil);
+    fread((void*)&pl->wage, sizeof(gint), 1, fil);
+    fread((void*)&pl->team_id, sizeof(gint), 1, fil);
+
+    fread((void*)&pl->skill, sizeof(gfloat), 1, fil);
+    fread((void*)&pl->cskill, sizeof(gfloat), 1, fil);
+    fread((void*)&pl->talent, sizeof(gfloat), 1, fil);
+    fread((void*)&pl->etal, sizeof(gfloat), 1, fil);
+    fread((void*)&pl->fitness, sizeof(gfloat), 1, fil);
+    fread((void*)&pl->last_skill_update, sizeof(gfloat), 1, fil);
+    fread((void*)&pl->age, sizeof(gfloat), 1, fil);
+    fread((void*)&pl->peak_age, sizeof(gfloat), 1, fil);
+
+    load_player_history(pl, fil);
+}
+
+void
+save_team_history_element(team tm, gint idx, FILE *fil)
+{
+    gint i;
+
+    for(i=0;i<TEAM_HISTORY_END;i++)
+	fwrite((void*)&g_array_index(tm.history, team_history, idx).values[i],
+	       sizeof(gint), 1, fil);
+}
+
+void
+load_team_history_element(team *tm, FILE *fil)
+{
+    gint i;
+    team_history new;
+
+    for(i=0;i<TEAM_HISTORY_END;i++)
+	fread((void*)&new.values[i], sizeof(gint), 1, fil);
+
+    g_array_append_val(tm->history, new);
+}
+
+void
+save_team_history(team tm, FILE *fil)
+{
+    gint i;
+
+    fwrite((void*)&tm.history->len, sizeof(gint), 1, fil);
+
+    for(i=0;i<tm.history->len;i++)
+	save_team_history_element(tm, i, fil);
+}
+
+void
+load_team_history(team *tm, FILE *fil)
+{
+    gint i;
+    gint length;
+
+    reset_team_history(tm);
+
+    fread((void*)&length, sizeof(gint), 1, fil);
+
+    for(i=0;i<length;i++)
+	load_team_history_element(tm, fil);
 }
 
 void
@@ -431,7 +497,9 @@ save_teams(FILE *fil)
 	    fwrite((void*)&teams[i].results[j], sizeof(gint), 1, fil);
 	
 	for(j=0;j<20;j++)
-	    save_player(i, j, fil);
+	    save_player(teams[i].players[j], fil);
+
+	save_team_history(teams[i], fil);
     }
 }
 
@@ -450,7 +518,9 @@ load_teams(FILE *fil)
 	    fread((void*)&teams[i].results[j], sizeof(gint), 1, fil);
 	
 	for(j=0;j<20;j++)
-	    load_player(i, j, fil);
+	    load_player(&teams[i].players[j], fil);
+
+	load_team_history(&teams[i], fil);
     }
 }
 

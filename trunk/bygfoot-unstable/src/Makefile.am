@@ -32,6 +32,7 @@ bygfoot_SOURCES = \
 	misc_interface.c  misc_interface.h misc_callbacks.h support.h \
 	misc2_callbacks.c callback_func.h callbacks.h gui.h misc2_callbacks.h support.h team.h \
 	misc2_interface.c  misc2_interface.h misc2_callbacks.h support.h \
+	option.c option.h support.h \
 	options_callbacks.c callback_func.h callbacks.h gui.h options_callbacks.h support.h treeview.h window.h \
 	options_interface.c  options_interface.h options_callbacks.h support.h \
 	player.c callbacks.h finance.h math.h player.h team.h window.h \

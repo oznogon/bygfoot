@@ -159,6 +159,7 @@ bygfoot_SOURCES = \
 	misc_interface.c  misc_interface.h misc_callbacks.h support.h \
 	misc2_callbacks.c callback_func.h callbacks.h gui.h misc2_callbacks.h support.h team.h \
 	misc2_interface.c  misc2_interface.h misc2_callbacks.h support.h \
+	option.c option.h support.h \
 	options_callbacks.c callback_func.h callbacks.h gui.h options_callbacks.h support.h treeview.h window.h \
 	options_interface.c  options_interface.h options_callbacks.h support.h \
 	player.c callbacks.h finance.h math.h player.h team.h window.h \
@@ -191,11 +192,12 @@ am_bygfoot_OBJECTS = callback_func.$(OBJEXT) callbacks.$(OBJEXT) \
 	load_save.$(OBJEXT) main.$(OBJEXT) maths.$(OBJEXT) \
 	misc.$(OBJEXT) misc_callbacks.$(OBJEXT) \
 	misc_interface.$(OBJEXT) misc2_callbacks.$(OBJEXT) \
-	misc2_interface.$(OBJEXT) options_callbacks.$(OBJEXT) \
-	options_interface.$(OBJEXT) player.$(OBJEXT) startup.$(OBJEXT) \
-	support.$(OBJEXT) team.$(OBJEXT) transfer.$(OBJEXT) \
-	treeview.$(OBJEXT) treeview_cell.$(OBJEXT) window.$(OBJEXT) \
-	xml_read.$(OBJEXT) xml_write.$(OBJEXT)
+	misc2_interface.$(OBJEXT) option.$(OBJEXT) \
+	options_callbacks.$(OBJEXT) options_interface.$(OBJEXT) \
+	player.$(OBJEXT) startup.$(OBJEXT) support.$(OBJEXT) \
+	team.$(OBJEXT) transfer.$(OBJEXT) treeview.$(OBJEXT) \
+	treeview_cell.$(OBJEXT) window.$(OBJEXT) xml_read.$(OBJEXT) \
+	xml_write.$(OBJEXT)
 bygfoot_OBJECTS = $(am_bygfoot_OBJECTS)
 bygfoot_DEPENDENCIES =
 bygfoot_LDFLAGS =
@@ -218,7 +220,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/misc.Po ./$(DEPDIR)/misc2_callbacks.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/misc2_interface.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/misc_callbacks.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/misc_interface.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/misc_interface.Po ./$(DEPDIR)/option.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/options_callbacks.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/options_interface.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/player.Po ./$(DEPDIR)/startup.Po \
@@ -301,6 +303,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/misc2_interface.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/misc_callbacks.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/misc_interface.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/option.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/options_callbacks.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/options_interface.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/player.Po@am__quote@

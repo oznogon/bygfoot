@@ -59,12 +59,9 @@ set_up_graph(GtkWidget *graph_window, team *tm, player *pl,
     gint team_id = (tm == NULL) ? pl->team_id : tm->id;
     GtkWidget *curve_graph =
 	lookup_widget(graph_window, "curve_graph");
-    GtkWidget *hruler_graph =
-	lookup_widget(graph_window, "hruler_graph");
 
-    gtk_ruler_set_range(GTK_RULER(hruler_graph),
-			0, vector->len, 0, vector->len);
-
+    write_hruler_range(graph_window, tm, pl);
+    
     bounds[0][0] = 0;
     bounds[0][1] = vector->len;
     bounds[1][0] = max_float_array((gfloat*)vector->data, vector->len, TRUE);
@@ -109,6 +106,7 @@ write_graph_labels(GtkWidget *graph_window, player *pl, gint type, gfloat bounds
 	{
 	    default:
 		sprintf(buf, "Skill development for %s", pl->name);
+		precision = 1;
 		break;
 	    case PLAYER_HISTORY_GOALS:
 		sprintf(buf, "Goals development for %s", pl->name);
@@ -151,4 +149,43 @@ write_graph_labels(GtkWidget *graph_window, player *pl, gint type, gfloat bounds
 	label_set_text_from_float(GTK_LABEL(labels[i]), 
 				  bounds[1][0] + ((bounds[1][1] - bounds[1][0]) * (gfloat)i / 4),
 				  0, precision);
+}
+
+void
+write_hruler_range(GtkWidget *graph_window, team *tm, player *pl)
+{
+    GtkWidget *hruler_week =
+	lookup_widget(graph_window, "hruler_week");
+    GtkWidget *hruler_season =
+	lookup_widget(graph_window, "hruler_season");
+    GArray *history = (tm == NULL) ? pl->history : tm->history;
+    gint first_week;
+    gint last_week;
+    gint first_season;
+    gint last_season;
+
+    if(tm == NULL)
+    {
+	first_week = g_array_index(history, player_history, 0).values[PLAYER_HISTORY_WEEK] + 
+	    (g_array_index(history, player_history, 0).values[PLAYER_HISTORY_SEASON] - 1) * 49;
+	last_week = g_array_index(history, player_history, history->len - 1).values[PLAYER_HISTORY_WEEK] + 
+	    (g_array_index(history, player_history, history->len - 1).values[PLAYER_HISTORY_SEASON] - 1) * 49;
+	first_season = g_array_index(history, player_history, 0).values[PLAYER_HISTORY_SEASON];
+	last_season = g_array_index(history, player_history, history->len - 1).values[PLAYER_HISTORY_SEASON];	
+    }
+    else
+    {
+	first_week = g_array_index(history, team_history, 0).values[TEAM_HISTORY_WEEK] + 
+	    (g_array_index(history, team_history, 0).values[TEAM_HISTORY_SEASON] - 1) * 49;
+	last_week = g_array_index(history, team_history, history->len - 1).values[TEAM_HISTORY_WEEK] + 
+	    (g_array_index(history, team_history, history->len - 1).values[TEAM_HISTORY_SEASON] - 1) * 49;
+	first_season = g_array_index(history, team_history, 0).values[TEAM_HISTORY_SEASON];
+	last_season = g_array_index(history, team_history, history->len - 1).values[TEAM_HISTORY_SEASON];
+    }
+    
+    gtk_ruler_set_range(GTK_RULER(hruler_week),
+			first_week, last_week, first_week, last_week);
+
+    gtk_ruler_set_range(GTK_RULER(hruler_season),
+			first_season, last_season, first_season, last_season);
 }

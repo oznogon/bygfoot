@@ -16,4 +16,7 @@ set_up_graph(GtkWidget *graph_window, team *tm, player *pl,
 void
 write_graph_labels(GtkWidget *graph_window, player *pl, gint type, gfloat bounds[][2]);
 
+void
+write_hruler_range(GtkWidget *graph_window, team *tm, player *pl);
+
 #endif

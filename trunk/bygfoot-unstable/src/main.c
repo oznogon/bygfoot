@@ -38,11 +38,18 @@ set_variables(void)
     for(i=0;i<NOTIFY_END;i++)
 	notify_status[i] = FALSE;
 
+    for(i=0;i<178;i++)
+    {
+	teams[i].history = NULL;
+	for(j=0;j<20;j++)
+	    teams[i].players[j].history = NULL;
+    }
+
     status = save_status = popups_active = 0;
     /* reset window pointers */
     main_window = progressbar_window = NULL;
     /* reset default save file name */
-    sprintf(buf, "%s/.bygfoot/saves/", getenv("HOME"));
+    sprintf(buf, "%s/.bygfoot/saves/", g_get_home_dir());
     save_file = g_string_new(buf);	
     /* reset history chained list */
     history = NULL;
@@ -60,15 +67,17 @@ bygfoot_init(gint argc, gchar *argv[])
 {
     gint i;
     gchar buf[SMALL];
+    gchar *pwd = g_get_current_dir();
 
     /* initialize the random nr generator */
     srandom((unsigned)time(NULL));
 
     set_variables();
     
-    sprintf(buf, "%s/support_files", getenv("PWD"));
+    sprintf(buf, "%s/support_files", pwd);
+    g_free(pwd);
     add_support_directory(buf);
-    sprintf(buf, "%s/.bygfoot", getenv("HOME"));
+    sprintf(buf, "%s/.bygfoot", g_get_home_dir());
     add_support_directory(buf);
 
     /* look for pixmap directory and country file */

@@ -7,7 +7,8 @@
 
 void reset_player_history(player * pl)
 {
-    g_array_free(pl->history, TRUE);
+    if(pl->history != NULL)
+	g_array_free(pl->history, TRUE);
     pl->history = g_array_new(FALSE, FALSE, sizeof(player_history));
 }
 
@@ -24,6 +25,9 @@ void update_player_history(player * pl)
     new.values[PLAYER_HISTORY_WAGE] = pl->wage;
     new.values[PLAYER_HISTORY_VALUE] = pl->value;
     
+    if(pl->history->len == options[OPT_HISTORY_PLAYER_MAX])
+	g_array_remove_index(pl->history, 0);
+
     g_array_append_val(pl->history, new);
 }
 
@@ -31,7 +35,8 @@ void update_player_history(player * pl)
 
 void reset_team_history(team *tm)
 {
-    g_array_free(tm->history, TRUE);
+    if(tm->history != NULL)
+	g_array_free(tm->history, TRUE);
     tm->history = g_array_new(FALSE, FALSE, sizeof(team_history));
 }
 
@@ -42,6 +47,8 @@ void update_team_history(team *tm)
 
     get_league_bounds(get_league_from_id(tm->id), bound);
 
+    new.values[TEAM_HISTORY_SEASON] = season;
+    new.values[TEAM_HISTORY_WEEK] = week;
     new.values[TEAM_HISTORY_RANK] = bound[1] - bound[0] - rank[tm->id];
     new.values[TEAM_HISTORY_PTS] = tm->results[RES_PTS];
     new.values[TEAM_HISTORY_GD] = tm->results[RES_GF] - tm->results[RES_GA];
@@ -50,6 +57,9 @@ void update_team_history(team *tm)
     new.values[TEAM_HISTORY_MONEY] = (tm->id == my_team) ? finances[FIN_MONEY] : 0;
     new.values[TEAM_HISTORY_AV_ATTENDANCE] = stadiums[tm->id].average_attendance;
 	
+    if(tm->history->len == options[OPT_HISTORY_TEAM_MAX])
+	g_array_remove_index(tm->history, 0);
+
     g_array_append_val(tm->history, new);
 }
 

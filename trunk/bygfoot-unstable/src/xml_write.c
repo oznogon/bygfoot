@@ -7,6 +7,8 @@
 #define INDENT2 "\t\t"
 #define INDENT3 "\t\t\t"
 #define INDENT4 "\t\t\t\t"
+#define INDENT5 "\t\t\t\t\t"
+#define INDENT6 "\t\t\t\t\t\t"
 
 #define INDENT_BYGFOOT INDENT0
 
@@ -22,6 +24,16 @@
 
 #define INDENT_PLAYER INDENT2
 #define INDENT_IN_PLAYER INDENT3
+
+#define INDENT_TEAM_HISTORY INDENT2
+#define INDENT_IN_TEAM_HISTORY INDENT3
+#define INDENT_TEAM_HISTORY_ELEMENT INDENT3
+#define INDENT_IN_TEAM_HISTORY_ELEMENT INDENT4
+
+#define INDENT_PLAYER_HISTORY INDENT3
+#define INDENT_IN_PLAYER_HISTORY INDENT4
+#define INDENT_PLAYER_HISTORY_ELEMENT INDENT4
+#define INDENT_IN_PLAYER_HISTORY_ELEMENT INDENT5
 
 #define INDENT_STADIUM INDENT1
 #define INDENT_IN_STADIUM INDENT2
@@ -102,7 +114,7 @@ write_xml_options(FILE * xml_file)
     gint magic_number;
     for (magic_number = 0; magic_number < MAGIC_NUMBER_130; magic_number ++)
     {
-	fprintf(xml_file, "%s%s\n", INDENT_IN_IN_OPTIONS, "<memory>");
+	fprintf(xml_file, "%s%s\n", INDENT_IN_OPTIONS, "<memory>");
 	fprintf(xml_file, "%s%s%d%s\n", INDENT_IN_IN_OPTIONS, "<rank>", rank[magic_number], "</rank>");
 	fprintf(xml_file, "%s%s%d%s\n", INDENT_IN_IN_OPTIONS, "<rank_id>", rank_ids[magic_number], "</rank_id>");
 	if (magic_number < 2)
@@ -180,6 +192,8 @@ write_xml_history_element(season_stat * stat, FILE * xml_file)
 	
     for(i=0;i<6;i++)
 	write_xml_history_best_player(&(stat->best_players[i]), xml_file);
+
+    fprintf(xml_file, "%s%s\n", INDENT_HISTORY_ELEMENT, "</history_element>");
 }
 
 void
@@ -256,7 +270,46 @@ write_xml_player(player * pl, FILE * xml_file)
     fprintf(xml_file, "%s%s%.2f%s\n", INDENT_IN_PLAYER, "<last_skill_update>", pl->last_skill_update, "</last_skill_update>");
     fprintf(xml_file, "%s%s%.2f%s\n", INDENT_IN_PLAYER, "<age>", pl->age, "</age>");
     fprintf(xml_file, "%s%s%.2f%s\n", INDENT_IN_PLAYER, "<peak_age>", pl->peak_age, "</peak_age>");   
+
+    write_xml_player_history(pl, xml_file);
+
     fprintf(xml_file, "%s%s\n", INDENT_PLAYER, "</player>");
+}
+
+void
+write_xml_player_history(player *pl, FILE *xml_file)
+{
+    gint i;
+    GArray *history = pl->history;
+    
+    fprintf(xml_file, "%s%s\n", INDENT_PLAYER_HISTORY, "<player_history>");
+    fprintf(xml_file, "%s%s%d%s\n", INDENT_IN_PLAYER_HISTORY,
+	    "<history_length>", history->len, "</history_length>");
+    
+    for(i=0;i<history->len;i++)
+	write_xml_player_history_element(pl, xml_file, i);
+
+    fprintf(xml_file, "%s%s\n", INDENT_PLAYER_HISTORY, "</player_history>");
+}
+
+void
+write_xml_player_history_element(player *pl, FILE *xml_file, gint idx)
+{
+    gint i;
+    gchar open_tag[SMALL], close_tag[SMALL];
+    player_history history = g_array_index(pl->history, player_history, idx);
+    
+    fprintf(xml_file, "%s%s\n", INDENT_PLAYER_HISTORY_ELEMENT, "<player_history_element>");
+
+    for(i=0;i<PLAYER_HISTORY_END;i++)
+    {
+	sprintf(open_tag, "<%s_%d>", "player_history_value", i);
+	sprintf(close_tag, "</%s_%d>", "player_history_value", i);
+	fprintf(xml_file, "%s%s%d%s\n", INDENT_IN_PLAYER_HISTORY_ELEMENT,
+		open_tag, history.values[i], close_tag);
+    }
+
+    fprintf(xml_file, "%s%s\n", INDENT_PLAYER_HISTORY_ELEMENT, "</player_history_element>");
 }
 
 void
@@ -281,11 +334,49 @@ write_xml_team(team * tm, FILE * xml_file)
 	
     for(j=0;j<RES_END;j++)
 	fprintf(xml_file, "%s%s%d%s\n", INDENT_IN_TEAM, "<result>", tm->results[j], "</result>");
+
+    write_xml_team_history(tm, xml_file);
 	
     for(p=0; p<PLAYERS_NUMBER; p++)
 	write_xml_player(&(tm->players[p]), xml_file);
 		
     fprintf(xml_file, "%s%s\n", INDENT_TEAM, "</team>");
+}
+
+void
+write_xml_team_history(team *tm, FILE *xml_file)
+{
+    gint i;
+    GArray *history = tm->history;
+    
+    fprintf(xml_file, "%s%s\n", INDENT_TEAM_HISTORY, "<team_history>");
+    fprintf(xml_file, "%s%s%d%s\n", INDENT_IN_TEAM_HISTORY,
+	    "<history_length>", history->len, "</history_length>");
+    
+    for(i=0;i<history->len;i++)
+	write_xml_team_history_element(tm, xml_file, i);
+
+    fprintf(xml_file, "%s%s\n", INDENT_TEAM_HISTORY, "</team_history>");
+}
+
+void
+write_xml_team_history_element(team *tm, FILE *xml_file, gint idx)
+{
+    gint i;
+    gchar open_tag[SMALL], close_tag[SMALL];
+    team_history history = g_array_index(tm->history, team_history, idx);
+    
+    fprintf(xml_file, "%s%s\n", INDENT_TEAM_HISTORY_ELEMENT, "<team_history_element>");
+
+    for(i=0;i<TEAM_HISTORY_END;i++)
+    {
+	sprintf(open_tag, "<%s_%d>", "team_history_value", i);
+	sprintf(close_tag, "</%s_%d>", "team_history_value", i);
+	fprintf(xml_file, "%s%s%d%s\n", INDENT_IN_TEAM_HISTORY_ELEMENT,
+		open_tag, history.values[i], close_tag);
+    }
+
+    fprintf(xml_file, "%s%s\n", INDENT_TEAM_HISTORY_ELEMENT, "</team_history_element>");
 }
 
 void

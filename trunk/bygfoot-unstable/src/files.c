@@ -133,6 +133,13 @@ write_opt_names(gchar opt_names[][50])
     strcpy(opt_names[OPT_ATT2_WAGE], "show_attribute_two_wage");
     strcpy(opt_names[OPT_ATT2_TEAM], "show_attribute_two_team");
     strcpy(opt_names[OPT_ATT2_LEAGUE], "show_attribute_two_league");
+
+    strcpy(opt_names[OPT_HISTORY_TEAM_INTERVAL], "history_team_interval");
+    strcpy(opt_names[OPT_HISTORY_PLAYER_INTERVAL], "history_player_interval");
+    strcpy(opt_names[OPT_HISTORY_TEAM_MAX], "history_team_max");
+    strcpy(opt_names[OPT_HISTORY_PLAYER_MAX], "history_player_max");
+    strcpy(opt_names[OPT_HISTORY_TEAM_DELETE], "history_team_delete");
+    strcpy(opt_names[OPT_HISTORY_PLAYER_DELETE], "history_player_delete");
 }
 
 /* write the game options to the file
@@ -145,7 +152,7 @@ save_conf_file(void)
     FILE *fil;
     gchar buf[SMALL];
 
-    sprintf(buf, "%s/.bygfoot/text_files/bygfoot.conf", getenv("HOME"));
+    sprintf(buf, "%s/.bygfoot/text_files/bygfoot.conf", g_get_home_dir());
 
     fil = fopen(buf, "w");
 
@@ -221,7 +228,7 @@ check_home_dir(void)
     gchar text_files[FILES_UPDATE_GUI][SMALL];
     gchar text_files_full_path[FILES_UPDATE_GUI][SMALL];
 
-    sprintf(home, "%s", getenv("HOME"));
+    sprintf(home, "%s", g_get_home_dir());
 
     for(i=0;i<FILES_UPDATE_GUI;i++)
     {

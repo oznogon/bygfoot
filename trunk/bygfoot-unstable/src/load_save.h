@@ -56,10 +56,34 @@ void
 load_fixtures(FILE *fil);
 
 void
-save_player(gint team_id, gint player_number, FILE *fil);
+save_player_history_element(player pl, gint idx, FILE *fil);
 
 void
-load_player(gint team_id, gint player_number, FILE *fil);
+load_player_history_element(player *pl, FILE *fil);
+
+void
+save_player_history(player pl, FILE *fil);
+
+void
+load_player_history(player *pl, FILE *fil);
+
+void
+save_player(player pl, FILE *fil);
+
+void
+load_player(player *pl, FILE *fil);
+
+void
+save_team_history_element(team tm, gint idx, FILE *fil);
+
+void
+load_team_history_element(team *tm, FILE *fil);
+
+void
+save_team_history(team tm, FILE *fil);
+
+void
+load_team_history(team *tm, FILE *fil);
 
 void
 save_teams(FILE *fil);

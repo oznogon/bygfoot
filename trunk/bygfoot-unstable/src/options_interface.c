@@ -228,6 +228,38 @@ create_opt_window (void)
   GtkWidget *check_att2_league;
   GtkWidget *label93;
   GtkWidget *label87;
+  GtkWidget *frame8;
+  GtkWidget *hbox69;
+  GtkWidget *vbox50;
+  GtkWidget *label136;
+  GtkWidget *hseparator17;
+  GtkWidget *vbox51;
+  GtkWidget *eventbox4;
+  GtkWidget *label140;
+  GtkWidget *eventbox5;
+  GtkWidget *label141;
+  GtkWidget *eventbox6;
+  GtkWidget *label142;
+  GtkWidget *vseparator8;
+  GtkWidget *vbox48;
+  GtkWidget *label134;
+  GtkWidget *hseparator15;
+  GtkObject *spinbutton_interval_team_adj;
+  GtkWidget *spinbutton_interval_team;
+  GtkObject *spinbutton_max_team_adj;
+  GtkWidget *spinbutton_max_team;
+  GtkWidget *checkbutton_delete_team;
+  GtkWidget *vseparator7;
+  GtkWidget *vbox49;
+  GtkWidget *label135;
+  GtkWidget *hseparator16;
+  GtkObject *spinbutton_interval_player_adj;
+  GtkWidget *spinbutton_interval_player;
+  GtkObject *spinbutton_max_player_adj;
+  GtkWidget *spinbutton_max_player;
+  GtkWidget *checkbutton_delete_player;
+  GtkWidget *label132;
+  GtkWidget *label131;
   GtkWidget *frame6;
   GtkWidget *vbox40;
   GtkWidget *checkbutton_skip_weeks;
@@ -1190,6 +1222,148 @@ create_opt_window (void)
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 4), label87);
   gtk_label_set_justify (GTK_LABEL (label87), GTK_JUSTIFY_LEFT);
 
+  frame8 = gtk_frame_new (NULL);
+  gtk_widget_show (frame8);
+  gtk_container_add (GTK_CONTAINER (notebook1), frame8);
+  gtk_container_set_border_width (GTK_CONTAINER (frame8), 5);
+
+  hbox69 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox69);
+  gtk_container_add (GTK_CONTAINER (frame8), hbox69);
+
+  vbox50 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox50);
+  gtk_box_pack_start (GTK_BOX (hbox69), vbox50, TRUE, TRUE, 0);
+
+  label136 = gtk_label_new (_("Option"));
+  gtk_widget_show (label136);
+  gtk_box_pack_start (GTK_BOX (vbox50), label136, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label136), GTK_JUSTIFY_LEFT);
+
+  hseparator17 = gtk_hseparator_new ();
+  gtk_widget_show (hseparator17);
+  gtk_box_pack_start (GTK_BOX (vbox50), hseparator17, FALSE, TRUE, 0);
+  gtk_widget_set_size_request (hseparator17, 1, 10);
+
+  vbox51 = gtk_vbox_new (FALSE, 8);
+  gtk_widget_show (vbox51);
+  gtk_box_pack_start (GTK_BOX (vbox50), vbox51, TRUE, TRUE, 0);
+
+  eventbox4 = gtk_event_box_new ();
+  gtk_widget_show (eventbox4);
+  gtk_box_pack_start (GTK_BOX (vbox51), eventbox4, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, eventbox4, _("How often new data is added to the history."), NULL);
+
+  label140 = gtk_label_new (_("Update interval (in weeks)"));
+  gtk_widget_show (label140);
+  gtk_container_add (GTK_CONTAINER (eventbox4), label140);
+  gtk_label_set_justify (GTK_LABEL (label140), GTK_JUSTIFY_LEFT);
+
+  eventbox5 = gtk_event_box_new ();
+  gtk_widget_show (eventbox5);
+  gtk_box_pack_start (GTK_BOX (vbox51), eventbox5, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, eventbox5, _("How long the history can get at most (data from the beginning of the list gets removed afterwards). WARNING: The higher this value is, the more memory is needed, especially for the player histories."), NULL);
+
+  label141 = gtk_label_new (_("Maximal history length"));
+  gtk_widget_show (label141);
+  gtk_container_add (GTK_CONTAINER (eventbox5), label141);
+  gtk_label_set_justify (GTK_LABEL (label141), GTK_JUSTIFY_LEFT);
+
+  eventbox6 = gtk_event_box_new ();
+  gtk_widget_show (eventbox6);
+  gtk_box_pack_start (GTK_BOX (vbox51), eventbox6, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, eventbox6, _("Whether each season begins with an empty history list."), NULL);
+
+  label142 = gtk_label_new (_("Delete history at end of season"));
+  gtk_widget_show (label142);
+  gtk_container_add (GTK_CONTAINER (eventbox6), label142);
+  gtk_label_set_justify (GTK_LABEL (label142), GTK_JUSTIFY_LEFT);
+
+  vseparator8 = gtk_vseparator_new ();
+  gtk_widget_show (vseparator8);
+  gtk_box_pack_start (GTK_BOX (hbox69), vseparator8, TRUE, TRUE, 0);
+
+  vbox48 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox48);
+  gtk_box_pack_start (GTK_BOX (hbox69), vbox48, TRUE, TRUE, 0);
+
+  label134 = gtk_label_new (_("Team histories"));
+  gtk_widget_show (label134);
+  gtk_box_pack_start (GTK_BOX (vbox48), label134, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label134), GTK_JUSTIFY_LEFT);
+
+  hseparator15 = gtk_hseparator_new ();
+  gtk_widget_show (hseparator15);
+  gtk_box_pack_start (GTK_BOX (vbox48), hseparator15, FALSE, TRUE, 0);
+  gtk_widget_set_size_request (hseparator15, 1, 10);
+
+  spinbutton_interval_team_adj = gtk_adjustment_new (1, 1, 20, 1, 10, 10);
+  spinbutton_interval_team = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton_interval_team_adj), 1, 0);
+  gtk_widget_show (spinbutton_interval_team);
+  gtk_box_pack_start (GTK_BOX (vbox48), spinbutton_interval_team, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, spinbutton_interval_team, _("How often new data is added to the history."), NULL);
+  gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (spinbutton_interval_team), TRUE);
+
+  spinbutton_max_team_adj = gtk_adjustment_new (1, 0, 100, 1, 10, 10);
+  spinbutton_max_team = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton_max_team_adj), 1, 0);
+  gtk_widget_show (spinbutton_max_team);
+  gtk_box_pack_start (GTK_BOX (vbox48), spinbutton_max_team, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, spinbutton_max_team, _("How long the history can get at most (data from the beginning of the list gets removed afterwards). WARNING: The higher this value is, the more memory is needed, especially for the player histories."), NULL);
+  gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (spinbutton_max_team), TRUE);
+
+  checkbutton_delete_team = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (checkbutton_delete_team);
+  gtk_box_pack_start (GTK_BOX (vbox48), checkbutton_delete_team, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, checkbutton_delete_team, _("Whether each season begins with an empty history list."), NULL);
+
+  vseparator7 = gtk_vseparator_new ();
+  gtk_widget_show (vseparator7);
+  gtk_box_pack_start (GTK_BOX (hbox69), vseparator7, FALSE, TRUE, 0);
+  gtk_widget_set_size_request (vseparator7, 10, 1);
+
+  vbox49 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox49);
+  gtk_box_pack_start (GTK_BOX (hbox69), vbox49, TRUE, TRUE, 0);
+
+  label135 = gtk_label_new (_("Player histories"));
+  gtk_widget_show (label135);
+  gtk_box_pack_start (GTK_BOX (vbox49), label135, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label135), GTK_JUSTIFY_LEFT);
+
+  hseparator16 = gtk_hseparator_new ();
+  gtk_widget_show (hseparator16);
+  gtk_box_pack_start (GTK_BOX (vbox49), hseparator16, FALSE, TRUE, 0);
+  gtk_widget_set_size_request (hseparator16, 1, 10);
+
+  spinbutton_interval_player_adj = gtk_adjustment_new (1, 1, 20, 1, 10, 10);
+  spinbutton_interval_player = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton_interval_player_adj), 1, 0);
+  gtk_widget_show (spinbutton_interval_player);
+  gtk_box_pack_start (GTK_BOX (vbox49), spinbutton_interval_player, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, spinbutton_interval_player, _("How often new data is added to the history."), NULL);
+  gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (spinbutton_interval_player), TRUE);
+
+  spinbutton_max_player_adj = gtk_adjustment_new (1, 0, 100, 1, 10, 10);
+  spinbutton_max_player = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton_max_player_adj), 1, 0);
+  gtk_widget_show (spinbutton_max_player);
+  gtk_box_pack_start (GTK_BOX (vbox49), spinbutton_max_player, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, spinbutton_max_player, _("How long the history can get at most (data from the beginning of the list gets removed afterwards). WARNING: The higher this value is, the more memory is needed, especially for the player histories."), NULL);
+  gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (spinbutton_max_player), TRUE);
+
+  checkbutton_delete_player = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (checkbutton_delete_player);
+  gtk_box_pack_start (GTK_BOX (vbox49), checkbutton_delete_player, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, checkbutton_delete_player, _("Whether each season begins with an empty history list."), NULL);
+
+  label132 = gtk_label_new (_("Team and player histories"));
+  gtk_widget_show (label132);
+  gtk_frame_set_label_widget (GTK_FRAME (frame8), label132);
+  gtk_label_set_justify (GTK_LABEL (label132), GTK_JUSTIFY_LEFT);
+
+  label131 = gtk_label_new (_("Histories"));
+  gtk_widget_show (label131);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 5), label131);
+  gtk_label_set_justify (GTK_LABEL (label131), GTK_JUSTIFY_LEFT);
+
   frame6 = gtk_frame_new (NULL);
   gtk_widget_show (frame6);
   gtk_container_add (GTK_CONTAINER (notebook1), frame6);
@@ -1213,7 +1387,7 @@ create_opt_window (void)
 
   label88 = gtk_label_new (_("Misc"));
   gtk_widget_show (label88);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 5), label88);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 6), label88);
   gtk_label_set_justify (GTK_LABEL (label88), GTK_JUSTIFY_LEFT);
 
   hseparator8 = gtk_hseparator_new ();
@@ -1282,6 +1456,9 @@ create_opt_window (void)
   gtk_box_pack_start (GTK_BOX (hbox27), label48, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label48), GTK_JUSTIFY_LEFT);
 
+  g_signal_connect ((gpointer) opt_window, "delete_event",
+                    G_CALLBACK (on_opt_window_delete_event),
+                    NULL);
   g_signal_connect ((gpointer) check_show_live, "toggled",
                     G_CALLBACK (on_check_show_live_toggled),
                     NULL);
@@ -1495,6 +1672,34 @@ create_opt_window (void)
   GLADE_HOOKUP_OBJECT (opt_window, check_att2_league, "check_att2_league");
   GLADE_HOOKUP_OBJECT (opt_window, label93, "label93");
   GLADE_HOOKUP_OBJECT (opt_window, label87, "label87");
+  GLADE_HOOKUP_OBJECT (opt_window, frame8, "frame8");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox69, "hbox69");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox50, "vbox50");
+  GLADE_HOOKUP_OBJECT (opt_window, label136, "label136");
+  GLADE_HOOKUP_OBJECT (opt_window, hseparator17, "hseparator17");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox51, "vbox51");
+  GLADE_HOOKUP_OBJECT (opt_window, eventbox4, "eventbox4");
+  GLADE_HOOKUP_OBJECT (opt_window, label140, "label140");
+  GLADE_HOOKUP_OBJECT (opt_window, eventbox5, "eventbox5");
+  GLADE_HOOKUP_OBJECT (opt_window, label141, "label141");
+  GLADE_HOOKUP_OBJECT (opt_window, eventbox6, "eventbox6");
+  GLADE_HOOKUP_OBJECT (opt_window, label142, "label142");
+  GLADE_HOOKUP_OBJECT (opt_window, vseparator8, "vseparator8");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox48, "vbox48");
+  GLADE_HOOKUP_OBJECT (opt_window, label134, "label134");
+  GLADE_HOOKUP_OBJECT (opt_window, hseparator15, "hseparator15");
+  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_interval_team, "spinbutton_interval_team");
+  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_max_team, "spinbutton_max_team");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_delete_team, "checkbutton_delete_team");
+  GLADE_HOOKUP_OBJECT (opt_window, vseparator7, "vseparator7");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox49, "vbox49");
+  GLADE_HOOKUP_OBJECT (opt_window, label135, "label135");
+  GLADE_HOOKUP_OBJECT (opt_window, hseparator16, "hseparator16");
+  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_interval_player, "spinbutton_interval_player");
+  GLADE_HOOKUP_OBJECT (opt_window, spinbutton_max_player, "spinbutton_max_player");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_delete_player, "checkbutton_delete_player");
+  GLADE_HOOKUP_OBJECT (opt_window, label132, "label132");
+  GLADE_HOOKUP_OBJECT (opt_window, label131, "label131");
   GLADE_HOOKUP_OBJECT (opt_window, frame6, "frame6");
   GLADE_HOOKUP_OBJECT (opt_window, vbox40, "vbox40");
   GLADE_HOOKUP_OBJECT (opt_window, checkbutton_skip_weeks, "checkbutton_skip_weeks");

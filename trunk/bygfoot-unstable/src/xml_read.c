@@ -54,6 +54,7 @@ check_xml_save(gchar * file_name)
     if (XML_READ_VERBOSE) 
 	g_print("OK.\n");
 		
+    xmlFreeDoc(doc);
     return TRUE;	
 }
 
@@ -133,8 +134,6 @@ read_xml_save(gchar * file_name)
 	
     xmlFreeDoc(doc);
     g_print("XML import: OK.\n");	
-
-    show_progress(1, "");
 }
 	
 void
@@ -506,6 +505,11 @@ read_xml_team(xmlDocPtr doc, xmlNodePtr root)
 	    player_index++;
 	    known_node = 1;
 	}
+	if (!xmlStrcmp(cur->name, (const xmlChar *) "team_history"))
+	{
+	    my_team.history = read_xml_team_history(doc, cur);
+	    known_node = 1;
+	}
 	if (!xmlStrcmp(cur->name, (const xmlChar *) "text"))
 	{
 	    /* text is not significant here */
@@ -522,6 +526,80 @@ read_xml_team(xmlDocPtr doc, xmlNodePtr root)
     assert (player_index >= MIN_PLAYERS);
 	
     return my_team;
+}
+
+GArray*
+read_xml_team_history(xmlDocPtr doc, xmlNodePtr root)
+{
+    GArray *history = g_array_new(FALSE, FALSE, sizeof(team_history));
+    xmlNodePtr cur = root->xmlChildrenNode;
+    team_history temp_history;
+
+    while (cur != NULL)
+    {
+	gint known_node = 0;
+	if (!xmlStrcmp(cur->name, (const xmlChar *) "history_length"))
+	{
+	    known_node = 1;
+	}
+	else if(!xmlStrcmp(cur->name, (const xmlChar *) "team_history_element"))
+	{
+	    temp_history = read_xml_team_history_element(doc, cur);
+	    g_array_append_val(history, temp_history);
+	    known_node = 1;
+	}
+
+	if (!xmlStrcmp(cur->name, (const xmlChar *) "text"))
+	{
+	    /* text is not significant here */
+	    known_node = 1;
+	}		
+
+	if (!known_node)
+	{
+	    fprintf(stderr, "Warning! XML node \'%s\' in \'%s\' is not known. Are you sure you use the correct bygfoot version?\n", cur->name, root->name);
+	}		
+	cur = cur->next;
+    }
+
+    return history;
+}
+
+team_history
+read_xml_team_history_element(xmlDocPtr doc, xmlNodePtr root)
+{
+    gint i;
+    team_history new;
+    xmlNodePtr cur = root->xmlChildrenNode;
+    gchar tag_names[TEAM_HISTORY_END][SMALL];
+    
+    for(i=0;i<TEAM_HISTORY_END;i++)
+	sprintf(tag_names[i], "team_history_value_%d", i);
+    
+    while (cur != NULL)
+    {
+	gint known_node = 0;
+	for(i=0;i<TEAM_HISTORY_END;i++)
+	    if(!xmlStrcmp(cur->name, (const xmlChar *) tag_names[i]))
+	    {
+		known_node = 1;
+		new.values[i] = read_xml_int(doc, cur);
+	    }
+
+	if (!xmlStrcmp(cur->name, (const xmlChar *) "text"))
+	{
+	    /* text is not significant here */
+	    known_node = 1;
+	}		
+
+	if (!known_node)
+	{
+	    fprintf(stderr, "Warning! XML node \'%s\' in \'%s\' is not known. Are you sure you use the correct bygfoot version?\n", cur->name, root->name);
+	}		
+	cur = cur->next;
+    }
+
+    return new;
 }
 
 player 
@@ -624,6 +702,11 @@ read_xml_player(xmlDocPtr doc, xmlNodePtr root)
 	    my_player.peak_age = read_xml_float(doc, cur);
 	    known_node = 1;
 	}
+	if (!xmlStrcmp(cur->name, (const xmlChar *) "player_history"))
+	{
+	    my_player.history = read_xml_player_history(doc, cur);
+	    known_node = 1;
+	}
 	if (!xmlStrcmp(cur->name, (const xmlChar *) "text"))
 	{
 	    /* text is not significant here */
@@ -637,6 +720,80 @@ read_xml_player(xmlDocPtr doc, xmlNodePtr root)
 	cur = cur->next;
     }
     return my_player;
+}
+
+GArray*
+read_xml_player_history(xmlDocPtr doc, xmlNodePtr root)
+{
+    GArray *history = g_array_new(FALSE, FALSE, sizeof(player_history));
+    xmlNodePtr cur = root->xmlChildrenNode;
+    player_history temp_history;
+
+    while (cur != NULL)
+    {
+	gint known_node = 0;
+	if (!xmlStrcmp(cur->name, (const xmlChar *) "history_length"))
+	{
+	    known_node = 1;
+	}
+	else if(!xmlStrcmp(cur->name, (const xmlChar *) "player_history_element"))
+	{
+	    temp_history = read_xml_player_history_element(doc, cur);
+	    g_array_append_val(history, temp_history);
+	    known_node = 1;
+	}
+
+	if (!xmlStrcmp(cur->name, (const xmlChar *) "text"))
+	{
+	    /* text is not significant here */
+	    known_node = 1;
+	}		
+
+	if (!known_node)
+	{
+	    fprintf(stderr, "Warning! XML node \'%s\' in \'%s\' is not known. Are you sure you use the correct bygfoot version?\n", cur->name, root->name);
+	}		
+	cur = cur->next;
+    }
+
+    return history;
+}
+
+player_history
+read_xml_player_history_element(xmlDocPtr doc, xmlNodePtr root)
+{
+    gint i;
+    player_history new;
+    xmlNodePtr cur = root->xmlChildrenNode;
+    gchar tag_names[PLAYER_HISTORY_END][SMALL];
+    
+    for(i=0;i<PLAYER_HISTORY_END;i++)
+	sprintf(tag_names[i], "player_history_value_%d", i);
+    
+    while (cur != NULL)
+    {
+	gint known_node = 0;
+	for(i=0;i<PLAYER_HISTORY_END;i++)
+	    if(!xmlStrcmp(cur->name, (const xmlChar *) tag_names[i]))
+	    {
+		known_node = 1;
+		new.values[i] = read_xml_int(doc, cur);
+	    }
+
+	if (!xmlStrcmp(cur->name, (const xmlChar *) "text"))
+	{
+	    /* text is not significant here */
+	    known_node = 1;
+	}		
+
+	if (!known_node)
+	{
+	    fprintf(stderr, "Warning! XML node \'%s\' in \'%s\' is not known. Are you sure you use the correct bygfoot version?\n", cur->name, root->name);
+	}		
+	cur = cur->next;
+    }
+
+    return new;
 }
 
 player_stat

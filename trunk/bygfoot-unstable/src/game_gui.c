@@ -251,7 +251,7 @@ update_autosave(void)
 
     counters[COUNT_AUTOSAVE] = options[OPT_AUTOSAVE];
 
-    sprintf(buf, "%s/.bygfoot/saves/autosave", getenv("HOME"));
+    sprintf(buf, "%s/.bygfoot/saves/autosave", g_get_home_dir());
 
     save_game(buf);
 }

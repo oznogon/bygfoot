@@ -41,3 +41,8 @@ on_checkbutton_sort_transfers_toggled  (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 #endif
+
+gboolean
+on_opt_window_delete_event             (GtkWidget       *widget,
+                                        GdkEvent        *event,
+                                        gpointer         user_data);

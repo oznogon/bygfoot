@@ -12,6 +12,7 @@
 #include "misc.h"
 #include "misc_interface.h"
 #include "misc2_interface.h"
+#include "option.h"
 #include "options_interface.h"
 #include "editor_interface.h"
 #include "support.h"
@@ -252,7 +253,7 @@ show_file_selection(gint save)
 
     set_version(fsel_window);
 
-    sprintf(buf, "%s/.bygfoot/text_files/", getenv("HOME"));
+    sprintf(buf, "%s/.bygfoot/text_files/", g_get_home_dir());
     sprintf(buf2, "test -d %s", buf);
     
     status = 800000 + save;
@@ -351,11 +352,11 @@ start_editor(void)
     
     check_home_dir();
 
-    sprintf(buf, "test -e %s/.bygfoot/text_files/teams", getenv("HOME"));
+    sprintf(buf, "test -e %s/.bygfoot/text_files/teams", g_get_home_dir());
 
     if(system(buf) == 0)
     {
-	sprintf(buf, "%s/.bygfoot/text_files/teams", getenv("HOME"));
+	sprintf(buf, "%s/.bygfoot/text_files/teams", g_get_home_dir());
 	gtk_entry_set_text(GTK_ENTRY(entry_definitions_file), buf);
     }
     else

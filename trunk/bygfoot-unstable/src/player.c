@@ -278,7 +278,7 @@ generate_player(gint team_id, gfloat team_factor,
     pl->fitness = gauss_dist(.7,.85,.99,.99);
 
     /* create player history array */
-    pl->history = g_array_new(FALSE, FALSE, sizeof(player_history));
+    reset_player_history(pl);
 }
 
 /* calculate a player's current skill depending on position,

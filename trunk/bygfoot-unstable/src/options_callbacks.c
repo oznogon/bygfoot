@@ -5,6 +5,7 @@
 #include "callback_func.h"
 #include "callbacks.h"
 #include "gui.h"
+#include "option.h"
 #include "options_callbacks.h"
 #include "support.h"
 #include "treeview.h"
@@ -134,7 +135,7 @@ on_checkbutton_autosave_toggled        (GtkToggleButton *togglebutton,
 	return;
     }
 
-    sprintf(buf, "%s/.bygfoot/saves/autosave", getenv("HOME"));
+    sprintf(buf, "%s/.bygfoot/saves/autosave", g_get_home_dir());
 
     autosave_file = fopen(buf, "a+");
 
@@ -160,5 +161,17 @@ on_checkbutton_sort_transfers_toggled  (GtkToggleButton *togglebutton,
 
     gtk_widget_set_sensitive(radiobutton_sort_pos->parent,
 			     gtk_toggle_button_get_active(togglebutton));
+}
+
+
+gboolean
+on_opt_window_delete_event             (GtkWidget       *widget,
+                                        GdkEvent        *event,
+                                        gpointer         user_data)
+{
+    on_button_opt_cancel_clicked(
+	GTK_BUTTON(lookup_widget(widget, "button_opt_cancel")), NULL);
+
+  return FALSE;
 }
 

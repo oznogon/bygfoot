@@ -238,8 +238,8 @@ fill_in_team(gint team_id)
     for(i=0;i<RES_END;i++)
 	teams[team_id].results[i] = 0;
 
-    teams[team_id].id = team_id;
-    
+    reset_team_history(&teams[team_id]);
+
     teams[team_id].structure =  
 	assign_playing_structure();
 
@@ -248,7 +248,10 @@ fill_in_team(gint team_id)
     
     generate_players(team_id);
 
-    teams[team_id].history = g_array_new(FALSE, FALSE, sizeof(team_history));
+    if(team_id == 114 || team_id == 130 || team_id > 174)
+	return;
+
+    teams[team_id].id = team_id;    
 }
 
 /* generate the european teams participating in
@@ -264,8 +267,8 @@ fill_in_euro_teams(void)
     /* generate teams; team 114 is the english champion,
        130 the english cup winner and 175-177 the english
        uefa cup participants, so we don't generate them */
-    for(i=115;i<175;i++)
-	if(i != 130 && i != my_team)
+    for(i=114;i<178;i++)
+	if(i != my_team)
 	{
 	    fill_in_stadium(i);
 	    fill_in_team(i);
@@ -416,14 +419,9 @@ generate_teams(void)
     write_permutation(order, 0, 19);
     /* CL */
     teams[114].id = order[0];
-    strcpy(teams[114].name, "buh!");
     /* CWC */
     teams[130].id = order[1];
-    strcpy(teams[130].name, "buh!");
     /* UEFA */
     for(i=0;i<3;i++)
-    {
 	teams[175 + i].id = order[i + 2];
-	strcpy(teams[175 + i].name, "buh!");
-    }
 }
