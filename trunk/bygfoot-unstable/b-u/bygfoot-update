@@ -240,9 +240,9 @@ function cleanup()
     my_echo "** b-u: Removing dialog output file $input_file."
     rm -rfv $input_file 2>> $log_file | tee -a $log_file
 
-    if [ ! -z $tmpdir ];then
+    if [ ! -z $tmpdir -a $mode -neq $mode_pack ];then
 	my_echo "** b-u: Cleaning up in the temp directory."
-	rm -rfv $tmpdir/bygfoot-update 2>> $log_file | tee -a $log_file
+	rm -rfv  2>> $log_file | tee -a $log_file
     fi
 
     if [ $show_log -eq 0 ]; then
