@@ -273,7 +273,7 @@ callback_make_transfer_offer(GtkWidget *widget)
     
     if(fee < teams[transferlist[idx].team_id].
        players[transferlist[idx].player_number].value ||
-       rnd(0,1) < 0.9)
+       rnd(0,1) < 0.1)
     {
 	print_message(_("The team rejects your offer and removes the player from the transferlist."));
 	remove_transfer(idx, TRUE);
@@ -282,7 +282,7 @@ callback_make_transfer_offer(GtkWidget *widget)
     }
     else if(wage < teams[transferlist[idx].team_id].
 	    players[transferlist[idx].player_number].wage ||
-	    rnd(0,1) < 0.9)
+	    rnd(0,1) < 0.1)
     {
 	print_message(_("The player doesn't like your offer and decides to stay in his team."));
 	remove_transfer(idx, TRUE);
@@ -874,6 +874,8 @@ callback_penalty_shooter(void)
 
     print_message(buf);
     show_players(NULL, NULL, 0, NULL, 0);
+
+    selected_rows[0] = -1;
 }
 
 void
