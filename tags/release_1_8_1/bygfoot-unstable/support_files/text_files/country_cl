@@ -1,0 +1,306 @@
+#esta es la liga chilena de futbol no esta completa pero algo es algo
+#para enviar mejorar a las ligas o has creado nuevas ligas envialas a gyboth@gmx.de
+#
+#
+#
+#
+
+# Primera A
+Colo Colo
+Universidad Catolica
+Union Espanola
+Cobreloa 
+Santiago Wanderers
+Coquimbo Unido
+Universidad Concepcion
+Universidad de Chile
+Cobresal 
+Deportes La Serena
+Union San Felipe
+Everton de Vina
+Audax Italiano
+Palestino
+Rangers de Talca
+Deportes Concepcion
+Temuco
+Puerto Montt
+Melipilla
+Huachipato
+# Primera B
+Arica
+Iquique
+Antofagasta
+Copiapo s.a.
+Ovalle
+Union La Calera
+San Luis de Quillota
+San Antonio unido
+Santiago Morning
+Magallanes
+O'Higgins de Rancagua
+Nublense
+Colchagua
+Curico Unido
+Fernandez Vial
+Naval de Talcahuano
+Osorno
+Barnechea
+Trasandino de Los Andes
+Con-con national
+Hosana
+Junventus Colo-Colo
+Universidad Catolica B
+Osorno
+# Terceira Divisão
+Nogales-Melon
+Municipal las Condes
+Limache
+Sol de Quilpue
+Linares
+Deportes Valdivia
+Cristo vive
+Luis Musrri
+Colina
+Desportiva
+Portuguesa Santista
+Valeriodoce
+Maringá
+Guarani-SC
+ABC
+Treze
+Nacional-AM
+Vila Nova-MG
+Madureira
+URT
+Operário de Várzea Grande
+Goiatuba
+CRAC
+Uberlândia
+# Liga Universitaria
+Universidad Catolica de Valparaiso
+Universidad Arturo Prat
+Universidad de Taracapa
+Universidad de Antofagasta
+Universidad Catolica del Norte
+Universidad de Atacama
+Universidad de Serena
+Universidad Santa Maria
+Universidad de Valparaiso
+Universidad de Playa Ancha
+Universidad de Santiago
+Universidad Tecnica Metropolitana
+Universidad de Talca
+Universidad de Concepcion
+Universidad Bio Bio
+Universidad de Catolica la Santisima Concepcion
+Universidad de la Frontera
+Universidad Austral de Chile
+Universidad de Los Lagos
+Inacap
+Duoc
+Universidad Andres Bello
+Universidad Catolica del Maule
+Universidad Catolica de Temuco
+# Campeonato Amateur
+Cabildo
+Graneros
+Chiguayante
+Asoc. Antofagasta
+Penaflor
+Cochayque
+Tierra Amarilla
+Asoc. Puerto Montt
+Curacavi
+La Granga
+Asoc. Iquique
+Forestal
+Illapel
+Vallenar
+Castro 
+Ancud
+Angol
+Punta Arenas
+Chillan
+Asoc. Vina del Mar
+Asoc. Talca
+Puente Alto
+Isla de Maipo
+Buin
+# Estes times jogam as copas sul-americanas.
+
+# from each section 1 - 15 a team is taken randomly to participate
+# in the champions' league and the cup winners' cup, respectively.
+
+# here you just have to replace each team that's already in the list
+# above (after you edited it) by an english one.
+
+# section 16 contains various european teams
+
+# Argentina
+1
+Boca Juniors (ARG)
+River Plate (ARG)
+Independiente (ARG)
+Rosario Central (ARG)
+Racing (ARG)
+San Lorenzo (ARG)
+Vélez Sarsfield (ARG)
+Lanús (ARG)
+Huracán (ARG)
+Talleres (ARG)
+Newell's Old Boys (ARG)
+Gimnasia y Esgrima (ARG)
+Estudiantes (ARG)
+Banfield (ARG)
+
+# Uruguay
+2
+Nacional (URU)
+Peñarol (URU)
+Fénix (URU)
+Bella Vista (URU)
+Defensor (URU)
+Wanderers (URU)
+River Plate (URU)
+Tacuarembó (URU)
+Artigas (URU)
+Central Español (URU)
+Huracán Buceo (URU)
+
+# Brasil
+3
+Atletico Mineiro (BRA)
+Cruzeiro  (BRA)
+Sao Paulo   (BRA)
+Corinthians  (BRA)
+Palmeiras  (BRA)
+Santos  (BRA)
+Flamengo  (BRA)
+Vasco da Gama  (BRA)
+Gremio  (BRA)
+
+# Paraguay
+4
+Olimpia (PAR)
+Guarany (PAR)
+Cerro Porteño (PAR)
+19 de Julio (PAR)
+Defensor (PAR)
+Libertad (PAR)
+Luqueño (PAR)
+Sol de América (PAR)
+
+# Bolivia
+5
+Jorge Wilstermann (BOL)
+Bolívar (BOL)
+Oriente Petrolero (BOL)
+The Strongest (BOL)
+Aurora (BOL)
+
+# Perú
+6
+Sporting Cristal (PER)
+Cienciano (PER)
+Alianza (PER)
+Municipal (PER)
+Universitario (PER)
+Sport Boys (PER)
+
+# Ecuador
+7
+Liga Deportiva Universitaria (ECU)
+El Nacional (ECU)
+Emelec (ECU)
+Espoli (ECU)
+Barcelona (ECU)
+Aucas (ECU)
+
+# Colombia
+8
+América de Cáli (COL)
+Junior (COL)
+Deportivo Cáli (COL)
+Independiente de Santa Fé (COL)
+Millonarios (COL)
+Independiente de Medellín (COL)
+Once Caldas (COL)
+Nacional de Medellín (COL)
+
+# Venezuela
+9
+Mineros (VEN)
+Caracas (VEN)
+Táchira (VEN)
+Galicia (VEN)
+
+# México
+10
+Santos Laguna (MEX)
+América (MEX)
+Cruz Azul (MEX)
+Necaxa (MEX)
+Tigres (MEX)
+
+# United States
+11
+DC United (USA)
+New England Revolution (USA)
+Boston Patriots (USA)
+
+# Canada
+12
+Toronto Union (CAN)
+Vancouver Grizzlies (CAN)
+Québecois (CAN)
+
+# Cuba
+13
+Habanero (CUB)
+Holguín (CUB)
+Santiago (CUB)
+Guantánamo (CUB)
+
+# Costa Rica
+14
+Saprisa (COR)
+San José (COR)
+Alajuelense (COR)
+
+# Panamá 
+15
+Istmeño (PAN)
+Toro (PAN)
+Estudiantes (PAN)
+
+16
+Paramaribo (SUR)
+Managua (NIC)
+León (NIC)
+Tegucigalpa (HON)
+San Salvador (SAL)
+Guatemala (GUA)
+San Domingo (RDP)
+San Juan (PUR)
+Kingston (JAM)
+
+# this section contains the league and cup names.
+# the '1000' is important, it tells the reading function to stop here
+# when reading the names for the league teams
+1000
+# Campeonato Nacional
+Primera A
+Primera B
+Tercera Division
+Liga Univeristaria
+Campeonato Amateur
+
+# copas
+Copa libertadores de America
+Copa Conmebol
+Copa Sudamericana
+Copa Chile
+Copa Chilena de Campeones
+Desafio dos Campeões
+Supercopa Sul-Americana
+Quadrangular de Acenso

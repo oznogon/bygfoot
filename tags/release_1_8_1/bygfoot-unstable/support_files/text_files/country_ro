@@ -1,0 +1,317 @@
+# COPY THIS FILE AND EDIT IT TO MAKE A NEW 'LOCALISATION' OF BYGFOOT. IF
+# YOU FINISH A NEW LOCALISATION, YOU SHOULD SEND IT AS AN ATTACHMENT TO
+# gyboth@gmx.de SO THAT I CAN INCLUDE IT IN A NEW VERSION OF THE GAME.
+
+# BLANK LINES AND COMMENTARY LINES BEGINNING WITH A '#' ARE IGNORED.
+
+# EACH LINE SHOULD HAVE AT MOST 49 CHARACTERS.
+
+# BE CAREFUL TO PRESERVE THE STRUCTURE OF THE FILE, OTHERWISE YOU
+# MIGHT GET A SEGFAULT.
+
+# IF YOU FIND A MISTAKE IN MY TEAM FILES (MISSPELLINGS OR THE WRONG NAME OF A
+# CUP; SOMETIMES I'M NOT QUITE SURE ABOUT THESE) FEEL FREE TO CORRECT IT. AND
+# DON'T FORGET TO SEND ME THE CORRECTED VERSION AFTERWARDS.
+
+# the following 114 teams take part in the normal leagues.
+# insert teams from a given country to get a new 'localised' version of the game
+Argeş 
+Apullum
+Bacău
+Braşov
+Ceahlăul Neamţ
+Craiova
+Dinamo Bucureşti
+Farul Constanţa
+Gloria Bistriţa
+Naţional Bucureşti
+Oradea
+Oţelul Galaţi
+Petrolul Ploieşti
+Poli AEK
+Rapid Bucureşti
+Steaua Bucureşti
+Callatis Mangalia
+CSM Medgidia
+Dacia Brăila
+Electrica Constanţa
+Gloria Buzău
+Laminorul Roman
+Metalul Plopeni
+Midia Năvodari
+Oneşti
+Oltul Sf Gheorghe
+Petrolul Moineşti
+Poiana Campina
+Poli Iaşi
+Precizia Săcele
+Unirea Focşani
+Vaslui
+Aro Campulung
+Building Vânju Mare
+Cimentul Fieni
+Craiova Bv
+Dacia Mioveni
+Eletromagnetica
+Inter Gaz
+Internaţional Piteşti
+Juventus Bucureşti
+Minerul Motru
+Pandurii Târgu Jiu
+Rarora Vâlcea
+Rulmentul Alexandria
+Sportul Studenţesc
+Târgoviste
+Unirea Urziceni
+ACU Arad 
+Armatura Zalău
+CFR Cluj
+Corvinul Hunedoara
+CS Deva
+CSM Reşiţa
+FC Baia Mare
+Gaz Metan Mediaş
+ISCT
+Jiul Petroşani
+Minaur Zlatna
+Oaşul Negreşti
+Olimpia Satu Mare
+Tricotaje Ineu 
+UTA
+Universitatea Cluj 
+Aerostar Bacău 
+Chimia Brazi
+Conpet Ploieşti
+Dinamo Tulcea
+Dunărea Galaţi
+Faur Bucureşti 
+FC Willy Bacau
+Metalul Baicoi 
+Mondial Brăila
+Olimpia Rm. Sărat
+Petrolistul Boldeşti
+Petrolul Berca
+Petrolul Brăila
+Uztel Ploieşti
+Aurora 23 August
+Aversa Bucureşti
+CS Mogosoaia
+CS. Otopeni
+Dinamo 2 Bucureşti
+Dunărea Călăraşi
+Dunărea Giurgiu
+FC Snagov
+Oil Terminal Constanţa
+Petrolul Bolintin Vale
+Portul Constanţa
+Rova Roşiori
+Sportul Ciorogirla
+Alpan Tîrgovişte
+CF Predeal
+CS Curtea de Argeş
+Electrosid Titu
+FC Ghimbav
+Flacăra Moreni
+Forex Braşov
+Nitramonia Făgăraş
+Petrolul Tîrgovişte
+Romradiatoare Braşov
+Torpedo Zărneşti
+Tractorul Braşov
+Tricolorul Breaza 
+Viromet Victoria
+Armatura Craiova
+Dunărea Calafat
+Dunărea Zimnicea
+FC Olt Scorniceşti
+Oltchim Rm. Vîlcea
+Oltul Slatina
+Prodchim Bals
+Progresul Caracal
+Turris Tr. Magurele
+
+# these teams take part in the european cups.
+
+# from each section 1 - 15 a team is taken randomly to participate
+# in the champions' league and the cup winners' cup, respectively.
+
+# here you just have to replace each team that's already in the list
+# above (after you edited it) by an english one.
+
+# section 16 contains various european teams
+1
+Bayern M�nchen
+Bor. Dortmund
+Schalke 04
+Bay. Leverkusen
+Freiburg
+Hertha Berlin
+
+2
+Boavista Porto
+FC Porto
+Sporting Lisboa
+Benfica Lisboa
+
+3
+Nantes
+Lille
+Olympique Lyon
+Bordeaux
+Paris SG
+AS Monaco
+Marseille
+Auxerre
+Strasbourg
+
+4
+Barcelona
+Real Madrid
+Atletico Madrid
+Dep. La Coruna
+Mallorca
+Valencia
+Celta Vigo
+Real Zaragoza
+San Sebastian
+
+5
+Galatasaray
+Fenerbahce
+Besiktas
+Trabzonspor
+
+6
+AS Roma
+Juventus
+Lazio
+Fiorentina
+Milan
+Parma
+Inter
+Sampdoria
+
+7
+Panathinaikos
+Olymp. Piraeus
+AEK Athens
+PAOK Tsaloniki
+Olymp. Nicosia
+
+8
+Sparta Praha
+Slavia Praha
+Slov. Bratislava
+
+9
+Midlothian
+Rangers
+Celtic
+Hibernian
+Kilmarnock
+
+10
+Feyenoord
+PSV Eindhoven
+Roda Kerkrade
+Ajax
+Twente Enschede
+Utrecht
+
+11
+Lok. Moscow
+Spartak Moscow
+Dinamo Moscow
+Torp. Moscow
+
+12
+Anderlecht
+Club Brugge
+Westerlo
+Standard Liege
+Racing Genk
+
+13
+Dynamo Kyiv
+CSCA Kyiv
+Donetsk
+
+14
+Br�ndby
+Halmstad
+Kobenhavn
+Odense BK
+Aarhus
+Aalborg
+
+15
+Xamax Neuchatel
+Aarau
+YB Bern
+Grasshoppers
+Servette
+St Gallen
+FC Basel
+
+16
+Austria Wien
+Grazer AK
+SV Pasching
+Sturm Graz
+Amica Wronki
+Wisla Krakov
+Banik Ostrava
+FC Brno
+Malm� IF
+IFK G�teborg
+Halmstads BK
+Hammarby
+RS Belgrad
+Dinamo Chisinau
+Rapid Chisinau
+Steaua Chisinau
+Dinamo Zagreb
+Hajduk Split
+Rapid Wien
+Tirol
+Rosenborg
+Litex
+Hap. Tel-Aviv
+Slov. Liberec
+CSKA Sofia
+Levski
+Helsingborg
+Legia
+Macc. Tel-Aviv
+Osijek
+Pribram
+Maritimo
+Midtjylland
+Obilic
+Olimp. Ljubljana
+Partizan
+Pol. Warszawa
+Ruzomberok
+Sigma Olomouc
+Silkeborg
+
+# this section contains the league and cup names.
+# the '1000' is important, it tells the reading function to stop here
+# when reading the names for the league teams
+1000
+# leagues 1 to 5
+Divizia A
+Divizia B1
+Divizia B2
+Divizia B3
+Divizia C
+
+# cups
+Liga Campionilor
+Cupa Cupelor
+Cupa UEFA
+Cupa României
+Cupa Ligii
+Super Cupa României
+Super Cupa UEFA
+Meciuri de promovare

@@ -1,0 +1,322 @@
+# ATTENTION: THIS FILE IS ENCODED IN UTF-8. IF YOU EDIT IT, BE SURE YOUR
+# EDITOR DOESN'T MESS UP THE ENCODING.
+#
+# COPY THIS FILE AND EDIT IT TO MAKE A NEW 'LOCALISATION' OF BYGFOOT. IF YOU
+# FINISH A NEW LOCALISATION, YOU SHOULD SEND IT AS AN ATTACHMENT TO
+# gyboth@gmx.de SO THAT I CAN INCLUDE IT IN A NEW VERSION OF THE GAME.
+
+# BLANK LINES AND COMMENTARY LINES BEGINNING WITH A '#' ARE IGNORED.
+
+# EACH LINE SHOULD HAVE AT MOST 49 CHARACTERS.
+
+# BE CAREFUL TO PRESERVE THE STRUCTURE OF THE FILE, OTHERWISE YOU
+# MIGHT GET A SEGFAULT.
+
+# IF YOU FIND A MISTAKE IN MY TEAM FILES (MISSPELLINGS OR THE WRONG NAME OF A
+# CUP; SOMETIMES I'M NOT QUITE SURE ABOUT THESE) FEEL FREE TO CORRECT IT. AND
+# DON'T FORGET TO SEND ME THE CORRECTED VERSION AFTERWARDS.
+
+
+# the following 114 teams take part in the normal leagues.
+# insert teams from a given country to get a new 'localised' version of the game
+MILAN
+ROMA
+JUVENTUS
+LAZIO
+PARMA
+INTER
+UDINESE
+SAMPDORIA
+BOLOGNA
+CHIEVO
+BRESCIA
+SIENA
+LECCE
+REGGINA
+MODENA
+EMPOLI
+PERUGIA
+ANCONA
+PALERMO
+MESSINA
+LIVORNO
+CAGLIARI
+ATALANTA
+PIACENZA
+FIORENTINA
+TERNANA
+TRIESTINA
+TORINO
+VICENZA
+CATANIA
+NAPOLI
+GENOA
+TREVISO
+VENEZIA
+ALBINOLEFFE
+ASCOLI
+SALERNITANA
+VERONA
+PESCARA
+BARI
+COMO
+AVELLINO
+AREZZO
+LUMEZZANE
+CESENA
+SPEZIA
+LUCCHESE
+PISA
+CITTADELLA
+PADOVA
+SPAL
+NOVARA
+RIMINI
+PISTOIESE
+SASSARI
+REGGIANA
+PRO PATRIA
+VARESE
+PRATO
+PAVIA
+CROTONE
+ACIREALE
+CATANZARO
+VITERBESE
+LANCIANO
+BENEVENTO
+SAMBENEDETTESE
+FOGGIA
+CHIETI
+TERAMO
+GIULIANOVA
+MARTINA
+SORA
+FERMANA
+VIS PESARO
+TARANTO
+PATERNO
+L'AQUILA
+MANTOVA
+CREMONESE
+SUDTIROL
+VALENZANA
+PIZZIGHETTONE
+MONZA
+MEDA
+PRO SESTO
+BIELLESE
+IVREA
+MONTICHIARI
+OLBIA
+GROSSETO
+SANGIOVANNESE
+GUALDO
+SAN MARINO
+GUBBIO
+FANO
+RAVENNA
+FORLI
+CASTELNUOVO
+CUOIOPELLI
+TOLENTINO
+IMOLESE
+FROSINONE
+BRINDISI
+GIUGLIANO
+PALMESE
+MELFI
+VITTORIA
+FID. ANDRIA
+IGEA VIRTUS B
+LATINA
+NOCERINA
+ISERNIA
+GELA
+
+# these teams take part in the european cups.
+
+# from each section 1 - 15 a team is taken randomly to participate
+# in the champions' league and the cup winners' cup, respectively.
+
+# here you just have to replace each team that's already in the list
+# above (after you edited it) by an italian one.
+
+# section 16 contains various european teams
+1
+Bayern München
+Borussia Dortmund
+Schalke 04
+Bayer Leverkusen
+SC Freiburg
+Hertha BSC Berlin
+
+2
+Boavista Porto
+FC Porto
+Sporting Lisboa
+Benfica Lisboa
+
+3
+NANTES
+LILLE
+LYON
+BORDEAUX
+PARIS SG
+MONACO
+MARSEILLE
+AUXERRE
+STRASBOURG
+
+4
+Barcelona
+Real Madrid
+Atletico Madrid
+Deportivo
+Mallorca
+Valencia
+Celta
+Real Zaragoza
+Real Sociedad
+
+5
+Galatasaray
+Fenerbahce
+Besiktas
+Trabzonspor
+
+6
+Manchester United
+Arsenal
+Chelsea
+Tottenham Hotspur
+Liverpool
+Leeds United
+Newcastle United
+Birmingham City
+
+7
+Panathinaikos
+Olymp. Piraeus
+AEK Athens
+PAOK Tsaloniki
+Olymp. Nicosia
+
+8
+Sparta Praha
+Slavia Praha
+Slov. Bratislava
+
+9
+Midlothian
+Rangers
+Celtic
+Hibernian
+Kilmarnock
+
+10
+Feyenoord
+PSV Eindhoven
+Roda Kerkrade
+Ajax
+Twente Enschede
+Utrecht
+
+11
+Lok. Moscow
+Spartak Moscow
+Dinamo Moscow
+Torp. Moscow
+
+12
+Anderlecht
+Club Brugge
+Westerlo
+Standard Liege
+Racing Genk
+
+13
+Dynamo Kyiv
+CSCA Kyiv
+Donetsk
+
+14
+Brondby
+Halmstad
+Kobenhavn
+Odense BK
+Aarhus
+Aalborg
+
+15
+Xamax Neuchatel
+Aarau
+YB Bern
+Grasshoppers
+Servette
+St Gallen
+FC Basel
+
+16
+Austria Wien
+Grazer AK
+SV Pasching
+Sturm Graz
+Amica Wronki
+Wisla Krakov
+Banik Ostrava
+FC Brno
+Malmo IF
+IFK Goteborg
+Halmstads BK
+Hammarby
+RS Belgrad
+Dinamo Bucuresti
+Rapid Bucuresti
+Steaua
+Dinamo Zagreb
+Hajduk Split
+Rapid Wien
+Tirol
+Rosenborg
+Litex
+Hap. Tel-Aviv
+Slov. Liberec
+CSKA Sofia
+Levski
+Helsingborg
+Legia
+Macc. Tel-Aviv
+Osijek
+Pribram
+Maritimo
+Midtjylland
+Obilic
+Olimp. Ljubljana
+Partizan
+Pol. Warszawa
+Ruzomberok
+Sigma Olomouc
+Silkeborg
+
+# this section contains the league and cup names.
+# the '1000' is important, it tells the reading function to stop here
+# when reading the names for the league teams
+1000
+
+# leagues 1 to 5
+Serie A
+Serie B
+Serie C 1
+Serie C 2
+Serie C 3
+
+# cups
+Champions' League
+Coppa delle Coppe
+Coppa UEFA
+Coppa Italia
+Coppa di Lega
+Supercoppa Italiana
+Supercoppa Europea
+Promotion Games
