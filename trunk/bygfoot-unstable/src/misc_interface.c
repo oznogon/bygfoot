@@ -61,6 +61,8 @@ create_team_selection (void)
   GtkWidget *image52;
   GtkWidget *radiobutton_country3;
   GtkWidget *image51;
+  GtkWidget *radiobutton_country9;
+  GtkWidget *image59;
   GtkWidget *hbox49;
   GtkWidget *radiobutton_country4;
   GtkWidget *image50;
@@ -283,6 +285,17 @@ create_team_selection (void)
   gtk_widget_show (image51);
   gtk_container_add (GTK_CONTAINER (radiobutton_country3), image51);
 
+  radiobutton_country9 = gtk_radio_button_new (NULL);
+  gtk_widget_show (radiobutton_country9);
+  gtk_box_pack_start (GTK_BOX (hbox48), radiobutton_country9, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, radiobutton_country9, _("Hungary"), NULL);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton_country9), radiobutton_country0_group);
+  radiobutton_country0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton_country9));
+
+  image59 = create_pixmap (team_selection, "flag_hu.png");
+  gtk_widget_show (image59);
+  gtk_container_add (GTK_CONTAINER (radiobutton_country9), image59);
+
   hbox49 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox49);
   gtk_box_pack_start (GTK_BOX (vbox36), hbox49, TRUE, TRUE, 0);
@@ -334,6 +347,7 @@ create_team_selection (void)
   radiobutton_country8 = gtk_radio_button_new (NULL);
   gtk_widget_show (radiobutton_country8);
   gtk_box_pack_start (GTK_BOX (hbox49), radiobutton_country8, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, radiobutton_country8, _("Mexico"), NULL);
   gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton_country8), radiobutton_country0_group);
   radiobutton_country0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton_country8));
 
@@ -528,6 +542,9 @@ create_team_selection (void)
   g_signal_connect ((gpointer) radiobutton_country3, "toggled",
                     G_CALLBACK (on_radiobutton_country_toggled),
                     NULL);
+  g_signal_connect ((gpointer) radiobutton_country9, "toggled",
+                    G_CALLBACK (on_radiobutton_country_toggled),
+                    NULL);
   g_signal_connect ((gpointer) radiobutton_country4, "toggled",
                     G_CALLBACK (on_radiobutton_country_toggled),
                     NULL);
@@ -596,6 +613,8 @@ create_team_selection (void)
   GLADE_HOOKUP_OBJECT (team_selection, image52, "image52");
   GLADE_HOOKUP_OBJECT (team_selection, radiobutton_country3, "radiobutton_country3");
   GLADE_HOOKUP_OBJECT (team_selection, image51, "image51");
+  GLADE_HOOKUP_OBJECT (team_selection, radiobutton_country9, "radiobutton_country9");
+  GLADE_HOOKUP_OBJECT (team_selection, image59, "image59");
   GLADE_HOOKUP_OBJECT (team_selection, hbox49, "hbox49");
   GLADE_HOOKUP_OBJECT (team_selection, radiobutton_country4, "radiobutton_country4");
   GLADE_HOOKUP_OBJECT (team_selection, image50, "image50");
@@ -923,7 +942,7 @@ create_fsel_window (void)
 
   accel_group = gtk_accel_group_new ();
 
-  fsel_window = gtk_file_selection_new (_("Datei auswahlen"));
+  fsel_window = gtk_file_selection_new (_("Choose file"));
   gtk_container_set_border_width (GTK_CONTAINER (fsel_window), 10);
   gtk_window_set_position (GTK_WINDOW (fsel_window), GTK_WIN_POS_CENTER);
 
