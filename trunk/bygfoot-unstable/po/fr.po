@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: bygfoot 1.7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-10-28 22:05+0200\n"
-"PO-Revision-Date: 2004-10-28 23:20+0200\n"
+"PO-Revision-Date: 2004-11-01 20:37+0100\n"
 "Last-Translator: Arnaud LE ROUZIC <arnaud.lerouzic@oreka.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -21,11 +21,11 @@ msgstr ""
 #: src/interface.c:1104 src/interface.c:1206 src/interface.c:1228
 #: src/interface.c:1263 src/interface.c:1298
 msgid "   "
-msgstr "..."
+msgstr "   "
 
 #: src/options_interface.c:369
 msgid "       "
-msgstr "......."
+msgstr "      "
 
 #: src/options_interface.c:352
 msgid "       Live game duration factor   "
@@ -50,7 +50,7 @@ msgstr "Semaine"
 
 #: src/options_interface.c:406
 msgid " used in the main windows"
-msgstr " utilisé dans la fenêtre principale"
+msgstr " utilisée dans la fenêtre principale"
 
 #: src/misc_interface.c:708 src/misc_interface.c:718 src/misc_interface.c:728
 msgid "-1"
@@ -123,7 +123,7 @@ msgstr "Attribut"
 
 #: src/options_interface.c:526
 msgid "Autosave every "
-msgstr "Sauvegarde automatique tous les"
+msgstr "Sauvegarde automatique toutes les"
 
 #: src/interface.c:694
 msgid "Av. skills:  "
@@ -228,7 +228,7 @@ msgstr ""
 
 #: src/options_interface.c:415
 msgid "Change team name "
-msgstr "Modifier le nom de l'équipe"
+msgstr "Modifier le nom de l'équipe "
 
 #: src/editor_interface.c:296
 msgid "Change team name to  "
@@ -356,7 +356,7 @@ msgstr "Talent estimé entre "
 
 #: src/options_interface.c:705
 msgid "Estimated value less than"
-msgstr "Talent estimé inférieur à"
+msgstr "Valeur estimée inférieure à"
 
 #: src/editor_interface.c:761
 msgid "Export"
@@ -369,7 +369,7 @@ msgstr "Exporter l'équipe actuelle dans un fichier (qui sera écrasé s'il exis
 
 #: src/interface.c:528
 msgid "Figures"
-msgstr "Figures"
+msgstr "Prochain match"
 
 #: src/editor_interface.c:238
 msgid ""
@@ -451,7 +451,7 @@ msgstr "France"
 
 #: src/options_interface.c:987
 msgid "Games"
-msgstr "Jeux"
+msgstr "Matchs"
 
 #: src/misc_interface.c:256
 msgid "Germany"
@@ -522,32 +522,39 @@ msgid ""
 "If checked, messages are shown instead of popups when possible (ie. when you "
 "don't have to make an 'OK/Cancel'-type of decision."
 msgstr ""
+"Si activé, les messages sont affichés dans le cadre correspondant au lieu d'ouvrir une "
+"nouvelle fenêtre (sauf si le message a été désactivé par ailleurs)"
 
 #: src/misc_interface.c:394
 msgid ""
 "If you check this, only the player names and the team structures are loaded "
 "from the definition file, values like skill or age are generated randomly"
 msgstr ""
+"Option activée : seuls les noms des joueurs et les équipes sont chargées "
+"à partir du fichier de définition, les valeurs comme l'efficacité ou l'âge sont aléatoires"
 
 #: src/misc_interface.c:388
 msgid ""
 "If you check this, the game generates all players randomly and won't read "
 "the file with team definitions"
 msgstr ""
+"Option activée : le jeu génère tous les joueurs au hasard et ne lit pas le "
+"fichier de définition des équipes"
 
 #: src/options_interface.c:520
 msgid "If you uncheck this, clicking on 'Save' will pop up a 'Save as' window"
-msgstr ""
+msgstr "Option activée : un clic sur \"Sauvegarder\" ouvre une fenêtre \"Enregistrer sous\""
 
 #: src/editor_interface.c:738
 msgid "Import"
-msgstr ""
+msgstr "Import"
 
 #: src/editor_interface.c:724
 msgid ""
 "Import teams from a definition file (the existing definition file will be "
 "expanded)"
 msgstr ""
+"Importer les équipes à partir d'un fichier de définition"
 
 #: src/interface.c:1129
 msgid "Increase capacity"
@@ -559,11 +566,11 @@ msgstr "Augmenter la sécurité"
 
 #: src/options_interface.c:866
 msgid "International"
-msgstr ""
+msgstr "Inernational"
 
 #: src/misc_interface.c:267
 msgid "Italy"
-msgstr ""
+msgstr "Italie"
 
 #: src/interface.c:442
 msgid "Job offers"
@@ -571,7 +578,7 @@ msgstr "Offres d'emploi"
 
 #: src/misc_interface.c:491
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: src/options_interface.c:645 src/options_interface.c:718
 #: src/options_interface.c:1041
@@ -608,7 +615,7 @@ msgstr "Match en direct"
 
 #: src/options_interface.c:593
 msgid "Load & Save"
-msgstr ""
+msgstr "Charger et Sauvegarder"
 
 #: src/misc_interface.c:508
 msgid "Load game"
@@ -620,43 +627,43 @@ msgstr "Charger (L ou Ctrl - O)"
 
 #: src/misc_interface.c:396
 msgid "Load my team from definitions file"
-msgstr ""
+msgstr "Charger les équipes à partir du fichier de définition"
 
 #: src/misc_interface.c:390
 msgid "Load only names from team definition file"
-msgstr ""
+msgstr "Charger seulement les équipes à partir du fichier de définition"
 
 #: src/options_interface.c:503
 msgid "Look & Feel"
-msgstr ""
+msgstr "Apparence "
 
 #: src/options_interface.c:1267
 msgid "Maximal history length"
-msgstr ""
+msgstr "Taille maximale de l'historique"
 
 #: src/options_interface.c:439
 msgid "Messages"
-msgstr ""
+msgstr "Messages"
 
 #: src/options_interface.c:454
 msgid "Messages just appear in the message window"
-msgstr ""
+msgstr "Les messages apparaîssent juste dans la fenêtre des messages"
 
 #: src/options_interface.c:447
 msgid "Messages slide into the message window from the right"
-msgstr ""
+msgstr "Les messages glissent dans la fenêtre des messages de droite à gauche"
 
 #: src/options_interface.c:809
 msgid "Midfielder"
-msgstr ""
+msgstr "Milieu de terrain"
 
 #: src/options_interface.c:1388
 msgid "Misc"
-msgstr ""
+msgstr "Divers"
 
 #: src/options_interface.c:1383
 msgid "Miscellaneous options"
-msgstr ""
+msgstr "Options diverses"
 
 #: src/interface.c:669
 msgid "Money "
@@ -664,19 +671,19 @@ msgstr "Finances"
 
 #: src/editor_interface.c:611
 msgid "Move player down (Ctrl-Down)"
-msgstr ""
+msgstr "Faire descendre le joueur (Ctrl-Bas)"
 
 #: src/editor_interface.c:585
 msgid "Move player up (Ctrl-Up)"
-msgstr ""
+msgstr "Faire monter le joueur (Ctrl-Haut)"
 
 #: src/options_interface.c:444
 msgid "Moving"
-msgstr ""
+msgstr "Mobiles"
 
 #: src/options_interface.c:331
 msgid "My games plus preview"
-msgstr ""
+msgstr "Prévisualisation des matchs"
 
 #: src/options_interface.c:580
 msgid ""
@@ -684,10 +691,14 @@ msgid ""
 "it an appropriate extension. If you save a file 'save.xml.bz2', Bygfoot will "
 "save in XML format and compress with bzip2 -- no matter what the options say."
 msgstr ""
+"NOTE: Vous pouvez influencer le format de sauvegarde et l'algorithme de "
+"compression en saisissant l'extension appropriée. Si votre fichier s'appelle 'save.xml.bz2', "
+"Bygfoot va le sauvegarder au format XML et le compresser en bz2, quelles que soient "
+"les options."
 
 #: src/options_interface.c:951 src/editor_interface.c:420
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: src/interface.c:1344
 msgid "Nation. Cup 1"
@@ -699,7 +710,7 @@ msgstr "Coupe Nat. 2"
 
 #: src/options_interface.c:895
 msgid "New week"
-msgstr ""
+msgstr "Nouvelle semaine"
 
 #: src/interface.c:1069
 msgid "Next (W)"
@@ -707,7 +718,7 @@ msgstr "Prochain (W)"
 
 #: src/options_interface.c:461
 msgid "No messages"
-msgstr ""
+msgstr "Pas de messages"
 
 #: src/options_interface.c:561
 msgid "None"
@@ -722,19 +733,21 @@ msgid ""
 "Notify me whenever a player appears on the transfer list who fulfills my "
 "conditions:"
 msgstr ""
+"Prévenir quand un nouveau joueur correspondant aux conditions apparaît sur la "
+"liste de transfert:"
 
 #: src/editor_interface.c:404
 msgid "Nr"
-msgstr ""
+msgstr "Nbr"
 
 #: src/options_interface.c:1428 src/misc_interface.c:456
 #: src/misc_interface.c:792
 msgid "OK"
-msgstr ""
+msgstr "Oui"
 
 #: src/options_interface.c:458
 msgid "Off"
-msgstr ""
+msgstr "Désactivés"
 
 #: src/options_interface.c:1238
 msgid "Option"
@@ -750,7 +763,7 @@ msgstr "Options de la liste de transferts"
 
 #: src/options_interface.c:588
 msgid "Options for loading and saving games"
-msgstr ""
+msgstr "Options de sauvegarde et de chargement"
 
 #: src/interface.c:454
 msgid "Overwrite"
@@ -766,19 +779,19 @@ msgstr "Rembourser un prêt"
 
 #: src/misc_interface.c:153
 msgid "Play normal league games and cups"
-msgstr ""
+msgstr "Jouer les championnats normaux et les coupes"
 
 #: src/misc_interface.c:193
 msgid "Play only in Champions' League / Copa Libertadores"
-msgstr ""
+msgstr "Jouer seulement la ligue des champions ou la Copa Libertadores"
 
 #: src/misc_interface.c:201
 msgid "Play only in Cup Winners' Cup / Copa Conmebol"
-msgstr ""
+msgstr "Jouer seulement la coupe des vainqueurs de coupes ou la Copa Conmebol"
 
 #: src/misc_interface.c:209
 msgid "Play only in UEFA Cup / Copa Sul-Americana"
-msgstr ""
+msgstr "Jouer seulement la coupe UEFA ou la Copa Sul-Americana"
 
 #: src/interface.c:714
 msgid "Player"
@@ -794,7 +807,7 @@ msgstr "Attributs des joueurs"
 
 #: src/options_interface.c:1215
 msgid "Player attributes that are shown in the two player lists"
-msgstr ""
+msgstr "Les attributs des joueurs sont affichés sur deux pages"
 
 #: src/options_interface.c:1328
 msgid "Player histories"
@@ -802,11 +815,11 @@ msgstr "Historique du joueur"
 
 #: src/interface.c:814 src/options_interface.c:1056
 msgid "Player list 1"
-msgstr "Liste des joueurs 1"
+msgstr "Page 1"
 
 #: src/interface.c:823 src/options_interface.c:1140
 msgid "Player list 2"
-msgstr "Liste des joueurs 2"
+msgstr "Page 2"
 
 #: src/interface.c:836
 msgid "Playing style"
@@ -814,19 +827,19 @@ msgstr "Style de jeu"
 
 #: src/misc_interface.c:326
 msgid "Poland"
-msgstr ""
+msgstr "Pologue"
 
 #: src/options_interface.c:620 src/options_interface.c:963
 msgid "Position"
-msgstr ""
+msgstr "Position"
 
 #: src/options_interface.c:712
 msgid "Positions"
-msgstr ""
+msgstr "Positions "
 
 #: src/options_interface.c:465
 msgid "Prefer messages to popups"
-msgstr ""
+msgstr "Préférer les messages aux fenêtres \"pop-up\""
 
 #: src/interface.c:639
 msgid "Premier Division"
@@ -852,7 +865,7 @@ msgstr "Options rapides"
 
 #: src/interface.c:433
 msgid "QuickOpt"
-msgstr "OptRap"
+msgstr "Options"
 
 #: src/editor_interface.c:689
 msgid "Quit"
@@ -860,7 +873,7 @@ msgstr "Quitter"
 
 #: src/editor_interface.c:672
 msgid "Quit (Esc)"
-msgstr ""
+msgstr "Quitter (Ech)"
 
 #: src/interface.c:401
 msgid "Quit (Q or Ctrl - Q)"
@@ -868,7 +881,7 @@ msgstr "Quitter (Q ou Ctrl - Q)"
 
 #: src/options_interface.c:907
 msgid "Quit when not saved"
-msgstr ""
+msgstr "Quitter sans sauvegarder"
 
 #: src/interface.c:653
 msgid "Rank "
@@ -876,7 +889,7 @@ msgstr "Rang"
 
 #: src/options_interface.c:484
 msgid "Rearrange / "
-msgstr ""
+msgstr "Réarranger / "
 
 #: src/interface.c:917
 msgid ""
@@ -899,23 +912,23 @@ msgstr ""
 #: src/options_interface.c:1411 src/misc_interface.c:439
 #: src/misc_interface.c:775 src/misc_interface.c:933
 msgid "Return"
-msgstr ""
+msgstr "Revenir"
 
 #: src/misc_interface.c:304
 msgid "Romania"
-msgstr ""
+msgstr "Roumanie"
 
 #: src/editor_interface.c:715
 msgid "Save"
-msgstr ""
+msgstr "Sauvegarder"
 
 #: src/editor_interface.c:807
 msgid "Save / Play"
-msgstr ""
+msgstr "Sauvearder / Jouer"
 
 #: src/editor_interface.c:698
 msgid "Save current team to file (Ctrl-S)"
-msgstr ""
+msgstr "Sauvegarder l'équipe courrante dans un fichier (Ctrl-S)"
 
 #: src/interface.c:388
 msgid "Save game (S or Ctrl - S)"
@@ -926,22 +939,24 @@ msgid ""
 "Save options to $HOME/.bygfoot/bygfoot.conf. If you start Bygfoot again, "
 "they get loaded from the file."
 msgstr ""
+"Enregistrer les options dans $HOME/.bygfoot/bygfoot.conf : au prochain "
+"redémarrage de Bygfoot, elles seront chargées à partir de ce fichier."
 
 #: src/options_interface.c:517
 msgid "Save overwrites old savegame"
-msgstr "Cette action écrasera une ancienne sauvegarde"
+msgstr "Écraser les anciennes sauvegardes"
 
 #: src/editor_interface.c:793
 msgid "Save team definition file and start Bygfoot"
-msgstr ""
+msgstr "Sauvegarder le fichier de définition des équipes et démarrer Bygfoot"
 
 #: src/options_interface.c:1402
 msgid "Save to file"
-msgstr ""
+msgstr "Enregistrer dans un fichier"
 
 #: src/options_interface.c:547
 msgid "Savegame compression:"
-msgstr ""
+msgstr "Compression de la sauvegarde :"
 
 #: src/interface.c:951
 msgid "Scout / Physio"
@@ -957,31 +972,31 @@ msgstr "Saison"
 
 #: src/misc_interface.c:366
 msgid "Select a country file"
-msgstr ""
+msgstr "Choisir un fichier de pays"
 
 #: src/editor_interface.c:211 src/editor_interface.c:245
 msgid "Select file"
-msgstr ""
+msgstr "Choisir un fichier"
 
 #: src/misc_interface.c:976
 msgid "Select font"
-msgstr ""
+msgstr "Choisir une police"
 
 #: src/editor_interface.c:517
 msgid "Select next player (Ctrl-Right)"
-msgstr ""
+msgstr "Choisir le joueur suivant (Ctrl-Droite)"
 
 #: src/editor_interface.c:504
 msgid "Select previous player (Ctrl-Left)"
-msgstr ""
+msgstr "Choisir le joueur précédent (Ctrl-Gauche)"
 
 #: src/misc_interface.c:118
 msgid "Select team and country"
-msgstr ""
+msgstr "Choisir une équipe et un pays"
 
 #: src/options_interface.c:545
 msgid "Set default savegame format to XML (instead of binary)."
-msgstr ""
+msgstr "Sélectionner XML comme format de sauvegarde par défaut"
 
 #: src/interface.c:767
 msgid "Shoots penalties"
@@ -993,17 +1008,19 @@ msgstr "Montrer les matchs en direct"
 
 #: src/options_interface.c:899
 msgid "Show a warning before beginning a new week"
-msgstr ""
+msgstr "Afficher un avertissement quand une nouvelle semaine commence"
 
 #: src/options_interface.c:911
 msgid "Show a warning if I want to quit with a game that isn't saved"
-msgstr ""
+msgstr "Afficher un avertissement quand le jeu est quitté sans être sauvegardé"
 
 #: src/options_interface.c:905
 msgid ""
 "Show a warning when injured or banned players are in the team when beginning "
 "a new week"
 msgstr ""
+"Afficher un aversissement quand des joueurs blessés ou suspendus sont "
+"dans l'équipe au début d'une nouvelle semaine"
 
 #: src/editor_interface.c:646
 msgid "Show editor help (F1)"
@@ -1022,7 +1039,7 @@ msgstr "Montrer les informations complètes du joueur (clic droit)"
 
 #: src/options_interface.c:492
 msgid "Show fitness colors"
-msgstr ""
+msgstr "Afficher la forme des joueurs en couleurs"
 
 #: src/interface.c:1237
 msgid "Show fixtures (F4)"
@@ -1066,12 +1083,13 @@ msgstr "Montrer les grilles de résultats (F5)"
 
 #: src/misc_interface.c:1085
 msgid "Show tendency bar"
-msgstr ""
+msgstr "Afficher la barre de tendance"
 
 #: src/options_interface.c:327
 msgid ""
 "Show the results of all games in the league / cups my team participates in"
 msgstr ""
+"Affichier les résultats des matchs de championnat et de coupe quand mon équipe y participe"
 
 #: src/interface.c:483
 msgid "Show transferlist (T)"
@@ -1080,15 +1098,15 @@ msgstr "Montrer la liste des transferts (T)"
 #: src/options_interface.c:627 src/options_interface.c:975
 #: src/editor_interface.c:435
 msgid "Skill"
-msgstr ""
+msgstr "Efficacité"
 
 #: src/options_interface.c:684
 msgid "Skill between "
-msgstr ""
+msgstr "Efficacité entre "
 
 #: src/options_interface.c:1376
 msgid "Skip weeks when my team doesn't play"
-msgstr ""
+msgstr "Sauter les semaines quand mon équipe ne joue pas"
 
 #: src/options_interface.c:611
 msgid "Sort transfer list by"
@@ -1096,7 +1114,7 @@ msgstr "Trier la liste de transferts par"
 
 #: src/misc_interface.c:293
 msgid "Spain"
-msgstr ""
+msgstr "Espagne"
 
 #: src/interface.c:334
 msgid "Start Bygfoot Online Update"
@@ -1112,19 +1130,19 @@ msgstr "Démarrage de Bygfoot sans sauvegarder les modifications"
 
 #: src/misc_interface.c:144
 msgid "Start in"
-msgstr ""
+msgstr "Commencer dans le"
 
 #: src/options_interface.c:451
 msgid "Static"
-msgstr ""
+msgstr "Statiques"
 
 #: src/options_interface.c:999
 msgid "Status"
-msgstr ""
+msgstr "Statut"
 
 #: src/options_interface.c:488
 msgid "Swap  adapts team structure"
-msgstr ""
+msgstr "La formation de l'équipe s'adapte lors des changements"
 
 #: src/editor_interface.c:554
 msgid "Swap players"
@@ -1132,11 +1150,11 @@ msgstr "Échanger les joueurs"
 
 #: src/editor_interface.c:539
 msgid "Swap two players   "
-msgstr ""
+msgstr "Echange deux joueurs   "
 
 #: src/interface.c:536 src/interface.c:1289
 msgid "Tables"
-msgstr "Grilles"
+msgstr "Classements"
 
 #: src/editor_interface.c:450
 msgid "Talent"
@@ -1144,7 +1162,7 @@ msgstr "Talent"
 
 #: src/options_interface.c:1035
 msgid "Team"
-msgstr ""
+msgstr "Équipe"
 
 #: src/interface.c:363
 msgid "Team Editor Help"
@@ -1156,11 +1174,11 @@ msgstr "Formation"
 
 #: src/options_interface.c:1357
 msgid "Team and player histories"
-msgstr ""
+msgstr "Hitorique des joueurs et de l'équipe"
 
 #: src/editor_interface.c:197
 msgid "Team definitions file"
-msgstr ""
+msgstr "Fichier de définition des équipes "
 
 #: src/options_interface.c:1290
 msgid "Team histories"
@@ -1172,23 +1190,27 @@ msgstr "Formations"
 
 #: src/editor_interface.c:284
 msgid "Teams found in the country file. Choose one to edit it."
-msgstr ""
+msgstr "Liste des équipes trouvées dans le fichier des équipes. Choisir l'une d'entre elles pour l'éditer"
 
 #: src/editor_interface.c:264
 msgid "Teams in the country file"
-msgstr ""
+msgstr "Équipes dans le fichier du pays"
 
 #: src/editor_interface.c:362
 msgid ""
 "The average skills of the five leagues in the first season are: 8.0, 7.0, "
 "6.0, 5.0 and 4.0."
 msgstr ""
+"L'efficacité moyenne dans les cinq championnats de la première saison sont :"
+"8.0, 7.0, 6.0, 5.0 et 4.0."
 
 #: src/editor_interface.c:205
 msgid ""
 "The file team definitions are read from and written to. Default is $HOME/."
 "bygfoot/text_files/teams."
 msgstr ""
+"Le fichier de définition des équipes est lu et sauvegardé dans. (par défaut : "
+"/$HOME/.bygfoot/text_files/teams."
 
 #: src/interface.c:770
 msgid ""
@@ -1201,28 +1223,32 @@ msgid ""
 "The tendency bar shows in the live game window which team is closer to "
 "scoring a goal"
 msgstr ""
+"La barre de tendance affichée au cours des matchs en direct montre "
+"quelle équipe est la plus proche de marquer un but"
 
 #: src/editor_interface.c:327
 msgid "These digits must add up to 10."
-msgstr ""
+msgstr "Ces chiffres doivent être additionnés à 10"
 
 #: src/editor_interface.c:335
 msgid "These digits must add up to 8."
-msgstr ""
+msgstr "Ces chiffres doivent être additionnés à 8."
 
 #: src/options_interface.c:387
 msgid ""
 "This affects the two windows in the main screen, the help window and the "
 "live game window"
 msgstr ""
+"Affecte les deux fenêtres dans l'écran principal, la fenpetre d'aide et la fenêtre "
+"de jeu en direct"
 
 #: src/options_interface.c:361
 msgid "This can be between -100 and 100"
-msgstr ""
+msgstr "Valeur entre -100 et 100"
 
 #: src/misc_interface.c:159
 msgid "Top league"
-msgstr ""
+msgstr "Meilleur championnat "
 
 #: src/interface.c:1174
 msgid "Transfer fee"
@@ -1250,6 +1276,9 @@ msgid ""
 "and want to keep a close eye on the transfer list.\n"
 "There's also a drawback: player wages get deduced each week."
 msgstr ""
+"Désactiver cette option est particulièrement utile quand vous ne jouez qu'une "
+"coupe internationale et que vous désirez garder un oeil sur la liste de transfert.\n"
+"Il y a une contrepartie : les joueurs doivent être payés toutes les semaines."
 
 #: src/interface.c:930
 msgid "Undo! (Y / Ctrl-Z)"
@@ -1257,23 +1286,23 @@ msgstr "Annuler (Y / Ctrl-Z)"
 
 #: src/options_interface.c:901
 msgid "Unfit players in the team"
-msgstr ""
+msgstr "Joueurs de l'équipe fatigués"
 
 #: src/editor_interface.c:602
 msgid "Up"
-msgstr ""
+msgstr "Haut"
 
 #: src/options_interface.c:1257
 msgid "Update interval (in weeks)"
-msgstr ""
+msgstr "Mettre à jour l'intervalle (en semaines)"
 
 #: src/editor_interface.c:491
 msgid "Update player information"
-msgstr ""
+msgstr "Mettre à jour les informations du joueur"
 
 #: src/options_interface.c:1023
 msgid "Value"
-msgstr ""
+msgstr "Valeur"
 
 #: src/interface.c:1190 src/options_interface.c:1029
 msgid "Wage"
@@ -1282,21 +1311,22 @@ msgstr "Salaire"
 #: src/options_interface.c:1275 src/options_interface.c:1317
 #: src/options_interface.c:1355
 msgid "Whether each season begins with an empty history list."
-msgstr ""
+msgstr "Est-ce que chaque saison commence avec un historique vide"
 
 #: src/options_interface.c:495
 msgid "Whether fitness percentage is shown in green and red shades"
-msgstr ""
+msgstr "Est-ce que le porucentage de forme est affiché en vert et rouge"
 
 #: src/options_interface.c:473
 msgid "Whether or not other teams offer you a job when you are successful"
-msgstr ""
+msgstr "Est-ce que les autres équipes vous proposent un emploi quand vous gagnez"
 
 #: src/options_interface.c:478
 msgid ""
 "Whether or not pressing the rearrange button or swapping two players adapts "
 "the team structure automatically"
 msgstr ""
+"Est-ce que modifier les joueurs dans l'équipe adapte la formation"
 
 #: src/options_interface.c:557
 msgid ""
@@ -1304,23 +1334,28 @@ msgid ""
 "savegames can lead to a lot longer save / load times (especially if "
 "background compression is disabled)."
 msgstr ""
+"Est-ce que la compression des fichiers de sauvegarde est activée, et quel algorithme "
+"est utilisé. La compression peut ralentir l'enregistrement et le chargement, en particulier "
+"si la compression en arrière-plan est désactivée."
 
 #: src/options_interface.c:913
 msgid "Whether to confirm certain actions"
-msgstr ""
+msgstr "Est-ce que certaines actions doivent être confirmées"
 
 #: src/options_interface.c:542
 msgid "XML save / load"
-msgstr ""
+msgstr "Sauvegarde et chargement XML"
 
 #: src/options_interface.c:1017
 msgid "Yellow cards"
-msgstr ""
+msgstr "Cartons jaunes"
 
 #: src/misc_interface.c:412
 msgid ""
 "You can start the editor from the commandline with 'bygfoot -e' or '--editor'"
 msgstr ""
+"Vous pouvez démarrer l'éditeur en ligne de commande de la façon suivante : bygfoot -e ou"
+"'--editor'"
 
 #: src/interface.c:337
 msgid ""
