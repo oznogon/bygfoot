@@ -155,7 +155,6 @@ show_team_list(GtkWidget *treeview, gint european)
     selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview));
     gtk_tree_selection_select_path(selection,
 				   gtk_tree_path_new_from_string("0"));
-    
     g_object_unref(team_list);
 }
 

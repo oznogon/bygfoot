@@ -40,14 +40,20 @@ void
 free_histories(void)
 {
     gint i, j;
-
+    
     for(i=0;i<175;i++)
 	if(i != 114 && i != 130)
 	{
 	    if(teams[i].history != NULL)
+	    {
 		g_array_free(teams[i].history, TRUE);
+		teams[i].history = NULL;
+	    }
 	    for(j=0;j<20;j++)
 		if(teams[i].players[j].history != NULL)
+		{
 		    g_array_free(teams[i].players[j].history, TRUE);
+		    teams[i].players[j].history = NULL;
+		}
 	}
 }

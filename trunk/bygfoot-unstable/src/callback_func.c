@@ -929,6 +929,7 @@ callback_new_week(gboolean calculate)
 	while(!my_team_played(week) &&
 	      !my_team_played(week - 1) && week < 49)
 	{
+	    update_stadium();
 	    process_week_games(week);
 	    update_ranks();
 	    update_fixtures();

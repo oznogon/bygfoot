@@ -32,13 +32,13 @@ on_menu_new_activate                   (GtkMenuItem     *menuitem,
        save_status ||
        GPOINTER_TO_INT(user_data) == 1)
     {
-	free_memory();
+	free_history();
 	start(1);
     }
     else
 	show_popup_window(
 	    _("Are you sure you want to start a new game and discard your current game?"),
-	    popup_status);    
+	    popup_status);
 }
 
 
