@@ -220,8 +220,7 @@ sort_column(GtkTreeModel *model,
  team_ids and player_numbers in ids[][];
  'attrib' determines which columns are shown */
 GtkTreeModel*
-create_player_list(gint ids[][2], gint max,
-				 gint separator,
+create_player_list(gint ids[][2], gint max, gint separator,
 				 gint *attrib, gint type)
 {
     gint i, j, k;
@@ -286,7 +285,6 @@ create_player_list(gint ids[][2], gint max,
 		k++;
 	    }
     }
-
 
     return GTK_TREE_MODEL(liststore);
 }
@@ -379,6 +377,28 @@ set_up_player_list (GtkWidget *player_list, gint *attrib, gint type)
 	}
 }
 
+void
+show_player_list(GtkWidget *treeview, gint ids[][2], gint max,
+		 gint *attrib, gint type)
+{
+    gint separator = (type == 10) ? -1 : 11;
+    GtkTreeModel *treeview_model;
+
+    clear_treeview(treeview);
+
+    gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(treeview),
+				      TRUE);
+
+    set_up_player_list(treeview, attrib, type);
+    treeview_model = create_player_list(ids, max, separator,
+					attrib, type);
+
+    gtk_tree_view_set_model(GTK_TREE_VIEW(treeview),
+			    GTK_TREE_MODEL(treeview_model));
+    
+    g_object_unref(treeview_model);
+}
+
 /* show the players with team_ids and player_numbers stored in
    'ids' from 0 to 'max' in 'treeview'; the attributes set to 1
    in 'attrib' are shown, the rest omitted.
@@ -386,21 +406,18 @@ set_up_player_list (GtkWidget *player_list, gint *attrib, gint type)
    type = 10: the transferlist */
 void
 show_players(GtkWidget *treeview, gint ids[][2], gint max,
-		  gint *attrib, gint type)
+	     gint *attrib, gint type)
 {
     gint i;
-    gint separator = (type == 10) ? -1 : 11;
     gint ids_local[20][2];
     GtkWidget *player_list = (treeview == NULL) ?
 	lookup_widget(main_window, "player_list") :
 	treeview;
-    GtkTreeModel *player_list_model;
+    GtkWidget *player_list2 = (treeview == NULL) ?
+	lookup_widget(main_window, "player_list2") : NULL;
     gint local_attributes[ATT_DUMMY1];
+    gint local_attributes2[ATT_DUMMY1];
 
-    clear_treeview(player_list);
-
-    gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(player_list),
-				      TRUE);
     if(ids == NULL)
     {
 	max = 0;
@@ -428,14 +445,13 @@ show_players(GtkWidget *treeview, gint ids[][2], gint max,
 	for(i=0;i<ATT_DUMMY1;i++)
 	    local_attributes[i] = attrib[i];
 
-    set_up_player_list(player_list, local_attributes, type);
-    player_list_model = create_player_list(ids_local, max, 
-					   separator, local_attributes, type);
-
-    gtk_tree_view_set_model(GTK_TREE_VIEW(player_list),
-			    GTK_TREE_MODEL(player_list_model));
+    for(i=0;i<ATT_DUMMY1;i++)
+	local_attributes2[i] = options[OPT_ATT2_NAME + i];
     
-    g_object_unref(player_list_model);
+    show_player_list(player_list, ids_local, max, local_attributes, type);
+    
+    if(player_list2 != NULL)
+	show_player_list(player_list2, ids_local, max, local_attributes2, type);
 }
 
 /* set up the tree view for detailed info on a player */
@@ -687,7 +703,6 @@ set_up_fixtures(GtkWidget *treeview)
 	g_object_set(renderer, "xalign", 1 - (gfloat)i / 2,
 		     NULL);
     }
-
 }
 
 void

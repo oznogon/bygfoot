@@ -248,14 +248,14 @@ write_xml_player(player * pl, FILE * xml_file)
     fprintf(xml_file, "%s%s%d%s\n", INDENT_IN_PLAYER, "<value>", pl->value, "</value>");
     fprintf(xml_file, "%s%s%d%s\n", INDENT_IN_PLAYER, "<wage>", pl->wage, "</wage>");
     fprintf(xml_file, "%s%s%d%s\n", INDENT_IN_PLAYER, "<team_id>", pl->team_id, "</team_id>");
-    fprintf(xml_file, "%s%s%.1f%s\n", INDENT_IN_PLAYER, "<skill>", pl->skill, "</skill>");
-    fprintf(xml_file, "%s%s%.1f%s\n", INDENT_IN_PLAYER, "<cskill>", pl->cskill, "</cskill>");
-    fprintf(xml_file, "%s%s%.1f%s\n", INDENT_IN_PLAYER, "<talent>", pl->talent, "</talent>");
-    fprintf(xml_file, "%s%s%.1f%s\n", INDENT_IN_PLAYER, "<etal>", pl->etal, "</etal>");
+    fprintf(xml_file, "%s%s%.2f%s\n", INDENT_IN_PLAYER, "<skill>", pl->skill, "</skill>");
+    fprintf(xml_file, "%s%s%.2f%s\n", INDENT_IN_PLAYER, "<cskill>", pl->cskill, "</cskill>");
+    fprintf(xml_file, "%s%s%.2f%s\n", INDENT_IN_PLAYER, "<talent>", pl->talent, "</talent>");
+    fprintf(xml_file, "%s%s%.2f%s\n", INDENT_IN_PLAYER, "<etal>", pl->etal, "</etal>");
     fprintf(xml_file, "%s%s%.2f%s\n", INDENT_IN_PLAYER, "<fitness>", pl->fitness, "</fitness>");
-    fprintf(xml_file, "%s%s%.1f%s\n", INDENT_IN_PLAYER, "<last_skill_update>", pl->last_skill_update, "</last_skill_update>");
-    fprintf(xml_file, "%s%s%.1f%s\n", INDENT_IN_PLAYER, "<age>", pl->age, "</age>");
-    fprintf(xml_file, "%s%s%.1f%s\n", INDENT_IN_PLAYER, "<peak_age>", pl->peak_age, "</peak_age>");   
+    fprintf(xml_file, "%s%s%.2f%s\n", INDENT_IN_PLAYER, "<last_skill_update>", pl->last_skill_update, "</last_skill_update>");
+    fprintf(xml_file, "%s%s%.2f%s\n", INDENT_IN_PLAYER, "<age>", pl->age, "</age>");
+    fprintf(xml_file, "%s%s%.2f%s\n", INDENT_IN_PLAYER, "<peak_age>", pl->peak_age, "</peak_age>");   
     fprintf(xml_file, "%s%s\n", INDENT_PLAYER, "</player>");
 }
 

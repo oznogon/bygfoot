@@ -24,8 +24,8 @@ compress_file(gchar *file_name, gint compression, gboolean decompression);
 /* find out depending on the file ending whether the user wants to use
    compression and what save format he wants */
 void
-set_local_options_from_filename(gchar *file_name,
-				gint *local_options, gchar *local_file);
+set_local_options(gchar *file_name,
+		  gint *local_options, gchar *local_file);
 
 /* find out whether a file ends with 'ending' */
 gboolean file_has_ending(gchar *file_name, gchar *ending);

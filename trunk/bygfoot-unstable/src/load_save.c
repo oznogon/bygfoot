@@ -30,8 +30,8 @@ find_save_file(gchar *file_name)
 	return TRUE;
     }
 
-    sprintf(paths[0], "%s/%s", getenv("PWD"), file_name);
-    sprintf(paths[1], "%s/.bygfoot/saves/%s", getenv("HOME"), file_name);
+    sprintf(paths[0], "%s/.bygfoot/saves/%s", getenv("HOME"), file_name);
+    sprintf(paths[1], "%s/%s", getenv("PWD"), file_name);
 
     for(j=0;j<2;j++)
 	for(i=0;i<6;i++)
@@ -70,8 +70,8 @@ file_has_ending(gchar *file_name, gchar *ending)
 /* find out depending on the file ending whether the user wants to use
    compression and what save format he wants */
 void
-set_local_options_from_filename(gchar *file_name,
-				gint *local_options, gchar *local_file)
+set_local_options(gchar *file_name,
+		  gint *local_options, gchar *local_file)
 {
     if(file_has_ending(file_name, ".gz"))
     {
@@ -87,7 +87,7 @@ set_local_options_from_filename(gchar *file_name,
     }
     else
     {
-	local_options[0] = COMPRESSION_NONE;
+	local_options[0] = options[OPT_COMPRESSION];
 	strcpy(local_file, file_name);
     }
 
@@ -670,7 +670,7 @@ save_game(gchar *file_name)
 
     /* find out depending on the file ending whether the user wants to use
        compression and what save format he wants */
-    set_local_options_from_filename(file_name, local_options, local_file);
+    set_local_options(file_name, local_options, local_file);
 
     fil = fopen(local_file, "ab");
     if(fil == NULL)
@@ -681,14 +681,21 @@ save_game(gchar *file_name)
 
     fclose(fil);
 
-    g_string_printf(save_file, "%s", file_name);
+    g_string_printf(save_file, "%s", local_file);
 
     if(local_options[1] == OPT_XML)
 	write_xml_save(local_file);
     else
 	write_binary_save(local_file);
 
-    compress_file(local_file, local_options[0], FALSE);
+    if(local_options[0] != COMPRESSION_NONE)
+    {
+	compress_file(local_file, local_options[0], FALSE);
+	if(local_options[0] == COMPRESSION_GZIP)
+	    g_string_append_printf(save_file, ".gz");
+	else
+	    g_string_append_printf(save_file, ".bz2");
+    }
 }
 
 gboolean
@@ -701,7 +708,7 @@ load_game(gchar *file_name)
     if(!find_save_file(file_name))
 	return FALSE;
 
-    set_local_options_from_filename(file_name, local_options, local_file);
+    set_local_options(file_name, local_options, local_file);
 
     compress_file(file_name, local_options[0], TRUE);
 

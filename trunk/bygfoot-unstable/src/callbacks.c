@@ -364,6 +364,19 @@ on_player_info_button_press_event      (GtkWidget       *widget,
 }
 
 
+gboolean
+on_player_list2_button_press_event     (GtkWidget       *widget,
+                                        GdkEventButton  *event,
+                                        gpointer         user_data)
+{
+    on_player_list_button_press_event(
+	lookup_widget(main_window, "player_list"),
+	event, NULL);
+
+  return FALSE;
+}
+
+
 void
 on_button_transfer_ok_clicked          (GtkButton       *button,
                                         gpointer         user_data)

@@ -92,6 +92,7 @@ create_opt_window (void)
   GtkWidget *gzip1;
   GtkWidget *bzip1;
   GtkWidget *checkbutton_compress_bg;
+  GtkWidget *label97;
   GtkWidget *label90;
   GtkWidget *label84;
   GtkWidget *frame3;
@@ -164,20 +165,67 @@ create_opt_window (void)
   GtkWidget *label92;
   GtkWidget *label86;
   GtkWidget *frame5;
-  GtkWidget *vbox38;
-  GtkWidget *hbox28;
+  GtkWidget *vbox41;
+  GtkWidget *hbox68;
+  GtkWidget *vbox42;
+  GtkWidget *label98;
+  GtkWidget *hseparator12;
+  GtkWidget *label109;
+  GtkWidget *label110;
+  GtkWidget *label111;
+  GtkWidget *label112;
+  GtkWidget *label99;
+  GtkWidget *label100;
+  GtkWidget *label101;
+  GtkWidget *label102;
+  GtkWidget *label103;
+  GtkWidget *label104;
+  GtkWidget *label105;
+  GtkWidget *label106;
+  GtkWidget *label107;
+  GtkWidget *label108;
+  GtkWidget *label113;
+  GtkWidget *label114;
+  GtkWidget *vseparator6;
+  GtkWidget *vbox45;
+  GtkWidget *label130;
+  GtkWidget *hseparator13;
+  GtkWidget *check_att_name;
+  GtkWidget *check_att_cpos;
   GtkWidget *check_att_pos;
+  GtkWidget *check_att_cskill;
   GtkWidget *check_att_skill;
   GtkWidget *check_att_fit;
   GtkWidget *check_att_games;
   GtkWidget *check_att_goals;
   GtkWidget *check_att_status;
-  GtkWidget *hbox29;
   GtkWidget *check_att_age;
   GtkWidget *check_att_etal;
   GtkWidget *check_att_booked;
   GtkWidget *check_att_value;
   GtkWidget *check_att_wage;
+  GtkWidget *check_att_team;
+  GtkWidget *check_att_league;
+  GtkWidget *vseparator5;
+  GtkWidget *vbox46;
+  GtkWidget *label115;
+  GtkWidget *hseparator14;
+  GtkWidget *check_att2_name;
+  GtkWidget *check_att2_cpos;
+  GtkWidget *check_att2_pos;
+  GtkWidget *check_att2_cskill;
+  GtkWidget *check_att2_skill;
+  GtkWidget *check_att2_fit;
+  GtkWidget *check_att2_games;
+  GtkWidget *check_att2_goals;
+  GtkWidget *check_att2_status;
+  GtkWidget *check_att2_age;
+  GtkWidget *check_att2_etal;
+  GtkWidget *check_att2_booked;
+  GtkWidget *check_att2_value;
+  GtkWidget *check_att2_wage;
+  GtkWidget *check_att2_team;
+  GtkWidget *check_att2_league;
   GtkWidget *label93;
   GtkWidget *label87;
   GtkWidget *frame6;
@@ -415,7 +463,7 @@ create_opt_window (void)
   gtk_tooltips_set_tip (tooltips, checkbutton_fit_colors, _("Whether fitness percentage is shown in green and red shades"), NULL);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton_fit_colors), TRUE);
 
-  label89 = gtk_label_new ("");
+  label89 = gtk_label_new (_("Apperance and behaviour of the game"));
   gtk_widget_show (label89);
   gtk_frame_set_label_widget (GTK_FRAME (frame1), label89);
   gtk_label_set_justify (GTK_LABEL (label89), GTK_JUSTIFY_LEFT);
@@ -462,7 +510,7 @@ create_opt_window (void)
   checkbutton_xml = gtk_check_button_new_with_mnemonic (_("XML save / load"));
   gtk_widget_show (checkbutton_xml);
   gtk_box_pack_start (GTK_BOX (vbox35), checkbutton_xml, FALSE, FALSE, 0);
-  gtk_tooltips_set_tip (tooltips, checkbutton_xml, _("Set savegame format to XML (instead of binary). XML savegames will automatically have a '.xml' ending, and files with '.xml' ending will be loaded as XML savegames. Files with '.xml' ending will be saved automatically as XML savegames."), NULL);
+  gtk_tooltips_set_tip (tooltips, checkbutton_xml, _("Set default savegame format to XML (instead of binary)."), NULL);
 
   label96 = gtk_label_new (_("Savegame compression:"));
   gtk_widget_show (label96);
@@ -474,7 +522,7 @@ create_opt_window (void)
   gtk_widget_show (optionmenu_compression);
   gtk_box_pack_start (GTK_BOX (vbox35), optionmenu_compression, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (optionmenu_compression), 2);
-  gtk_tooltips_set_tip (tooltips, optionmenu_compression, _("Whether to compress save files and what kind of program to use. Compressing savegames can lead to a lot longer save / load times."), NULL);
+  gtk_tooltips_set_tip (tooltips, optionmenu_compression, _("Whether to compress save files and what kind of program to use. Compressing savegames can lead to a lot longer save / load times (especially if background compression is disabled)."), NULL);
 
   menu1 = gtk_menu_new ();
 
@@ -497,7 +545,15 @@ create_opt_window (void)
   gtk_box_pack_start (GTK_BOX (vbox35), checkbutton_compress_bg, FALSE, FALSE, 0);
   gtk_tooltips_set_tip (tooltips, checkbutton_compress_bg, _("Checking this speeds up saving and loading games when compression is selected, but you might experience problems."), NULL);
 
-  label90 = gtk_label_new ("");
+  label97 = gtk_label_new (_("NOTE: You can influence the format and compression of a savegame by giving it an appropriate extension. If you save a file 'save.xml.bz2', Bygfoot will save in XML format and compress with bzip2 -- no matter what the options say."));
+  gtk_widget_show (label97);
+  gtk_box_pack_start (GTK_BOX (vbox35), label97, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label97), GTK_JUSTIFY_LEFT);
+  gtk_label_set_line_wrap (GTK_LABEL (label97), TRUE);
+  gtk_misc_set_alignment (GTK_MISC (label97), 0, 0.5);
+  gtk_misc_set_padding (GTK_MISC (label97), 0, 3);
+
+  label90 = gtk_label_new (_("Options for loading and saving games"));
   gtk_widget_show (label90);
   gtk_frame_set_label_widget (GTK_FRAME (frame2), label90);
   gtk_label_set_justify (GTK_LABEL (label90), GTK_JUSTIFY_LEFT);
@@ -763,7 +819,7 @@ create_opt_window (void)
 
   hbox53 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox53);
-  gtk_box_pack_start (GTK_BOX (vboxa31), hbox53, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vboxa31), hbox53, FALSE, TRUE, 0);
 
   checkbutton_notify_pos3 = gtk_check_button_new_with_mnemonic (_("Forward"));
   gtk_widget_show (checkbutton_notify_pos3);
@@ -785,7 +841,7 @@ create_opt_window (void)
   gtk_frame_set_label_widget (GTK_FRAME (frame7), label95);
   gtk_label_set_justify (GTK_LABEL (label95), GTK_JUSTIFY_LEFT);
 
-  label91 = gtk_label_new ("");
+  label91 = gtk_label_new (_("Options concering the transfer list"));
   gtk_widget_show (label91);
   gtk_frame_set_label_widget (GTK_FRAME (frame3), label91);
   gtk_label_set_justify (GTK_LABEL (label91), GTK_JUSTIFY_LEFT);
@@ -822,7 +878,7 @@ create_opt_window (void)
   gtk_container_set_border_width (GTK_CONTAINER (check_conf_quit), 2);
   gtk_tooltips_set_tip (tooltips, check_conf_quit, _("Show a warning if I want to quit with a game that isn't saved"), NULL);
 
-  label92 = gtk_label_new ("");
+  label92 = gtk_label_new (_("Whether to confirm certain actions"));
   gtk_widget_show (label92);
   gtk_frame_set_label_widget (GTK_FRAME (frame4), label92);
   gtk_label_set_justify (GTK_LABEL (label92), GTK_JUSTIFY_LEFT);
@@ -837,63 +893,294 @@ create_opt_window (void)
   gtk_container_add (GTK_CONTAINER (notebook1), frame5);
   gtk_container_set_border_width (GTK_CONTAINER (frame5), 5);
 
-  vbox38 = gtk_vbox_new (FALSE, 3);
-  gtk_widget_show (vbox38);
-  gtk_container_add (GTK_CONTAINER (frame5), vbox38);
+  vbox41 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox41);
+  gtk_container_add (GTK_CONTAINER (frame5), vbox41);
 
-  hbox28 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox28);
-  gtk_box_pack_start (GTK_BOX (vbox38), hbox28, FALSE, TRUE, 0);
+  hbox68 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox68);
+  gtk_box_pack_start (GTK_BOX (vbox41), hbox68, TRUE, TRUE, 0);
 
-  check_att_pos = gtk_check_button_new_with_mnemonic (_("Position"));
+  vbox42 = gtk_vbox_new (TRUE, 5);
+  gtk_widget_show (vbox42);
+  gtk_box_pack_start (GTK_BOX (hbox68), vbox42, FALSE, TRUE, 0);
+
+  label98 = gtk_label_new (_("Attribute"));
+  gtk_widget_show (label98);
+  gtk_box_pack_start (GTK_BOX (vbox42), label98, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label98), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label98), 1.11759e-08, 0.5);
+
+  hseparator12 = gtk_hseparator_new ();
+  gtk_widget_show (hseparator12);
+  gtk_box_pack_start (GTK_BOX (vbox42), hseparator12, FALSE, TRUE, 0);
+  gtk_widget_set_size_request (hseparator12, 1, 10);
+
+  label109 = gtk_label_new (_("Name"));
+  gtk_widget_show (label109);
+  gtk_box_pack_start (GTK_BOX (vbox42), label109, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label109), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label109), 0, 0.5);
+
+  label110 = gtk_label_new (_("Current position"));
+  gtk_widget_show (label110);
+  gtk_box_pack_start (GTK_BOX (vbox42), label110, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label110), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label110), 0, 0.5);
+
+  label111 = gtk_label_new (_("Position"));
+  gtk_widget_show (label111);
+  gtk_box_pack_start (GTK_BOX (vbox42), label111, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label111), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label111), 0, 0.5);
+
+  label112 = gtk_label_new (_("Current skill"));
+  gtk_widget_show (label112);
+  gtk_box_pack_start (GTK_BOX (vbox42), label112, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label112), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label112), 0, 0.5);
+
+  label99 = gtk_label_new (_("Skill"));
+  gtk_widget_show (label99);
+  gtk_box_pack_start (GTK_BOX (vbox42), label99, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label99), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label99), 0, 0.5);
+
+  label100 = gtk_label_new (_("Fitness"));
+  gtk_widget_show (label100);
+  gtk_box_pack_start (GTK_BOX (vbox42), label100, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label100), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label100), 0, 0.5);
+
+  label101 = gtk_label_new (_("Games"));
+  gtk_widget_show (label101);
+  gtk_box_pack_start (GTK_BOX (vbox42), label101, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label101), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label101), 0, 0.5);
+
+  label102 = gtk_label_new (_("Goals"));
+  gtk_widget_show (label102);
+  gtk_box_pack_start (GTK_BOX (vbox42), label102, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label102), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label102), 0, 0.5);
+
+  label103 = gtk_label_new (_("Status"));
+  gtk_widget_show (label103);
+  gtk_box_pack_start (GTK_BOX (vbox42), label103, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label103), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label103), 0, 0.5);
+
+  label104 = gtk_label_new (_("Age"));
+  gtk_widget_show (label104);
+  gtk_box_pack_start (GTK_BOX (vbox42), label104, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label104), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label104), 0, 0.5);
+
+  label105 = gtk_label_new (_("Estimated talent"));
+  gtk_widget_show (label105);
+  gtk_box_pack_start (GTK_BOX (vbox42), label105, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label105), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label105), 0, 0.5);
+
+  label106 = gtk_label_new (_("Yellow cards"));
+  gtk_widget_show (label106);
+  gtk_box_pack_start (GTK_BOX (vbox42), label106, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label106), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label106), 0, 0.5);
+
+  label107 = gtk_label_new (_("Value"));
+  gtk_widget_show (label107);
+  gtk_box_pack_start (GTK_BOX (vbox42), label107, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label107), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label107), 0, 0.5);
+
+  label108 = gtk_label_new (_("Wage"));
+  gtk_widget_show (label108);
+  gtk_box_pack_start (GTK_BOX (vbox42), label108, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label108), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label108), 0, 0.5);
+
+  label113 = gtk_label_new (_("Team"));
+  gtk_widget_show (label113);
+  gtk_box_pack_start (GTK_BOX (vbox42), label113, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label113), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label113), 0, 0.5);
+
+  label114 = gtk_label_new (_("League"));
+  gtk_widget_show (label114);
+  gtk_box_pack_start (GTK_BOX (vbox42), label114, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label114), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label114), 0, 0.5);
+
+  vseparator6 = gtk_vseparator_new ();
+  gtk_widget_show (vseparator6);
+  gtk_box_pack_start (GTK_BOX (hbox68), vseparator6, FALSE, TRUE, 0);
+  gtk_widget_set_size_request (vseparator6, 10, 1);
+
+  vbox45 = gtk_vbox_new (TRUE, 0);
+  gtk_widget_show (vbox45);
+  gtk_box_pack_start (GTK_BOX (hbox68), vbox45, FALSE, TRUE, 0);
+
+  label130 = gtk_label_new (_("Player list 1"));
+  gtk_widget_show (label130);
+  gtk_box_pack_start (GTK_BOX (vbox45), label130, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label130), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label130), 2.23517e-10, 0.5);
+
+  hseparator13 = gtk_hseparator_new ();
+  gtk_widget_show (hseparator13);
+  gtk_box_pack_start (GTK_BOX (vbox45), hseparator13, FALSE, TRUE, 0);
+  gtk_widget_set_size_request (hseparator13, 1, 10);
+
+  check_att_name = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att_name);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_name, FALSE, FALSE, 0);
+
+  check_att_cpos = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att_cpos);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_cpos, FALSE, FALSE, 0);
+
+  check_att_pos = gtk_check_button_new_with_mnemonic ("");
   gtk_widget_show (check_att_pos);
-  gtk_box_pack_start (GTK_BOX (hbox28), check_att_pos, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_pos, FALSE, FALSE, 0);
 
-  check_att_skill = gtk_check_button_new_with_mnemonic (_("Skill"));
+  check_att_cskill = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att_cskill);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_cskill, FALSE, FALSE, 0);
+
+  check_att_skill = gtk_check_button_new_with_mnemonic ("");
   gtk_widget_show (check_att_skill);
-  gtk_box_pack_start (GTK_BOX (hbox28), check_att_skill, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_skill, FALSE, FALSE, 0);
 
-  check_att_fit = gtk_check_button_new_with_mnemonic (_("Fitness"));
+  check_att_fit = gtk_check_button_new_with_mnemonic ("");
   gtk_widget_show (check_att_fit);
-  gtk_box_pack_start (GTK_BOX (hbox28), check_att_fit, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_fit, FALSE, FALSE, 0);
 
-  check_att_games = gtk_check_button_new_with_mnemonic (_("Games"));
+  check_att_games = gtk_check_button_new_with_mnemonic ("");
   gtk_widget_show (check_att_games);
-  gtk_box_pack_start (GTK_BOX (hbox28), check_att_games, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_games, FALSE, FALSE, 0);
 
-  check_att_goals = gtk_check_button_new_with_mnemonic (_("Goals"));
+  check_att_goals = gtk_check_button_new_with_mnemonic ("");
   gtk_widget_show (check_att_goals);
-  gtk_box_pack_start (GTK_BOX (hbox28), check_att_goals, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_goals, FALSE, FALSE, 0);
 
-  check_att_status = gtk_check_button_new_with_mnemonic (_("Status"));
+  check_att_status = gtk_check_button_new_with_mnemonic ("");
   gtk_widget_show (check_att_status);
-  gtk_box_pack_start (GTK_BOX (hbox28), check_att_status, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_status, FALSE, FALSE, 0);
 
-  hbox29 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox29);
-  gtk_box_pack_start (GTK_BOX (vbox38), hbox29, FALSE, TRUE, 0);
-
-  check_att_age = gtk_check_button_new_with_mnemonic (_("Age"));
+  check_att_age = gtk_check_button_new_with_mnemonic ("");
   gtk_widget_show (check_att_age);
-  gtk_box_pack_start (GTK_BOX (hbox29), check_att_age, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_age, FALSE, FALSE, 0);
 
-  check_att_etal = gtk_check_button_new_with_mnemonic (_("Estimated talent"));
+  check_att_etal = gtk_check_button_new_with_mnemonic ("");
   gtk_widget_show (check_att_etal);
-  gtk_box_pack_start (GTK_BOX (hbox29), check_att_etal, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_etal, FALSE, FALSE, 0);
 
-  check_att_booked = gtk_check_button_new_with_mnemonic (_("Yellow cards"));
+  check_att_booked = gtk_check_button_new_with_mnemonic ("");
   gtk_widget_show (check_att_booked);
-  gtk_box_pack_start (GTK_BOX (hbox29), check_att_booked, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_booked, FALSE, FALSE, 0);
 
-  check_att_value = gtk_check_button_new_with_mnemonic (_("Value"));
+  check_att_value = gtk_check_button_new_with_mnemonic ("");
   gtk_widget_show (check_att_value);
-  gtk_box_pack_start (GTK_BOX (hbox29), check_att_value, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_value, FALSE, FALSE, 0);
 
-  check_att_wage = gtk_check_button_new_with_mnemonic (_("Wage"));
+  check_att_wage = gtk_check_button_new_with_mnemonic ("");
   gtk_widget_show (check_att_wage);
-  gtk_box_pack_start (GTK_BOX (hbox29), check_att_wage, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_wage, FALSE, FALSE, 0);
 
-  label93 = gtk_label_new ("");
+  check_att_team = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att_team);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_team, FALSE, FALSE, 0);
+
+  check_att_league = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att_league);
+  gtk_box_pack_start (GTK_BOX (vbox45), check_att_league, FALSE, FALSE, 0);
+
+  vseparator5 = gtk_vseparator_new ();
+  gtk_widget_show (vseparator5);
+  gtk_box_pack_start (GTK_BOX (hbox68), vseparator5, FALSE, TRUE, 0);
+  gtk_widget_set_size_request (vseparator5, 10, 1);
+
+  vbox46 = gtk_vbox_new (TRUE, 0);
+  gtk_widget_show (vbox46);
+  gtk_box_pack_start (GTK_BOX (hbox68), vbox46, TRUE, TRUE, 0);
+
+  label115 = gtk_label_new (_("Player list 2"));
+  gtk_widget_show (label115);
+  gtk_box_pack_start (GTK_BOX (vbox46), label115, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label115), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label115), 0, 0.5);
+
+  hseparator14 = gtk_hseparator_new ();
+  gtk_widget_show (hseparator14);
+  gtk_box_pack_start (GTK_BOX (vbox46), hseparator14, TRUE, TRUE, 0);
+  gtk_widget_set_size_request (hseparator14, 1, 10);
+
+  check_att2_name = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_name);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_name, FALSE, FALSE, 0);
+
+  check_att2_cpos = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_cpos);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_cpos, FALSE, FALSE, 0);
+
+  check_att2_pos = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_pos);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_pos, FALSE, FALSE, 0);
+
+  check_att2_cskill = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_cskill);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_cskill, FALSE, FALSE, 0);
+
+  check_att2_skill = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_skill);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_skill, FALSE, FALSE, 0);
+
+  check_att2_fit = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_fit);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_fit, FALSE, FALSE, 0);
+
+  check_att2_games = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_games);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_games, FALSE, FALSE, 0);
+
+  check_att2_goals = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_goals);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_goals, FALSE, FALSE, 0);
+
+  check_att2_status = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_status);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_status, FALSE, FALSE, 0);
+
+  check_att2_age = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_age);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_age, FALSE, FALSE, 0);
+
+  check_att2_etal = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_etal);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_etal, FALSE, FALSE, 0);
+
+  check_att2_booked = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_booked);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_booked, FALSE, FALSE, 0);
+
+  check_att2_value = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_value);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_value, FALSE, FALSE, 0);
+
+  check_att2_wage = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_wage);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_wage, FALSE, FALSE, 0);
+
+  check_att2_team = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_team);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_team, FALSE, FALSE, 0);
+
+  check_att2_league = gtk_check_button_new_with_mnemonic ("");
+  gtk_widget_show (check_att2_league);
+  gtk_box_pack_start (GTK_BOX (vbox46), check_att2_league, FALSE, FALSE, 0);
+
+  label93 = gtk_label_new (_("Player attributes that are shown in the two player lists"));
   gtk_widget_show (label93);
   gtk_frame_set_label_widget (GTK_FRAME (frame5), label93);
   gtk_label_set_justify (GTK_LABEL (label93), GTK_JUSTIFY_LEFT);
@@ -919,7 +1206,7 @@ create_opt_window (void)
   gtk_tooltips_set_tip (tooltips, checkbutton_skip_weeks, _("Unchecking this is particularly useful if you only play an international cup and want to keep a close eye on the transfer list.\nThere's also a drawback: player wages get deduced each week."), NULL);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton_skip_weeks), TRUE);
 
-  label94 = gtk_label_new ("");
+  label94 = gtk_label_new (_("Miscellaneous options"));
   gtk_widget_show (label94);
   gtk_frame_set_label_widget (GTK_FRAME (frame6), label94);
   gtk_label_set_justify (GTK_LABEL (label94), GTK_JUSTIFY_LEFT);
@@ -1080,6 +1367,7 @@ create_opt_window (void)
   GLADE_HOOKUP_OBJECT (opt_window, gzip1, "gzip1");
   GLADE_HOOKUP_OBJECT (opt_window, bzip1, "bzip1");
   GLADE_HOOKUP_OBJECT (opt_window, checkbutton_compress_bg, "checkbutton_compress_bg");
+  GLADE_HOOKUP_OBJECT (opt_window, label97, "label97");
   GLADE_HOOKUP_OBJECT (opt_window, label90, "label90");
   GLADE_HOOKUP_OBJECT (opt_window, label84, "label84");
   GLADE_HOOKUP_OBJECT (opt_window, frame3, "frame3");
@@ -1144,20 +1432,67 @@ create_opt_window (void)
   GLADE_HOOKUP_OBJECT (opt_window, label92, "label92");
   GLADE_HOOKUP_OBJECT (opt_window, label86, "label86");
   GLADE_HOOKUP_OBJECT (opt_window, frame5, "frame5");
-  GLADE_HOOKUP_OBJECT (opt_window, vbox38, "vbox38");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox28, "hbox28");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox41, "vbox41");
+  GLADE_HOOKUP_OBJECT (opt_window, hbox68, "hbox68");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox42, "vbox42");
+  GLADE_HOOKUP_OBJECT (opt_window, label98, "label98");
+  GLADE_HOOKUP_OBJECT (opt_window, hseparator12, "hseparator12");
+  GLADE_HOOKUP_OBJECT (opt_window, label109, "label109");
+  GLADE_HOOKUP_OBJECT (opt_window, label110, "label110");
+  GLADE_HOOKUP_OBJECT (opt_window, label111, "label111");
+  GLADE_HOOKUP_OBJECT (opt_window, label112, "label112");
+  GLADE_HOOKUP_OBJECT (opt_window, label99, "label99");
+  GLADE_HOOKUP_OBJECT (opt_window, label100, "label100");
+  GLADE_HOOKUP_OBJECT (opt_window, label101, "label101");
+  GLADE_HOOKUP_OBJECT (opt_window, label102, "label102");
+  GLADE_HOOKUP_OBJECT (opt_window, label103, "label103");
+  GLADE_HOOKUP_OBJECT (opt_window, label104, "label104");
+  GLADE_HOOKUP_OBJECT (opt_window, label105, "label105");
+  GLADE_HOOKUP_OBJECT (opt_window, label106, "label106");
+  GLADE_HOOKUP_OBJECT (opt_window, label107, "label107");
+  GLADE_HOOKUP_OBJECT (opt_window, label108, "label108");
+  GLADE_HOOKUP_OBJECT (opt_window, label113, "label113");
+  GLADE_HOOKUP_OBJECT (opt_window, label114, "label114");
+  GLADE_HOOKUP_OBJECT (opt_window, vseparator6, "vseparator6");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox45, "vbox45");
+  GLADE_HOOKUP_OBJECT (opt_window, label130, "label130");
+  GLADE_HOOKUP_OBJECT (opt_window, hseparator13, "hseparator13");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_name, "check_att_name");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_cpos, "check_att_cpos");
   GLADE_HOOKUP_OBJECT (opt_window, check_att_pos, "check_att_pos");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_cskill, "check_att_cskill");
   GLADE_HOOKUP_OBJECT (opt_window, check_att_skill, "check_att_skill");
   GLADE_HOOKUP_OBJECT (opt_window, check_att_fit, "check_att_fit");
   GLADE_HOOKUP_OBJECT (opt_window, check_att_games, "check_att_games");
   GLADE_HOOKUP_OBJECT (opt_window, check_att_goals, "check_att_goals");
   GLADE_HOOKUP_OBJECT (opt_window, check_att_status, "check_att_status");
-  GLADE_HOOKUP_OBJECT (opt_window, hbox29, "hbox29");
   GLADE_HOOKUP_OBJECT (opt_window, check_att_age, "check_att_age");
   GLADE_HOOKUP_OBJECT (opt_window, check_att_etal, "check_att_etal");
   GLADE_HOOKUP_OBJECT (opt_window, check_att_booked, "check_att_booked");
   GLADE_HOOKUP_OBJECT (opt_window, check_att_value, "check_att_value");
   GLADE_HOOKUP_OBJECT (opt_window, check_att_wage, "check_att_wage");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_team, "check_att_team");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att_league, "check_att_league");
+  GLADE_HOOKUP_OBJECT (opt_window, vseparator5, "vseparator5");
+  GLADE_HOOKUP_OBJECT (opt_window, vbox46, "vbox46");
+  GLADE_HOOKUP_OBJECT (opt_window, label115, "label115");
+  GLADE_HOOKUP_OBJECT (opt_window, hseparator14, "hseparator14");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_name, "check_att2_name");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_cpos, "check_att2_cpos");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_pos, "check_att2_pos");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_cskill, "check_att2_cskill");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_skill, "check_att2_skill");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_fit, "check_att2_fit");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_games, "check_att2_games");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_goals, "check_att2_goals");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_status, "check_att2_status");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_age, "check_att2_age");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_etal, "check_att2_etal");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_booked, "check_att2_booked");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_value, "check_att2_value");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_wage, "check_att2_wage");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_team, "check_att2_team");
+  GLADE_HOOKUP_OBJECT (opt_window, check_att2_league, "check_att2_league");
   GLADE_HOOKUP_OBJECT (opt_window, label93, "label93");
   GLADE_HOOKUP_OBJECT (opt_window, label87, "label87");
   GLADE_HOOKUP_OBJECT (opt_window, frame6, "frame6");

@@ -38,9 +38,8 @@ sort_column(GtkTreeModel *model,
  team_ids and player_numbers in ids[][];
  'attrib' determines which columns are shown */
 GtkTreeModel*
-create_player_list(gint ids[][2], gint max,
-				 gint separator,
-				 gint *attrib, gint type);
+create_player_list(gint ids[][2], gint max, gint separator,
+		   gint *attrib, gint type);
 
 void
 set_up_player_list_column(GtkWidget *treeview, gint column,
@@ -49,6 +48,10 @@ set_up_player_list_column(GtkWidget *treeview, gint column,
 /* set up the tree view for a player list */
 void
 set_up_player_list (GtkWidget *player_list, gint *attrib, gint type);
+
+void
+show_player_list(GtkWidget *treeview, gint ids[][2], gint max,
+		 gint *attrib, gint type);
 
 /* show the players with team_ids and player_numbers stored in
    'ids' from 0 to 'max' in 'treeview'; the attributes set to 1

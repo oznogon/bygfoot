@@ -115,6 +115,24 @@ write_opt_names(gchar opt_names[][50])
     strcpy(opt_names[OPT_ATT_WAGE], "show_attribute_wage");
     strcpy(opt_names[OPT_ATT_TEAM], "show_attribute_team");
     strcpy(opt_names[OPT_ATT_LEAGUE], "show_attribute_league");
+
+    strcpy(opt_names[OPT_ATT2_NAME], "show_attribute_two_name");
+    strcpy(opt_names[OPT_ATT2_CPOS], "show_attribute_two_current_position");
+    strcpy(opt_names[OPT_ATT2_POS], "show_attribute_two_position");
+    strcpy(opt_names[OPT_ATT2_CSKILL], "show_attribute_two_current_skill");
+    strcpy(opt_names[OPT_ATT2_SKILL], "show_attribute_two_skill");
+    strcpy(opt_names[OPT_ATT2_TALENT], "show_attribute_two_talent");
+    strcpy(opt_names[OPT_ATT2_FIT], "show_attribute_two_fitness");
+    strcpy(opt_names[OPT_ATT2_GAMES], "show_attribute_two_games");
+    strcpy(opt_names[OPT_ATT2_GOALS], "show_attribute_two_goals");
+    strcpy(opt_names[OPT_ATT2_STATUS], "show_attribute_two_status");
+    strcpy(opt_names[OPT_ATT2_AGE], "show_attribute_two_age");
+    strcpy(opt_names[OPT_ATT2_ETAL], "show_attribute_two_estimated_talent");
+    strcpy(opt_names[OPT_ATT2_BOOKED], "show_attribute_two_booked");
+    strcpy(opt_names[OPT_ATT2_VALUE], "show_attribute_two_value");
+    strcpy(opt_names[OPT_ATT2_WAGE], "show_attribute_two_wage");
+    strcpy(opt_names[OPT_ATT2_TEAM], "show_attribute_two_team");
+    strcpy(opt_names[OPT_ATT2_LEAGUE], "show_attribute_two_league");
 }
 
 /* write the game options to the file

@@ -134,7 +134,12 @@ create_main_window (void)
   GtkWidget *hpaned2;
   GtkWidget *vbox3;
   GtkWidget *scrolledwindow2;
+  GtkWidget *viewport1;
+  GtkWidget *notebook1;
   GtkWidget *player_list;
+  GtkWidget *label71;
+  GtkWidget *player_list2;
+  GtkWidget *label72;
   GtkWidget *hbox8;
   GtkWidget *vbox4;
   GtkWidget *label6;
@@ -788,9 +793,32 @@ create_main_window (void)
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolledwindow2), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow2), GTK_SHADOW_IN);
 
+  viewport1 = gtk_viewport_new (NULL, NULL);
+  gtk_widget_show (viewport1);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow2), viewport1);
+
+  notebook1 = gtk_notebook_new ();
+  gtk_widget_show (notebook1);
+  gtk_container_add (GTK_CONTAINER (viewport1), notebook1);
+  gtk_notebook_set_show_border (GTK_NOTEBOOK (notebook1), FALSE);
+
   player_list = gtk_tree_view_new ();
   gtk_widget_show (player_list);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow2), player_list);
+  gtk_container_add (GTK_CONTAINER (notebook1), player_list);
+
+  label71 = gtk_label_new (_("Player list 1"));
+  gtk_widget_show (label71);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 0), label71);
+  gtk_label_set_justify (GTK_LABEL (label71), GTK_JUSTIFY_LEFT);
+
+  player_list2 = gtk_tree_view_new ();
+  gtk_widget_show (player_list2);
+  gtk_container_add (GTK_CONTAINER (notebook1), player_list2);
+
+  label72 = gtk_label_new (_("Player list 2"));
+  gtk_widget_show (label72);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 1), label72);
+  gtk_label_set_justify (GTK_LABEL (label72), GTK_JUSTIFY_LEFT);
 
   hbox8 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox8);
@@ -1461,6 +1489,9 @@ create_main_window (void)
   g_signal_connect ((gpointer) player_list, "button_press_event",
                     G_CALLBACK (on_player_list_button_press_event),
                     NULL);
+  g_signal_connect ((gpointer) player_list2, "button_press_event",
+                    G_CALLBACK (on_player_list2_button_press_event),
+                    NULL);
   g_signal_connect ((gpointer) optionmenu_style, "changed",
                     G_CALLBACK (on_style_optionmenu_changed),
                     NULL);
@@ -1630,7 +1661,12 @@ create_main_window (void)
   GLADE_HOOKUP_OBJECT (main_window, hpaned2, "hpaned2");
   GLADE_HOOKUP_OBJECT (main_window, vbox3, "vbox3");
   GLADE_HOOKUP_OBJECT (main_window, scrolledwindow2, "scrolledwindow2");
+  GLADE_HOOKUP_OBJECT (main_window, viewport1, "viewport1");
+  GLADE_HOOKUP_OBJECT (main_window, notebook1, "notebook1");
   GLADE_HOOKUP_OBJECT (main_window, player_list, "player_list");
+  GLADE_HOOKUP_OBJECT (main_window, label71, "label71");
+  GLADE_HOOKUP_OBJECT (main_window, player_list2, "player_list2");
+  GLADE_HOOKUP_OBJECT (main_window, label72, "label72");
   GLADE_HOOKUP_OBJECT (main_window, hbox8, "hbox8");
   GLADE_HOOKUP_OBJECT (main_window, vbox4, "vbox4");
   GLADE_HOOKUP_OBJECT (main_window, label6, "label6");

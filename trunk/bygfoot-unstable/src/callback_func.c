@@ -715,7 +715,28 @@ enum
     ZERO_ONE21,
     ZERO_ONE22,
     ZERO_ONE23,
+    ZERO_ONE24,
+    ZERO_ONE25,
+    ZERO_ONE26,
+    ZERO_ONE27,
+    ZERO_ONE28,
     ZERO_ONE30,
+    ZERO_ONE31,
+    ZERO_ONE32,
+    ZERO_ONE33,
+    ZERO_ONE34,
+    ZERO_ONE35,
+    ZERO_ONE36,
+    ZERO_ONE37,
+    ZERO_ONE38,
+    ZERO_ONE39,
+    ZERO_ONE40,
+    ZERO_ONE41,
+    ZERO_ONE42,
+    ZERO_ONE43,
+    ZERO_ONE44,
+    ZERO_ONE45,
+    ZERO_ONE46,
     ZERO_ONE_END
 };
 
@@ -778,9 +799,21 @@ get_option_widgets(GtkWidget *opt_window,
 	lookup_widget(opt_window, "check_jobs");
     zero_one_options[ZERO_ONE12] = &options[OPT_JOBS];
 
+    zero_one_widgets[ZERO_ONE24] =
+	lookup_widget(opt_window, "check_att_name");
+    zero_one_options[ZERO_ONE24] = &options[OPT_ATT_NAME];
+
+    zero_one_widgets[ZERO_ONE25] =
+	lookup_widget(opt_window, "check_att_cpos");
+    zero_one_options[ZERO_ONE25] = &options[OPT_ATT_CPOS];
+
     zero_one_widgets[ZERO_ONE13] =
 	lookup_widget(opt_window, "check_att_pos");
     zero_one_options[ZERO_ONE13] = &options[OPT_ATT_POS];
+
+    zero_one_widgets[ZERO_ONE26] =
+	lookup_widget(opt_window, "check_att_cskill");
+    zero_one_options[ZERO_ONE26] = &options[OPT_ATT_CSKILL];
 
     zero_one_widgets[ZERO_ONE14] =
 	lookup_widget(opt_window, "check_att_skill");
@@ -821,6 +854,78 @@ get_option_widgets(GtkWidget *opt_window,
     zero_one_widgets[ZERO_ONE23] =
 	lookup_widget(opt_window, "check_att_wage");
     zero_one_options[ZERO_ONE23] = &options[OPT_ATT_WAGE];
+
+    zero_one_widgets[ZERO_ONE27] =
+	lookup_widget(opt_window, "check_att_team");
+    zero_one_options[ZERO_ONE27] = &options[OPT_ATT_TEAM];
+
+    zero_one_widgets[ZERO_ONE28] =
+	lookup_widget(opt_window, "check_att_league");
+    zero_one_options[ZERO_ONE28] = &options[OPT_ATT_LEAGUE];
+
+    zero_one_widgets[ZERO_ONE31] =
+	lookup_widget(opt_window, "check_att2_name");
+    zero_one_options[ZERO_ONE31] = &options[OPT_ATT2_NAME];
+
+    zero_one_widgets[ZERO_ONE32] =
+	lookup_widget(opt_window, "check_att2_cpos");
+    zero_one_options[ZERO_ONE32] = &options[OPT_ATT2_CPOS];
+
+    zero_one_widgets[ZERO_ONE33] =
+	lookup_widget(opt_window, "check_att2_pos");
+    zero_one_options[ZERO_ONE33] = &options[OPT_ATT2_POS];
+
+    zero_one_widgets[ZERO_ONE34] =
+	lookup_widget(opt_window, "check_att2_cskill");
+    zero_one_options[ZERO_ONE34] = &options[OPT_ATT2_CSKILL];
+
+    zero_one_widgets[ZERO_ONE35] =
+	lookup_widget(opt_window, "check_att2_skill");
+    zero_one_options[ZERO_ONE35] = &options[OPT_ATT2_SKILL];
+
+    zero_one_widgets[ZERO_ONE36] =
+	lookup_widget(opt_window, "check_att2_fit");
+    zero_one_options[ZERO_ONE36] = &options[OPT_ATT2_FIT];
+
+    zero_one_widgets[ZERO_ONE37] =
+	lookup_widget(opt_window, "check_att2_games");
+    zero_one_options[ZERO_ONE37] = &options[OPT_ATT2_GAMES];
+
+    zero_one_widgets[ZERO_ONE38] =
+	lookup_widget(opt_window, "check_att2_goals");
+    zero_one_options[ZERO_ONE38] = &options[OPT_ATT2_GOALS];
+
+    zero_one_widgets[ZERO_ONE39] =
+	lookup_widget(opt_window, "check_att2_status");
+    zero_one_options[ZERO_ONE39] = &options[OPT_ATT2_STATUS];
+
+    zero_one_widgets[ZERO_ONE40] =
+	lookup_widget(opt_window, "check_att2_age");
+    zero_one_options[ZERO_ONE40] = &options[OPT_ATT2_AGE];
+
+    zero_one_widgets[ZERO_ONE41] =
+	lookup_widget(opt_window, "check_att2_etal");
+    zero_one_options[ZERO_ONE41] = &options[OPT_ATT2_ETAL];
+
+    zero_one_widgets[ZERO_ONE42] =
+	lookup_widget(opt_window, "check_att2_booked");
+    zero_one_options[ZERO_ONE42] = &options[OPT_ATT2_BOOKED];
+
+    zero_one_widgets[ZERO_ONE43] =
+	lookup_widget(opt_window, "check_att2_value");
+    zero_one_options[ZERO_ONE43] = &options[OPT_ATT2_VALUE];
+
+    zero_one_widgets[ZERO_ONE44] =
+	lookup_widget(opt_window, "check_att2_wage");
+    zero_one_options[ZERO_ONE44] = &options[OPT_ATT2_WAGE];
+
+    zero_one_widgets[ZERO_ONE45] =
+	lookup_widget(opt_window, "check_att2_team");
+    zero_one_options[ZERO_ONE45] = &options[OPT_ATT2_TEAM];
+
+    zero_one_widgets[ZERO_ONE46] =
+	lookup_widget(opt_window, "check_att2_league");
+    zero_one_options[ZERO_ONE46] = &options[OPT_ATT2_LEAGUE];
 
     zero_one_widgets[ZERO_ONE30] =
 	lookup_widget(opt_window, "check_live_tendency");
@@ -1334,6 +1439,8 @@ callback_new_week(gboolean calculate)
     
     if(calculate)
     {
+	update_autosave();
+
 	if(my_team_played(week))
 	    gtk_tree_view_set_model(GTK_TREE_VIEW(player_list),
 				    NULL);
@@ -1379,7 +1486,6 @@ callback_new_week(gboolean calculate)
     team_offers();
     finance_events();
     update_scout();
-    update_autosave();    
     update_variables();
     
     /* player wasn't fired */
