@@ -522,7 +522,8 @@ update_teams_players(gint team_id)
       if(teams[team_id].players[i].pos >= 0)
 	{
 	    /* update history */
-	    if(week % options[OPT_HISTORY_PLAYER_INTERVAL] == 0)
+	    if(options[OPT_HISTORY_PLAYER_INTERVAL] > 0 &&
+	       week % options[OPT_HISTORY_PLAYER_INTERVAL] == 0)
 		update_player_history(&(teams[team_id].players[i]));
 	    
 	  /* increase games and goals in european teams;
@@ -710,7 +711,8 @@ update_teams(void)
     if(i != 114 && i != 130 &&
        i < 175)
       {
-	  if(week % options[OPT_HISTORY_TEAM_INTERVAL] == 0)
+	  if(options[OPT_HISTORY_TEAM_INTERVAL] > 0 &&
+	     week % options[OPT_HISTORY_TEAM_INTERVAL] == 0)
 	      update_team_history(&teams[i]);
 
 	  update_teams_players(i);

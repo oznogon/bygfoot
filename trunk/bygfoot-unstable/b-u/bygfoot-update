@@ -10,7 +10,7 @@
 # using wget to retrieve patches from the homepage
 
 # version number
-version="0.12"
+version="0.13"
 # the bygfoot release version the script is shipped with
 relversion=VERSION
 # the current release version on the server
@@ -442,7 +442,7 @@ function get_revision()
     cd $newrevdir
     tar xfjv ../revision_$type$newrevnr.tar.bz2 2>> $log_file | tee -a $log_file
     
-    dialog --title "Bygfoot Online Update" --textbox README 22 80 2> $input_file
+    dialog --title "Bygfoot Online Update" --textbox README 22 75
 
     if [ $apply_all -eq 0 ]; then
 	
