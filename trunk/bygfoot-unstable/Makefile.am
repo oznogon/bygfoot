@@ -61,3 +61,5 @@ uninstall:
 	rm -rf $(DESTDIR)$(pkgdatadir)
 	rm -rf $(prefix)/bin/bygfoot
 	rm -rf $(prefix)/man/man6/bygfoot.6
+	rm -rf $(prefix)/share/locale/??/LC_MESSAGES/bygfoot.mo
+	rm -rf $(prefix)/share/locale/?????/LC_MESSAGES/bygfoot.mo
