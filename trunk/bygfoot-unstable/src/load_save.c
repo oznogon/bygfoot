@@ -13,7 +13,7 @@ find_save_file(gchar *file_name)
     gchar buf[SMALL];
     gchar *pwd = g_get_current_dir();
     gchar paths[2][SMALL];
-    gchar *endings[2] = {"", ".zip"};
+    gchar *endings[3] = {"", ".zip", "_general.xml"};
 
     if(g_file_test(file_name, G_FILE_TEST_EXISTS))
     {
@@ -26,7 +26,7 @@ find_save_file(gchar *file_name)
     g_free(pwd);
 
     for(j=0;j<2;j++)
-	for(i=0;i<2;i++)
+	for(i=0;i<3;i++)
 	{
 	    sprintf(buf, "%s%s", paths[j], endings[i]);
 

@@ -1,12 +1,26 @@
-10/10/2004: v1.7.3
-	- introduced Arnaud Le Rouzic's XML load/save system (thanks,
-	Arnaud!)
-	- added possibility to compress savegames
+1/23/2005: v1.7.4
+	- added GeoVah's season objective patch
+	- added possibility to disable savegame compression
+
+11/23/2004: v1.7.3
+	- switched the load/save system to XML, making it slower but more
+	flexible (thanks to Arnaud Le Rouzic for valuable help)
 	- improved the options window (tabs make it more orderly now)
 	- added second player list (also with tabs)
 	- complete Bygfoot packages can be downloaded with the update
 	script now
+	- added gettext support and French, German, Russian, Hungarian,
+	Romanian and Portuguese	translations
+	- fixed a bug concerning own goals in live games
+	- added player and team 'histories'
+	- added boost feature
 	
+11/23/2004: v1.6.3
+	- fixed a bug that caused the game to interpret promotion game
+	home/away results incorrectly	
+	- added translations for the interface (so the game's partly
+	translated)
+
 09/30/2004: v1.7.2
 	- added country file for Mexico (thanks to Arturo Mendez)
 	- improved the update script

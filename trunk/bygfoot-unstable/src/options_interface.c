@@ -85,6 +85,7 @@ create_opt_window (void)
   GtkObject *spinbutton_autosave_adj;
   GtkWidget *spinbutton_autosave;
   GtkWidget *label82;
+  GtkWidget *checkbutton_compress;
   GtkWidget *label90;
   GtkWidget *label84;
   GtkWidget *frame3;
@@ -535,6 +536,12 @@ create_opt_window (void)
   gtk_widget_show (label82);
   gtk_box_pack_start (GTK_BOX (hbox62), label82, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label82), GTK_JUSTIFY_LEFT);
+
+  checkbutton_compress = gtk_check_button_new_with_mnemonic (_("Compress savegames"));
+  gtk_widget_show (checkbutton_compress);
+  gtk_box_pack_start (GTK_BOX (vbox35), checkbutton_compress, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, checkbutton_compress, _("XML files can get very big but they can be compressed well. Uncheck this if you have plenty of space on your hard disk and would like to save some time when loading and saving."), NULL);
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton_compress), TRUE);
 
   label90 = gtk_label_new (_("Options for loading and saving games"));
   gtk_widget_show (label90);
@@ -1488,6 +1495,7 @@ create_opt_window (void)
   GLADE_HOOKUP_OBJECT (opt_window, checkbutton_autosave, "checkbutton_autosave");
   GLADE_HOOKUP_OBJECT (opt_window, spinbutton_autosave, "spinbutton_autosave");
   GLADE_HOOKUP_OBJECT (opt_window, label82, "label82");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_compress, "checkbutton_compress");
   GLADE_HOOKUP_OBJECT (opt_window, label90, "label90");
   GLADE_HOOKUP_OBJECT (opt_window, label84, "label84");
   GLADE_HOOKUP_OBJECT (opt_window, frame3, "frame3");

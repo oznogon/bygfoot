@@ -57,4 +57,7 @@ xml_general_write_season_stat(FILE *xml_file, season_stat stat);
 void
 xml_general_write_season_stat_player(FILE *xml_file, player_stat plst);
 
+void
+xml_general_write_season_objectives(FILE *xml_file);
+
 #endif

@@ -63,6 +63,10 @@ enum
     TAG_SEASON_STAT_PLAYER_TEAMNAME,
     TAG_SEASON_STAT_PLAYER_GOALS,
     TAG_SEASON_STAT_PLAYER_GAMES,
+    TAG_SEASON_OBJECTIVES,
+    TAG_SEASON_OBJECTIVE,
+    TAG_SEASON_OBJECTIVE_TYPE,
+    TAG_SEASON_OBJECTIVE_EXTRA_DATA,
     TAG_END
 };
 
@@ -98,7 +102,8 @@ xml_general_read_start_element (GMarkupParseContext *context,
        tag == TAG_FINS ||
        tag == TAG_LEAGUENAMES ||
        tag == TAG_INJBOOKS ||
-       tag == TAG_TRANSFERS)
+       tag == TAG_TRANSFERS ||
+       tag == TAG_SEASON_OBJECTIVES)
 	idx[0] = idx[1] = 0;
     else if(tag == TAG_SEASON_STAT)
     {
@@ -146,7 +151,8 @@ xml_general_read_end_element    (GMarkupParseContext *context,
        tag == TAG_STADS ||
        tag == TAG_STAD_FACTS ||
        tag == TAG_TRANSFERS ||
-       tag == TAG_SEASON_STATS)
+       tag == TAG_SEASON_STATS ||
+       tag == TAG_SEASON_OBJECTIVES)
 	state = TAG_GENERAL;
     else if(tag == TAG_LEAGUENAME)
     {
@@ -239,6 +245,14 @@ xml_general_read_end_element    (GMarkupParseContext *context,
     else if(tag >= TAG_TRANSFER_TEAMID &&
 	    tag <= TAG_TRANSFER_ESTIMATEWAGE)
 	state = TAG_TRANSFER;
+    else if(tag == TAG_SEASON_OBJECTIVE)
+    {
+	idx[0]++;
+	state = TAG_SEASON_OBJECTIVES;	
+    }
+    else if(tag == TAG_SEASON_OBJECTIVE_TYPE ||
+	    tag == TAG_SEASON_OBJECTIVE_EXTRA_DATA)
+	state = TAG_SEASON_OBJECTIVE;
     else if(tag !=  TAG_GENERAL)
     {
 	g_warning("xml_general_read_end_element: unknown tag: %s\n",
@@ -346,6 +360,10 @@ xml_general_read_text         (GMarkupParseContext *context,
 	transferlist[idx[0]].estimates[0] = int_value;
     else if(state == TAG_TRANSFER_ESTIMATEWAGE)
 	transferlist[idx[0]].estimates[1] = int_value;
+    else if(state == TAG_SEASON_OBJECTIVE_TYPE)
+	seasonObjective[idx[0]].type = int_value;
+    else if(state == TAG_SEASON_OBJECTIVE_EXTRA_DATA)
+	seasonObjective[idx[0]].extradata = int_value;
 }
 
 void
@@ -411,6 +429,7 @@ xml_general_write(gchar *file_name)
     xml_general_write_stadiums(xml_file);
     xml_general_write_transfers(xml_file);
     xml_general_write_season_stats(xml_file);
+    xml_general_write_season_objectives(xml_file);
 
     fprintf(xml_file, "%s<_%d>\n", INDENT0, TAG_OPTS);
     for(i=0;i<OPT_END;i++)
@@ -627,4 +646,24 @@ xml_general_write_season_stat_player(FILE *xml_file, player_stat plst)
 	    TAG_SEASON_STAT_PLAYER_GAMES, plst.games, TAG_SEASON_STAT_PLAYER_GAMES);
 
     fprintf(xml_file, "%s</_%d>\n", INDENT3, TAG_SEASON_STAT_PLAYER_STAT);
+}
+
+void
+xml_general_write_season_objectives(FILE *xml_file)
+{
+    gint i;
+
+    fprintf(xml_file, "%s<_%d>\n", INDENT0, TAG_SEASON_OBJECTIVES);
+
+    for(i=0;i<MAX_OBJECTIVE;i++)
+    {
+	fprintf(xml_file, "%s<_%d>\n", INDENT1, TAG_SEASON_OBJECTIVE);
+	fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT2, TAG_SEASON_OBJECTIVE_TYPE,
+		seasonObjective[i].type, TAG_SEASON_OBJECTIVE_TYPE);
+	fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT2, TAG_SEASON_OBJECTIVE_EXTRA_DATA,
+		seasonObjective[i].extradata, TAG_SEASON_OBJECTIVE_EXTRA_DATA);	
+	fprintf(xml_file, "%s</_%d>\n", INDENT1, TAG_SEASON_OBJECTIVE);
+    }
+
+    fprintf(xml_file, "%s</_%d>\n", INDENT0, TAG_SEASON_OBJECTIVES);
 }

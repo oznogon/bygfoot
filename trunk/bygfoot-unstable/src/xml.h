@@ -57,4 +57,7 @@ xml_compress_files(gchar *file_name, gboolean decompress);
 gint
 xml_get_tag_from_name(const gchar *element_name);
 
+void
+xml_get_save_file_prefix(gchar *file_name, gchar *prefix);
+
 #endif

@@ -140,6 +140,7 @@ write_opt_names(gchar opt_names[][50])
     strcpy(opt_names[OPT_HISTORY_PLAYER_DELETE], "history_player_delete");
 
     strcpy(opt_names[OPT_BOOST], "boost");
+    strcpy(opt_names[OPT_COMPRESS], "compress");
 }
 
 /* write the game options to the file

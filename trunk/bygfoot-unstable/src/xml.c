@@ -9,7 +9,7 @@ xml_read_save(gchar *file_name)
 
     xml_compress_files(file_name, TRUE);
 
-    truncate_string((const gchar*)file_name, prefix, 4);
+    xml_get_save_file_prefix(file_name, prefix);
 
     xml_teams_read(prefix);
     xml_fixtures_read(prefix);
@@ -56,6 +56,9 @@ xml_remove_files(gchar *file_name)
 {
     gchar buf[SMALL];
     GError *error = NULL;
+
+    if(options[OPT_COMPRESS] == 0)
+	return;
     
     sprintf(buf, "rm -f %s_%s.xml %s_%s.xml %s_%s.xml", 
 	    file_name, XML_FILE_EXT_GENERAL,
@@ -75,6 +78,12 @@ xml_compress_files(gchar *file_name, gboolean decompress)
     gchar directory[SMALL];
     GError *error = NULL;
     
+    progress += PROGRESS_COMPRESS;
+
+    if((!decompress && options[OPT_COMPRESS] == 0)
+       || (decompress && !g_str_has_suffix(file_name, ".zip")))
+	return;
+
     strcpy(directory, file_name);
     for(i=strlen(directory) - 1; i >= 0; i--)
     {	
@@ -101,7 +110,6 @@ xml_compress_files(gchar *file_name, gboolean decompress)
 		file_name, XML_FILE_EXT_FIXTURES);
     }
 
-    progress += PROGRESS_COMPRESS;
     show_progress(progress / PROGRESS_MAX, progress_text);
     g_spawn_command_line_sync(command, NULL, NULL, NULL, &error);
     print_error(error, FALSE);
@@ -116,4 +124,23 @@ xml_get_tag_from_name(const gchar *element_name)
     truncate_string(element_name, buf, -1);
 
     return (gint)g_ascii_strtod(buf, NULL);
+}
+
+void
+xml_get_save_file_prefix(gchar *file_name, gchar *prefix)
+{
+    gint i;
+
+    if(g_str_has_suffix(file_name, ".zip"))
+       truncate_string((const gchar*)file_name, prefix, 4);
+    else if(g_str_has_suffix(file_name, ".xml"))
+    {
+	for(i=strlen(file_name) - 1; i >= 0; i--)
+	    if(file_name[i] == '_')
+		break;
+
+	truncate_string(file_name, prefix, strlen(file_name) - i);
+    }
+    else
+	g_warning("xml_get_save_file_prefix: unknown file type: %s\n", file_name);
 }

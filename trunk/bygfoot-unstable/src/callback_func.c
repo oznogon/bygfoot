@@ -999,7 +999,7 @@ callback_new_week(gboolean calculate)
 			}
 		}
 		show_popup_window(tmp,NULL);	  
-    }
+	}
 	
     gtk_widget_set_sensitive(button_new_week, TRUE);
 }

@@ -19,6 +19,7 @@ enum
     ZERO_ONE8,
     ZERO_ONE9,
     ZERO_ONE10,
+    ZERO_ONE11,
     ZERO_ONE12,
     ZERO_ONE13,
     ZERO_ONE14,
@@ -109,6 +110,10 @@ get_option_widgets(GtkWidget *opt_window,
     zero_one_widgets[ZERO_ONE10] =
 	lookup_widget(opt_window, "checkbutton_maximize");
     zero_one_options[ZERO_ONE10] = &options[OPT_MAXIMIZE];
+
+    zero_one_widgets[ZERO_ONE11] =
+	lookup_widget(opt_window, "checkbutton_compress");
+    zero_one_options[ZERO_ONE11] = &options[OPT_COMPRESS];
 
     zero_one_widgets[ZERO_ONE12] =
 	lookup_widget(opt_window, "check_jobs");
