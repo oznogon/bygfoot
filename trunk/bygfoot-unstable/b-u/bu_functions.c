@@ -65,8 +65,6 @@ update_download(gboolean get_version)
     if(!get_version)
 	return;
 
-    printf("comml +%s+\n", command_line->str);
-	
     g_spawn_command_line_sync(command_line->str, &output, NULL, &exit, NULL);
 
     if(output != NULL)
@@ -121,8 +119,6 @@ callback_update(void)
     else
 	update_download(FALSE);
 
-    printf("comml +%s+\n", command_line->str);
-	
     g_spawn_command_line_sync(command_line->str, &output, NULL, &exit, NULL);
 
     if(output != NULL)

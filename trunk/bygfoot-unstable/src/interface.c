@@ -81,15 +81,15 @@ create_main_window (void)
   GtkWidget *optionmenu_figures;
   GtkWidget *menu3;
   GtkWidget *figures1;
-  GtkWidget *image148;
-  GtkWidget *fixtures1;
-  GtkWidget *image149;
-  GtkWidget *tables1;
-  GtkWidget *image150;
+  GtkWidget *image154;
+  GtkWidget *figures_fixtures;
+  GtkWidget *image155;
+  GtkWidget *figures_tables;
+  GtkWidget *image156;
   GtkWidget *best_players1;
   GtkWidget *history1;
   GtkWidget *history_graph1;
-  GtkWidget *image151;
+  GtkWidget *image157;
   GtkWidget *vseparator16;
   GtkWidget *button_new_week;
   GtkWidget *image140;
@@ -400,7 +400,7 @@ create_main_window (void)
   gtk_widget_show (button_quit);
   gtk_box_pack_start (GTK_BOX (hbox1), button_quit, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (button_quit), 2);
-  gtk_tooltips_set_tip (tooltips, button_quit, _("Quit (Q or Ctrl - Q)"), NULL);
+  gtk_tooltips_set_tip (tooltips, button_quit, _("Quit (Ctrl - Q)"), NULL);
 
   image13 = gtk_image_new_from_stock ("gtk-quit", GTK_ICON_SIZE_BUTTON);
   gtk_widget_show (image13);
@@ -524,6 +524,7 @@ create_main_window (void)
   gtk_widget_show (optionmenu_figures);
   gtk_box_pack_start (GTK_BOX (hbox1), optionmenu_figures, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (optionmenu_figures), 2);
+  gtk_option_menu_set_history (GTK_OPTION_MENU (optionmenu_figures), 2);
 
   menu3 = gtk_menu_new ();
 
@@ -531,25 +532,33 @@ create_main_window (void)
   gtk_widget_show (figures1);
   gtk_container_add (GTK_CONTAINER (menu3), figures1);
 
-  image148 = create_pixmap (main_window, "football.png");
-  gtk_widget_show (image148);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (figures1), image148);
+  image154 = create_pixmap (main_window, "football.png");
+  gtk_widget_show (image154);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (figures1), image154);
 
-  fixtures1 = gtk_image_menu_item_new_with_mnemonic (_("Fixtures"));
-  gtk_widget_show (fixtures1);
-  gtk_container_add (GTK_CONTAINER (menu3), fixtures1);
+  figures_fixtures = gtk_image_menu_item_new_with_mnemonic (_("Fixtures"));
+  gtk_widget_show (figures_fixtures);
+  gtk_container_add (GTK_CONTAINER (menu3), figures_fixtures);
+  GTK_WIDGET_SET_FLAGS (figures_fixtures, GTK_CAN_FOCUS);
+  gtk_widget_add_accelerator (figures_fixtures, "activate", accel_group,
+                              GDK_F4, 0,
+                              GTK_ACCEL_VISIBLE);
 
-  image149 = create_pixmap (main_window, "fixtures.png");
-  gtk_widget_show (image149);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (fixtures1), image149);
+  image155 = create_pixmap (main_window, "fixtures.png");
+  gtk_widget_show (image155);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (figures_fixtures), image155);
 
-  tables1 = gtk_image_menu_item_new_with_mnemonic (_("Tables"));
-  gtk_widget_show (tables1);
-  gtk_container_add (GTK_CONTAINER (menu3), tables1);
+  figures_tables = gtk_image_menu_item_new_with_mnemonic (_("Tables"));
+  gtk_widget_show (figures_tables);
+  gtk_container_add (GTK_CONTAINER (menu3), figures_tables);
+  gtk_tooltips_set_tip (tooltips, figures_tables, _("F5"), NULL);
+  gtk_widget_add_accelerator (figures_tables, "activate", accel_group,
+                              GDK_F5, 0,
+                              GTK_ACCEL_VISIBLE);
 
-  image150 = create_pixmap (main_window, "table.png");
-  gtk_widget_show (image150);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (tables1), image150);
+  image156 = create_pixmap (main_window, "table.png");
+  gtk_widget_show (image156);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (figures_tables), image156);
 
   best_players1 = gtk_menu_item_new_with_mnemonic (_("Best players"));
   gtk_widget_show (best_players1);
@@ -563,9 +572,9 @@ create_main_window (void)
   gtk_widget_show (history_graph1);
   gtk_container_add (GTK_CONTAINER (menu3), history_graph1);
 
-  image151 = create_pixmap (main_window, "graph.png");
-  gtk_widget_show (image151);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (history_graph1), image151);
+  image157 = create_pixmap (main_window, "graph.png");
+  gtk_widget_show (image157);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (history_graph1), image157);
 
   gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu_figures), menu3);
 
@@ -1236,9 +1245,6 @@ create_main_window (void)
   gtk_box_pack_start (GTK_BOX (vbox33), button_fixtures, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (button_fixtures), 2);
   gtk_tooltips_set_tip (tooltips, button_fixtures, _("Show fixtures (F4)"), NULL);
-  gtk_widget_add_accelerator (button_fixtures, "clicked", accel_group,
-                              GDK_F4, 0,
-                              GTK_ACCEL_VISIBLE);
 
   alignment13 = gtk_alignment_new (0.5, 0.5, 0, 0);
   gtk_widget_show (alignment13);
@@ -1265,9 +1271,6 @@ create_main_window (void)
   gtk_box_pack_start (GTK_BOX (vbox29), button_tables, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (button_tables), 2);
   gtk_tooltips_set_tip (tooltips, button_tables, _("Show tables (F5)"), NULL);
-  gtk_widget_add_accelerator (button_tables, "clicked", accel_group,
-                              GDK_F5, 0,
-                              GTK_ACCEL_VISIBLE);
 
   alignment12 = gtk_alignment_new (0.5, 0.5, 0, 0);
   gtk_widget_show (alignment12);
@@ -1423,6 +1426,12 @@ create_main_window (void)
   g_signal_connect ((gpointer) optionmenu_figures, "changed",
                     G_CALLBACK (on_optionmenu_figures_changed),
                     NULL);
+  g_signal_connect ((gpointer) figures_fixtures, "activate",
+                    G_CALLBACK (on_figures_fixtures_activate),
+                    NULL);
+  g_signal_connect ((gpointer) figures_tables, "activate",
+                    G_CALLBACK (on_figures_tables_activate),
+                    NULL);
   g_signal_connect ((gpointer) button_new_week, "clicked",
                     G_CALLBACK (on_button_new_week_clicked),
                     NULL);
@@ -1563,15 +1572,15 @@ create_main_window (void)
   GLADE_HOOKUP_OBJECT (main_window, optionmenu_figures, "optionmenu_figures");
   GLADE_HOOKUP_OBJECT (main_window, menu3, "menu3");
   GLADE_HOOKUP_OBJECT (main_window, figures1, "figures1");
-  GLADE_HOOKUP_OBJECT (main_window, image148, "image148");
-  GLADE_HOOKUP_OBJECT (main_window, fixtures1, "fixtures1");
-  GLADE_HOOKUP_OBJECT (main_window, image149, "image149");
-  GLADE_HOOKUP_OBJECT (main_window, tables1, "tables1");
-  GLADE_HOOKUP_OBJECT (main_window, image150, "image150");
+  GLADE_HOOKUP_OBJECT (main_window, image154, "image154");
+  GLADE_HOOKUP_OBJECT (main_window, figures_fixtures, "figures_fixtures");
+  GLADE_HOOKUP_OBJECT (main_window, image155, "image155");
+  GLADE_HOOKUP_OBJECT (main_window, figures_tables, "figures_tables");
+  GLADE_HOOKUP_OBJECT (main_window, image156, "image156");
   GLADE_HOOKUP_OBJECT (main_window, best_players1, "best_players1");
   GLADE_HOOKUP_OBJECT (main_window, history1, "history1");
   GLADE_HOOKUP_OBJECT (main_window, history_graph1, "history_graph1");
-  GLADE_HOOKUP_OBJECT (main_window, image151, "image151");
+  GLADE_HOOKUP_OBJECT (main_window, image157, "image157");
   GLADE_HOOKUP_OBJECT (main_window, vseparator16, "vseparator16");
   GLADE_HOOKUP_OBJECT (main_window, button_new_week, "button_new_week");
   GLADE_HOOKUP_OBJECT (main_window, image140, "image140");

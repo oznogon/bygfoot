@@ -455,9 +455,7 @@ void
 on_button_browse_back_clicked          (GtkButton       *button,
                                         gpointer         user_data)
 {
-    if(!GTK_WIDGET_MAPPED(button))
-	on_button_quit_clicked(button, NULL);
-    else if(get_place(status, 12) == 13)
+    if(get_place(status, 12) == 13)
 	callback_transfers_browse_teams(-1);
     else if(get_place(status, 12) == 21)
     {	
@@ -579,6 +577,25 @@ on_optionmenu_figures_changed          (GtkOptionMenu   *optionmenu,
     }
     
     set_buttons();
+}
+
+
+
+void
+on_figures_fixtures_activate           (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+    on_button_fixtures_clicked(
+	GTK_BUTTON(lookup_widget(GTK_WIDGET(menuitem), "button_fixtures")), NULL);
+}
+
+
+void
+on_figures_tables_activate             (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+    on_button_tables_clicked(
+	GTK_BUTTON(lookup_widget(GTK_WIDGET(menuitem), "button_tables")), NULL);
 }
 
 
@@ -964,4 +981,3 @@ on_checkbutton_boost_toggled           (GtkToggleButton *togglebutton,
 
     bookmaker_re_tip();
 }
-

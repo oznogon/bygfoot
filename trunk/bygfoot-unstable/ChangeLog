@@ -1,8 +1,48 @@
-1/23/2005: v1.7.4
-	- added GeoVah's season objective patch
+01/30/2005: v1.8.0 (changes compared to 1.6.3)
+	- added GeoVah's season objective patch (thanks, GeoVah)
 	- added possibility to disable savegame compression
 	- stadium events are less harsh
 	- there are more players from lower leagues on the transfer list
+	- switched the load/save system to XML, making it slower but more
+	flexible (thanks to Arnaud Le Rouzic for valuable help)
+	- improved the options window (tabs make it more orderly now)
+	- added second player list (also with tabs)
+	- complete Bygfoot packages can be downloaded with the update
+	script now
+	- added gettext support and French, German, Russian, Hungarian,
+	Romanian and Portuguese	translations (see AUTHORS)
+	- fixed a bug concerning own goals in live games
+	- added player and team 'histories'
+	- added boost feature
+	- added country file for Mexico (thanks to Arturo Mendez)
+	- added country files for Chile (thanks to Julio Saldivar)
+	- improved the update script
+	- added a simple gui for the script
+	- added updated country file for Italy (thanks to Marco Fabbri)
+	- fixed a bug that led to no ticket income for cup games
+	- fixed a bug that occurred when you made a stadium enlargement
+        over several weeks
+	- replaced official team names with city names because of
+	trademark issues (the official names can be downloaded from
+	http://www.bygfoot.com)
+	- removed official player names because of the same reason (you
+	can still download them from the homepage)
+	- added injuries and cards display for opponent teams in the match
+	summary
+	- clicking on a team name in the tables shows the team's player list
+	- clicking on a fixture shows the player list of one of the teams,
+	depending on the mouse button you use
+	- job offers show a lot more information on the team offering the
+	job
+	- a player can suffer an injury that forces him to retire
+	- added own goals and penalties in regulation and extra time
+	- added reasons why a player was banned (thanks to Tom Chance for
+	the correct football expressions)
+	- added player and some more team awards (with prize money) at the
+	end of a season
+
+	NOTE: The 1.8 branch is not savegame-compatible to the 1.6.x
+	versions.
 
 11/23/2004: v1.7.3
 	- switched the load/save system to XML, making it slower but more

@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-AM_CFLAGS = -Wall -g
+AM_CFLAGS = -Wall
 
 INCLUDES = \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \

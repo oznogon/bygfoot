@@ -31,7 +31,7 @@ bu_init(void)
 	g_string_new("");
     gchar buf[SMALL];
     
-    g_string_printf(text, "NOTE: This GUI uses the 'bygfoot-update' shell script to manage things, an since mixing the shell and the GUI is a rather messy thing, I recommend you use the script itself to manage your updates.\n\n");
+    g_string_printf(text, "NOTE: This GUI uses the 'bygfoot-update' shell script to manage things, an since mixing the shell and the GUI is a rather messy thing, I recommend you use the script itself (called from a terminal) to manage your updates.\n\n");
     
     g_string_append_printf(text, "NOTE 2: If the program hangs for a long while, the reason could be that wget can't establish connection to the website. Check http://bygfoot.sourceforge.net to find out.\n");
 

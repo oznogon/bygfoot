@@ -272,8 +272,16 @@ on_show_statistics_activate            (GtkMenuItem     *menuitem,
 void
 on_optionmenu_finstad_changed          (GtkOptionMenu   *optionmenu,
                                         gpointer         user_data);
-#endif
 
 void
 on_checkbutton_boost_toggled           (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
+
+void
+on_figures_fixtures_activate           (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_figures_tables_activate             (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+#endif
