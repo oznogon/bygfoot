@@ -15,6 +15,7 @@
 #include "startup.h"
 #include "support.h"
 #include "team.h"
+#include "treeview.h"
 #include "files.h"
 #include "window.h"
 
@@ -170,15 +171,21 @@ on_button_fsel_ok_clicked              (GtkButton       *button,
     }
     else if(status == 800010)
     {
-	if(my_fopen(gtk_file_selection_get_filename(
-			GTK_FILE_SELECTION(fsel_window)), "r", &fil, FALSE))
+	if(!my_fopen(file_name, "r", &fil, FALSE))
 	    good_file = FALSE;
 	else
-	    country_names(0, gtk_file_selection_get_filename(
-			      GTK_FILE_SELECTION(fsel_window)));
+	{
+	    fclose(fil);
+	    country_names(0, file_name);
+	}
 
 	if(good_file)
-	    show_team_selection();
+	{
+	    clear_treeview(lookup_widget(team_selection_widget,
+					 "team_selection_treeview"));
+	    show_team_list(lookup_widget(team_selection_widget,"team_selection_treeview"), 0);
+	    gtk_widget_show(team_selection_widget);
+	}
     }
     /* editor window */
     else if(status == 800100 ||
@@ -364,7 +371,7 @@ on_team_selection_load_clicked         (GtkButton       *button,
     show_file_selection(2);
 
     gtk_widget_hide(team_selection);
-	team_selection_widget=team_selection;
+    team_selection_widget=team_selection;
 }
 
 
@@ -383,10 +390,10 @@ on_button_select_country_file_clicked  (GtkButton       *button,
     GtkWidget *team_selection =
 	lookup_widget(GTK_WIDGET(button), "team_selection");
 
-    show_file_selection(10);
-    
-	team_selection_widget=team_selection;
     gtk_widget_hide(team_selection);
+    team_selection_widget=team_selection;
+
+    show_file_selection(10);
 }
 
 

@@ -541,7 +541,7 @@
 	      <property name="border_width">2</property>
 	      <property name="visible">True</property>
 	      <property name="can_focus">True</property>
-	      <property name="history">2</property>
+	      <property name="history">0</property>
 	      <signal name="changed" handler="on_optionmenu_figures_changed" last_modification_time="Mon, 02 Feb 2004 10:52:45 GMT"/>
 
 	      <child>
@@ -1142,7 +1142,7 @@
 		  <property name="use_underline">True</property>
 
 		  <child internal-child="image">
-		    <widget class="GtkImage" id="image141">
+		    <widget class="GtkImage" id="image158">
 		      <property name="visible">True</property>
 		      <property name="pixbuf">striker.png</property>
 		      <property name="xalign">0.5</property>
@@ -1164,10 +1164,9 @@
 			  <signal name="activate" handler="on_show_info_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image142">
+			    <widget class="GtkImage" id="image159">
 			      <property name="visible">True</property>
-			      <property name="stock">gtk-dialog-info</property>
-			      <property name="icon_size">1</property>
+			      <property name="pixbuf">player_info.png</property>
 			      <property name="xalign">0.5</property>
 			      <property name="yalign">0.5</property>
 			      <property name="xpad">0</property>
@@ -1186,7 +1185,7 @@
 			  <signal name="activate" handler="on_show_statistics_activate" last_modification_time="Sat, 09 Oct 2004 12:02:04 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image143">
+			    <widget class="GtkImage" id="image160">
 			      <property name="visible">True</property>
 			      <property name="pixbuf">history_plyr.png</property>
 			      <property name="xalign">0.5</property>
@@ -1207,7 +1206,7 @@
 			  <signal name="activate" handler="on_put_on_transfer_list_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image144">
+			    <widget class="GtkImage" id="image161">
 			      <property name="visible">True</property>
 			      <property name="pixbuf">transfer_to.png</property>
 			      <property name="xalign">0.5</property>
@@ -1228,7 +1227,7 @@
 			  <signal name="activate" handler="on_remove_from_transfer_list_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image145">
+			    <widget class="GtkImage" id="image162">
 			      <property name="visible">True</property>
 			      <property name="pixbuf">transfer_frm.png</property>
 			      <property name="xalign">0.5</property>
@@ -1249,7 +1248,7 @@
 			  <signal name="activate" handler="on_fire_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image146">
+			    <widget class="GtkImage" id="image163">
 			      <property name="visible">True</property>
 			      <property name="pixbuf">fire_player.png</property>
 			      <property name="xalign">0.5</property>
@@ -1270,7 +1269,7 @@
 			  <signal name="activate" handler="on_shoots_penalties_activate" last_modification_time="Sun, 22 Aug 2004 15:01:28 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image147">
+			    <widget class="GtkImage" id="image164">
 			      <property name="visible">True</property>
 			      <property name="pixbuf">penalty_shooter.png</property>
 			      <property name="xalign">0.5</property>
