@@ -1099,19 +1099,19 @@ gchar * objective_get_message(objective * obj) {
 	switch(obj->type) {
 		case OBJ_NONE:break;
 		case OBJ_NO_RELEGATED:
-				msg=gettext("Your team must stay in current league !");break;
+				msg=_("Your team must stay in current league !");break;
 		case OBJ_PROMOTED:
-				msg=gettext("Your team must be promoted to next league !");break;
+				msg=_("Your team must be promoted to next league !");break;
 		case OBJ_POSITION:
-				msg=gettext("Your team must finish at least at %d position");break;
+				msg=_("Your team must finish at least at %d position");break;
 		case OBJ_WIN_CUP:
-				msg=gettext("Your team must win the \"%s\" cup");break;
+				msg=_("Your team must win the \"%s\" cup");break;
 		default://nothing					
 			;
 	}
 	if(obj->type==OBJ_POSITION) {
 		gchar *tmp=NULL;
-		int size_tmp=(strlen(msg)+10)*sizeof(gchar);
+		gint size_tmp=(strlen(msg)+10)*sizeof(gchar);
 		//we must replace the position number
 		tmp=g_malloc(size_tmp);
 		snprintf(tmp,size_tmp,msg,obj->extradata);		
