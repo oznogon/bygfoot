@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: bygfoot 1.7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-11-03 20:56+0100\n"
-"PO-Revision-Date: 2004-11-08 21:41+0100\n"
+"PO-Revision-Date: 2004-11-11 14:53+0100\n"
 "Last-Translator: Arnaud LE ROUZIC <arnaud.lerouzic@oreka.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -25,8 +25,8 @@ msgid ""
 "you. Here's some info on %s:"
 msgstr ""
 "\n"
-"Mais les dirigeants de %s ont entendu parler de votre démission et voudraient "
-"vous embaucher. Quelques informations sur %s :"
+"Mais les dirigeants de %s ont entendu parler de votre démission et "
+"voudraient vous embaucher. Quelques informations sur %s :"
 
 #: src/treeview.c:1154
 #, c-format
@@ -150,7 +150,8 @@ msgstr " utilisée dans la fenêtre principale"
 msgid ""
 "%s is a substitute. He will only shoot the penalties if you move him into "
 "the team; otherwise the field player with highest skill will shoot."
-msgstr "%s est un remplaçant. Il ne tirera les penalties que si vous le placez dans "
+msgstr ""
+"%s est un remplaçant. Il ne tirera les penalties que si vous le placez dans "
 "l'équipe, autrement, le joueur de champ le plus talentueux s'en chargera."
 
 #: src/treeview.c:2008
@@ -286,8 +287,8 @@ msgid ""
 "After having a look at your bank account the team politely rejects your "
 "offer."
 msgstr ""
-"Après avoir examiné votre compte en banque, l'équipe rejette poliment "
-"votre offre."
+"Après avoir examiné votre compte en banque, l'équipe rejette poliment votre "
+"offre."
 
 #: src/options_interface.c:578 src/options_interface.c:950 src/treeview.c:309
 #: src/treeview.c:517
@@ -317,15 +318,14 @@ msgstr "Appliquer les changements"
 #: src/callbacks.c:609
 msgid ""
 "Are you sure you want to end this week's activities and begin a new week?"
-msgstr ""
-"Êtes-vous sûr de commencer une nouvelle semaine maintenant?"
+msgstr "Êtes-vous sûr de commencer une nouvelle semaine maintenant?"
 
 #: src/callbacks.c:40
 msgid ""
 "Are you sure you want to start a new game and discard your current game?"
 msgstr ""
-"Êtes-vous sûr de vouloir commencer une nouvelle partie maintenant et abandonner "
-"la partie actuelle?"
+"Êtes-vous sûr de vouloir commencer une nouvelle partie maintenant et "
+"abandonner la partie actuelle?"
 
 #: src/interface.c:632
 msgid "Arsenal"
@@ -649,7 +649,9 @@ msgstr "Coûts"
 #: src/editor_callback_func.c:324
 #, c-format
 msgid "Could not save new team name to %s. I couldn't find the old name."
-msgstr "Impossible de sauvegarder la nouvelle équipe en %s. Impossible de trouver l'ancien nom."
+msgstr ""
+"Impossible de sauvegarder la nouvelle équipe en %s. Impossible de trouver "
+"l'ancien nom."
 
 #: src/support.c:90 src/support.c:114
 #, c-format
@@ -1006,8 +1008,8 @@ msgid ""
 msgstr ""
 "Nombre d'entrées au maximum dans l'historique (les données les plus "
 "anciennes seront effacées). ATTENTION : plus cette valeur est élevée et plus "
-"la mémoire nécessaire sera importante, surtout pour l'historique des joueurs. "
-"Le chargement et la sauvegarde du jeu seront aussi moins rapides."
+"la mémoire nécessaire sera importante, surtout pour l'historique des "
+"joueurs. Le chargement et la sauvegarde du jeu seront aussi moins rapides."
 
 #: src/options_interface.c:1200 src/options_interface.c:1249
 #: src/options_interface.c:1287
@@ -1026,9 +1028,9 @@ msgid ""
 "anymore and had to retire:\n"
 "   "
 msgstr ""
-"Désolé de vous apprendre qu'un ou plusieurs de vos joueurs ont souffert "
-"de blessures graves. Ils ne pourront plus jouer au football au niveau professionnels, "
-"et doivent stopper leur activité:\n"
+"Désolé de vous apprendre qu'un ou plusieurs de vos joueurs ont souffert de "
+"blessures graves. Ils ne pourront plus jouer au football au niveau "
+"professionnels, et doivent stopper leur activité:\n"
 "..."
 
 #: src/options_interface.c:459
@@ -1307,7 +1309,8 @@ msgstr "Prochain (W)"
 
 #: src/callbacks.c:229
 msgid "Next week you'll fire your scout and hire a new one."
-msgstr "La semaine prochaine, votre observateur sera renvoyé et un nouveau sera "
+msgstr ""
+"La semaine prochaine, votre observateur sera renvoyé et un nouveau sera "
 "embauché."
 
 #: src/options_interface.c:452
@@ -1344,17 +1347,16 @@ msgstr "Désactivés"
 msgid ""
 "One of the structure numbers is not a valid structure specifier. The digits "
 "of the first structure must add up to 10, those of the second one to 8. "
-msgstr ""
-"Un des chiffres n'est pas un descripteur de formation correct. ???"
+msgstr "Un des chiffres n'est pas un descripteur de formation correct. ???"
 
 #: src/editor_callback_func.c:438
 msgid ""
 "One or more players could not be saved because of an invalid talent value. "
 "The talent value of a players has to be greater or equal his skill value. "
 msgstr ""
-"Un ou plusieurs joueurs ne peuvent pas être sauvegardés parce que leur valeur "
-"de \"talent\" est incorrecte. Le talent doit être supérieur ou égal à l'efficacité "
-"du joueur."
+"Un ou plusieurs joueurs ne peuvent pas être sauvegardés parce que leur "
+"valeur de \"talent\" est incorrecte. Le talent doit être supérieur ou égal à "
+"l'efficacité du joueur."
 
 #: src/options_interface.c:1183
 msgid "Option"
@@ -1396,7 +1398,8 @@ msgstr "Rembourser un prêt"
 msgid ""
 "Penalty shooter deselected. Player with highest cskill will shoot penalties."
 msgstr ""
-"Tireur de penalties désactivé. Le joueur le plus efficace tirera les penalties."
+"Tireur de penalties désactivé. Le joueur le plus efficace tirera les "
+"penalties."
 
 #: src/treeview.c:1146
 msgid "Physio"
@@ -1968,7 +1971,8 @@ msgid ""
 "The following teams were added to %s:\n"
 "\n"
 msgstr ""
-"Les équipes suivantes ont été ajoutées au %s:\n\n"
+"Les équipes suivantes ont été ajoutées au %s:\n"
+"\n"
 
 #: src/game_gui.c:158
 #, c-format
@@ -1976,12 +1980,14 @@ msgid ""
 "The owners of %s are impressed by your success with %s. They would like to "
 "hire you. Here's some info on %s:"
 msgstr ""
-"Les dirigeants de %s sont impressionnés par vos résultats avec %s. Ils aimeraient vous "
-"embaucher. Voici des informations sur %s :"
+"Les dirigeants de %s sont impressionnés par vos résultats avec %s. Ils "
+"aimeraient vous embaucher. Voici des informations sur %s :"
 
 #: src/callback_func.c:287
 msgid "The player doesn't like your offer and decides to stay in his team."
-msgstr "Le joueur n'est pas convaincu par votre offre et décide de rester dans son équipe."
+msgstr ""
+"Le joueur n'est pas convaincu par votre offre et décide de rester dans son "
+"équipe."
 
 #: src/callback_func.c:84
 msgid "The player is already on the transferlist."
@@ -2003,7 +2009,8 @@ msgid ""
 "The team has an adequate replacement for %s and is willing to cancel his "
 "contract for "
 msgstr ""
-"L'équipe a un remplaçant adéquat pour %s et accepte d'annuler son contrat pour "
+"L'équipe a un remplaçant adéquat pour %s et accepte d'annuler son contrat "
+"pour "
 
 #: src/callback_func.c:392
 #, c-format
@@ -2020,13 +2027,14 @@ msgid ""
 "The team owners are dissatisfied with the team's recent performance. There "
 "are rumours they're looking for a new coach."
 msgstr ""
-"Vos dirigeants sont insatisfaits des derniers résultats de votre équipe. Des rumeurs "
-"indiquent qu'ils sont à la recherche d'un nouvel entraîneur."
+"Vos dirigeants sont insatisfaits des derniers résultats de votre équipe. Des "
+"rumeurs indiquent qu'ils sont à la recherche d'un nouvel entraîneur."
 
 #: src/game_gui.c:149
 #, c-format
 msgid "The team owners fire you because of financial mismanagement."
-msgstr "Vos dirigeants vous licencient à cause de votre mauvaise gestion financière."
+msgstr ""
+"Vos dirigeants vous licencient à cause de votre mauvaise gestion financière."
 
 #: src/game_gui.c:147
 #, c-format
@@ -2041,7 +2049,8 @@ msgstr "Vos dirigeants vous donnent %d semaines pour sortir du rouge."
 #: src/callback_func.c:278
 msgid ""
 "The team rejects your offer and removes the player from the transferlist."
-msgstr "L'équipe rejette votre offre et retire son joueur de la liste des transferts."
+msgstr ""
+"L'équipe rejette votre offre et retire son joueur de la liste des transferts."
 
 #: src/options_interface.c:368
 msgid ""
@@ -2065,7 +2074,8 @@ msgstr "La liste des transferts est pleine."
 
 #: src/callbacks.c:604
 msgid "There are injured or banned players in your team. Proceed?"
-msgstr "Il y a des joueurs blessés ou suspendus dans votre 11 de départ. Continuer?"
+msgstr ""
+"Il y a des joueurs blessés ou suspendus dans votre 11 de départ. Continuer?"
 
 #: src/graph.c:29
 msgid "There is no history yet."
@@ -2083,7 +2093,8 @@ msgstr "Il y a eu un incendie dans votre stade."
 msgid ""
 "There were riots\n"
 "in your stadium."
-msgstr "Il y a eu des émeutes\n"
+msgstr ""
+"Il y a eu des émeutes\n"
 "dans votre stade."
 
 #: src/treeview_cell.c:542
@@ -2091,12 +2102,15 @@ msgstr "Il y a eu des émeutes\n"
 msgid ""
 "There were technical\n"
 "problems in your stadium."
-msgstr "Il y a eu des problèmes techniques\n"
+msgstr ""
+"Il y a eu des problèmes techniques\n"
 "dans votre stade."
 
 #: src/callback_func.c:270 src/callback_func.c:354
 msgid "There's no room in your team. You can't have more than 20 players."
-msgstr "Il n'y a plus de place dans votre équipe. Vous ne pouvez pas avoir plus de 20 joueurs."
+msgstr ""
+"Il n'y a plus de place dans votre équipe. Vous ne pouvez pas avoir plus de "
+"20 joueurs."
 
 #: src/editor_interface.c:327
 msgid "These digits must add up to 10."
@@ -2272,12 +2286,15 @@ msgstr "Vous ne pouvez pas emprunter plus d'argent."
 
 #: src/callbacks.c:632 src/callbacks.c:914
 msgid "You can't have a bigger stadium; it's not safe."
-msgstr "Vous ne pouvez pas avoir un stade plus grand, il n'est pas assez sécurisé."
+msgstr ""
+"Vous ne pouvez pas avoir un stade plus grand, il n'est pas assez sécurisé."
 
 #: src/callback_func.c:499
 #, c-format
 msgid "You can't improve your stadium safety, it's already 100% safe."
-msgstr "Vous ne pouvez pas améliorer la sécurité dans votre stade, elle est déja à 100%."
+msgstr ""
+"Vous ne pouvez pas améliorer la sécurité dans votre stade, elle est déja à "
+"100%."
 
 #: src/team.c:868
 msgid "You didn't have enough money to enlarge your stadium."
@@ -2287,19 +2304,23 @@ msgstr "Vous n'avez pas assez d'argent pour agrandir votre stade."
 msgid ""
 "You have entered a player name beginning with the comment character '#'. The "
 "player will be ignored when loading the team from the definitions file. "
-msgstr "Vous avez entré un nom de joueur commençant par le caractère '#'. Le joueur sera "
-"ignoré au chargement de l'équipe."
+msgstr ""
+"Vous avez entré un nom de joueur commençant par le caractère '#'. Le joueur "
+"sera ignoré au chargement de l'équipe."
 
 #: src/editor_callback_func.c:561
 msgid "You have entered an invalid birth date. Players must be older than 17. "
-msgstr "Vous avez entré une date de naissance invalide. Les joueurs doivent avoir "
+msgstr ""
+"Vous avez entré une date de naissance invalide. Les joueurs doivent avoir "
 "plus de 17 ans."
 
 #: src/editor_callback_func.c:552
 msgid ""
 "You have entered an invalid talent value. The talent value of a player has "
 "to be greater than his skill value. "
-msgstr "Vous avez entré une valeur de talent invalide. Elle doit être supérieure à l'éfficacité du joueur. "
+msgstr ""
+"Vous avez entré une valeur de talent invalide. Elle doit être supérieure à "
+"l'éfficacité du joueur. "
 
 #: src/game_gui.c:327
 #, c-format
@@ -2336,7 +2357,8 @@ msgstr "Vous n'avez pas sélectionné de joueur"
 #: src/editor_callback_func.c:240
 #, c-format
 msgid "You haven't selected a team you want to edit or a definitions file. "
-msgstr "Vous n'avez pas sélectionné l'équipe à éditer ou le fichier de définition"
+msgstr ""
+"Vous n'avez pas sélectionné l'équipe à éditer ou le fichier de définition"
 
 #: src/editor_callback_func.c:455
 msgid "You haven't selected a team. "
@@ -2357,7 +2379,9 @@ msgstr "Vous désirer renvoyer %s. Vous pouvez"
 
 #: src/callback_func.c:550
 msgid "You're below your drawing credit limit. You can't pay back money."
-msgstr "Vous êtes en-deçà de votre découvert autorisé. Vous ne pouvez pas rembourser de prêt."
+msgstr ""
+"Vous êtes en-deçà de votre découvert autorisé. Vous ne pouvez pas rembourser "
+"de prêt."
 
 #: src/game_gui.c:304
 msgid "You've got to pay back your loan NOW!!!"
@@ -2365,7 +2389,9 @@ msgstr "Vous devez rembourser votre prêt MAINTENANT!"
 
 #: src/game_gui.c:317
 msgid "Your bank account has to exceed your drawing credit next week!!!"
-msgstr "Votre compte en banque est sur le point de dépasser le découvert autorisé la semaine prochaine!"
+msgstr ""
+"Votre compte en banque est sur le point de dépasser le découvert autorisé la "
+"semaine prochaine!"
 
 #: src/callback_func.c:524
 msgid "Your bank grants you no more money."
@@ -2395,15 +2421,18 @@ msgstr "Vos résultats"
 msgid ""
 "Your scout's not good enough, he doesn't know the age of the players on the "
 "transfer list. Sorting the transfer list is switched off. "
-msgstr "Votre observateur n'est pas assez bon, il ne s'est pas renseigné sur l'âge des joueurs "
-"de la liste de transfert. Il est donc impossible de classer ces joueurs selon leur âge."
+msgstr ""
+"Votre observateur n'est pas assez bon, il ne s'est pas renseigné sur l'âge "
+"des joueurs de la liste de transfert. Il est donc impossible de classer ces "
+"joueurs selon leur âge."
 
 #: src/callbacks.c:636 src/callbacks.c:918
 msgid ""
 "Your stadium is being enlarged. You can't increase its capacity until work's "
 "finished."
-msgstr "Les travaux d'agrandissement de votre stade sont en cours. Vous ne pouvez pas"
-"l'agrandir de nouveau avant la fin du chantier."
+msgstr ""
+"Les travaux d'agrandissement de votre stade sont en cours. Vous ne pouvez "
+"pasl'agrandir de nouveau avant la fin du chantier."
 
 #: src/treeview.c:1680
 msgid "Your team"
@@ -2411,7 +2440,9 @@ msgstr "Votre équipe"
 
 #: src/callbacks.c:135
 msgid "Your team structure must have three non-zero digits which sum up to 10."
-msgstr "La formation de votre équipe doit contenir trois chiffres différents de 0 dont la somme vaut 10."
+msgstr ""
+"La formation de votre équipe doit contenir trois chiffres différents de 0 "
+"dont la somme vaut 10."
 
 #: src/treeview.c:2419
 msgid "Your team's prize money"
@@ -2460,11 +2491,11 @@ msgstr ""
 
 #: src/treeview_cell.c:24
 msgid "concussion"
-msgstr ""
+msgstr "coup et hématome"
 
 #: src/treeview_cell.c:29
 msgid "cracked rib"
-msgstr ""
+msgstr "côte félée"
 
 #: src/treeview_cell.c:51
 msgid "dangerous tackle"
@@ -2480,15 +2511,15 @@ msgstr "Cinquième carton jaune"
 
 #: src/treeview_cell.c:28
 msgid "fractured ankle"
-msgstr ""
+msgstr "fracture de la cheville"
 
 #: src/treeview_cell.c:27
 msgid "groin injury"
-msgstr ""
+msgstr "blessure aux adducteurs"
 
 #: src/treeview_cell.c:25
 msgid "hamstring"
-msgstr ""
+msgstr "tendinite"
 
 #: src/misc2_interface.c:384
 msgid "label20"
@@ -2598,7 +2629,7 @@ msgstr "anti-jeu"
 
 #: src/treeview_cell.c:47
 msgid "repeated dissent"
-msgstr ""
+msgstr "Désobéissance à répétition"
 
 #: src/treeview_cell.c:53
 msgid "spat at player"
