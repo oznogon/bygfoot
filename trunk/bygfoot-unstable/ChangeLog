@@ -8,7 +8,10 @@
 	job
 	- a player can suffer an injury that forces him to retire
 	- added own goals and penalties in regulation and extra time
-	- added reasons why a player was banned
+	- added reasons why a player was banned (thanks to Tom Chance for
+	the correct football expressions)
+	- added player and some more team awards (with prize money) at the
+	end of a season
 
 08/30/2004: v1.6.0
 	- added possibility to have messages shown instead of popups
