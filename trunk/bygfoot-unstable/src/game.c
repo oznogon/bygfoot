@@ -62,13 +62,12 @@ is_draw(fixture fix, gint type)
     }
 
     /* second leg of home-away */
-    if(fix.type > 6000 && fix.type < 9000 &&
-       fix.type % 10 == 5)
-    {	
+    if(fix.type % 10 == 5)
+    {
 	if( get_first_leg_result(fix, 0) ==
 	    fix.result[0][0] + fix.result[0][1] &&
 	    get_first_leg_result(fix, 1) ==
-	    fix.result[1][0] + fix.result[1][1])
+	    fix.result[1][0] + fix.result[1][1] )
 	    return TRUE;
     }
     

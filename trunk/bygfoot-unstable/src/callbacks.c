@@ -308,6 +308,7 @@ on_button_transfers_clicked           (GtkButton       *button,
 {
     show_transfers();
     status = 100000;
+    notify_status[NOTIFY_TRANSFERS] = FALSE;
 
     set_buttons();
 }

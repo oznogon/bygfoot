@@ -237,6 +237,7 @@ write_pairings(gint *team_ids, gint max,
     gint i;
     gint k;
     gint order[max];
+    fixture fix;
 
     write_permutation(order, 0, max - 1);
     
@@ -258,10 +259,19 @@ write_pairings(gint *team_ids, gint max,
 		      week_number);
 
 	if(home_away)
+	{
 	    write_fixture(k + i * 2 + 1, team_ids[order[2 * i + 1]],
 			  team_ids[order[2 * i]],
 			  first_type + i * type_leap + 5,
 			  week_number + week_leap);
+
+	    if(week_leap == 0)
+	    {
+		fix = fixtures[k + i * 2 + 1];
+		fixtures[k + i * 2 + 1] = fixtures[k + i * 2];
+		fixtures[k + i * 2] = fix;
+	    }
+	}
     }
 }
 

@@ -133,6 +133,7 @@ read_xml_save(gchar * file_name)
     assert (team_index >= MIN_TEAMS);
 	
     xmlFreeDoc(doc);
+    xmlCleanupParser();
     g_print("XML import: OK.\n");	
 }
 	
