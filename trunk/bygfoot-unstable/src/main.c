@@ -60,9 +60,6 @@ set_variables(void)
     /* this plays a role in case the human player has
        specified a country file on the command line */
     strcpy(teams[0].name, "");
-
-    /* read options from the configuration file */
-    read_conf_file();
 }
 
 void
@@ -82,7 +79,7 @@ bygfoot_init(gint argc, gchar *argv[])
     add_support_directory_recursive(buf);
 
     set_variables();
-    
+ 
      /* look for pixmap directory and country file */
     for(i=1;i<argc - 1;i++)
     {
@@ -94,6 +91,9 @@ bygfoot_init(gint argc, gchar *argv[])
     
     check_home_dir();
 
+    /* read options from the configuration file */
+    read_conf_file();
+   
     /* fill the player names array */
     text_file_number_to_char(FILES_PLAYER_NAMES, buf, TRUE);
     get_names(buf, player_names);

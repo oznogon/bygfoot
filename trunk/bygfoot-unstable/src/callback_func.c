@@ -957,12 +957,14 @@ callback_new_week(gboolean calculate)
 	    show_results(3);
 	else if(week < 49)
 	    callback_show_preview();
+
+	show_players(NULL, NULL, 0, NULL, 0);
     }
     
     if(my_team < 114 && week == 49)
       season_awards();
 
-	if(week == 50) {//check objective
+    if(week == 50 && options[OPT_OBJECTIVE] == 1) {//check objective
 		int i=0;		
 		while(i<MAX_OBJECTIVE && objective_is_success(my_team,seasonObjective+i))
 			i++;
@@ -981,7 +983,7 @@ callback_new_week(gboolean calculate)
 
 
     
-	if(week == OBJECTIVE_REFRESH){
+	if(week == OBJECTIVE_REFRESH && options[OPT_OBJECTIVE] == 1){
 		int i=0;
 		gchar tmp[BIG];
 		//Refresh objective

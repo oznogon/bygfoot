@@ -141,6 +141,7 @@ write_opt_names(gchar opt_names[][50])
 
     strcpy(opt_names[OPT_BOOST], "boost");
     strcpy(opt_names[OPT_COMPRESS], "compress");
+    strcpy(opt_names[OPT_OBJECTIVE], "objective");
 }
 
 /* write the game options to the file

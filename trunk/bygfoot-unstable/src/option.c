@@ -37,6 +37,7 @@ enum
     ZERO_ONE26,
     ZERO_ONE27,
     ZERO_ONE28,
+    ZERO_ONE29,
     ZERO_ONE30,
     ZERO_ONE31,
     ZERO_ONE32,
@@ -182,6 +183,10 @@ get_option_widgets(GtkWidget *opt_window,
     zero_one_widgets[ZERO_ONE28] =
 	lookup_widget(opt_window, "check_att_league");
     zero_one_options[ZERO_ONE28] = &options[OPT_ATT_LEAGUE];
+
+    zero_one_widgets[ZERO_ONE29] =
+	lookup_widget(opt_window, "checkbutton_objective");
+    zero_one_options[ZERO_ONE29] = &options[OPT_OBJECTIVE];
 
     zero_one_widgets[ZERO_ONE30] =
 	lookup_widget(opt_window, "check_live_tendency");

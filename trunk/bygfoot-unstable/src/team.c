@@ -608,8 +608,7 @@ update_teams_players(gint team_id)
 void
 update_teams_injuries(gint team_id)
 {
-    /*d*/
-    gint i, j;
+    gint i;
     gint substitute;
     
     for(i=0;i<11;i++)

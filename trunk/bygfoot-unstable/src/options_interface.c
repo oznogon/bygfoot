@@ -75,6 +75,7 @@ create_opt_window (void)
   GtkWidget *checkbutton_rearrange;
   GtkWidget *checkbutton_swap;
   GtkWidget *checkbutton_fit_colors;
+  GtkWidget *checkbutton_objective;
   GtkWidget *label89;
   GtkWidget *label83;
   GtkWidget *frame2;
@@ -492,6 +493,11 @@ create_opt_window (void)
   gtk_box_pack_start (GTK_BOX (vbox33), checkbutton_fit_colors, FALSE, FALSE, 0);
   gtk_tooltips_set_tip (tooltips, checkbutton_fit_colors, _("Whether fitness percentage is shown in green and red shades"), NULL);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton_fit_colors), TRUE);
+
+  checkbutton_objective = gtk_check_button_new_with_mnemonic (_("Play with season objective"));
+  gtk_widget_show (checkbutton_objective);
+  gtk_box_pack_start (GTK_BOX (vbox33), checkbutton_objective, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, checkbutton_objective, _("You get a season objective from the team manager which you have to fulfill if you don't want to get sacked at the end of the season if you switch this on."), NULL);
 
   label89 = gtk_label_new (_("Apperance and behaviour of the game"));
   gtk_widget_show (label89);
@@ -1486,6 +1492,7 @@ create_opt_window (void)
   GLADE_HOOKUP_OBJECT (opt_window, checkbutton_rearrange, "checkbutton_rearrange");
   GLADE_HOOKUP_OBJECT (opt_window, checkbutton_swap, "checkbutton_swap");
   GLADE_HOOKUP_OBJECT (opt_window, checkbutton_fit_colors, "checkbutton_fit_colors");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_objective, "checkbutton_objective");
   GLADE_HOOKUP_OBJECT (opt_window, label89, "label89");
   GLADE_HOOKUP_OBJECT (opt_window, label83, "label83");
   GLADE_HOOKUP_OBJECT (opt_window, frame2, "frame2");
