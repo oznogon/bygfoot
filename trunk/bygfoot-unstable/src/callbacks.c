@@ -37,7 +37,7 @@ on_menu_new_activate                   (GtkMenuItem     *menuitem,
     }
     else
 	show_popup_window(
-	    "Are you sure you want to start a new game and discard your current game?",
+	    _("Are you sure you want to start a new game and discard your current game?"),
 	    popup_status);    
 }
 
@@ -132,7 +132,7 @@ on_structure_entry_activate            (GtkEntry        *entry,
 	callback_rearrange(FALSE);
     }
     else
-	print_message("Your team structure must have three non-zero digits which sum up to 10.");
+	print_message(_("Your team structure must have three non-zero digits which sum up to 10."));
 
     entry_set_text_from_int(entry, teams[my_team].structure);    
 
@@ -226,7 +226,7 @@ on_scout_optionmenu_changed            (GtkOptionMenu   *optionmenu,
 	set_save(FALSE);
 	scout = scout % 10 + (new_scout * 10);
 	print_message(
-	    "Next week you'll fire your scout and hire a new one.");
+	    _("Next week you'll fire your scout and hire a new one."));
     }
     else
 	scout = scout % 10;
@@ -513,7 +513,7 @@ on_button_back_to_main_clicked         (GtkButton       *button,
     if(notify_status[NOTIFY_TRANSFERS])
     {	
 	notify_status[NOTIFY_TRANSFERS] = FALSE;
-	show_popup_window("You might want to have a look at the transfer list. ",
+	show_popup_window(_("You might want to have a look at the transfer list. "),
 			  popup_status);
     }
     
@@ -601,12 +601,12 @@ on_button_new_week_clicked             (GtkButton       *button,
 	else
 	{
 	    popup_status[0] = 100 + OPT_CONF_UNFIT;
-	    show_popup_window("There are injured or banned players in your team. Proceed?",
+	    show_popup_window(_("There are injured or banned players in your team. Proceed?"),
 			      popup_status);
 	}
     }
     else
-	show_popup_window("Are you sure you want to end this week's activities and begin a new week?",
+	show_popup_window(_("Are you sure you want to end this week's activities and begin a new week?"),
 			  popup_status);
 
     set_buttons();
@@ -629,11 +629,11 @@ on_button_stad_capacity_clicked        (GtkButton       *button,
                                         gpointer         user_data)
 {
     if(stadiums[my_team].capacity >= 100000)
-	print_message("You can't have a bigger stadium; it's not safe.");
+	print_message(_("You can't have a bigger stadium; it's not safe."));
     else if(counters[COUNT_INC_CAP] < 1)
 	show_stadium_window();
     else
-	print_message("Your stadium is being enlarged. You can't increase its capacity until work's finished.");
+	print_message(_("Your stadium is being enlarged. You can't increase its capacity until work's finished."));
 
     set_buttons();
 }
@@ -726,7 +726,7 @@ on_button_quit_clicked                 (GtkButton       *button,
        options[OPT_CONF_QUIT] == 0 || save_status == 1)
 	gtk_main_quit();
     else
-	show_popup_window("Do you really want to quit without saving?", popup_status);
+	show_popup_window(_("Do you really want to quit without saving?"), popup_status);
 }
 
 void
@@ -804,7 +804,7 @@ on_start_editor_activate               (GtkMenuItem     *menuitem,
 	return;
     }
 
-    show_popup_window("Your current game is not saved and will be lost. Continue?",
+    show_popup_window(_("Your current game is not saved and will be lost. Continue?"),
 		      popup_status);
 }
 
@@ -898,7 +898,7 @@ on_start_update_activate               (GtkMenuItem     *menuitem,
 	return;
     }
 
-    show_popup_window("Your current game is not saved and will be lost. Continue?",
+    show_popup_window(_("Your current game is not saved and will be lost. Continue?"),
 		      popup_status);
 }
 
@@ -911,11 +911,11 @@ on_optionmenu_finstad_changed          (GtkOptionMenu   *optionmenu,
     if(value == 1)
     {
 	if(stadiums[my_team].capacity >= 100000)
-	    print_message("You can't have a bigger stadium; it's not safe.");
+	    print_message(_("You can't have a bigger stadium; it's not safe."));
 	else if(counters[COUNT_INC_CAP] < 1)
 	    show_stadium_window();
 	else
-	    print_message("Your stadium is being enlarged. You can't increase its capacity until work's finished.");
+	    print_message(_("Your stadium is being enlarged. You can't increase its capacity until work's finished."));
     }
     else if(value == 2)
     {

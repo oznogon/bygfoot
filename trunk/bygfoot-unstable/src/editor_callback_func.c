@@ -146,7 +146,7 @@ callback_change_structures(void)
        get_place(local_structure2, 1) + get_place(local_structure2, 2) + 
        get_place(local_structure2, 3) != 8)
     {
-	sprintf(buf, "One of the structure numbers is not a valid structure specifier. The digits of the first structure must add up to 10, those of the second one to 8. ");
+	sprintf(buf, _("One of the structure numbers is not a valid structure specifier. The digits of the first structure must add up to 10, those of the second one to 8. "));
 	show_popup_window(buf, NULL);
 	return;
     }
@@ -189,21 +189,15 @@ callback_load_team_file(void)
     const gchar *entry_text = gtk_entry_get_text(GTK_ENTRY(entry_country_file));
     gchar *filename;
     FILE *fil;
-    gchar buf[SMALL];
     gchar team_names[500][50];
     gint i;
     GList *country_list = NULL;
 
     filename = g_malloc(strlen(entry_text) + 1);
     strcpy(filename, entry_text);
-    fil = fopen(filename, "r");	
     
-    if(fil == NULL)
-    {
-	sprintf(buf, "Could not open file: %s .", filename);
-	show_popup_window(buf, NULL);
+    if(!my_fopen(filename, "r", &fil, FALSE))
 	return;
-    }
 
     fclose(fil);
 
@@ -237,24 +231,19 @@ callback_load_team(void)
     GtkWidget *entry_definitions_file =
 	lookup_widget(main_window, "entry_definitions_file");
     const gchar *def_file = gtk_entry_get_text(GTK_ENTRY(entry_definitions_file));
-    FILE *fil = fopen(def_file, "r");
+    FILE *fil;
     gchar buf[SMALL];
     gint i;
 
     if(strcmp(team_name, "") == 0 || strcmp(def_file, "") == 0)
     {
-	sprintf(buf, "You haven't selected a team you want to edit or a definitions file. ");
+	sprintf(buf, _("You haven't selected a team you want to edit or a definitions file. "));
 	show_popup_window(buf, NULL);
 	return;	
     }
 
-    if(fil == NULL)
-    {
-	sprintf(buf, "The file %s could not be opened.",
-		def_file);
-	show_popup_window(buf, NULL);
+    if(!my_fopen(def_file, "r", &fil, FALSE))
 	return;
-    }
 
     fclose(fil);
 
@@ -307,19 +296,12 @@ save_team_name(void)
 
     if(strlen(new_name) == 0)
     {
-	show_popup_window("You haven't entered a new team name. ", NULL);
+	show_popup_window(_("You haven't entered a new team name. "), NULL);
 	return;
     }
     
-    fil = fopen(country_file, "r");
-    if(fil == NULL)
-    {
-	sprintf(buf,
-		"Could not open file: %s. The new team name could not be saved.",
-		country_file);
-	show_popup_window(buf, NULL);
+    if(!my_fopen(country_file, "r", &fil, FALSE))
 	return;
-    }
     
     file_content = g_string_new("");
     strcpy(buf, "");
@@ -339,7 +321,7 @@ save_team_name(void)
     if(strcmp(buf, "1000") == 0 ||
        feof(fil) != 0)
     {
-	show_popup_window("Could not save new team name to %s. I couldn't find the old name.",
+	show_popup_window(_("Could not save new team name to %s. I couldn't find the old name."),
 			  NULL);
 	g_string_free(file_content, TRUE);
 	return;
@@ -453,13 +435,12 @@ save_defs(const gchar *def_file)
     fclose(fil);
 
     if(talent_error)
-	show_popup_window("One or more players could not be saved because of an invalid talent value. The talent value of a players has to be greater or equal his skill value. ", NULL);
+	show_popup_window(_("One or more players could not be saved because of an invalid talent value. The talent value of a players has to be greater or equal his skill value. "), NULL);
 }
 
 gboolean
 callback_save_defs(void)
 {
-    gchar buf[SMALL];
     GtkWidget *entry_team = 
 	lookup_widget(main_window, "entry_team");
     const gchar *team_name =
@@ -471,18 +452,12 @@ callback_save_defs(void)
 
     if(strcmp(team_name, "") == 0)
     {
-	show_popup_window( "You haven't selected a team. ", NULL);
+	show_popup_window( _("You haven't selected a team. "), NULL);
 	return FALSE;	
     }
 
-    fil = fopen(def_file, "a+");
-    if(fil == NULL)
-    {
-	sprintf(buf, "The file %s could not be opened in read/write mode.",
-		def_file);
-	show_popup_window(buf, NULL);
+    if(!my_fopen(def_file, "a+", &fil, FALSE))
 	return FALSE;
-    }
 
     fclose(fil);
     save_defs(def_file);
@@ -574,16 +549,16 @@ callback_update(void)
     
     if(new_skill > new_talent)
     {
-	show_popup_window("You have entered an invalid talent value. The talent value of a player has to be greater than his skill value. ", NULL);
+	show_popup_window(_("You have entered an invalid talent value. The talent value of a player has to be greater than his skill value. "), NULL);
 	return;
     }
 
     if(new_name[0] == '#')
-	show_popup_window("You have entered a player name beginning with the comment character '#'. The player will be ignored when loading the team from the definitions file. ", NULL);
+	show_popup_window(_("You have entered a player name beginning with the comment character '#'. The player will be ignored when loading the team from the definitions file. "), NULL);
     
     if(new_age < 17)
     {
-	show_popup_window("You have entered an invalid birth date. Players must be older than 17. ", NULL);
+	show_popup_window(_("You have entered an invalid birth date. Players must be older than 17. "), NULL);
 	return;
     }
 
@@ -682,14 +657,12 @@ import_file(const gchar *file_name)
     definitions_file = fopen(def_file, "a");
     import_file = fopen(file_name, "r");
 
-    if(definitions_file == NULL || import_file == NULL)
-    {
-	show_popup_window("One of the files could not be opened. ", NULL);
+    if(!my_fopen(def_file, "a", &definitions_file, FALSE) ||
+       !my_fopen(file_name, "a", &import_file, FALSE))
 	return;
-    }
 
     g_string_append_printf(imported_teams, 
-			   "The following teams were added to %s:\n\n", def_file);
+			   _("The following teams were added to %s:\n\n"), def_file);
 
     while(feof(import_file) == 0)
     {
@@ -725,7 +698,7 @@ import_file(const gchar *file_name)
     fclose(definitions_file);
 
     if(no_imports)
-	g_string_append_printf(imported_teams, "NONE\n");
+	g_string_append_printf(imported_teams, _("NONE\n"));
     
     show_popup_window(imported_teams->str, NULL);
 

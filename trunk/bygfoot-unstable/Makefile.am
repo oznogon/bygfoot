@@ -9,6 +9,8 @@ EXTRA_DIST = \
 	bygfoot.glade \
 	bygfoot.gladep
 
+dist_man6_MANS = man/bygfoot.6
+
 install-data-local:
 	@$(NORMAL_INSTALL)
 	if test -d $(srcdir)/support_files; then \

@@ -21,20 +21,20 @@ set_injury_info_into_cell(gint team_id, gint player_number,
 	 get_place(teams[team_id].players[player_number].health, 5) * 10,
 	 get_place(teams[team_id].players[player_number].health, 22)};
     gchar *injury[11] =
-	{"concussion",
-	 "hamstring",
-	 "pulled muscle",
-	 "groin injury",
-	 "fractured ankle",
-	 "cracked rib",
-	 "broken leg",
-	 "broken ankle",
-	 "broken arm",
-	 "broken shoulder",
-	 "torn crucial ligament"};
-
+	{_("concussion"),
+	 _("hamstring"),
+	 _("pulled muscle"),
+	 _("groin injury"),
+	 _("fractured ankle"),
+	 _("cracked rib"),
+	 _("broken leg"),
+	 _("broken ankle"),
+	 _("broken arm"),
+	 _("broken shoulder"),
+	 _("torn crucial ligament")};
+    
     sprintf(buf,
-	    "Injured: %s\n(expected recovery in %d weeks)",
+	    _("Injured: %s\n(expected recovery in %d weeks)"),
 	    injury[health[0] - 1], health[1]);
 }
 
@@ -44,16 +44,16 @@ set_ban_info_into_cell(gint team_id, gint player_number,
 		       gchar *buf)
 {
     gchar *ban[8] =
-	{"repeated dissent",
-	 "repeated delayed play",
-	 "deliberate, goal-blocking foul",
-	 "repeated bad tackle",
-	 "dangerous tackle",
-	 "violent conduct",
-	 "spat at player",
-	 "fifth yellow card"};
+	{_("repeated dissent"),
+	 _("repeated delayed play"),
+	 _("deliberate, goal-blocking foul"),
+	 _("repeated bad tackle"),
+	 _("dangerous tackle"),
+	 _("violent conduct"),
+	 _("spat at player"),
+	 _("fifth yellow card")};
 
-    sprintf(buf, "banned for %d weeks (%s)",
+    sprintf(buf, _("banned for %d weeks (%s)"),
 	    teams[team_id].players[player_number].booked % 10,
 	    ban[get_place(teams[team_id].players[player_number].booked, 11) - 1]);
 }
@@ -364,38 +364,38 @@ fixture_type_to_string(gint type, gint column, gchar *buf)
     }
 
     if(type == 9600 || type == 11600)
-	sprintf(buf, "1st Round");
+	sprintf(buf, _("1st Round"));
     else if(type == 9500 || type == 11500)
-	sprintf(buf, "2nd Round");
+	sprintf(buf, _("2nd Round"));
     else if(get_place(type, 12) == 80 ||
 	    get_place(type, 12) == 81 ||
 	    type == 9400 || type == 11400)
-	sprintf(buf, "1/16 Final");
+	sprintf(buf, _("1/16 Final"));
     else if( get_place(type, 12) == 78 ||
 	     get_place(type, 12) == 82 ||
 	     type == 9300 || type == 11300)
-	sprintf(buf, "1/8 Final");
+	sprintf(buf, _("1/8 Final"));
     else if( get_place(type, 12) == 64 ||
 	     get_place(type, 12) == 74 ||
 	     get_place(type, 12) == 84 ||
 	     type == 9200 || type == 11200)
-	sprintf(buf, "1/4 Final");
+	sprintf(buf, _("1/4 Final"));
     else if( get_place(type, 12) == 62 ||
 	     get_place(type, 12) == 72 ||
 	     get_place(type, 12) == 86 ||
 	     type == 9100 || type == 11100)
-	sprintf(buf, "1/2 Final");
+	sprintf(buf, _("1/2 Final"));
     else if( get_place(type, 12) == 60 ||
 	     get_place(type, 12) == 70 ||
 	     get_place(type, 12) == 88 ||
 	     type == 9000 || type == 11000)
-	sprintf(buf, "Final");
+	sprintf(buf, _("Final"));
     else if(type >= 50000)
     {
 	if(type < 55000)
-	    sprintf(buf, "1st Round");
+	    sprintf(buf, _("1st Round"));
 	else
-	    sprintf(buf, "2nd Round");
+	    sprintf(buf, _("2nd Round"));
     }
 
     if( (get_place(type, 11) >= 6 &&
@@ -403,19 +403,19 @@ fixture_type_to_string(gint type, gint column, gchar *buf)
 	 type != 6500 && type % 1000 != 0 ) )
     {
 	if(get_place(type, 12) == 65)
-	    strcat(buf, "Round robin");
+	    strcat(buf, _("Round robin"));
 	else if(type % 10 == 0)
-	    strcat(buf, " 1st Leg");
+	    strcat(buf, _(" 1st Leg"));
 	else
-	    strcat(buf, " 2nd Leg");
+	    strcat(buf, _(" 2nd Leg"));
     }
 
     if(type > 9000 && type < 12000)
     {
 	if(type % 1000 == 6000)
-	    sprintf(buf, "1st Round");
+	    sprintf(buf, _("1st Round"));
 	else if(type % 1000 == 5000)
-	    sprintf(buf, "2nd Round");
+	    sprintf(buf, _("2nd Round"));
     }
 
 }
@@ -506,22 +506,22 @@ cdf_fixture_column(GtkTreeViewColumn *col,
 		players[goals[goal_ids[0]][goal_ids[1]].scorer].name,
 		goals[goal_ids[0]][goal_ids[1]].minute);
 	if(goals[goal_ids[0]][goal_ids[1]].type == GOAL_TYPE_OWN)
-	    strcat(buf, " (own goal)");
+	    strcat(buf, _(" (own goal)"));
 	else if(goals[goal_ids[0]][goal_ids[1]].type == GOAL_TYPE_PEN)
-	    strcat(buf, " (penalty)");
+	    strcat(buf, _(" (penalty)"));
 	else if(goals[goal_ids[0]][goal_ids[1]].type >= GOAL_TYPE_PEN_MISSED &&
 		goals[goal_ids[0]][goal_ids[1]].type <= GOAL_TYPE_PEN_CROSS)
 	{
 	    g_object_set(renderer, "background", "tomato", NULL);
 
 	    if(goals[goal_ids[0]][goal_ids[1]].type == GOAL_TYPE_PEN_MISSED)
-		strcat(buf, " (penalty; missed)");
+		strcat(buf, (" (penalty; missed)"));
 	    else if(goals[goal_ids[0]][goal_ids[1]].type == GOAL_TYPE_PEN_SAVE)
-		strcat(buf, " (penalty; save)");
+		strcat(buf, (" (penalty; save)"));
 	    else if(goals[goal_ids[0]][goal_ids[1]].type == GOAL_TYPE_PEN_POST)
-		strcat(buf, " (penalty; post)");
+		strcat(buf, (" (penalty; post)"));
 	    else if(goals[goal_ids[0]][goal_ids[1]].type == GOAL_TYPE_PEN_CROSS)
-		strcat(buf, " (penalty; cross-bar)");
+		strcat(buf, (" (penalty; cross-bar)"));
 	}
     }
     /* type of league */
@@ -529,21 +529,21 @@ cdf_fixture_column(GtkTreeViewColumn *col,
 	fixture_type_to_string(value - 2000000, column, buf);
     /* week number */
     else if(value > 1000000)
-	sprintf(buf, "Week %d", value - 1000000);
+	sprintf(buf, _("Week %d"), value - 1000000);
     else if(value == -100)
-	sprintf(buf, "Injuries / Cards");
+	sprintf(buf, _("Injuries / Cards"));
     else if(value == -400)
-	sprintf(buf, "Attendance:");
+	sprintf(buf, _("Attendance:"));
     else if(value == -410)
-	sprintf(buf, "Attendance (neutral stadium):");
+	sprintf(buf, _("Attendance (neutral stadium):"));
     else if(value == -501 || value == -500)
 	sprintf(buf, "%d", stadium_facts[(value + 500) * -1][0]);
     else if(value == -511)
-	sprintf(buf, "There were technical\nproblems in your stadium.");
+	sprintf(buf, _("There were technical\nproblems in your stadium."));
     else if(value == -512)
-	sprintf(buf, "There were riots\nin your stadium.");
+	sprintf(buf, _("There were riots\nin your stadium."));
     else if(value == -513)
-	sprintf(buf, "There was a fire\nin your stadium.");
+	sprintf(buf, _("There was a fire\nin your stadium."));
     else if(value <= -1000 && value >= -1100)
     {
 	value = (value + 1000) * -1;
@@ -741,9 +741,9 @@ cdf_best_players(GtkTreeViewColumn *col,
     if(value == -5)
 	strcpy(buf, "");
     else if(value == -10)
-	sprintf(buf, "Best field players");
+	sprintf(buf, _("Best field players"));
     else if(value == -20)
-	sprintf(buf, "Best goalies");
+	sprintf(buf, _("Best goalies"));
     else if(value < -20)
     {
 	value += 100;
@@ -837,7 +837,7 @@ write_my_results(GtkListStore *liststore, gint team_id)
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, team_id, 1, "Your results", 2, buf, -1);
+		       0, team_id, 1, _("Your results"), 2, buf, -1);
 }
 
 /* write the outcomes of the last games of a team in
@@ -885,12 +885,12 @@ write_last_games(GtkListStore *liststore, gint team_id)
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, team_id, 1, "Latest results", 2, buf, -1);
+		       0, team_id, 1, _("Latest results"), 2, buf, -1);
 
     sprintf(buf, "%d : %d", goals[0], goals[1]);
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, team_id, 1, "Goals", 2, buf, -1);
+		       0, team_id, 1, _("Goals"), 2, buf, -1);
 }
 
 /* simulate a game and write the result as a bookmaker tip into the
@@ -944,22 +944,22 @@ write_bookmaker(GtkListStore *liststore, gint *opponent_ids, gint idx)
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, opponent_ids[idx], 1, "Bookmaker's tip", 2, buf2, -1);
+		       0, opponent_ids[idx], 1, _("Bookmaker's tip"), 2, buf2, -1);
 }
 
 void
 style_to_string(gint style, gchar *buf)
 {
     if(style == -2)
-	strcpy(buf, "All Out Defend");
+	strcpy(buf, _("All Out Defend"));
     else if(style == -1)
-	strcpy(buf, "Defend");
+	strcpy(buf, _("Defend"));
     else if(style == 0)
-	strcpy(buf, "Balanced");
+	strcpy(buf, _("Balanced"));
     else if(style == 1)
-	strcpy(buf, "Attack");
+	strcpy(buf, _("Attack"));
     else if(style == 2)
-	strcpy(buf, "All Out Attack");    
+	strcpy(buf, _("All Out Attack"));    
 }
 
 /* create the rows for the info on a certain team */
@@ -976,7 +976,7 @@ create_opponent_info(GtkListStore *liststore, gint *opponent_ids, gint idx)
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, team_id, 1, "Team", 2, teams[team_id].name, -1);
+		       0, team_id, 1, _("Team"), 2, teams[team_id].name, -1);
 
     if(team_id < 130)
     {
@@ -991,7 +991,7 @@ create_opponent_info(GtkListStore *liststore, gint *opponent_ids, gint idx)
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, team_id, 1, "Rank", 2, buf, -1);
+		       0, team_id, 1, _("Rank"), 2, buf, -1);
 
     sprintf(buf, "%.2f (%+.2f)   %.2f (%+.2f)", average_skill(team_id, 11, TRUE), 
 	    average_skill(team_id, 11, TRUE) - average_skill(my_team, 11, TRUE),
@@ -999,17 +999,17 @@ create_opponent_info(GtkListStore *liststore, gint *opponent_ids, gint idx)
 	    average_skill(team_id, 20, FALSE) - average_skill(my_team, 20, FALSE));
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, team_id, 1, "Average cskills", 2, buf, -1);
+		       0, team_id, 1, _("Average cskills"), 2, buf, -1);
 
     style_to_string(teams[team_id].style, buf);
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, team_id, 1, "Playing style", 2, buf, -1);
+		       0, team_id, 1, _("Playing style"), 2, buf, -1);
 
     sprintf(buf, "%d", teams[team_id].structure);
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, team_id, 1, "Team structure", 2, buf, -1);
+		       0, team_id, 1, _("Team structure"), 2, buf, -1);
 
     write_last_games(liststore, team_id);
     write_my_results(liststore, team_id);

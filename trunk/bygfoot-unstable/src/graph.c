@@ -26,7 +26,7 @@ show_graph(GtkWidget *graph_window, team *tm, player *pl, gint type)
 
     if(vector->len == 0)
     {
-	show_popup_window("There is no history yet.", NULL);
+	show_popup_window(_("There is no history yet."), NULL);
 	on_button_close_clicked(
 	    GTK_BUTTON(lookup_widget(graph_window, "button_close")), NULL);
 	return;
@@ -105,41 +105,41 @@ write_graph_labels(GtkWidget *graph_window, player *pl, gint type, gfloat bounds
 	switch(type)
 	{
 	    default:
-		sprintf(buf, "Skill development for %s", pl->name);
+		sprintf(buf, _("Skill development for %s"), pl->name);
 		precision = 1;
 		break;
 	    case PLAYER_HISTORY_GOALS:
-		sprintf(buf, "Goals development for %s", pl->name);
+		sprintf(buf, _("Goals development for %s"), pl->name);
 		break;
 	    case PLAYER_HISTORY_WAGE:
-		sprintf(buf, "Wage development for %s", pl->name);
+		sprintf(buf, _("Wage development for %s"), pl->name);
 	    case PLAYER_HISTORY_VALUE:
-		sprintf(buf, "Value development for %s", pl->name);
+		sprintf(buf, _("Value development for %s"), pl->name);
 		break;
 	}
     else
 	switch(type)
 	{
 	    default:
-		sprintf(buf, "Rank development");
+		sprintf(buf, _("Rank development"));
 		break;
 	    case TEAM_HISTORY_PTS:
-		sprintf(buf, "Points development");
+		sprintf(buf, _("Points development"));
 		break;
 	    case TEAM_HISTORY_GD:
-		sprintf(buf, "Goal difference development");
+		sprintf(buf, _("Goal difference development"));
 		break;
 	    case TEAM_HISTORY_GF:
-		sprintf(buf, "Goals for development");
+		sprintf(buf, _("Goals for development"));
 		break;
 	    case TEAM_HISTORY_GA:
-		sprintf(buf, "Goals against development");
+		sprintf(buf, _("Goals against development"));
 		break;
 	    case TEAM_HISTORY_MONEY:
-		sprintf(buf, "Money development");
+		sprintf(buf, _("Money development"));
 		break;
 	    case TEAM_HISTORY_AV_ATTENDANCE:
-		sprintf(buf, "Average attendance development");
+		sprintf(buf, _("Average attendance development"));
 		break;
 	}
 

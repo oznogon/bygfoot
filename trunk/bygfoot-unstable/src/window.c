@@ -56,7 +56,7 @@ show_opt_window(void)
 	create_opt_window();
     gchar buf[SMALL];
     
-    sprintf(buf, "Bygfoot %s -- Options", VERS);
+    sprintf(buf, _("Bygfoot %s -- Options"), VERS);
     gtk_window_set_title(GTK_WINDOW(opt_window), buf);
 
     set_up_options_window(opt_window, 1);
@@ -73,17 +73,17 @@ get_fire_text(GtkWidget *popup_label, GtkWidget **radiobuttons,
     gint i;
     gchar buf[3][SMALL];
     
-    sprintf(buf[0], "You'd like to fire %s. You can",
+    sprintf(buf[0], _("You'd like to fire %s. You can"),
 	    teams[status[1]].players[status[2]].name);
     
-    sprintf(buf[1], "pay a one-time compensation of ");
+    sprintf(buf[1], _("pay a one-time compensation of "));
     print_grouped_int(round_integer(teams[status[1]].players[status[2]].value * 0.25, 2),
 		      buf[1], 1);
     
-    sprintf(buf[2], "pay his wage (");
+    sprintf(buf[2], _("pay his wage ("));
     print_grouped_int(teams[status[1]].players[status[2]].wage,
 		      buf[2], 1);
-    strcat(buf[2], ") for another 8 months");
+    strcat(buf[2], _(") for another 8 months"));
 
     gtk_label_set_text(GTK_LABEL(popup_label), buf[0]);
 
@@ -198,17 +198,13 @@ show_help(gint customization)
     gchar trash[SMALL];
     FILE *fil;
 
-    sprintf(buf, "Bygfoot %s -- Help", VERS);
+    sprintf(buf, _("Bygfoot %s -- Help"), VERS);
     gtk_window_set_title(GTK_WINDOW(help_window), buf);
 
     text_file_number_to_char(FILES_HELP, buf, TRUE);
-    fil = fopen(buf, "r");
 
-    if(fil == NULL)
-    {
-	show_popup_window("Could not find help file.", NULL);
+    if(!my_fopen(buf, "r", &fil, FALSE))
 	return;
-    }
 
     if(strcmp(font_name, "0") != 0)
     {
@@ -339,7 +335,7 @@ start_editor(void)
     main_window =
 	create_editor_window();
 
-    sprintf(buf, "Bygfoot %s -- Team Editor", VERS);
+    sprintf(buf, _("Bygfoot %s -- Team Editor"), VERS);
     gtk_window_set_title(GTK_WINDOW(main_window), buf);
 
     gtk_widget_show(main_window);
@@ -383,7 +379,7 @@ show_job_offer_window(gchar text[][SMALL])
 	lookup_widget(job_offer_window, "treeview_player_list");
     GtkWidget *text_labels[JOB_OFFER_END];
 
-    sprintf(buf, "Bygfoot %s - Job Offer", VERS);
+    sprintf(buf, _("Bygfoot %s - Job Offer"), VERS);
     gtk_window_set_title(GTK_WINDOW(job_offer_window), buf);
 
     for(i=0;i<JOB_OFFER_END;i++)
@@ -407,6 +403,7 @@ start_update(void)
     gchar buf[SMALL];
     gchar buf2[SMALL];
     gchar buf3[SMALL];
+    GError *error = NULL;
 
     strcpy(buf, "");
     text_file_number_to_char(FILES_UPDATE_GUI, buf, TRUE);
@@ -426,7 +423,8 @@ start_update(void)
 
     sprintf(buf3, "%s %s", buf, buf2);
 
-    g_spawn_command_line_async(buf3, NULL);
+    g_spawn_command_line_async(buf3, &error);
+    print_error(error, TRUE);
 
     if(main_window != NULL)
 	gtk_main_quit();

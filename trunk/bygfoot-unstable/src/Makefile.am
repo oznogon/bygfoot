@@ -27,7 +27,7 @@ bygfoot_SOURCES = \
 	load_save.c load_save.h  \
 	main.c callbacks.h generation.h gui.h load_save.h main.h startup.h support.h text_files.h window.h \
 	maths.c maths.h \
-	misc.c misc.h math.h \
+	misc.c misc.h \
 	misc_callbacks.c callback_func.h callbacks.h editor_callback_func.h game_gui.h generation.h gui.h load_save.h math.h misc_callbacks.h player.h startup.h support.h team.h text_files.h window.h \
 	misc_interface.c  misc_interface.h misc_callbacks.h support.h \
 	misc2_callbacks.c callback_func.h callbacks.h gui.h misc2_callbacks.h support.h team.h \

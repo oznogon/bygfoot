@@ -62,7 +62,7 @@ get_first_fixture(gint type)
 
     if(i == FIX_END)
     {
-	g_print("get_first_free: reached end of fixtures; type %d\n",
+	g_warning("get_first_free: reached end of fixtures; type %d\n",
 		type);
 	exit(-2);
     }
@@ -405,7 +405,7 @@ get_winner_runner_up(gint type, gint winner)
     
     if(i == FIX_END)
     {
-	g_print("get_runner_up: could not find fixture %d\n",
+	g_warning("get_runner_up: could not find fixture %d\n",
 		type);
 	return -1;
     }
@@ -439,9 +439,9 @@ winner_of_regular(fixture fix, gchar *buf, gint team_id)
 	if(buf != NULL)
 	{
 	    if(team_id == 0)
-		strcpy(buf, "W ");
+		strcpy(buf, _("W "));
 	    else
-		strcpy(buf, "L ");
+		strcpy(buf, _("L "));
 	}
 
 	return fix.team_id[0];
@@ -454,9 +454,9 @@ winner_of_regular(fixture fix, gchar *buf, gint team_id)
 	    if(buf != NULL)
 	    {
 		if(team_id == 1)
-		    strcpy(buf, "W ");
+		    strcpy(buf, _("W "));
 		else
-		    strcpy(buf, "L ");
+		    strcpy(buf, _("L "));
 	    }
 
 	    return fix.team_id[1];
@@ -464,7 +464,7 @@ winner_of_regular(fixture fix, gchar *buf, gint team_id)
 
 
     if(buf != NULL)
-	strcpy(buf, "D ");
+	strcpy(buf, _("D "));
 
     /* draw */
     return -1;
@@ -477,7 +477,7 @@ winner_of(fixture fix)
     if(fix.type < 6000 ||
        get_place(fix.type, 12) == 65)
     {
-	g_print("winner_of: league game argument\n");
+	g_warning("winner_of: league game argument\n");
         exit(-3);
     }
 
@@ -613,7 +613,7 @@ update_uefa_supercup(void)
 
     if(team_id[0] == -1 || team_id[1] == -1)
     {
-	g_print("update_uefa_supercup: could not find winners\n");
+	g_warning("update_uefa_supercup: could not find winners\n");
 	return;
     }
 
@@ -635,7 +635,7 @@ update_charity_shield(void)
 
     if(team_id[1] == -1)
     {
-	g_print("update_charity_shield: could not find fa cup winner\n");
+	g_warning("update_charity_shield: could not find fa cup winner\n");
 	return;
     }
 

@@ -1,11 +1,14 @@
 #ifndef MISC_H
 #define MISC_H
 
+#include <time.h>
 #include "bygfoot.h"
 #include "variables.h"
+#include "maths.h"
+#include "free.h"
 
 void
-print_error(GError *error);
+print_error(GError *error, gboolean abort_program);
 
 /* remove some of the first or last characters from src and copy
    the rest to dest; no error-checking is done */

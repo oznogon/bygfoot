@@ -43,9 +43,9 @@ create_main_window (void)
   GtkWidget *menu_options;
   GtkWidget *separatormenuitem1;
   GtkWidget *start_editor;
-  GtkWidget *image85;
+  GtkWidget *image107;
   GtkWidget *start_update;
-  GtkWidget *image86;
+  GtkWidget *image108;
   GtkWidget *trennlinie2;
   GtkWidget *menu_quit;
   GtkWidget *menuitem4;
@@ -327,18 +327,17 @@ create_main_window (void)
   gtk_widget_show (start_editor);
   gtk_container_add (GTK_CONTAINER (menuitem1_menu), start_editor);
 
-  image85 = gtk_image_new_from_stock ("gtk-preferences", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image85);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (start_editor), image85);
+  image107 = gtk_image_new_from_stock ("gtk-preferences", GTK_ICON_SIZE_MENU);
+  gtk_widget_show (image107);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (start_editor), image107);
 
   start_update = gtk_image_menu_item_new_with_mnemonic (_("Start Bygfoot Online Update"));
   gtk_widget_show (start_update);
   gtk_container_add (GTK_CONTAINER (menuitem1_menu), start_update);
-  gtk_tooltips_set_tip (tooltips, start_update, _("You can use the online update feature only if you have the Bygfoot source package installed"), NULL);
 
-  image86 = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image86);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (start_update), image86);
+  image108 = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_MENU);
+  gtk_widget_show (image108);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (start_update), image108);
 
   trennlinie2 = gtk_menu_item_new ();
   gtk_widget_show (trennlinie2);
@@ -1533,9 +1532,9 @@ create_main_window (void)
   GLADE_HOOKUP_OBJECT (main_window, menu_options, "menu_options");
   GLADE_HOOKUP_OBJECT (main_window, separatormenuitem1, "separatormenuitem1");
   GLADE_HOOKUP_OBJECT (main_window, start_editor, "start_editor");
-  GLADE_HOOKUP_OBJECT (main_window, image85, "image85");
+  GLADE_HOOKUP_OBJECT (main_window, image107, "image107");
   GLADE_HOOKUP_OBJECT (main_window, start_update, "start_update");
-  GLADE_HOOKUP_OBJECT (main_window, image86, "image86");
+  GLADE_HOOKUP_OBJECT (main_window, image108, "image108");
   GLADE_HOOKUP_OBJECT (main_window, trennlinie2, "trennlinie2");
   GLADE_HOOKUP_OBJECT (main_window, menu_quit, "menu_quit");
   GLADE_HOOKUP_OBJECT (main_window, menuitem4, "menuitem4");

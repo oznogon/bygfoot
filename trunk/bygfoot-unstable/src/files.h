@@ -4,6 +4,9 @@
 #include "bygfoot.h"
 #include "variables.h"
 
+gboolean
+my_fopen(const gchar *filename, gchar *bits, FILE **fil, gboolean abort_program);
+
 /* read the file until the next line that's not a comment or
    a blank line and copy the line into buf; or, if find_text is
    not NULL, read the file until 'find_text' is found */
@@ -38,7 +41,7 @@ check_files(void);
    to the array 'names'; both files are read until a '1000' appears
    in a line by itself */
 void
-get_names(gchar *filename, gchar names[][50]);
+get_names(const gchar *filename, gchar names[][50]);
 
 /* return filename corresponding to a number defined in defs.h/enums.h */
 void

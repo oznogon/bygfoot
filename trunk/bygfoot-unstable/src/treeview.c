@@ -296,23 +296,23 @@ set_up_player_list_column(GtkWidget *treeview, gint column,
     GtkTreeViewColumn   *col = gtk_tree_view_column_new();
     GtkCellRenderer     *renderer = gtk_cell_renderer_text_new();
     gchar *titles[ATT_DUMMY1] =
-	{"Name",
-	 "CPos", 
-	 "Pos",
-	 "CSk", 
-	 "Sk",
-	 "Talent",
-	 "Fit",
-	 "Ga", 
-	 "Go",
-	 "Status", 
-	 "Age",
-	 "ETal", 
-	 "YC",
-	 "Value",
-	 "Wage", 
-	 "Team",
-	 "League"};
+	{_("Name"),
+	 _("CPos"), 
+	 _("Pos"),
+	 _("CSk"), 
+	 _("Sk"),
+	 _("Talent"),
+	 _("Fit"),
+	 _("Ga"), 
+	 _("Go"),
+	 _("Status"), 
+	 _("Age"),
+	 _("ETal"), 
+	 _("YC"),
+	 _("Value"),
+	 _("Wage"), 
+	 _("Team"),
+	 _("League")};
     
     if(attribute >= 0 && attribute < ATT_DUMMY1)
 	gtk_tree_view_column_set_title(col, titles[attribute]);
@@ -504,23 +504,23 @@ create_player_info(gint team_id, gint player_number)
     GtkTreeIter iter;
     gchar categories[ATT_DUMMY1][SMALL];
 
-    strcpy(categories[ATT_NAME], "Name");
-    strcpy(categories[ATT_CPOS], "Current position"); 
-    strcpy(categories[ATT_POS], "(Normal) Position");
-    strcpy(categories[ATT_CSKILL], "Current skill"); 
-    strcpy(categories[ATT_SKILL], "(Normal) Skill");
-    strcpy(categories[ATT_TALENT], "Talent");
-    strcpy(categories[ATT_FIT], "Fitness");
-    strcpy(categories[ATT_GAMES], "Games"); 
-    strcpy(categories[ATT_GOALS], "Goals");
-    strcpy(categories[ATT_STATUS], "Status"); 
-    strcpy(categories[ATT_AGE], "Age");
-    strcpy(categories[ATT_ETAL], "Estimated talent"); 
-    strcpy(categories[ATT_BOOKED], "Yellow cards");
-    strcpy(categories[ATT_VALUE], "Value");
-    strcpy(categories[ATT_WAGE], "Wage"); 
-    strcpy(categories[ATT_TEAM], "Team");
-    strcpy(categories[ATT_LEAGUE], "League");
+    strcpy(categories[ATT_NAME], _("Name"));
+    strcpy(categories[ATT_CPOS], _("Current position")); 
+    strcpy(categories[ATT_POS], _("(Normal) Position"));
+    strcpy(categories[ATT_CSKILL], _("Current skill")); 
+    strcpy(categories[ATT_SKILL], _("(Normal) Skill"));
+    strcpy(categories[ATT_TALENT], _("Talent"));
+    strcpy(categories[ATT_FIT], _("Fitness"));
+    strcpy(categories[ATT_GAMES], _("Games")); 
+    strcpy(categories[ATT_GOALS], _("Goals"));
+    strcpy(categories[ATT_STATUS], _("Status")); 
+    strcpy(categories[ATT_AGE], _("Age"));
+    strcpy(categories[ATT_ETAL], _("Estimated talent")); 
+    strcpy(categories[ATT_BOOKED], _("Yellow cards"));
+    strcpy(categories[ATT_VALUE], _("Value"));
+    strcpy(categories[ATT_WAGE], _("Wage")); 
+    strcpy(categories[ATT_TEAM], _("Team"));
+    strcpy(categories[ATT_LEAGUE], _("League"));
 
     liststore = gtk_list_store_new(2, G_TYPE_STRING,
 				   G_TYPE_INT);
@@ -941,15 +941,15 @@ set_up_table(GtkWidget *treeview)
 {
     gint i;
     gchar *titles[10] = {"",
-			 "Team",
-			 "PL",
-			 "W",
-			 "DW",
-			 "L",
-			 "GF",
-			 "GA",
-			 "GD",
-			 "Points"};
+			 _("Team"),
+			 _("PL"),
+			 _("W"),
+			 _("DW"),
+			 _("L"),
+			 _("GF"),
+			 _("GA"),
+			 _("GD"),
+			 _("Points")};
     GtkTreeViewColumn *col;
     GtkCellRenderer *renderer;
 
@@ -1059,9 +1059,9 @@ void
 set_up_league_results(GtkWidget *treeview)
 {
     gint i;
-    gchar *titles[3] = {"Team",
-			"Away",
-			"Home"};
+    gchar *titles[3] = {_("Team"),
+			_("Away"),
+			_("Home")};
     GtkTreeViewColumn *col;
     GtkCellRenderer *renderer;
 
@@ -1138,27 +1138,27 @@ create_fin_stad(void)
 			   G_TYPE_STRING);
     GtkTreeIter iter;
     gchar *categories[FIN_DUMMY1] =
-	{"Money",
-	 "Ticket sale",
-	 "Journey costs",
-	 "Player wages",
-	 "Scout wage",
-	 "Physio",
-	 "Transfers",
-	 "Stadium improvement",
-	 "Stadium bills",
-	 "Prize money",
-	 "Debts"};
+	{_("Money"),
+	 _("Ticket sale"),
+	 _("Journey costs"),
+	 _("Player wages"),
+	 _("Scout wage"),
+	 _("Physio"),
+	 _("Transfers"),
+	 _("Stadium improvement"),
+	 _("Stadium bills"),
+	 _("Prize money"),
+	 _("Debts")};
 
     if(counters[COUNT_LOAN] > 0)
-	sprintf(buf2, "\nRepay in %d weeks\nCurrent interest rate: %.1f%%",
+	sprintf(buf2, _("\nRepay in %d weeks\nCurrent interest rate: %.1f%%"),
 		counters[COUNT_LOAN], rint(interest_rate() * 1000) / 10);
     else if(counters[COUNT_LOAN] == 0)
-	sprintf(buf2, " repay this week!!!");
+	sprintf(buf2, _(" repay this week!!!"));
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, "Finances", 1, "", -1);
+		       0, _("Finances"), 1, "", -1);
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
@@ -1177,9 +1177,9 @@ create_fin_stad(void)
 	if(i == FIN_STADIUM)
 	{
 	    if(counters[COUNT_INC_CAP] < 0)
-		strcat(buf, " (enlargement planned)");
+		strcat(buf, _(" (enlargement planned)"));
 	    else if(counters[COUNT_INC_CAP] > 0)
-		strcat(buf, " (enlargement in progress)");
+		strcat(buf, _(" (enlargement in progress)"));
 	}
 
 	gtk_list_store_set(liststore, &iter,
@@ -1189,7 +1189,7 @@ create_fin_stad(void)
     print_grouped_int(calculate_max_loan_credit(1), buf, 0);
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, "Drawing credit", 1, buf, -1);
+		       0, _("Drawing credit"), 1, buf, -1);
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
@@ -1197,7 +1197,7 @@ create_fin_stad(void)
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, "Stadium", 1, "", -1);
+		       0, _("Stadium"), 1, "", -1);
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
@@ -1206,28 +1206,28 @@ create_fin_stad(void)
     gtk_list_store_append(liststore, &iter);
     print_grouped_int(stadiums[my_team].capacity, buf, 0);
     gtk_list_store_set(liststore, &iter,
-		       0, "Capacity", 1, buf, -1);
+		       0, _("Capacity"), 1, buf, -1);
 
     gtk_list_store_append(liststore, &iter);
     sprintf(buf, "%d", stadiums[my_team].average_attendance);
     gtk_list_store_set(liststore, &iter,
-		       0, "Average attendance", 1, buf, -1);
+		       0, _("Average attendance"), 1, buf, -1);
     
     gtk_list_store_append(liststore, &iter);
     sprintf(buf, "%.0f%%", stadiums[my_team].safety * 100);
     gtk_list_store_set(liststore, &iter,
-		       0, "Safety", 1, buf, -1);
+		       0, _("Safety"), 1, buf, -1);
 
 
     gtk_list_store_append(liststore, &iter);
     print_grouped_int(capacity_increase, buf, 0);
     gtk_list_store_set(liststore, &iter,
-		       0, "500 seats cost", 1, buf, -1);
+		       0, _("500 seats cost"), 1, buf, -1);
 
     gtk_list_store_append(liststore, &iter);
     print_grouped_int(safety_increase, buf, 0);
     gtk_list_store_set(liststore, &iter,
-		       0, "5% safety increase costs", 1, buf, -1);
+		       0, _("5% safety increase costs"), 1, buf, -1);
 
     return GTK_TREE_MODEL(liststore);
 }
@@ -1356,10 +1356,10 @@ set_up_best_players(GtkWidget *treeview)
     GtkCellRenderer *renderer;
     gchar *titles[5] =
 	{"",
-	 "Name",
-	 "Team",
-	 "Goals",
-	 "Goals / Game"};
+	 _("Name"),
+	 _("Team"),
+	 _("Goals"),
+	 _("Goals / Game")};
     
     gtk_tree_selection_set_mode(
 	gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
@@ -1616,39 +1616,38 @@ stat_rank_to_text(gint rank, gchar *buf)
 	return;
     }
 
-/*     get_league_name_from_id(get_place(local_rank, 11) * -1, buf);   */
     strcpy(buf, "");
 
     if(local_rank < 80)
     {
 	if(local_rank == 65)
-	    strcat(buf, "Round robin");
+	    strcat(buf, _("Round robin"));
 	else if(get_place(local_rank, 1) == 8)
-	    strcat(buf, "Last 16");
+	    strcat(buf, _("Last 16"));
 	else if(get_place(local_rank, 1) == 4)
-	    strcat(buf, "Quarter-Final");
+	    strcat(buf, _("Quarter-Final"));
 	else if(get_place(local_rank, 1) == 2)
-	    strcat(buf, "Semi-Final");
+	    strcat(buf, _("Semi-Final"));
 	else if(rank > 0)
-	    strcat(buf, "Runner-up");
+	    strcat(buf, _("Runner-up"));
 	else
-	    strcat(buf, "Champion");
+	    strcat(buf, _("Champion"));
 
 	return;
     }
 
     if(get_place(local_rank, 1) < 2)
-	strcat(buf, "Last 32");
+	strcat(buf, _("Last 32"));
     else if(get_place(local_rank, 1) == 2)
-	strcat(buf, "Last 16");
+	strcat(buf, _("Last 16"));
     else if(get_place(local_rank, 1) == 4)
-	strcat(buf, "Quarter-Final");
+	strcat(buf, _("Quarter-Final"));
     else if(get_place(local_rank, 1) == 6)
-	strcat(buf, "Semi-Final");
+	strcat(buf, _("Semi-Final"));
     else if(rank > 0)
-	strcat(buf, "Runner-up");
+	strcat(buf, _("Runner-up"));
     else
-	strcat(buf, "Champion");
+	strcat(buf, _("Champion"));
 }
 
 
@@ -1671,14 +1670,14 @@ create_history(season_stat *stat)
     sprintf(buf, "%d", stat->season_number);
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, "Season",
+		       0, _("Season"),
 		       1, buf,
 		       2, "", 3, "", 4, "",
 		       -1);
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, "Your team",
+		       0, _("Your team"),
 		       1, stat->team_names[STAT_MY_TEAM],
 		       2, "", 3, "", 4, "",
 		       -1);
@@ -1686,7 +1685,7 @@ create_history(season_stat *stat)
     get_league_name_from_id(stat->my_league * -1, buf);
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, "Your league",
+		       0, _("Your league"),
 		       1, buf,
 		       2, "", 3, "", 4, "",
 		       -1);
@@ -1694,7 +1693,7 @@ create_history(season_stat *stat)
     stat_rank_to_text(stat->my_rank, buf);
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, "Your rank",
+		       0, _("Your rank"),
 		       1, buf,
 		       2, "", 3, "", 4, "",
 		       -1);
@@ -1706,7 +1705,7 @@ create_history(season_stat *stat)
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, "CHAMPIONS",
+		       0, _("CHAMPIONS"),
 		       1, "", 2, "", 3, "", 4, "",
 		       -1);
     
@@ -1727,13 +1726,13 @@ create_history(season_stat *stat)
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, "BEST PLAYERS",
+		       0, _("BEST PLAYERS"),
 		       1, "", 2, "", 3, "", 4, "",
 		       -1);
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, "FIELD PLAYERS",
+		       0, _("FIELD PLAYERS"),
 		       1, "", 2, "", 3, "", 4, "",
 		       -1);
 
@@ -1747,7 +1746,7 @@ create_history(season_stat *stat)
 			       -1);
 	    gtk_list_store_append(liststore, &iter);
 	    gtk_list_store_set(liststore, &iter,
-			       0, "GOALIES",
+			       0, _("GOALIES"),
 			       1, "", 2, "", 3, "", 4, "",
 			       -1);
 	}
@@ -1945,7 +1944,7 @@ create_live(gint idx, gint type)
 			       0, "", 1, "", 2, "", -1);
 	    gtk_list_store_append(liststore, &iter);
 	    gtk_list_store_set(liststore, &iter,
-			       0, "Extra time",
+			       0, _("Extra time"),
 			       1, "", 2, "", -1);
 	    extra_time = 150;
 	}
@@ -1959,17 +1958,17 @@ create_live(gint idx, gint type)
 		    name,
 		    goals[goal_idx][i].minute);
 	    if(goals[goal_idx][i].type == GOAL_TYPE_OWN)
-		strcat(buf, " (own goal)");
+		strcat(buf, _(" (own goal)"));
 	    else if(goals[goal_idx][i].type == GOAL_TYPE_PEN)
-		strcat(buf, " (penalty)");
+		strcat(buf, _(" (penalty)"));
 	    else if(goals[goal_idx][i].type == GOAL_TYPE_PEN_MISSED)
-		strcat(buf, " (penalty: MISSED !!)");
+		strcat(buf, _(" (penalty: MISSED !!)"));
 	    else if(goals[goal_idx][i].type == GOAL_TYPE_PEN_SAVE)
-		strcat(buf, " (penalty: SAVE !!)");
+		strcat(buf, _(" (penalty: SAVE !!)"));
 	    else if(goals[goal_idx][i].type == GOAL_TYPE_PEN_POST)
-		strcat(buf, " (penalty: POST !!)");
+		strcat(buf, _(" (penalty: POST !!)"));
 	    else if(goals[goal_idx][i].type == GOAL_TYPE_PEN_CROSS)
-		strcat(buf, " (penalty: CROSS-BAR !!)");
+		strcat(buf, _(" (penalty: CROSS-BAR !!)"));
 
 	    gtk_list_store_append(liststore, &iter);
 	    if( (goals[goal_idx][i].team_id ==
@@ -2006,7 +2005,7 @@ create_live(gint idx, gint type)
 	{
 	    gtk_list_store_append(liststore, &iter);
 	    
-	    sprintf(buf, "%s shoots . . .",
+	    sprintf(buf, _("%s shoots . . ."),
 		    teams[goals[goal_idx][i].team_id].
 		    players[goals[goal_idx][i].scorer].
 		    name);
@@ -2018,17 +2017,17 @@ create_live(gint idx, gint type)
 		sprintf(buf2, "%d - %d", 
 			pen_result[0], pen_result[1]);
 		if(goals[goal_idx][i].type == GOAL_TYPE_PEN)
-		    strcat(buf, " Goal!");
+		    strcat(buf, _(" Goal!"));
 		else
 		{
 		    if(goals[goal_idx][i].type == GOAL_TYPE_PEN_SAVE)
-			strcat(buf, " Save!");
+			strcat(buf, _(" Save!"));
 		    else if(goals[goal_idx][i].type == GOAL_TYPE_PEN_MISSED)
-			strcat(buf, " Missed!");
+			strcat(buf, _(" Missed!"));
 		    else if(goals[goal_idx][i].type == GOAL_TYPE_PEN_POST)
-			strcat(buf, " Post!");
+			strcat(buf, _(" Post!"));
 		    else if(goals[goal_idx][i].type == GOAL_TYPE_PEN_CROSS)
-			strcat(buf, " Cross-bar!");
+			strcat(buf, _(" Cross-bar!"));
 		}
 	    }
 
@@ -2164,7 +2163,7 @@ create_opponents(void)
 
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
-		       0, opponent_ids[0], 1, "Your next opponent(s)", 2, "", -1);
+		       0, opponent_ids[0], 1, _("Your next opponent(s)"), 2, "", -1);
     gtk_list_store_append(liststore, &iter);
     gtk_list_store_set(liststore, &iter,
 		       0, opponent_ids[0], 1, "", 2, "", -1);
@@ -2173,11 +2172,11 @@ create_opponents(void)
     {
 	strcpy(buf, "");
 	if(opponent_ids[i + 2] == 0)
-	    strcpy(buf, "Home");
+	    strcpy(buf, _("Home"));
 	else if(opponent_ids[i + 2] == 2)
-	    strcpy(buf, "Neutral stadium");
+	    strcpy(buf, _("Neutral stadium"));
 	else if(opponent_ids[i + 2] != -1)
-	    strcpy(buf, "Away");
+	    strcpy(buf, _("Away"));
 	if(opponent_ids[i] != -1)
 	{
 	    gtk_list_store_append(liststore, &iter);
@@ -2258,14 +2257,14 @@ create_awards_player(GtkListStore *liststore, gint prized_players[][3])
   gchar buf3[SMALL];
   GtkTreeIter iter;
   gchar *titles[4] =
-    {"BEST PLAYER",
-     "BEST DEFENDER",
-     "BEST MIDFIELDER",
-     "BEST FORWARD"};
+    {_("BEST PLAYER"),
+     _("BEST DEFENDER"),
+     _("BEST MIDFIELDER"),
+     _("BEST FORWARD")};
 
   gtk_list_store_append(liststore, &iter);
   gtk_list_store_set(liststore, &iter,
-		     0, "", 1, "PLAYER AWARDS", 2, "", 3, "", -1);
+		     0, "", 1, _("PLAYER AWARDS"), 2, "", 3, "", -1);
 
   for(i=PRIZE_PLAYER_GOALGET;i<PRIZE_PLAYER_GOALIE + 3;i++)
     {
@@ -2273,13 +2272,13 @@ create_awards_player(GtkListStore *liststore, gint prized_players[][3])
 	{
 	  gtk_list_store_append(liststore, &iter);
 	  gtk_list_store_set(liststore, &iter,
-			     0, "", 1, "BEST GOAL SCORERS", 2, "", 3, "", -1);
+			     0, "", 1, _("BEST GOAL SCORERS"), 2, "", 3, "", -1);
 	}
       else if(i == PRIZE_PLAYER_GOALIE)
 	{
 	  gtk_list_store_append(liststore, &iter);
 	  gtk_list_store_set(liststore, &iter,
-			     0, "", 1, "BEST GOALIES", 2, "", 3, "", -1);
+			     0, "", 1, _("BEST GOALIES"), 2, "", 3, "", -1);
 	}
       
       sprintf(buf, "%d", (PRIZE_PLAYER_GOALGET * 2 + i) % 3 + 1);
@@ -2325,10 +2324,10 @@ create_awards_team(GtkListStore *liststore, gint prized_teams[][2])
 
   gtk_list_store_append(liststore, &iter);
   gtk_list_store_set(liststore, &iter,
-		     0, "", 1, "TEAM AWARDS", 2, "", 3, "", -1);
+		     0, "", 1, _("TEAM AWARDS"), 2, "", 3, "", -1);
   gtk_list_store_append(liststore, &iter);
   gtk_list_store_set(liststore, &iter,
-		     0, "", 1, "BEST TEAMS", 2, "", 3, "", -1);
+		     0, "", 1, _("BEST TEAMS"), 2, "", 3, "", -1);
 
   for(i=0;i<4;i++)
     {
@@ -2347,7 +2346,7 @@ create_awards_team(GtkListStore *liststore, gint prized_teams[][2])
 	  gtk_list_store_append(liststore, &iter);
 	  gtk_list_store_set(liststore, &iter,
 			     0, "", 1, teams[prized_teams[PRIZE_TEAM_PROM][0]].name,
-			     2, "(Prom. games winner)", 3, buf2, -1);
+			     2, _("(Prom. games winner)"), 3, buf2, -1);
 	}
     }
 
@@ -2357,9 +2356,9 @@ create_awards_team(GtkListStore *liststore, gint prized_teams[][2])
 
   gtk_list_store_append(liststore, &iter);
   gtk_list_store_set(liststore, &iter,
-		     0, "", 1, "BEST OFFENSIVE TEAM", 2, "", 3, "", -1);
+		     0, "", 1, _("BEST OFFENSIVE TEAM"), 2, "", 3, "", -1);
   
-  sprintf(buf, "(%d:%d Goals)", 
+  sprintf(buf, _("(%d:%d Goals)"), 
 	  teams[prized_teams[PRIZE_TEAM_OFFENSIVE][0]].results[RES_GF],
 	  teams[prized_teams[PRIZE_TEAM_OFFENSIVE][0]].results[RES_GA]);
   print_grouped_int(prized_teams[PRIZE_TEAM_OFFENSIVE][1], buf2, 0);
@@ -2370,9 +2369,9 @@ create_awards_team(GtkListStore *liststore, gint prized_teams[][2])
 
   gtk_list_store_append(liststore, &iter);
   gtk_list_store_set(liststore, &iter,
-		     0, "", 1, "BEST DEFENSIVE TEAM", 2, "", 3, "", -1);
+		     0, "", 1, _("BEST DEFENSIVE TEAM"), 2, "", 3, "", -1);
   
-  sprintf(buf, "(%d:%d Goals)", 
+  sprintf(buf, _("(%d:%d Goals)"), 
 	  teams[prized_teams[PRIZE_TEAM_DEFENSIVE][0]].results[RES_GF],
 	  teams[prized_teams[PRIZE_TEAM_DEFENSIVE][0]].results[RES_GA]);
   print_grouped_int(prized_teams[PRIZE_TEAM_DEFENSIVE][1], buf2, 0);
@@ -2395,7 +2394,7 @@ create_awards(gint prized_teams[][2], gint prized_players[][3])
   GtkTreeIter iter;
   gchar buf[SMALL];
 
-  sprintf(buf, "SEASON AWARDS");
+  sprintf(buf, _("SEASON AWARDS"));
   gtk_list_store_append(liststore, &iter);
   gtk_list_store_set(liststore, &iter,
 		     0, "", 1, buf, 2, "", 3, "", -1);
@@ -2417,7 +2416,7 @@ create_awards(gint prized_teams[][2], gint prized_players[][3])
   print_grouped_int(finances[FIN_PRIZE], buf, 0);
   gtk_list_store_append(liststore, &iter);
   gtk_list_store_set(liststore, &iter,
-		     0, "", 1, "Your team's prize money", 2, "", 3, buf, -1);
+		     0, "", 1, _("Your team's prize money"), 2, "", 3, buf, -1);
 
   return GTK_TREE_MODEL(liststore);
 }
@@ -2430,10 +2429,10 @@ set_up_awards(GtkTreeView *treeview)
     GtkCellRenderer *renderer;
     gchar *titles[4] =
 	{"",
-	 "Team",
-	 "Player",
-	 "Prize money"};
-    
+	 _("Team"),
+	 _("Player"),
+	 _("Prize money")};
+	 
     gtk_tree_selection_set_mode(
 	gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
 	GTK_SELECTION_NONE);

@@ -55,12 +55,14 @@ void
 xml_remove_files(gchar *file_name)
 {
     gchar buf[SMALL];
+    GError *error = NULL;
     
     sprintf(buf, "rm -f %s_%s.xml %s_%s.xml %s_%s.xml", 
 	    file_name, XML_FILE_EXT_GENERAL,
 	    file_name, XML_FILE_EXT_TEAMS,
 	    file_name, XML_FILE_EXT_FIXTURES);
-    g_spawn_command_line_sync(buf, NULL, NULL, NULL, NULL);
+    g_spawn_command_line_sync(buf, NULL, NULL, NULL, &error);
+    print_error(error, FALSE);
 }
 
 void
@@ -71,6 +73,7 @@ xml_compress_files(gchar *file_name, gboolean decompress)
     gchar progress_text[SMALL];
     gchar command[SMALL];
     gchar directory[SMALL];
+    GError *error = NULL;
     
     strcpy(directory, file_name);
     for(i=strlen(directory) - 1; i >= 0; i--)
@@ -82,12 +85,12 @@ xml_compress_files(gchar *file_name, gboolean decompress)
 	}
     }
 
-    sprintf(progress_text, "Compressing savegame...");
+    sprintf(progress_text, _("Compressing savegame..."));
 
     if(decompress)
     {
 	sprintf(command, "unzip -qq %s -d %s", file_name, directory);
-	sprintf(progress_text, "Uncompressing savegame...");
+	sprintf(progress_text, _("Uncompressing savegame..."));
     }
     else
     {
@@ -100,7 +103,8 @@ xml_compress_files(gchar *file_name, gboolean decompress)
 
     progress += PROGRESS_COMPRESS;
     show_progress(progress / PROGRESS_MAX, progress_text);
-    g_spawn_command_line_sync(command, NULL, NULL, NULL, NULL);
+    g_spawn_command_line_sync(command, NULL, NULL, NULL, &error);
+    print_error(error, FALSE);
 }
 
 

@@ -114,7 +114,7 @@ xml_fixtures_read(gchar *file_name)
     GMarkupParseContext *context;
     gchar *file_contents;
     gint length;
-    GError *error;
+    GError *error = NULL;
 
     sprintf(file, "%s_%s.xml", file_name, XML_FILE_EXT_FIXTURES);
 
@@ -123,8 +123,8 @@ xml_fixtures_read(gchar *file_name)
 
     if(!g_file_get_contents(file, &file_contents, &length, &error))
     {
-	g_warning("xml_fixtures_read: error reading file %s\n", file);
-	print_error(error);
+	g_critical("xml_fixtures_read: error reading file %s\n", file);
+	print_error(error, TRUE);
 	return;
     }
 
@@ -134,18 +134,18 @@ xml_fixtures_read(gchar *file_name)
     fix_idx = idx[0] = idx[1] = 0;
 
     progress += PROGRESS_FIX;
-    show_progress(progress / PROGRESS_MAX, "Loading fixtures...");
+    show_progress(progress / PROGRESS_MAX, _("Loading fixtures..."));
 
     if(g_markup_parse_context_parse(context, file_contents, length, &error))
     {
 	g_markup_parse_context_end_parse(context, NULL);	
 	g_markup_parse_context_free(context);
-	g_free(file_contents);
+	g_free(file_contents);	
     }
     else
     {
-	g_warning("xml_fixtures_read: error parsing file %s\n", file);
-	print_error(error);
+	g_critical("xml_fixtures_read: error parsing file %s\n", file);
+	print_error(error, TRUE);
     }
 }
 
@@ -159,10 +159,10 @@ xml_fixtures_write(gchar *file_name)
 
     sprintf(file, "%s_%s.xml", file_name, XML_FILE_EXT_FIXTURES);
 
-    xml_file  = fopen(file, "w");
+    my_fopen(file, "w", &xml_file, FALSE);
 
     progress += PROGRESS_FIX;
-    show_progress(progress / PROGRESS_MAX, "Saving fixtures...");
+    show_progress(progress / PROGRESS_MAX, _("Saving fixtures..."));
 
     xml_write_init(xml_file, TAG_FIXTURES);
     

@@ -61,6 +61,7 @@ make_transfer_offer(gint idx)
     popup_status[1] = team_interested;
     popup_status[2] = value;
 
+    /*tr*/
     sprintf(buf, "%s are interested in buying %s. They offer ",
 	    teams[team_interested].name,
 	    teams[my_team].players[player_number].name);
@@ -138,23 +139,23 @@ show_job_offer(gint fire)
 
     status = 900000 + new_team + 50000 * (fire != 0);
 
-    sprintf(buf[JOB_OFFER_ACCEPT], "Accept?");
+    sprintf(buf[JOB_OFFER_ACCEPT], _("Accept?"));
 
     if(fire != 0)
     {
 	if(fire == 1)
-	    sprintf(buf[JOB_OFFER_TEXT], "The team owners fire you because of unsuccessfulness.");
+	    sprintf(buf[JOB_OFFER_TEXT], _("The team owners fire you because of unsuccessfulness."));
 	else if(fire == 11)
-	    sprintf(buf[JOB_OFFER_TEXT], "The team owners fire you because of financial mismanagement.");
+	    sprintf(buf[JOB_OFFER_TEXT], _("The team owners fire you because of financial mismanagement."));
 
-	sprintf(buf2, "\nBut the owners of %s have heard of your dismissal and would like to hire you. Here's some info on %s:",
+	sprintf(buf2, _("\nBut the owners of %s have heard of your dismissal and would like to hire you. Here's some info on %s:"),
 		teams[new_team].name,
 		teams[new_team].name);
 	strcat(buf[JOB_OFFER_TEXT], buf2);
-	strcat(buf[JOB_OFFER_ACCEPT], " (NOTE: If you don't, the game is over.)");
+	strcat(buf[JOB_OFFER_ACCEPT], _(" (NOTE: If you don't, the game is over.)"));
     }
     else
-	sprintf(buf[JOB_OFFER_TEXT], "The owners of %s are impressed by your success with %s. They would like to hire you. Here's some info on %s:",
+	sprintf(buf[JOB_OFFER_TEXT], _("The owners of %s are impressed by your success with %s. They would like to hire you. Here's some info on %s:"),
 		teams[new_team].name,
 		teams[my_team].name,
 		teams[new_team].name);
@@ -181,7 +182,7 @@ show_fire_warning(void)
 {
     gchar buf[SMALL];
 
-    sprintf(buf, "The team owners are dissatisfied with the team's recent performance. There are rumours they're looking for a new coach.");
+    sprintf(buf, _("The team owners are dissatisfied with the team's recent performance. There are rumours they're looking for a new coach."));
 
     show_popup_window(buf, NULL);
 }
@@ -255,7 +256,7 @@ update_autosave(void)
 
     sprintf(buf, "%s/.bygfoot/saves/autosave", g_get_home_dir());
 
-    print_message("Autosaving. Please stand by...");
+    print_message(_("Autosaving. Please stand by..."));
 
     status = -1;
     save_game(buf);
@@ -300,7 +301,7 @@ finance_events(void)
     gchar buf2[SMALL];
 
     if(counters[COUNT_LOAN] == 0)
-	show_popup_window("You've got to pay back your loan NOW!!!",
+	show_popup_window(_("You've got to pay back your loan NOW!!!"),
 			  NULL);
 
     if(counters[COUNT_LOAN] == -1 ||
@@ -313,7 +314,7 @@ finance_events(void)
 
     if(counters[COUNT_POSITIVE] == 0)
 	show_popup_window(
-	    "Your bank account has to exceed your drawing credit next week!!!",
+	    _("Your bank account has to exceed your drawing credit next week!!!"),
 	    NULL);
 
     for(i=0;i<3;i++)
@@ -321,11 +322,11 @@ finance_events(void)
 	   counters[COUNT_POSITIVE] == 6 - i * 2)
 	{
 	    if(counters[COUNT_OVERDRAWN] == 1)
-		sprintf(buf, "You have overdrawn your bank account. ");
+		sprintf(buf, _("You have overdrawn your bank account. "));
 	    else
-		sprintf(buf, "You have overdrawn your bank account once again. ");
+		sprintf(buf, _("You have overdrawn your bank account once again. "));
 	    
-	    sprintf(buf2, "The team owners give you %d weeks to get positive.",
+	    sprintf(buf2, _("The team owners give you %d weeks to get positive."),
 		    counters[COUNT_POSITIVE]);
 
 	    strcat(buf, buf2);

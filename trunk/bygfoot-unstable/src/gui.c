@@ -293,7 +293,7 @@ set_header(void)
     if(my_team < 130)
 	label_set_text_from_int(GTK_LABEL(label_rank), rank[my_team], 0);
     else
-	label_set_text(GTK_LABEL(label_rank), "none", 0);
+	label_set_text(GTK_LABEL(label_rank), _("none"), 0);
 
     print_grouped_int(finances[FIN_MONEY], buf, 0);
     label_set_text(GTK_LABEL(label_money), buf, 0);

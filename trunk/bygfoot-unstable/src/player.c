@@ -716,7 +716,7 @@ fire_player(gboolean one_time)
     {
 	if(compensation > BUDGET)
 	{
-	    show_popup_window("You haven't got the money.", NULL);	
+	    show_popup_window(_("You haven't got the money."), NULL);	
 	    return;
 	}
 
@@ -731,7 +731,7 @@ fire_player(gboolean one_time)
 
 	if(i > COUNT_OLD_WAGE5)
 	{
-	    g_print("fire_player: no free old wage counter found\n\n");
+	    g_warning("fire_player: no free old wage counter found\n\n");
 	    return;
 	}
 

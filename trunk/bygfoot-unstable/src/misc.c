@@ -1,7 +1,4 @@
-#include <time.h>
-
 #include "misc.h"
-#include "maths.h"
 
 /* check whether 'item' is in array 'list' between
    'min' and 'max' */
@@ -147,11 +144,21 @@ truncate_string(const gchar *src, gchar *dest, gint number_of_chars)
 }
 
 void
-print_error(GError *error)
+print_error(GError *error, gboolean abort_program)
 {
     if(error == NULL)
 	return;
     
     g_warning("error message: %s\n", error->message);
     g_error_free(error);
+
+    if(abort_program)
+    {
+	free_memory();
+	
+	if(gtk_main_level() > 0)
+	    gtk_main_quit();
+
+	exit(-5);
+    }
 }

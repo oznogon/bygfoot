@@ -18,8 +18,6 @@ enum
     ZERO_ONE7,
     ZERO_ONE8,
     ZERO_ONE9,
-    ZERO_ONE10,
-    ZERO_ONE11,
     ZERO_ONE12,
     ZERO_ONE13,
     ZERO_ONE14,
@@ -106,14 +104,6 @@ get_option_widgets(GtkWidget *opt_window,
     zero_one_widgets[ZERO_ONE9] =
 	lookup_widget(opt_window, "checkbutton_fit_colors");
     zero_one_options[ZERO_ONE9] = &options[OPT_FIT_COLORS];
-
-    zero_one_widgets[ZERO_ONE10] =
-	lookup_widget(opt_window, "checkbutton_xml");
-    zero_one_options[ZERO_ONE10] = &options[OPT_XML];
-
-    zero_one_widgets[ZERO_ONE11] =
-	lookup_widget(opt_window, "checkbutton_compress_bg");
-    zero_one_options[ZERO_ONE11] = &options[OPT_COMPRESS_BG];
 
     zero_one_widgets[ZERO_ONE12] =
 	lookup_widget(opt_window, "check_jobs");
@@ -320,8 +310,6 @@ set_up_options_window(GtkWidget *opt_window, gint read)
 	lookup_widget(opt_window, "checkbutton_sort_asc");
     GtkWidget *checkbutton_save_conf = 
 	lookup_widget(opt_window, "checkbutton_save_conf");
-    GtkWidget *optionmenu_compression = 
-	lookup_widget(opt_window, "optionmenu_compression");
     GtkWidget *spinbuttons_history[4];
     GtkWidget *radiobutton_sort[SORT_END - 1];
    
@@ -384,8 +372,6 @@ set_up_options_window(GtkWidget *opt_window, gint read)
 	    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(radiobutton_sort[i]),
 					 (abs(options[OPT_SORT_TRANSFERS]) % 10 == i + 1));
 
-	gtk_option_menu_set_history(GTK_OPTION_MENU(optionmenu_compression),
-				    options[OPT_COMPRESSION]);
 	return;
     }    
 
@@ -443,12 +429,9 @@ set_up_options_window(GtkWidget *opt_window, gint read)
        scout > 2)
     {
 	options[OPT_SORT_TRANSFERS] *= -1;
-	show_popup_window("Your scout's not good enough, he doesn't know the age of the players on the transfer list. Sorting the transfer list is switched off. ", NULL);
+	show_popup_window(_("Your scout's not good enough, he doesn't know the age of the players on the transfer list. Sorting the transfer list is switched off. "), NULL);
     }
 
-    options[OPT_COMPRESSION] = 
-	gtk_option_menu_get_history(GTK_OPTION_MENU(optionmenu_compression));
-    
     /* save options to the conf file if
        necessary */
     if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton_save_conf)))

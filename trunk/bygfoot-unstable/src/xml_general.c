@@ -68,7 +68,7 @@ enum
 
 gint idx[2], stat_idx;
 gint state;
-season_stat seasonstat;
+season_stat *seasonstat1, *seasonstat2;
 
 void
 xml_general_read_start_element (GMarkupParseContext *context,
@@ -98,11 +98,25 @@ xml_general_read_start_element (GMarkupParseContext *context,
        tag == TAG_FINS ||
        tag == TAG_LEAGUENAMES ||
        tag == TAG_INJBOOKS ||
-       tag == TAG_TRANSFERS ||
-       tag == TAG_SEASON_STAT)
+       tag == TAG_TRANSFERS)
 	idx[0] = idx[1] = 0;
-    else if(tag == TAG_SEASON_STATS)
-	stat_idx = 0;
+    else if(tag == TAG_SEASON_STAT)
+    {
+	idx[0] = idx[1] = 0;
+	if(history == NULL)
+	{
+	    history = (season_stat*)g_malloc(sizeof(season_stat));
+	    history->next = NULL;
+	    seasonstat1 = history;
+	}
+	else
+	{
+	    seasonstat2 = seasonstat1;
+	    seasonstat1 = (season_stat*)g_malloc(sizeof(season_stat));
+	    seasonstat1->next = NULL;
+	    seasonstat2->next = seasonstat1;
+	}
+    }
 
     if(!valid_tag)
     {
@@ -150,12 +164,7 @@ xml_general_read_end_element    (GMarkupParseContext *context,
 	    tag <=  TAG_GOAL_TYPE)
 	state = TAG_GOAL;
     else if(tag == TAG_SEASON_STAT)
-    {
-	stat_idx++;
-	history = g_realloc(history, stat_idx * sizeof(season_stat));
-	history[stat_idx - 1] = seasonstat;
 	state = TAG_SEASON_STATS;
-    }
     else if((tag >= TAG_SEASON_STAT_SEASON &&
 	     tag <= TAG_SEASON_STAT_TEAMNAMES) ||
 	    tag == TAG_SEASON_STAT_PLAYER_STATS)
@@ -280,21 +289,21 @@ xml_general_read_text         (GMarkupParseContext *context,
     else if(state == TAG_GOAL_TYPE)
     	goals[idx[0]][idx[1]].type = int_value;
     else if(state == TAG_SEASON_STAT_SEASON)
-	seasonstat.season_number = int_value;
+	seasonstat1->season_number = int_value;
     else if(state == TAG_SEASON_STAT_MYLEAGUE)
-	seasonstat.my_league = int_value;
+	seasonstat1->my_league = int_value;
     else if(state == TAG_SEASON_STAT_MYRANK)
-	seasonstat.my_rank = int_value;
+	seasonstat1->my_rank = int_value;
     else if(state == TAG_SEASON_STAT_TEAMNAME)
-	strcpy(seasonstat.team_names[idx[0]], buf);
+	strcpy(seasonstat1->team_names[idx[0]], buf);
     else if(state == TAG_SEASON_STAT_PLAYER_NAME)
-	strcpy(seasonstat.best_players[idx[1]].name, buf);
+	strcpy(seasonstat1->best_players[idx[1]].name, buf);
     else if(state == TAG_SEASON_STAT_PLAYER_TEAMNAME)
-	strcpy(seasonstat.best_players[idx[1]].team_name, buf);
+	strcpy(seasonstat1->best_players[idx[1]].team_name, buf);
     else if(state == TAG_SEASON_STAT_PLAYER_GOALS)
-	seasonstat.best_players[idx[1]].goals = int_value;
+	seasonstat1->best_players[idx[1]].goals = int_value;
     else if(state == TAG_SEASON_STAT_PLAYER_GAMES)
-	seasonstat.best_players[idx[1]].games = int_value;
+	seasonstat1->best_players[idx[1]].games = int_value;
     else if(state == TAG_STAD_FACT0)
 	stadium_facts[0][idx[0]] = int_value;
     else if(state == TAG_STAD_FACT1)
@@ -349,7 +358,7 @@ xml_general_read(gchar *file_name)
     GMarkupParseContext *context;
     gchar *file_contents;
     gint length;
-    GError *error;
+    GError *error = NULL;
 
     sprintf(file, "%s_%s.xml", file_name, XML_FILE_EXT_GENERAL);
 
@@ -358,15 +367,15 @@ xml_general_read(gchar *file_name)
 
     if(!g_file_get_contents(file, &file_contents, &length, &error))
     {
-	g_warning("xml_general_read: error reading file %s\n", file);
-	print_error(error);
+	g_critical("xml_general_read: error reading file %s\n", file);
+	print_error(error, TRUE);
 	return;
     }
 
     free_history();
 
     progress += PROGRESS_GENERAL;
-    show_progress(progress / PROGRESS_MAX, "Loading the rest...");
+    show_progress(progress / PROGRESS_MAX, _("Loading the rest..."));
 
     if(g_markup_parse_context_parse(context, file_contents, length, &error))
     {
@@ -376,8 +385,8 @@ xml_general_read(gchar *file_name)
     }
     else
     {
-	g_warning("xml_general_read: error parsing file %s\n", file);
-	print_error(error);
+	g_critical("xml_general_read: error parsing file %s\n", file);
+	print_error(error, TRUE);
     }
 }
 
@@ -391,9 +400,9 @@ xml_general_write(gchar *file_name)
     sprintf(file, "%s_%s.xml", file_name, XML_FILE_EXT_GENERAL);
 
     progress += PROGRESS_GENERAL;
-    show_progress(progress / PROGRESS_MAX, "Saving the rest...");
+    show_progress(progress / PROGRESS_MAX, _("Saving the rest..."));
 
-    xml_file  = fopen(file, "w");
+    my_fopen(file, "w", &xml_file, FALSE);
 
     xml_write_init(xml_file, TAG_GENERAL);
 

@@ -68,7 +68,7 @@ xml_teams_read_start_element (GMarkupParseContext *context,
     if(tag == TAG_TEAM)
     {
 	team_res_idx = player_idx = 0;
-	sprintf(progress_text, "Loading team %d...", team_idx);
+	sprintf(progress_text, _("Loading team %d..."), team_idx);
 	progress += PROGRESS_TEAM;	
 	show_progress(progress / PROGRESS_MAX, progress_text);
     }
@@ -140,9 +140,6 @@ xml_teams_read_end_element    (GMarkupParseContext *context,
     else if(tag != TAG_TEAMS)
 	g_warning("xml_teams_read_end_element: unknown tag: %s; I'm in state %d\n",
 		  element_name, state);
-
-    /*d*/
-/*     printf("  ##end elem %s state %d##  ", element_name, state); */
 }
 
 
@@ -151,16 +148,24 @@ xml_teams_read_text_team(team *tm, gchar *text)
 {
     gint int_value = (gint)g_ascii_strtod(text, NULL);
 
-    if(state == TAG_TEAM_NAME)
-	strcpy(tm->name, text);
-    else if(state == TAG_TEAM_ID)
-	tm->id = int_value;
-    else if(state == TAG_TEAM_STRUCTURE)
-	tm->structure = int_value;
-    else if(state == TAG_TEAM_RESULT)
-	tm->results[team_res_idx] = int_value;
-    else if(state == TAG_TEAM_STYLE)
-	tm->style = int_value;
+    switch(state)
+    {
+	case TAG_TEAM_NAME:
+	    strcpy(tm->name, text);
+	    break;
+	case TAG_TEAM_ID:
+	    tm->id = int_value;
+	    break;
+	case TAG_TEAM_STRUCTURE:
+	    tm->structure = int_value;
+	    break;
+	case TAG_TEAM_RESULT:
+	    tm->results[team_res_idx] = int_value;
+	    break;
+	case TAG_TEAM_STYLE:
+	    tm->style = int_value;
+	    break;
+    }
 }
 
 void
@@ -169,42 +174,63 @@ xml_teams_read_text_player(player *pl, gchar *text)
     gint int_value = (gint)g_ascii_strtod(text, NULL);
     gfloat float_value = (gfloat)g_ascii_strtod(text, NULL);
 
-    if(state == TAG_PLAYER_NAME)
-	strcpy(pl->name, text);
-    else if(state == TAG_PLAYER_POS)
-	pl->pos = int_value;
-    else if(state == TAG_PLAYER_CPOS)
-	pl->cpos = int_value;
-    else if(state == TAG_PLAYER_HEALTH)
-	pl->health = int_value;
-    else if(state == TAG_PLAYER_GOALS)
-	pl->goals = int_value;
-    else if(state == TAG_PLAYER_BOOKED)
-	pl->booked = int_value;
-    else if(state == TAG_PLAYER_GAMES)
-	pl->games = int_value;
-    else if(state == TAG_PLAYER_VALUE)
-	pl->value = int_value;
-    else if(state == TAG_PLAYER_WAGE)
-	pl->wage = int_value;
-    else if(state == TAG_PLAYER_TEAMID)
-	pl->team_id = int_value;
-    else if(state == TAG_PLAYER_LASTSKILL)
-	pl->last_skill_update = float_value;
-    else if(state == TAG_PLAYER_AGE)
-	pl->age = float_value;
-    else if(state == TAG_PLAYER_PEAKAGE)
-	pl->peak_age = float_value;
-    else if(state == TAG_PLAYER_SKILL)
-	pl->skill = float_value;
-    else if(state == TAG_PLAYER_CSKILL)
-	pl->cskill = float_value;
-    else if(state == TAG_PLAYER_TALENT)
-	pl->talent = float_value;
-    else if(state == TAG_PLAYER_ETAL)
-	pl->etal = float_value;
-    else if(state == TAG_PLAYER_FITNESS)
-	pl->fitness = float_value;
+    switch(state)
+    {
+	default:
+	    strcpy(pl->name, text);
+	    break;
+	case TAG_PLAYER_POS:
+	    pl->pos = int_value;
+	    break;
+	case TAG_PLAYER_CPOS:
+	    pl->cpos = int_value;
+	    break;
+	case TAG_PLAYER_HEALTH:
+	    pl->health = int_value;
+	    break;
+	case TAG_PLAYER_GOALS:
+	    pl->goals = int_value;
+	    break;
+	case TAG_PLAYER_BOOKED:
+	    pl->booked = int_value;
+	    break;
+	case TAG_PLAYER_GAMES:
+	    pl->games = int_value;
+	    break;
+	case TAG_PLAYER_VALUE:
+	    pl->value = int_value;
+	    break;
+	case TAG_PLAYER_WAGE:
+	    pl->wage = int_value;
+	    break;
+	case TAG_PLAYER_TEAMID:
+	    pl->team_id = int_value;
+	    break;
+	case TAG_PLAYER_LASTSKILL:
+	    pl->last_skill_update = float_value;
+	    break;
+	case TAG_PLAYER_AGE:
+	    pl->age = float_value;
+	    break;
+	case TAG_PLAYER_PEAKAGE:
+	    pl->peak_age = float_value;
+	    break;
+	case TAG_PLAYER_SKILL:
+	    pl->skill = float_value;
+	    break;
+	case TAG_PLAYER_CSKILL:
+	    pl->cskill = float_value;
+	    break;
+	case TAG_PLAYER_TALENT:
+	    pl->talent = float_value;
+	    break;
+	case TAG_PLAYER_ETAL:
+	    pl->etal = float_value;
+	    break;
+	case TAG_PLAYER_FITNESS:
+	    pl->fitness = float_value;
+	    break;
+    }
 }
 
 void
@@ -258,7 +284,7 @@ xml_teams_read(gchar *file_name)
     GMarkupParseContext *context;
     gchar *file_contents;
     gint length;
-    GError *error;
+    GError *error = NULL;
 
     team_idx = player_idx = team_res_idx = history_value_idx = 0;
 
@@ -277,7 +303,7 @@ xml_teams_read(gchar *file_name)
     if(!g_file_get_contents(file, &file_contents, &length, &error))
     {
 	g_warning("xml_teams_read: error reading file %s\n", file);
-	print_error(error);
+	print_error(error, FALSE);
 	return;
     }
 
@@ -289,8 +315,8 @@ xml_teams_read(gchar *file_name)
     }
     else
     {
-	g_warning("xml_teams_read: error parsing file %s\n", file);
-	print_error(error);
+	g_critical("xml_teams_read: error parsing file %s\n", file);
+	print_error(error, TRUE);
     }
 }
 
@@ -304,13 +330,13 @@ xml_teams_write(gchar *file_name)
 
     sprintf(file, "%s_%s.xml", file_name, XML_FILE_EXT_TEAMS);
 
-    xml_file  = fopen(file, "w");
+    my_fopen(file, "w", &xml_file, FALSE);
 
     xml_write_init(xml_file, TAG_TEAMS);
 
     for(i=0;i<178;i++)
     {
-	sprintf(progress_text, "Saving team %d...", i);
+	sprintf(progress_text, _("Saving team %d..."), i);
 	progress += PROGRESS_TEAM;
 	show_progress(progress / PROGRESS_MAX, progress_text);
 	xml_teams_write_team(xml_file, teams[i]);

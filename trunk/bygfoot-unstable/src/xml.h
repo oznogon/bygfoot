@@ -3,6 +3,7 @@
 
 #include <gtk/gtk.h>
 #include "bygfoot.h"
+#include "files.h"
 #include "gui.h"
 #include "history.h"
 #include "load_save.h"

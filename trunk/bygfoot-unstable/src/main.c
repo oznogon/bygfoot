@@ -89,10 +89,6 @@ bygfoot_init(gint argc, gchar *argv[])
 	    country_names(0, argv[i + 1]);
     }
     
-    /* check for the files with team and player names
-       and help file */
-    check_files();
-    
     check_home_dir();
 
     /* fill the player names array */

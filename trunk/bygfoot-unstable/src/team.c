@@ -865,7 +865,7 @@ update_stadium(void)
   if(counters[COUNT_INC_CAP] < 0 && 
      stadium_improve_costs(0, improve_index) + BUDGET < 0)
     {
-      show_popup_window("You didn't have enough money to enlarge your stadium.", NULL);
+      show_popup_window(_("You didn't have enough money to enlarge your stadium."), NULL);
       counters[COUNT_INC_CAP] = 0;
       return;
     }

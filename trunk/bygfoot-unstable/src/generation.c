@@ -195,14 +195,10 @@ give_teams_names(gboolean only_euro)
     gint i, j = 0;
     gchar team_names[500][50];
     gchar european_names[59][50];
-    FILE *fil = fopen(country_file_name, "r");
+    FILE *fil;
 
-    if(fil == NULL)
-    {
-	g_print("give_teams_names: could not open country_file %s\n\n",
-		country_file_name);
+    if(!my_fopen(country_file_name, "r", &fil, FALSE))
 	return;
-    }
     fclose(fil);
 
     /* this is for the 'choose_european_names' function which
@@ -381,7 +377,7 @@ country_names(gint country_number, const gchar *country_filename)
 
     if(fil == NULL)
     {
-	g_print("*** Could not open file: %s .", filename);
+	g_warning("*** Could not open file: %s .", filename);
 	sprintf(buf, "Could not open file: %s .", filename);
 	show_popup_window(buf, NULL);
 	return;

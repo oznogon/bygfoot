@@ -125,7 +125,6 @@ void
 on_button_fsel_ok_clicked              (GtkButton       *button,
                                         gpointer         user_data)
 {
-    gchar buf[SMALL];
     GtkWidget *entry;
     GtkWidget *fsel_window =
 	lookup_widget(GTK_WIDGET(button), "fsel_window");
@@ -149,7 +148,7 @@ on_button_fsel_ok_clicked              (GtkButton       *button,
 	}
 	else
 	{
-	    show_popup_window("Doesn't seem to be a Bygfoot save file.",
+	    show_popup_window(_("Doesn't seem to be a Bygfoot save file."),
 			      NULL);
 	    good_file = FALSE;
 	}
@@ -164,23 +163,16 @@ on_button_fsel_ok_clicked              (GtkButton       *button,
 	}
 	else
 	{
-	    show_popup_window("Doesn't seem to be a Bygfoot save file.",
+	    show_popup_window(_("Doesn't seem to be a Bygfoot save file."),
 			      NULL);
 	    good_file = FALSE;
 	}
     }
     else if(status == 800010)
     {
-	if(fopen(gtk_file_selection_get_filename(
-		     GTK_FILE_SELECTION(fsel_window)), "r") == NULL)
-	{
-	    sprintf(buf, "Could not open file: %s .",
-		    gtk_file_selection_get_filename(
-			GTK_FILE_SELECTION(fsel_window)));
-	    show_popup_window(buf, NULL);
-
+	if(my_fopen(gtk_file_selection_get_filename(
+			GTK_FILE_SELECTION(fsel_window)), "r", &fil, FALSE))
 	    good_file = FALSE;
-	}
 	else
 	    country_names(0, gtk_file_selection_get_filename(
 			      GTK_FILE_SELECTION(fsel_window)));
@@ -206,14 +198,9 @@ on_button_fsel_ok_clicked              (GtkButton       *button,
     /* export teams when editing */
     else if(status == 800120)
     {
-	fil = fopen(gtk_file_selection_get_filename(
-			GTK_FILE_SELECTION(fsel_window)), "w");
-	if(fil == NULL)
-	{
-	    sprintf(buf, "Could not open file in write mode. ");
-	    show_popup_window(buf, NULL);
+	if(!my_fopen(gtk_file_selection_get_filename(
+			GTK_FILE_SELECTION(fsel_window)), "w", &fil, FALSE))
 	    good_file = FALSE;
-	}
 	else
 	{
 	    fclose(fil);
@@ -224,14 +211,9 @@ on_button_fsel_ok_clicked              (GtkButton       *button,
     /* import teams when editing */
     else if(status == 800121)
     {
-	fil = fopen(gtk_file_selection_get_filename(
-			GTK_FILE_SELECTION(fsel_window)), "r");
-	if(fil == NULL)
-	{
-	    sprintf(buf, "Could not open file in read mode. ");
-	    show_popup_window(buf, NULL);
+	if(!my_fopen(gtk_file_selection_get_filename(
+			GTK_FILE_SELECTION(fsel_window)), "r", &fil, FALSE))
 	    good_file = FALSE;
-	}
 	else
 	{
 	    fclose(fil);

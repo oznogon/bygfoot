@@ -67,7 +67,7 @@ callback_show_player_info(GtkTreeSelection *selection,
 
     if(player_number < 0)
     {
-	print_message("You haven't selected a player");	
+	print_message(_("You haven't selected a player"));	
 	return;
     }
     
@@ -79,9 +79,9 @@ callback_show_player_info(GtkTreeSelection *selection,
        status == 110000)
     {
 	if(week >= 35)
-	    print_message("The transfer deadline has passed (week 34).");
+	    print_message(_("The transfer deadline has passed (week 34)."));
 	else if(is_on_transferlist(my_team, player_number) == 1)
-	    print_message("The player is already on the transferlist.");
+	    print_message(_("The player is already on the transferlist."));
 	else
 	{
 	    if(players_on_transferlist() < 20)
@@ -91,7 +91,7 @@ callback_show_player_info(GtkTreeSelection *selection,
 		show_transfers();
 	    }
 	    else
-		print_message("The transferlist is full.");
+		print_message(_("The transferlist is full."));
 	}
     }
     else
@@ -112,7 +112,7 @@ callback_show_player_stats(GtkTreeSelection *selection,
 
     if(player_number < 0)
     {
-	print_message("You haven't selected a player");	
+	print_message(_("You haven't selected a player"));	
 	return;
     }
     
@@ -262,12 +262,12 @@ callback_make_transfer_offer(GtkWidget *widget)
 
     if(fee > BUDGET)
     {
-	print_message("You haven't got the money.");
+	print_message(_("You haven't got the money."));
 	return;
     }
     else if(players_in_team() == 20)
     {
-	print_message("There's no room in your team. You can't have more than 20 players.");
+	print_message(_("There's no room in your team. You can't have more than 20 players."));
 	return;
     }
     
@@ -275,7 +275,7 @@ callback_make_transfer_offer(GtkWidget *widget)
        players[transferlist[idx].player_number].value &&
        rnd(0,1) < 0.9)
     {
-	print_message("The team rejects your offer and removes the player from the transferlist.");
+	print_message(_("The team rejects your offer and removes the player from the transferlist."));
 	remove_transfer(idx, TRUE);
 	on_button_transfers_clicked(NULL, NULL);
 	return;
@@ -284,7 +284,7 @@ callback_make_transfer_offer(GtkWidget *widget)
 	    players[transferlist[idx].player_number].wage &&
 	    rnd(0,1) < 0.9)
     {
-	print_message("The player doesn't like your offer and decides to stay in his team.");
+	print_message(_("The player doesn't like your offer and decides to stay in his team."));
 	remove_transfer(idx, TRUE);
 	on_button_transfers_clicked(NULL, NULL);
 	return;	
@@ -297,7 +297,7 @@ callback_make_transfer_offer(GtkWidget *widget)
     execute_transfer(idx);
     finances[FIN_MONEY] -= fee;
     finances[FIN_TRANSFERS] -= fee;
-    print_message("The team accepts your offer.");
+    print_message(_("The team accepts your offer."));
     show_players(NULL, NULL, 0, NULL, 0);
     on_button_transfers_clicked(NULL, NULL);
 }
@@ -351,13 +351,13 @@ callback_transfer_buy_player(gint row_idx)
 
     if(players_in_team() == 20)
     {
-	print_message("There's no room in your team. You can't have more than 20 players.");
+	print_message(_("There's no room in your team. You can't have more than 20 players."));
 	return;
     }
 
     if(week >= 35)
     {
-	print_message("The transfer deadline has passed (week 35).");
+	print_message(_("The transfer deadline has passed (week 35)."));
 	return;
     }
 
@@ -380,7 +380,7 @@ callback_transfer_buy_player(gint row_idx)
 
     if(value > BUDGET)
     {
-	print_message("After having a look at your bank account the team politely rejects your offer.");
+	print_message(_("After having a look at your bank account the team politely rejects your offer."));
 	return;
     }
 
@@ -389,19 +389,19 @@ callback_transfer_buy_player(gint row_idx)
     if(get_place((gint)(teams[team_id].players[player_number].
 			skill * 10000), 1) % 3 < 2)
     {
-	sprintf(buf, "The team has unfortunately no suitable replacement for %s and has to reject your offer.",
+	sprintf(buf, _("The team has unfortunately no suitable replacement for %s and has to reject your offer."),
 		  teams[team_id].players[player_number].name);
 	print_message(buf);
 	return;
     }
 
-    sprintf(buf, "The team has an adequate replacement for %s and is willing to cancel his contract for ", 
+    sprintf(buf, _("The team has an adequate replacement for %s and is willing to cancel his contract for "), 
 	      teams[team_id].players[player_number].name);
 
     print_grouped_int(value, buf, 1);
-    strcat(buf, ". The player demands a wage of ");
+    strcat(buf, _(". The player demands a wage of "));
     print_grouped_int(wage, buf, 1);
-    strcat(buf, ". Accept?");
+    strcat(buf, _(". Accept?"));
     
     show_popup_window(buf, popup_status);
 }
@@ -483,20 +483,20 @@ callback_stadium_improve(void)
 
     if(BUDGET + cost < 0)
     {
-	print_message("You haven't got the money.");
+	print_message(_("You haven't got the money."));
 	return;
     }
     /* the player can't increase a value more often than once
        a week */
     else if(counters[COUNT_INC_SAF] == 2)
     {
-	print_message("You may increase only twice a week.");
+	print_message(_("You may increase only twice a week."));
 	return;
     }
     
     if(stadiums[my_team].safety >= 0.996)
     {
-	print_message("You can't improve your stadium safety, it's already 100% safe.");
+	print_message(_("You can't improve your stadium safety, it's already 100% safe."));
 	return;
     }
     
@@ -521,7 +521,7 @@ callback_get_loan(void)
 
     if(maximum_loan <= 0)
     {
-	print_message("Your bank grants you no more money.");
+	print_message(_("Your bank grants you no more money."));
 	return 0;
     }
 
@@ -542,12 +542,12 @@ callback_pay_loan(void)
 
     if(finances[FIN_DEBTS] == 0)
     {
-	print_message("You are free from debt.");
+	print_message(_("You are free from debt."));
 	return 0;
     }
     else if(BUDGET <= 0)
     {
-	print_message("You're below your drawing credit limit. You can't pay back money.");
+	print_message(_("You're below your drawing credit limit. You can't pay back money."));
 	return 0;
     }
 
@@ -569,7 +569,7 @@ callback_get_the_loan(void)
 
     if(loan > maximum_loan)
     {
-	print_message("You can't borrow this much.");
+	print_message(_("You can't borrow this much."));
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_fee),
 				  (gdouble)maximum_loan);
 	return 0;
@@ -599,7 +599,7 @@ callback_pay_the_loan(void)
 
     if(pay > BUDGET)
     {
-	print_message("You haven't got the money to pay back this much");
+	print_message(_("You haven't got the money to pay back this much"));
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_fee),
 				  (gdouble)max_pay);
 	return 0;
@@ -613,13 +613,13 @@ callback_pay_the_loan(void)
 
     if(finances[FIN_DEBTS] == 0)
     {
-	print_message("You are free from debt.");
+	print_message(_("You are free from debt."));
 	counters[COUNT_LOAN] = -2;
 	return 1;
     }
     else
     {
-	print_message("You have paid back a part of your loan.");
+	print_message(_("You have paid back a part of your loan."));
 	for(i=6;i>1;i--)
 	    if((gfloat)pay / (gfloat) maximum_loan >= 1 / (gfloat)i)
 		counters[COUNT_LOAN]++;
@@ -655,7 +655,7 @@ callback_show_history(gint season_number)
 
     if(history == NULL)
     {
-	print_message("This is your first season.");
+	print_message(_("This is your first season."));
 	on_button_back_to_main_clicked(NULL, NULL);
 	return;
     }
@@ -737,7 +737,7 @@ callback_improve_stadium(GtkWidget *widget)
 	{
 	    if(stadium_improve_costs(0, i) + BUDGET < 0)
 	    {
-		show_popup_window("You haven't got the money.", NULL);
+		show_popup_window(_("You haven't got the money."), NULL);
 		return;
 	    }
 	    
@@ -765,7 +765,7 @@ callback_rm_pl_transfer(void)
 
     if(player_number < 0) 
     {
-	print_message("You haven't selected a player");
+	print_message(_("You haven't selected a player"));
 	return;
     }
 
@@ -780,7 +780,7 @@ callback_rm_pl_transfer(void)
 	    return;
 	}
 
-    print_message("The selected player's not on the list.");
+    print_message(("The selected player's not on the list."));
 }
 
 /* fire the selected player */
@@ -795,7 +795,7 @@ callback_fire_player(GtkTreeSelection *selection,
 
     if(player_number < 0) 
     {
-	print_message("You haven't selected a player");
+	print_message(_("You haven't selected a player"));
 	return;
     }
 
@@ -830,7 +830,7 @@ callback_notify_injury(void)
 	}
     }
 
-    sprintf(buf, "I'm sorry to tell you that one or more of your players have suffered severe injuries. They won't be able to play football on a professional level anymore and had to retire:\n   ");
+    sprintf(buf, _("I'm sorry to tell you that one or more of your players have suffered severe injuries. They won't be able to play football on a professional level anymore and had to retire:\n   "));
     
     for(i=1;i<11;i++)
 	if(strlen(names[i]) > 0)
@@ -852,14 +852,14 @@ callback_penalty_shooter(void)
 
     if(player_number < 0) 
     {
-	print_message("You haven't selected a player");
+	print_message(_("You haven't selected a player"));
 	return;
     }
 
     if(player_number == options[OPT_PENALTY_SHOOTER])
     {
 	options[OPT_PENALTY_SHOOTER] = -1;
-	print_message("Penalty shooter deselected. Player with highest cskill will shoot penalties.");
+	print_message(_("Penalty shooter deselected. Player with highest cskill will shoot penalties."));
 	show_players(NULL, NULL, 0, NULL, 0);    
 	return;
     }
@@ -867,9 +867,9 @@ callback_penalty_shooter(void)
     options[OPT_PENALTY_SHOOTER] = player_number;
 
     if(player_number > 10)
-	sprintf(buf, "%s is a substitute. He will only shoot the penalties if you move him into the team; otherwise the field player with highest skill will shoot.", teams[my_team].players[player_number].name);
+	sprintf(buf, _("%s is a substitute. He will only shoot the penalties if you move him into the team; otherwise the field player with highest skill will shoot."), teams[my_team].players[player_number].name);
     else
-	sprintf(buf, "%s will shoot the penalties in regulation and extra time.",
+	sprintf(buf, _("%s will shoot the penalties in regulation and extra time."),
 		teams[my_team].players[player_number].name);
 
     print_message(buf);

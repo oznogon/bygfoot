@@ -84,15 +84,6 @@ create_opt_window (void)
   GtkObject *spinbutton_autosave_adj;
   GtkWidget *spinbutton_autosave;
   GtkWidget *label82;
-  GtkWidget *checkbutton_xml;
-  GtkWidget *label96;
-  GtkWidget *optionmenu_compression;
-  GtkWidget *menu1;
-  GtkWidget *none1;
-  GtkWidget *gzip1;
-  GtkWidget *bzip1;
-  GtkWidget *checkbutton_compress_bg;
-  GtkWidget *label97;
   GtkWidget *label90;
   GtkWidget *label84;
   GtkWidget *frame3;
@@ -538,52 +529,6 @@ create_opt_window (void)
   gtk_widget_show (label82);
   gtk_box_pack_start (GTK_BOX (hbox62), label82, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label82), GTK_JUSTIFY_LEFT);
-
-  checkbutton_xml = gtk_check_button_new_with_mnemonic (_("XML save / load"));
-  gtk_widget_show (checkbutton_xml);
-  gtk_box_pack_start (GTK_BOX (vbox35), checkbutton_xml, FALSE, FALSE, 0);
-  gtk_tooltips_set_tip (tooltips, checkbutton_xml, _("Set default savegame format to XML (instead of binary)."), NULL);
-
-  label96 = gtk_label_new (_("Savegame compression:"));
-  gtk_widget_show (label96);
-  gtk_box_pack_start (GTK_BOX (vbox35), label96, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label96), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (label96), 0, 0.5);
-
-  optionmenu_compression = gtk_option_menu_new ();
-  gtk_widget_show (optionmenu_compression);
-  gtk_box_pack_start (GTK_BOX (vbox35), optionmenu_compression, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (optionmenu_compression), 2);
-  gtk_tooltips_set_tip (tooltips, optionmenu_compression, _("Whether to compress save files and what kind of program to use. Compressing savegames can lead to a lot longer save / load times (especially if background compression is disabled)."), NULL);
-
-  menu1 = gtk_menu_new ();
-
-  none1 = gtk_menu_item_new_with_mnemonic (_("None"));
-  gtk_widget_show (none1);
-  gtk_container_add (GTK_CONTAINER (menu1), none1);
-
-  gzip1 = gtk_menu_item_new_with_mnemonic (_("Gzip"));
-  gtk_widget_show (gzip1);
-  gtk_container_add (GTK_CONTAINER (menu1), gzip1);
-
-  bzip1 = gtk_menu_item_new_with_mnemonic (_("Bzip2"));
-  gtk_widget_show (bzip1);
-  gtk_container_add (GTK_CONTAINER (menu1), bzip1);
-
-  gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu_compression), menu1);
-
-  checkbutton_compress_bg = gtk_check_button_new_with_mnemonic (_("Allow compressing in the background"));
-  gtk_widget_show (checkbutton_compress_bg);
-  gtk_box_pack_start (GTK_BOX (vbox35), checkbutton_compress_bg, FALSE, FALSE, 0);
-  gtk_tooltips_set_tip (tooltips, checkbutton_compress_bg, _("Checking this speeds up saving and loading games when compression is selected, but you might experience problems."), NULL);
-
-  label97 = gtk_label_new (_("NOTE: You can influence the format and compression of a savegame by giving it an appropriate extension. If you save a file 'save.xml.bz2', Bygfoot will save in XML format and compress with bzip2 -- no matter what the options say."));
-  gtk_widget_show (label97);
-  gtk_box_pack_start (GTK_BOX (vbox35), label97, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label97), GTK_JUSTIFY_LEFT);
-  gtk_label_set_line_wrap (GTK_LABEL (label97), TRUE);
-  gtk_misc_set_alignment (GTK_MISC (label97), 0, 0.5);
-  gtk_misc_set_padding (GTK_MISC (label97), 0, 3);
 
   label90 = gtk_label_new (_("Options for loading and saving games"));
   gtk_widget_show (label90);
@@ -1308,7 +1253,7 @@ create_opt_window (void)
   spinbutton_max_team = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton_max_team_adj), 1, 0);
   gtk_widget_show (spinbutton_max_team);
   gtk_box_pack_start (GTK_BOX (vbox48), spinbutton_max_team, FALSE, FALSE, 0);
-  gtk_tooltips_set_tip (tooltips, spinbutton_max_team, _("How long the history can get at most (data from the beginning of the list gets removed afterwards). WARNING: The higher this value is, the more memory is needed, especially for the player histories."), NULL);
+  gtk_tooltips_set_tip (tooltips, spinbutton_max_team, _("How long the history can get at most (data from the beginning of the list gets removed afterwards). WARNING: The higher this value is, the more memory is needed, especially for the player histories. Additionally, loading and saving games gets slower."), NULL);
   gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (spinbutton_max_team), TRUE);
 
   checkbutton_delete_team = gtk_check_button_new_with_mnemonic ("");
@@ -1346,7 +1291,7 @@ create_opt_window (void)
   spinbutton_max_player = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton_max_player_adj), 1, 0);
   gtk_widget_show (spinbutton_max_player);
   gtk_box_pack_start (GTK_BOX (vbox49), spinbutton_max_player, FALSE, FALSE, 0);
-  gtk_tooltips_set_tip (tooltips, spinbutton_max_player, _("How long the history can get at most (data from the beginning of the list gets removed afterwards). WARNING: The higher this value is, the more memory is needed, especially for the player histories."), NULL);
+  gtk_tooltips_set_tip (tooltips, spinbutton_max_player, _("How long the history can get at most (data from the beginning of the list gets removed afterwards). WARNING: The higher this value is, the more memory is needed, especially for the player histories. Additionally, loading and saving games gets slower."), NULL);
   gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (spinbutton_max_player), TRUE);
 
   checkbutton_delete_player = gtk_check_button_new_with_mnemonic ("");
@@ -1536,15 +1481,6 @@ create_opt_window (void)
   GLADE_HOOKUP_OBJECT (opt_window, checkbutton_autosave, "checkbutton_autosave");
   GLADE_HOOKUP_OBJECT (opt_window, spinbutton_autosave, "spinbutton_autosave");
   GLADE_HOOKUP_OBJECT (opt_window, label82, "label82");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_xml, "checkbutton_xml");
-  GLADE_HOOKUP_OBJECT (opt_window, label96, "label96");
-  GLADE_HOOKUP_OBJECT (opt_window, optionmenu_compression, "optionmenu_compression");
-  GLADE_HOOKUP_OBJECT (opt_window, menu1, "menu1");
-  GLADE_HOOKUP_OBJECT (opt_window, none1, "none1");
-  GLADE_HOOKUP_OBJECT (opt_window, gzip1, "gzip1");
-  GLADE_HOOKUP_OBJECT (opt_window, bzip1, "bzip1");
-  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_compress_bg, "checkbutton_compress_bg");
-  GLADE_HOOKUP_OBJECT (opt_window, label97, "label97");
   GLADE_HOOKUP_OBJECT (opt_window, label90, "label90");
   GLADE_HOOKUP_OBJECT (opt_window, label84, "label84");
   GLADE_HOOKUP_OBJECT (opt_window, frame3, "frame3");

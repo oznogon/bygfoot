@@ -41,7 +41,7 @@ get_next_line(FILE *fil, gchar *buf, gchar *find_text)
     if(local_buf[0] != '#' && strlen(local_buf) != 0)
     {
 	if(strlen(local_buf) > 100)
-	    g_print("\n*** Warning: the text file I'm reading contains a line longer than 100 chars.\n\n");
+	    g_warning("\n the text file I'm reading contains a line longer than 100 chars.\n\n");
 
 	if(buf != NULL)
 	    strcpy(buf, local_buf);
@@ -88,8 +88,6 @@ write_opt_names(gchar opt_names[][50])
     strcpy(opt_names[OPT_PREFER_MESS], "prefer_messages");
 
     strcpy(opt_names[OPT_AUTOSAVE], "autosave");
-    strcpy(opt_names[OPT_COMPRESSION], "savegame_compression");
-    strcpy(opt_names[OPT_COMPRESS_BG], "savegame_compress_bg");
     strcpy(opt_names[OPT_XML], "save_xml");
 
     strcpy(opt_names[OPT_SKIP_WEEKS], "skip_weeks");
@@ -149,18 +147,13 @@ save_conf_file(void)
 {
     gint i;
     gchar opt_names[OPT_DUMMY1][50];
-    FILE *fil;
+    FILE *fil = NULL;
     gchar buf[SMALL];
 
     sprintf(buf, "%s/.bygfoot/text_files/bygfoot.conf", g_get_home_dir());
 
-    fil = fopen(buf, "w");
-
-    if(fil == NULL)
-    {
-	show_popup_window("Could not open Bygfoot conf file. ", NULL);
+    if(!my_fopen(buf, "w", &fil, FALSE))
 	return;
-    }
     
     write_opt_names(opt_names);
 
@@ -189,14 +182,7 @@ read_conf_file(void)
 
     text_file_number_to_char(FILES_CONF, buf, TRUE);
 
-    fil = fopen(buf, "r");
-
-    if(fil == NULL)
-    {
-	g_print("*** Error: could not open conf file %s. ***",
-		buf);
-	exit(2);
-    }
+    my_fopen(buf, "r", &fil, TRUE);
 
     write_opt_names(opt_names);
 
@@ -291,52 +277,20 @@ check_home_dir(void)
     }
 }
 
-/* check for the files with team and player names
-   and help file */
-void
-check_files(void)
-{
-    gint i;
-    gchar filenames[4][SMALL];
-    FILE *fil;
-    
-    text_file_number_to_char(FILES_COUNTRY_ENG, filenames[0], TRUE);
-    text_file_number_to_char(FILES_PLAYER_NAMES, filenames[1], TRUE);
-    text_file_number_to_char(FILES_CONF, filenames[2], TRUE);
-    text_file_number_to_char(FILES_HELP, filenames[3], TRUE);
-    for(i=0;i<4;i++)
-    {
-	fil = fopen(filenames[i], "r");
-	if(fil == NULL)
-	{
-	    g_print("\n*** Couldn't find file: %s ***\n\n", filenames[i]);
-	    g_print("\n*** You can add the path to the support files by calling 'bygfoot -d my_support_files_path' ***\n\n");
-	    if(i < 3)
-		exit(5);
-	}
-	
-	if(fil != NULL)
-	    fclose(fil);
-    }
-}
-
 /* write team or player names from 'filename'
    to the array 'names'; both files are read until a '1000' appears
    in a line by itself */
 void
-get_names(gchar *filename, gchar names[][50])
+get_names(const gchar *filename, gchar names[][50])
 {
     gint i = 0;
     gint linenr = 0;
     gchar trash[BIG];
     gchar buf[SMALL];
-    FILE *fil = fopen(filename, "r");
-    
-    if(fil == NULL)
-    {
-	g_print("get_names: could not open file %s\n\n", filename);
+    FILE *fil;
+
+    if(!my_fopen(filename, "r", &fil, FALSE))
 	return;
-    }
 
     while(1)
     {
@@ -457,7 +411,7 @@ read_structures(FILE *fil, gint team_id, gint *structure2)
        get_place(structure1, 2) + 
        get_place(structure1, 3) != 10)
     {
-	g_print("\n\n*** Invalid playing structure: %d ***\n\n", structure1);
+	g_warning("\n\n*** Invalid playing structure: %d ***\n\n", structure1);
 	structure1 = assign_playing_structure();
     }
 
@@ -470,7 +424,7 @@ read_structures(FILE *fil, gint team_id, gint *structure2)
        get_place(*structure2, 2) + 
        get_place(*structure2, 3) != 8)
     {
-	g_print("\n\n*** Invalid playing structure: %d ***\n\n", *structure2);
+	g_warning("\n\n*** Invalid playing structure: %d ***\n\n", *structure2);
 	*structure2 = 332;
     }
 
@@ -620,22 +574,16 @@ read_team(FILE *fil, gint team_id, gint *structure2, gint read, gint *birth_date
    team to team number 114 */
 void
 read_teams_file(gint read, const gchar *team_name, gint *structure2, 
-		     gint *birth_dates)
+		gint *birth_dates)
 {
     gint i;
     gchar buf[SMALL];
     FILE *fil;
 
     text_file_number_to_char(FILES_DEFINITIONS, buf, TRUE);
-    fil = fopen(buf, "r");
 
-    if(read == 0 || fil == NULL)
-    {
-	if(read != 0)
-	    g_print("\n\n*** Could not open team definitions file. ***\n\n");
-
+    if(read == 0 || !my_fopen((const gchar*)buf, "r", &fil, FALSE))
 	return;
-    }
 
     while(1)
     {
@@ -683,3 +631,28 @@ read_teams_file(gint read, const gchar *team_name, gint *structure2,
     fclose(fil);
 }
 
+gboolean
+my_fopen(const gchar *filename, gchar *bits, FILE **fil, gboolean abort_program)
+{
+    gchar buf[SMALL];
+    *fil = fopen(filename, bits);
+
+    if(*fil != NULL)
+	return TRUE;
+
+    sprintf(buf, "Could not open file '%s' in mode '%s'.\n", filename, bits);
+
+    g_warning(buf);
+
+    show_popup_window(buf, NULL);
+
+    if(abort_program)
+    {
+	free_memory();
+	if(gtk_main_level() > 0)
+	    gtk_main_quit();
+	exit(-6);
+    }
+
+    return FALSE;
+}
