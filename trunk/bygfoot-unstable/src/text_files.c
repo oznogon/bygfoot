@@ -108,6 +108,7 @@ write_opt_names(gchar opt_names[][50])
     strcpy(opt_names[OPT_ATT_WAGE], "show_attribute_wage");
     strcpy(opt_names[OPT_ATT_TEAM], "show_attribute_team");
     strcpy(opt_names[OPT_ATT_LEAGUE], "show_attribute_league");
+    strcpy(opt_names[OPT_XML], "save_xml");
 }
 
 /* write the game options to the file
