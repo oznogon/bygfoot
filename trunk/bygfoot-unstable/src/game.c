@@ -1126,6 +1126,10 @@ gboolean objective_is_success(gint team_id,objective * obj) {
 	gboolean success=FALSE;
 	//retrieve rank and bounds
 	gint rank=get_current_rank();
+	gint league_bound[2];
+	get_league_bounds(get_league_from_id(team_id), league_bound);
+	rank-=league_bound[0];
+	rank++; //rank starts at 1
 	switch(obj->type) {
 		case OBJ_NONE:success=TRUE;break;
 		case OBJ_NO_RELEGATED: 		
@@ -1133,7 +1137,7 @@ gboolean objective_is_success(gint team_id,objective * obj) {
 			break;
 				
 		case OBJ_PROMOTED: 
-			success=rank<=3;
+			success=(rank<=3);
 			break;
 						
 		case OBJ_POSITION: 
