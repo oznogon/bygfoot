@@ -1,3 +1,6 @@
+#ifndef STRUCTURES_H
+#define STRUCTURES_H
+
 /**************************************************
  * Structures                                     *
  **************************************************/
@@ -170,3 +173,5 @@ struct _season_stat
     
     season_stat *next;
 };
+
+#endif

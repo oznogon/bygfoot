@@ -1,3 +1,6 @@
+#ifndef VARIABLES_H
+#define VARIABLES_H
+
 /**************************************************
  * Global variables                               *
  **************************************************/
@@ -106,3 +109,5 @@ gchar country_file_name[BUF_SIZE_SMALL];
 
 /* this tells us whether we are in debug mode */
 gboolean debug;
+
+#endif
