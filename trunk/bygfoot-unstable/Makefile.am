@@ -9,19 +9,13 @@ EXTRA_DIST = \
 	bygfoot.glade \
 	bygfoot.gladep
 
-dist_man6_MANS = man/bygfoot.6
-
 install-data-local:
 	@$(NORMAL_INSTALL)
 	if test -d $(srcdir)/support_files; then \
-	  $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/support_files; \
+	  $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/pixmaps; \
 	  for pixmap in $(srcdir)/support_files/*; do \
 	    if test -f $$pixmap; then \
-		if test -x $$pixmap; then \
-		      $(INSTALL_PROGRAM) $$pixmap $(DESTDIR)$(pkgdatadir)/support_files; \
-		else \
-		      $(INSTALL_DATA) $$pixmap $(DESTDIR)$(pkgdatadir)/support_files; \
-		fi \
+	      $(INSTALL_DATA) $$pixmap $(DESTDIR)$(pkgdatadir)/pixmaps; \
 	    fi \
 	  done \
 	fi
