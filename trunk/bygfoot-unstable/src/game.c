@@ -843,9 +843,8 @@ process_stadium(fixture fix)
     for(i=2;i<6;i++)
 	if(fix.type >= i * 1000 &&
 	   fix.type < (i + 1) * 1000)
-	    if((attendance < 4000 + (5 - i) * 5000 ||
-		attendance > 22000 - (i - 2) * 4000) &&
-	       rnd(0,1) > 0.05)
+	    if(attendance < 4000 + (5 - i) * 5000 ||
+	       attendance > 22000 - (i - 2) * 4000)
 		attendance = rndi(4000 + (5 - i) * 5000,
 				 22000 - (i - 2) * 4000);
     
