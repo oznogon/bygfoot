@@ -281,8 +281,11 @@ get_scorer(gfloat *player_score_probs, gint *scorer, gboolean own_goal)
     gfloat rndom = rnd(0,1);
 
     if(own_goal)
+    {
+	rndom *= -1;
 	for(i=0;i<9;i++)
-	    local_probs[i] = player_score_probs[8 - i];
+	    local_probs[i] = -player_score_probs[8 - i];
+    }
     else
 	for(i=0;i<9;i++)
 	    local_probs[i] = player_score_probs[i];

@@ -788,8 +788,8 @@ get_tendency_prob(gint idx, gdouble value)
 /* get a new value for the tendency bar in the live game window */
 gdouble
 update_tendency(GtkWidget *hscale_tendency,
-			gint minute, gint idx, gdouble *old_values,
-			gfloat stick_prob)
+		gint minute, gint idx, gdouble *old_values,
+		gfloat stick_prob)
 {
     gint i;
     gint goal_idx =
@@ -814,9 +814,11 @@ update_tendency(GtkWidget *hscale_tendency,
 	{
 	    next_goal = goals[goal_idx][i].minute;
 	    team_id = (goals[goal_idx][i].team_id == 
-		       fixtures[idx].team_id[0]) ?
-		1 : 0;
-	    break;	    
+		       fixtures[idx].team_id[0]) ? 1 : 0;
+	    if(goals[goal_idx][i].type == GOAL_TYPE_OWN)
+		team_id = (team_id + 1) % 2;
+	    
+	    break;
 	}
 
     for(i=49;i>=0;i--)
