@@ -67,7 +67,7 @@ msgstr " hetenként"
 
 #: src/game_gui.c:155
 msgid " (NOTE: If you don't, the game is over.)"
-msgstr "(MEGJEGYZÈS: Ha nem fogadod el, akkor vége a játéknak.)"
+msgstr "(MEGJEGYZÉS: Ha nem fogadod el, akkor vége a játéknak.)"
 
 #: src/treeview.c:1180
 msgid " (enlargement in progress)"
@@ -234,7 +234,7 @@ msgstr "Első forduló"
 
 #: src/interface.c:674 src/misc2_interface.c:124
 msgid "2000"
-msgstr "2000"
+msgstr "2.000"
 
 #: src/treeview_cell.c:369 src/treeview_cell.c:398 src/treeview_cell.c:418
 msgid "2nd Round"
@@ -342,7 +342,7 @@ msgstr "Nézők:"
 
 #: src/options_interface.c:891
 msgid "Attribute"
-msgstr "Atributum"
+msgstr "Attributum"
 
 #: src/options_interface.c:523
 msgid "Autosave every "
@@ -402,7 +402,7 @@ msgstr "LEGJOBB KAPUS"
 
 #: src/treeview.c:2255
 msgid "BEST MIDFIELDER"
-msgstr "LEGJOBB KÖZÉPPÀLYÁS"
+msgstr "LEGJOBB KÖZÉPPÁLYÁS"
 
 #: src/treeview.c:2352
 msgid "BEST OFFENSIVE TEAM"
@@ -470,7 +470,7 @@ msgstr "Fokozás"
 
 #: src/misc_interface.c:176
 msgid "Bottom league"
-msgstr "Legalsó bajnokság"
+msgstr "Legalacsonyabb bajnokság"
 
 #: src/misc_interface.c:328
 msgid "Brazil"
@@ -602,11 +602,11 @@ msgstr "Saját országfájl kiválasztása (lásd Súgó)"
 
 #: src/misc_interface.c:224
 msgid "Choose country"
-msgstr "Válasz országot"
+msgstr "Válassz országot"
 
 #: src/misc_interface.c:945
 msgid "Choose file"
-msgstr "Válasz ki egy fájlt"
+msgstr "Válassz ki egy fájlt"
 
 #: src/editor_interface.c:239
 msgid "Choose or enter country file"
@@ -719,7 +719,7 @@ msgstr "Anglia"
 #: src/misc_interface.c:1112 src/misc2_interface.c:255
 #: src/options_interface.c:1388
 msgid "Esc"
-msgstr "ESC"
+msgstr "Esc"
 
 #: src/misc_interface.c:1194
 msgid "Esc / Return / Space"
@@ -1405,7 +1405,7 @@ msgstr "Játékos tulajdonságai melyek a két játékoslistán láthatóak"
 
 #: src/options_interface.c:1279
 msgid "Player histories"
-msgstr "Játékos eserménynaptára"
+msgstr "Játékos eseménynaptára"
 
 #: src/misc2_interface.c:482
 msgid "Player list"
@@ -1638,11 +1638,11 @@ msgstr "Adjál meg egy országfájlt"
 
 #: src/editor_interface.c:211 src/editor_interface.c:245
 msgid "Select file"
-msgstr "Válasz fájlt"
+msgstr "Válassz fájlt"
 
 #: src/misc_interface.c:995
 msgid "Select font"
-msgstr "Válasz betütípust"
+msgstr "Válassz betütípust"
 
 #: src/editor_interface.c:517
 msgid "Select next player (Ctrl-Right)"
@@ -1654,7 +1654,7 @@ msgstr "Előző játékos kiválasztása (Ctrl-Bal)"
 
 #: src/misc_interface.c:120
 msgid "Select team and country"
-msgstr "Válasz együttest és országot"
+msgstr "Válassz együttest és országot"
 
 #: src/treeview.c:1623 src/treeview.c:1639
 msgid "Semi-Final"
@@ -1832,7 +1832,7 @@ msgstr "Kezdés ebben"
 
 #: src/options_interface.c:427
 msgid "Start maximized"
-msgstr "Kezdés maximalizálva"
+msgstr "Teljes méretben indít"
 
 #: src/options_interface.c:448
 msgid "Static"
@@ -1848,7 +1848,7 @@ msgstr "Állapot"
 
 #: src/options_interface.c:485
 msgid "Swap  adapts team structure"
-msgstr "Felcserél   csapat felállása automatikusan alkalmazkodik"
+msgstr "Felcserél  csapat felállása automatikusan alkalmazkodik"
 
 #: src/editor_interface.c:554
 msgid "Swap players"
@@ -1887,7 +1887,7 @@ msgstr "Felállás"
 
 #: src/options_interface.c:1308
 msgid "Team and player histories"
-msgstr "Csapat és játékos eserménynaptára"
+msgstr "Csapat és játékos eseménynaptára"
 
 #: src/editor_interface.c:197
 msgid "Team definitions file"
@@ -1895,7 +1895,7 @@ msgstr "Csapat definíció fájl"
 
 #: src/options_interface.c:1241
 msgid "Team histories"
-msgstr "Csapat eserménynaptára"
+msgstr "Csapat eseménynaptára"
 
 #: src/treeview_cell.c:1012
 msgid "Team structure"
@@ -1908,7 +1908,7 @@ msgstr "Csapatfelállás"
 #: src/editor_interface.c:284
 msgid "Teams found in the country file. Choose one to edit it."
 msgstr ""
-"Ezek az együttesek vannak az országfájlban. Válasz ki egyet, melyet "
+"Ezek az együttesek vannak az országfájlban. Válassz ki egyet, melyet "
 "szerkeszteni akarsz."
 
 #: src/editor_interface.c:264
@@ -2092,7 +2092,11 @@ msgid ""
 "This gives your players extra motivation for this weeks' games, giving them "
 "higher cskill. However, their fitness decrease will be higher, and they're "
 "more likely to get hurt or banned."
-msgstr "Ez játékosaidnak rendkívülí motivációt ad az e heti játékok erejéig, és megnöveli a jelenlegi képességüket. Másrészt viszont az állóképességük nagyobb mértékben csökken, és sérülések es piros lapok valószínűsége megnövekszik."
+msgstr ""
+"Ez játékosaidnak rendkívülí motivációt ad az e heti mérkőzések erejéig, és "
+"megnöveli a jelenlegi képességüket. Másrészt viszont az állóképességük "
+"nagyobb mértékben csökken, és a sérülések illetve a piros lapok "
+"valószínűsége megnövekszik."
 
 #: src/callback_func.c:658
 msgid "This is your first season."
@@ -2201,7 +2205,7 @@ msgstr "Hetek / Szezonok"
 #: src/options_interface.c:1226 src/options_interface.c:1268
 #: src/options_interface.c:1306
 msgid "Whether each season begins with an empty history list."
-msgstr "Hogy minden szezon üres erseménynaptárral kezdődjön-e"
+msgstr "Hogy minden szezon üres eseménynaptárral kezdődjön-e"
 
 #: src/options_interface.c:492
 msgid "Whether fitness percentage is shown in green and red shades"
@@ -2225,7 +2229,10 @@ msgid ""
 "windowmanagers don't support this.) Of course, you have to save your "
 "settings to the conf file if you want a change of this variable to take "
 "effect."
-msgstr "Indításkor a főablak maximalizálva jelenik-e meg (némely ablakmenedzserrel ez nem működik). Ha ezt a beállítást menteni akarod, akkor természetesen a konfigurációs fájlba kell elmenteni."
+msgstr ""
+"Indításkor a főablak teljes méretben induljon-e (némely ablakkezelővel ez "
+"nem működik). Ha ezt a beállítást menteni akarod, akkor természetesen a "
+"konfigurációs fájlba kell elmenteni."
 
 #: src/options_interface.c:864
 msgid "Whether to confirm certain actions"
