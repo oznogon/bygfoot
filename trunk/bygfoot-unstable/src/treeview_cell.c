@@ -141,13 +141,13 @@ cdf_player_column(GtkTreeViewColumn *col,
 		  GtkTreeIter       *iter,
 		  gpointer           user_data)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gint team_id, player_number, attribute;
     gint value;
     gint type;
     gint column = GPOINTER_TO_INT(user_data);
     gfloat fitness_percent;
-    gchar fitness_color[BUF_SIZE_SMALL];
+    gchar fitness_color[SMALL];
 
     if(strcmp(font_name, "0") != 0)
 	g_object_set(renderer, "font", font_name, NULL);
@@ -182,7 +182,8 @@ cdf_player_column(GtkTreeViewColumn *col,
 	sprintf(buf, "%s", 
 		teams[team_id].players[player_number].name);
 
-	if(player_number == options[OPT_PENALTY_SHOOTER])
+	if(team_id == my_team && 
+	   player_number == options[OPT_PENALTY_SHOOTER])
 	    strcat(buf, " (P)");
     }
     else if(attribute == ATT_CPOS)
@@ -309,7 +310,7 @@ cdf_league_to_cell (GtkTreeViewColumn *col,
 {
     gint column = GPOINTER_TO_INT(user_data);
     gint league = -1;
-    gchar  buf[BUF_SIZE_SMALL];
+    gchar  buf[SMALL];
 
     if(strcmp(font_name, "0") != 0)
 	g_object_set(renderer, "font", font_name, NULL);
@@ -331,7 +332,7 @@ cdf_int_to_cell (GtkTreeViewColumn *col,
 {
     gint column = GPOINTER_TO_INT(user_data);
     gint value;
-    gchar  buf[BUF_SIZE_SMALL];
+    gchar  buf[SMALL];
 
     if(strcmp(font_name, "0") != 0)
 	g_object_set(renderer, "font", font_name, NULL);
@@ -470,7 +471,7 @@ cdf_fixture_column(GtkTreeViewColumn *col,
     gint value;
     gint id;
     gint goal_ids[2];
-    gchar  buf[BUF_SIZE_SMALL];
+    gchar  buf[SMALL];
 
     gtk_tree_model_get(model, iter, column, &value, -1);
 
@@ -648,7 +649,7 @@ cdf_table_column(GtkTreeViewColumn *col,
 		 GtkTreeIter       *iter,
 		 gpointer           user_data)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gint value;
     gint column = GPOINTER_TO_INT(user_data);
 
@@ -694,7 +695,7 @@ cdf_league_result_column(GtkTreeViewColumn *col,
 			 GtkTreeIter       *iter,
 			 gpointer           user_data)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gint value;
     gint column = GPOINTER_TO_INT(user_data);
     
@@ -725,7 +726,7 @@ cdf_best_players(GtkTreeViewColumn *col,
 		 GtkTreeIter       *iter,
 		 gpointer           user_data)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gint value;
     gint ids[2];
     gint column = GPOINTER_TO_INT(user_data);
@@ -797,7 +798,7 @@ cdf_opponents (GtkTreeViewColumn *col,
 void
 my_result_to_string(gint fix_idx, gchar *buf)
 {
-    gchar buf2[BUF_SIZE_SMALL];
+    gchar buf2[SMALL];
 
     winner_of_regular(fixtures[fix_idx], buf2,
 		      (fixtures[fix_idx].team_id[0] != my_team));
@@ -822,7 +823,7 @@ void
 write_my_results(GtkListStore *liststore, gint team_id)
 {
     gint i;
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     GtkTreeIter iter;
     
     strcpy(buf, "");
@@ -849,8 +850,8 @@ write_last_games(GtkListStore *liststore, gint team_id)
     gint week_number = week - 1;
     gint goals[2] = {0, 0};
     gint goals_for_idx;
-    gchar buf[BUF_SIZE_SMALL];
-    gchar results[nr_games][BUF_SIZE_SMALL];
+    gchar buf[SMALL];
+    gchar results[nr_games][SMALL];
     GtkTreeIter iter;
     
     strcpy(buf, "");
@@ -899,8 +900,8 @@ write_bookmaker(GtkListStore *liststore, gint *opponent_ids, gint idx)
 {
     gint i, j;
     gfloat home_advantage[2] = {1, 1};
-    gchar buf[BUF_SIZE_SMALL];
-    gchar buf2[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
+    gchar buf2[SMALL];
     fixture local_fixture;
     GtkTreeIter iter;
 
@@ -966,8 +967,8 @@ void
 create_opponent_info(GtkListStore *liststore, gint *opponent_ids, gint idx)
 {
     gint team_id = opponent_ids[idx];
-    gchar buf[BUF_SIZE_SMALL];
-    gchar buf2[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
+    gchar buf2[SMALL];
     GtkTreeIter iter;
 
     if(team_id == -1)

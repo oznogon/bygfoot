@@ -1232,9 +1232,9 @@
 	  <child>
 	    <widget class="GtkCheckButton" id="checkbutton_xml">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">WARNING: This feature is incomplete and experimental. Don't use it unless you're a developer.</property>
+	      <property name="tooltip" translatable="yes">Set savegame format to XML (instead of binary). XML savegames will automatically have a '.xml' ending, and files with '.xml' ending will be loaded as XML savegames. Files with '.xml' ending will be saved automatically as XML savegames.</property>
 	      <property name="can_focus">True</property>
-	      <property name="label" translatable="yes">Save in XML format</property>
+	      <property name="label" translatable="yes">XML save / load</property>
 	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="active">False</property>

@@ -116,8 +116,9 @@ set_up_my_team(void)
 	}
     }
 
-  for(i=2;i>=0;i--)
-    remove_player(my_team, 12 + i * 3);
+  if(season * week == 1)
+      for(i=2;i>=0;i--)
+	  remove_player(my_team, 12 + i * 3);
 
   rearrange_team();
     
@@ -853,8 +854,8 @@ update_stadium(void)
   improve_index =
     (abs(counters[COUNT_INC_CAP]) - abs(counters[COUNT_INC_CAP]) % 10) / 500 - 1;
 
-  if(stadium_improve_costs(0, improve_index) + finances[FIN_MONEY] +
-     calculate_max_loan_credit(1) < 0)
+  if(counters[COUNT_INC_CAP] < 0 && 
+     stadium_improve_costs(0, improve_index) + BUDGET < 0)
     {
       show_popup_window("You didn't have enough money to enlarge your stadium.", NULL);
       counters[COUNT_INC_CAP] = 0;

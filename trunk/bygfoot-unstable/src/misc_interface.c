@@ -70,6 +70,8 @@ create_team_selection (void)
   GtkWidget *image56;
   GtkWidget *radiobutton_country7;
   GtkWidget *image57;
+  GtkWidget *radiobutton_country8;
+  GtkWidget *image58;
   GtkWidget *vseparator17;
   GtkWidget *button_select_country_file;
   GtkWidget *alignment14;
@@ -329,6 +331,16 @@ create_team_selection (void)
   gtk_widget_show (image57);
   gtk_container_add (GTK_CONTAINER (radiobutton_country7), image57);
 
+  radiobutton_country8 = gtk_radio_button_new (NULL);
+  gtk_widget_show (radiobutton_country8);
+  gtk_box_pack_start (GTK_BOX (hbox49), radiobutton_country8, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton_country8), radiobutton_country0_group);
+  radiobutton_country0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton_country8));
+
+  image58 = create_pixmap (team_selection, "flag_mx.png");
+  gtk_widget_show (image58);
+  gtk_container_add (GTK_CONTAINER (radiobutton_country8), image58);
+
   vseparator17 = gtk_vseparator_new ();
   gtk_widget_show (vseparator17);
   gtk_box_pack_start (GTK_BOX (hbox44), vseparator17, FALSE, FALSE, 0);
@@ -528,6 +540,9 @@ create_team_selection (void)
   g_signal_connect ((gpointer) radiobutton_country7, "toggled",
                     G_CALLBACK (on_radiobutton_country_toggled),
                     NULL);
+  g_signal_connect ((gpointer) radiobutton_country8, "toggled",
+                    G_CALLBACK (on_radiobutton_country_toggled),
+                    NULL);
   g_signal_connect ((gpointer) button_select_country_file, "clicked",
                     G_CALLBACK (on_button_select_country_file_clicked),
                     NULL);
@@ -590,6 +605,8 @@ create_team_selection (void)
   GLADE_HOOKUP_OBJECT (team_selection, image56, "image56");
   GLADE_HOOKUP_OBJECT (team_selection, radiobutton_country7, "radiobutton_country7");
   GLADE_HOOKUP_OBJECT (team_selection, image57, "image57");
+  GLADE_HOOKUP_OBJECT (team_selection, radiobutton_country8, "radiobutton_country8");
+  GLADE_HOOKUP_OBJECT (team_selection, image58, "image58");
   GLADE_HOOKUP_OBJECT (team_selection, vseparator17, "vseparator17");
   GLADE_HOOKUP_OBJECT (team_selection, button_select_country_file, "button_select_country_file");
   GLADE_HOOKUP_OBJECT (team_selection, alignment14, "alignment14");

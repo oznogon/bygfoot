@@ -3,9 +3,14 @@
 
 #include "bygfoot.h"
 
-/* check whether a file is a bygfoot savegame */
+/* check whether a file is a binary or xml
+   bygfoot savegame */
 gboolean
 check_save_game(gchar *file_name);
+
+/* check whether a binary file is a bygfoot savegame */
+gboolean
+check_save_game_binary(gchar *file_name);
 
 void
 save_history_best_player(player_stat pl_stat, FILE *fil);
@@ -66,5 +71,8 @@ save_game(gchar *file_name);
 
 void
 load_game(gchar *file_name);
+
+/* find out whether a file ends with '.xml' */
+gboolean is_xml_file(gchar *file_name);
 
 #endif

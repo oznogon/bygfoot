@@ -56,7 +56,7 @@ swap_float(gfloat *first, gfloat *second)
 void
 swap_char(gchar **first, gchar **second)
 {
-    gchar swap[BUF_SIZE_BIG];
+    gchar swap[BIG];
     
     strcpy(swap, *first);
     strcpy(*first, *second);
@@ -69,7 +69,7 @@ void
 print_grouped_int(gint number, gchar *buf, gint append)
 {
     gint i;
-    gchar buf2[BUF_SIZE_SMALL];
+    gchar buf2[SMALL];
     gint length = 0;
     gfloat copy = (gfloat)(abs(number));
     gint number2 = abs(number);

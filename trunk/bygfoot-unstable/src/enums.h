@@ -13,8 +13,8 @@
 #define FIX_END 3000
 
 /* size of char buffers */
-#define BUF_SIZE_BIG 1000000
-#define BUF_SIZE_SMALL 10000
+#define BIG 1000000
+#define SMALL 10000
 
 /**************************************************
  * most of the enumerations are used as indices   *
@@ -32,10 +32,12 @@ enum
     TEXT_FILES_COUNTRY_RO,
     TEXT_FILES_COUNTRY_BR,
     TEXT_FILES_COUNTRY_PL,
+    TEXT_FILES_COUNTRY_MX,
     TEXT_FILES_PLAYER_NAMES,
     TEXT_FILES_DEFINITIONS,
     TEXT_FILES_HELP,
     TEXT_FILES_CONF,
+    TEXT_FILES_UPDATE_GUI,
     TEXT_FILES_END
 };
 

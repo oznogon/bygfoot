@@ -12,7 +12,7 @@
 gboolean
 get_next_line(FILE *fil, gchar *buf, gchar *find_text)
 {
-    gchar local_buf[BUF_SIZE_BIG];
+    gchar local_buf[BIG];
 
     strcpy(local_buf, "");
 
@@ -119,7 +119,7 @@ save_conf_file(void)
     gint i;
     gchar opt_names[OPT_DUMMY1][50];
     FILE *fil;
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
 
     sprintf(buf, "%s/.bygfoot/text_files/bygfoot.conf", getenv("HOME"));
 
@@ -153,8 +153,8 @@ read_conf_file(void)
     gint i;
     gchar opt_names[OPT_DUMMY1][50];
     FILE *fil;
-    gchar buf[BUF_SIZE_SMALL];
-    gchar buf2[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
+    gchar buf2[SMALL];
 
     text_file_number_to_char(TEXT_FILES_CONF, buf, TRUE);
 
@@ -190,16 +190,16 @@ void
 check_home_dir(void)
 {
     gint i, success = 1;
-    gchar home[BUF_SIZE_SMALL];
-    gchar buf[BUF_SIZE_SMALL];
-    gchar buf2[BUF_SIZE_SMALL];
-    gchar buf3[BUF_SIZE_SMALL];
-    gchar text_files[TEXT_FILES_END][BUF_SIZE_SMALL];
-    gchar text_files_full_path[TEXT_FILES_END][BUF_SIZE_SMALL];
+    gchar home[SMALL];
+    gchar buf[SMALL];
+    gchar buf2[SMALL];
+    gchar buf3[SMALL];
+    gchar text_files[TEXT_FILES_UPDATE_GUI][SMALL];
+    gchar text_files_full_path[TEXT_FILES_UPDATE_GUI][SMALL];
 
     sprintf(home, "%s", getenv("HOME"));
 
-    for(i=0;i<TEXT_FILES_END;i++)
+    for(i=0;i<TEXT_FILES_UPDATE_GUI;i++)
     {
 	text_file_number_to_char(i, text_files_full_path[i], TRUE);
 	text_file_number_to_char(i, text_files[i], FALSE);
@@ -231,7 +231,7 @@ check_home_dir(void)
     if(system(buf3) != 0)
 	system(buf2);
     
-    for(i=0;i<TEXT_FILES_END;i++)
+    for(i=0;i<TEXT_FILES_UPDATE_GUI;i++)
     {
 	sprintf(buf3, "test -e %s/text_files/%s", buf, text_files[i]);
 	if(system(buf3) != 0)
@@ -250,7 +250,7 @@ check_home_dir(void)
     if(success == 0)
     {
 	g_print("\nSome files could not be copied to %s.\nYou should try to copy them manually:\n\n", buf);
-	for(i=0;i<TEXT_FILES_END;i++)
+	for(i=0;i<TEXT_FILES_UPDATE_GUI;i++)
 	{
 	    sprintf(buf3, "test -e %s/text_files/%s", buf, text_files[i]);
 	    if(system(buf3) != 0 && 
@@ -266,7 +266,7 @@ void
 check_files(void)
 {
     gint i;
-    gchar filenames[4][BUF_SIZE_SMALL];
+    gchar filenames[4][SMALL];
     FILE *fil;
     
     text_file_number_to_char(TEXT_FILES_COUNTRY_ENG, filenames[0], TRUE);
@@ -297,8 +297,8 @@ get_names(gchar *filename, gchar names[][50])
 {
     gint i = 0;
     gint linenr = 0;
-    gchar trash[BUF_SIZE_BIG];
-    gchar buf[BUF_SIZE_SMALL];
+    gchar trash[BIG];
+    gchar buf[SMALL];
     FILE *fil = fopen(filename, "r");
     
     if(fil == NULL)
@@ -339,7 +339,7 @@ get_names(gchar *filename, gchar names[][50])
 void
 text_file_number_to_char(gint number, gchar *filename, gboolean full_path)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gchar *buf2;
 
     strcpy(filename, "");
@@ -370,6 +370,9 @@ text_file_number_to_char(gint number, gchar *filename, gboolean full_path)
 	case TEXT_FILES_COUNTRY_PL:
 	    strcpy(buf, "country_pl");
 	    break;
+	case TEXT_FILES_COUNTRY_MX:
+	    strcpy(buf, "country_mx");
+	    break;
 	case TEXT_FILES_PLAYER_NAMES:
 	    strcpy(buf, "player_names");
 	    break;
@@ -381,6 +384,9 @@ text_file_number_to_char(gint number, gchar *filename, gboolean full_path)
 	    break;
 	case TEXT_FILES_CONF:
 	  strcpy(buf, "bygfoot.conf");
+	    break;
+	case TEXT_FILES_UPDATE_GUI:
+	  strcpy(buf, "bygfoot-update-gui");
 	    break;
     }
 
@@ -396,13 +402,14 @@ text_file_number_to_char(gint number, gchar *filename, gboolean full_path)
     if(buf2 != NULL)
 	g_free(buf2);
 
-    strcpy(filename, buf);
+    if(!full_path)
+	strcpy(filename, buf);
 }
 
 void
 read_structures(FILE *fil, gint team_id, gint *structure2)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gint i, structure1;
 
     /* read structures */
@@ -440,7 +447,7 @@ read_structures(FILE *fil, gint team_id, gint *structure2)
 void
 read_player(FILE *fil, gint team_id, gint read, gint player_number, gint *birth_dates)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gint intbuf;
     gint i;
 
@@ -539,7 +546,7 @@ read_team(FILE *fil, gint team_id, gint *structure2, gint read, gint *birth_date
      like 332 or 422;
      the first and 12th players are always goalies */
     gint local_structure2;
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
 
     if( read % 10 > 0 ||
 	(read >= 10 && team_id == my_team) )
@@ -579,7 +586,7 @@ read_teams_file(gint read, const gchar *team_name, gint *structure2,
 		     gint *birth_dates)
 {
     gint i;
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     FILE *fil;
 
     text_file_number_to_char(TEXT_FILES_DEFINITIONS, buf, TRUE);

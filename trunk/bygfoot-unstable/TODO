@@ -28,6 +28,17 @@ it's done, because it could be something that's very easy to implement.
 
 The TODO list:
 
+- add more statistics (e.g. player career stats)
+
+- add manager personalities (a manager for each team with certain
+  strategy preferences) P DDD
+
+- add multiplayer support (server/client based, if possible) P DDDDD
+
+- add gettext support PP DD
+
+- add automatic retiring of old players PP DD
+
 - make finances a bit better-looking and add summaries at the end of a season P DDD
 
 - make player names sound more like the country they play in P DDDD
@@ -44,8 +55,6 @@ The TODO list:
 - add possibility to borrow/lend players PP DDD
 
 - enable closing the live game window while the game's still on P DD
-
-- show average attendance in stadium capacity percentage PP DD
 
 - add 'country' file for the world (based on the fifa rating list
   perhaps) P D

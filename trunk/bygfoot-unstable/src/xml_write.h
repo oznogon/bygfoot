@@ -1,6 +1,8 @@
 #ifndef XML_WRITE_H
 #define XML_WRITE_H
 
+#include <stdio.h>
+#include <gtk/gtk.h>
 #include "bygfoot.h"
 
 void write_xml_save(char * file_name);
@@ -19,5 +21,12 @@ void write_xml_transfers(FILE * xml_file);
 void write_xml_transfer(transfer * tf, FILE * xml_file);
 
 void write_xml_options(FILE * xml_file);
+void write_xml_goal(goal * gl, FILE * xml_file);
+
+void write_xml_history(FILE * xml_file);
+void write_xml_history_element(season_stat * stat, FILE * xml_file);
+void write_xml_history_best_player(player_stat * pl_stat, FILE * xml_file);
+
+void write_xml_fixtures(FILE * xml_file);
 
 #endif

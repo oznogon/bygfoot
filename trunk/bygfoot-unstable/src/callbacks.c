@@ -116,7 +116,7 @@ on_structure_entry_activate            (GtkEntry        *entry,
 {
     gint i;
     gint new_structure = entry_get_int(entry);
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
 
     if(new_structure == teams[my_team].structure)
 	return;
@@ -333,7 +333,7 @@ on_player_info_button_press_event      (GtkWidget       *widget,
 	else if(get_place(status, 12) == 10 ||
 	   get_place(status, 12) == 11)
 	{
-	    if(callback_transfer_select(row_idx - 1) == 1)
+	    if(callback_transfer_select(row_idx - 1))
 		status = 110000 + get_place(status, 22);
 	}
 	else if(status == 120000)
@@ -861,3 +861,21 @@ on_shoots_penalties_activate           (GtkMenuItem     *menuitem,
     callback_penalty_shooter();
 }
 
+
+void
+on_start_update_activate               (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+    gint popup_status[3] = {93, 0, 0};
+
+    if(save_status || GPOINTER_TO_INT(user_data) == 1)
+    {	
+	free_history();	
+	g_string_free(save_file, TRUE);
+	start_update();
+	return;
+    }
+
+    show_popup_window("Your current game is not saved and will be lost. Continue?",
+		      popup_status);
+}

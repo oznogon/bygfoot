@@ -8,7 +8,7 @@
 void
 set_variables(void);
 
-gint
+void
 bygfoot_init(gint argc, gchar *argv[]);
 
 gint

@@ -15,7 +15,11 @@ install-data-local:
 	  $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/support_files; \
 	  for pixmap in $(srcdir)/support_files/*; do \
 	    if test -f $$pixmap; then \
-	      $(INSTALL_DATA) $$pixmap $(DESTDIR)$(pkgdatadir)/support_files; \
+		if test -x $$pixmap; then \
+		      $(INSTALL_PROGRAM) $$pixmap $(DESTDIR)$(pkgdatadir)/support_files; \
+		else \
+		      $(INSTALL_DATA) $$pixmap $(DESTDIR)$(pkgdatadir)/support_files; \
+		fi \
 	    fi \
 	  done \
 	fi
@@ -24,7 +28,11 @@ install-data-local:
 	  $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/support_files/text_files; \
 	  for pixmap in $(srcdir)/support_files/text_files/*; do \
 	    if test -f $$pixmap; then \
-	      $(INSTALL_DATA) $$pixmap $(DESTDIR)$(pkgdatadir)/support_files/text_files; \
+		if test -x $$pixmap; then \
+		      $(INSTALL_PROGRAM) $$pixmap $(DESTDIR)$(pkgdatadir)/support_files/text_files; \
+		else \
+		      $(INSTALL_DATA) $$pixmap $(DESTDIR)$(pkgdatadir)/support_files/text_files; \
+		fi \
 	    fi \
 	  done \
 	fi

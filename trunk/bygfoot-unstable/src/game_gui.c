@@ -39,7 +39,7 @@ bookmaker_re_tip(void)
 void
 make_transfer_offer(gint idx)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gint popup_status[3] = {1000000 + idx, -1, -1};
     gint player_number = transferlist[idx].player_number;
     gfloat value_deviance[2] =
@@ -116,8 +116,8 @@ get_current_rank(void)
 void
 show_job_offer(gint fire)
 {
-    gchar buf[JOB_OFFER_END][BUF_SIZE_SMALL];
-    gchar buf2[BUF_SIZE_SMALL];
+    gchar buf[JOB_OFFER_END][SMALL];
+    gchar buf2[SMALL];
     gint new_team = my_team;
     gint new_team_bound[2];
     /* get the my_team index in the rank_ids array */
@@ -178,7 +178,7 @@ show_job_offer(gint fire)
 void
 show_fire_warning(void)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
 
     sprintf(buf, "The team owners are dissatisfied with the team's recent performance. There are rumours they're looking for a new coach.");
 
@@ -239,7 +239,7 @@ team_offers(void)
 void
 update_autosave(void)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     
     if(options[OPT_AUTOSAVE] < 0)
 	return;
@@ -288,8 +288,8 @@ void
 finance_events(void)
 {
     gint i;
-    gchar buf[BUF_SIZE_SMALL];
-    gchar buf2[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
+    gchar buf2[SMALL];
 
     if(counters[COUNT_LOAN] == 0)
 	show_popup_window("You've got to pay back your loan NOW!!!",
@@ -704,6 +704,8 @@ change_country_team_selection(GtkWidget *button)
 	lookup_widget(button, "radiobutton_country6");
     radiobutton_country[TEXT_FILES_COUNTRY_PL] = 
 	lookup_widget(button, "radiobutton_country7");
+    radiobutton_country[TEXT_FILES_COUNTRY_MX] = 
+	lookup_widget(button, "radiobutton_country8");
 
     for(i=0;i<TEXT_FILES_PLAYER_NAMES;i++)	
       if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(radiobutton_country[i])))
@@ -867,8 +869,8 @@ show_live_game(gint idx)
     gdouble old_values[2] = {0, 0};
     gdouble new_value = 0;
     gfloat stick_prob = (gfloat)rndi(1, 3) / 10 + 0.05;
-    gchar buf[BUF_SIZE_SMALL], 
-	buf2[BUF_SIZE_SMALL], buf3[BUF_SIZE_SMALL];
+    gchar buf[SMALL], 
+	buf2[SMALL], buf3[SMALL];
     GtkWidget *live_window =
 	return_live_window();
     GtkWidget *ruler =
@@ -993,6 +995,7 @@ live_game(gint number)
     if(idx[number] == -1)
     {
 	status = -50000;
+	callback_new_week(FALSE);
 	return;
     }
     

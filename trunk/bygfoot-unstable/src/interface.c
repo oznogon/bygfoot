@@ -43,7 +43,9 @@ create_main_window (void)
   GtkWidget *menu_options;
   GtkWidget *separatormenuitem1;
   GtkWidget *start_editor;
-  GtkWidget *image54;
+  GtkWidget *image85;
+  GtkWidget *start_update;
+  GtkWidget *image86;
   GtkWidget *trennlinie2;
   GtkWidget *menu_quit;
   GtkWidget *menuitem4;
@@ -265,7 +267,7 @@ create_main_window (void)
 
   main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_container_set_border_width (GTK_CONTAINER (main_window), 6);
-  gtk_window_set_title (GTK_WINDOW (main_window), _("Bygfoot Football Manager 1.7.0"));
+  gtk_window_set_title (GTK_WINDOW (main_window), _("Bygfoot Football Manager 1.7.3"));
   gtk_window_set_position (GTK_WINDOW (main_window), GTK_WIN_POS_CENTER);
   gtk_window_set_default_size (GTK_WINDOW (main_window), 300, 600);
   main_window_icon_pixbuf = create_pixbuf ("bygfoot_icon.png");
@@ -324,9 +326,18 @@ create_main_window (void)
   gtk_widget_show (start_editor);
   gtk_container_add (GTK_CONTAINER (menuitem1_menu), start_editor);
 
-  image54 = gtk_image_new_from_stock ("gtk-preferences", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image54);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (start_editor), image54);
+  image85 = gtk_image_new_from_stock ("gtk-preferences", GTK_ICON_SIZE_MENU);
+  gtk_widget_show (image85);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (start_editor), image85);
+
+  start_update = gtk_image_menu_item_new_with_mnemonic (_("Start Bygfoot Online Update"));
+  gtk_widget_show (start_update);
+  gtk_container_add (GTK_CONTAINER (menuitem1_menu), start_update);
+  gtk_tooltips_set_tip (tooltips, start_update, _("You can use the online update feature only if you have the Bygfoot source package installed"), NULL);
+
+  image86 = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_MENU);
+  gtk_widget_show (image86);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (start_update), image86);
 
   trennlinie2 = gtk_menu_item_new ();
   gtk_widget_show (trennlinie2);
@@ -1384,6 +1395,9 @@ create_main_window (void)
   g_signal_connect ((gpointer) start_editor, "activate",
                     G_CALLBACK (on_start_editor_activate),
                     NULL);
+  g_signal_connect ((gpointer) start_update, "activate",
+                    G_CALLBACK (on_start_update_activate),
+                    NULL);
   g_signal_connect ((gpointer) menu_quit, "activate",
                     G_CALLBACK (on_menu_quit_activate),
                     NULL);
@@ -1525,7 +1539,9 @@ create_main_window (void)
   GLADE_HOOKUP_OBJECT (main_window, menu_options, "menu_options");
   GLADE_HOOKUP_OBJECT (main_window, separatormenuitem1, "separatormenuitem1");
   GLADE_HOOKUP_OBJECT (main_window, start_editor, "start_editor");
-  GLADE_HOOKUP_OBJECT (main_window, image54, "image54");
+  GLADE_HOOKUP_OBJECT (main_window, image85, "image85");
+  GLADE_HOOKUP_OBJECT (main_window, start_update, "start_update");
+  GLADE_HOOKUP_OBJECT (main_window, image86, "image86");
   GLADE_HOOKUP_OBJECT (main_window, trennlinie2, "trennlinie2");
   GLADE_HOOKUP_OBJECT (main_window, menu_quit, "menu_quit");
   GLADE_HOOKUP_OBJECT (main_window, menuitem4, "menuitem4");

@@ -293,8 +293,8 @@ give_leagues_names(void)
 {
     gint j = 0;
     gint linenr = 0;
-    gchar trash[BUF_SIZE_BIG];
-    gchar buf[BUF_SIZE_SMALL];
+    gchar trash[BIG];
+    gchar buf[SMALL];
     FILE *fil = fopen(country_file_name, "r");
 
     /* find the appropriate place in the file */
@@ -341,8 +341,8 @@ give_leagues_names(void)
 void
 country_names(gint country_number, const gchar *country_filename)
 {
-    gchar filename[BUF_SIZE_SMALL];
-    gchar buf[BUF_SIZE_SMALL];
+    gchar filename[SMALL];
+    gchar buf[SMALL];
     gchar *buf2;
     FILE *fil;
  

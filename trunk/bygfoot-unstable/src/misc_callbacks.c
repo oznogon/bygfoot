@@ -125,28 +125,26 @@ void
 on_button_fsel_ok_clicked              (GtkButton       *button,
                                         gpointer         user_data)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     GtkWidget *entry;
     GtkWidget *fsel_window =
 	lookup_widget(GTK_WIDGET(button), "fsel_window");
     gboolean good_file = TRUE;
+    gchar *file_name = 
+	(gchar*)gtk_file_selection_get_filename(
+	    GTK_FILE_SELECTION(fsel_window));
     FILE *fil;
-
-    if(status < 800010)
-	g_string_assign(save_file, 
-			gtk_file_selection_get_filename(
-			    GTK_FILE_SELECTION(fsel_window)));
     
     if(status == 800001)
     {
-	save_game(save_file->str);
+	save_game(file_name);
 	set_save(1);
     }
     else if(status == 800000)
     {
-	if(check_save_game(save_file->str))
+	if(check_save_game(file_name))
 	{
-	    load_game(save_file->str);
+	    load_game(file_name);
 	    set_save(1);
 	    on_button_back_to_main_clicked(NULL, NULL);
 	}
@@ -159,9 +157,9 @@ on_button_fsel_ok_clicked              (GtkButton       *button,
     }
     else if(status == 800002)
     {
-	if(check_save_game(save_file->str))
+	if(check_save_game(file_name))
 	{
-	    load_game(save_file->str);
+	    load_game(file_name);
 	    gtk_widget_show(main_window);
 	    on_button_back_to_main_clicked(NULL, NULL);
 	    set_save(1);
@@ -503,6 +501,8 @@ on_button_popup_ok_clicked             (GtkButton       *button,
     }
     else if(status[0] == 92)
 	on_start_editor_activate(NULL, GINT_TO_POINTER(1));
+    else if(status[0] == 93)
+	on_start_update_activate(NULL, GINT_TO_POINTER(1));
     else if(status[0] == 60)
     {
 	set_save(0);

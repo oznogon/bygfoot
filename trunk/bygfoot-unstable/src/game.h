@@ -85,7 +85,8 @@ process_result_game(fixture *fix, gfloat *home_advantage,
 /* simulate a penalty shot */
 void
 simulate_penalty(fixture *fix, gfloat goalie_value,
-		      gint player_number, gint team, gint time);
+		 gint player_number, gint team, gint time,
+		 gboolean bookmaker);
 
 /* calculate penalties. here we have no home advantage */
 void

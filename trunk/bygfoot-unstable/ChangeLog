@@ -1,4 +1,36 @@
-08/30/2004: v1.7.0
+09/30/2004: v1.7.2
+	- added country file for Mexico (thanks to Arturo Mendez)
+	- improved the update script
+	- added a simple gui for the script
+	- added updated country file for Italy (thanks to Marco Fabbri)
+	- fixed a bug that led to no ticket income for cup games
+	- fixed a bug that occurred when you made a stadium enlargement
+        over several weeks
+	- replaced official team names with city names because of
+	trademark issues (the official names can be downloaded from
+	http://www.bygfoot.com)
+	- removed official player names because of the same reason (you
+	can still download them from the homepage)
+
+09/30/2004: v1.6.2
+	- improved the update script
+	- added updated country file for Italy (thanks to Marco Fabbri)
+	- fixed a bug that led to no ticket income for cup games
+	- fixed a bug that occurred when you made a stadium enlargement
+        over several weeks
+	- replaced official team names with city names because of
+	trademark issues (the official names can be downloaded from
+	http://www.bygfoot.com)
+	- removed official player names because of the same reason (you
+	can still download them from the homepage)
+
+09/09/2004: v1.6.1 + 1.7.1
+	- corrected a bug that caused the game to hang if live games were
+	switched on and there were no games to play
+	- added an online update script for the source package
+	('bygfoot-update')
+
+09/05/2004: v1.7.0
 	- added injuries and cards display for opponent teams in the match
 	summary
 	- clicking on a team name in the tables shows the team's player list
@@ -13,7 +45,7 @@
 	- added player and some more team awards (with prize money) at the
 	end of a season
 
-08/30/2004: v1.6.0
+09/05/2004: v1.6.0
 	- added possibility to have messages shown instead of popups
 	when possible
 	- added extended stadium capacity enlargement possibilities

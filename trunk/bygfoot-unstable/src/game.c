@@ -320,7 +320,7 @@ prg_simulate_chance(fixture *fix,
     if(rndom < 0.02)
     {
 	get_scorer_pen(fix->team_id[team], &scorer);
-	simulate_penalty(fix, goalie_value, scorer, team, time);
+	simulate_penalty(fix, goalie_value, scorer, team, time, bookmaker);
 	return;
     }
 
@@ -423,7 +423,8 @@ process_result_game(fixture *fix, gfloat *home_advantage,
 /* simulate a penalty shot */
 void
 simulate_penalty(fixture *fix, gfloat goalie_value,
-		 gint player_number, gint team, gint time)
+		 gint player_number, gint team, gint time,
+		 gboolean bookmaker)
 {
     gfloat rndom = rnd(0,1);
     gfloat scoring_probability;
@@ -444,7 +445,8 @@ simulate_penalty(fixture *fix, gfloat goalie_value,
 
     fix->result[team][time] += 1;
     
-    prg_write_goal(*fix, team, player_number, time, GOAL_TYPE_PEN);
+    if(!bookmaker)
+	prg_write_goal(*fix, team, player_number, time, GOAL_TYPE_PEN);
 }
 
 /* calculate penalties. here we have no home advantage */
@@ -485,7 +487,7 @@ process_result_penalties(fixture *fix)
 	    
 	    if(!ended)
 		simulate_penalty(fix, goalie_values[(j + 1) % 2],
-				 order[j][i], j, GOAL_TIME_PENALTY);
+				 order[j][i], j, GOAL_TIME_PENALTY, FALSE);
 	}
     
     shooter[0] = shooter[1] = 5;
@@ -505,7 +507,7 @@ process_result_penalties(fixture *fix)
 	for(i=0;i<2;i++)
 	{
 	    simulate_penalty(fix, goalie_values[(i + 1) % 2],
-			     order[i][shooter[i]], i, GOAL_TIME_PENALTY);
+			     order[i][shooter[i]], i, GOAL_TIME_PENALTY, FALSE);
 	    shooter[i] = (shooter[i] + 1) % 11;
 	}
     }

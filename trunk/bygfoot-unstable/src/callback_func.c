@@ -198,11 +198,11 @@ show_recommend(gint idx)
 }
 
 /* handle a click on the transfer list */
-gint
+gboolean
 callback_transfer_select(gint row_idx)
 {
     if(row_idx < 0)
-	return 0;
+	return FALSE;
 
     status = status - get_place(status, 22) + row_idx;
 
@@ -210,12 +210,12 @@ callback_transfer_select(gint row_idx)
     {
 	remove_transfer(row_idx, TRUE);
 	on_button_transfers_clicked(NULL, NULL);
-	return 0;
+	return FALSE;
     }
     else
 	show_recommend(row_idx);
 
-    return 1;
+    return TRUE;
 }
 
 /* handle the click on the 'ok' button the human player
@@ -317,7 +317,7 @@ callback_transfer_buy_player(gint row_idx)
     gint player_number = row_idx;
     gint value, wage;
     gint popup_status[3];
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     
     if(player_number == -1)
 	return;
@@ -1255,7 +1255,7 @@ callback_notify_injury(void)
 {
     gint i;
     gchar names[11][19];
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
 
     for(i=0;i<11;i++)
     {
@@ -1285,7 +1285,7 @@ callback_penalty_shooter(void)
 {
     gint player_number = 
 	selected_rows[0];
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
 
     if(player_number < 0) 
     {
@@ -1326,11 +1326,11 @@ callback_new_week(gboolean calculate)
 	    gtk_tree_view_set_model(GTK_TREE_VIEW(player_list),
 				    NULL);
 
-	if(my_team_played(week) || my_team > 114)
-	    update_finances();
-
 	update_stadium();
 	process_week_games(week);
+
+	if(my_team_played(week) || my_team > 114)
+	    update_finances();
 
 	if(options[OPT_SHOW_LIVE] == 1)
 	{

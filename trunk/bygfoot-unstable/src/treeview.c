@@ -486,7 +486,7 @@ create_player_info(gint team_id, gint player_number)
     gint i;
     GtkListStore  *liststore;
     GtkTreeIter iter;
-    gchar categories[ATT_DUMMY1][BUF_SIZE_SMALL];
+    gchar categories[ATT_DUMMY1][SMALL];
 
     strcpy(categories[ATT_NAME], "Name");
     strcpy(categories[ATT_CPOS], "Current position"); 
@@ -614,7 +614,7 @@ set_average_skills(gint team_id)
 {
     GtkWidget *label_av_skill = 
 	lookup_widget(main_window, "label_av_skill");
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
 
     sprintf(buf, "%.2f (%+.2f)  %.2f (%+.2f)",
 	    average_skill(team_id, 11, TRUE),
@@ -1112,8 +1112,8 @@ GtkTreeModel*
 create_fin_stad(void)
 {
     gint i;
-    gchar buf[BUF_SIZE_SMALL];
-    gchar buf2[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
+    gchar buf2[SMALL];
     gint capacity_increase = 
 	stadium_improve_costs(0, -1);
     gint safety_increase =
@@ -1646,8 +1646,8 @@ create_history(season_stat *stat)
 			   G_TYPE_STRING);
     GtkTreeIter iter;
     gint i;
-    gchar buf[BUF_SIZE_SMALL];
-    gchar buf2[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
+    gchar buf2[SMALL];
     gchar champions[STAT_END - 1][50];
 
     for(i=0;i<STAT_END - 1;i++)
@@ -1886,7 +1886,7 @@ create_live(gint idx, gint type)
 {
     gint i;
     gint minute = (type < 1000) ? type : 120;
-    gchar buf[BUF_SIZE_SMALL], buf2[BUF_SIZE_SMALL];
+    gchar buf[SMALL], buf2[SMALL];
     gint result[2], pen_result[2];
     gint goal_idx =
 	get_statistics_variable_index(fixtures[idx]);
@@ -2139,7 +2139,7 @@ create_opponents(void)
 			   G_TYPE_STRING);
     gint opponent_ids[6];
     gint i;
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     GtkTreeIter iter;
 
     for(i=0;i<6;i++)
@@ -2238,9 +2238,9 @@ void
 create_awards_player(GtkListStore *liststore, gint prized_players[][3])
 {
   gint i;
-  gchar buf[BUF_SIZE_SMALL];
-  gchar buf2[BUF_SIZE_SMALL];
-  gchar buf3[BUF_SIZE_SMALL];
+  gchar buf[SMALL];
+  gchar buf2[SMALL];
+  gchar buf3[SMALL];
   GtkTreeIter iter;
   gchar *titles[4] =
     {"BEST PLAYER",
@@ -2304,8 +2304,8 @@ void
 create_awards_team(GtkListStore *liststore, gint prized_teams[][2])
 {
   gint i;
-  gchar buf[BUF_SIZE_SMALL];
-  gchar buf2[BUF_SIZE_SMALL];
+  gchar buf[SMALL];
+  gchar buf2[SMALL];
   GtkTreeIter iter;
 
   gtk_list_store_append(liststore, &iter);
@@ -2378,9 +2378,9 @@ create_awards(gint prized_teams[][2], gint prized_players[][3])
     gtk_list_store_new(4, G_TYPE_STRING, G_TYPE_STRING,
 		       G_TYPE_STRING, G_TYPE_STRING);
   GtkTreeIter iter;
-  gchar buf[BUF_SIZE_SMALL];
+  gchar buf[SMALL];
 
-  sprintf(buf, "SEASON %d", season);
+  sprintf(buf, "SEASON AWARDS");
   gtk_list_store_append(liststore, &iter);
   gtk_list_store_set(liststore, &iter,
 		     0, "", 1, buf, 2, "", 3, "", -1);

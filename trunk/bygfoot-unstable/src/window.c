@@ -30,7 +30,13 @@ return_live_window(void)
 GtkWidget*
 return_main_window(void)
 {
-    return create_main_window();
+    GtkWidget *window = create_main_window();
+    gchar buf[SMALL];
+    
+    sprintf(buf, "Bygfoot Football Manager %s", VERS);
+    gtk_window_set_title(GTK_WINDOW(window), buf);
+
+    return window;
 }
 
 /* create options window */
@@ -39,7 +45,11 @@ show_opt_window(void)
 {
     GtkWidget *opt_window =
 	create_opt_window();
+    gchar buf[SMALL];
     
+    sprintf(buf, "Bygfoot %s -- Options", VERS);
+    gtk_window_set_title(GTK_WINDOW(opt_window), buf);
+
     set_up_options_window(opt_window, 1);
 
     change_popups_active(1);
@@ -66,7 +76,7 @@ get_fire_text(GtkWidget *popup_label, GtkWidget **radiobuttons,
 	      gint *status)
 {
     gint i;
-    gchar buf[3][BUF_SIZE_SMALL];
+    gchar buf[3][SMALL];
     
     sprintf(buf[0], "You'd like to fire %s. You can",
 	    teams[status[1]].players[status[2]].name);
@@ -111,7 +121,8 @@ show_popup_window(gchar *text, gint *status)
     GtkWidget *check_popup =
 	lookup_widget(popup_window, "check_popup");
     GtkWidget *label_popup_status[3];
-
+    gchar buf[SMALL];
+    
     radiobuttons[0] = 
 	lookup_widget(popup_window, "radiobutton0");
     radiobuttons[1] = 
@@ -123,6 +134,9 @@ show_popup_window(gchar *text, gint *status)
 	lookup_widget(popup_window, "label_popup_status2");
     label_popup_status[2] = 
 	lookup_widget(popup_window, "label_popup_status3");
+
+    sprintf(buf, "Bygfoot %s", VERS);
+    gtk_window_set_title(GTK_WINDOW(popup_window), buf);
 
     if(status == NULL)
 	for(i=0;i<3;i++)
@@ -187,9 +201,12 @@ show_help(gint customization)
 	gtk_text_view_get_buffer(GTK_TEXT_VIEW(text_view_help));
     PangoFontDescription *font_desc;
     
-    gchar buf[BUF_SIZE_SMALL];
-    gchar trash[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
+    gchar trash[SMALL];
     FILE *fil;
+
+    sprintf(buf, "Bygfoot %s -- Help", VERS);
+    gtk_window_set_title(GTK_WINDOW(help_window), buf);
 
     text_file_number_to_char(TEXT_FILES_HELP, buf, TRUE);
     fil = fopen(buf, "r");
@@ -238,8 +255,11 @@ show_file_selection(gint save)
 {
     GtkWidget *fsel_window =
 	create_fsel_window();
-    gchar buf[BUF_SIZE_SMALL];
-    gchar buf2[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
+    gchar buf2[SMALL];
+
+    sprintf(buf, "Bygfoot %s", VERS);
+    gtk_window_set_title(GTK_WINDOW(fsel_window), buf);
 
     sprintf(buf, "%s/.bygfoot/text_files/", getenv("HOME"));
     sprintf(buf2, "test -d %s", buf);
@@ -279,6 +299,10 @@ show_font_sel_window(void)
 {
     GtkWidget *font_sel_window =
 	create_font_sel_window();
+    gchar buf[SMALL];
+    
+    sprintf(buf, "Bygfoot %s", VERS);
+    gtk_window_set_title(GTK_WINDOW(font_sel_window), buf);
     
     change_popups_active(1);
     gtk_widget_show(font_sel_window);
@@ -288,9 +312,12 @@ void
 show_stadium_window(void)
 {
     gint i;
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     GtkWidget *stadium_window = create_stadium_window();
     GtkWidget *label_cost[4];
+
+    sprintf(buf, "Bygfoot %s", VERS);
+    gtk_window_set_title(GTK_WINDOW(stadium_window), buf);
 
     label_cost[0] = 
 	lookup_widget(stadium_window, "label_cost0");
@@ -316,11 +343,14 @@ show_stadium_window(void)
 void
 start_editor(void)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     GtkWidget *entry_definitions_file;
 
     main_window =
 	create_editor_window();
+
+    sprintf(buf, "Bygfoot %s -- Team Editor", VERS);
+    gtk_window_set_title(GTK_WINDOW(main_window), buf);
 
     gtk_widget_show(main_window);
 
@@ -354,14 +384,17 @@ start_editor(void)
 
 /* show a window with a job offer and some info on the possible new team */
 void
-show_job_offer_window(gchar text[][BUF_SIZE_SMALL])
+show_job_offer_window(gchar text[][SMALL])
 {
     gint i;
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     GtkWidget *job_offer_window = create_job_offer_window();
     GtkWidget *treeview_player_list =
 	lookup_widget(job_offer_window, "treeview_player_list");
     GtkWidget *text_labels[JOB_OFFER_END];
+
+    sprintf(buf, "Bygfoot %s - Job Offer", VERS);
+    gtk_window_set_title(GTK_WINDOW(job_offer_window), buf);
 
     for(i=0;i<JOB_OFFER_END;i++)
     {
@@ -375,4 +408,34 @@ show_job_offer_window(gchar text[][BUF_SIZE_SMALL])
     change_popups_active(1);
 
     gtk_widget_show(job_offer_window);
+}
+
+/* show the frontend for the update script */
+void
+start_update(void)
+{
+    gchar buf[SMALL];
+    gchar buf2[SMALL];
+
+    strcpy(buf, "");
+    text_file_number_to_char(TEXT_FILES_UPDATE_GUI, buf, TRUE);
+
+    if(strlen(buf) == 0)
+    {
+	sprintf(buf2,
+		"\nDidn't find the update script frontend. Perhaps you don't have the Bygfoot source version installed. Please refer to the Bygfoot homepage http://www.bygfoot.com to see whether there are new versions in your favourite package format available.\n\n");
+	if(main_window == NULL)
+	    g_print("%s", buf2);
+	else
+	    show_popup_window(buf2, NULL);
+
+	return;
+    }
+
+    g_spawn_command_line_async(buf, NULL);
+
+    if(main_window != NULL)
+	gtk_main_quit();
+
+    return;
 }

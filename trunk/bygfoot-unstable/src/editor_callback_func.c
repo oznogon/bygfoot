@@ -82,7 +82,7 @@ write_team_to_screen(void)
     GtkTreeSelection *selection =
 	gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview_players));
     GtkTreePath *path;
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gint attrib[ATT_END];
     gint ids[20][2];
     gfloat adjust_factor = 0.5;
@@ -133,7 +133,7 @@ write_team_to_screen(void)
 void
 callback_change_structures(void)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     GtkWidget *entry_structure1 =
 	lookup_widget(main_window, "entry_structure1");
     GtkWidget *entry_structure2 =
@@ -163,7 +163,7 @@ set_teams_file_pulldown(void)
     GtkWidget *combo_team_file =
 	lookup_widget(main_window, "combo_team_file");
     GList *league_files = NULL;
-    gchar filenames[TEXT_FILES_PLAYER_NAMES][BUF_SIZE_SMALL];
+    gchar filenames[TEXT_FILES_PLAYER_NAMES][SMALL];
     gint i;
     
     for(i=0;i<TEXT_FILES_PLAYER_NAMES;i++)
@@ -189,7 +189,7 @@ callback_load_team_file(void)
     const gchar *entry_text = gtk_entry_get_text(GTK_ENTRY(entry_country_file));
     gchar *filename;
     FILE *fil;
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gchar team_names[500][50];
     gint i;
     GList *country_list = NULL;
@@ -238,7 +238,7 @@ callback_load_team(void)
 	lookup_widget(main_window, "entry_definitions_file");
     const gchar *def_file = gtk_entry_get_text(GTK_ENTRY(entry_definitions_file));
     FILE *fil = fopen(def_file, "r");
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gint i;
 
     if(strcmp(team_name, "") == 0 || strcmp(def_file, "") == 0)
@@ -300,7 +300,7 @@ save_team_name(void)
 	gtk_entry_get_text(GTK_ENTRY(entry_country_file));
     FILE *fil;
     GString *file_content;
-    gchar buf[BUF_SIZE_BIG];
+    gchar buf[BIG];
 
     if(strcmp(team_name, new_name) == 0)
 	return;
@@ -370,7 +370,7 @@ void
 save_defs(const gchar *def_file)
 {
     gint i, skill, talent;
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gchar player_name[19];
     GtkWidget *entry_team_name =
 	lookup_widget(main_window, "entry_team_name");
@@ -459,7 +459,7 @@ save_defs(const gchar *def_file)
 gboolean
 callback_save_defs(void)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     GtkWidget *entry_team = 
 	lookup_widget(main_window, "entry_team");
     const gchar *team_name =
@@ -667,7 +667,7 @@ import_file(const gchar *file_name)
     GtkWidget *entry_definitions_file =
 	lookup_widget(main_window, "entry_definitions_file");
     const gchar *def_file = gtk_entry_get_text(GTK_ENTRY(entry_definitions_file));
-    gchar buf[BUF_SIZE_BIG];
+    gchar buf[BIG];
     GString *imported_teams = g_string_new("");
     FILE *definitions_file;
     FILE *import_file;

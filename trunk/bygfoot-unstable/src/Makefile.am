@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-AM_CFLAGS = -I/usr/include/libxml2 -Wall
+AM_CFLAGS = -Wall
 INCLUDES = \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
@@ -42,5 +42,5 @@ bygfoot_SOURCES = \
 	xml_read.c xml_read.h \
 	xml_write.c xml_write.h
 
-bygfoot_LDADD = @PACKAGE_LIBS@ $(INTLLIBS) -lxml2
+bygfoot_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
 

@@ -158,7 +158,7 @@ void
 on_checkbutton_autosave_toggled        (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     FILE *autosave_file;
     GtkWidget *spinbutton_autosave =
 	lookup_widget(GTK_WIDGET(togglebutton),

@@ -7,6 +7,10 @@
 #ifndef BYGFOOT_H
 #define BYGFOOT_H
 
+/* current version number */
+
+#define VERS "1.7.3"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -202,18 +206,54 @@ gint popups_active;
 /* menu status, ie. what's the user looking at currently? */
 /*
   current status values ( ranges like a - b include a but not b):
-  0: main menu; opponent info
-  50000: player info is shown on the right
-  100000 - 200000: transfers mode
-  200000 - 300000: figures mode (fixtures, tables etc.)
-  300000 - 400000: finances/stadium
-  400000 - 500000: preview mode
-  500000 - 600000: opponent player list mode
-  600000 - 700000: game summary mode
-  800000 - 900000: status for the file selection window
-  900000 - 1000000: job offer
+
   -100000: the first live game is being shown
+
   -50000: a live game was shown, there are no more live games
+
+  0: main menu; opponent info
+
+  50000: player info is shown on the right
+
+  100000 - 200000: transfers mode
+    100000: transfer list is shown
+    1100XX: transfer list shown, row XX selected
+    120000: the list of the teams in the game is shown
+            on the right (browse teams mode)
+    130XXX: the player list of team XXX is shown on the right
+
+  200000 - 300000: figures mode (fixtures, tables etc.)
+    2100XX: fixtures of week XX are shown
+    22000X: tables of league X are shown
+    23000X: best player stats of league X are shown
+    2400XX: history of season XX is shown
+    
+  300000 - 400000: finances/stadium
+    300000: finances and stadium are shown
+    310000: the user wants to get a loan
+    320000: the user wants to pay back a loan
+
+  400000 - 500000: preview mode
+    400000: the preview is shown
+
+  600000 - 700000: game summary mode
+    600000/1: the user's clicked on 'new week'
+    600010: preview is shown at the beginning of the new week
+    600011: league results are shown at the beginning of the new week
+
+  800000 - 900000: status for the file selection window
+    800000: load a game
+    800001: save a game
+    800002: load a game from the team selection (startup) window
+    800010: load a country file from the team selection window
+    800100: load a country file when in editor mode
+    800110: load a team definitions file when in editor mode
+    800120: export a team definition in editor mode
+    800121: import a team definition in editor mode
+
+  900000 - 1000000: job offer
+    900XXX: team XXX offers a job because the user's successful
+    950XXX: team XXX offers a job because the user was fired
 */
 gint status;
 
@@ -239,10 +279,10 @@ GtkWidget *main_window;
 GString *save_file;
 
 /* font selected for the two main windows */
-gchar font_name[BUF_SIZE_SMALL];
+gchar font_name[SMALL];
 
 /* country_file the user's ... well, using */
-gchar country_file_name[BUF_SIZE_SMALL];
+gchar country_file_name[SMALL];
 
 /* this tells us whether we are in debug mode */
 gboolean debug;

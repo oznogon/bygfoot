@@ -29,7 +29,7 @@ void
 show_recommend(gint idx);
 
 /* handle a click on the transfer list */
-gint
+gboolean
 callback_transfer_select(gint row_idx);
 
 /* handle the click on the 'ok' button the human player

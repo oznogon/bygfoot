@@ -8,9 +8,37 @@
 #include "xml_read.h"
 #include "xml_write.h"
 
-/* check whether a file is a bygfoot savegame */
+/* find out whether a file ends with '.xml' */
+gboolean is_xml_file(gchar *file_name)
+{
+    gchar buf[SMALL];
+    gint i;
+
+    for(i=0;i<4;i++)
+	buf[i] = file_name[strlen(file_name) - 1 - i];
+
+    buf[4] = '\0';
+
+    if(strcmp(buf, "lmx.") == 0)
+	return TRUE;
+
+    return FALSE;
+}
+
+/* check whether a file is a binary or xml
+   bygfoot savegame */
 gboolean
 check_save_game(gchar *file_name)
+{
+    if(is_xml_file(file_name))
+       return check_xml_save(file_name);
+
+    return check_save_game_binary(file_name);
+}
+
+/* check whether a binary file is a bygfoot savegame */
+gboolean
+check_save_game_binary(gchar *file_name)
 {
     gint local_my_team;
     gint local_season;
@@ -404,8 +432,8 @@ save_options(FILE *fil)
     fwrite((void*)&week, sizeof(gint), 1, fil);
     fwrite((void*)&scout, sizeof(gint), 1, fil);
     fwrite((void*)&physio, sizeof(gint), 1, fil);
-    fwrite((void*)&font_name, BUF_SIZE_SMALL, 1, fil);
-    fwrite((void*)&country_file_name, BUF_SIZE_SMALL, 1, fil);
+    fwrite((void*)&font_name, SMALL, 1, fil);
+    fwrite((void*)&country_file_name, SMALL, 1, fil);
 
     for(i=0;i<130;i++)
     {
@@ -457,8 +485,8 @@ load_options(FILE *fil)
     fread((void*)&week, sizeof(gint), 1, fil);
     fread((void*)&scout, sizeof(gint), 1, fil);
     fread((void*)&physio, sizeof(gint), 1, fil);
-    fread((void*)&font_name, BUF_SIZE_SMALL, 1, fil);
-    fread((void*)&country_file_name, BUF_SIZE_SMALL, 1, fil);
+    fread((void*)&font_name, SMALL, 1, fil);
+    fread((void*)&country_file_name, SMALL, 1, fil);
 
     for(i=0;i<130;i++)
     {
@@ -504,20 +532,32 @@ void
 save_game(gchar *file_name)
 {
     FILE *fil;
+    gchar local_file[SMALL];
+
+    sprintf(local_file, "%s", file_name);
 
     if(options[OPT_XML] == 1)
+	if(!is_xml_file(file_name))
+	    strcat(local_file, ".xml");
+
+    fil = fopen(local_file, "ab");
+    if(fil == NULL)
     {
-	write_xml_save(file_name);
+	g_print("save_game: could not open file: %s\n", local_file);
+	return;
+    }
+
+    fclose(fil);
+
+    g_string_printf(save_file, "%s", local_file);
+
+    if(is_xml_file(local_file))
+    {
+	write_xml_save(local_file);
 	return;
     }
     
-    fil = fopen(file_name, "wb");
-    if(fil == NULL)
-    {
-	g_print("save_game: could not open file: %s\n", file_name);
-	return;
-    }
-
+    fil = fopen(local_file, "wb");
     save_options(fil);
     save_transfers(fil);
     save_stadiums(fil);
@@ -532,21 +572,27 @@ void
 load_game(gchar *file_name)
 {
     FILE *fil;
+    gchar local_file[SMALL];
 
-    if(options[OPT_XML] == 1)
-    {
-	read_xml_save(file_name);
-	return;
-    }
-    
-    fil = fopen(file_name, "rb");
+    sprintf(local_file, "%s", file_name);
+
+    fil = fopen(local_file, "rb");
 
     if(fil == NULL)
     {
-	g_print("load_game: could not open file: %s\n", file_name);
+	g_print("load_game: could not open file: %s\n", local_file);
 	return;
     }
 
+    g_string_printf(save_file, "%s", local_file);
+
+    if(is_xml_file(local_file))
+    {
+	fclose(fil);    
+	read_xml_save(local_file);
+	return;
+    }
+    
     load_options(fil);
     load_transfers(fil);
     load_stadiums(fil);

@@ -112,7 +112,7 @@ void
 label_set_text(GtkLabel *label, gchar *text, gint append)
 {
     const gchar *current_text = gtk_label_get_text(label);
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
 
     strcpy(buf, "");
 
@@ -129,7 +129,7 @@ void
 label_set_text_from_int(GtkLabel *label, gint number, gint append)
 {
     const gchar *current_text = gtk_label_get_text(label);
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     
     strcpy(buf, "");
 
@@ -147,7 +147,7 @@ label_set_text_from_float(GtkLabel *label, gfloat number,
 			       gint append, gint precision)
 {
     const gchar *current_text = gtk_label_get_text(label);
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     
     strcpy(buf, "");
 
@@ -242,7 +242,7 @@ print_message(gchar *text)
 void
 entry_set_text_from_int(GtkEntry *entry, gint number)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
 
     sprintf(buf, "%d", number);
 
@@ -265,7 +265,7 @@ entry_get_int(GtkEntry *entry)
 void
 set_header(void)
 {
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     GtkWidget *label_season = 
 	lookup_widget(main_window, "label_season");
     GtkWidget *label_week =
@@ -379,11 +379,11 @@ set_buttons(void)
     }
     else if(get_place(status, 6) == 2)
     {
-	if(get_place(status, 5) == 1)
-	    gtk_widget_show(button_league_results);
-
 	if(get_place(status, 5) < 3)
+	{
+	    gtk_widget_show(button_league_results);
 	    gtk_widget_show(button_fixtures->parent->parent);
+	}
 
 	if(get_place(status, 5) != 4 ||
 	   season > 2)

@@ -255,3 +255,7 @@ on_button_new_week_clicked             (GtkButton       *button,
                                         gpointer         user_data);
 
 #endif
+
+void
+on_start_update_activate               (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);

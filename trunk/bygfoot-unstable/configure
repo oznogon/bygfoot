@@ -4067,7 +4067,7 @@ _ACEOF
 fi
 
 
-pkg_modules="gtk+-2.0 >= 2.0.0"
+pkg_modules="gtk+-2.0 >= 2.0.0, libxml-2.0"
 
   succeeded=no
 

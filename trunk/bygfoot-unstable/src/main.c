@@ -21,7 +21,7 @@ void
 set_variables(void)
 {
     gint i, j;
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
 
     for(i=0;i<2;i++)
     {
@@ -54,11 +54,11 @@ set_variables(void)
     strcpy(teams[0].name, "");    
 }
 
-gint
+void
 bygfoot_init(gint argc, gchar *argv[])
 {
     gint i;
-    gchar buf[BUF_SIZE_SMALL];
+    gchar buf[SMALL];
     gchar *buf2;
 
     /* initialize the random nr generator */
@@ -68,7 +68,6 @@ bygfoot_init(gint argc, gchar *argv[])
     
     sprintf(buf, "%s/support_files", getenv("PWD"));
     add_support_directory(buf);
-
     sprintf(buf, "%s/.bygfoot", getenv("HOME"));
     add_support_directory(buf);
 
@@ -95,7 +94,17 @@ bygfoot_init(gint argc, gchar *argv[])
     for(i=1;i<argc;i++)
 	if(strcmp(argv[i], "--editor") == 0 ||
 	   strcmp(argv[i], "-e") == 0)
-	    return 5;
+	{
+	    start_editor();
+	    gtk_main ();
+	    return;
+	}
+	else if(strcmp(argv[i], "--update") == 0 ||
+		strcmp(argv[i], "-u") == 0)
+	{
+	    start_update();	    
+	    return;
+	}
 
     main_window = return_main_window();
     
@@ -110,9 +119,9 @@ bygfoot_init(gint argc, gchar *argv[])
 	    buf2 = find_support_file(buf);
 
 	    if(buf2 == NULL || argv[i][0] == '/')
-		g_string_assign(save_file, argv[i]);
+		g_string_printf(save_file, "%s", argv[i]);
 	    else
-		g_string_assign(save_file, buf2);
+		g_string_printf(save_file, "%s", buf2);
 
 	    if(buf2 != NULL)
 		g_free(buf2);
@@ -123,12 +132,14 @@ bygfoot_init(gint argc, gchar *argv[])
 		on_button_back_to_main_clicked(NULL, NULL);
 		gtk_widget_show(main_window);
 		set_save(1);
-		return 10;
+		gtk_main ();
+		return;
 	    }
 	    else
 	    {		
-		g_print("\nUsage: bygfoot [-e|--editor] [-d pixmapdir] [-f country_file] [savegame]\n\n");
+		g_print("\nUsage: bygfoot [-u|--update] [-e|--editor] [-d pixmapdir] [-f country_file] [savegame]\n\n");
 		g_print("Options\n");
+		g_print("-u, --update:\t Start the GUI frontend for the bygfoot-update script\n");
 		g_print("-e, --editor:\t Start Bygfoot Team Editor instead of the game itself\n");
 		g_print("-d\t\t Add the 'pixmapdir' directory to the list Bygfoot searches when\n");
 		g_print("\t\t looking for text files and pixmap files.\n");
@@ -149,14 +160,14 @@ bygfoot_init(gint argc, gchar *argv[])
 	    break;
 	}
 
-    return 0;
+    start(0);
+    gtk_main ();
+    return;
 }
 
 gint
 main (gint argc, gchar *argv[])
 {
-    gint return_value;
-
 
 #ifdef ENABLE_NLS
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -169,13 +180,7 @@ main (gint argc, gchar *argv[])
 
   add_support_directory(PACKAGE_DATA_DIR "/" PACKAGE "/support_files");
   
-  return_value = bygfoot_init(argc, argv);
+  bygfoot_init(argc, argv);
 
-  if(return_value == 5)
-      start_editor();
-  else if(return_value == 0)
-      start(0);
-  
-  gtk_main ();
   return 0;
 }

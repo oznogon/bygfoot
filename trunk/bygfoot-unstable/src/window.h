@@ -52,6 +52,10 @@ start_editor(void);
 
 /* show a window with a job offer and some info on the possible new team */
 void
-show_job_offer_window(gchar text[][BUF_SIZE_SMALL]);
+show_job_offer_window(gchar text[][SMALL]);
+
+/* show the frontend for the update script */
+void
+start_update(void);
 
 #endif

@@ -125,7 +125,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-AM_CFLAGS = -I/usr/include/libxml2 -Wall
+AM_CFLAGS = -Wall
 INCLUDES = \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
@@ -170,7 +170,7 @@ bygfoot_SOURCES = \
 	xml_write.c xml_write.h
 
 
-bygfoot_LDADD = @PACKAGE_LIBS@ $(INTLLIBS) -lxml2
+bygfoot_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs

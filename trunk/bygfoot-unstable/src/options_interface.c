@@ -513,10 +513,10 @@ create_opt_window (void)
   gtk_box_pack_start (GTK_BOX (hbox62), label82, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label82), GTK_JUSTIFY_LEFT);
 
-  checkbutton_xml = gtk_check_button_new_with_mnemonic (_("Save in XML format"));
+  checkbutton_xml = gtk_check_button_new_with_mnemonic (_("XML save / load"));
   gtk_widget_show (checkbutton_xml);
   gtk_box_pack_start (GTK_BOX (hbox60), checkbutton_xml, FALSE, FALSE, 0);
-  gtk_tooltips_set_tip (tooltips, checkbutton_xml, _("WARNING: This feature is incomplete and experimental. Don't use it unless you're a developer."), NULL);
+  gtk_tooltips_set_tip (tooltips, checkbutton_xml, _("Set savegame format to XML (instead of binary). XML savegames will automatically have a '.xml' ending, and files with '.xml' ending will be loaded as XML savegames. Files with '.xml' ending will be saved automatically as XML savegames."), NULL);
 
   hbox48 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox48);
