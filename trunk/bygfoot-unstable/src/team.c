@@ -9,7 +9,7 @@
 #include "misc.h"
 #include "player.h"
 #include "team.h"
-#include "text_files.h"
+#include "files.h"
 #include "window.h"
 
 /* try to set each of the first 11 players on his
@@ -505,6 +505,9 @@ update_teams_players(gint team_id)
     {
       if(teams[team_id].players[i].pos >= 0)
 	{
+	    /* update history */
+	    update_player_history(&(teams[team_id].players[i]));
+	    
 	  /* increase games and goals in european teams;
 	     otherwise they'd only participate in a couple of games
 	     per season */

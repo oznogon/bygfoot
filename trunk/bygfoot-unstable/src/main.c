@@ -12,7 +12,7 @@
 #include "main.h"
 #include "startup.h"
 #include "support.h"
-#include "text_files.h"
+#include "files.h"
 #include "window.h"
 
 /* set some variables that are used but not saved
@@ -86,7 +86,7 @@ bygfoot_init(gint argc, gchar *argv[])
     check_home_dir();
 
     /* fill the player names array */
-    text_file_number_to_char(TEXT_FILES_PLAYER_NAMES, buf, TRUE);
+    text_file_number_to_char(FILES_PLAYER_NAMES, buf, TRUE);
     get_names(buf, player_names);
 
     /* look for 'start editor' option */

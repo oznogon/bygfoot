@@ -4,3 +4,4 @@
 
 GtkWidget* create_stadium_window (void);
 GtkWidget* create_job_offer_window (void);
+GtkWidget* create_graph_window (void);

@@ -54,4 +54,8 @@ get_place(gint value, gint place);
 gint
 round_integer(gint number, gint places);
 
+/* return maximal or minimal value */
+gfloat
+max_float_array(gfloat *array, gint last, gboolean min);
+
 #endif

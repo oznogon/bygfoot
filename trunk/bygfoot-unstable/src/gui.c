@@ -144,7 +144,7 @@ label_set_text_from_int(GtkLabel *label, gint number, gint append)
 /* set or append 'number' as text into 'label' */
 void
 label_set_text_from_float(GtkLabel *label, gfloat number,
-			       gint append, gint precision)
+			  gint append, gint precision)
 {
     const gchar *current_text = gtk_label_get_text(label);
     gchar buf[SMALL];

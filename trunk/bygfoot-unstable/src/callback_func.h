@@ -14,6 +14,11 @@ void
 callback_show_player_info(GtkTreeSelection *selection,
 			  GdkEventButton *event);
 
+/* show player stats */
+void
+callback_show_player_stats(GtkTreeSelection *selection,
+			   GdkEventButton *event);
+
 /* handle a left-click on the player-list.
    swap two players, if necessary */
 void

@@ -15,7 +15,7 @@
 #include "options_interface.h"
 #include "editor_interface.h"
 #include "support.h"
-#include "text_files.h"
+#include "files.h"
 #include "treeview.h"
 #include "window.h"
 
@@ -194,7 +194,7 @@ show_help(gint customization)
     sprintf(buf, "Bygfoot %s -- Help", VERS);
     gtk_window_set_title(GTK_WINDOW(help_window), buf);
 
-    text_file_number_to_char(TEXT_FILES_HELP, buf, TRUE);
+    text_file_number_to_char(FILES_HELP, buf, TRUE);
     fil = fopen(buf, "r");
 
     if(fil == NULL)
@@ -402,9 +402,11 @@ start_update(void)
 {
     gchar buf[SMALL];
     gchar buf2[SMALL];
+    gchar buf3[SMALL];
 
     strcpy(buf, "");
-    text_file_number_to_char(TEXT_FILES_UPDATE_GUI, buf, TRUE);
+    text_file_number_to_char(FILES_UPDATE_GUI, buf, TRUE);
+    text_file_number_to_char(FILES_UPDATE_SCRIPT, buf2, TRUE);
 
     if(strlen(buf) == 0)
     {
@@ -418,10 +420,28 @@ start_update(void)
 	return;
     }
 
-    g_spawn_command_line_async(buf, NULL);
+    sprintf(buf3, "%s %s", buf, buf2);
+
+    g_spawn_command_line_async(buf3, NULL);
 
     if(main_window != NULL)
 	gtk_main_quit();
 
     return;
+}
+
+/* show graph window */
+GtkWidget*
+show_graph_window(void)
+{
+    GtkWidget *window = create_graph_window();
+    gchar buf[SMALL];
+    
+    sprintf(buf, "Bygfoot Football Manager %s", VERS);
+    gtk_window_set_title(GTK_WINDOW(window), buf);
+
+    change_popups_active(1);
+    gtk_widget_show(window);
+
+    return window;
 }

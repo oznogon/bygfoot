@@ -58,4 +58,8 @@ show_job_offer_window(gchar text[][SMALL]);
 void
 start_update(void);
 
+/* show graph window */
+GtkWidget*
+show_graph_window(void);
+
 #endif

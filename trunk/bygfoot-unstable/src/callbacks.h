@@ -254,8 +254,6 @@ void
 on_button_new_week_clicked             (GtkButton       *button,
                                         gpointer         user_data);
 
-#endif
-
 void
 on_start_update_activate               (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
@@ -264,3 +262,9 @@ gboolean
 on_player_list2_button_press_event     (GtkWidget       *widget,
                                         GdkEventButton  *event,
                                         gpointer         user_data);
+
+void
+on_show_statistics_activate            (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+#endif
+

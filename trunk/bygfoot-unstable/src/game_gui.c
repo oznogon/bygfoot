@@ -684,30 +684,30 @@ void
 change_country_team_selection(GtkWidget *button)
 {
     gint i;
-    GtkWidget *radiobutton_country[TEXT_FILES_PLAYER_NAMES];
+    GtkWidget *radiobutton_country[FILES_PLAYER_NAMES];
     GtkWidget *team_selection_treeview =
 	lookup_widget(button, "team_selection_treeview");    
 
-    radiobutton_country[TEXT_FILES_COUNTRY_ENG] = 
+    radiobutton_country[FILES_COUNTRY_ENG] = 
 	lookup_widget(button, "radiobutton_country0");
-    radiobutton_country[TEXT_FILES_COUNTRY_DE] = 
+    radiobutton_country[FILES_COUNTRY_DE] = 
 	lookup_widget(button, "radiobutton_country1");
-    radiobutton_country[TEXT_FILES_COUNTRY_IT] = 
+    radiobutton_country[FILES_COUNTRY_IT] = 
 	lookup_widget(button, "radiobutton_country2");
-    radiobutton_country[TEXT_FILES_COUNTRY_FR] = 
+    radiobutton_country[FILES_COUNTRY_FR] = 
 	lookup_widget(button, "radiobutton_country3");
-    radiobutton_country[TEXT_FILES_COUNTRY_ES] = 
+    radiobutton_country[FILES_COUNTRY_ES] = 
 	lookup_widget(button, "radiobutton_country4");
-    radiobutton_country[TEXT_FILES_COUNTRY_RO] = 
+    radiobutton_country[FILES_COUNTRY_RO] = 
 	lookup_widget(button, "radiobutton_country5");
-    radiobutton_country[TEXT_FILES_COUNTRY_BR] = 
+    radiobutton_country[FILES_COUNTRY_BR] = 
 	lookup_widget(button, "radiobutton_country6");
-    radiobutton_country[TEXT_FILES_COUNTRY_PL] = 
+    radiobutton_country[FILES_COUNTRY_PL] = 
 	lookup_widget(button, "radiobutton_country7");
-    radiobutton_country[TEXT_FILES_COUNTRY_MX] = 
+    radiobutton_country[FILES_COUNTRY_MX] = 
 	lookup_widget(button, "radiobutton_country8");
 
-    for(i=0;i<TEXT_FILES_PLAYER_NAMES;i++)	
+    for(i=0;i<FILES_PLAYER_NAMES;i++)	
       if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(radiobutton_country[i])))
 	  country_names(i, "");
     
@@ -979,7 +979,7 @@ live_game(gint number)
     gint idx[2] = {-1, -1};    
 
     if(number == 0)
-	status = -100000;
+	status = -60000;
 
     k = 0;
     for(i=FIX_END - 1;i>=0;i--)

@@ -11,7 +11,7 @@
 #include "misc.h"
 #include "player.h"
 #include "team.h"
-#include "text_files.h"
+#include "files.h"
 #include "window.h"
 
 /* name all players in each team between first_team and last_team */

@@ -868,6 +868,13 @@ on_show_info_activate                  (GtkMenuItem     *menuitem,
 }
 
 void
+on_show_statistics_activate            (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+    callback_show_player_stats(NULL, NULL);
+}
+
+void
 on_shoots_penalties_activate           (GtkMenuItem     *menuitem,
                                         gpointer         user_data)
 {

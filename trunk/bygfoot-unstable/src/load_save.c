@@ -116,9 +116,9 @@ compress_file(gchar *file_name, gint compression, gboolean decompression)
 	strcpy(decomp, "");	
 
     if(compression == COMPRESSION_GZIP)
-	sprintf(buf, "gzip %s %s", file_name, decomp);
+	sprintf(buf, "gzip -f %s %s", file_name, decomp);
     else
-	sprintf(buf, "bzip2 %s %s", file_name, decomp);
+	sprintf(buf, "bzip2 -f %s %s", file_name, decomp);
 
     if(!decompression && options[OPT_COMPRESS_BG])
 	g_spawn_command_line_async(buf, NULL);

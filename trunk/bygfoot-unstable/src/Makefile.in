@@ -140,12 +140,15 @@ bygfoot_SOURCES = \
 	editor_callback_func.c editor_bygfoot.h callback_func.h editor_callback_func.h gui.h math.h misc.h player.h startup.h support.h team.h text_files.h treeview.h window.h \
 	editor_callbacks.c editor_defs.h editor_callback_func.h editor_callbacks.h support.h window.h \
 	editor_interface.c  editor_callbacks.h editor_interface.h support.h \
+	files.c gui.h math.h misc.h player.h team.h files.h window.h \
 	finance.c finance.h fixture.h math.h team.h \
 	fixture.c game.h fixture.h math.h misc.h team.h \
 	game.c fixture.h game.h math.h team.h \
 	game_gui.c callback_func.h callbacks.h game_gui.h game.h generation.h gui.h finance.h fixture.h load_save.h math.h misc.h player.h support.h team.h transfer.h treeview.h treeview_cell.h window.h \
 	generation.c game_gui.h generation.h gui.h math.h misc.h player.h team.h text_files.h window.h \
+	graph.c graph.h history.h \
 	gui.c callbacks.h gui.h math.h misc.h support.h team.h treeview.h \
+	history.c history.h bygfoot.h \
 	interface.c callbacks.h interface.h support.h \
 	load_save.c game_gui.h load_save.h misc.h xml_read.h xml_write.h \
 	main.c callbacks.h generation.h gui.h load_save.h main.h startup.h support.h text_files.h window.h \
@@ -161,7 +164,6 @@ bygfoot_SOURCES = \
 	startup.c callbacks.h fixture.h generation.h math.h misc.h startup.h support.h team.h text_files.h treeview.h window.h \
 	support.c support.h \
 	team.c finance.h fixture.h game_gui.h math.h misc.h player.h team.h text_files.h window.h \
-	text_files.c gui.h math.h misc.h player.h team.h text_files.h window.h \
 	transfer.c math.h misc.h player.h team.h transfer.h \
 	treeview.c finance.h fixture.h math.h misc.h support.h team.h treeview_cell.h treeview.h \
 	treeview_cell.c fixture.h game.h gui.h math.h misc.h team.h treeview_cell.h \
@@ -181,17 +183,18 @@ PROGRAMS = $(bin_PROGRAMS)
 
 am_bygfoot_OBJECTS = callback_func.$(OBJEXT) callbacks.$(OBJEXT) \
 	editor_callback_func.$(OBJEXT) editor_callbacks.$(OBJEXT) \
-	editor_interface.$(OBJEXT) finance.$(OBJEXT) fixture.$(OBJEXT) \
-	game.$(OBJEXT) game_gui.$(OBJEXT) generation.$(OBJEXT) \
-	gui.$(OBJEXT) interface.$(OBJEXT) load_save.$(OBJEXT) \
+	editor_interface.$(OBJEXT) files.$(OBJEXT) finance.$(OBJEXT) \
+	fixture.$(OBJEXT) game.$(OBJEXT) game_gui.$(OBJEXT) \
+	generation.$(OBJEXT) graph.$(OBJEXT) gui.$(OBJEXT) \
+	history.$(OBJEXT) interface.$(OBJEXT) load_save.$(OBJEXT) \
 	main.$(OBJEXT) maths.$(OBJEXT) misc.$(OBJEXT) \
 	misc_callbacks.$(OBJEXT) misc_interface.$(OBJEXT) \
 	misc2_callbacks.$(OBJEXT) misc2_interface.$(OBJEXT) \
 	options_callbacks.$(OBJEXT) options_interface.$(OBJEXT) \
 	player.$(OBJEXT) startup.$(OBJEXT) support.$(OBJEXT) \
-	team.$(OBJEXT) text_files.$(OBJEXT) transfer.$(OBJEXT) \
-	treeview.$(OBJEXT) treeview_cell.$(OBJEXT) window.$(OBJEXT) \
-	xml_read.$(OBJEXT) xml_write.$(OBJEXT)
+	team.$(OBJEXT) transfer.$(OBJEXT) treeview.$(OBJEXT) \
+	treeview_cell.$(OBJEXT) window.$(OBJEXT) xml_read.$(OBJEXT) \
+	xml_write.$(OBJEXT)
 bygfoot_OBJECTS = $(am_bygfoot_OBJECTS)
 bygfoot_DEPENDENCIES =
 bygfoot_LDFLAGS =
@@ -204,12 +207,14 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/editor_callback_func.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/editor_callbacks.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/editor_interface.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/finance.Po ./$(DEPDIR)/fixture.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/game.Po ./$(DEPDIR)/game_gui.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/generation.Po ./$(DEPDIR)/gui.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/interface.Po ./$(DEPDIR)/load_save.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/main.Po ./$(DEPDIR)/maths.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/misc.Po ./$(DEPDIR)/misc2_callbacks.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/files.Po ./$(DEPDIR)/finance.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/fixture.Po ./$(DEPDIR)/game.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/game_gui.Po ./$(DEPDIR)/generation.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/graph.Po ./$(DEPDIR)/gui.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/history.Po ./$(DEPDIR)/interface.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/load_save.Po ./$(DEPDIR)/main.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/maths.Po ./$(DEPDIR)/misc.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/misc2_callbacks.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/misc2_interface.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/misc_callbacks.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/misc_interface.Po \
@@ -217,8 +222,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/options_interface.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/player.Po ./$(DEPDIR)/startup.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/support.Po ./$(DEPDIR)/team.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/text_files.Po ./$(DEPDIR)/transfer.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/treeview.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/transfer.Po ./$(DEPDIR)/treeview.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/treeview_cell.Po ./$(DEPDIR)/window.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xml_read.Po ./$(DEPDIR)/xml_write.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -277,12 +281,15 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/editor_callback_func.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/editor_callbacks.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/editor_interface.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/files.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/finance.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fixture.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/game.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/game_gui.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/generation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/graph.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gui.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/history.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interface.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/load_save.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
@@ -298,7 +305,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/startup.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/support.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/team.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/text_files.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/transfer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/treeview.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/treeview_cell.Po@am__quote@

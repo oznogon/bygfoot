@@ -1050,7 +1050,7 @@
 	  <property name="spacing">0</property>
 
 	  <child>
-	    <widget class="GtkMenuBar" id="menubar2">
+	    <widget class="GtkMenuBar" id="menubar_player">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Player actions</property>
 
@@ -1062,7 +1062,7 @@
 		  <property name="use_underline">True</property>
 
 		  <child internal-child="image">
-		    <widget class="GtkImage" id="image78">
+		    <widget class="GtkImage" id="image87">
 		      <property name="visible">True</property>
 		      <property name="stock">gtk-execute</property>
 		      <property name="icon_size">1</property>
@@ -1085,7 +1085,7 @@
 			  <signal name="activate" handler="on_show_info_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image79">
+			    <widget class="GtkImage" id="image88">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-dialog-info</property>
 			      <property name="icon_size">1</property>
@@ -1099,6 +1099,16 @@
 		      </child>
 
 		      <child>
+			<widget class="GtkMenuItem" id="show_statistics">
+			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Show player statistics graph</property>
+			  <property name="label" translatable="yes">Show statistics</property>
+			  <property name="use_underline">True</property>
+			  <signal name="activate" handler="on_show_statistics_activate" last_modification_time="Sat, 09 Oct 2004 12:02:04 GMT"/>
+			</widget>
+		      </child>
+
+		      <child>
 			<widget class="GtkImageMenuItem" id="put_on_transfer_list">
 			  <property name="visible">True</property>
 			  <property name="tooltip" translatable="yes">Put player on transfer list (Right click in transfer mode)</property>
@@ -1107,7 +1117,7 @@
 			  <signal name="activate" handler="on_put_on_transfer_list_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image80">
+			    <widget class="GtkImage" id="image89">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-yes</property>
 			      <property name="icon_size">1</property>
@@ -1129,7 +1139,7 @@
 			  <signal name="activate" handler="on_remove_from_transfer_list_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image81">
+			    <widget class="GtkImage" id="image90">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-no</property>
 			      <property name="icon_size">1</property>
@@ -1151,7 +1161,7 @@
 			  <signal name="activate" handler="on_fire_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image82">
+			    <widget class="GtkImage" id="image91">
 			      <property name="visible">True</property>
 			      <property name="pixbuf">fire_player.png</property>
 			      <property name="xalign">0.5</property>
@@ -1172,7 +1182,7 @@
 			  <signal name="activate" handler="on_shoots_penalties_activate" last_modification_time="Sun, 22 Aug 2004 15:01:28 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image83">
+			    <widget class="GtkImage" id="image92">
 			      <property name="visible">True</property>
 			      <property name="pixbuf">football.png</property>
 			      <property name="xalign">0.5</property>

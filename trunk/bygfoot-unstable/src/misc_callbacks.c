@@ -15,7 +15,7 @@
 #include "startup.h"
 #include "support.h"
 #include "team.h"
-#include "text_files.h"
+#include "files.h"
 #include "window.h"
 
 gboolean
@@ -46,9 +46,9 @@ on_button_live_close_clicked           (GtkButton       *button,
     change_popups_active(-1);
     gtk_widget_destroy(live_window);
 
-    /* if only one live game has been shown (status -100000)
+    /* if only one live game has been shown (status -60000)
        we try to show another one */
-    if(status == -100000)
+    if(status == -60000)
     {
 	live_game(1);
 	return;

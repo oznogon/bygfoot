@@ -6,14 +6,16 @@
 #include "callbacks.h"
 #include "game.h"
 #include "game_gui.h"
+#include "graph.h"
 #include "gui.h"
+#include "history.h"
 #include "finance.h"
 #include "fixture.h"
 #include "maths.h"
 #include "misc.h"
 #include "player.h"
 #include "team.h"
-#include "text_files.h"
+#include "files.h"
 #include "transfer.h"
 #include "treeview.h"
 #include "support.h"
@@ -99,6 +101,31 @@ callback_show_player_info(GtkTreeSelection *selection,
 	show_player_info(NULL, my_team, player_number);
     }
 }
+
+/* show player stats */
+void
+callback_show_player_stats(GtkTreeSelection *selection,
+			   GdkEventButton *event)
+{
+    gint player_number = (selection != NULL) ?
+	get_row_index(selection, event, 0) - 1 : selected_rows[0];
+
+    if(player_number < 0)
+    {
+	print_message("You haven't selected a player");	
+	return;
+    }
+    
+    /* set the selected_row label so that the
+       next left-click doesn't swap two players */
+    selected_rows[0] = -1;
+
+    status = (100000 + 100 * my_team + player_number) * -1;
+
+    show_graph(show_graph_window(), my_team,
+	       player_number, HISTORY_SKILL);
+}
+
 
 /* handle a left-click on the player-list.
    swap two players, if necessary */

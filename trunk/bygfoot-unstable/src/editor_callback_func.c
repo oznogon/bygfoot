@@ -12,7 +12,7 @@
 #include "startup.h"
 #include "support.h"
 #include "team.h"
-#include "text_files.h"
+#include "files.h"
 #include "treeview.h"
 #include "window.h"
 
@@ -163,13 +163,13 @@ set_teams_file_pulldown(void)
     GtkWidget *combo_team_file =
 	lookup_widget(main_window, "combo_team_file");
     GList *league_files = NULL;
-    gchar filenames[TEXT_FILES_PLAYER_NAMES][SMALL];
+    gchar filenames[FILES_PLAYER_NAMES][SMALL];
     gint i;
     
-    for(i=0;i<TEXT_FILES_PLAYER_NAMES;i++)
+    for(i=0;i<FILES_PLAYER_NAMES;i++)
 	text_file_number_to_char(i, filenames[i], TRUE);
 
-    for(i=0;i<TEXT_FILES_PLAYER_NAMES;i++)
+    for(i=0;i<FILES_PLAYER_NAMES;i++)
 	if(strcmp(filenames[i], "") != 0)
 	    league_files = g_list_append(league_files, filenames[i]);
 

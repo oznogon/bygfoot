@@ -164,7 +164,9 @@ void
 update_finances(void)
 {
     gint i, k = 0;
-    /* interest rate */
+
+    /* update finance history */
+    update_finances_history();
 
     for(i=1;i<FIN_DEBTS;i++)
 	finances[i] = 0;
@@ -182,7 +184,5 @@ update_finances(void)
     update_finances_wages();
     
     /* debt interest */
-    
-
     finances[FIN_DEBTS] *= (1 + interest_rate());
 }

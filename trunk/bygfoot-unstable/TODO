@@ -1,5 +1,6 @@
 Bygfoot Football Manager
-AUTHOR: Gyozo Both (gyboth@bygfoot.com)
+AUTHORS: Gyozo Both (gyboth@bygfoot.com),
+	 Arnaud Le Rouzic (arnaudus@bygfoot.com)
 http://www.bygfoot.com
 
 I'll rate the list below so that you know when (if ever) to expect the
@@ -42,8 +43,6 @@ The TODO list:
 - make finances a bit better-looking and add summaries at the end of a season P DDD
 
 - make player names sound more like the country they play in P DDDD
-
-- add team badges somewhere (not in the main window, probably) P DDD
 
 - add news feature: each week there's some news like 'last chance for
   Real to win the title!' or so P DDD

@@ -170,3 +170,21 @@ round_integer(gint number, gint places)
 	powf(10, length + places);
 }
 
+/* return maximal or minimal value */
+gfloat
+max_float_array(gfloat *array, gint last, gboolean min)
+{
+    gint i;
+    gint multiply = (min) ? -1 : 1;
+    gfloat value;
+
+    value = array[0];
+
+    for(i=1;i<last;i++)
+    {
+	if(array[i] * multiply > value * multiply)
+	    value = array[i];
+    }
+    
+    return value;
+}

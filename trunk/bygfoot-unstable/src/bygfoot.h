@@ -22,6 +22,8 @@
 
 /* 'define's and enums */
 #include "enums.h"
+#include "history.h"
+
 
 /**************************************************
  * Structures                                     *
@@ -66,6 +68,8 @@ struct _player
 	talent, etal, fitness;
 
     gint team_id;
+
+    struct player_history_list history;
 };
 
 struct _team
@@ -207,7 +211,8 @@ gint popups_active;
 /*
   current status values ( ranges like a - b include a but not b):
 
-  -100000: the first live game is being shown
+  -100000 - -200000: showing a stats graph
+  -60000: the first live game is being shown
 
   -50000: a live game was shown, there are no more live games
 
@@ -291,6 +296,8 @@ gboolean debug;
 gchar league_names[LEAGUE_NAMES_END][50];
 
 gint finances[FIN_END];
+
+struct finances_history_list financial_history;
 
 gint options[OPT_END];
 

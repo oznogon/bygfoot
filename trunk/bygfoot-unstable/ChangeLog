@@ -1,3 +1,12 @@
+10/10/2004: v1.7.3
+	- introduced Arnaud Le Rouzic's XML load/save system (thanks,
+	Arnaud!)
+	- added possibility to compress savegames
+	- improved the options window (tabs make it more orderly now)
+	- added second player list (also with tabs)
+	- complete Bygfoot packages can be downloaded with the update
+	script now
+	
 09/30/2004: v1.7.2
 	- added country file for Mexico (thanks to Arturo Mendez)
 	- improved the update script

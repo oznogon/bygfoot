@@ -3,7 +3,7 @@
 #include "misc.h"
 #include "player.h"
 #include "team.h"
-#include "text_files.h"
+#include "files.h"
 #include "window.h"
 
 /* read the file until the next line that's not a comment or
@@ -180,7 +180,7 @@ read_conf_file(void)
     gchar buf[SMALL];
     gchar buf2[SMALL];
 
-    text_file_number_to_char(TEXT_FILES_CONF, buf, TRUE);
+    text_file_number_to_char(FILES_CONF, buf, TRUE);
 
     fil = fopen(buf, "r");
 
@@ -218,12 +218,12 @@ check_home_dir(void)
     gchar buf[SMALL];
     gchar buf2[SMALL];
     gchar buf3[SMALL];
-    gchar text_files[TEXT_FILES_UPDATE_GUI][SMALL];
-    gchar text_files_full_path[TEXT_FILES_UPDATE_GUI][SMALL];
+    gchar text_files[FILES_UPDATE_GUI][SMALL];
+    gchar text_files_full_path[FILES_UPDATE_GUI][SMALL];
 
     sprintf(home, "%s", getenv("HOME"));
 
-    for(i=0;i<TEXT_FILES_UPDATE_GUI;i++)
+    for(i=0;i<FILES_UPDATE_GUI;i++)
     {
 	text_file_number_to_char(i, text_files_full_path[i], TRUE);
 	text_file_number_to_char(i, text_files[i], FALSE);
@@ -255,7 +255,7 @@ check_home_dir(void)
     if(system(buf3) != 0)
 	system(buf2);
     
-    for(i=0;i<TEXT_FILES_UPDATE_GUI;i++)
+    for(i=0;i<FILES_UPDATE_GUI;i++)
     {
 	sprintf(buf3, "test -e %s/text_files/%s", buf, text_files[i]);
 	if(system(buf3) != 0)
@@ -274,7 +274,7 @@ check_home_dir(void)
     if(success == 0)
     {
 	g_print("\nSome files could not be copied to %s.\nYou should try to copy them manually:\n\n", buf);
-	for(i=0;i<TEXT_FILES_UPDATE_GUI;i++)
+	for(i=0;i<FILES_UPDATE_GUI;i++)
 	{
 	    sprintf(buf3, "test -e %s/text_files/%s", buf, text_files[i]);
 	    if(system(buf3) != 0 && 
@@ -293,10 +293,10 @@ check_files(void)
     gchar filenames[4][SMALL];
     FILE *fil;
     
-    text_file_number_to_char(TEXT_FILES_COUNTRY_ENG, filenames[0], TRUE);
-    text_file_number_to_char(TEXT_FILES_PLAYER_NAMES, filenames[1], TRUE);
-    text_file_number_to_char(TEXT_FILES_CONF, filenames[2], TRUE);
-    text_file_number_to_char(TEXT_FILES_HELP, filenames[3], TRUE);
+    text_file_number_to_char(FILES_COUNTRY_ENG, filenames[0], TRUE);
+    text_file_number_to_char(FILES_PLAYER_NAMES, filenames[1], TRUE);
+    text_file_number_to_char(FILES_CONF, filenames[2], TRUE);
+    text_file_number_to_char(FILES_HELP, filenames[3], TRUE);
     for(i=0;i<4;i++)
     {
 	fil = fopen(filenames[i], "r");
@@ -373,43 +373,46 @@ text_file_number_to_char(gint number, gchar *filename, gboolean full_path)
 	default:
 	    strcpy(buf, "country_eng");
 	    break;
-	case TEXT_FILES_COUNTRY_DE:
+	case FILES_COUNTRY_DE:
 	    strcpy(buf, "country_de");
 	    break;
-	case TEXT_FILES_COUNTRY_IT:
+	case FILES_COUNTRY_IT:
 	    strcpy(buf, "country_it");
 	    break;
-	case TEXT_FILES_COUNTRY_FR:
+	case FILES_COUNTRY_FR:
 	    strcpy(buf, "country_fr");
 	    break;
-	case TEXT_FILES_COUNTRY_ES:
+	case FILES_COUNTRY_ES:
 	    strcpy(buf, "country_es");
 	    break;
-	case TEXT_FILES_COUNTRY_RO:
+	case FILES_COUNTRY_RO:
 	    strcpy(buf, "country_ro");
 	    break;
-	case TEXT_FILES_COUNTRY_BR:
+	case FILES_COUNTRY_BR:
 	    strcpy(buf, "country_br");
 	    break;
-	case TEXT_FILES_COUNTRY_PL:
+	case FILES_COUNTRY_PL:
 	    strcpy(buf, "country_pl");
 	    break;
-	case TEXT_FILES_COUNTRY_MX:
+	case FILES_COUNTRY_MX:
 	    strcpy(buf, "country_mx");
 	    break;
-	case TEXT_FILES_PLAYER_NAMES:
+	case FILES_PLAYER_NAMES:
 	    strcpy(buf, "player_names");
 	    break;
-	case TEXT_FILES_DEFINITIONS:
+	case FILES_DEFINITIONS:
 	    strcpy(buf, "teams");
 	    break;
-	case TEXT_FILES_HELP:
+	case FILES_HELP:
 	  strcpy(buf, "help");
 	    break;
-	case TEXT_FILES_CONF:
+	case FILES_CONF:
 	  strcpy(buf, "bygfoot.conf");
 	    break;
-	case TEXT_FILES_UPDATE_GUI:
+	case FILES_UPDATE_SCRIPT:
+	  strcpy(buf, "bygfoot-update");
+	    break;
+	case FILES_UPDATE_GUI:
 	  strcpy(buf, "bygfoot-update-gui");
 	    break;
     }
@@ -613,7 +616,7 @@ read_teams_file(gint read, const gchar *team_name, gint *structure2,
     gchar buf[SMALL];
     FILE *fil;
 
-    text_file_number_to_char(TEXT_FILES_DEFINITIONS, buf, TRUE);
+    text_file_number_to_char(FILES_DEFINITIONS, buf, TRUE);
     fil = fopen(buf, "r");
 
     if(read == 0 || fil == NULL)

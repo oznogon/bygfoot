@@ -601,3 +601,244 @@ create_job_offer_window (void)
   return job_offer_window;
 }
 
+GtkWidget*
+create_graph_window (void)
+{
+  GtkWidget *graph_window;
+  GtkWidget *vbox8;
+  GtkWidget *label_title;
+  GtkWidget *vbox9;
+  GtkWidget *hbox10;
+  GtkWidget *vbox10;
+  GtkWidget *label36;
+  GtkWidget *label37;
+  GtkWidget *label38;
+  GtkWidget *label39;
+  GtkWidget *label40;
+  GtkWidget *curve_graph;
+  GtkWidget *hbox12;
+  GtkWidget *label_space;
+  GtkWidget *hruler_graph;
+  GtkWidget *label33;
+  GtkWidget *hseparator8;
+  GtkWidget *hbox11;
+  GtkWidget *optionmenu_player;
+  GtkWidget *menu1;
+  GtkWidget *player1;
+  GtkWidget *skill_development1;
+  GtkWidget *goal_development1;
+  GtkWidget *wage_development1;
+  GtkWidget *value_development1;
+  GtkWidget *optionmenu_finances;
+  GtkWidget *menu2;
+  GtkWidget *finances1;
+  GtkWidget *show_money_development1;
+  GtkWidget *button_close;
+  GtkWidget *alignment6;
+  GtkWidget *hbox14;
+  GtkWidget *image6;
+  GtkWidget *label35;
+
+  graph_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_container_set_border_width (GTK_CONTAINER (graph_window), 6);
+  gtk_window_set_title (GTK_WINDOW (graph_window), _("window1"));
+  gtk_window_set_position (GTK_WINDOW (graph_window), GTK_WIN_POS_CENTER);
+  gtk_window_set_default_size (GTK_WINDOW (graph_window), 400, 400);
+
+  vbox8 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox8);
+  gtk_container_add (GTK_CONTAINER (graph_window), vbox8);
+
+  label_title = gtk_label_new (_("Statistics"));
+  gtk_widget_show (label_title);
+  gtk_box_pack_start (GTK_BOX (vbox8), label_title, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label_title), GTK_JUSTIFY_LEFT);
+
+  vbox9 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox9);
+  gtk_box_pack_start (GTK_BOX (vbox8), vbox9, TRUE, TRUE, 0);
+
+  hbox10 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox10);
+  gtk_box_pack_start (GTK_BOX (vbox9), hbox10, TRUE, TRUE, 0);
+
+  vbox10 = gtk_vbox_new (TRUE, 50);
+  gtk_widget_show (vbox10);
+  gtk_box_pack_start (GTK_BOX (hbox10), vbox10, FALSE, TRUE, 0);
+
+  label36 = gtk_label_new (_("label36"));
+  gtk_widget_show (label36);
+  gtk_box_pack_start (GTK_BOX (vbox10), label36, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label36), GTK_JUSTIFY_LEFT);
+
+  label37 = gtk_label_new (_("label37"));
+  gtk_widget_show (label37);
+  gtk_box_pack_start (GTK_BOX (vbox10), label37, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label37), GTK_JUSTIFY_LEFT);
+
+  label38 = gtk_label_new (_("label38"));
+  gtk_widget_show (label38);
+  gtk_box_pack_start (GTK_BOX (vbox10), label38, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label38), GTK_JUSTIFY_LEFT);
+
+  label39 = gtk_label_new (_("label39"));
+  gtk_widget_show (label39);
+  gtk_box_pack_start (GTK_BOX (vbox10), label39, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label39), GTK_JUSTIFY_LEFT);
+
+  label40 = gtk_label_new (_("label40"));
+  gtk_widget_show (label40);
+  gtk_box_pack_start (GTK_BOX (vbox10), label40, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label40), GTK_JUSTIFY_LEFT);
+
+  curve_graph = gtk_curve_new ();
+  gtk_widget_show (curve_graph);
+  gtk_box_pack_start (GTK_BOX (hbox10), curve_graph, TRUE, TRUE, 0);
+  gtk_curve_set_range (GTK_CURVE (curve_graph), 0, 1, 0, 1);
+
+  hbox12 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox12);
+  gtk_box_pack_start (GTK_BOX (vbox9), hbox12, FALSE, FALSE, 0);
+
+  label_space = gtk_label_new (_("       "));
+  gtk_widget_show (label_space);
+  gtk_box_pack_start (GTK_BOX (hbox12), label_space, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label_space), GTK_JUSTIFY_LEFT);
+
+  hruler_graph = gtk_hruler_new ();
+  gtk_widget_show (hruler_graph);
+  gtk_box_pack_start (GTK_BOX (hbox12), hruler_graph, TRUE, TRUE, 0);
+  gtk_ruler_set_range (GTK_RULER (hruler_graph), 0, 10, 0, 10);
+
+  label33 = gtk_label_new (_("Weeks"));
+  gtk_widget_show (label33);
+  gtk_box_pack_start (GTK_BOX (vbox9), label33, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label33), GTK_JUSTIFY_LEFT);
+
+  hseparator8 = gtk_hseparator_new ();
+  gtk_widget_show (hseparator8);
+  gtk_box_pack_start (GTK_BOX (vbox8), hseparator8, FALSE, TRUE, 0);
+  gtk_widget_set_size_request (hseparator8, 1, 10);
+
+  hbox11 = gtk_hbox_new (FALSE, 8);
+  gtk_widget_show (hbox11);
+  gtk_box_pack_start (GTK_BOX (vbox8), hbox11, FALSE, TRUE, 0);
+
+  optionmenu_player = gtk_option_menu_new ();
+  gtk_widget_show (optionmenu_player);
+  gtk_box_pack_start (GTK_BOX (hbox11), optionmenu_player, FALSE, FALSE, 0);
+
+  menu1 = gtk_menu_new ();
+
+  player1 = gtk_menu_item_new_with_mnemonic (_("Player"));
+  gtk_widget_show (player1);
+  gtk_container_add (GTK_CONTAINER (menu1), player1);
+
+  skill_development1 = gtk_menu_item_new_with_mnemonic (_("Skill development"));
+  gtk_widget_show (skill_development1);
+  gtk_container_add (GTK_CONTAINER (menu1), skill_development1);
+
+  goal_development1 = gtk_menu_item_new_with_mnemonic (_("Goal development"));
+  gtk_widget_show (goal_development1);
+  gtk_container_add (GTK_CONTAINER (menu1), goal_development1);
+
+  wage_development1 = gtk_menu_item_new_with_mnemonic (_("Wage development"));
+  gtk_widget_show (wage_development1);
+  gtk_container_add (GTK_CONTAINER (menu1), wage_development1);
+
+  value_development1 = gtk_menu_item_new_with_mnemonic (_("Value development"));
+  gtk_widget_show (value_development1);
+  gtk_container_add (GTK_CONTAINER (menu1), value_development1);
+
+  gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu_player), menu1);
+
+  optionmenu_finances = gtk_option_menu_new ();
+  gtk_widget_show (optionmenu_finances);
+  gtk_box_pack_start (GTK_BOX (hbox11), optionmenu_finances, FALSE, FALSE, 0);
+
+  menu2 = gtk_menu_new ();
+
+  finances1 = gtk_menu_item_new_with_mnemonic (_("Finances"));
+  gtk_widget_show (finances1);
+  gtk_container_add (GTK_CONTAINER (menu2), finances1);
+
+  show_money_development1 = gtk_menu_item_new_with_mnemonic (_("Show money development"));
+  gtk_widget_show (show_money_development1);
+  gtk_container_add (GTK_CONTAINER (menu2), show_money_development1);
+
+  gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu_finances), menu2);
+
+  button_close = gtk_button_new ();
+  gtk_widget_show (button_close);
+  gtk_box_pack_start (GTK_BOX (vbox8), button_close, FALSE, FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (button_close), 4);
+
+  alignment6 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment6);
+  gtk_container_add (GTK_CONTAINER (button_close), alignment6);
+
+  hbox14 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox14);
+  gtk_container_add (GTK_CONTAINER (alignment6), hbox14);
+
+  image6 = gtk_image_new_from_stock ("gtk-close", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image6);
+  gtk_box_pack_start (GTK_BOX (hbox14), image6, FALSE, FALSE, 0);
+
+  label35 = gtk_label_new_with_mnemonic (_("Close"));
+  gtk_widget_show (label35);
+  gtk_box_pack_start (GTK_BOX (hbox14), label35, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label35), GTK_JUSTIFY_LEFT);
+
+  g_signal_connect ((gpointer) graph_window, "delete_event",
+                    G_CALLBACK (on_graph_window_delete_event),
+                    NULL);
+  g_signal_connect ((gpointer) optionmenu_player, "changed",
+                    G_CALLBACK (on_optionmenu_player_changed),
+                    NULL);
+  g_signal_connect ((gpointer) optionmenu_finances, "changed",
+                    G_CALLBACK (on_optionmenu_finances_changed),
+                    NULL);
+  g_signal_connect ((gpointer) button_close, "clicked",
+                    G_CALLBACK (on_button_close_clicked),
+                    NULL);
+
+  /* Store pointers to all widgets, for use by lookup_widget(). */
+  GLADE_HOOKUP_OBJECT_NO_REF (graph_window, graph_window, "graph_window");
+  GLADE_HOOKUP_OBJECT (graph_window, vbox8, "vbox8");
+  GLADE_HOOKUP_OBJECT (graph_window, label_title, "label_title");
+  GLADE_HOOKUP_OBJECT (graph_window, vbox9, "vbox9");
+  GLADE_HOOKUP_OBJECT (graph_window, hbox10, "hbox10");
+  GLADE_HOOKUP_OBJECT (graph_window, vbox10, "vbox10");
+  GLADE_HOOKUP_OBJECT (graph_window, label36, "label36");
+  GLADE_HOOKUP_OBJECT (graph_window, label37, "label37");
+  GLADE_HOOKUP_OBJECT (graph_window, label38, "label38");
+  GLADE_HOOKUP_OBJECT (graph_window, label39, "label39");
+  GLADE_HOOKUP_OBJECT (graph_window, label40, "label40");
+  GLADE_HOOKUP_OBJECT (graph_window, curve_graph, "curve_graph");
+  GLADE_HOOKUP_OBJECT (graph_window, hbox12, "hbox12");
+  GLADE_HOOKUP_OBJECT (graph_window, label_space, "label_space");
+  GLADE_HOOKUP_OBJECT (graph_window, hruler_graph, "hruler_graph");
+  GLADE_HOOKUP_OBJECT (graph_window, label33, "label33");
+  GLADE_HOOKUP_OBJECT (graph_window, hseparator8, "hseparator8");
+  GLADE_HOOKUP_OBJECT (graph_window, hbox11, "hbox11");
+  GLADE_HOOKUP_OBJECT (graph_window, optionmenu_player, "optionmenu_player");
+  GLADE_HOOKUP_OBJECT (graph_window, menu1, "menu1");
+  GLADE_HOOKUP_OBJECT (graph_window, player1, "player1");
+  GLADE_HOOKUP_OBJECT (graph_window, skill_development1, "skill_development1");
+  GLADE_HOOKUP_OBJECT (graph_window, goal_development1, "goal_development1");
+  GLADE_HOOKUP_OBJECT (graph_window, wage_development1, "wage_development1");
+  GLADE_HOOKUP_OBJECT (graph_window, value_development1, "value_development1");
+  GLADE_HOOKUP_OBJECT (graph_window, optionmenu_finances, "optionmenu_finances");
+  GLADE_HOOKUP_OBJECT (graph_window, menu2, "menu2");
+  GLADE_HOOKUP_OBJECT (graph_window, finances1, "finances1");
+  GLADE_HOOKUP_OBJECT (graph_window, show_money_development1, "show_money_development1");
+  GLADE_HOOKUP_OBJECT (graph_window, button_close, "button_close");
+  GLADE_HOOKUP_OBJECT (graph_window, alignment6, "alignment6");
+  GLADE_HOOKUP_OBJECT (graph_window, hbox14, "hbox14");
+  GLADE_HOOKUP_OBJECT (graph_window, image6, "image6");
+  GLADE_HOOKUP_OBJECT (graph_window, label35, "label35");
+
+  return graph_window;
+}
+

@@ -11,7 +11,7 @@
 #include "startup.h"
 #include "support.h"
 #include "team.h"
-#include "text_files.h"
+#include "files.h"
 #include "treeview.h"
 #include "window.h"
 
