@@ -272,7 +272,7 @@ callback_make_transfer_offer(GtkWidget *widget)
     }
     
     if(fee < teams[transferlist[idx].team_id].
-       players[transferlist[idx].player_number].value &&
+       players[transferlist[idx].player_number].value ||
        rnd(0,1) < 0.9)
     {
 	print_message(_("The team rejects your offer and removes the player from the transferlist."));
@@ -281,7 +281,7 @@ callback_make_transfer_offer(GtkWidget *widget)
 	return;
     }
     else if(wage < teams[transferlist[idx].team_id].
-	    players[transferlist[idx].player_number].wage &&
+	    players[transferlist[idx].player_number].wage ||
 	    rnd(0,1) < 0.9)
     {
 	print_message(_("The player doesn't like your offer and decides to stay in his team."));
@@ -963,15 +963,43 @@ callback_new_week(gboolean calculate)
     if(my_team < 114 && week == 49)
       season_awards();
 
+	if(week == 50) {//check objective
+		int i=0;		
+		while(i<MAX_OBJECTIVE && objective_is_success(my_team,seasonObjective+i))
+			i++;
+		if(i!=MAX_OBJECTIVE)
+			show_job_offer(JOB_OBJECTIVE);				
+	}
     if(week == 50)
     {
-	season_end();
-	season++;
-	week = 1;
+		season_end();
+		season++;
+		week = 1;
     }
 
     if(stadiums[my_team].safety < (gfloat)options[OPT_DUMMY1] / 100)
 	show_popup_window("Your stadium safety's low. ", NULL);
 
+
+    
+	if(week == OBJECTIVE_REFRESH){
+		int i=0;
+		gchar tmp[BIG];
+		//Refresh objective
+		objective_generate(my_team,seasonObjective);
+		//show new objective;	  
+		strcpy(tmp,_("Objective from Team Manager :"));
+		for(i=0;i<MAX_OBJECTIVE;i++) {			
+			gchar * obj_string=objective_get_message(seasonObjective+i);	
+			if(obj_string) {
+				gchar * tmpDup=strdup(tmp);
+				sprintf(tmp,"%s\n- %s",tmpDup,obj_string);
+				g_free(obj_string);
+				g_free(tmpDup);
+			}
+		}
+		show_popup_window(tmp,NULL);	  
+    }
+	
     gtk_widget_set_sensitive(button_new_week, TRUE);
 }

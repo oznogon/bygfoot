@@ -417,6 +417,18 @@ team_compare_tables(const void *value1, const void *value2)
   return 1;
 }
 
+gint
+team_compare_skills(const void *value1, const void *value2) {
+  gint *team_id1 = (gint*)value1;
+  gint *team_id2 = (gint*)value2;
+ 
+  //we want const skill average
+  return average_skill(*team_id1,MAX_PLAYER,TRUE) 
+	< average_skill(*team_id2,MAX_PLAYER,TRUE); 
+	
+}
+
+
 /* sort the teams between the bounds according to 'compare' and
    write the result to 'sorted' */
 void

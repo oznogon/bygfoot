@@ -213,6 +213,20 @@ on_structure_entry_activate            (GtkEntry        *entry,
 	g_print("\n *** %s ***\n\n", buf);
 	print_message(buf);
     }
+    else if(new_structure == 900)
+    {
+	counters[COUNT_SUCCESS] += 50;
+	sprintf(buf, "Added 50 to success counter. New value: %d", counters[COUNT_SUCCESS]);
+	g_print("\n *** %s ***\n\n", buf);
+	print_message(buf);
+    }
+    else if(new_structure == 901)
+    {
+	counters[COUNT_SUCCESS] -= 50;
+	sprintf(buf, "Substracted 50 from success counter. New value: %d", counters[COUNT_SUCCESS]);
+	g_print("\n *** %s ***\n\n", buf);
+	print_message(buf);
+    }
 }
 
 void

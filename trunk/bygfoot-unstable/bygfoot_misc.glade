@@ -1841,7 +1841,7 @@
 	  <property name="metric">GTK_PIXELS</property>
 	  <property name="lower">0</property>
 	  <property name="upper">120</property>
-	  <property name="position">55.0685</property>
+	  <property name="position">86.0274</property>
 	  <property name="max_size">0</property>
 	</widget>
 	<packing>
@@ -1854,6 +1854,7 @@
       <child>
 	<widget class="GtkVBox" id="vbox26">
 	  <property name="border_width">4</property>
+	  <property name="sensitive">False</property>
 	  <property name="homogeneous">False</property>
 	  <property name="spacing">0</property>
 

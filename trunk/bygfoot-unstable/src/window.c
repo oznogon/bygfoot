@@ -404,20 +404,11 @@ void
 start_update(void)
 {
     gchar buf[SMALL];
-    gchar buf2[SMALL];
-    gchar buf3[SMALL];
     GError *error = NULL;
 
-    strcpy(buf, "");
-    text_file_number_to_char(FILES_UPDATE_GUI, buf, TRUE);
-    text_file_number_to_char(FILES_UPDATE_SCRIPT, buf2, TRUE);
+    sprintf(buf, "bygfoot-update-gui");
 
-    if(strlen(buf) != 0)
-	sprintf(buf3, "%s %s", buf, buf2);
-    else
-	sprintf(buf3, "bygfoot-update-gui");
-
-    g_spawn_command_line_async(buf3, &error);
+    g_spawn_command_line_async(buf, &error);
     print_error(error, TRUE);
 
     if(main_window != NULL)

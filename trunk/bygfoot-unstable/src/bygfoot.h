@@ -52,7 +52,7 @@
 typedef struct _stadium stadium;
 typedef struct _player_stat player_stat;
 typedef struct _season_stat season_stat;
-
+typedef struct _objective objective;
 struct _stadium
 {
     gint capacity, average_attendance;
@@ -80,6 +80,11 @@ struct _season_stat
     player_stat best_players[6];
 
     season_stat *next;
+};
+
+struct _objective {
+	gint type; /* The objective type */
+	gint extradata; /* extradata for the objective */	
 };
 
 #endif

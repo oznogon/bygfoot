@@ -141,19 +141,21 @@ show_job_offer(gint fire)
 
     sprintf(buf[JOB_OFFER_ACCEPT], _("Accept?"));
 
-    if(fire != 0)
+    if(fire != JOB_OFFERS)
     {
-	if(fire == 1)
+	if(fire == JOB_NO_SUCCESS)
 	    sprintf(buf[JOB_OFFER_TEXT], _("The team owners fire you because of unsuccessfulness."));
-	else if(fire == 11)
+	else if(fire == JOB_FINANCIAL)
 	    sprintf(buf[JOB_OFFER_TEXT], _("The team owners fire you because of financial mismanagement."));
-
+	else if(fire == JOB_OBJECTIVE) 
+	    sprintf(buf[JOB_OFFER_TEXT], _("The team owners fire you because of objective failed."));
+	
 	sprintf(buf2, _("\nBut the owners of %s have heard of your dismissal and would like to hire you. Here's some info on %s:"),
 		teams[new_team].name,
 		teams[new_team].name);
 	strcat(buf[JOB_OFFER_TEXT], buf2);
 	strcat(buf[JOB_OFFER_ACCEPT], _(" (NOTE: If you don't, the game is over.)"));
-    }
+    }	
     else
 	sprintf(buf[JOB_OFFER_TEXT], _("The owners of %s are impressed by your success with %s. They would like to hire you. Here's some info on %s:"),
 		teams[new_team].name,
@@ -215,7 +217,7 @@ team_offers(void)
 	if(counters[COUNT_SUCCESS] <= -95 + i * 10 &&
 	   rndom < 0.8 - i * 0.25)
 	{
-	    show_job_offer(1);
+	    show_job_offer(JOB_NO_SUCCESS);
 	    return;
 	}
     }
@@ -230,7 +232,7 @@ team_offers(void)
 	if(counters[COUNT_SUCCESS] >= 95 - i * 10)
 	{
 	    if(rndom < 0.3 - i * 0.1)
-		show_job_offer(0);
+		show_job_offer(JOB_OFFERS);
 	    
 	    return;
 	}
@@ -310,7 +312,7 @@ finance_events(void)
        counters[COUNT_POSITIVE] == -1 ||
        counters[COUNT_OVERDRAWN] == 4)
     {
-	show_job_offer(11);
+	show_job_offer(JOB_FINANCIAL);
 	return;
     }
 
@@ -1035,4 +1037,3 @@ live_game(gint number)
 
     return;
 }
-

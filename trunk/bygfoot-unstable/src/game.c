@@ -7,6 +7,8 @@
 #include "game.h"
 #include "maths.h"
 #include "team.h"
+#include "game_gui.h"
+
 
 /* get the number of goals for 'team' in the first leg */
 gint
@@ -1036,4 +1038,116 @@ process_week_games(gint week_number)
 		    injuries[i][11] = booked[i][11] = fixtures[k].team_id[i];
 	}
     }
+}
+
+
+
+void objective_generate(gint teamID,objective * obj) {
+	gint i;
+	gint leagueID;
+	gint boundID[2];
+	gint *sortedTeams;
+	
+	//first reset objective tab to null
+	for(i=0;i<MAX_OBJECTIVE;i++) {
+		obj[i].type=OBJ_NONE;
+	}		
+	
+	//We sort all teams in current league 
+	//We have the theoric position at the end of season :-) .
+	//At this stage - 19 dec 2004-	this is the only one we set.
+	//TODO : Implement more objective 
+	leagueID=get_league_from_id(teamID);
+	get_league_bounds(leagueID,boundID);
+	sortedTeams=g_malloc((sizeof(gint))*teams_in_league(leagueID));
+	
+	//now we can sort all team..
+	sort_teams(boundID,sortedTeams,
+				0,teams_in_league(leagueID)-1,
+				team_compare_skills);
+	i=0;
+	while(sortedTeams[i]!=teamID)
+		i++;
+	//we are in the first three team, we must be promoted
+	if(i<=3) {
+		if(leagueID==1) { //we are in first league
+			obj[0].type=OBJ_POSITION;
+			obj[0].extradata=3;
+		}
+		else 
+			obj[0].type=OBJ_PROMOTED;
+	}
+	else if(i<(teams_in_league(leagueID)-3)) {//We must be at a position
+		obj[0].type=OBJ_POSITION;
+		obj[0].extradata=i;
+	}
+	else {
+		//don't be relagated...
+		if(leagueID!=5){ //last league so ask for position..
+			obj[0].type=OBJ_POSITION;
+			obj[0].extradata=obj[0].type=OBJ_POSITION;
+		}
+		else {
+			obj[0].type=OBJ_NO_RELEGATED;
+		}			
+	}
+	g_free(sortedTeams);
+}
+
+gchar * objective_get_message(objective * obj) {
+	gchar* msg=NULL;
+	switch(obj->type) {
+		case OBJ_NONE:break;
+		case OBJ_NO_RELEGATED:
+				msg=gettext("Your team must stay in current league !");break;
+		case OBJ_PROMOTED:
+				msg=gettext("Your team must be promoted to next league !");break;
+		case OBJ_POSITION:
+				msg=gettext("Your team must finish at least at %d position");break;
+		case OBJ_WIN_CUP:
+				msg=gettext("Your team must win the \"%s\" cup");break;
+		default://nothing					
+			;
+	}
+	if(obj->type==OBJ_POSITION) {
+		gchar *tmp=NULL;
+		int size_tmp=(strlen(msg)+10)*sizeof(gchar);
+		//we must replace the position number
+		tmp=g_malloc(size_tmp);
+		snprintf(tmp,size_tmp,msg,obj->extradata);		
+		msg=tmp;
+	}
+	else //We duplicate the frame
+		msg=strdup(msg);
+	
+	return msg;
+}
+
+gboolean objective_is_success(gint teamID,objective * obj) {
+	gboolean success=FALSE;
+	gint bound[2];
+	//retrieve rank and bounds
+	gint rank=get_current_rank();
+	get_league_bounds(get_league_from_id(teamID),bound);	
+	switch(obj->type) {
+		case OBJ_NONE:success=TRUE;break;
+		case OBJ_NO_RELEGATED: 		
+			success=((bound[1]-bound[0])-rank)>3;
+			break;
+				
+		case OBJ_PROMOTED: 
+			success=rank<3;
+			break;
+						
+		case OBJ_POSITION: 
+			success=rank<obj->extradata;
+			break;
+		
+				
+		case OBJ_WIN_CUP: //TODO
+			break;
+		default://nothing					
+			;
+	}
+	return success;
 }

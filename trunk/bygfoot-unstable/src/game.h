@@ -139,4 +139,24 @@ process_game(fixture *fix);
 void
 process_week_games(gint week_number);
 
+/** Generate one objective for the team 
+ *@param team the team ID
+ *@param objectives the objective tab to fill
+ */
+void objective_generate(gint teamID,objective * obj);
+/**
+ * Retrieve the char for the objective
+ *@param obj the objectives table
+ *@return the string to display. Don't forget to free it
+ */
+gchar * objective_get_message(objective * obj);
+
+/** Check if team as successfully fill the objective
+ *@param team the team ID
+ *@param objectives the objective tab to check
+ *@return true if objective is ok
+ */
+gboolean objective_is_success(gint teamID,objective * obj);
+
+
 #endif

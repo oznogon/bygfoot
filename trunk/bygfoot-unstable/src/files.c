@@ -213,12 +213,12 @@ check_home_dir(void)
     gchar buf[SMALL];
     gchar buf2[SMALL];
     gchar buf3[SMALL];
-    gchar text_files[FILES_UPDATE_GUI][SMALL];
-    gchar text_files_full_path[FILES_UPDATE_GUI][SMALL];
+    gchar text_files[FILES_END][SMALL];
+    gchar text_files_full_path[FILES_END][SMALL];
 
     sprintf(home, "%s", g_get_home_dir());
 
-    for(i=0;i<FILES_UPDATE_GUI;i++)
+    for(i=0;i<FILES_END;i++)
     {
 	text_file_number_to_char(i, text_files_full_path[i], TRUE);
 	text_file_number_to_char(i, text_files[i], FALSE);
@@ -250,7 +250,7 @@ check_home_dir(void)
     if(system(buf3) != 0)
 	system(buf2);
     
-    for(i=0;i<FILES_UPDATE_GUI;i++)
+    for(i=0;i<FILES_END;i++)
     {
 	sprintf(buf3, "test -e %s/text_files/%s", buf, text_files[i]);
 	if(system(buf3) != 0)
@@ -269,7 +269,7 @@ check_home_dir(void)
     if(success == 0)
     {
 	g_print("\nSome files could not be copied to %s.\nYou should try to copy them manually:\n\n", buf);
-	for(i=0;i<FILES_UPDATE_GUI;i++)
+	for(i=0;i<FILES_END;i++)
 	{
 	    sprintf(buf3, "test -e %s/text_files/%s", buf, text_files[i]);
 	    if(system(buf3) != 0 && 
@@ -374,12 +374,6 @@ text_file_number_to_char(gint number, gchar *filename, gboolean full_path)
 	    break;
 	case FILES_CONF:
 	    strcpy(buf, "bygfoot.conf");
-	    break;
-	case FILES_UPDATE_SCRIPT:
-	    strcpy(buf, "bygfoot-update");
-	    break;
-	case FILES_UPDATE_GUI:
-	    strcpy(buf, "bygfoot-update-gui");
 	    break;
     }
 

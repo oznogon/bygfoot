@@ -11,8 +11,14 @@
 
 /* the length of the fixture array */
 #define FIX_END 3000
+/** Max objective */
+#define MAX_OBJECTIVE 1
+#define OBJECTIVE_REFRESH 6
 
-/* size of char buffers */
+/** Max player per team */
+#define MAX_PLAYER 20
+
+/** size of char buffers */
 #define BIG 1000000
 #define SMALL 10000
 
@@ -21,6 +27,15 @@
  * in integer arrays                              *
  **************************************************/
 
+/**
+ * Job reason
+ */
+enum {
+	JOB_OFFERS=0,
+	JOB_NO_SUCCESS,
+	JOB_FINANCIAL,
+	JOB_OBJECTIVE		
+};
 /* indices for the text files */
 enum
 {
@@ -38,8 +53,6 @@ enum
     FILES_DEFINITIONS,
     FILES_HELP,
     FILES_CONF,
-    FILES_UPDATE_SCRIPT,
-    FILES_UPDATE_GUI,
     FILES_END
 };
 
@@ -218,7 +231,6 @@ enum
     OPT_ATT2_WAGE,
     OPT_ATT2_TEAM,
     OPT_ATT2_LEAGUE,
-    OPT_XML,
     OPT_HISTORY_TEAM_INTERVAL,
     OPT_HISTORY_PLAYER_INTERVAL,
     OPT_HISTORY_TEAM_MAX,
@@ -445,15 +457,6 @@ enum
     RES_END
 };
 
-/* compression type */
-enum
-{
-    COMPRESSION_NONE = 0,
-    COMPRESSION_GZIP,
-    COMPRESSION_BZIP,
-    COMPRESSION_END
-};
-
 /* statistics types */
 enum
 {
@@ -496,4 +499,16 @@ enum
     GET_HISTORY_END
 };
 
+
+/**
+ * Objective for current season
+ */
+enum 
+{
+	OBJ_NONE =0, /**< no Objective */
+	OBJ_WIN_CUP, /**< Win a cup, extra data contains cup ID */
+	OBJ_PROMOTED, /**< Promoted */
+	OBJ_POSITION, /**< Make better than a position, extra data contains position */
+	OBJ_NO_RELEGATED, /**< Your team must not be relagted */
+};
 #endif

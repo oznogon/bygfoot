@@ -81,6 +81,12 @@ team_compare_defensive(const void *value1, const void *value2);
 gint
 team_compare_offensive(const void *value1, const void *value2);
 
+/* compare two teams regarding player skill. */
+gint
+team_compare_skills(const void *value1, const void *value2);
+
+
+
 /* sort the teams between the bounds according to 'compare' and
    write the result to 'sorted' */
 void

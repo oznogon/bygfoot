@@ -20,6 +20,9 @@ gchar player_names[10504][50];
 
 stadium stadiums[178];
 
+/* Season objectives */
+objective seasonObjective[MAX_OBJECTIVE];
+
 fixture fixtures[FIX_END];
 
 /* human player's team id */
