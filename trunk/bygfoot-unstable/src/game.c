@@ -1069,7 +1069,7 @@ void objective_generate(gint team_id,objective * obj) {
 	while(sortedTeams[i]!=team_id)
 		i++;
 	//we are in the first three team, we must be promoted
-	if(i<=3) {
+	if(i<3) {
 		if(leagueID==1) { //we are in first league
 			obj[0].type=OBJ_POSITION;
 			obj[0].extradata=3;
@@ -1079,7 +1079,7 @@ void objective_generate(gint team_id,objective * obj) {
 	}
 	else if(i<(teams_in_league(leagueID)-3)) {//We must be at a position
 		obj[0].type=OBJ_POSITION;
-		obj[0].extradata=i;
+		obj[0].extradata=i+1;
 	}
 	else {
 		//don't be relagated...
@@ -1125,22 +1125,20 @@ gchar * objective_get_message(objective * obj) {
 
 gboolean objective_is_success(gint team_id,objective * obj) {
 	gboolean success=FALSE;
-	gint bound[2];
 	//retrieve rank and bounds
 	gint rank=get_current_rank();
-	get_league_bounds(get_league_from_id(team_id),bound);	
 	switch(obj->type) {
 		case OBJ_NONE:success=TRUE;break;
 		case OBJ_NO_RELEGATED: 		
-			success=((bound[1]-bound[0])-rank)>3;
+			success=( teams_in_league(get_league_from_id(team_id))-rank)>3;
 			break;
 				
 		case OBJ_PROMOTED: 
-			success=rank<3;
+			success=rank<=3;
 			break;
 						
 		case OBJ_POSITION: 
-			success=rank<obj->extradata;
+			success=rank<=obj->extradata;
 			break;
 		
 				
