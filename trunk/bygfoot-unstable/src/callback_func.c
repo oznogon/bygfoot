@@ -966,7 +966,7 @@ callback_new_week(gboolean calculate)
     
 
     if(week == 49 && options[OPT_OBJECTIVE] == 1) {//check objective
-		int i=0;		
+	gint i=0;		
 		while(i<MAX_OBJECTIVE && objective_is_success(my_team,season_objective+i))
 			i++;
 		if(i!=MAX_OBJECTIVE)
@@ -988,10 +988,10 @@ callback_new_week(gboolean calculate)
 	show_popup_window("Your stadium safety's low. ", NULL);
 
 
-    if(week == (OBJECTIVE_REFRESH_MIN-1) ){
+    if(week == (OBJECTIVE_REFRESH_MIN-1) && options[OPT_OBJECTIVE] == 1){
 	generate_objective_refresh_week();
     }
-    if(week == objective_refresh_week){
+    if(week == objective_refresh_week && options[OPT_OBJECTIVE] == 1){
 	change_objective();
     }
 	

@@ -29,6 +29,8 @@ xml_write_save(gchar *file_name)
     xml_general_write(file_name);
     xml_compress_files(file_name, FALSE);
 
+    g_string_printf(save_file, "%s", file_name);
+
     show_progress(-1, "");
 }
 
@@ -142,5 +144,10 @@ xml_get_save_file_prefix(gchar *file_name, gchar *prefix)
 	truncate_string(file_name, prefix, strlen(file_name) - i);
     }
     else
+    {
 	g_warning("xml_get_save_file_prefix: unknown file type: %s\n", file_name);
+	strcpy(prefix, "");
+    }
+
+    g_string_printf(save_file, "%s", prefix);
 }

@@ -246,10 +246,12 @@ xml_general_read_end_element    (GMarkupParseContext *context,
     else if(tag >= TAG_TRANSFER_TEAMID &&
 	    tag <= TAG_TRANSFER_ESTIMATEWAGE)
 	state = TAG_TRANSFER;
-    else if(tag == TAG_SEASON_OBJECTIVE)
+    else if(tag == TAG_SEASON_OBJECTIVE ||
+	    tag == TAG_SEASON_OBJECTIVE_REFRESH_WEEK)
     {
-	idx[0]++;
-	state = TAG_SEASON_OBJECTIVES;	
+	if(tag == TAG_SEASON_OBJECTIVE)
+	    idx[0]++;
+	state = TAG_SEASON_OBJECTIVES;
     }
     else if(tag == TAG_SEASON_OBJECTIVE_TYPE ||
 	    tag == TAG_SEASON_OBJECTIVE_EXTRA_DATA)
@@ -657,14 +659,17 @@ xml_general_write_season_objectives(FILE *xml_file)
     gint i;
 
     fprintf(xml_file, "%s<_%d>\n", INDENT0, TAG_SEASON_OBJECTIVES);
-    fprintf(xml_file, "%s<_%d>%d</_%d>\n",INDENT1,TAG_SEASON_OBJECTIVE_REFRESH_WEEK,objective_refresh_week,TAG_SEASON_OBJECTIVE);
+    fprintf(xml_file, "%s<_%d>%d</_%d>\n",INDENT1,
+	    TAG_SEASON_OBJECTIVE_REFRESH_WEEK, 
+	    objective_refresh_week,
+	    TAG_SEASON_OBJECTIVE_REFRESH_WEEK);
     for(i=0;i<MAX_OBJECTIVE;i++)
     {
 	fprintf(xml_file, "%s<_%d>\n", INDENT1, TAG_SEASON_OBJECTIVE);
 	fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT2, TAG_SEASON_OBJECTIVE_TYPE,
 		season_objective[i].type, TAG_SEASON_OBJECTIVE_TYPE);
 	fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT2, TAG_SEASON_OBJECTIVE_EXTRA_DATA,
-		season_objective[i].extradata, TAG_SEASON_OBJECTIVE_EXTRA_DATA);	
+		season_objective[i].extradata, TAG_SEASON_OBJECTIVE_EXTRA_DATA);
 	fprintf(xml_file, "%s</_%d>\n", INDENT1, TAG_SEASON_OBJECTIVE);
     }
 

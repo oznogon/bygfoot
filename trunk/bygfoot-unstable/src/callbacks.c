@@ -720,6 +720,8 @@ void
 on_button_save_clicked                 (GtkButton       *button,
                                         gpointer         user_data)
 {
+    printf("%s\n", save_file->str);
+
     if(save_file->str[save_file->len - 1] != '/' &&
        options[OPT_OVERWRITE] == 1)
     {

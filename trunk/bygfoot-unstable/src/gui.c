@@ -486,7 +486,7 @@ void
 show_progress(gfloat value, gchar *text)
 {
     GtkWidget *pwindow = NULL;
-    GtkWidget *progressbar;
+    GtkWidget *progressbar = NULL;
 
     if(value == 1 || value < 0 || status == -1)
     {
