@@ -109,6 +109,8 @@ GtkWidget *main_window;
 
 /* progress bar window */
 GtkWidget *progressbar_window;
+/* team_selection_widget if needed */
+GtkWidget *team_selection_widget;
 
 /* savegame file */
 GString *save_file;

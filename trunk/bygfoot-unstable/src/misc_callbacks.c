@@ -237,12 +237,24 @@ on_button_fsel_cancel_clicked          (GtkButton       *button,
 {
     GtkWidget *fsel_window =
 	lookup_widget(GTK_WIDGET(button), "fsel_window");
-    
+
     change_popups_active(-1);
     gtk_widget_destroy(fsel_window);
     
-    if(status == 800010 || status == 800002)
-	show_team_selection();
+    
+    if(status == 800010 || status == 800002) {
+		//user cancel so maybe we need to show team selection widget
+		if(team_selection_widget) 
+			gtk_widget_show(team_selection_widget);
+		else
+			show_team_selection();
+	}
+	else {
+		if(team_selection_widget) {
+			gtk_widget_destroy(team_selection_widget);
+			team_selection_widget=NULL;
+		}
+	}
 }
 
 
@@ -349,7 +361,8 @@ on_team_selection_load_clicked         (GtkButton       *button,
 
     show_file_selection(2);
 
-    gtk_widget_destroy(team_selection);
+    gtk_widget_hide(team_selection);
+	team_selection_widget=team_selection;
 }
 
 
@@ -370,7 +383,8 @@ on_button_select_country_file_clicked  (GtkButton       *button,
 
     show_file_selection(10);
     
-    gtk_widget_destroy(team_selection);
+	team_selection_widget=team_selection;
+    gtk_widget_hide(team_selection);
 }
 
 
