@@ -280,7 +280,8 @@ show_results(gint page)
 	     || page == 1 )
     {
 	callback_show_preview();
-	status = 600010;
+	if(status < 900000)
+	    status = 600010;
     }
 }
 

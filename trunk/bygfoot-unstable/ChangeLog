@@ -1,4 +1,16 @@
+03/20/2005: v1.8.2
+	- corrected a bug in the update script
+	- fixed the job offer bug
+
+01/30/2005: v1.8.1
+	- added Dutch translation and country file for Belgium (thanks to
+	ATD)
+	- fixed a bug that prevented loading of custom country files
+	- fixed a season objective bug
+	- fixed a floating point bug (thanks to Ken Brush)
+
 01/30/2005: v1.8.0 (changes compared to 1.6.3)
+	- added a lot of new and fine icons (thanks to Vector)
 	- added GeoVah's season objective patch (thanks, GeoVah)
 	- added possibility to disable savegame compression
 	- stadium events are less harsh

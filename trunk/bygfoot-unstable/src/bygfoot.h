@@ -9,7 +9,7 @@
 
 /* current version number */
 
-#define VERS "1.8.0 rev7"
+#define VERS "1.8.1 rev9"
 
 #include <stdio.h>
 #include <stdlib.h>

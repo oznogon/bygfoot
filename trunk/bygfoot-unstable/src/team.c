@@ -1080,6 +1080,6 @@ void change_objective() {
 				g_free(tmpDup);
 			}
 		}
+		show_popup_window(tmp,NULL);
 	}
-	show_popup_window(tmp,NULL);	  	
 }

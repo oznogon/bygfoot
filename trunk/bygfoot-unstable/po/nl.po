@@ -6,16 +6,16 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: bygfoot 1.8.0\n"
+"Project-Id-Version: bygfoot 1.8.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-01-19 16:14+0100\n"
-"PO-Revision-Date: 2005-02-10 13:25+0100\n"
+"PO-Revision-Date: 2005-02-20 15:52+0100\n"
 "Last-Translator: Tobe Deprez <tobedeprez@scarlet.be>\n"
 "Language-Team: Dutch <tobedeprez@scarlet.be>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);"
 
 #: src/game_gui.c:153
 #, c-format
@@ -148,9 +148,8 @@ msgid ""
 "%s is a substitute. He will only shoot the penalties if you move him into "
 "the team; otherwise the field player with highest skill will shoot."
 msgstr ""
-"%s is een wisselspeler. Hij zal de penalty's alleen schieten als hij op het "
-"veld staat; anders zal de veldspeler met de hoogste kwaliteiten de "
-"peynalty's schieten"
+"%s is een wisselspeler. Hij kan alleen penalty's schieten als hij op het veld "
+"staat. Anders zal de beste speler de penalty's trappen."
 
 #: src/treeview.c:2000
 #, c-format
@@ -709,7 +708,6 @@ msgid "Down"
 msgstr "Omlaag"
 
 #: src/treeview.c:1189
-#, fuzzy
 msgid "Drawing credit"
 msgstr "Krediet opening"
 
@@ -2387,7 +2385,6 @@ msgid "You'd like to fire %s. You can"
 msgstr "Je wilt %s ontslaan. Dan kan je"
 
 #: src/callback_func.c:550
-#, fuzzy
 msgid "You're below your drawing credit limit. You can't pay back money."
 msgstr ""
 "U bent onder uw limiet van uw kredietopening. Je kan geen geld terugbetalen."
@@ -2397,7 +2394,6 @@ msgid "You've got to pay back your loan NOW!!!"
 msgstr "U moet NU uw schulden terugbetalen!!!"
 
 #: src/game_gui.c:321
-#, fuzzy
 msgid "Your bank account has to exceed your drawing credit next week!!!"
 msgstr "Uw bankrekening overschrijdt volgende week uw kredietopening!!!"
 
@@ -2671,3 +2667,8 @@ msgstr "geweldadig contact"
 #: src/options_interface.c:284
 msgid "window1"
 msgstr "window1"
+
+#: src/misc_interface.c:304
+msgid "Belgium"
+msgstr "België"
+

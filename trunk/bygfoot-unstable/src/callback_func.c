@@ -961,9 +961,7 @@ callback_new_week(gboolean calculate)
 	    callback_show_preview();
 
 	show_players(NULL, NULL, 0, NULL, 0);
-    }
-    
-    
+    }      
 	
     if(status < 900000 && week == 49 && options[OPT_OBJECTIVE] == 1) {//check objective
 	gint i=0;		
