@@ -7,7 +7,10 @@ free_memory(void)
     free_history();
     
     if(save_file != NULL)
+    {
 	g_string_free(save_file, TRUE);
+	save_file = NULL;
+    }
 
     free_histories();
 }

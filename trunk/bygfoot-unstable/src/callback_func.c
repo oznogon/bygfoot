@@ -949,9 +949,11 @@ callback_new_week(gboolean calculate)
     finance_events();
     update_scout();
     update_variables();
+
+    printf("status %d\n", status);
     
     /* player wasn't fired */
-    if( status < 900000 && 
+    if( status < 950000 && 
 	(my_team_played(week - 1) ||
 	 my_team_played(week)) )
     {

@@ -172,13 +172,14 @@ add_transfer(gint team_id, gint player_number, gint time)
 void
 add_new_transfers(void)
 {
-    gint rndom = rndi(0, 4);
+    gint rndom = rndi(0, 5);
     gint time;
     gint team_id, player_number;
 
     while(rndom > 0)
     {
-	team_id = rndi(0, 174);
+	team_id = (rnd(0, 1) < 0.5) ? 
+	    rndi(0, 174) : rndi(0, 113);
 	player_number = rndi(0, 19);
 
 	while(team_id == my_team || 

@@ -220,7 +220,7 @@ on_structure_entry_activate            (GtkEntry        *entry,
 	g_print("\n *** %s ***\n\n", buf);
 	print_message(buf);
     }
-    else if(new_structure == 901)
+    else if(new_structure == 899)
     {
 	counters[COUNT_SUCCESS] -= 50;
 	sprintf(buf, "Substracted 50 from success counter. New value: %d", counters[COUNT_SUCCESS]);
@@ -720,8 +720,6 @@ void
 on_button_save_clicked                 (GtkButton       *button,
                                         gpointer         user_data)
 {
-    printf("%s\n", save_file->str);
-
     if(save_file->str[save_file->len - 1] != '/' &&
        options[OPT_OVERWRITE] == 1)
     {
