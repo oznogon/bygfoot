@@ -449,9 +449,9 @@
 	      <accelerator key="t" modifiers="0" signal="clicked"/>
 
 	      <child>
-		<widget class="GtkImage" id="image32">
+		<widget class="GtkImage" id="image109">
 		  <property name="visible">True</property>
-		  <property name="pixbuf">transfers.png</property>
+		  <property name="pixbuf">transfer_lst.png</property>
 		  <property name="xalign">0.5</property>
 		  <property name="yalign">0.5</property>
 		  <property name="xpad">0</property>
@@ -477,9 +477,9 @@
 	      <accelerator key="f" modifiers="0" signal="clicked"/>
 
 	      <child>
-		<widget class="GtkImage" id="image33">
+		<widget class="GtkImage" id="image110">
 		  <property name="visible">True</property>
-		  <property name="pixbuf">fin_stad.png</property>
+		  <property name="pixbuf">stadium_fin.png</property>
 		  <property name="xalign">0.5</property>
 		  <property name="yalign">0.5</property>
 		  <property name="xpad">0</property>
@@ -535,10 +535,21 @@
 		<widget class="GtkMenu" id="menu3">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="figures1">
+		    <widget class="GtkImageMenuItem" id="figures1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Figures</property>
 		      <property name="use_underline">True</property>
+
+		      <child internal-child="image">
+			<widget class="GtkImage" id="image130">
+			  <property name="visible">True</property>
+			  <property name="pixbuf">football.png</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			</widget>
+		      </child>
 		    </widget>
 		  </child>
 
@@ -551,10 +562,21 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="tables1">
+		    <widget class="GtkImageMenuItem" id="tables1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Tables</property>
 		      <property name="use_underline">True</property>
+
+		      <child internal-child="image">
+			<widget class="GtkImage" id="image131">
+			  <property name="visible">True</property>
+			  <property name="pixbuf">table.png</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			</widget>
+		      </child>
 		    </widget>
 		  </child>
 
@@ -575,10 +597,21 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="history_graph1">
+		    <widget class="GtkImageMenuItem" id="history_graph1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">History graph</property>
 		      <property name="use_underline">True</property>
+
+		      <child internal-child="image">
+			<widget class="GtkImage" id="image132">
+			  <property name="visible">True</property>
+			  <property name="pixbuf">graph.png</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			</widget>
+		      </child>
 		    </widget>
 		  </child>
 		</widget>
@@ -615,7 +648,7 @@
 	      <accelerator key="space" modifiers="0" signal="clicked"/>
 
 	      <child>
-		<widget class="GtkImage" id="image23">
+		<widget class="GtkImage" id="image140">
 		  <property name="visible">True</property>
 		  <property name="pixbuf">new_week.png</property>
 		  <property name="xalign">0.5</property>
@@ -1069,7 +1102,7 @@
 		  <property name="use_underline">True</property>
 
 		  <child internal-child="image">
-		    <widget class="GtkImage" id="image100">
+		    <widget class="GtkImage" id="image133">
 		      <property name="visible">True</property>
 		      <property name="stock">gtk-execute</property>
 		      <property name="icon_size">1</property>
@@ -1092,7 +1125,7 @@
 			  <signal name="activate" handler="on_show_info_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image101">
+			    <widget class="GtkImage" id="image134">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-dialog-info</property>
 			      <property name="icon_size">1</property>
@@ -1106,12 +1139,23 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkMenuItem" id="show_statistics">
+			<widget class="GtkImageMenuItem" id="show_statistics">
 			  <property name="visible">True</property>
 			  <property name="tooltip" translatable="yes">Show player statistics graph</property>
 			  <property name="label" translatable="yes">Show history</property>
 			  <property name="use_underline">True</property>
 			  <signal name="activate" handler="on_show_statistics_activate" last_modification_time="Sat, 09 Oct 2004 12:02:04 GMT"/>
+
+			  <child internal-child="image">
+			    <widget class="GtkImage" id="image135">
+			      <property name="visible">True</property>
+			      <property name="pixbuf">graph.png</property>
+			      <property name="xalign">0.5</property>
+			      <property name="yalign">0.5</property>
+			      <property name="xpad">0</property>
+			      <property name="ypad">0</property>
+			    </widget>
+			  </child>
 			</widget>
 		      </child>
 
@@ -1124,10 +1168,9 @@
 			  <signal name="activate" handler="on_put_on_transfer_list_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image102">
+			    <widget class="GtkImage" id="image136">
 			      <property name="visible">True</property>
-			      <property name="stock">gtk-yes</property>
-			      <property name="icon_size">1</property>
+			      <property name="pixbuf">transfer_to.png</property>
 			      <property name="xalign">0.5</property>
 			      <property name="yalign">0.5</property>
 			      <property name="xpad">0</property>
@@ -1146,10 +1189,9 @@
 			  <signal name="activate" handler="on_remove_from_transfer_list_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image103">
+			    <widget class="GtkImage" id="image137">
 			      <property name="visible">True</property>
-			      <property name="stock">gtk-no</property>
-			      <property name="icon_size">1</property>
+			      <property name="pixbuf">transfer_frm.png</property>
 			      <property name="xalign">0.5</property>
 			      <property name="yalign">0.5</property>
 			      <property name="xpad">0</property>
@@ -1168,7 +1210,7 @@
 			  <signal name="activate" handler="on_fire_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image104">
+			    <widget class="GtkImage" id="image138">
 			      <property name="visible">True</property>
 			      <property name="pixbuf">fire_player.png</property>
 			      <property name="xalign">0.5</property>
@@ -1189,9 +1231,9 @@
 			  <signal name="activate" handler="on_shoots_penalties_activate" last_modification_time="Sun, 22 Aug 2004 15:01:28 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image105">
+			    <widget class="GtkImage" id="image139">
 			      <property name="visible">True</property>
-			      <property name="pixbuf">football.png</property>
+			      <property name="pixbuf">penalty_shooter.png</property>
 			      <property name="xalign">0.5</property>
 			      <property name="yalign">0.5</property>
 			      <property name="xpad">0</property>
@@ -2529,27 +2571,6 @@
 					      <property name="fill">False</property>
 					    </packing>
 					  </child>
-
-					  <child>
-					    <widget class="GtkLabel" id="label68">
-					      <property name="visible">True</property>
-					      <property name="label" translatable="yes">Fixtures</property>
-					      <property name="use_underline">True</property>
-					      <property name="use_markup">False</property>
-					      <property name="justify">GTK_JUSTIFY_LEFT</property>
-					      <property name="wrap">False</property>
-					      <property name="selectable">False</property>
-					      <property name="xalign">0.5</property>
-					      <property name="yalign">0.5</property>
-					      <property name="xpad">0</property>
-					      <property name="ypad">0</property>
-					    </widget>
-					    <packing>
-					      <property name="padding">0</property>
-					      <property name="expand">False</property>
-					      <property name="fill">False</property>
-					    </packing>
-					  </child>
 					</widget>
 				      </child>
 				    </widget>
@@ -2623,29 +2644,7 @@
 					  <child>
 					    <widget class="GtkImage" id="image41">
 					      <property name="visible">True</property>
-					      <property name="stock">gtk-justify-left</property>
-					      <property name="icon_size">4</property>
-					      <property name="xalign">0.5</property>
-					      <property name="yalign">0.5</property>
-					      <property name="xpad">0</property>
-					      <property name="ypad">0</property>
-					    </widget>
-					    <packing>
-					      <property name="padding">0</property>
-					      <property name="expand">False</property>
-					      <property name="fill">False</property>
-					    </packing>
-					  </child>
-
-					  <child>
-					    <widget class="GtkLabel" id="label67">
-					      <property name="visible">True</property>
-					      <property name="label" translatable="yes">Tables</property>
-					      <property name="use_underline">True</property>
-					      <property name="use_markup">False</property>
-					      <property name="justify">GTK_JUSTIFY_LEFT</property>
-					      <property name="wrap">False</property>
-					      <property name="selectable">False</property>
+					      <property name="pixbuf">table.png</property>
 					      <property name="xalign">0.5</property>
 					      <property name="yalign">0.5</property>
 					      <property name="xpad">0</property>

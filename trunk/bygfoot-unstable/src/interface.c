@@ -73,22 +73,25 @@ create_main_window (void)
   GtkWidget *button_back_to_main;
   GtkWidget *image20;
   GtkWidget *button_transfers;
-  GtkWidget *image32;
+  GtkWidget *image109;
   GtkWidget *button_fin_stad;
-  GtkWidget *image33;
+  GtkWidget *image110;
   GtkWidget *button_preview;
   GtkWidget *image36;
   GtkWidget *optionmenu_figures;
   GtkWidget *menu3;
   GtkWidget *figures1;
+  GtkWidget *image130;
   GtkWidget *fixtures1;
   GtkWidget *tables1;
+  GtkWidget *image131;
   GtkWidget *best_players1;
   GtkWidget *history1;
   GtkWidget *history_graph1;
+  GtkWidget *image132;
   GtkWidget *vseparator16;
   GtkWidget *button_new_week;
-  GtkWidget *image23;
+  GtkWidget *image140;
   GtkWidget *button_help;
   GtkWidget *image39;
   GtkWidget *hseparator1;
@@ -118,19 +121,20 @@ create_main_window (void)
   GtkWidget *hbox52;
   GtkWidget *menubar_player;
   GtkWidget *player1;
-  GtkWidget *image100;
+  GtkWidget *image133;
   GtkWidget *player1_menu;
   GtkWidget *show_info;
-  GtkWidget *image101;
+  GtkWidget *image134;
   GtkWidget *show_statistics;
+  GtkWidget *image135;
   GtkWidget *put_on_transfer_list;
-  GtkWidget *image102;
+  GtkWidget *image136;
   GtkWidget *remove_from_transfer_list;
-  GtkWidget *image103;
+  GtkWidget *image137;
   GtkWidget *fire;
-  GtkWidget *image104;
+  GtkWidget *image138;
   GtkWidget *shoots_penalties;
-  GtkWidget *image105;
+  GtkWidget *image139;
   GtkWidget *message_window;
   GtkWidget *hbox7;
   GtkWidget *hpaned2;
@@ -234,14 +238,12 @@ create_main_window (void)
   GtkWidget *alignment13;
   GtkWidget *hbox43;
   GtkWidget *image42;
-  GtkWidget *label68;
   GtkWidget *vbox29;
   GtkWidget *label62;
   GtkWidget *button_tables;
   GtkWidget *alignment12;
   GtkWidget *hbox42;
   GtkWidget *image41;
-  GtkWidget *label67;
   GtkWidget *vbox34;
   GtkWidget *label70;
   GtkWidget *optionmenu_fixtures;
@@ -484,9 +486,9 @@ create_main_window (void)
                               GDK_t, 0,
                               GTK_ACCEL_VISIBLE);
 
-  image32 = create_pixmap (main_window, "transfers.png");
-  gtk_widget_show (image32);
-  gtk_container_add (GTK_CONTAINER (button_transfers), image32);
+  image109 = create_pixmap (main_window, "transfer_lst.png");
+  gtk_widget_show (image109);
+  gtk_container_add (GTK_CONTAINER (button_transfers), image109);
 
   button_fin_stad = gtk_button_new ();
   gtk_widget_show (button_fin_stad);
@@ -497,9 +499,9 @@ create_main_window (void)
                               GDK_f, 0,
                               GTK_ACCEL_VISIBLE);
 
-  image33 = create_pixmap (main_window, "fin_stad.png");
-  gtk_widget_show (image33);
-  gtk_container_add (GTK_CONTAINER (button_fin_stad), image33);
+  image110 = create_pixmap (main_window, "stadium_fin.png");
+  gtk_widget_show (image110);
+  gtk_container_add (GTK_CONTAINER (button_fin_stad), image110);
 
   button_preview = gtk_button_new ();
   gtk_widget_show (button_preview);
@@ -524,17 +526,25 @@ create_main_window (void)
 
   menu3 = gtk_menu_new ();
 
-  figures1 = gtk_menu_item_new_with_mnemonic (_("Figures"));
+  figures1 = gtk_image_menu_item_new_with_mnemonic (_("Figures"));
   gtk_widget_show (figures1);
   gtk_container_add (GTK_CONTAINER (menu3), figures1);
+
+  image130 = create_pixmap (main_window, "football.png");
+  gtk_widget_show (image130);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (figures1), image130);
 
   fixtures1 = gtk_menu_item_new_with_mnemonic (_("Fixtures"));
   gtk_widget_show (fixtures1);
   gtk_container_add (GTK_CONTAINER (menu3), fixtures1);
 
-  tables1 = gtk_menu_item_new_with_mnemonic (_("Tables"));
+  tables1 = gtk_image_menu_item_new_with_mnemonic (_("Tables"));
   gtk_widget_show (tables1);
   gtk_container_add (GTK_CONTAINER (menu3), tables1);
+
+  image131 = create_pixmap (main_window, "table.png");
+  gtk_widget_show (image131);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (tables1), image131);
 
   best_players1 = gtk_menu_item_new_with_mnemonic (_("Best players"));
   gtk_widget_show (best_players1);
@@ -544,9 +554,13 @@ create_main_window (void)
   gtk_widget_show (history1);
   gtk_container_add (GTK_CONTAINER (menu3), history1);
 
-  history_graph1 = gtk_menu_item_new_with_mnemonic (_("History graph"));
+  history_graph1 = gtk_image_menu_item_new_with_mnemonic (_("History graph"));
   gtk_widget_show (history_graph1);
   gtk_container_add (GTK_CONTAINER (menu3), history_graph1);
+
+  image132 = create_pixmap (main_window, "graph.png");
+  gtk_widget_show (image132);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (history_graph1), image132);
 
   gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu_figures), menu3);
 
@@ -564,9 +578,9 @@ create_main_window (void)
                               GDK_space, 0,
                               GTK_ACCEL_VISIBLE);
 
-  image23 = create_pixmap (main_window, "new_week.png");
-  gtk_widget_show (image23);
-  gtk_container_add (GTK_CONTAINER (button_new_week), image23);
+  image140 = create_pixmap (main_window, "new_week.png");
+  gtk_widget_show (image140);
+  gtk_container_add (GTK_CONTAINER (button_new_week), image140);
 
   button_help = gtk_button_new ();
   gtk_widget_show (button_help);
@@ -715,9 +729,9 @@ create_main_window (void)
   gtk_container_add (GTK_CONTAINER (menubar_player), player1);
   gtk_tooltips_set_tip (tooltips, player1, _("Player actions"), NULL);
 
-  image100 = gtk_image_new_from_stock ("gtk-execute", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image100);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (player1), image100);
+  image133 = gtk_image_new_from_stock ("gtk-execute", GTK_ICON_SIZE_MENU);
+  gtk_widget_show (image133);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (player1), image133);
 
   player1_menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (player1), player1_menu);
@@ -727,50 +741,54 @@ create_main_window (void)
   gtk_container_add (GTK_CONTAINER (player1_menu), show_info);
   gtk_tooltips_set_tip (tooltips, show_info, _("Show extended player information (Right click)"), NULL);
 
-  image101 = gtk_image_new_from_stock ("gtk-dialog-info", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image101);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (show_info), image101);
+  image134 = gtk_image_new_from_stock ("gtk-dialog-info", GTK_ICON_SIZE_MENU);
+  gtk_widget_show (image134);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (show_info), image134);
 
-  show_statistics = gtk_menu_item_new_with_mnemonic (_("Show history"));
+  show_statistics = gtk_image_menu_item_new_with_mnemonic (_("Show history"));
   gtk_widget_show (show_statistics);
   gtk_container_add (GTK_CONTAINER (player1_menu), show_statistics);
   gtk_tooltips_set_tip (tooltips, show_statistics, _("Show player statistics graph"), NULL);
+
+  image135 = create_pixmap (main_window, "graph.png");
+  gtk_widget_show (image135);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (show_statistics), image135);
 
   put_on_transfer_list = gtk_image_menu_item_new_with_mnemonic (_("Put on transfer list"));
   gtk_widget_show (put_on_transfer_list);
   gtk_container_add (GTK_CONTAINER (player1_menu), put_on_transfer_list);
   gtk_tooltips_set_tip (tooltips, put_on_transfer_list, _("Put player on transfer list (Right click in transfer mode)"), NULL);
 
-  image102 = gtk_image_new_from_stock ("gtk-yes", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image102);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (put_on_transfer_list), image102);
+  image136 = create_pixmap (main_window, "transfer_to.png");
+  gtk_widget_show (image136);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (put_on_transfer_list), image136);
 
   remove_from_transfer_list = gtk_image_menu_item_new_with_mnemonic (_("Remove from transfer list"));
   gtk_widget_show (remove_from_transfer_list);
   gtk_container_add (GTK_CONTAINER (player1_menu), remove_from_transfer_list);
   gtk_tooltips_set_tip (tooltips, remove_from_transfer_list, _("Remove player from transfer list (Click in the transfer list)"), NULL);
 
-  image103 = gtk_image_new_from_stock ("gtk-no", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image103);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (remove_from_transfer_list), image103);
+  image137 = create_pixmap (main_window, "transfer_frm.png");
+  gtk_widget_show (image137);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (remove_from_transfer_list), image137);
 
   fire = gtk_image_menu_item_new_with_mnemonic (_("Fire"));
   gtk_widget_show (fire);
   gtk_container_add (GTK_CONTAINER (player1_menu), fire);
   gtk_tooltips_set_tip (tooltips, fire, _("Fire player (Middle click)"), NULL);
 
-  image104 = create_pixmap (main_window, "fire_player.png");
-  gtk_widget_show (image104);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (fire), image104);
+  image138 = create_pixmap (main_window, "fire_player.png");
+  gtk_widget_show (image138);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (fire), image138);
 
   shoots_penalties = gtk_image_menu_item_new_with_mnemonic (_("Shoots penalties"));
   gtk_widget_show (shoots_penalties);
   gtk_container_add (GTK_CONTAINER (player1_menu), shoots_penalties);
   gtk_tooltips_set_tip (tooltips, shoots_penalties, _("The selected player will shoot the penalties in regulation and extra time if he plays."), NULL);
 
-  image105 = create_pixmap (main_window, "football.png");
-  gtk_widget_show (image105);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (shoots_penalties), image105);
+  image139 = create_pixmap (main_window, "penalty_shooter.png");
+  gtk_widget_show (image139);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (shoots_penalties), image139);
 
   message_window = gtk_entry_new ();
   gtk_widget_show (message_window);
@@ -1255,11 +1273,6 @@ create_main_window (void)
   gtk_widget_show (image42);
   gtk_box_pack_start (GTK_BOX (hbox43), image42, FALSE, FALSE, 0);
 
-  label68 = gtk_label_new_with_mnemonic (_("Fixtures"));
-  gtk_widget_show (label68);
-  gtk_box_pack_start (GTK_BOX (hbox43), label68, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label68), GTK_JUSTIFY_LEFT);
-
   vbox29 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox29);
   gtk_box_pack_start (GTK_BOX (hbox41), vbox29, FALSE, TRUE, 0);
@@ -1286,14 +1299,9 @@ create_main_window (void)
   gtk_widget_show (hbox42);
   gtk_container_add (GTK_CONTAINER (alignment12), hbox42);
 
-  image41 = gtk_image_new_from_stock ("gtk-justify-left", GTK_ICON_SIZE_BUTTON);
+  image41 = create_pixmap (main_window, "table.png");
   gtk_widget_show (image41);
   gtk_box_pack_start (GTK_BOX (hbox42), image41, FALSE, FALSE, 0);
-
-  label67 = gtk_label_new_with_mnemonic (_("Tables"));
-  gtk_widget_show (label67);
-  gtk_box_pack_start (GTK_BOX (hbox42), label67, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label67), GTK_JUSTIFY_LEFT);
 
   vbox34 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox34);
@@ -1570,22 +1578,25 @@ create_main_window (void)
   GLADE_HOOKUP_OBJECT (main_window, button_back_to_main, "button_back_to_main");
   GLADE_HOOKUP_OBJECT (main_window, image20, "image20");
   GLADE_HOOKUP_OBJECT (main_window, button_transfers, "button_transfers");
-  GLADE_HOOKUP_OBJECT (main_window, image32, "image32");
+  GLADE_HOOKUP_OBJECT (main_window, image109, "image109");
   GLADE_HOOKUP_OBJECT (main_window, button_fin_stad, "button_fin_stad");
-  GLADE_HOOKUP_OBJECT (main_window, image33, "image33");
+  GLADE_HOOKUP_OBJECT (main_window, image110, "image110");
   GLADE_HOOKUP_OBJECT (main_window, button_preview, "button_preview");
   GLADE_HOOKUP_OBJECT (main_window, image36, "image36");
   GLADE_HOOKUP_OBJECT (main_window, optionmenu_figures, "optionmenu_figures");
   GLADE_HOOKUP_OBJECT (main_window, menu3, "menu3");
   GLADE_HOOKUP_OBJECT (main_window, figures1, "figures1");
+  GLADE_HOOKUP_OBJECT (main_window, image130, "image130");
   GLADE_HOOKUP_OBJECT (main_window, fixtures1, "fixtures1");
   GLADE_HOOKUP_OBJECT (main_window, tables1, "tables1");
+  GLADE_HOOKUP_OBJECT (main_window, image131, "image131");
   GLADE_HOOKUP_OBJECT (main_window, best_players1, "best_players1");
   GLADE_HOOKUP_OBJECT (main_window, history1, "history1");
   GLADE_HOOKUP_OBJECT (main_window, history_graph1, "history_graph1");
+  GLADE_HOOKUP_OBJECT (main_window, image132, "image132");
   GLADE_HOOKUP_OBJECT (main_window, vseparator16, "vseparator16");
   GLADE_HOOKUP_OBJECT (main_window, button_new_week, "button_new_week");
-  GLADE_HOOKUP_OBJECT (main_window, image23, "image23");
+  GLADE_HOOKUP_OBJECT (main_window, image140, "image140");
   GLADE_HOOKUP_OBJECT (main_window, button_help, "button_help");
   GLADE_HOOKUP_OBJECT (main_window, image39, "image39");
   GLADE_HOOKUP_OBJECT (main_window, hseparator1, "hseparator1");
@@ -1615,19 +1626,20 @@ create_main_window (void)
   GLADE_HOOKUP_OBJECT (main_window, hbox52, "hbox52");
   GLADE_HOOKUP_OBJECT (main_window, menubar_player, "menubar_player");
   GLADE_HOOKUP_OBJECT (main_window, player1, "player1");
-  GLADE_HOOKUP_OBJECT (main_window, image100, "image100");
+  GLADE_HOOKUP_OBJECT (main_window, image133, "image133");
   GLADE_HOOKUP_OBJECT (main_window, player1_menu, "player1_menu");
   GLADE_HOOKUP_OBJECT (main_window, show_info, "show_info");
-  GLADE_HOOKUP_OBJECT (main_window, image101, "image101");
+  GLADE_HOOKUP_OBJECT (main_window, image134, "image134");
   GLADE_HOOKUP_OBJECT (main_window, show_statistics, "show_statistics");
+  GLADE_HOOKUP_OBJECT (main_window, image135, "image135");
   GLADE_HOOKUP_OBJECT (main_window, put_on_transfer_list, "put_on_transfer_list");
-  GLADE_HOOKUP_OBJECT (main_window, image102, "image102");
+  GLADE_HOOKUP_OBJECT (main_window, image136, "image136");
   GLADE_HOOKUP_OBJECT (main_window, remove_from_transfer_list, "remove_from_transfer_list");
-  GLADE_HOOKUP_OBJECT (main_window, image103, "image103");
+  GLADE_HOOKUP_OBJECT (main_window, image137, "image137");
   GLADE_HOOKUP_OBJECT (main_window, fire, "fire");
-  GLADE_HOOKUP_OBJECT (main_window, image104, "image104");
+  GLADE_HOOKUP_OBJECT (main_window, image138, "image138");
   GLADE_HOOKUP_OBJECT (main_window, shoots_penalties, "shoots_penalties");
-  GLADE_HOOKUP_OBJECT (main_window, image105, "image105");
+  GLADE_HOOKUP_OBJECT (main_window, image139, "image139");
   GLADE_HOOKUP_OBJECT (main_window, message_window, "message_window");
   GLADE_HOOKUP_OBJECT (main_window, hbox7, "hbox7");
   GLADE_HOOKUP_OBJECT (main_window, hpaned2, "hpaned2");
@@ -1729,14 +1741,12 @@ create_main_window (void)
   GLADE_HOOKUP_OBJECT (main_window, alignment13, "alignment13");
   GLADE_HOOKUP_OBJECT (main_window, hbox43, "hbox43");
   GLADE_HOOKUP_OBJECT (main_window, image42, "image42");
-  GLADE_HOOKUP_OBJECT (main_window, label68, "label68");
   GLADE_HOOKUP_OBJECT (main_window, vbox29, "vbox29");
   GLADE_HOOKUP_OBJECT (main_window, label62, "label62");
   GLADE_HOOKUP_OBJECT (main_window, button_tables, "button_tables");
   GLADE_HOOKUP_OBJECT (main_window, alignment12, "alignment12");
   GLADE_HOOKUP_OBJECT (main_window, hbox42, "hbox42");
   GLADE_HOOKUP_OBJECT (main_window, image41, "image41");
-  GLADE_HOOKUP_OBJECT (main_window, label67, "label67");
   GLADE_HOOKUP_OBJECT (main_window, vbox34, "vbox34");
   GLADE_HOOKUP_OBJECT (main_window, label70, "label70");
   GLADE_HOOKUP_OBJECT (main_window, optionmenu_fixtures, "optionmenu_fixtures");
