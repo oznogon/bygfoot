@@ -170,11 +170,6 @@ estimate_talent(player pl)
 	deviance_bound[i] = (deviance_bound[i] < scout_deviance) ?
 	    deviance_bound[i] : scout_deviance;
 
-    /*d*/
-    if(pl.talent - deviance_bound[0] < pl.skill - 0.001 && debug)
-	printf("estimtal error: team %d player %s skill %.3f bound %.3f\n",
-	       pl.team_id, pl.name, pl.skill, pl.talent - deviance_bound[0]);
-
     return rnd(pl.talent - deviance_bound[0],
 	       pl.talent + deviance_bound[1]);
 }
@@ -288,23 +283,22 @@ calculate_cskill(player pl)
 {
     gfloat cskill_factor = 1.00;
     
-    if(pl.health > 0 || pl.booked % 10 > 0)
-	cskill_factor = 0.0;
-    
-    if(pl.pos != pl.cpos)
-    	cskill_factor = 0.75;
-
     /* goalies play poorly as field players and vice versa */
     if(pl.cpos * pl.pos == 0 &&
        pl.cpos != pl.pos)
 	cskill_factor = 0.5;
     else if(abs(pl.cpos - pl.pos) == 2)
 	cskill_factor = 0.65;
-    
+    else if(pl.pos != pl.cpos)
+    	cskill_factor = 0.75;
+
+    if(pl.health > 0 || pl.booked % 10 > 0)
+	cskill_factor = 0.0;
+
     if(pl.cpos != pl.pos)
 	return MIN(pl.talent * cskill_factor, pl.skill);
     else
-	return pl.skill;
+	return pl.skill * (cskill_factor != 0);
 }
 
 /* update a player's skill depending on age, talent
@@ -459,31 +453,6 @@ find_substitute(gint team_id, gint position)
     return -1;
 }
 
-/* copy player source to player dest */
-void
-copy_player(player source, player *dest)
-{
-    strcpy(dest->name, source.name);
-
-    dest->pos = source.pos;
-    dest->cpos = source.cpos;
-    dest->health = source.health;
-    dest->goals = source.goals;
-    dest->booked = source.booked;
-    dest->games = source.games;
-    dest->last_skill_update = source.last_skill_update;    
-    dest->age = source.age;
-    dest->peak_age = source.peak_age;
-    dest->value = source.value;
-    dest->wage = source.wage;
-    dest->skill = source.skill;
-    dest->cskill = source.cskill;
-    dest->talent = source.talent;
-    dest->etal = source.etal;
-    dest->fitness = source.fitness;
-    dest->team_id = source.team_id;
-}
-
 void
 replace_player_by_new(gint team_id, gint player_number)
 {
@@ -500,17 +469,14 @@ replace_player_by_new(gint team_id, gint player_number)
 /* swap two players */
 void
 swap_players(gint team_id1, gint player_number1,
-		  gint team_id2, gint player_number2)
+	     gint team_id2, gint player_number2)
 {
     gint i, j;
     player swap;
 
-    copy_player(teams[team_id1].players[player_number1],
-		&swap);
-    copy_player(teams[team_id2].players[player_number2],
-		&(teams[team_id1].players[player_number1]));
-    copy_player(swap,
-		&(teams[team_id2].players[player_number2]));
+    swap = teams[team_id1].players[player_number1];
+    teams[team_id1].players[player_number1] = teams[team_id2].players[player_number2];
+    teams[team_id2].players[player_number2] = swap;
 
     teams[team_id1].players[player_number1].cpos =
 	get_position_from_structure(team_id1, 0, player_number1, 0);
@@ -602,9 +568,8 @@ move_player(gint team1, gint player_number, gint team2)
 	if(teams[team2].players[i].pos < 0)
 	    break;
     
-    copy_player(teams[team1].
-		players[player_number],
-		&(teams[team2].players[i]));
+    teams[team2].players[i] =
+	teams[team1].players[player_number];
 
     teams[team2].players[i].cpos =
 	get_position_from_structure(team2, 0, i, 0);

@@ -608,16 +608,18 @@ update_teams_players(gint team_id)
 void
 update_teams_injuries(gint team_id)
 {
-  gint i;
-  gint substitute;
+    /*d*/
+    gint i, j;
+    gint substitute;
     
-  for(i=0;i<11;i++)
+    for(i=0;i<11;i++)
     {
-      if(teams[team_id].players[i].cskill == 0)
+	if(teams[team_id].players[i].cskill == 0)
 	{
-	  substitute =
-	    find_substitute(team_id,
-			    teams[team_id].players[i].pos);
+	    substitute =
+		find_substitute(team_id,
+				teams[team_id].players[i].pos);
+	    
 	  /* if there's no substitute, 'repair' the player */
 	  if(substitute == -1)
 	    {		
@@ -629,7 +631,7 @@ update_teams_injuries(gint team_id)
 		calculate_cskill(teams[team_id].players[i]);
 	    }
 	  else
-	    swap_players(team_id, i, team_id, substitute);
+	      swap_players(team_id, i, team_id, substitute);
 	}
     }
 }
@@ -710,16 +712,17 @@ update_teams(void)
 	      update_team_history(&teams[i]);
 
 	  update_teams_players(i);
+
 	  if(i != my_team)
 	  {
 	      update_teams_injuries(i);
 	      update_teams_substitutes(i);
 	      update_teams_new_players(i);
-	    if(rnd(0,1) < 0.05)
-		update_teams_new_structure(i);
-	    if(rnd(0,1) < 0.1)
-		teams[i].style = 
-		    assign_playing_style();
+	      if(rnd(0,1) < 0.05)
+		  update_teams_new_structure(i);
+	      if(rnd(0,1) < 0.1)
+		  teams[i].style = 
+		      assign_playing_style();
 	  }
       }
 }

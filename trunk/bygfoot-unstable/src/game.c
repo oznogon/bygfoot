@@ -591,7 +591,7 @@ calculate_booking_player(fixture fix, gint team,
 
 void
 calculate_injury_player(fixture fix, gint team,
-			     gint player_number)
+			gint player_number)
 {
     gint i;
     gfloat rndom = rnd(0,1);

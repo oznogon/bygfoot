@@ -921,7 +921,6 @@ callback_new_week(gboolean calculate)
     update_ranks();
     update_fixtures();
     update_teams();
-
     week++;
 
     update_transferlist();

@@ -104,11 +104,6 @@ update_skill(gint team_id, gint player_number);
 /* calculate the fitness increase or decrease of a player */
 gfloat calculate_new_fitness(player pl, gint increase);
 
-/* copy player source to player dest */
-void
-copy_player(player source, player *dest);
-
-
 void
 replace_player_by_new(gint team_id, gint player_number);
 
