@@ -77,9 +77,9 @@ bygfoot_init(gint argc, gchar *argv[])
 
     sprintf(buf, "%s/support_files", pwd);
     g_free(pwd);
-    add_support_directory(buf);
+    add_support_directory_recursive(buf);
     sprintf(buf, "%s/.bygfoot", g_get_home_dir());
-    add_support_directory(buf);
+    add_support_directory_recursive(buf);
 
     set_variables();
     
@@ -87,7 +87,7 @@ bygfoot_init(gint argc, gchar *argv[])
     for(i=1;i<argc - 1;i++)
     {
 	if(strcmp(argv[i], "-d") == 0)
-	    add_support_directory (argv[i + 1]);
+	    add_support_directory_recursive(argv[i + 1]);
 	else if(strcmp(argv[i], "-f") == 0)
 	    country_names(0, argv[i + 1]);
     }
@@ -174,7 +174,7 @@ main (gint argc, gchar *argv[])
   gtk_set_locale ();
   gtk_init (&argc, &argv);
 
-  add_support_directory(PACKAGE_DATA_DIR "/" PACKAGE "/support_files");
+  add_support_directory_recursive(PACKAGE_DATA_DIR "/" PACKAGE "/support_files");
   
   bygfoot_init(argc, argv);
 

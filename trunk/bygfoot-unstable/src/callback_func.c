@@ -894,6 +894,8 @@ callback_new_week(gboolean calculate)
 {
     GtkWidget *player_list =
 	lookup_widget(main_window, "player_list");
+    GtkWidget *button_new_week =
+	lookup_widget(main_window, "button_new_week");
     
     if(calculate)
     {
@@ -970,4 +972,6 @@ callback_new_week(gboolean calculate)
 
     if(stadiums[my_team].safety < (gfloat)options[OPT_DUMMY1] / 100)
 	show_popup_window("Your stadium safety's low. ", NULL);
+
+    gtk_widget_set_sensitive(button_new_week, TRUE);
 }

@@ -593,6 +593,7 @@ on_button_new_week_clicked             (GtkButton       *button,
 	   unfit_players() == 0 ||
 	   !my_team_played(week))
 	{
+	    gtk_widget_set_sensitive(GTK_WIDGET(button), FALSE);
 	    print_message("");
 	    status = 600000 + options[OPT_SHOW_MY_GAMES];
 	    callback_new_week(TRUE);

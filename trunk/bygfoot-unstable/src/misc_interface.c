@@ -1090,11 +1090,12 @@ create_live_window (void)
   gtk_widget_show (hruler_live);
   gtk_box_pack_start (GTK_BOX (vbox23), hruler_live, FALSE, FALSE, 0);
   gtk_widget_set_sensitive (hruler_live, FALSE);
-  gtk_ruler_set_range (GTK_RULER (hruler_live), 0, 120, 55.0685, 0);
+  gtk_ruler_set_range (GTK_RULER (hruler_live), 0, 120, 86.0274, 0);
 
   vbox26 = gtk_vbox_new (FALSE, 0);
   gtk_box_pack_start (GTK_BOX (vbox23), vbox26, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (vbox26), 4);
+  gtk_widget_set_sensitive (vbox26, FALSE);
 
   check_live_window_show_live = gtk_check_button_new_with_mnemonic (_("Show live games"));
   gtk_widget_show (check_live_window_show_live);

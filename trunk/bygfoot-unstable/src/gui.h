@@ -9,11 +9,6 @@
 void
 add_support_directory_recursive                   (const gchar     *directory);
 
-/* add 'directory' both to our directory list and
-   GLADE's list */
-void
-add_support_directory(const gchar *directory);
-
 gchar*
 find_support_file                       (const gchar     *filename);
 

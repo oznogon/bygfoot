@@ -412,19 +412,10 @@ start_update(void)
     text_file_number_to_char(FILES_UPDATE_GUI, buf, TRUE);
     text_file_number_to_char(FILES_UPDATE_SCRIPT, buf2, TRUE);
 
-    if(strlen(buf) == 0)
-    {
-	sprintf(buf2,
-		"\nDidn't find the update script frontend. Perhaps you don't have the Bygfoot source version installed. Please refer to the Bygfoot homepage http://www.bygfoot.com to see whether there are new versions in your favourite package format available.\n\n");
-	if(main_window == NULL)
-	    g_print("%s", buf2);
-	else
-	    show_popup_window(buf2, NULL);
-
-	return;
-    }
-
-    sprintf(buf3, "%s %s", buf, buf2);
+    if(strlen(buf) != 0)
+	sprintf(buf3, "%s %s", buf, buf2);
+    else
+	sprintf(buf3, "bygfoot-update-gui");
 
     g_spawn_command_line_async(buf3, &error);
     print_error(error, TRUE);

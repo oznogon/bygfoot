@@ -30,8 +30,9 @@ add_support_directory_recursive                   (const gchar     *directory)
     if(newdir == NULL)
 	return;
 
+    add_pixmap_directory(directory);
     support_directories = g_list_prepend (support_directories,
-					     g_strdup (directory));
+					  g_strdup (directory));
 
     while(TRUE)
     {
@@ -50,15 +51,6 @@ add_support_directory_recursive                   (const gchar     *directory)
     }
 
     g_dir_close(newdir);
-}
-
-/* add 'directory' both to our directory list and
-   GLADE's list */
-void
-add_support_directory(const gchar *directory)
-{
-    add_pixmap_directory(directory);
-    add_support_directory_recursive(directory);
 }
 
 gchar*

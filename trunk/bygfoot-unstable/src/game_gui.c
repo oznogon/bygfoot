@@ -972,6 +972,7 @@ show_live_game(gint idx)
     if(fixtures[idx].result[0][2] + 
        fixtures[idx].result[1][2] == 0)
     {
+	gtk_widget_set_sensitive(button_live_close->parent, TRUE);
 	gtk_widget_show(button_live_close->parent);
 	return;
     }
@@ -993,6 +994,7 @@ show_live_game(gint idx)
 	    }
 	}
 
+    gtk_widget_set_sensitive(button_live_close->parent, TRUE);
     gtk_widget_show(button_live_close->parent);
 }
 
