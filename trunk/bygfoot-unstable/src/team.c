@@ -1066,14 +1066,17 @@ void change_objective() {
 	//Refresh objective
 	objective_generate(my_team,season_objective);
 	//show new objective;	  
-	strcpy(tmp,_("Objective from Team Manager :"));
-	for(i=0;i<MAX_OBJECTIVE;i++) {			
+	if(options[OPT_OBJECTIVE] == 1 ) 
+	{//only show objective if needed
+		strcpy(tmp,_("Objective from Team Manager :"));
+		for(i=0;i<MAX_OBJECTIVE;i++) {			
 		gchar * obj_string=objective_get_message(season_objective+i);	
-		if(obj_string) {
-			gchar * tmpDup=strdup(tmp);
-			sprintf(tmp,"%s\n- %s",tmpDup,obj_string);
-			g_free(obj_string);
-			g_free(tmpDup);
+			if(obj_string) {
+				gchar * tmpDup=strdup(tmp);
+				sprintf(tmp,"%s\n- %s",tmpDup,obj_string);
+				g_free(obj_string);
+				g_free(tmpDup);
+			}
 		}
 	}
 	show_popup_window(tmp,NULL);	  	
