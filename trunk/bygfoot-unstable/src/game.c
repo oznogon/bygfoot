@@ -209,7 +209,7 @@ prg_calculate_values(fixture fix, gfloat *attack_value,
 /* store information about a goal */
 void
 prg_write_goal(fixture fix, gint team, gint scorer,
-		    gint time, gint type)
+	       gint time, gint type)
 {
     gint i;
     gint goal_idx[2];
@@ -217,7 +217,7 @@ prg_write_goal(fixture fix, gint team, gint scorer,
     /* first increase the number of goals for the player */
     if((fix.type < 6000 || my_team > 114) &&
        teams[fix.team_id[team]].players[scorer].pos != 0 &&
-       type != GOAL_TYPE_OWN)
+       (type == GOAL_TYPE_NORMAL || type == GOAL_TYPE_PEN))
 	teams[fix.team_id[team]].players[scorer].goals++;
     
     /* if the human player's team is not involved
@@ -446,7 +446,7 @@ simulate_penalty(fixture *fix, gfloat goalie_value,
 	0.015 * goalie_value;
         
     /* record a failure as a special type of goal */
-    if(rndom > scoring_probability)
+    if(rndom > scoring_probability && !bookmaker)
     {	
 	prg_write_goal(*fix, team, player_number, 
 		       time, rndi(GOAL_TYPE_PEN_MISSED, GOAL_TYPE_PEN_CROSS));
