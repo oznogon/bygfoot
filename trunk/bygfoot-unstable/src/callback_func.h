@@ -2,6 +2,7 @@
 #define CALLBACK_FUNC_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /* get the integer value in the first column of a treeview */
 gint

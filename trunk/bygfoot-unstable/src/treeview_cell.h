@@ -2,6 +2,7 @@
 #define TREEVIEW_CELL_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /* print some information about the injury of
    the player into 'buf' */

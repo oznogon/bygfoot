@@ -4,14 +4,15 @@
  * season                                         *
  **************************************************/
 
+#include "files.h"
 #include "game_gui.h"
 #include "generation.h"
 #include "gui.h"
+#include "history.h"
 #include "maths.h"
 #include "misc.h"
 #include "player.h"
 #include "team.h"
-#include "files.h"
 #include "window.h"
 
 /* name all players in each team between first_team and last_team */
@@ -247,7 +248,7 @@ fill_in_team(gint team_id)
     
     generate_players(team_id);
 
-    teams[team_id].history = g_array_new(FALSE, FALSE, TEAM_HISTORY_END * sizeof(gint));
+    teams[team_id].history = g_array_new(FALSE, FALSE, sizeof(team_history));
 }
 
 /* generate the european teams participating in

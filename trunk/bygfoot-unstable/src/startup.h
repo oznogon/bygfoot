@@ -2,6 +2,7 @@
 #define STARTUP_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /* write default options and other
    global variables.

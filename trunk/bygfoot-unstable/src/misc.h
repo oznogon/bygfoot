@@ -2,6 +2,7 @@
 #define MISC_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /* check whether 'item' is in array 'list' between
    'min' and 'max' */

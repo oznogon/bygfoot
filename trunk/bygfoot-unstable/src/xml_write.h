@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 #include "bygfoot.h"
+#include "variables.h"
 
 void write_xml_save(char * file_name);
 void write_xml_init(FILE * xml_file);

@@ -2,7 +2,6 @@
 #define TEAM_H
 
 #include "bygfoot.h"
-#include "player.h"
 
 typedef struct _team team;
 struct _team
@@ -23,6 +22,7 @@ struct _team
     GArray *history;
 };
 
+#include "variables.h"
 
 /* try to set each of the first 11 players on his
    favoured position and sort the substitutes by position */

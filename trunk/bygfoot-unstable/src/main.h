@@ -2,6 +2,7 @@
 #define MAIN_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /* set some variables that are used but not saved
    in the game */

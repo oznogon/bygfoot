@@ -2,6 +2,7 @@
 #define GAME_GUI_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /* make new bookmaker tips in case the user's
    team has changed significantly */

@@ -2,6 +2,7 @@
 #define OPTIONS_CALLBACKS_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 void
 on_button_opt_ok_clicked               (GtkButton       *button,

@@ -8,120 +8,97 @@
 void reset_player_history(player * pl)
 {
     g_array_free(pl->history, TRUE);
-    pl->history = g_array_new(FALSE, FALSE, PLAYER_HISTORY_END * sizeof(gint));
+    pl->history = g_array_new(FALSE, FALSE, sizeof(player_history));
 }
 
 void update_player_history(player * pl)
 {
     /* Creates a new player history (corresponding to the current situation)
        and adds it to the existing history list */	
-    gint values[PLAYER_HISTORY_END];
+    player_history new;
 
-    values[PLAYER_HISTORY_SEASON] = season;
-    values[PLAYER_HISTORY_WEEK] = week;
-    values[PLAYER_HISTORY_SKILL] = (gint)rint(pl->cskill * 10);
-    values[PLAYER_HISTORY_GOALS] = pl->goals;
-    values[PLAYER_HISTORY_WAGE] = pl->wage;
-    values[PLAYER_HISTORY_VALUE] = pl->value;
+    new.values[PLAYER_HISTORY_SEASON] = season;
+    new.values[PLAYER_HISTORY_WEEK] = week;
+    new.values[PLAYER_HISTORY_SKILL] = (gint)rint(pl->cskill * 10);
+    new.values[PLAYER_HISTORY_GOALS] = pl->goals;
+    new.values[PLAYER_HISTORY_WAGE] = pl->wage;
+    new.values[PLAYER_HISTORY_VALUE] = pl->value;
     
-    g_array_append_val(pl->history, values);
+    g_array_append_val(pl->history, new);
 }
 
 /***************************** FINANCES *****************************************/
 
-void reset_team_history(gint team_id)
+void reset_team_history(team *tm)
 {
-    g_array_free(teams[team_id].history, TRUE);
-    teams[team_id].history = g_array_new(FALSE, FALSE, TEAM_HISTORY_END * sizeof(gint));
+    g_array_free(tm->history, TRUE);
+    tm->history = g_array_new(FALSE, FALSE, sizeof(team_history));
 }
 
-void update_team_history(gint team_id)
+void update_team_history(team *tm)
 {
-    gint values[TEAM_HISTORY_END];
+    gint bound[2];
+    team_history new;
 
-    values[TEAM_HISTORY_RANK] = rank[team_id];
-    values[TEAM_HISTORY_PTS] = teams[team_id].results[RES_PTS];
-    values[TEAM_HISTORY_GD] = teams[team_id].results[RES_GF] - teams[team_id].results[RES_GA];
-    values[TEAM_HISTORY_GF] = teams[team_id].results[RES_GF];
-    values[TEAM_HISTORY_GA] = teams[team_id].results[RES_GA];
-    values[TEAM_HISTORY_MONEY] = (team_id == my_team) ? finances[FIN_MONEY] : 0;
-    values[TEAM_HISTORY_AV_ATTENDANCE] = stadiums[team_id].average_attendance;
+    get_league_bounds(get_league_from_id(tm->id), bound);
+
+    new.values[TEAM_HISTORY_RANK] = bound[1] - bound[0] - rank[tm->id];
+    new.values[TEAM_HISTORY_PTS] = tm->results[RES_PTS];
+    new.values[TEAM_HISTORY_GD] = tm->results[RES_GF] - tm->results[RES_GA];
+    new.values[TEAM_HISTORY_GF] = tm->results[RES_GF];
+    new.values[TEAM_HISTORY_GA] = tm->results[RES_GA];
+    new.values[TEAM_HISTORY_MONEY] = (tm->id == my_team) ? finances[FIN_MONEY] : 0;
+    new.values[TEAM_HISTORY_AV_ATTENDANCE] = stadiums[tm->id].average_attendance;
 	
-    g_array_append_val(teams[team_id].history, values);
-}
-
-/* get either a player or a team history;
-   either a whole element, or a value from an element,
-   or values of a certain type from each element */
-gint
-get_history(team *team, player *pl, gint idx, gint *values,
-	    GArray *array, gint hist_type, gint type)
-{
-    GArray *history;
-    gint max;
-
-    if(team == NULL)
-    {
-	history = pl->history;
-	max = PLAYER_HISTORY_END;
-    }
-    else
-    {
-	history = team->history;
-	max = TEAM_HISTORY_END;
-    }
-
-    if(type == GET_HISTORY_ELEMENT)
-	get_history_element(history, idx, values, max);
-    else if(type == GET_HISTORY_ELEMENT_VALUE)
-	return get_history_element_value(history, idx, hist_type, max);
-    else if(type == GET_HISTORY_VALUES)
-	get_history_values(history, array, hist_type, max);
-
-    return 0;
+    g_array_append_val(tm->history, new);
 }
 
 /* write the history of a given index into the values array */
 void
-get_history_element(GArray *history, gint idx, gint *values, gint max)
+get_player_history_element(player pl, player_history *history, gint idx)
 {
     gint i;
 
-    if(history->len <= idx)
-    {
-	g_print("get_history_element: index %d too high, array not long enough\n", idx);
-	return;
-    }
-
-    for(i=0;i<max;i++)
-	values[i] = 
-	    g_array_index(history, gint, idx * max + i);
-}
-
-/* return a certain value from the history element */
-gint
-get_history_element_value(GArray *history, gint idx, gint type, gint max)
-{
-    if(history->len <= idx)
-    {
-	g_print("get_history_player: index %d too high, array not long enough;\n", idx);
-	return 1;
-    }
-
-    return g_array_index(history,
-			 gint, idx * max + type);
+    for(i=0;i<PLAYER_HISTORY_END;i++)
+	history->values[i] = 
+	    g_array_index(pl.history, player_history, idx).values[i];
 }
 
 /* write the values of type 'type' of every history element into the array */
 void
-get_history_values(GArray *history, GArray *array, gint type, gint max)
+get_player_history_values(player pl, GArray *array, gint type)
 {
     gint i;
     gint value;
 
-    for(i=0;i<history->len;i++)
+    for(i=0;i<pl.history->len;i++)
     {	
-	value = g_array_index(history, gint, i * max + type);
+	value = g_array_index(pl.history, player_history, i).values[type];
+	g_array_append_val(array, value);
+    }
+}
+
+/* write the history of a given index into the values array */
+void
+get_team_history_element(team tm, team_history *history, gint idx)
+{
+    gint i;
+
+    for(i=0;i<TEAM_HISTORY_END;i++)
+	history->values[i] = 
+	    g_array_index(tm.history, team_history, idx).values[i];
+}
+
+/* write the values of type 'type' of every history element into the array */
+void
+get_team_history_values(team tm, GArray *array, gint type)
+{
+    gint i;
+    gint value;
+
+    for(i=0;i<tm.history->len;i++)
+    {	
+	value = g_array_index(tm.history, team_history, i).values[type];
 	g_array_append_val(array, value);
     }
 }

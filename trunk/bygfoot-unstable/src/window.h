@@ -2,6 +2,7 @@
 #define WINDOW_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /* create the live window and return the pointer */
 GtkWidget*

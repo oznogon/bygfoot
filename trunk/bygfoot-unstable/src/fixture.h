@@ -3,6 +3,16 @@
 
 #include "bygfoot.h"
 
+typedef struct _fixture fixture;
+struct _fixture
+{
+    gint team_id[2];
+    gint result[2][3], type,
+	week_number;
+};
+
+#include "variables.h"
+
 /* return the index 0 or 1 for the variables like
    stadium_facts[] or goals[] */
 gint

@@ -4,6 +4,7 @@
 #include <libxml/parser.h>
 #include <gtk/gtk.h>
 #include "bygfoot.h"
+#include "variables.h"
 
 int check_xml_save(char * file_name);
 void read_xml_save(char * file_name);

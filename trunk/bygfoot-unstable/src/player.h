@@ -3,13 +3,6 @@
 
 #include "bygfoot.h"
 
-/* typedef struct _player_history player_history; */
-
-/* struct player_history */
-/* { */
-/*     gint values[PLAYER_HISTORY_END]; */
-/* }; */
-
 typedef struct _player player;
 struct _player
 {
@@ -44,6 +37,8 @@ struct _player
 
     GArray *history;
 };
+
+#include "variables.h"
 
 /**************************************************
  * Functions working with players                 *

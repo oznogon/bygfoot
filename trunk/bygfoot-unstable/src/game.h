@@ -3,6 +3,18 @@
 
 #include "bygfoot.h"
 
+typedef struct _goal goal;
+struct _goal
+{
+    gint minute;    
+    gint team_id;
+    gint scorer;
+    gint time;
+    gint type;
+};
+
+#include "variables.h"
+
 /* get the number of goals for 'team' in the first leg */
 gint
 get_first_leg_result(fixture fix, gint team);

@@ -2,6 +2,7 @@
 #define MISC2_CALLBACKS_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 void
 on_button_ok_clicked                   (GtkButton       *button,

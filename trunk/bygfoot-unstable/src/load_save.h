@@ -2,6 +2,7 @@
 #define LOAD_SAVE_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /* try to find out which file the user wants to load
    if the input isn't correct (e.g. path omitted) */

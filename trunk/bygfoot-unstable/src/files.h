@@ -2,6 +2,7 @@
 #define FILES_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /* read the file until the next line that's not a comment or
    a blank line and copy the line into buf; or, if find_text is

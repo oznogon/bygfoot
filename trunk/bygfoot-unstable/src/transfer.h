@@ -2,6 +2,21 @@
 #define TRANSFERS_H
 
 #include "bygfoot.h"
+#include "variables.h"
+
+/* 'time' is the number of weeks
+   the player stays on the list. it's
+   randomised between 2 and 5.
+   time = -1 means the transfer is empty */
+typedef struct _transfer transfer;
+struct _transfer
+{
+    gint team_id, player_number;
+    gint time;
+    /* the scout's estimates for price and
+       wage of the player */
+    gint estimates[2];
+};
 
 /* return number of players on list */
 gint

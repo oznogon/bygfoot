@@ -2,6 +2,7 @@
 #define MISC_CALLBACKS_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /************************************************************
  * callbacks for the live game window                       *

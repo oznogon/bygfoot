@@ -693,7 +693,7 @@ update_teams(void)
     if(i != 114 && i != 130 &&
        i < 175)
       {
-	  update_team_history(i);
+	  update_team_history(&teams[i]);
 	  update_teams_players(i);
 	  if(i != my_team)
 	  {

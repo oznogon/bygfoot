@@ -2,6 +2,7 @@
 #define EDITOR_DEFS_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /* in editor mode we don't need some globale variables
    but need others so we rename them */

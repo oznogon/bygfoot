@@ -4,6 +4,7 @@
 
 #include "callbacks.h"
 #include "finance.h"
+#include "history.h"
 #include "maths.h"
 #include "player.h"
 #include "team.h"
@@ -277,7 +278,7 @@ generate_player(gint team_id, gfloat team_factor,
     pl->fitness = gauss_dist(.7,.85,.99,.99);
 
     /* create player history array */
-    pl->history = g_array_new(FALSE, FALSE, PLAYER_HISTORY_END * sizeof(gint));
+    pl->history = g_array_new(FALSE, FALSE, sizeof(player_history));
 }
 
 /* calculate a player's current skill depending on position,

@@ -2,6 +2,7 @@
 #define FINANCES_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /* the amount of money the user has for transactions:
    the money on his account plus his drawing credit */

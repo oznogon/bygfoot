@@ -2,8 +2,8 @@
 #define MATH_H
 
 #include <math.h>
-
 #include "bygfoot.h"
+#include "variables.h"
 
 /* macros */
 #define rnd(lower,upper) ((gfloat)random()/(gfloat)0x7fffffff*((upper)-(lower))+(lower))

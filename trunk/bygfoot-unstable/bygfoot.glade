@@ -574,6 +574,14 @@
 		      <property name="use_underline">True</property>
 		    </widget>
 		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="history_graph1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">History graph</property>
+		      <property name="use_underline">True</property>
+		    </widget>
+		  </child>
 		</widget>
 	      </child>
 	    </widget>
@@ -2135,49 +2143,31 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkHBox" id="hbox19">
+			<widget class="GtkOptionMenu" id="optionmenu_finstad">
 			  <property name="visible">True</property>
-			  <property name="homogeneous">False</property>
-			  <property name="spacing">0</property>
+			  <property name="can_focus">True</property>
+			  <property name="history">0</property>
+			  <signal name="changed" handler="on_optionmenu_finstad_changed" last_modification_time="Mon, 11 Oct 2004 14:35:53 GMT"/>
 
 			  <child>
-			    <widget class="GtkVBox" id="vbox18">
-			      <property name="visible">True</property>
-			      <property name="homogeneous">False</property>
-			      <property name="spacing">0</property>
+			    <widget class="GtkMenu" id="menu7">
 
 			      <child>
-				<widget class="GtkLabel" id="label37">
+				<widget class="GtkMenuItem" id="finances_/_stadium1">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="yes">  </property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0.5</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
+				  <property name="label" translatable="yes">Finances / Stadium</property>
+				  <property name="use_underline">True</property>
 				</widget>
-				<packing>
-				  <property name="padding">0</property>
-				  <property name="expand">False</property>
-				  <property name="fill">False</property>
-				</packing>
 			      </child>
 
 			      <child>
-				<widget class="GtkButton" id="button_stad_capacity">
-				  <property name="border_width">2</property>
+				<widget class="GtkImageMenuItem" id="increase_capacity1">
 				  <property name="visible">True</property>
-				  <property name="tooltip" translatable="yes">Increase capacity</property>
-				  <property name="can_focus">True</property>
-				  <property name="relief">GTK_RELIEF_NORMAL</property>
-				  <signal name="clicked" handler="on_button_stad_capacity_clicked" last_modification_time="Tue, 03 Feb 2004 16:03:55 GMT"/>
+				  <property name="label" translatable="yes">Increase capacity</property>
+				  <property name="use_underline">True</property>
 
-				  <child>
-				    <widget class="GtkImage" id="image37">
+				  <child internal-child="image">
+				    <widget class="GtkImage" id="image96">
 				      <property name="visible">True</property>
 				      <property name="pixbuf">inc_cap.png</property>
 				      <property name="xalign">0.5</property>
@@ -2187,58 +2177,16 @@
 				    </widget>
 				  </child>
 				</widget>
-				<packing>
-				  <property name="padding">0</property>
-				  <property name="expand">False</property>
-				  <property name="fill">False</property>
-				</packing>
-			      </child>
-			    </widget>
-			    <packing>
-			      <property name="padding">0</property>
-			      <property name="expand">True</property>
-			      <property name="fill">True</property>
-			    </packing>
-			  </child>
-
-			  <child>
-			    <widget class="GtkVBox" id="vbox19">
-			      <property name="visible">True</property>
-			      <property name="homogeneous">False</property>
-			      <property name="spacing">0</property>
-
-			      <child>
-				<widget class="GtkLabel" id="label38">
-				  <property name="visible">True</property>
-				  <property name="label" translatable="yes">  </property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0.5</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				</widget>
-				<packing>
-				  <property name="padding">0</property>
-				  <property name="expand">False</property>
-				  <property name="fill">False</property>
-				</packing>
 			      </child>
 
 			      <child>
-				<widget class="GtkButton" id="button_stad_safety">
-				  <property name="border_width">2</property>
+				<widget class="GtkImageMenuItem" id="increase_safety1">
 				  <property name="visible">True</property>
-				  <property name="tooltip" translatable="yes">Increase safety</property>
-				  <property name="can_focus">True</property>
-				  <property name="relief">GTK_RELIEF_NORMAL</property>
-				  <signal name="clicked" handler="on_button_stad_safety_clicked" last_modification_time="Tue, 03 Feb 2004 16:04:06 GMT"/>
+				  <property name="label" translatable="yes">Increase safety</property>
+				  <property name="use_underline">True</property>
 
-				  <child>
-				    <widget class="GtkImage" id="image38">
+				  <child internal-child="image">
+				    <widget class="GtkImage" id="image97">
 				      <property name="visible">True</property>
 				      <property name="pixbuf">inc_saf.png</property>
 				      <property name="xalign">0.5</property>
@@ -2248,58 +2196,16 @@
 				    </widget>
 				  </child>
 				</widget>
-				<packing>
-				  <property name="padding">0</property>
-				  <property name="expand">False</property>
-				  <property name="fill">False</property>
-				</packing>
-			      </child>
-			    </widget>
-			    <packing>
-			      <property name="padding">0</property>
-			      <property name="expand">True</property>
-			      <property name="fill">True</property>
-			    </packing>
-			  </child>
-
-			  <child>
-			    <widget class="GtkVBox" id="vbox20">
-			      <property name="visible">True</property>
-			      <property name="homogeneous">False</property>
-			      <property name="spacing">0</property>
-
-			      <child>
-				<widget class="GtkLabel" id="label39">
-				  <property name="visible">True</property>
-				  <property name="label" translatable="yes">  </property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0.5</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				</widget>
-				<packing>
-				  <property name="padding">0</property>
-				  <property name="expand">False</property>
-				  <property name="fill">False</property>
-				</packing>
 			      </child>
 
 			      <child>
-				<widget class="GtkButton" id="button_get_loan">
-				  <property name="border_width">2</property>
+				<widget class="GtkImageMenuItem" id="get_loan1">
 				  <property name="visible">True</property>
-				  <property name="tooltip" translatable="yes">Get loan</property>
-				  <property name="can_focus">True</property>
-				  <property name="relief">GTK_RELIEF_NORMAL</property>
-				  <signal name="clicked" handler="on_button_get_loan_clicked" last_modification_time="Tue, 03 Feb 2004 16:04:16 GMT"/>
+				  <property name="label" translatable="yes">Get loan</property>
+				  <property name="use_underline">True</property>
 
-				  <child>
-				    <widget class="GtkImage" id="image34">
+				  <child internal-child="image">
+				    <widget class="GtkImage" id="image98">
 				      <property name="visible">True</property>
 				      <property name="pixbuf">get_loan.png</property>
 				      <property name="xalign">0.5</property>
@@ -2309,58 +2215,16 @@
 				    </widget>
 				  </child>
 				</widget>
-				<packing>
-				  <property name="padding">0</property>
-				  <property name="expand">False</property>
-				  <property name="fill">False</property>
-				</packing>
-			      </child>
-			    </widget>
-			    <packing>
-			      <property name="padding">0</property>
-			      <property name="expand">True</property>
-			      <property name="fill">True</property>
-			    </packing>
-			  </child>
-
-			  <child>
-			    <widget class="GtkVBox" id="vbox21">
-			      <property name="visible">True</property>
-			      <property name="homogeneous">False</property>
-			      <property name="spacing">0</property>
-
-			      <child>
-				<widget class="GtkLabel" id="label40">
-				  <property name="visible">True</property>
-				  <property name="label" translatable="yes">  </property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0.5</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				</widget>
-				<packing>
-				  <property name="padding">0</property>
-				  <property name="expand">False</property>
-				  <property name="fill">False</property>
-				</packing>
 			      </child>
 
 			      <child>
-				<widget class="GtkButton" id="button_pay_loan">
-				  <property name="border_width">2</property>
+				<widget class="GtkImageMenuItem" id="pay_loan1">
 				  <property name="visible">True</property>
-				  <property name="tooltip" translatable="yes">Pay back loan</property>
-				  <property name="can_focus">True</property>
-				  <property name="relief">GTK_RELIEF_NORMAL</property>
-				  <signal name="clicked" handler="on_button_pay_loan_clicked" last_modification_time="Tue, 03 Feb 2004 16:04:23 GMT"/>
+				  <property name="label" translatable="yes">Pay loan</property>
+				  <property name="use_underline">True</property>
 
-				  <child>
-				    <widget class="GtkImage" id="image35">
+				  <child internal-child="image">
+				    <widget class="GtkImage" id="image99">
 				      <property name="visible">True</property>
 				      <property name="pixbuf">pay_loan.png</property>
 				      <property name="xalign">0.5</property>
@@ -2370,18 +2234,8 @@
 				    </widget>
 				  </child>
 				</widget>
-				<packing>
-				  <property name="padding">0</property>
-				  <property name="expand">False</property>
-				  <property name="fill">False</property>
-				</packing>
 			      </child>
 			    </widget>
-			    <packing>
-			      <property name="padding">0</property>
-			      <property name="expand">True</property>
-			      <property name="fill">True</property>
-			    </packing>
 			  </child>
 			</widget>
 			<packing>

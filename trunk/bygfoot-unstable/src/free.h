@@ -1,4 +1,5 @@
 #include "bygfoot.h"
+#include "variables.h"
 
 /* free everything we allocated */
 void

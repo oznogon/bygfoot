@@ -2,6 +2,7 @@
 #define CALLBACKS_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 void
 on_menu_open_activate                  (GtkMenuItem     *menuitem,

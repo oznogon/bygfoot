@@ -645,6 +645,12 @@ create_graph_window (void)
   GtkWidget *hbox14;
   GtkWidget *image6;
   GtkWidget *label35;
+  GtkAccelGroup *accel_group;
+  GtkTooltips *tooltips;
+
+  tooltips = gtk_tooltips_new ();
+
+  accel_group = gtk_accel_group_new ();
 
   graph_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_container_set_border_width (GTK_CONTAINER (graph_window), 6);
@@ -719,7 +725,7 @@ create_graph_window (void)
   hruler_graph = gtk_hruler_new ();
   gtk_widget_show (hruler_graph);
   gtk_box_pack_start (GTK_BOX (vbox11), hruler_graph, FALSE, FALSE, 0);
-  gtk_ruler_set_range (GTK_RULER (hruler_graph), 0, 10, 0.806916, 10);
+  gtk_ruler_set_range (GTK_RULER (hruler_graph), 0, 10, 3.05476, 10);
 
   label33 = gtk_label_new (_("Weeks"));
   gtk_widget_show (label33);
@@ -807,6 +813,13 @@ create_graph_window (void)
   gtk_widget_show (button_close);
   gtk_box_pack_start (GTK_BOX (vbox8), button_close, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (button_close), 4);
+  gtk_tooltips_set_tip (tooltips, button_close, _("Space / Esc"), NULL);
+  gtk_widget_add_accelerator (button_close, "clicked", accel_group,
+                              GDK_Escape, 0,
+                              GTK_ACCEL_VISIBLE);
+  gtk_widget_add_accelerator (button_close, "clicked", accel_group,
+                              GDK_space, 0,
+                              GTK_ACCEL_VISIBLE);
 
   alignment6 = gtk_alignment_new (0.5, 0.51, 0, 0);
   gtk_widget_show (alignment6);
@@ -880,6 +893,9 @@ create_graph_window (void)
   GLADE_HOOKUP_OBJECT (graph_window, hbox14, "hbox14");
   GLADE_HOOKUP_OBJECT (graph_window, image6, "image6");
   GLADE_HOOKUP_OBJECT (graph_window, label35, "label35");
+  GLADE_HOOKUP_OBJECT_NO_REF (graph_window, tooltips, "tooltips");
+
+  gtk_window_add_accel_group (GTK_WINDOW (graph_window), accel_group);
 
   return graph_window;
 }

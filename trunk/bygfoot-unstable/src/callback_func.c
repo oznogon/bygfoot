@@ -122,8 +122,8 @@ callback_show_player_stats(GtkTreeSelection *selection,
 
     status = (100000 + 100 * my_team + player_number) * -1;
 
-    show_graph(show_graph_window(), my_team, player_number,
-	       TRUE, PLAYER_HISTORY_SKILL);
+    show_graph(show_graph_window(), NULL,
+	       &teams[my_team].players[player_number], PLAYER_HISTORY_SKILL);
 }
 
 
@@ -1465,7 +1465,7 @@ callback_show_graph(void)
     
     gtk_widget_hide(lookup_widget(graph_window,
 				  "optionmenu_player"));    
-    show_graph(graph_window, my_team, 0, FALSE, TEAM_HISTORY_RANK);
+    show_graph(graph_window, &teams[my_team], NULL, TEAM_HISTORY_RANK);
 }
 
 

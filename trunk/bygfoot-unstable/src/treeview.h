@@ -2,6 +2,7 @@
 #define TREEVIEW_H
 
 #include "bygfoot.h"
+#include "variables.h"
 
 /* return the number in the first column of the currently
    selected row of the treeview */
