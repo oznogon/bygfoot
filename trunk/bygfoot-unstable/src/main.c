@@ -6,6 +6,7 @@
 #include <time.h>
 
 #include "callbacks.h"
+#include "free.h"
 #include "generation.h"
 #include "gui.h"
 #include "load_save.h"
@@ -38,11 +39,11 @@ set_variables(void)
 	notify_status[i] = FALSE;
 
     status = save_status = popups_active = 0;
-    /* reset main window pointer */
-    main_window = NULL;
+    /* reset window pointers */
+    main_window = progressbar_window = NULL;
     /* reset default save file name */
     sprintf(buf, "%s/.bygfoot/saves/", getenv("HOME"));
-    save_file = g_string_new(buf);
+    save_file = g_string_new(buf);	
     /* reset history chained list */
     history = NULL;
     /* reset font and country file names */
@@ -169,5 +170,7 @@ main (gint argc, gchar *argv[])
   
   bygfoot_init(argc, argv);
 
+  free_memory();
+  
   return 0;
 }

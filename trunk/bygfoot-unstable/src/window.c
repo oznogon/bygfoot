@@ -19,6 +19,18 @@
 #include "treeview.h"
 #include "window.h"
 
+/* set 'bygfoot x.y.z' into the title of the window */
+GtkWidget*
+set_version(GtkWidget *window)
+{
+    gchar buf[SMALL];
+
+    sprintf(buf, "Bygfoot Football Manager %s", VERS);
+    gtk_window_set_title(GTK_WINDOW(window), buf);
+
+    return window;
+}
+
 /* create the live window and return the pointer */
 GtkWidget*
 return_live_window(void)
@@ -31,12 +43,8 @@ GtkWidget*
 return_main_window(void)
 {
     GtkWidget *window = create_main_window();
-    gchar buf[SMALL];
-    
-    sprintf(buf, "Bygfoot Football Manager %s", VERS);
-    gtk_window_set_title(GTK_WINDOW(window), buf);
 
-    return window;
+    return set_version(window);
 }
 
 /* create options window */
@@ -107,7 +115,6 @@ show_popup_window(gchar *text, gint *status)
     GtkWidget *check_popup =
 	lookup_widget(popup_window, "check_popup");
     GtkWidget *label_popup_status[3];
-    gchar buf[SMALL];
     
     radiobuttons[0] = 
 	lookup_widget(popup_window, "radiobutton0");
@@ -121,8 +128,7 @@ show_popup_window(gchar *text, gint *status)
     label_popup_status[2] = 
 	lookup_widget(popup_window, "label_popup_status3");
 
-    sprintf(buf, "Bygfoot %s", VERS);
-    gtk_window_set_title(GTK_WINDOW(popup_window), buf);
+    set_version(popup_window);
 
     if(status == NULL)
 	for(i=0;i<3;i++)
@@ -244,8 +250,7 @@ show_file_selection(gint save)
     gchar buf[SMALL];
     gchar buf2[SMALL];
 
-    sprintf(buf, "Bygfoot %s", VERS);
-    gtk_window_set_title(GTK_WINDOW(fsel_window), buf);
+    set_version(fsel_window);
 
     sprintf(buf, "%s/.bygfoot/text_files/", getenv("HOME"));
     sprintf(buf2, "test -d %s", buf);
@@ -285,10 +290,8 @@ show_font_sel_window(void)
 {
     GtkWidget *font_sel_window =
 	create_font_sel_window();
-    gchar buf[SMALL];
-    
-    sprintf(buf, "Bygfoot %s", VERS);
-    gtk_window_set_title(GTK_WINDOW(font_sel_window), buf);
+
+    set_version(font_sel_window);
     
     change_popups_active(1);
     gtk_widget_show(font_sel_window);
@@ -435,13 +438,25 @@ GtkWidget*
 show_graph_window(void)
 {
     GtkWidget *window = create_graph_window();
-    gchar buf[SMALL];
     
-    sprintf(buf, "Bygfoot Football Manager %s", VERS);
-    gtk_window_set_title(GTK_WINDOW(window), buf);
+    set_version(window);
 
     change_popups_active(1);
     gtk_widget_show(window);
 
     return window;
+}
+
+/* return a pointer to the progress bar window */
+GtkWidget *
+return_progressbar_window(void)
+{
+    if(progressbar_window == NULL)
+    {
+	progressbar_window = create_progressbar_window();
+	set_version(progressbar_window);
+	gtk_widget_show(progressbar_window);
+    }
+
+    return progressbar_window;
 }

@@ -215,7 +215,7 @@ mean_skill_euro(gint league)
    the player's number in his team */
 void
 generate_player(gint team_id, gfloat team_factor,
-		     gint player_number)
+		gint player_number)
 {
     /* mean skill value for different leagues */
     gfloat mean_skills[8] = {8.0, /* Premier Division */
@@ -274,7 +274,10 @@ generate_player(gint team_id, gfloat team_factor,
     pl->wage = assign_wage(*pl);
 
     /* fitness is measured in percent */
-    pl->fitness = gauss_dist(.7,.85,.99,.99);       
+    pl->fitness = gauss_dist(.7,.85,.99,.99);
+
+    /* create player history array */
+    pl->history = g_array_new(FALSE, FALSE, PLAYER_HISTORY_END * sizeof(gint));
 }
 
 /* calculate a player's current skill depending on position,

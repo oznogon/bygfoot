@@ -165,9 +165,6 @@ update_finances(void)
 {
     gint i, k = 0;
 
-    /* update finance history */
-    update_finances_history();
-
     for(i=1;i<FIN_DEBTS;i++)
 	finances[i] = 0;
 

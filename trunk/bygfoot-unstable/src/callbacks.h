@@ -266,5 +266,9 @@ on_player_list2_button_press_event     (GtkWidget       *widget,
 void
 on_show_statistics_activate            (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
-#endif
 
+
+void
+on_optionmenu_finstad_changed          (GtkOptionMenu   *optionmenu,
+                                        gpointer         user_data);
+#endif

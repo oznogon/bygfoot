@@ -12,6 +12,7 @@
 #include "support.h"
 #include "team.h"
 #include "treeview.h"
+#include "window.h"
 
 /* list of pixmap directories */
 static GList *support_directories = NULL;
@@ -343,10 +344,10 @@ set_buttons(void)
 	lookup_widget(main_window, "player_info_separator");
     GtkWidget *button_league_results =
 	lookup_widget(main_window, "button_league_results");
-    GtkWidget *button_get_loan =
-	lookup_widget(main_window, "button_get_loan");
     GtkWidget *button_fixtures = 
 	lookup_widget(main_window, "button_fixtures");
+    GtkWidget *optionmenu_finstad =
+	lookup_widget(main_window, "optionmenu_finstad");
               
     gtk_widget_hide(button_browse_back->parent->parent);
     gtk_widget_hide(button_browse->parent);
@@ -356,8 +357,8 @@ set_buttons(void)
     gtk_widget_hide(label_scout_recommends);
     gtk_widget_hide(player_info_separator);
     gtk_widget_hide(button_league_results);
-    gtk_widget_hide(button_get_loan->parent->parent);
     gtk_widget_hide(button_fixtures->parent->parent);
+    gtk_widget_hide(optionmenu_finstad);
 
     gtk_option_menu_set_history(
 	GTK_OPTION_MENU(optionmenu_figures), 0);
@@ -393,7 +394,7 @@ set_buttons(void)
     }
     else if(get_place(status, 6) == 3)
     {
-	gtk_widget_show(button_get_loan->parent->parent);
+	gtk_widget_show(optionmenu_finstad);
 	if(get_place(status, 5) == 1 ||
 	   get_place(status, 5) == 2)
 	{
@@ -477,4 +478,39 @@ initialize_main_window(void)
 	    quick_opt_options[i]);
 
     set_header();
+}
+
+/* show a window with a progress bar */
+void
+show_progress(gfloat value, gchar *text)
+{
+    GtkWidget *pwindow =
+	return_progressbar_window();
+    GtkWidget *progressbar =
+	lookup_widget(pwindow, "progressbar");
+    GtkWidget *label_progress =
+	lookup_widget(pwindow, "label_progress");
+
+    if(value == 1 || value < 0)
+    {
+	gtk_widget_destroy(pwindow);
+	progressbar_window = NULL;
+	return;
+    }
+
+    if(text != NULL)
+    {
+	gtk_label_set_text(GTK_LABEL(label_progress), text);
+	gtk_progress_bar_set_text(GTK_PROGRESS_BAR(progressbar), text);
+    }
+    else
+	gtk_label_set_text(GTK_LABEL(label_progress), "");
+
+    if(value >= 0 && value < 1)
+	gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(progressbar), value);
+    else
+	gtk_progress_bar_pulse(GTK_PROGRESS_BAR(progressbar));
+
+    while(gtk_events_pending())
+	gtk_main_iteration();
 }

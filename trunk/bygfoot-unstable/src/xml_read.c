@@ -1,6 +1,7 @@
 #include <assert.h>
 
 #include "xml_read.h"
+#include "gui.h"
 
 #define MAX_TEAMS 178
 #define MIN_TEAMS 178
@@ -132,6 +133,8 @@ read_xml_save(gchar * file_name)
 	
     xmlFreeDoc(doc);
     g_print("XML import: OK.\n");	
+
+    show_progress(1, "");
 }
 	
 void

@@ -2,6 +2,27 @@
 #define TEAM_H
 
 #include "bygfoot.h"
+#include "player.h"
+
+typedef struct _team team;
+struct _team
+{
+    gchar name[50];
+
+    /* id: team id
+       structure: structure of the team (number of defenders,
+                  midfielders and forwards) */
+    gint id, structure, results[RES_END];
+
+    /* playing style from -2 to 2: (all out) defense,
+       normal, (all out) attack */
+    gint style;    
+    
+    player players[20];
+
+    GArray *history;
+};
+
 
 /* try to set each of the first 11 players on his
    favoured position and sort the substitutes by position */

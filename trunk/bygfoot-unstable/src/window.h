@@ -62,4 +62,12 @@ start_update(void);
 GtkWidget*
 show_graph_window(void);
 
+/* return a pointer to the progress bar window */
+GtkWidget *
+return_progressbar_window(void);
+
+/* set 'bygfoot x.y.z' into the title of the window */
+GtkWidget*
+set_version(GtkWidget *window);
+
 #endif

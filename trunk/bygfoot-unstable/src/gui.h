@@ -78,4 +78,8 @@ set_buttons(void);
 void
 initialize_main_window(void);
 
+/* show a window with a progress bar */
+void
+show_progress(gfloat value, gchar *text);
+
 #endif

@@ -108,29 +108,6 @@ print_grouped_int(gint number, gchar *buf, gint append)
 	strcat(buf, "0");
 }
 
-/* free the history pointers */
-void
-free_history(void)
-{
-    season_stat *stat = history;
-    season_stat *stat2;
-
-    if(history == NULL)
-	return;
-
-    stat2 = stat->next;
-    while(stat2 != NULL)
-    {
-	g_free(stat);
-	stat = stat2;
-	stat2 = stat->next;
-    }
-    
-    g_free(stat);
-
-    history = NULL;
-}
-
 /* get a float representation of someone's age
    based on his birth year and month written as 
    an integer, e.g. 196510 for 1965, Oct. */

@@ -3,6 +3,48 @@
 
 #include "bygfoot.h"
 
+/* typedef struct _player_history player_history; */
+
+/* struct player_history */
+/* { */
+/*     gint values[PLAYER_HISTORY_END]; */
+/* }; */
+
+typedef struct _player player;
+struct _player
+{
+    gchar name[19];
+    
+    /* pos: position
+       0: goalie,
+       1: defender,
+       2: midfielder,
+       3: forward
+       cpos: current position
+       skill_update: number of weeks since last
+                     skill update (which occurs
+		     appr. every 12-16 weeks)
+       peak_age: age at which the player's skill reaches his talent value
+                 (between 28 and 32) */
+    gint pos, cpos, health, goals, booked, games;
+
+    gfloat last_skill_update;
+    
+    gfloat age, peak_age;
+    
+    gint value, wage;
+
+    /* cskill: current skill
+       etal: a scout's estimation of
+       a player's talent */
+    gfloat skill, cskill,
+	talent, etal, fitness;
+
+    gint team_id;
+
+    GArray *history;
+};
+
 /**************************************************
  * Functions working with players                 *
  **************************************************/

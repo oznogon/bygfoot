@@ -16,12 +16,13 @@ bygfoot_SOURCES = \
 	files.c gui.h math.h misc.h player.h team.h files.h window.h \
 	finance.c finance.h fixture.h math.h team.h \
 	fixture.c game.h fixture.h math.h misc.h team.h \
+	free.c free.h \
 	game.c fixture.h game.h math.h team.h \
 	game_gui.c callback_func.h callbacks.h game_gui.h game.h generation.h gui.h finance.h fixture.h load_save.h math.h misc.h player.h support.h team.h transfer.h treeview.h treeview_cell.h window.h \
 	generation.c game_gui.h generation.h gui.h math.h misc.h player.h team.h text_files.h window.h \
 	graph.c graph.h history.h \
 	gui.c callbacks.h gui.h math.h misc.h support.h team.h treeview.h \
-	history.c history.h bygfoot.h \
+	history.c history.h \
 	interface.c callbacks.h interface.h support.h \
 	load_save.c game_gui.h load_save.h misc.h xml_read.h xml_write.h \
 	main.c callbacks.h generation.h gui.h load_save.h main.h startup.h support.h text_files.h window.h \

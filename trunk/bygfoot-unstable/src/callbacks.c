@@ -5,6 +5,7 @@
 #include "callbacks.h"
 #include "callback_func.h"
 #include "fixture.h"
+#include "free.h"
 #include "gui.h"
 #include "game_gui.h"
 #include "load_save.h"
@@ -31,7 +32,7 @@ on_menu_new_activate                   (GtkMenuItem     *menuitem,
        save_status ||
        GPOINTER_TO_INT(user_data) == 1)
     {
-	free_history();
+	free_memory();
 	start(1);
     }
     else
@@ -553,6 +554,11 @@ on_optionmenu_figures_changed          (GtkOptionMenu   *optionmenu,
 	callback_show_history(season - 1);
 	status = 240000 + season - 1;
     }
+    else if(item == 5)
+    {
+	callback_show_graph();
+	status = -100000 - my_team * 100;
+    }
     
     set_buttons();
 }
@@ -714,13 +720,7 @@ on_button_quit_clicked                 (GtkButton       *button,
 
     if(GPOINTER_TO_INT(user_data) == 1 ||
        options[OPT_CONF_QUIT] == 0 || save_status == 1)
-    {
-	free_history();
-	
-	g_string_free(save_file, TRUE);
-
 	gtk_main_quit();
-    }
     else
 	show_popup_window("Do you really want to quit without saving?", popup_status);
 }
@@ -794,8 +794,7 @@ on_start_editor_activate               (GtkMenuItem     *menuitem,
 
     if(save_status || GPOINTER_TO_INT(user_data) == 1)
     {	
-	free_history();	
-	g_string_free(save_file, TRUE);
+	free_memory();
 	gtk_widget_destroy(main_window);
 	start_editor();
 	return;
@@ -890,12 +889,47 @@ on_start_update_activate               (GtkMenuItem     *menuitem,
 
     if(save_status || GPOINTER_TO_INT(user_data) == 1)
     {	
-	free_history();	
-	g_string_free(save_file, TRUE);
+	free_memory();
 	start_update();
 	return;
     }
 
     show_popup_window("Your current game is not saved and will be lost. Continue?",
 		      popup_status);
+}
+
+void
+on_optionmenu_finstad_changed          (GtkOptionMenu   *optionmenu,
+                                        gpointer         user_data)
+{
+    gint value = gtk_option_menu_get_history(optionmenu);
+
+    if(value == 1)
+    {
+	if(stadiums[my_team].capacity >= 100000)
+	    print_message("You can't have a bigger stadium; it's not safe.");
+	else if(counters[COUNT_INC_CAP] < 1)
+	    show_stadium_window();
+	else
+	    print_message("Your stadium is being enlarged. You can't increase its capacity until work's finished.");
+    }
+    else if(value == 2)
+    {
+	callback_stadium_improve();
+	show_fin_stad();
+    }
+    else if(value == 3)
+    {
+	if(callback_get_loan() == 1)
+	    status = 310000;
+    }
+    else if(value == 4)
+    {
+	if(callback_pay_loan() == 1)
+	    status = 320000;
+    }
+
+    gtk_option_menu_set_history(optionmenu, 0);
+
+    set_buttons();
 }

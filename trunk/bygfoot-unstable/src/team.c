@@ -5,6 +5,7 @@
 #include "finance.h"
 #include "fixture.h"
 #include "game_gui.h"
+#include "history.h"
 #include "maths.h"
 #include "misc.h"
 #include "player.h"
@@ -692,17 +693,18 @@ update_teams(void)
     if(i != 114 && i != 130 &&
        i < 175)
       {
-	update_teams_players(i);
-	if(i != my_team)
+	  update_team_history(i);
+	  update_teams_players(i);
+	  if(i != my_team)
 	  {
-	    update_teams_injuries(i);
-	    update_teams_substitutes(i);
-	    update_teams_new_players(i);
+	      update_teams_injuries(i);
+	      update_teams_substitutes(i);
+	      update_teams_new_players(i);
 	    if(rnd(0,1) < 0.05)
-	      update_teams_new_structure(i);
+		update_teams_new_structure(i);
 	    if(rnd(0,1) < 0.1)
-	      teams[i].style = 
-		assign_playing_style();
+		teams[i].style = 
+		    assign_playing_style();
 	  }
       }
 }

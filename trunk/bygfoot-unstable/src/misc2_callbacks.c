@@ -88,17 +88,26 @@ on_optionmenu_player_changed           (GtkOptionMenu   *optionmenu,
     gint value = gtk_option_menu_get_history(optionmenu);
     gint team_id = get_place(get_place(-1 * status, 14), 23);
     gint player_number = get_place(-1 * status, 22);
-
-    for(i=HISTORY_SKILL;i<HISTORY_MONEY;i++)
-	if(value == i - HISTORY_SKILL + 1)
+    
+    for(i=PLAYER_HISTORY_SKILL;i<PLAYER_HISTORY_END;i++)
+	if(value == i - PLAYER_HISTORY_SKILL + 1)
 	    show_graph(lookup_widget(GTK_WIDGET(optionmenu), "graph_window"),
-		       team_id, player_number, i);
+		       team_id, player_number, TRUE, i);
 }
 
+
 void
-on_optionmenu_finances_changed         (GtkOptionMenu   *optionmenu,
+on_optionmenu_team_changed             (GtkOptionMenu   *optionmenu,
                                         gpointer         user_data)
 {
+    gint i;
+    gint value = gtk_option_menu_get_history(optionmenu);
+    gint team_id = get_place(get_place(-1 * status, 14), 23);
+    gint player_number = get_place(-1 * status, 22);
 
+    for(i=TEAM_HISTORY_RANK;i<TEAM_HISTORY_END;i++)
+	if(value == i - TEAM_HISTORY_RANK + 1)
+	    show_graph(lookup_widget(GTK_WIDGET(optionmenu), "graph_window"),
+		       team_id, player_number, FALSE, i);
 }
 

@@ -2,6 +2,7 @@
  * Functions for loading and saving the game             *
  *********************************************************/
 
+#include "free.h"
 #include "game_gui.h"
 #include "load_save.h"
 #include "misc.h"

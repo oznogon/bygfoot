@@ -122,8 +122,8 @@ callback_show_player_stats(GtkTreeSelection *selection,
 
     status = (100000 + 100 * my_team + player_number) * -1;
 
-    show_graph(show_graph_window(), my_team,
-	       player_number, HISTORY_SKILL);
+    show_graph(show_graph_window(), my_team, player_number,
+	       TRUE, PLAYER_HISTORY_SKILL);
 }
 
 
@@ -1456,6 +1456,18 @@ callback_penalty_shooter(void)
     print_message(buf);
     show_players(NULL, NULL, 0, NULL, 0);
 }
+
+void
+callback_show_graph(void)
+{
+    GtkWidget *graph_window = 
+	show_graph_window();
+    
+    gtk_widget_hide(lookup_widget(graph_window,
+				  "optionmenu_player"));    
+    show_graph(graph_window, my_team, 0, FALSE, TEAM_HISTORY_RANK);
+}
+
 
 /* start a new week: compute games etc. */
 void

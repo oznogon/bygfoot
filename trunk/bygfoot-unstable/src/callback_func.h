@@ -160,4 +160,7 @@ callback_penalty_shooter(void);
 void
 callback_new_week(gboolean calculate);
 
+void
+callback_show_graph(void);
+
 #endif

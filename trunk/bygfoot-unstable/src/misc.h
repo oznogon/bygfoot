@@ -31,10 +31,6 @@ swap_char(gchar **first, gchar **second);
 void
 print_grouped_int(gint number, gchar *buf, gint append);
 
-/* free the history pointers */
-void
-free_history(void);
-
 /* get a float representation of someone's age
    based on his birth year and month written as 
    an integer, e.g. 196510 for 1965, Oct. */

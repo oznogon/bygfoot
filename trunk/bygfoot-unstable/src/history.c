@@ -1,146 +1,127 @@
-/* #include "history.h" */
-#include "bygfoot.h"
+#include "history.h"
+#include "player.h"
+#include "team.h"
 #include <math.h>
 
 /*********************************** PLAYER *************************************/
 
 void reset_player_history(player * pl)
 {
-	reset_player_history_list(&pl->history);
-}
-
-void print_player_history(player * pl)
-{
-	print_player_history_list(&pl->history);
-}
-
-void reset_player_history_list(struct player_history_list * plist)
-{
-	plist->size = 0;
-	if (plist->list != NULL)
-		free(plist->list);
-	plist->list = NULL;
+    g_array_free(pl->history, TRUE);
+    pl->history = g_array_new(FALSE, FALSE, PLAYER_HISTORY_END * sizeof(gint));
 }
 
 void update_player_history(player * pl)
 {
-	/* Creates a new player history (corresponding to the current situation)
-	   and adds it to the existing history list */
-	
-	struct player_history now;
-	now.week = week;
-	now.season = season;
-	now.fitness = (gint)(100.0*pl->fitness);   
-	now.cskill = (gint)(10.0*pl->cskill);
-	now.wage = pl->wage;
-	
-	/* not necessary, but it is more secure */         
-	if (pl->history.list == NULL)
-		reset_player_history(pl);
-		
-	pl->history.size++;
-	pl->history.list = realloc(pl->history.list, pl->history.size * sizeof(struct player_history));
-	/* The history list size is extended each week. It can be a little slow. 
-	
-	   There are several possibilities : 
-	   0 : extend the history size each week (current solution)
-	   1 : extend the history size regularly (e.g. every 10 weeks) 
-	      - week 1 : extend the size and update
-	      - week 2 to 10 : update
-	      - week 11 : extend the size and update...
-	   2 : assing a finite size for history (e.g. 100). After 100 weeks, 
-	      the history [1] becomes [0], etc.
-	*/
-	
-	pl->history.list[pl->history.size - 1] = now;
+    /* Creates a new player history (corresponding to the current situation)
+       and adds it to the existing history list */	
+    gint values[PLAYER_HISTORY_END];
+
+    values[PLAYER_HISTORY_SEASON] = season;
+    values[PLAYER_HISTORY_WEEK] = week;
+    values[PLAYER_HISTORY_SKILL] = (gint)rint(pl->cskill * 10);
+    values[PLAYER_HISTORY_GOALS] = pl->goals;
+    values[PLAYER_HISTORY_WAGE] = pl->wage;
+    values[PLAYER_HISTORY_VALUE] = pl->value;
+    
+    g_array_append_val(pl->history, values);
 }
 
-void print_player_history_list(struct player_history_list * plist)
-{
-	gint i;
-	printf("season\tweek\tfitness\tcskill\twage\n");
-	for (i = 0; i < plist->size; i++)
-	{
-		printf("%d\t", plist->list[i].season);
-		printf("%d\t", plist->list[i].week);
-		printf("%.2f\t", plist->list[i].fitness / 100.0);
-		printf("%.1f\t", plist->list[i].cskill / 10.0);
-		printf("%d\n", plist->list[i].wage);
-	}
-} 	
-			
 /***************************** FINANCES *****************************************/
 
-void reset_finances_history(void)
+void reset_team_history(gint team_id)
 {
-	reset_finances_history_list(&financial_history);
+    g_array_free(teams[team_id].history, TRUE);
+    teams[team_id].history = g_array_new(FALSE, FALSE, TEAM_HISTORY_END * sizeof(gint));
 }
 
-void update_finances_history(void)
+void update_team_history(gint team_id)
 {
-	update_finances_history_list(&financial_history);
-}
+    gint values[TEAM_HISTORY_END];
 
-void print_finances_history(void)
-{
-	print_finances_history_list(&financial_history);
-}
-
-void reset_finances_history_list(struct finances_history_list * flist)
-{
-	flist->size = 0;
-	if (flist->list != NULL)
-		free(flist->list);
-	flist->list = NULL;
-}
-
-void update_finances_history_list(struct finances_history_list * flist)
-{
-	struct finances_history now;
-	now.week = week;
-	now.season = season;
-	now.money = finances[FIN_MONEY];
+    values[TEAM_HISTORY_RANK] = rank[team_id];
+    values[TEAM_HISTORY_PTS] = teams[team_id].results[RES_PTS];
+    values[TEAM_HISTORY_GD] = teams[team_id].results[RES_GF] - teams[team_id].results[RES_GA];
+    values[TEAM_HISTORY_GF] = teams[team_id].results[RES_GF];
+    values[TEAM_HISTORY_GA] = teams[team_id].results[RES_GA];
+    values[TEAM_HISTORY_MONEY] = (team_id == my_team) ? finances[FIN_MONEY] : 0;
+    values[TEAM_HISTORY_AV_ATTENDANCE] = stadiums[team_id].average_attendance;
 	
-	if (flist == NULL)
-		reset_finances_history_list(flist);
-	
-	flist->size++;
-	flist->list = realloc(flist->list, flist->size * sizeof(struct finances_history));
-	flist->list[flist->size-1] = now;
+    g_array_append_val(teams[team_id].history, values);
 }
 
-void print_finances_history_list(struct finances_history_list * flist)
+/* get either a player or a team history;
+   either a whole element, or a value from an element,
+   or values of a certain type from each element */
+gint
+get_history(team *team, player *pl, gint idx, gint *values,
+	    GArray *array, gint hist_type, gint type)
 {
-	gint i;
-	printf("season\tweek\tmoney\n");
-	for (i = 0; i < flist->size; i++)
-	{
-		printf("%d\t", flist->list[i].season);
-		printf("%d\t", flist->list[i].week);
-		printf("%d\n", flist->list[i].money);
-	}
-} 	
+    GArray *history;
+    gint max;
 
-/* write a player's history for attribute 'type'
-   into the garray which will be used for drawing the graph then */
+    if(team == NULL)
+    {
+	history = pl->history;
+	max = PLAYER_HISTORY_END;
+    }
+    else
+    {
+	history = team->history;
+	max = TEAM_HISTORY_END;
+    }
+
+    if(type == GET_HISTORY_ELEMENT)
+	get_history_element(history, idx, values, max);
+    else if(type == GET_HISTORY_ELEMENT_VALUE)
+	return get_history_element_value(history, idx, hist_type, max);
+    else if(type == GET_HISTORY_VALUES)
+	get_history_values(history, array, hist_type, max);
+
+    return 0;
+}
+
+/* write the history of a given index into the values array */
 void
-get_history_player(gint team_id, gint player_number, 
-		   gint *veclen, GArray *array, gint type)
+get_history_element(GArray *history, gint idx, gint *values, gint max)
 {
     gint i;
-    gfloat value;
-    struct player_history_list *history =
-	&(teams[team_id].players[player_number].history);
 
-    *veclen = history->size;
-
-    for(i=0;i<*veclen;i++)
+    if(history->len <= idx)
     {
-	if(type == HISTORY_SKILL)
-	    value = (gfloat)(history->list[i].cskill) / 10;
-	else if(type == HISTORY_WAGE)
-	    value = (gfloat)(history->list[i].wage);
+	g_print("get_history_element: index %d too high, array not long enough\n", idx);
+	return;
+    }
 
+    for(i=0;i<max;i++)
+	values[i] = 
+	    g_array_index(history, gint, idx * max + i);
+}
+
+/* return a certain value from the history element */
+gint
+get_history_element_value(GArray *history, gint idx, gint type, gint max)
+{
+    if(history->len <= idx)
+    {
+	g_print("get_history_player: index %d too high, array not long enough;\n", idx);
+	return 1;
+    }
+
+    return g_array_index(history,
+			 gint, idx * max + type);
+}
+
+/* write the values of type 'type' of every history element into the array */
+void
+get_history_values(GArray *history, GArray *array, gint type, gint max)
+{
+    gint i;
+    gint value;
+
+    for(i=0;i<history->len;i++)
+    {	
+	value = g_array_index(history, gint, i * max + type);
 	g_array_append_val(array, value);
     }
 }

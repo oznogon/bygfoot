@@ -29,8 +29,9 @@ on_button_close_clicked                (GtkButton       *button,
 void
 on_optionmenu_player_changed           (GtkOptionMenu   *optionmenu,
                                         gpointer         user_data);
-#endif
 
 void
-on_optionmenu_finances_changed         (GtkOptionMenu   *optionmenu,
+on_optionmenu_team_changed             (GtkOptionMenu   *optionmenu,
                                         gpointer         user_data);
+
+#endif

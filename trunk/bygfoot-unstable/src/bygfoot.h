@@ -22,71 +22,19 @@
 
 /* 'define's and enums */
 #include "enums.h"
-#include "history.h"
-
+#include "team.h"
+#include "player.h"
 
 /**************************************************
  * Structures                                     *
  **************************************************/
 
-typedef struct _player player;
-typedef struct _team team;
 typedef struct _stadium stadium;
 typedef struct _goal goal;
 typedef struct _fixture fixture;
 typedef struct _transfer transfer;
 typedef struct _player_stat player_stat;
 typedef struct _season_stat season_stat;
-
-struct _player
-{
-    gchar name[19];
-    
-    /* pos: position
-       0: goalie,
-       1: defender,
-       2: midfielder,
-       3: forward
-       cpos: current position
-       skill_update: number of weeks since last
-                     skill update (which occurs
-		     appr. every 12-16 weeks)
-       peak_age: age at which the player's skill reaches his talent value
-                 (between 28 and 32) */
-    gint pos, cpos, health, goals, booked, games;
-
-    gfloat last_skill_update;
-    
-    gfloat age, peak_age;
-    
-    gint value, wage;
-
-    /* cskill: current skill
-       etal: a scout's estimation of
-       a player's talent */
-    gfloat skill, cskill,
-	talent, etal, fitness;
-
-    gint team_id;
-
-    struct player_history_list history;
-};
-
-struct _team
-{
-    gchar name[50];
-
-    /* id: team id
-       structure: structure of the team (number of defenders,
-                  midfielders and forwards) */
-    gint id, structure, results[RES_END];
-
-    /* playing style from -2 to 2: (all out) defense,
-       normal, (all out) attack */
-    gint style;    
-    
-    player players[20];
-};
 
 struct _stadium
 {
@@ -280,6 +228,9 @@ gint selected_rows[2];
 /* main window of the game */
 GtkWidget *main_window;
 
+/* progress bar window */
+GtkWidget *progressbar_window;
+
 /* savegame file */
 GString *save_file;
 
@@ -296,8 +247,6 @@ gboolean debug;
 gchar league_names[LEAGUE_NAMES_END][50];
 
 gint finances[FIN_END];
-
-struct finances_history_list financial_history;
 
 gint options[OPT_END];
 

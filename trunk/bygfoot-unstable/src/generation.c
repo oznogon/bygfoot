@@ -246,6 +246,8 @@ fill_in_team(gint team_id)
 	assign_playing_style();
     
     generate_players(team_id);
+
+    teams[team_id].history = g_array_new(FALSE, FALSE, TEAM_HISTORY_END * sizeof(gint));
 }
 
 /* generate the european teams participating in

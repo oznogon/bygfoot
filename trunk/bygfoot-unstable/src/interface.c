@@ -85,6 +85,7 @@ create_main_window (void)
   GtkWidget *tables1;
   GtkWidget *best_players1;
   GtkWidget *history1;
+  GtkWidget *history_graph1;
   GtkWidget *vseparator16;
   GtkWidget *button_new_week;
   GtkWidget *image23;
@@ -201,23 +202,17 @@ create_main_window (void)
   GtkWidget *label36;
   GtkWidget *button_league_results;
   GtkWidget *image22;
-  GtkWidget *hbox19;
-  GtkWidget *vbox18;
-  GtkWidget *label37;
-  GtkWidget *button_stad_capacity;
-  GtkWidget *image37;
-  GtkWidget *vbox19;
-  GtkWidget *label38;
-  GtkWidget *button_stad_safety;
-  GtkWidget *image38;
-  GtkWidget *vbox20;
-  GtkWidget *label39;
-  GtkWidget *button_get_loan;
-  GtkWidget *image34;
-  GtkWidget *vbox21;
-  GtkWidget *label40;
-  GtkWidget *button_pay_loan;
-  GtkWidget *image35;
+  GtkWidget *optionmenu_finstad;
+  GtkWidget *menu7;
+  GtkWidget *finances___stadium1;
+  GtkWidget *increase_capacity1;
+  GtkWidget *image96;
+  GtkWidget *increase_safety1;
+  GtkWidget *image97;
+  GtkWidget *get_loan1;
+  GtkWidget *image98;
+  GtkWidget *pay_loan1;
+  GtkWidget *image99;
   GtkWidget *label_scout_recommends;
   GtkWidget *vbox10;
   GtkWidget *label_spin;
@@ -549,6 +544,10 @@ create_main_window (void)
   history1 = gtk_menu_item_new_with_mnemonic (_("History"));
   gtk_widget_show (history1);
   gtk_container_add (GTK_CONTAINER (menu3), history1);
+
+  history_graph1 = gtk_menu_item_new_with_mnemonic (_("History graph"));
+  gtk_widget_show (history_graph1);
+  gtk_container_add (GTK_CONTAINER (menu3), history_graph1);
 
   gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu_figures), menu3);
 
@@ -1117,85 +1116,49 @@ create_main_window (void)
   gtk_widget_show (image22);
   gtk_container_add (GTK_CONTAINER (button_league_results), image22);
 
-  hbox19 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox19);
-  gtk_box_pack_end (GTK_BOX (hbox_14), hbox19, FALSE, FALSE, 0);
+  optionmenu_finstad = gtk_option_menu_new ();
+  gtk_widget_show (optionmenu_finstad);
+  gtk_box_pack_end (GTK_BOX (hbox_14), optionmenu_finstad, FALSE, FALSE, 0);
 
-  vbox18 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox18);
-  gtk_box_pack_start (GTK_BOX (hbox19), vbox18, TRUE, TRUE, 0);
+  menu7 = gtk_menu_new ();
 
-  label37 = gtk_label_new (_("  "));
-  gtk_widget_show (label37);
-  gtk_box_pack_start (GTK_BOX (vbox18), label37, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label37), GTK_JUSTIFY_LEFT);
+  finances___stadium1 = gtk_menu_item_new_with_mnemonic (_("Finances / Stadium"));
+  gtk_widget_show (finances___stadium1);
+  gtk_container_add (GTK_CONTAINER (menu7), finances___stadium1);
 
-  button_stad_capacity = gtk_button_new ();
-  gtk_widget_show (button_stad_capacity);
-  gtk_box_pack_start (GTK_BOX (vbox18), button_stad_capacity, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (button_stad_capacity), 2);
-  gtk_tooltips_set_tip (tooltips, button_stad_capacity, _("Increase capacity"), NULL);
+  increase_capacity1 = gtk_image_menu_item_new_with_mnemonic (_("Increase capacity"));
+  gtk_widget_show (increase_capacity1);
+  gtk_container_add (GTK_CONTAINER (menu7), increase_capacity1);
 
-  image37 = create_pixmap (main_window, "inc_cap.png");
-  gtk_widget_show (image37);
-  gtk_container_add (GTK_CONTAINER (button_stad_capacity), image37);
+  image96 = create_pixmap (main_window, "inc_cap.png");
+  gtk_widget_show (image96);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (increase_capacity1), image96);
 
-  vbox19 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox19);
-  gtk_box_pack_start (GTK_BOX (hbox19), vbox19, TRUE, TRUE, 0);
+  increase_safety1 = gtk_image_menu_item_new_with_mnemonic (_("Increase safety"));
+  gtk_widget_show (increase_safety1);
+  gtk_container_add (GTK_CONTAINER (menu7), increase_safety1);
 
-  label38 = gtk_label_new (_("  "));
-  gtk_widget_show (label38);
-  gtk_box_pack_start (GTK_BOX (vbox19), label38, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label38), GTK_JUSTIFY_LEFT);
+  image97 = create_pixmap (main_window, "inc_saf.png");
+  gtk_widget_show (image97);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (increase_safety1), image97);
 
-  button_stad_safety = gtk_button_new ();
-  gtk_widget_show (button_stad_safety);
-  gtk_box_pack_start (GTK_BOX (vbox19), button_stad_safety, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (button_stad_safety), 2);
-  gtk_tooltips_set_tip (tooltips, button_stad_safety, _("Increase safety"), NULL);
+  get_loan1 = gtk_image_menu_item_new_with_mnemonic (_("Get loan"));
+  gtk_widget_show (get_loan1);
+  gtk_container_add (GTK_CONTAINER (menu7), get_loan1);
 
-  image38 = create_pixmap (main_window, "inc_saf.png");
-  gtk_widget_show (image38);
-  gtk_container_add (GTK_CONTAINER (button_stad_safety), image38);
+  image98 = create_pixmap (main_window, "get_loan.png");
+  gtk_widget_show (image98);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (get_loan1), image98);
 
-  vbox20 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox20);
-  gtk_box_pack_start (GTK_BOX (hbox19), vbox20, TRUE, TRUE, 0);
+  pay_loan1 = gtk_image_menu_item_new_with_mnemonic (_("Pay loan"));
+  gtk_widget_show (pay_loan1);
+  gtk_container_add (GTK_CONTAINER (menu7), pay_loan1);
 
-  label39 = gtk_label_new (_("  "));
-  gtk_widget_show (label39);
-  gtk_box_pack_start (GTK_BOX (vbox20), label39, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label39), GTK_JUSTIFY_LEFT);
+  image99 = create_pixmap (main_window, "pay_loan.png");
+  gtk_widget_show (image99);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (pay_loan1), image99);
 
-  button_get_loan = gtk_button_new ();
-  gtk_widget_show (button_get_loan);
-  gtk_box_pack_start (GTK_BOX (vbox20), button_get_loan, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (button_get_loan), 2);
-  gtk_tooltips_set_tip (tooltips, button_get_loan, _("Get loan"), NULL);
-
-  image34 = create_pixmap (main_window, "get_loan.png");
-  gtk_widget_show (image34);
-  gtk_container_add (GTK_CONTAINER (button_get_loan), image34);
-
-  vbox21 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox21);
-  gtk_box_pack_start (GTK_BOX (hbox19), vbox21, TRUE, TRUE, 0);
-
-  label40 = gtk_label_new (_("  "));
-  gtk_widget_show (label40);
-  gtk_box_pack_start (GTK_BOX (vbox21), label40, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label40), GTK_JUSTIFY_LEFT);
-
-  button_pay_loan = gtk_button_new ();
-  gtk_widget_show (button_pay_loan);
-  gtk_box_pack_start (GTK_BOX (vbox21), button_pay_loan, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (button_pay_loan), 2);
-  gtk_tooltips_set_tip (tooltips, button_pay_loan, _("Pay back loan"), NULL);
-
-  image35 = create_pixmap (main_window, "pay_loan.png");
-  gtk_widget_show (image35);
-  gtk_container_add (GTK_CONTAINER (button_pay_loan), image35);
+  gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu_finstad), menu7);
 
   label_scout_recommends = gtk_label_new (_("Scout recommends"));
   gtk_widget_show (label_scout_recommends);
@@ -1537,17 +1500,8 @@ create_main_window (void)
   g_signal_connect ((gpointer) button_league_results, "clicked",
                     G_CALLBACK (on_button_league_results_clicked),
                     NULL);
-  g_signal_connect ((gpointer) button_stad_capacity, "clicked",
-                    G_CALLBACK (on_button_stad_capacity_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) button_stad_safety, "clicked",
-                    G_CALLBACK (on_button_stad_safety_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) button_get_loan, "clicked",
-                    G_CALLBACK (on_button_get_loan_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) button_pay_loan, "clicked",
-                    G_CALLBACK (on_button_pay_loan_clicked),
+  g_signal_connect ((gpointer) optionmenu_finstad, "changed",
+                    G_CALLBACK (on_optionmenu_finstad_changed),
                     NULL);
   g_signal_connect ((gpointer) spin_fee, "activate",
                     G_CALLBACK (on_spin_fee_activate),
@@ -1621,6 +1575,7 @@ create_main_window (void)
   GLADE_HOOKUP_OBJECT (main_window, tables1, "tables1");
   GLADE_HOOKUP_OBJECT (main_window, best_players1, "best_players1");
   GLADE_HOOKUP_OBJECT (main_window, history1, "history1");
+  GLADE_HOOKUP_OBJECT (main_window, history_graph1, "history_graph1");
   GLADE_HOOKUP_OBJECT (main_window, vseparator16, "vseparator16");
   GLADE_HOOKUP_OBJECT (main_window, button_new_week, "button_new_week");
   GLADE_HOOKUP_OBJECT (main_window, image23, "image23");
@@ -1737,23 +1692,17 @@ create_main_window (void)
   GLADE_HOOKUP_OBJECT (main_window, label36, "label36");
   GLADE_HOOKUP_OBJECT (main_window, button_league_results, "button_league_results");
   GLADE_HOOKUP_OBJECT (main_window, image22, "image22");
-  GLADE_HOOKUP_OBJECT (main_window, hbox19, "hbox19");
-  GLADE_HOOKUP_OBJECT (main_window, vbox18, "vbox18");
-  GLADE_HOOKUP_OBJECT (main_window, label37, "label37");
-  GLADE_HOOKUP_OBJECT (main_window, button_stad_capacity, "button_stad_capacity");
-  GLADE_HOOKUP_OBJECT (main_window, image37, "image37");
-  GLADE_HOOKUP_OBJECT (main_window, vbox19, "vbox19");
-  GLADE_HOOKUP_OBJECT (main_window, label38, "label38");
-  GLADE_HOOKUP_OBJECT (main_window, button_stad_safety, "button_stad_safety");
-  GLADE_HOOKUP_OBJECT (main_window, image38, "image38");
-  GLADE_HOOKUP_OBJECT (main_window, vbox20, "vbox20");
-  GLADE_HOOKUP_OBJECT (main_window, label39, "label39");
-  GLADE_HOOKUP_OBJECT (main_window, button_get_loan, "button_get_loan");
-  GLADE_HOOKUP_OBJECT (main_window, image34, "image34");
-  GLADE_HOOKUP_OBJECT (main_window, vbox21, "vbox21");
-  GLADE_HOOKUP_OBJECT (main_window, label40, "label40");
-  GLADE_HOOKUP_OBJECT (main_window, button_pay_loan, "button_pay_loan");
-  GLADE_HOOKUP_OBJECT (main_window, image35, "image35");
+  GLADE_HOOKUP_OBJECT (main_window, optionmenu_finstad, "optionmenu_finstad");
+  GLADE_HOOKUP_OBJECT (main_window, menu7, "menu7");
+  GLADE_HOOKUP_OBJECT (main_window, finances___stadium1, "finances___stadium1");
+  GLADE_HOOKUP_OBJECT (main_window, increase_capacity1, "increase_capacity1");
+  GLADE_HOOKUP_OBJECT (main_window, image96, "image96");
+  GLADE_HOOKUP_OBJECT (main_window, increase_safety1, "increase_safety1");
+  GLADE_HOOKUP_OBJECT (main_window, image97, "image97");
+  GLADE_HOOKUP_OBJECT (main_window, get_loan1, "get_loan1");
+  GLADE_HOOKUP_OBJECT (main_window, image98, "image98");
+  GLADE_HOOKUP_OBJECT (main_window, pay_loan1, "pay_loan1");
+  GLADE_HOOKUP_OBJECT (main_window, image99, "image99");
   GLADE_HOOKUP_OBJECT (main_window, label_scout_recommends, "label_scout_recommends");
   GLADE_HOOKUP_OBJECT (main_window, vbox10, "vbox10");
   GLADE_HOOKUP_OBJECT (main_window, label_spin, "label_spin");
