@@ -472,6 +472,9 @@ callback_sell_player(gint trans_idx, gint fee)
 
     finances[FIN_MONEY] += fee;
     finances[FIN_TRANSFERS] += fee;
+
+    selected_rows[0] = -1;
+    show_players(NULL, NULL, 0, NULL, 0);    
 }
 
 /* improve stadium capacity or safety */
