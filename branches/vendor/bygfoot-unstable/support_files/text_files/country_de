@@ -1,0 +1,315 @@
+# ACHTUNG: DIESE DATEI IST UTF-8-KODIERT. WENN DU SIE EDITIEREN WILLST,
+# SOLLTEST DU VORHER SICHER SEIN DASS DEIN EDITOR DIE KODIERUNG NICHT
+# DURCHEINANDERBRINGT.
+#
+# DU KANNST DIESE DATEI KOPIEREN UND EDITIEREN, UM EINE NEUE LÄNDERVERSION
+# VON BYGFOOT ZU ERSTELLEN. WENN DU DAS GEMACHT HAST, WÜRDE ICH MICH FREUEN,
+# WENN DU DIE DATEI AN gyboth@gmx.de SCHICKEN WÜRDEST, DAMIT ICH SIE BEI DER
+# NÄCHSTEN VERSION DES SPIELS EINBAUE.
+
+# LEERZEILEN UND MIT '#' BEGINNENDE KOMMENTARZEILEN WERDEN IGNORIERT.
+
+# JEDER NAME DARF HÖCHSTENS 49 ZEICHEN HABEN.
+
+# ACHTE DARAUF, DIE STRUKTUR DER DATEI ZU ERHALTEN, SONST KANN ES ZU EINEM
+# SPEICHERZUGRIFFSFEHLER KOMMEN.
+
+# hier sind die 114 mannschaften, die in den 5 ligen spielen
+Werder Bremen
+Bayern München
+VfB Stuttgart
+Bayer Leverkusen
+Schalke 04
+Borussia Dortmund
+VfL Bochum
+Hamburger SV
+Hansa Rostock
+SC Freiburg
+VfL Wolfsburg
+1860 München
+Hannover 96
+Borussia Mönchengladbach
+1. FC Kaiserslautern
+Eintracht Frankfurt
+Hertha BSC Berlin
+1. FC Köln
+1. FC Nürnberg
+Energie Cottbus
+Arminia Bielefeld
+Alemannia Aachen
+Rot-Weiss Oberhausen
+FSV Mainz 05
+MSV Duisburg
+Erzgebirge Aue
+Jahn Regensburg
+SpVgg Unterhaching
+VfB Lübeck
+Eintracht Trier
+Karlsruher SC
+SpVgg Greuther Fürth
+Wacker Burghausen
+LR Ahlen
+Union Berlin
+VfL Osnabrück
+Wuppertaler SV
+Rot-Weiss Essen
+SC Paderborn
+Werder Bremen (A)
+Bayern München (A)
+SV Wehen
+Rot-Weiss Erfurt
+1. FC Saarbrücken
+Dynamo Dresden
+Borussia Dortmund (A)
+Chemnitzer FC
+KFC Uerdingen
+Eintracht Braunschweig
+FC St. Pauli
+FC Schalke 04 (A)
+1. FC Köln (A)
+Holstein Kiel
+Hamburger SV (A)
+Wattenscheid 09
+Preußen Münster
+FC Sachsen Leipzig
+VfR Neumünster
+SC Pfullendorf
+TSG Hoffenheim
+FC Augsburg
+VfR Aalen
+FSV Mainz 05 (A)
+Stuttgarter Kickers
+Schweinfurt 05
+VfB Stuttgart (A)
+SV Elversberg
+1. SC Feucht
+Kickers Offenbach
+1. FC Eschborn
+Sportfreunde Siegen
+1. FC Kaiserslautern (A)
+TSV 1846 Crailsheim
+FC Nöttingen 1967
+Karlsruher SC (A)
+SV Waldhof 07 Mannheim
+1.FC Nürnberg (A)
+TSV 1860 München (A)
+SpVgg Unterhaching 1925 (A)
+SSV Jahn 2000 Regensburg (A)
+Meiendorfer SV 1949
+FC St. Pauli 1910 Hamburg II
+SC Concordia von 1907 Hamburg
+Kieler SVgg Holstein 1900 II
+SV Darmstadt 98
+KSV Hessen Kassel
+SC Borussia 04 Fulda
+SV Erzhausen 1913
+VfL 1945 Wolfsburg (A)
+SV Eintracht 1945 Nordhorn
+SV Wilhelmshaven
+SV Arminia 1910 Hannover
+Hertha BSC Berlin (A)
+SV Babelsberg 03
+FC Hansa Rostock (A)
+Yesilyurt SK 1973
+FC Carl Zeiss Jena
+VFC Plauen
+FV Dresden-Nord
+1.FC Magdeburg
+TuS 1911 Koblenz
+SV 1946 Weingarten
+1.FC Saarbrücken II
+VfR Wormatia 1908 Worms
+1.FC 1911 Passau
+Würzburger FV
+FC Bayern Hof 1910
+SpVgg 1919 Landshut
+SSV 1846 Ulm
+SV Bonlanden
+SV 1916 Sandhausen
+SC 1913 Weyhe
+Lüneburger Sport-Klub 1901
+AS Denkhof
+
+# hier kommen die europäischen teams.
+# aus jedem abschnitt 1 - 15 wird am anfang der saison zufällig eine
+# mannschaft für die champions' league und eine für den pokalsieger-wettbewerb
+# ausgewählt. die mannschaften im uefa-cup werden zufällig aus allen anderen ausgewählt.
+
+# hier muss man lediglich die mannschaften, die man oben eingefügt hat und die
+# hier auch vorkommen, durch englische ersetzen.
+
+1
+Manchester United
+Arsenal
+Chelsea
+Liverpool
+Tottenham Hotspur
+Newcastle United
+Blackburn Rovers
+
+2
+Boavista Porto
+FC Porto
+Sporting Lisboa
+Benfica Lisboa
+
+3
+NANTES
+LILLE
+LYON
+BORDEAUX
+PARIS SG
+MONACO
+MARSEILLE
+AUXERRE
+STRASBOURG
+
+4
+Barcelona
+Real Madrid
+Atletico Madrid
+Deportivo
+Mallorca
+Valencia
+Celta
+Real Zaragoza
+Real Sociedad
+
+5
+Galatasaray
+Fenerbahce
+Besiktas
+Trabzonspor
+
+6
+ROMA
+JUVENTUS
+LAZIO
+FIORENTINA
+MILAN
+PARMA
+INTER
+SAMPDORIA
+
+7
+Panathinaikos
+Olymp. Piraeus
+AEK Athens
+PAOK Tsaloniki
+Olymp. Nicosia
+
+8
+Sparta Praha
+Slavia Praha
+Slov. Bratislava
+
+9
+Midlothian
+Rangers
+Celtic
+Hibernian
+Kilmarnock
+
+10
+Feyenoord
+PSV Eindhoven
+Roda Kerkrade
+Ajax
+Twente Enschede
+Utrecht
+
+11
+Lok. Moscow
+Spartak Moscow
+Dinamo Moscow
+Torp. Moscow
+
+12
+Anderlecht
+Club Brugge
+Westerlo
+Standard Liege
+Racing Genk
+
+13
+Dynamo Kyiv
+CSCA Kyiv
+Donetsk
+
+14
+Brondby
+Halmstad
+Kobenhavn
+Odense BK
+Aarhus
+Aalborg
+
+15
+Xamax Neuchatel
+Aarau
+YB Bern
+Grasshoppers
+Servette
+St Gallen
+FC Basel
+
+16
+Austria Wien
+Grazer AK
+SV Pasching
+Sturm Graz
+Amica Wronki
+Wisla Krakov
+Banik Ostrava
+FC Brno
+Malmo IF
+IFK Goteborg
+Halmstads BK
+Hammarby
+RS Belgrad
+Dinamo Bucuresti
+Rapid Bucuresti
+Steaua
+Dinamo Zagreb
+Hajduk Split
+Rapid Wien
+Tirol
+Rosenborg
+Litex
+Hap. Tel-Aviv
+Slov. Liberec
+CSKA Sofia
+Levski
+Helsingborg
+Legia
+Macc. Tel-Aviv
+Osijek
+Pribram
+Maritimo
+Midtjylland
+Obilic
+Olimp. Ljubljana
+Partizan
+Pol. Warszawa
+Ruzomberok
+Sigma Olomouc
+Silkeborg
+
+# hier sind die namen der fünf ligen und der pokalwettbewerbe.
+# die '1000' ist wichtig, sie sagt der funktion, die die ligateams
+# einliest, dass sie hier aufhören soll
+1000
+1. Bundesliga
+2. Bundesliga
+Regionalliga
+Oberliga
+Verbandsliga
+
+Champions' League
+Cup der Pokalsieger
+UEFA-Pokal
+DFB-Pokal
+Ligapokal
+Superpokal
+UEFA Superpokal
+Aufstiegsrunde
