@@ -365,6 +365,9 @@ text_file_number_to_char(gint number, gchar *filename, gboolean full_path)
 	case FILES_COUNTRY_HU:
 	    strcpy(buf, "country_hu");
 	    break;
+	case FILES_COUNTRY_CL:
+	    strcpy(buf, "country_cl");
+	    break;
 	case FILES_PLAYER_NAMES:
 	    strcpy(buf, "player_names");
 	    break;

@@ -765,9 +765,9 @@ stadium_events(fixture fix)
 {
     gfloat rndom = rnd(0,1);
     gfloat money_loss =
-	gauss_dist(0.6, 0.6, 1.1, 1.1);
+	gauss_dist(0.4, 0.4, 0.8, 0.8);
     gfloat safety_reduce = 
-	gauss_dist(0.08, 0.08, 0.15, 0.15);
+	gauss_dist(0.04, 0.04, 0.1, 0.1);
     gfloat capacity_reduce_factor;
     gint type = 1;
 
@@ -784,26 +784,26 @@ stadium_events(fixture fix)
     /* riots */
     else if( rndom <= 0.8 * (1 - powf(stadiums[my_team].safety, 0.3)) )
     {
-	safety_reduce = gauss_dist(0.1, 0.1, 0.2, 0.2);
-	money_loss = gauss_dist(0.7, 0.7, 1.2, 1.2);
+	safety_reduce = gauss_dist(0.06, 0.06, 0.12, 0.12);
+	money_loss = gauss_dist(0.5, 0.5, 1.0, 1.0);
 	type = 2;
     }
     /* fire */
     else if( rndom <= (1 - powf(stadiums[my_team].safety, 0.3)) )
     {
 	
-	safety_reduce = gauss_dist(0.1, 0.15, 0.25, 0.25);
-	money_loss = gauss_dist(0.9, 0.9, 1.3, 1.3);
+	safety_reduce = gauss_dist(0.1, 0.1, 0.17, 0.17);
+	money_loss = gauss_dist(0.7, 0.7, 1.1, 1.1);
 	type = 3;
     }
     else
 	return 0;
     
     capacity_reduce_factor =
-	gauss_dist(0.9 - (gfloat)type / 15,
-		   0.9 - (gfloat)type / 15,
-		   1 - (gfloat)type / 15,
-		   1 - (gfloat)type / 15);
+	gauss_dist(0.9 - (gfloat)type / 25,
+		   0.9 - (gfloat)type / 25,
+		   1 - (gfloat)type / 25,
+		   1 - (gfloat)type / 25);
 
     stadiums[my_team].safety -= safety_reduce;
     stadiums[my_team].capacity = 
@@ -1099,11 +1099,11 @@ gchar * objective_get_message(objective * obj) {
 	switch(obj->type) {
 		case OBJ_NONE:break;
 		case OBJ_NO_RELEGATED:
-				msg=gettext("Your team must stay in current league !");break;
+				msg=gettext("Your team must stay in the current league.");break;
 		case OBJ_PROMOTED:
-				msg=gettext("Your team must be promoted to next league !");break;
+				msg=gettext("Your team must be promoted to the next league.");break;
 		case OBJ_POSITION:
-				msg=gettext("Your team must finish at least at %d position");break;
+				msg=gettext("Your team must finish at least in rank %d.");break;
 		case OBJ_WIN_CUP:
 				msg=gettext("Your team must win the \"%s\" cup");break;
 		default://nothing					

@@ -1,6 +1,8 @@
 1/23/2005: v1.7.4
 	- added GeoVah's season objective patch
 	- added possibility to disable savegame compression
+	- stadium events are less harsh
+	- there are more players from lower leagues on the transfer list
 
 11/23/2004: v1.7.3
 	- switched the load/save system to XML, making it slower but more
