@@ -12,10 +12,14 @@ EXTRA_DIST = \
 install-data-local:
 	@$(NORMAL_INSTALL)
 	if test -d $(srcdir)/support_files; then \
-	  $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/pixmaps; \
+	  $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/support_files; \
 	  for pixmap in $(srcdir)/support_files/*; do \
 	    if test -f $$pixmap; then \
-	      $(INSTALL_DATA) $$pixmap $(DESTDIR)$(pkgdatadir)/pixmaps; \
+		if test -x $$pixmap; then \
+		      $(INSTALL_PROGRAM) $$pixmap $(DESTDIR)$(pkgdatadir)/support_files; \
+		else \
+		      $(INSTALL_DATA) $$pixmap $(DESTDIR)$(pkgdatadir)/support_files; \
+		fi \
 	    fi \
 	  done \
 	fi
