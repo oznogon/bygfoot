@@ -31,6 +31,8 @@
 #define INDENT5 "\t\t\t\t\t"
 #define INDENT6 "\t\t\t\t\t\t"
 
+#define FLOAT_FACTOR 10000.0
+
 gfloat progress;
 
 void

@@ -172,7 +172,7 @@ void
 xml_teams_read_text_player(player *pl, gchar *text)
 {
     gint int_value = (gint)g_ascii_strtod(text, NULL);
-    gfloat float_value = (gfloat)g_ascii_strtod(text, NULL);
+    gfloat float_value = (gfloat)g_ascii_strtod(text, NULL) / FLOAT_FACTOR;
 
     switch(state)
     {
@@ -250,7 +250,7 @@ xml_teams_read_text         (GMarkupParseContext *context,
     buf[text_len] = '\0';
 
     int_value = (gint)g_ascii_strtod(buf, NULL);
-    float_value = (gfloat)g_ascii_strtod(buf, NULL);
+    float_value = (gfloat)g_ascii_strtod(buf, NULL) / FLOAT_FACTOR;
 
     if(team_idx < 178)
     {
@@ -398,15 +398,22 @@ xml_teams_write_player(FILE *xml_file, player pl)
     fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT3, TAG_PLAYER_WAGE, pl.wage, TAG_PLAYER_WAGE);
     fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT3, TAG_PLAYER_TEAMID, pl.team_id, TAG_PLAYER_TEAMID);
 
-    fprintf(xml_file, "%s<_%d>%.3f</_%d>\n", INDENT3, 
-	    TAG_PLAYER_LASTSKILL, pl.last_skill_update, TAG_PLAYER_LASTSKILL);
-    fprintf(xml_file, "%s<_%d>%.3f</_%d>\n", INDENT3, TAG_PLAYER_AGE, pl.age, TAG_PLAYER_AGE);
-    fprintf(xml_file, "%s<_%d>%.3f</_%d>\n", INDENT3, TAG_PLAYER_PEAKAGE, pl.peak_age, TAG_PLAYER_PEAKAGE);
-    fprintf(xml_file, "%s<_%d>%.3f</_%d>\n", INDENT3, TAG_PLAYER_SKILL, pl.skill, TAG_PLAYER_SKILL);
-    fprintf(xml_file, "%s<_%d>%.3f</_%d>\n", INDENT3, TAG_PLAYER_CSKILL, pl.cskill, TAG_PLAYER_CSKILL);
-    fprintf(xml_file, "%s<_%d>%.3f</_%d>\n", INDENT3, TAG_PLAYER_TALENT, pl.talent, TAG_PLAYER_TALENT);
-    fprintf(xml_file, "%s<_%d>%.3f</_%d>\n", INDENT3, TAG_PLAYER_ETAL, pl.etal, TAG_PLAYER_ETAL);
-    fprintf(xml_file, "%s<_%d>%.3f</_%d>\n", INDENT3, TAG_PLAYER_FITNESS, pl.fitness, TAG_PLAYER_FITNESS);
+    fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT3, 
+	    TAG_PLAYER_LASTSKILL, (gint)(pl.last_skill_update * FLOAT_FACTOR), TAG_PLAYER_LASTSKILL);
+    fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT3, 
+	    TAG_PLAYER_AGE, (gint)(pl.age * FLOAT_FACTOR), TAG_PLAYER_AGE);
+    fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT3, 
+	    TAG_PLAYER_PEAKAGE, (gint)(pl.peak_age * FLOAT_FACTOR), TAG_PLAYER_PEAKAGE);
+    fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT3, 
+	    TAG_PLAYER_SKILL, (gint)(pl.skill * FLOAT_FACTOR), TAG_PLAYER_SKILL);
+    fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT3, 
+	    TAG_PLAYER_CSKILL, (gint)(pl.cskill * FLOAT_FACTOR), TAG_PLAYER_CSKILL);
+    fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT3, 
+	    TAG_PLAYER_TALENT, (gint)(pl.talent * FLOAT_FACTOR), TAG_PLAYER_TALENT);
+    fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT3, 
+	    TAG_PLAYER_ETAL, (gint)(pl.etal * FLOAT_FACTOR), TAG_PLAYER_ETAL);
+    fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT3, 
+	    TAG_PLAYER_FITNESS, (gint)(pl.fitness * FLOAT_FACTOR), TAG_PLAYER_FITNESS);
 
     fprintf(xml_file, "%s<_%d>\n", INDENT3, TAG_PLAYER_HISTORIES);
     if(pl.history != NULL)

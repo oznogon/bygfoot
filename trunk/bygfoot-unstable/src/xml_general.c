@@ -262,7 +262,7 @@ xml_general_read_text         (GMarkupParseContext *context,
     buf[text_len] = '\0';
 
     int_value = (gint)g_ascii_strtod(buf, NULL);
-    float_value = (gfloat)g_ascii_strtod(buf, NULL);
+    float_value = (gfloat)g_ascii_strtod(buf, NULL) / FLOAT_FACTOR;
     
     if(state == TAG_MYTEAM)
 	my_team = int_value;
@@ -533,8 +533,8 @@ xml_general_write_stadiums(FILE *xml_file)
 		TAG_STAD_AVATT, stadiums[i].average_attendance, TAG_STAD_AVATT);
 	fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT2,
 		TAG_STAD_GAMES, stadiums[i].games, TAG_STAD_GAMES);
-	fprintf(xml_file, "%s<_%d>%.3f</_%d>\n", INDENT2,
-		TAG_STAD_SAF, stadiums[i].safety, TAG_STAD_SAF);
+	fprintf(xml_file, "%s<_%d>%d</_%d>\n", INDENT2,
+		TAG_STAD_SAF, (gint)(stadiums[i].safety * FLOAT_FACTOR), TAG_STAD_SAF);
 	fprintf(xml_file, "%s</_%d>\n", INDENT1, TAG_STAD);
     }
 
