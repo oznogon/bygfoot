@@ -63,6 +63,8 @@ create_team_selection (void)
   GtkWidget *image51;
   GtkWidget *radiobutton_country9;
   GtkWidget *image59;
+  GtkWidget *radiobutton_country11;
+  GtkWidget *image61;
   GtkWidget *hbox49;
   GtkWidget *radiobutton_country4;
   GtkWidget *image50;
@@ -148,7 +150,6 @@ create_team_selection (void)
   label4 = gtk_label_new (_("Start in"));
   gtk_widget_show (label4);
   gtk_box_pack_start (GTK_BOX (vbox2), label4, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label4), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (label4), 0.05, 0.5);
 
   eventbox1 = gtk_event_box_new ();
@@ -226,7 +227,6 @@ create_team_selection (void)
   label69 = gtk_label_new (_("Choose country"));
   gtk_widget_show (label69);
   gtk_box_pack_start (GTK_BOX (vbox34), label69, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label69), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (label69), 0.05, 0.5);
   gtk_misc_set_padding (GTK_MISC (label69), 0, 5);
 
@@ -297,6 +297,17 @@ create_team_selection (void)
   image59 = create_pixmap (team_selection, "flag_hu.png");
   gtk_widget_show (image59);
   gtk_container_add (GTK_CONTAINER (radiobutton_country9), image59);
+
+  radiobutton_country11 = gtk_radio_button_new (NULL);
+  gtk_widget_show (radiobutton_country11);
+  gtk_box_pack_start (GTK_BOX (hbox48), radiobutton_country11, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, radiobutton_country11, _("Belgium"), NULL);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton_country11), radiobutton_country0_group);
+  radiobutton_country0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton_country11));
+
+  image61 = create_pixmap (team_selection, "flag_be.png");
+  gtk_widget_show (image61);
+  gtk_container_add (GTK_CONTAINER (radiobutton_country11), image61);
 
   hbox49 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox49);
@@ -393,7 +404,6 @@ create_team_selection (void)
   label70 = gtk_label_new_with_mnemonic (_("Select a country file"));
   gtk_widget_show (label70);
   gtk_box_pack_start (GTK_BOX (hbox45), label70, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label70), GTK_JUSTIFY_LEFT);
 
   hseparator12 = gtk_hseparator_new ();
   gtk_widget_show (hseparator12);
@@ -453,7 +463,6 @@ create_team_selection (void)
   label71 = gtk_label_new_with_mnemonic (_("Start Bygfoot Team Editor"));
   gtk_widget_show (label71);
   gtk_box_pack_start (GTK_BOX (hbox47), label71, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label71), GTK_JUSTIFY_LEFT);
 
   hbox3 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox3);
@@ -483,7 +492,6 @@ create_team_selection (void)
   label1 = gtk_label_new_with_mnemonic (_("OK"));
   gtk_widget_show (label1);
   gtk_box_pack_start (GTK_BOX (hbox4), label1, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label1), GTK_JUSTIFY_LEFT);
 
   team_selection_cancel = gtk_button_new ();
   gtk_widget_show (team_selection_cancel);
@@ -509,7 +517,6 @@ create_team_selection (void)
   label2 = gtk_label_new_with_mnemonic (_("Cancel"));
   gtk_widget_show (label2);
   gtk_box_pack_start (GTK_BOX (hbox5), label2, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label2), GTK_JUSTIFY_LEFT);
 
   team_selection_load = gtk_button_new ();
   gtk_widget_show (team_selection_load);
@@ -535,7 +542,6 @@ create_team_selection (void)
   label5 = gtk_label_new_with_mnemonic (_("Load game"));
   gtk_widget_show (label5);
   gtk_box_pack_start (GTK_BOX (hbox6), label5, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label5), GTK_JUSTIFY_LEFT);
 
   g_signal_connect ((gpointer) team_selection, "delete_event",
                     G_CALLBACK (on_team_selection_cancel_clicked),
@@ -556,6 +562,9 @@ create_team_selection (void)
                     G_CALLBACK (on_radiobutton_country_toggled),
                     NULL);
   g_signal_connect ((gpointer) radiobutton_country9, "toggled",
+                    G_CALLBACK (on_radiobutton_country_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton_country11, "toggled",
                     G_CALLBACK (on_radiobutton_country_toggled),
                     NULL);
   g_signal_connect ((gpointer) radiobutton_country4, "toggled",
@@ -631,6 +640,8 @@ create_team_selection (void)
   GLADE_HOOKUP_OBJECT (team_selection, image51, "image51");
   GLADE_HOOKUP_OBJECT (team_selection, radiobutton_country9, "radiobutton_country9");
   GLADE_HOOKUP_OBJECT (team_selection, image59, "image59");
+  GLADE_HOOKUP_OBJECT (team_selection, radiobutton_country11, "radiobutton_country11");
+  GLADE_HOOKUP_OBJECT (team_selection, image61, "image61");
   GLADE_HOOKUP_OBJECT (team_selection, hbox49, "hbox49");
   GLADE_HOOKUP_OBJECT (team_selection, radiobutton_country4, "radiobutton_country4");
   GLADE_HOOKUP_OBJECT (team_selection, image50, "image50");
@@ -745,7 +756,6 @@ create_popup_window (void)
   label_popup_status = gtk_label_new (_("-1"));
   gtk_widget_show (label_popup_status);
   gtk_box_pack_start (GTK_BOX (hbox16), label_popup_status, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label_popup_status), GTK_JUSTIFY_LEFT);
   gtk_misc_set_padding (GTK_MISC (label_popup_status), 29, 0);
 
   vseparator12 = gtk_vseparator_new ();
@@ -755,7 +765,6 @@ create_popup_window (void)
   label_popup_status2 = gtk_label_new (_("-1"));
   gtk_widget_show (label_popup_status2);
   gtk_box_pack_start (GTK_BOX (hbox16), label_popup_status2, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label_popup_status2), GTK_JUSTIFY_LEFT);
   gtk_misc_set_padding (GTK_MISC (label_popup_status2), 22, 0);
 
   vseparator13 = gtk_vseparator_new ();
@@ -765,7 +774,6 @@ create_popup_window (void)
   label_popup_status3 = gtk_label_new (_("-1"));
   gtk_widget_show (label_popup_status3);
   gtk_box_pack_start (GTK_BOX (hbox16), label_popup_status3, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label_popup_status3), GTK_JUSTIFY_LEFT);
   gtk_misc_set_padding (GTK_MISC (label_popup_status3), 23, 0);
 
   hbox20 = gtk_hbox_new (FALSE, 0);
@@ -783,7 +791,6 @@ create_popup_window (void)
   label_popup_text = gtk_label_new (_("label23"));
   gtk_widget_show (label_popup_text);
   gtk_box_pack_start (GTK_BOX (vbox12), label_popup_text, FALSE, FALSE, 10);
-  gtk_label_set_justify (GTK_LABEL (label_popup_text), GTK_JUSTIFY_LEFT);
   gtk_label_set_line_wrap (GTK_LABEL (label_popup_text), TRUE);
   gtk_misc_set_padding (GTK_MISC (label_popup_text), 0, 6);
 
@@ -829,7 +836,6 @@ create_popup_window (void)
   label50 = gtk_label_new_with_mnemonic (_("OK"));
   gtk_widget_show (label50);
   gtk_box_pack_start (GTK_BOX (hbox30), label50, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label50), GTK_JUSTIFY_LEFT);
 
   button_popup_cancel = gtk_button_new ();
   gtk_box_pack_start (GTK_BOX (hbox17), button_popup_cancel, TRUE, TRUE, 0);
@@ -854,7 +860,6 @@ create_popup_window (void)
   label51 = gtk_label_new_with_mnemonic (_("Cancel"));
   gtk_widget_show (label51);
   gtk_box_pack_start (GTK_BOX (hbox31), label51, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label51), GTK_JUSTIFY_LEFT);
 
   button_popup_close = gtk_button_new ();
   gtk_box_pack_start (GTK_BOX (hbox17), button_popup_close, TRUE, TRUE, 0);
@@ -875,7 +880,6 @@ create_popup_window (void)
   label52 = gtk_label_new_with_mnemonic (_("Close"));
   gtk_widget_show (label52);
   gtk_box_pack_start (GTK_BOX (hbox32), label52, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label52), GTK_JUSTIFY_LEFT);
 
   button8 = gtk_button_new_with_mnemonic (_("button8"));
   gtk_box_pack_start (GTK_BOX (hbox17), button8, TRUE, TRUE, 0);
@@ -963,6 +967,7 @@ create_fsel_window (void)
   fsel_window = gtk_file_selection_new (_("Choose file"));
   gtk_container_set_border_width (GTK_CONTAINER (fsel_window), 10);
   gtk_window_set_position (GTK_WINDOW (fsel_window), GTK_WIN_POS_CENTER);
+  gtk_window_set_type_hint (GTK_WINDOW (fsel_window), GDK_WINDOW_TYPE_HINT_DIALOG);
 
   button_fsel_ok = GTK_FILE_SELECTION (fsel_window)->ok_button;
   gtk_widget_show (button_fsel_ok);
@@ -1013,6 +1018,7 @@ create_font_sel_window (void)
   font_sel_window = gtk_font_selection_dialog_new (_("Select font"));
   gtk_container_set_border_width (GTK_CONTAINER (font_sel_window), 6);
   gtk_window_set_position (GTK_WINDOW (font_sel_window), GTK_WIN_POS_CENTER);
+  gtk_window_set_type_hint (GTK_WINDOW (font_sel_window), GDK_WINDOW_TYPE_HINT_DIALOG);
 
   button_font_sel_ok = GTK_FONT_SELECTION_DIALOG (font_sel_window)->ok_button;
   gtk_widget_show (button_font_sel_ok);
@@ -1236,7 +1242,6 @@ create_help_window (void)
   label59 = gtk_label_new_with_mnemonic (_("Close"));
   gtk_widget_show (label59);
   gtk_box_pack_start (GTK_BOX (hbox40), label59, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label59), GTK_JUSTIFY_LEFT);
 
   g_signal_connect ((gpointer) button_help_close, "clicked",
                     G_CALLBACK (on_button_help_close_clicked),

@@ -733,6 +733,8 @@ change_country_team_selection(GtkWidget *button)
 	lookup_widget(button, "radiobutton_country9");
     radiobutton_country[FILES_COUNTRY_CL] = 
 	lookup_widget(button, "radiobutton_country10");
+    radiobutton_country[FILES_COUNTRY_BE] = 
+	lookup_widget(button, "radiobutton_country11");
 
     for(i=0;i<FILES_PLAYER_NAMES;i++)	
       if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(radiobutton_country[i])))
