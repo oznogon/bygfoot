@@ -10,7 +10,7 @@
 # using wget to retrieve patches from the homepage
 
 # version number
-version="0.5"
+version="0.6"
 # the bygfoot release version the script is shipped with
 relversion=VERSION
 # the current release version on the server
@@ -588,10 +588,12 @@ function get_latest_version()
 
     read tempvar
 
-    if [ $tempvar = "n" ]; then
-	cleanup
-	popd &> /dev/null
-	exit $EXITUSR
+    if [ ! -z $temp]; then
+	if [ $tempvar = "n" ]; then
+	    cleanup
+	    popd &> /dev/null
+	    exit $EXITUSR
+	fi
     fi
 }
 
@@ -614,7 +616,7 @@ function get_new_package()
 
     echo
     echo "** b-u: You can find the package $file"
-    echo "** b-u: in the directory $tmpdir."
+    echo "** b-u: in the directory $PWD."
     echo "** b-u: Done."
     
     exit $EXITOK
@@ -645,9 +647,9 @@ function get_mode()
 
     echo
     echo "** b-u: What would you like to do?"
-    echo "** b-u: - [U]pdate your Bygfoot source package using patches"
-    echo "** b-u: - (D)ownload the latest Bygfoot release"
-    echo "** b-u: - (G)et country file package with official team names"
+    echo "** b-u: - [1] Update your Bygfoot source package using patches"
+    echo "** b-u: - (2) Download the latest Bygfoot release"
+    echo "** b-u: - (3) Get country file package with official team names"
 
     read tempvar
 
@@ -656,9 +658,9 @@ function get_mode()
 	return
     fi
 
-    if [ $tempvar = "D" ]; then
+    if [ $tempvar -eq 2 ]; then
 	mode=$mode_pack
-    elif [ $tempvar = "G" ]; then
+    elif [ $tempvar -eq 3 ]; then
 	mode=$mode_country
     else
 	mode=$mode_src
