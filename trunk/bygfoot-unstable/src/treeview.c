@@ -113,7 +113,7 @@ set_up_team_selection_treeview (GtkWidget *treeview)
 
     /* set up team name column */
     col = gtk_tree_view_column_new();
-    gtk_tree_view_column_set_title(col, "Team");
+    gtk_tree_view_column_set_title(col, _("Team"));
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
     renderer = gtk_cell_renderer_text_new();
     gtk_tree_view_column_pack_start(col, renderer, TRUE);
@@ -124,7 +124,7 @@ set_up_team_selection_treeview (GtkWidget *treeview)
 
     /* league column */
     col = gtk_tree_view_column_new();
-    gtk_tree_view_column_set_title(col, "League");
+    gtk_tree_view_column_set_title(col, _("League"));
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
     renderer = gtk_cell_renderer_text_new();
     gtk_tree_view_column_pack_start(col, renderer, TRUE);
@@ -1129,8 +1129,6 @@ create_fin_stad(void)
     gint i;
     gchar buf[SMALL];
     gchar buf2[SMALL];
-    gint capacity_increase = 
-	stadium_improve_costs(0, -1);
     gint safety_increase =
 	stadium_improve_costs(1, -1);
     GtkListStore *liststore =
@@ -1218,11 +1216,6 @@ create_fin_stad(void)
     gtk_list_store_set(liststore, &iter,
 		       0, _("Safety"), 1, buf, -1);
 
-
-    gtk_list_store_append(liststore, &iter);
-    print_grouped_int(capacity_increase, buf, 0);
-    gtk_list_store_set(liststore, &iter,
-		       0, _("500 seats cost"), 1, buf, -1);
 
     gtk_list_store_append(liststore, &iter);
     print_grouped_int(safety_increase, buf, 0);

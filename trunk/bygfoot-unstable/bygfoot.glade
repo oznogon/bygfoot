@@ -6,7 +6,7 @@
 <widget class="GtkWindow" id="main_window">
   <property name="border_width">6</property>
   <property name="visible">True</property>
-  <property name="title" translatable="yes">Bygfoot Football Manager 1.7.3</property>
+  <property name="title" translatable="yes"></property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_CENTER</property>
   <property name="modal">False</property>
@@ -102,7 +102,7 @@
 		      <signal name="activate" handler="on_start_editor_activate" last_modification_time="Sun, 30 May 2004 19:58:16 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image85">
+			<widget class="GtkImage" id="image107">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-preferences</property>
 			  <property name="icon_size">1</property>
@@ -118,13 +118,12 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="start_update">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">You can use the online update feature only if you have the Bygfoot source package installed</property>
 		      <property name="label" translatable="yes">Start Bygfoot Online Update</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_start_update_activate" last_modification_time="Mon, 13 Sep 2004 12:30:42 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image86">
+			<widget class="GtkImage" id="image108">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-refresh</property>
 			  <property name="icon_size">1</property>

@@ -44,6 +44,9 @@ GtkWidget*
 return_main_window(void)
 {
     GtkWidget *window = create_main_window();
+    
+    if(options[OPT_MAXIMIZE])
+	gtk_window_maximize(GTK_WINDOW(window));
 
     return set_version(window);
 }

@@ -18,6 +18,7 @@ enum
     ZERO_ONE7,
     ZERO_ONE8,
     ZERO_ONE9,
+    ZERO_ONE10,
     ZERO_ONE12,
     ZERO_ONE13,
     ZERO_ONE14,
@@ -104,6 +105,10 @@ get_option_widgets(GtkWidget *opt_window,
     zero_one_widgets[ZERO_ONE9] =
 	lookup_widget(opt_window, "checkbutton_fit_colors");
     zero_one_options[ZERO_ONE9] = &options[OPT_FIT_COLORS];
+
+    zero_one_widgets[ZERO_ONE10] =
+	lookup_widget(opt_window, "checkbutton_maximize");
+    zero_one_options[ZERO_ONE10] = &options[OPT_MAXIMIZE];
 
     zero_one_widgets[ZERO_ONE12] =
 	lookup_widget(opt_window, "check_jobs");

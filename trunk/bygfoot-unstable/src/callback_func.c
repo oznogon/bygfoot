@@ -79,7 +79,7 @@ callback_show_player_info(GtkTreeSelection *selection,
        status == 110000)
     {
 	if(week >= 35)
-	    print_message(_("The transfer deadline has passed (week 34)."));
+	    print_message(_("The transfer deadline has passed (week 35)."));
 	else if(is_on_transferlist(my_team, player_number) == 1)
 	    print_message(_("The player is already on the transferlist."));
 	else

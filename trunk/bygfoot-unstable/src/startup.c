@@ -48,8 +48,6 @@ write_global_variables(gint new_game)
 
     history = NULL;
     
-    read_conf_file();
-
     for(i=0;i<20;i++)
 	transferlist[i].time = -1;
 

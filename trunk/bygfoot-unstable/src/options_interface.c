@@ -61,6 +61,7 @@ create_opt_window (void)
   GtkWidget *entry_team_name;
   GtkWidget *vseparator3;
   GtkWidget *vbox33;
+  GtkWidget *checkbutton_maximize;
   GtkWidget *hbox22;
   GtkWidget *label45;
   GtkWidget *radio_mess1;
@@ -422,6 +423,11 @@ create_opt_window (void)
   vbox33 = gtk_vbox_new (FALSE, 3);
   gtk_widget_show (vbox33);
   gtk_box_pack_start (GTK_BOX (hbox65), vbox33, FALSE, FALSE, 0);
+
+  checkbutton_maximize = gtk_check_button_new_with_mnemonic (_("Start maximized"));
+  gtk_widget_show (checkbutton_maximize);
+  gtk_box_pack_start (GTK_BOX (vbox33), checkbutton_maximize, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, checkbutton_maximize, _("Whether or not the main window appears maximized at startup. (NOTE: Some windowmanagers don't support this.) Of course, you have to save your settings to the conf file if you want a change of this variable to take effect."), NULL);
 
   hbox22 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox22);
@@ -1207,7 +1213,7 @@ create_opt_window (void)
   eventbox5 = gtk_event_box_new ();
   gtk_widget_show (eventbox5);
   gtk_box_pack_start (GTK_BOX (vbox51), eventbox5, FALSE, FALSE, 0);
-  gtk_tooltips_set_tip (tooltips, eventbox5, _("How long the history can get at most (data from the beginning of the list gets removed afterwards). WARNING: The higher this value is, the more memory is needed, especially for the player histories."), NULL);
+  gtk_tooltips_set_tip (tooltips, eventbox5, _("How long the history can get at most (data from the beginning of the list gets removed afterwards). WARNING: The higher this value is, the more memory is needed, especially for the player histories. Additionally, loading and saving games gets slower."), NULL);
 
   label141 = gtk_label_new (_("Maximal history length"));
   gtk_widget_show (label141);
@@ -1460,6 +1466,7 @@ create_opt_window (void)
   GLADE_HOOKUP_OBJECT (opt_window, entry_team_name, "entry_team_name");
   GLADE_HOOKUP_OBJECT (opt_window, vseparator3, "vseparator3");
   GLADE_HOOKUP_OBJECT (opt_window, vbox33, "vbox33");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_maximize, "checkbutton_maximize");
   GLADE_HOOKUP_OBJECT (opt_window, hbox22, "hbox22");
   GLADE_HOOKUP_OBJECT (opt_window, label45, "label45");
   GLADE_HOOKUP_OBJECT (opt_window, radio_mess1, "radio_mess1");

@@ -59,7 +59,10 @@ set_variables(void)
 
     /* this plays a role in case the human player has
        specified a country file on the command line */
-    strcpy(teams[0].name, "");    
+    strcpy(teams[0].name, "");
+
+    /* read options from the configuration file */
+    read_conf_file();
 }
 
 void
@@ -72,15 +75,15 @@ bygfoot_init(gint argc, gchar *argv[])
     /* initialize the random nr generator */
     srandom((unsigned)time(NULL));
 
-    set_variables();
-    
     sprintf(buf, "%s/support_files", pwd);
     g_free(pwd);
     add_support_directory(buf);
     sprintf(buf, "%s/.bygfoot", g_get_home_dir());
     add_support_directory(buf);
 
-    /* look for pixmap directory and country file */
+    set_variables();
+    
+     /* look for pixmap directory and country file */
     for(i=1;i<argc - 1;i++)
     {
 	if(strcmp(argv[i], "-d") == 0)

@@ -64,6 +64,7 @@ write_opt_names(gchar opt_names[][50])
     strcpy(opt_names[OPT_SHOW_LIVE], "show_live_game");
     strcpy(opt_names[OPT_LIVE_DURATION], "live_game_duration");
     strcpy(opt_names[OPT_LIVE_TENDENCY], "show_tendency_bar");
+    strcpy(opt_names[OPT_MAXIMIZE], "maximize_main_window");
 
     strcpy(opt_names[OPT_NOTIFY], "notify_transfer");
     strcpy(opt_names[OPT_NOTIFY_POS0], "notify_goalie");
@@ -371,13 +372,13 @@ text_file_number_to_char(gint number, gchar *filename, gboolean full_path)
 	  strcpy(buf, "help");
 	    break;
 	case FILES_CONF:
-	  strcpy(buf, "bygfoot.conf");
+	    strcpy(buf, "bygfoot.conf");
 	    break;
 	case FILES_UPDATE_SCRIPT:
-	  strcpy(buf, "bygfoot-update");
+	    strcpy(buf, "bygfoot-update");
 	    break;
 	case FILES_UPDATE_GUI:
-	  strcpy(buf, "bygfoot-update-gui");
+	    strcpy(buf, "bygfoot-update-gui");
 	    break;
     }
 

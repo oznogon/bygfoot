@@ -268,7 +268,6 @@ create_main_window (void)
 
   main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_container_set_border_width (GTK_CONTAINER (main_window), 6);
-  gtk_window_set_title (GTK_WINDOW (main_window), _("Bygfoot Football Manager 1.7.3"));
   gtk_window_set_position (GTK_WINDOW (main_window), GTK_WIN_POS_CENTER);
   gtk_window_set_default_size (GTK_WINDOW (main_window), 300, 600);
   main_window_icon_pixbuf = create_pixbuf ("bygfoot_icon.png");
