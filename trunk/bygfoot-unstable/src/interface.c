@@ -137,7 +137,7 @@ create_main_window (void)
   GtkWidget *vbox3;
   GtkWidget *scrolledwindow2;
   GtkWidget *viewport1;
-  GtkWidget *notebook1;
+  GtkWidget *notebook_player;
   GtkWidget *player_list;
   GtkWidget *label71;
   GtkWidget *player_list2;
@@ -802,27 +802,27 @@ create_main_window (void)
   gtk_widget_show (viewport1);
   gtk_container_add (GTK_CONTAINER (scrolledwindow2), viewport1);
 
-  notebook1 = gtk_notebook_new ();
-  gtk_widget_show (notebook1);
-  gtk_container_add (GTK_CONTAINER (viewport1), notebook1);
-  gtk_notebook_set_show_border (GTK_NOTEBOOK (notebook1), FALSE);
+  notebook_player = gtk_notebook_new ();
+  gtk_widget_show (notebook_player);
+  gtk_container_add (GTK_CONTAINER (viewport1), notebook_player);
+  gtk_notebook_set_show_border (GTK_NOTEBOOK (notebook_player), FALSE);
 
   player_list = gtk_tree_view_new ();
   gtk_widget_show (player_list);
-  gtk_container_add (GTK_CONTAINER (notebook1), player_list);
+  gtk_container_add (GTK_CONTAINER (notebook_player), player_list);
 
   label71 = gtk_label_new (_("Player list 1"));
   gtk_widget_show (label71);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 0), label71);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook_player), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook_player), 0), label71);
   gtk_label_set_justify (GTK_LABEL (label71), GTK_JUSTIFY_LEFT);
 
   player_list2 = gtk_tree_view_new ();
   gtk_widget_show (player_list2);
-  gtk_container_add (GTK_CONTAINER (notebook1), player_list2);
+  gtk_container_add (GTK_CONTAINER (notebook_player), player_list2);
 
   label72 = gtk_label_new (_("Player list 2"));
   gtk_widget_show (label72);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 1), label72);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook_player), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook_player), 1), label72);
   gtk_label_set_justify (GTK_LABEL (label72), GTK_JUSTIFY_LEFT);
 
   hbox8 = gtk_hbox_new (FALSE, 0);
@@ -1627,7 +1627,7 @@ create_main_window (void)
   GLADE_HOOKUP_OBJECT (main_window, vbox3, "vbox3");
   GLADE_HOOKUP_OBJECT (main_window, scrolledwindow2, "scrolledwindow2");
   GLADE_HOOKUP_OBJECT (main_window, viewport1, "viewport1");
-  GLADE_HOOKUP_OBJECT (main_window, notebook1, "notebook1");
+  GLADE_HOOKUP_OBJECT (main_window, notebook_player, "notebook_player");
   GLADE_HOOKUP_OBJECT (main_window, player_list, "player_list");
   GLADE_HOOKUP_OBJECT (main_window, label71, "label71");
   GLADE_HOOKUP_OBJECT (main_window, player_list2, "player_list2");

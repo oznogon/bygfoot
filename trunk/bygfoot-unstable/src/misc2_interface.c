@@ -911,38 +911,18 @@ GtkWidget*
 create_progressbar_window (void)
 {
   GtkWidget *progressbar_window;
-  GtkWidget *vbox13;
-  GtkWidget *label_progress;
-  GtkWidget *hseparator9;
   GtkWidget *progressbar;
 
-  progressbar_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  progressbar_window = gtk_window_new (GTK_WINDOW_POPUP);
   gtk_window_set_title (GTK_WINDOW (progressbar_window), _("window1"));
   gtk_window_set_position (GTK_WINDOW (progressbar_window), GTK_WIN_POS_CENTER);
 
-  vbox13 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox13);
-  gtk_container_add (GTK_CONTAINER (progressbar_window), vbox13);
-
-  label_progress = gtk_label_new (_("label42"));
-  gtk_widget_show (label_progress);
-  gtk_box_pack_start (GTK_BOX (vbox13), label_progress, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label_progress), GTK_JUSTIFY_LEFT);
-
-  hseparator9 = gtk_hseparator_new ();
-  gtk_widget_show (hseparator9);
-  gtk_box_pack_start (GTK_BOX (vbox13), hseparator9, FALSE, TRUE, 0);
-  gtk_widget_set_size_request (hseparator9, 1, 10);
-
   progressbar = gtk_progress_bar_new ();
   gtk_widget_show (progressbar);
-  gtk_box_pack_start (GTK_BOX (vbox13), progressbar, FALSE, FALSE, 0);
+  gtk_container_add (GTK_CONTAINER (progressbar_window), progressbar);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (progressbar_window, progressbar_window, "progressbar_window");
-  GLADE_HOOKUP_OBJECT (progressbar_window, vbox13, "vbox13");
-  GLADE_HOOKUP_OBJECT (progressbar_window, label_progress, "label_progress");
-  GLADE_HOOKUP_OBJECT (progressbar_window, hseparator9, "hseparator9");
   GLADE_HOOKUP_OBJECT (progressbar_window, progressbar, "progressbar");
 
   return progressbar_window;

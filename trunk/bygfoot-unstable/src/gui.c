@@ -435,6 +435,8 @@ initialize_main_window(void)
 	lookup_widget(main_window, "optionmenu_fixtures");
     GtkWidget *entry_structure =
 	lookup_widget(main_window, "entry_structure");
+    GtkWidget *notebook_player = 
+	lookup_widget(main_window, "notebook_player");
     GtkWidget *quick_opt_items[4];
     gint quick_opt_options[4] =
 	{options[OPT_NOTIFY],
@@ -468,6 +470,8 @@ initialize_main_window(void)
     entry_set_text_from_int(GTK_ENTRY(entry_structure),
 			    teams[my_team].structure);
 
+    gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook_player), 0);
+
     gtk_check_menu_item_set_active(
 	GTK_CHECK_MENU_ITEM(quick_opt_items[0]), 
 	(quick_opt_options[0] < 100));
@@ -484,27 +488,24 @@ initialize_main_window(void)
 void
 show_progress(gfloat value, gchar *text)
 {
-    GtkWidget *pwindow =
-	return_progressbar_window();
-    GtkWidget *progressbar =
-	lookup_widget(pwindow, "progressbar");
-    GtkWidget *label_progress =
-	lookup_widget(pwindow, "label_progress");
+    GtkWidget *pwindow = NULL;
+    GtkWidget *progressbar;
 
-    if(value == 1 || value < 0)
+    if(value == 1 || value < 0 || status == -1)
     {
-	gtk_widget_destroy(pwindow);
-	progressbar_window = NULL;
+	if(progressbar_window != NULL)
+	{
+	    gtk_widget_destroy(progressbar_window);
+	    progressbar_window = NULL;
+	}
 	return;
     }
 
+    pwindow = return_progressbar_window();
+    progressbar = lookup_widget(pwindow, "progressbar");
+
     if(text != NULL)
-    {
-	gtk_label_set_text(GTK_LABEL(label_progress), text);
 	gtk_progress_bar_set_text(GTK_PROGRESS_BAR(progressbar), text);
-    }
-    else
-	gtk_label_set_text(GTK_LABEL(label_progress), "");
 
     if(value >= 0 && value < 1)
 	gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(progressbar), value);

@@ -73,8 +73,8 @@ set_up_graph(GtkWidget *graph_window, team *tm, player *pl,
     if(tm != NULL && type == TEAM_HISTORY_RANK)
     {
 	get_league_bounds(get_league_from_id(team_id), league_bounds);
-	bounds[1][0] = league_bounds[1] - bounds[1][0];
-	bounds[1][1] = league_bounds[1] - bounds[1][1];
+	bounds[1][0] = (league_bounds[1] - league_bounds[0]) - bounds[1][0];
+	bounds[1][1] = (league_bounds[1] - league_bounds[0]) - bounds[1][1];
     }
 
     write_graph_labels(graph_window, pl, type, bounds);

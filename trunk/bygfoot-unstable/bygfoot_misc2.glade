@@ -1453,18 +1453,34 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkHRuler" id="hruler_graph">
+		    <widget class="GtkHRuler" id="hruler_week">
 		      <property name="visible">True</property>
 		      <property name="metric">GTK_PIXELS</property>
 		      <property name="lower">0</property>
 		      <property name="upper">10</property>
-		      <property name="position">3.05475</property>
+		      <property name="position">4.75504</property>
 		      <property name="max_size">10</property>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
 		      <property name="expand">False</property>
 		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkHRuler" id="hruler_season">
+		      <property name="visible">True</property>
+		      <property name="metric">GTK_PIXELS</property>
+		      <property name="lower">0</property>
+		      <property name="upper">10</property>
+		      <property name="position">3.83285</property>
+		      <property name="max_size">10</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">True</property>
 		    </packing>
 		  </child>
 		</widget>
@@ -1485,7 +1501,7 @@
 	  <child>
 	    <widget class="GtkLabel" id="label33">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Weeks</property>
+	      <property name="label" translatable="yes">Weeks / Seasons</property>
 	      <property name="use_underline">False</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1758,65 +1774,18 @@
 <widget class="GtkWindow" id="progressbar_window">
   <property name="visible">True</property>
   <property name="title" translatable="yes">window1</property>
-  <property name="type">GTK_WINDOW_TOPLEVEL</property>
+  <property name="type">GTK_WINDOW_POPUP</property>
   <property name="window_position">GTK_WIN_POS_CENTER</property>
   <property name="modal">False</property>
   <property name="resizable">True</property>
   <property name="destroy_with_parent">False</property>
 
   <child>
-    <widget class="GtkVBox" id="vbox13">
+    <widget class="GtkProgressBar" id="progressbar">
       <property name="visible">True</property>
-      <property name="homogeneous">False</property>
-      <property name="spacing">0</property>
-
-      <child>
-	<widget class="GtkLabel" id="label_progress">
-	  <property name="visible">True</property>
-	  <property name="label" translatable="yes">label42</property>
-	  <property name="use_underline">False</property>
-	  <property name="use_markup">False</property>
-	  <property name="justify">GTK_JUSTIFY_LEFT</property>
-	  <property name="wrap">False</property>
-	  <property name="selectable">False</property>
-	  <property name="xalign">0.5</property>
-	  <property name="yalign">0.5</property>
-	  <property name="xpad">0</property>
-	  <property name="ypad">0</property>
-	</widget>
-	<packing>
-	  <property name="padding">0</property>
-	  <property name="expand">False</property>
-	  <property name="fill">False</property>
-	</packing>
-      </child>
-
-      <child>
-	<widget class="GtkHSeparator" id="hseparator9">
-	  <property name="width_request">1</property>
-	  <property name="height_request">10</property>
-	  <property name="visible">True</property>
-	</widget>
-	<packing>
-	  <property name="padding">0</property>
-	  <property name="expand">False</property>
-	  <property name="fill">True</property>
-	</packing>
-      </child>
-
-      <child>
-	<widget class="GtkProgressBar" id="progressbar">
-	  <property name="visible">True</property>
-	  <property name="orientation">GTK_PROGRESS_LEFT_TO_RIGHT</property>
-	  <property name="fraction">0</property>
-	  <property name="pulse_step">0.1</property>
-	</widget>
-	<packing>
-	  <property name="padding">0</property>
-	  <property name="expand">False</property>
-	  <property name="fill">False</property>
-	</packing>
-      </child>
+      <property name="orientation">GTK_PROGRESS_LEFT_TO_RIGHT</property>
+      <property name="fraction">0</property>
+      <property name="pulse_step">0.1</property>
     </widget>
   </child>
 </widget>

@@ -310,6 +310,9 @@ on_button_transfers_clicked           (GtkButton       *button,
     status = 100000;
     notify_status[NOTIFY_TRANSFERS] = FALSE;
 
+    gtk_notebook_set_current_page(
+	GTK_NOTEBOOK(lookup_widget(main_window, "notebook_player")), 1);
+
     set_buttons();
 }
 

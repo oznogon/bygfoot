@@ -7,10 +7,7 @@ free_memory(void)
     free_history();
     
     if(save_file != NULL)
-    {
 	g_string_free(save_file, TRUE);
-    }
-
 
     free_histories();
 }
@@ -47,8 +44,10 @@ free_histories(void)
     for(i=0;i<175;i++)
 	if(i != 114 && i != 130)
 	{
-	    g_array_free(teams[i].history, TRUE);
+	    if(teams[i].history != NULL)
+		g_array_free(teams[i].history, TRUE);
 	    for(j=0;j<20;j++)
-		g_array_free(teams[i].players[j].history, TRUE);
+		if(teams[i].players[j].history != NULL)
+		    g_array_free(teams[i].players[j].history, TRUE);
 	}
 }

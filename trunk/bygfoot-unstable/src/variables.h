@@ -33,6 +33,12 @@ gint scout;
 /* human player's physio */
 gint physio;
 
+gint finances[FIN_END];
+
+gint options[OPT_END];
+
+gint counters[COUNT_END];
+
 /* rank_ids is an array of team ids;
    e.g. ranks[0] to ranks[19] give us
    the table of the premier division.
@@ -66,8 +72,44 @@ transfer transferlist[20];
 /* statistics of past seasons */
 season_stat *history;
 
+/* font selected for the two main windows */
+gchar font_name[SMALL];
+
+/* country_file the user's ... well, using */
+gchar country_file_name[SMALL];
+
+/* names for the five leagues and the cups */
+gchar league_names[LEAGUE_NAMES_END][50];
+
 /* number of active popup windows */
 gint popups_active;
+
+/* whether the game's saved or not */
+gboolean save_status;
+
+/* information whether some popup notification has to be shown */
+gint notify_status[NOTIFY_END];
+
+/* ages of the two players that were swapped lastly */
+gfloat undo_info[2];
+
+/* bookmaker's tips for the outcome of games */
+gint bookmaker_tips[2][2];
+
+/* currently selected rows in the two treeviews */
+gint selected_rows[2];
+
+/* main window of the game */
+GtkWidget *main_window;
+
+/* progress bar window */
+GtkWidget *progressbar_window;
+
+/* savegame file */
+GString *save_file;
+
+/* this tells us whether we are in debug mode */
+gboolean debug;
 
 /* menu status, ie. what's the user looking at currently? */
 /*
@@ -78,6 +120,7 @@ gint popups_active;
 
   -50000: a live game was shown, there are no more live games
 
+  -1: autosave in progress
   0: main menu; opponent info
 
   50000: player info is shown on the right
@@ -123,47 +166,5 @@ gint popups_active;
     950XXX: team XXX offers a job because the user was fired
 */
 gint status;
-
-/* whether the game's saved or not */
-gboolean save_status;
-
-/* information whether some popup notification has to be shown */
-gint notify_status[NOTIFY_END];
-
-/* ages of the two players that were swapped lastly */
-gfloat undo_info[2];
-
-/* bookmaker's tips for the outcome of games */
-gint bookmaker_tips[2][2];
-
-/* currently selected rows in the two treeviews */
-gint selected_rows[2];
-
-/* main window of the game */
-GtkWidget *main_window;
-
-/* progress bar window */
-GtkWidget *progressbar_window;
-
-/* savegame file */
-GString *save_file;
-
-/* font selected for the two main windows */
-gchar font_name[SMALL];
-
-/* country_file the user's ... well, using */
-gchar country_file_name[SMALL];
-
-/* this tells us whether we are in debug mode */
-gboolean debug;
-
-/* names for the five leagues and the cups */
-gchar league_names[LEAGUE_NAMES_END][50];
-
-gint finances[FIN_END];
-
-gint options[OPT_END];
-
-gint counters[COUNT_END];
 
 #endif

@@ -123,3 +123,35 @@ get_age_from_birth(gint date)
 
     return (gfloat)g_date_days_between(birth_date, current_date) / 365.25;
 }
+
+/* remove some of the first or last characters from src and copy
+   the rest to dest; no error-checking is done */
+void
+truncate_string(const gchar *src, gchar *dest, gint number_of_chars)
+{
+    gint i;
+    gint num = ABS(number_of_chars);
+    
+    if(number_of_chars >= 0)
+    {
+	strncpy(dest, src, strlen(src) - num);
+	dest[strlen(src) - num] = '\0';
+	return;
+    }
+
+    for(i=0;i<strlen(src);i++)
+	if(i >= num)
+	    dest[i - num] = src[i];
+    
+    dest[i - num] = '\0';
+}
+
+void
+print_error(GError *error)
+{
+    if(error == NULL)
+	return;
+    
+    g_warning("error message: %s\n", error->message);
+    g_error_free(error);
+}

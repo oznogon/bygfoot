@@ -24,7 +24,7 @@ bygfoot_SOURCES = \
 	gui.c callbacks.h gui.h math.h misc.h support.h team.h treeview.h \
 	history.c history.h \
 	interface.c callbacks.h interface.h support.h \
-	load_save.c game_gui.h load_save.h misc.h xml_read.h xml_write.h \
+	load_save.c load_save.h  \
 	main.c callbacks.h generation.h gui.h load_save.h main.h startup.h support.h text_files.h window.h \
 	maths.c maths.h \
 	misc.c misc.h math.h \
@@ -43,8 +43,10 @@ bygfoot_SOURCES = \
 	treeview.c finance.h fixture.h math.h misc.h support.h team.h treeview_cell.h treeview.h \
 	treeview_cell.c fixture.h game.h gui.h math.h misc.h team.h treeview_cell.h \
 	window.c callback_func.h editor_defs.h editor_callback_func.h finance.h gui.h interface.h math.h misc.h misc_interface.h misc2_interface.h options_interface.h editor_interface.h support.h text_files.h treeview.h window.h \
-	xml_read.c xml_read.h \
-	xml_write.c xml_write.h
+	xml_fixtures.c xml_fixtures.h \
+	xml_general.c xml_general.h \
+	xml_teams.c xml_teams.h \
+	xml.c xml.h
 
 bygfoot_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
 

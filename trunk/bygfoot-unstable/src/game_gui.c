@@ -5,12 +5,13 @@
 
 #include "callback_func.h"
 #include "callbacks.h"
+#include "finance.h"
+#include "fixture.h"
 #include "game_gui.h"
 #include "game.h"
 #include "generation.h"
 #include "gui.h"
-#include "finance.h"
-#include "fixture.h"
+#include "history.h"
 #include "load_save.h"
 #include "maths.h"
 #include "misc.h"
@@ -240,6 +241,7 @@ void
 update_autosave(void)
 {
     gchar buf[SMALL];
+    gint local_status = status;
     
     if(options[OPT_AUTOSAVE] < 0)
 	return;
@@ -253,7 +255,13 @@ update_autosave(void)
 
     sprintf(buf, "%s/.bygfoot/saves/autosave", g_get_home_dir());
 
+    print_message("Autosaving. Please stand by...");
+
+    status = -1;
     save_game(buf);
+    status = local_status;
+
+    print_message("");
 }
 
 void
@@ -437,9 +445,19 @@ season_end_nullify(void)
 	}
     }
 
+    if(options[OPT_HISTORY_TEAM_DELETE])
+	for(i=0;i<178;i++)
+	    reset_team_history(&teams[i]);
+    
+    if(options[OPT_HISTORY_PLAYER_DELETE])
+	for(i=0;i<178;i++)
+	    for(j=0;j<20;j++)
+		reset_player_history(&teams[i].players[j]);
+
     for(i=0;i<178;i++)
 	stadiums[i].games =
 	    stadiums[i].average_attendance = 0;
+
     for(i=0;i<FIX_END;i++)
 	fixtures[i].type = -1;
     for(i=0;i<50;i++)
@@ -706,6 +724,8 @@ change_country_team_selection(GtkWidget *button)
 	lookup_widget(button, "radiobutton_country7");
     radiobutton_country[FILES_COUNTRY_MX] = 
 	lookup_widget(button, "radiobutton_country8");
+    radiobutton_country[FILES_COUNTRY_HU] = 
+	lookup_widget(button, "radiobutton_country9");
 
     for(i=0;i<FILES_PLAYER_NAMES;i++)	
       if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(radiobutton_country[i])))

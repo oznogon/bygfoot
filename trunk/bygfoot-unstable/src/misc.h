@@ -4,6 +4,14 @@
 #include "bygfoot.h"
 #include "variables.h"
 
+void
+print_error(GError *error);
+
+/* remove some of the first or last characters from src and copy
+   the rest to dest; no error-checking is done */
+void
+truncate_string(const gchar *src, gchar *dest, gint number_of_chars);
+
 /* check whether 'item' is in array 'list' between
    'min' and 'max' */
 gint

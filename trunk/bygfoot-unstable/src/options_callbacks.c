@@ -123,8 +123,6 @@ void
 on_checkbutton_autosave_toggled        (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-    gchar buf[SMALL];
-    FILE *autosave_file;
     GtkWidget *spinbutton_autosave =
 	lookup_widget(GTK_WIDGET(togglebutton),
 		      "spinbutton_autosave");
@@ -134,19 +132,6 @@ on_checkbutton_autosave_toggled        (GtkToggleButton *togglebutton,
 	gtk_widget_set_sensitive(spinbutton_autosave, FALSE);
 	return;
     }
-
-    sprintf(buf, "%s/.bygfoot/saves/autosave", g_get_home_dir());
-
-    autosave_file = fopen(buf, "a+");
-
-    if(autosave_file == NULL)
-    {
-	gtk_toggle_button_set_active(togglebutton, FALSE);
-	show_popup_window("Could not open file $HOME/.bygfoot/saves/autosave in read/write mode. Autosave is deactivated.", NULL);
-	return;
-    }
-
-    fclose(autosave_file);
 
     gtk_widget_set_sensitive(spinbutton_autosave, TRUE);
 }
