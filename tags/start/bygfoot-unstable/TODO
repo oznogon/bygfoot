@@ -1,0 +1,76 @@
+Bygfoot Football Manager
+AUTHOR: Gyozo Both (gyboth@bygfoot.com)
+http://www.bygfoot.com
+
+I'll rate the list below so that you know when (if ever) to expect the
+described changes and features.
+
+
+Priority
+-----------
+PPPPP very high, i should work on it very soon
+...
+P very low, i'll only work on it if i've done all the other stuff
+
+Implementation
+----------------
+DDDDD very difficult, great changes in the code are inevitable
+...
+D very easy, takes only a quarter of an hour at most
+
+High priority doesn't necessarily mean the feature will come soon,
+because it might be very difficult to implement.
+On the other hand low priority doesn't mean it'll take forever until
+it's done, because it could be something that's very easy to implement.
+
+-----------------------------------------------------------------------
+
+
+The TODO list:
+
+- show more information on the team that offers you a job PP DDD
+
+- make finances a bit better-looking and add summaries at the end of a season P DDD
+
+- make player names sound more like the country they play in P DDDD
+
+- add team badges somewhere (not in the main window, probably) P DDD
+
+- add prize money for best players at the end of a season P DD
+
+- add penalty kicks and own goals in games PP DD(D)
+
+- add news feature: each week there's some news like 'last chance for
+  Real to win the title!' or so P DDD
+
+- add a junior section to the user's team (invisible); depending on
+  the amount of money you spend on it, young talents might come into
+  your team more or less regularly P DDD
+
+- show player list of a team when you click on it in the tables PP DD
+
+- add possibility to borrow/lend players PP DDD
+
+- enable closing the live game window while the game's still on P DD
+
+- add injury that stops a player's career completely P DD
+
+- show average attendance in stadium capacity percentage PP DD
+
+- show injuries and cards for the opponent's team PP DDD
+
+- add 'country' file for the world (based on the fifa rating list
+  perhaps) P D
+
+- add reasons for a player having been banned (grammar?), just like
+  for injuries P DD
+
+- change country file system: i'd like to have only two files instead
+  of the current 6 or 7, one with all the leagues (Premier Division,
+  Bundesliga etc.) and another that consists of sections, each
+  describing a country. A new country could be created by simply
+  adding a few leagues to the first file and a country definition to
+  the second file. PPP DDDDD
+
+- make leagues and cups more flexible and customizable (number of
+  teams/groups etc.) PPP DDDDD
