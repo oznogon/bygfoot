@@ -113,7 +113,7 @@ xml_fixtures_read(gchar *file_name)
 			    xml_fixtures_read_text, NULL, NULL};
     GMarkupParseContext *context;
     gchar *file_contents;
-    gint length;
+    guint length;
     GError *error = NULL;
 
     sprintf(file, "%s_%s.xml", file_name, XML_FILE_EXT_FIXTURES);

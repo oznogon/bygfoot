@@ -283,7 +283,7 @@ xml_teams_read(gchar *file_name)
 			    xml_teams_read_text, NULL, NULL};
     GMarkupParseContext *context;
     gchar *file_contents;
-    gint length;
+    guint length;
     GError *error = NULL;
 
     team_idx = player_idx = team_res_idx = history_value_idx = 0;
