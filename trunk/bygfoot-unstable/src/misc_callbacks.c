@@ -244,8 +244,10 @@ on_button_fsel_cancel_clicked          (GtkButton       *button,
     
     if(status == 800010 || status == 800002) {
 		//user cancel so maybe we need to show team selection widget
-		if(team_selection_widget) 
+		if(team_selection_widget) {
 			gtk_widget_show(team_selection_widget);
+			team_selection_widget=NULL;
+		}
 		else
 			show_team_selection();
 	}
