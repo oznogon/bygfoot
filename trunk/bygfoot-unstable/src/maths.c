@@ -1,5 +1,4 @@
-#include <gtk/gtk.h>
-#include <maths.h>
+#include <math.h>
 #include <stdlib.h>
 
 #include "maths.h"

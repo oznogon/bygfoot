@@ -1,4 +1,3 @@
-#include "defs.h"
 #include "maths.h"
 #include "misc.h"
 #include "player.h"

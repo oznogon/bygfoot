@@ -1,6 +1,8 @@
 #ifndef TEXT_FILES_H
 #define TEXT_FILES_H
 
+#include "bygfoot.h"
+
 /* read the file until the next line that's not a comment or
    a blank line and copy the line into buf; or, if find_text is
    not NULL, read the file until 'find_text' is found */

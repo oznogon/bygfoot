@@ -1,6 +1,8 @@
 #ifndef LOAD_SAVE_H
 #define LOAD_SAVE_H
 
+#include "bygfoot.h"
+
 /* check whether a file is a bygfoot savegame */
 gboolean
 check_save_game(gchar *file_name);

@@ -1,6 +1,8 @@
 #ifndef CALLBACKS_H
 #define CALLBACKS_H
 
+#include "bygfoot.h"
+
 void
 on_menu_open_activate                  (GtkMenuItem     *menuitem,
                                         gpointer         user_data);

@@ -1,6 +1,8 @@
 #ifndef MISC_H
 #define MISC_H
 
+#include "bygfoot.h"
+
 /* check whether 'item' is in array 'list' between
    'min' and 'max' */
 gint

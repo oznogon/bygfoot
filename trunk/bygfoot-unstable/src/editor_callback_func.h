@@ -1,6 +1,8 @@
 #ifndef EDITOR_CALLBACK_FUNC_H
 #define EDITOR_CALLBACK_FUNC_H
 
+#include "bygfoot.h"
+
 void
 set_spinbutton_values(void);
 

@@ -1,6 +1,12 @@
 #ifndef FINANCES_H
 #define FINANCES_H
 
+#include "bygfoot.h"
+
+/* the amount of money the user has for transactions:
+   the money on his account plus his drawing credit */
+#define BUDGET finances[FIN_MONEY] + calculate_max_loan_credit(1)
+
 /* return the costs for improving stadium safety or
    capacity */
 gint

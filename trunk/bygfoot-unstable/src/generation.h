@@ -1,6 +1,8 @@
 #ifndef GENERATION_H
 #define GENERATION_H
 
+#include "bygfoot.h"
+
 /* name all players in each team between first_team and last_team */
 void
 give_player_names(gint first_team, gint last_team);

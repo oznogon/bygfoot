@@ -16,10 +16,6 @@
 #define BUF_SIZE_BIG 1000000
 #define BUF_SIZE_SMALL 10000
 
-/* the amount of money the user has for transactions:
-   the money on his account plus his drawing credit */
-#define BUDGET finances[FIN_MONEY] + calculate_max_loan_credit(1)
-
 /**************************************************
  * most of the enumerations are used as indices   *
  * in integer arrays                              *
@@ -61,9 +57,6 @@ enum
     LEAGUE_NAMES_PROMOTION,
     LEAGUE_NAMES_END
 };
-
-/* names for the five leagues and the cups */
-gchar league_names[LEAGUE_NAMES_END][50];
 
 /* indices of the finances[] global variable:
    money:  the team's money
@@ -113,8 +106,6 @@ enum
     FIN_DUMMY19,
     FIN_END
 };
-
-gint finances[FIN_END];
 
 /* indices of the options[] global variable
    opt_conf*: confirmation options
@@ -205,6 +196,7 @@ enum
     OPT_ATT_WAGE,
     OPT_ATT_TEAM,
     OPT_ATT_LEAGUE,
+    OPT_XML,
     OPT_PENALTY_SHOOTER,
     OPT_DUMMY1,
     OPT_DUMMY2,
@@ -242,8 +234,6 @@ enum
     OPT_DUMMY34,
     OPT_END
 };
-
-gint options[OPT_END];
 
 /* indices for the counters[] global variable
    loan: number of weeks until the human player has to pay
@@ -296,8 +286,6 @@ enum
     COUNT_DUMMY32,
     COUNT_END
 };
-
-gint counters[COUNT_END];
 
 /* transfer list sorting criterium */
 enum
@@ -397,6 +385,60 @@ enum
     PRIZE_TEAM_OFFENSIVE,
     PRIZE_TEAM_DEFENSIVE,
     PRIZE_TEAM_END
+};
+
+/* the indices for a season statistic
+   element:
+   my_team: name of the human player's team
+   prem - nat_conf: the five english league champions
+   fa, league, charity: fa cup and league cup and charity 
+                        shield winners
+   cl, cwc, uefa: champions' league, cup winners' cup
+                  and uefa cup winners
+   supercup: uefa supercup winner */
+
+enum
+{
+    STAT_MY_TEAM = 0,
+    STAT_PREM,
+    STAT_DIV1,
+    STAT_DIV2,
+    STAT_DIV3,
+    STAT_NAT_CONF,
+    STAT_CL,
+    STAT_CWC,
+    STAT_UEFA,
+    STAT_FA,
+    STAT_LEAGUE,
+    STAT_CHARITY,
+    STAT_SUPERCUP,
+    STAT_END
+};
+
+/* team results
+  results[0]: games
+  results[1]: won
+  results[2]: lost
+  results[3]: draw
+  results[4]: points
+  results[5]: goals for
+  results[6]: goals against */
+
+enum
+{
+    RES_GAM = 0,
+    RES_WON,
+    RES_DRAW,
+    RES_LOST,
+    RES_GF,
+    RES_GA,
+    RES_PTS,
+    RES_DUMMY1,
+    RES_DUMMY2,
+    RES_DUMMY3,
+    RES_DUMMY4,
+    RES_DUMMY5,
+    RES_END
 };
 
 #endif

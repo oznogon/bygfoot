@@ -1,6 +1,8 @@
 #ifndef GAME_GUI_H
 #define GAME_GUI_H
 
+#include "bygfoot.h"
+
 /* make new bookmaker tips in case the user's
    team has changed significantly */
 void

@@ -4,7 +4,6 @@
  * season                                         *
  **************************************************/
 
-#include "defs.h"
 #include "game_gui.h"
 #include "generation.h"
 #include "gui.h"

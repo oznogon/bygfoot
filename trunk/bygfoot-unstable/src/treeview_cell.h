@@ -1,6 +1,8 @@
 #ifndef TREEVIEW_CELL_H
 #define TREEVIEW_CELL_H
 
+#include "bygfoot.h"
+
 /* print some information about the injury of
    the player into 'buf' */
 void

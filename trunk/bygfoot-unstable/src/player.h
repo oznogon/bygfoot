@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "bygfoot.h"
+
 /**************************************************
  * Functions working with players                 *
  **************************************************/

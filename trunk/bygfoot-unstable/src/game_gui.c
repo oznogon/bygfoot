@@ -3,7 +3,6 @@
  ******************************************************************/
 #include <unistd.h>
 
-#include "defs.h"
 #include "callback_func.h"
 #include "callbacks.h"
 #include "game_gui.h"
@@ -558,31 +557,29 @@ history_get_champions(season_stat *stat)
 void
 history_get_best_players(season_stat *stat)
 {
-    gint i, j, k;
-    gint best_players[20][2];
+  gint i;
+  gint best_players[6][2];
     
-    for(k=0;k<2;k++)    
-	for(i=0;i<5;i++)
-	{
-	    get_best_players(i + 1, best_players, 10, 0, 9,
-			     player_compare_goalgetters);
-	    get_best_players(i + 1, best_players, 0, 10, 19,
-			     player_compare_goalies);
-	    for(j=0;j<3;j++)
-	    {
-		stat->best_players[k * 15 + i * 3 + j].games =
-		    teams[best_players[k * 10 + j][0]].
-		    players[best_players[k * 10 + j][1]].games;
-		stat->best_players[k * 15 + i * 3 + j].goals =
-		    teams[best_players[k * 10 + j][0]].
-		    players[best_players[k * 10 + j][1]].goals;
-		strcpy(stat->best_players[k * 15 + i * 3 + j].name,
-		       teams[best_players[k * 10 + j][0]].
-		       players[best_players[k * 10 + j][1]].name);
-		strcpy(stat->best_players[k * 15 + i * 3 + j].team_name,
-		       teams[best_players[k * 10 + j][0]].name);
-	    }
-	}
+  get_best_players(get_league_from_id(my_team),
+		   best_players, 10, 0, 2,
+		   player_compare_goalgetters);
+  get_best_players(get_league_from_id(my_team),
+		   best_players, 0, 3, 5,
+		   player_compare_goalies);
+  for(i=0;i<6;i++)
+    {
+      stat->best_players[i].games =
+	teams[best_players[i][0]].
+	players[best_players[i][1]].games;
+      stat->best_players[i].goals =
+	teams[best_players[i][0]].
+	players[best_players[i][1]].goals;
+      strcpy(stat->best_players[i].name,
+	     teams[best_players[i][0]].
+	     players[best_players[i][1]].name);
+      strcpy(stat->best_players[i].team_name,
+	     teams[best_players[i][0]].name);
+    }
 }
 
 /* return the rank of the human player if

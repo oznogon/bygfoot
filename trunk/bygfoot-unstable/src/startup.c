@@ -3,7 +3,6 @@
  * of the game                                    *
  **************************************************/
 
-#include "defs.h"
 #include "callbacks.h"
 #include "fixture.h"
 #include "generation.h"

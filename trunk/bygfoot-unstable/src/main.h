@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include "bygfoot.h"
+
 /* set some variables that are used but not saved
    in the game */
 void

@@ -3,7 +3,6 @@
  * the beginning of the game or during the game   *
  **************************************************/
 
-#include "defs.h"
 #include "game.h"
 #include "fixture.h"
 #include "maths.h"

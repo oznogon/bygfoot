@@ -5,7 +5,6 @@
 #include <time.h>
 #include <unistd.h>
 
-#include "defs.h"
 #include "callbacks.h"
 #include "gui.h"
 #include "maths.h"

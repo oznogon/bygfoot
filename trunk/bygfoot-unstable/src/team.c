@@ -2,7 +2,6 @@
  * Functions working with teams                   *
  **************************************************/
 
-#include "defs.h"
 #include "finance.h"
 #include "fixture.h"
 #include "game_gui.h"

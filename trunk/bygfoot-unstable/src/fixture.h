@@ -1,6 +1,8 @@
 #ifndef FIXTURES_H
 #define FIXTURES_H
 
+#include "bygfoot.h"
+
 /* return the index 0 or 1 for the variables like
    stadium_facts[] or goals[] */
 gint

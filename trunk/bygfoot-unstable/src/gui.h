@@ -1,6 +1,8 @@
 #ifndef GUI_H
 #define GUI_H
 
+#include "bygfoot.h"
+
 /* add 'directory' plus subdirectories recursively to the list
    we browse when looking for files (e.g. pixmaps); */
 void

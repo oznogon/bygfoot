@@ -1,6 +1,8 @@
 #ifndef TRANSFERS_H
 #define TRANSFERS_H
 
+#include "bygfoot.h"
+
 /* return number of players on list */
 gint
 players_on_transferlist(void);

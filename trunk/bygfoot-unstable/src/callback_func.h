@@ -1,6 +1,8 @@
 #ifndef CALLBACK_FUNC_H
 #define CALLBACK_FUNC_H
 
+#include "bygfoot.h"
+
 /* get the integer value in the first column of a treeview */
 gint
 get_row_index(GtkTreeSelection *selection,

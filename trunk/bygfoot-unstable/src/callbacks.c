@@ -2,7 +2,6 @@
  * Functions called directly from the GUI                *
  *********************************************************/
 
-#include "defs.h"
 #include "callbacks.h"
 #include "callback_func.h"
 #include "fixture.h"

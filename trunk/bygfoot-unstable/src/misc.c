@@ -1,6 +1,5 @@
 #include <time.h>
 
-#include "defs.h"
 #include "misc.h"
 #include "maths.h"
 

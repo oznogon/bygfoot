@@ -2,7 +2,6 @@
  * callbacks for the options window                         *
  ************************************************************/
 
-#include "defs.h"
 #include "callback_func.h"
 #include "callbacks.h"
 #include "gui.h"

@@ -108,6 +108,7 @@ create_opt_window (void)
   GtkObject *spinbutton_autosave_adj;
   GtkWidget *spinbutton_autosave;
   GtkWidget *label82;
+  GtkWidget *checkbutton_xml;
   GtkWidget *hbox48;
   GtkWidget *checkbutton_notify;
   GtkWidget *button_notify;
@@ -474,23 +475,22 @@ create_opt_window (void)
   gtk_box_pack_start (GTK_BOX (vbox22), hseparator7, FALSE, TRUE, 0);
   gtk_widget_set_size_request (hseparator7, 1, 5);
 
-  hbox60 = gtk_hbox_new (FALSE, 0);
+  hbox60 = gtk_hbox_new (FALSE, 5);
   gtk_widget_show (hbox60);
   gtk_box_pack_start (GTK_BOX (vbox22), hbox60, FALSE, FALSE, 0);
 
-  check_overwrite = gtk_check_button_new_with_mnemonic (_("Save will overwrite old savegame"));
+  check_overwrite = gtk_check_button_new_with_mnemonic (_("Save overwrites old savegame"));
   gtk_widget_show (check_overwrite);
   gtk_box_pack_start (GTK_BOX (hbox60), check_overwrite, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (check_overwrite), 2);
   gtk_tooltips_set_tip (tooltips, check_overwrite, _("If you uncheck this, clicking on 'Save' will pop up a 'Save as' window"), NULL);
 
   hbox61 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox61);
-  gtk_box_pack_start (GTK_BOX (hbox60), hbox61, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox60), hbox61, FALSE, TRUE, 0);
 
   eventbox1 = gtk_event_box_new ();
   gtk_widget_show (eventbox1);
-  gtk_box_pack_start (GTK_BOX (hbox61), eventbox1, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox61), eventbox1, FALSE, TRUE, 0);
   gtk_tooltips_set_tip (tooltips, eventbox1, _("Save game regularly to $HOME/.bygfoot/saves/autosave (weeks means in this case weeks that don't get skipped)"), NULL);
 
   hbox62 = gtk_hbox_new (FALSE, 0);
@@ -500,7 +500,6 @@ create_opt_window (void)
   checkbutton_autosave = gtk_check_button_new_with_mnemonic (_("Autosave every "));
   gtk_widget_show (checkbutton_autosave);
   gtk_box_pack_start (GTK_BOX (hbox62), checkbutton_autosave, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (checkbutton_autosave), 2);
 
   spinbutton_autosave_adj = gtk_adjustment_new (3, 1, 12, 1, 10, 10);
   spinbutton_autosave = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton_autosave_adj), 1, 0);
@@ -513,6 +512,11 @@ create_opt_window (void)
   gtk_widget_show (label82);
   gtk_box_pack_start (GTK_BOX (hbox62), label82, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label82), GTK_JUSTIFY_LEFT);
+
+  checkbutton_xml = gtk_check_button_new_with_mnemonic (_("Save in XML format"));
+  gtk_widget_show (checkbutton_xml);
+  gtk_box_pack_start (GTK_BOX (hbox60), checkbutton_xml, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, checkbutton_xml, _("WARNING: This feature is incomplete and experimental. Don't use it unless you're a developer."), NULL);
 
   hbox48 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox48);
@@ -785,6 +789,7 @@ create_opt_window (void)
   GLADE_HOOKUP_OBJECT (opt_window, checkbutton_autosave, "checkbutton_autosave");
   GLADE_HOOKUP_OBJECT (opt_window, spinbutton_autosave, "spinbutton_autosave");
   GLADE_HOOKUP_OBJECT (opt_window, label82, "label82");
+  GLADE_HOOKUP_OBJECT (opt_window, checkbutton_xml, "checkbutton_xml");
   GLADE_HOOKUP_OBJECT (opt_window, hbox48, "hbox48");
   GLADE_HOOKUP_OBJECT (opt_window, checkbutton_notify, "checkbutton_notify");
   GLADE_HOOKUP_OBJECT (opt_window, button_notify, "button_notify");

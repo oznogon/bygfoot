@@ -3,6 +3,8 @@
 
 #include <math.h>
 
+#include "bygfoot.h"
+
 /* macros */
 #define rnd(lower,upper) ((gfloat)random()/(gfloat)0x7fffffff*((upper)-(lower))+(lower))
 #define rndi(lower,upper) ((gint)rint( rnd((gfloat)(lower) - 0.499, (gfloat)(upper) + 0.499) ))

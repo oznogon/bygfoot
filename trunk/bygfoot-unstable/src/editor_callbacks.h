@@ -1,6 +1,8 @@
 #ifndef EDITOR_CALLBACKS_H
 #define EDITOR_CALLBACKS_H
 
+#include "bygfoot.h"
+
 void
 on_button_browse_team_files_clicked    (GtkButton       *button,
                                         gpointer         user_data);

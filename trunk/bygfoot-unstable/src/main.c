@@ -5,7 +5,6 @@
 
 #include <time.h>
 
-#include "defs.h"
 #include "callbacks.h"
 #include "generation.h"
 #include "gui.h"

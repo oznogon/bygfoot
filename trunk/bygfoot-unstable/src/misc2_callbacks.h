@@ -1,6 +1,8 @@
 #ifndef MISC2_CALLBACKS_H
 #define MISC2_CALLBACKS_H
 
+#include "bygfoot.h"
+
 void
 on_button_ok_clicked                   (GtkButton       *button,
                                         gpointer         user_data);

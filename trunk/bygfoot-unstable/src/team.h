@@ -1,6 +1,8 @@
 #ifndef TEAM_H
 #define TEAM_H
 
+#include "bygfoot.h"
+
 /* try to set each of the first 11 players on his
    favoured position and sort the substitutes by position */
 void

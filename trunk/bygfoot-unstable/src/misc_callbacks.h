@@ -1,6 +1,8 @@
 #ifndef MISC_CALLBACKS_H
 #define MISC_CALLBACKS_H
 
+#include "bygfoot.h"
+
 /************************************************************
  * callbacks for the live game window                       *
  ************************************************************/

@@ -2,7 +2,6 @@
  * Functions working with the GtkTreeViews of the GUI    *
  *********************************************************/
 
-#include "defs.h"
 #include "finance.h"
 #include "fixture.h"
 #include "maths.h"
@@ -1723,9 +1722,9 @@ create_history(season_stat *stat)
 		       1, "", 2, "", 3, "", 4, "",
 		       -1);
 
-    for(i=0;i<30;i++)
+    for(i=0;i<6;i++)
     {
-	if(i == 15)
+	if(i == 3)
 	{
 	    gtk_list_store_append(liststore, &iter);
 	    gtk_list_store_set(liststore, &iter,
@@ -1734,15 +1733,6 @@ create_history(season_stat *stat)
 	    gtk_list_store_append(liststore, &iter);
 	    gtk_list_store_set(liststore, &iter,
 			       0, "GOALIES",
-			       1, "", 2, "", 3, "", 4, "",
-			       -1);
-	}
-
-	if(i % 3 == 0)
-	{
-	    gtk_list_store_append(liststore, &iter);
-	    gtk_list_store_set(liststore, &iter,
-			       0, champions[(i / 3) % 5],
 			       1, "", 2, "", 3, "", 4, "",
 			       -1);
 	}
@@ -2250,6 +2240,7 @@ create_awards_player(GtkListStore *liststore, gint prized_players[][3])
   gint i;
   gchar buf[BUF_SIZE_SMALL];
   gchar buf2[BUF_SIZE_SMALL];
+  gchar buf3[BUF_SIZE_SMALL];
   GtkTreeIter iter;
   gchar *titles[4] =
     {"BEST PLAYER",
@@ -2278,10 +2269,14 @@ create_awards_player(GtkListStore *liststore, gint prized_players[][3])
       
       sprintf(buf, "%d", (PRIZE_PLAYER_GOALGET * 2 + i) % 3 + 1);
       print_grouped_int(prized_players[i][2], buf2, 0);
+      sprintf(buf3, "%s (%d / %d )", 
+	      teams[prized_players[i][0]].players[prized_players[i][1]].name,
+	      teams[prized_players[i][0]].players[prized_players[i][1]].goals,
+	      teams[prized_players[i][0]].players[prized_players[i][1]].games);
       gtk_list_store_append(liststore, &iter);
       gtk_list_store_set(liststore, &iter,
 			 0, buf, 1, teams[prized_players[i][0]].name,
-			 2, teams[prized_players[i][0]].players[prized_players[i][1]].name,
+			 2, buf3,
 			 3, buf2, -1);
     }
   
@@ -2385,9 +2380,10 @@ create_awards(gint prized_teams[][2], gint prized_players[][3])
   GtkTreeIter iter;
   gchar buf[BUF_SIZE_SMALL];
 
+  sprintf(buf, "SEASON %d", season);
   gtk_list_store_append(liststore, &iter);
   gtk_list_store_set(liststore, &iter,
-		     0, "", 1, "SEASON AWARDS", 2, "", 3, "", -1);
+		     0, "", 1, buf, 2, "", 3, "", -1);
   gtk_list_store_append(liststore, &iter);
   gtk_list_store_set(liststore, &iter,
 		     0, "", 1, "", 2, "", 3, "", -1);

@@ -2,7 +2,6 @@
  * Functions working with the cells of the treeviews     *
  *********************************************************/
 
-#include "defs.h"
 #include "fixture.h"
 #include "game.h"
 #include "gui.h"

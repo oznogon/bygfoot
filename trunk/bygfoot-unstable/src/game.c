@@ -3,7 +3,6 @@
  * the outcome of a game                          *
  **************************************************/
 
-#include "defs.h"
 #include "fixture.h"
 #include "game.h"
 #include "maths.h"

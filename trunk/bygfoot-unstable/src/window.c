@@ -2,7 +2,6 @@
  * Functions creating windows                            *
  *********************************************************/
 
-#include "defs.h"
 #include "callback_func.h"
 #include "editor_defs.h"
 #include "editor_callback_func.h"

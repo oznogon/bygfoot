@@ -1,6 +1,8 @@
 #ifndef STARTUP_H
 #define STARTUP_H
 
+#include "bygfoot.h"
+
 /* write default options and other
    global variables.
    meanings of the options see non_gui_defs.h */

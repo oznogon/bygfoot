@@ -1,4 +1,3 @@
-#include "defs.h"
 #include "gui.h"
 #include "maths.h"
 #include "misc.h"
@@ -133,7 +132,7 @@ save_conf_file(void)
     
     write_opt_names(opt_names);
 
-    for(i=0;i<OPT_DUMMY1;i++)
+    for(i=0;i<OPT_PENALTY_SHOOTER;i++)
 	fprintf(fil, "%s %d\n", opt_names[i], options[i]);
 
     if(font_name != NULL)

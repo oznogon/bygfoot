@@ -1,6 +1,8 @@
 #ifndef GAMES_H
 #define GAMES_H
 
+#include "bygfoot.h"
+
 /* get the number of goals for 'team' in the first leg */
 gint
 get_first_leg_result(fixture fix, gint team);

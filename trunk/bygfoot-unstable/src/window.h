@@ -1,6 +1,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include "bygfoot.h"
+
 /* create the live window and return the pointer */
 GtkWidget*
 return_live_window(void);

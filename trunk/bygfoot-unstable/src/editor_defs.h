@@ -1,7 +1,7 @@
 #ifndef EDITOR_DEFS_H
 #define EDITOR_DEFS_H
 
-#include "defs.h"
+#include "bygfoot.h"
 
 /* in editor mode we don't need some globale variables
    but need others so we rename them */

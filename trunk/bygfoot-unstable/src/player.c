@@ -2,7 +2,6 @@
  * Functions working with players                 *
  **************************************************/
 
-#include "defs.h"
 #include "callbacks.h"
 #include "finance.h"
 #include "maths.h"
@@ -171,8 +170,8 @@ estimate_talent(player pl)
 	    deviance_bound[i] : scout_deviance;
 
     /*d*/
-    if(pl.talent - deviance_bound[0] < pl.skill && debug)
-	printf("estimtal error: team %d player %s skill %.1f bound %.1f\n",
+    if(pl.talent - deviance_bound[0] < pl.skill - 0.001 && debug)
+	printf("estimtal error: team %d player %s skill %.3f bound %.3f\n",
 	       pl.team_id, pl.name, pl.skill, pl.talent - deviance_bound[0]);
 
     return rnd(pl.talent - deviance_bound[0],

@@ -2,7 +2,6 @@
  * callbacks for the live game window                       *
  ************************************************************/
 
-#include "defs.h"
 #include "callback_func.h"
 #include "callbacks.h"
 #include "editor_callback_func.h"

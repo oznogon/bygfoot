@@ -2,10 +2,11 @@
  * Functions for loading and saving the game             *
  *********************************************************/
 
-#include "defs.h"
 #include "game_gui.h"
 #include "load_save.h"
 #include "misc.h"
+#include "xml_read.h"
+#include "xml_write.h"
 
 /* check whether a file is a bygfoot savegame */
 gboolean
@@ -19,6 +20,9 @@ check_save_game(gchar *file_name)
     
     if(fil == NULL)
 	return FALSE;
+
+    if(options[OPT_XML] == 1)
+	return TRUE;
 
     fread((void*)&local_my_team, sizeof(gint), 1, fil);
     fread((void*)&local_season, sizeof(gint), 1, fil);
@@ -75,7 +79,7 @@ save_history_element(season_stat *stat, FILE *fil)
     for(i=0;i<STAT_END;i++)
 	fwrite((void*)stat->team_names[i], 50, 1, fil);
 
-    for(i=0;i<30;i++)
+    for(i=0;i<6;i++)
 	save_history_best_player(stat->best_players[i], fil);
 }
 
@@ -94,7 +98,7 @@ load_history_element(season_stat *stat, FILE *fil)
     for(i=0;i<STAT_END;i++)
 	fread((void*)&(stat->team_names[i]), 50, 1, fil);
 
-    for(i=0;i<30;i++)
+    for(i=0;i<6;i++)
 	load_history_best_player(&(stat->best_players[i]), fil);
 }
 
@@ -486,11 +490,11 @@ load_options(FILE *fil)
 	{
 	    for(j=0;j<2;j++)
 	    {
-		fread((void*)&(goals[0][i].minute), sizeof(gint), 1, fil);
-		fread((void*)&(goals[0][i].team_id), sizeof(gint), 1, fil);
-		fread((void*)&(goals[0][i].scorer), sizeof(gint), 1, fil);
-		fread((void*)&(goals[0][i].time), sizeof(gint), 1, fil);
-		fread((void*)&(goals[0][i].type), sizeof(gint), 1, fil);
+		fread((void*)&(goals[j][i].minute), sizeof(gint), 1, fil);
+		fread((void*)&(goals[j][i].team_id), sizeof(gint), 1, fil);
+		fread((void*)&(goals[j][i].scorer), sizeof(gint), 1, fil);
+		fread((void*)&(goals[j][i].time), sizeof(gint), 1, fil);
+		fread((void*)&(goals[j][i].type), sizeof(gint), 1, fil);
 	    }
 	}
     }
@@ -499,8 +503,15 @@ load_options(FILE *fil)
 void
 save_game(gchar *file_name)
 {
-    FILE *fil = fopen(file_name, "wb");
+    FILE *fil;
 
+    if(options[OPT_XML] == 1)
+    {
+	write_xml_save(file_name);
+	return;
+    }
+    
+    fil = fopen(file_name, "wb");
     if(fil == NULL)
     {
 	g_print("save_game: could not open file: %s\n", file_name);
@@ -520,7 +531,15 @@ save_game(gchar *file_name)
 void
 load_game(gchar *file_name)
 {
-    FILE *fil = fopen(file_name, "rb");
+    FILE *fil;
+
+    if(options[OPT_XML] == 1)
+    {
+	read_xml_save(file_name);
+	return;
+    }
+    
+    fil = fopen(file_name, "rb");
 
     if(fil == NULL)
     {

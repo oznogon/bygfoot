@@ -1,6 +1,8 @@
 #ifndef OPTIONS_CALLBACKS_H
 #define OPTIONS_CALLBACKS_H
 
+#include "bygfoot.h"
+
 void
 on_button_opt_ok_clicked               (GtkButton       *button,
                                         gpointer         user_data);

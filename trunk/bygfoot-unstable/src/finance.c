@@ -1,4 +1,3 @@
-#include "defs.h"
 #include "finance.h"
 #include "fixture.h"
 #include "maths.h"
