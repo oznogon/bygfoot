@@ -4,3 +4,7 @@ src/main.c
 src/interface.c
 src/callbacks.c
 src/support.c
+src/options_interface.c
+src/misc_interface.c
+src/interface.c
+src/editor_interface.c
