@@ -130,6 +130,9 @@ set_up_my_team(void)
 			      * 113), 2);
 
   stadiums[my_team].average_attendance = 0;
+
+  for(i=0;i<MAX_OBJECTIVE;i++)
+	  season_objective[i].type=OBJ_NONE;
 }
 
 void
@@ -914,6 +917,9 @@ change_my_team(gint new_team)
   my_team = new_team;
 
   set_up_my_team();
+  
+  if(week<OBJECTIVE_LAST_TIME)
+	  change_objective();
 }
 
 void
@@ -1052,4 +1058,23 @@ season_awards_team(gint prized_teams[][2])
 	  finances[FIN_PRIZE] += prized_teams[i][1];
 	  finances[FIN_MONEY] += prized_teams[i][1];
 	}
+}
+
+void change_objective() {
+	int i=0;
+	gchar tmp[BIG];
+	//Refresh objective
+	objective_generate(my_team,season_objective);
+	//show new objective;	  
+	strcpy(tmp,_("Objective from Team Manager :"));
+	for(i=0;i<MAX_OBJECTIVE;i++) {			
+		gchar * obj_string=objective_get_message(season_objective+i);	
+		if(obj_string) {
+			gchar * tmpDup=strdup(tmp);
+			sprintf(tmp,"%s\n- %s",tmpDup,obj_string);
+			g_free(obj_string);
+			g_free(tmpDup);
+		}
+	}
+	show_popup_window(tmp,NULL);	  	
 }

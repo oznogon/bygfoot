@@ -21,7 +21,9 @@ gchar player_names[10504][50];
 stadium stadiums[178];
 
 /* Season objectives */
-objective seasonObjective[MAX_OBJECTIVE];
+objective season_objective[MAX_OBJECTIVE];
+/* Week index for refresh objective */
+gint objective_refresh_week;
 
 fixture fixtures[FIX_END];
 

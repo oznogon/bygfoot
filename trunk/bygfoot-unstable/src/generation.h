@@ -65,4 +65,9 @@ country_names(gint country_number, const gchar *country_filename);
 void
 generate_teams(void);
 
+/**
+ * Generate wekk index for refresh objective
+ */
+void generate_objective_refresh_week();
+
 #endif

@@ -143,7 +143,7 @@ process_week_games(gint week_number);
  *@param team the team ID
  *@param objectives the objective tab to fill
  */
-void objective_generate(gint teamID,objective * obj);
+void objective_generate(gint team_id,objective * obj);
 /**
  * Retrieve the char for the objective
  *@param obj the objectives table
@@ -156,7 +156,7 @@ gchar * objective_get_message(objective * obj);
  *@param objectives the objective tab to check
  *@return true if objective is ok
  */
-gboolean objective_is_success(gint teamID,objective * obj);
+gboolean objective_is_success(gint team_id,objective * obj);
 
 
 #endif

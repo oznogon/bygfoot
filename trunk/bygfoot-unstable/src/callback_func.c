@@ -20,7 +20,7 @@
 #include "treeview.h"
 #include "support.h"
 #include "window.h"
-
+#include "generation.h"
 /* get the integer value in the first column of a treeview */
 gint
 get_row_index(GtkTreeSelection *selection,
@@ -963,16 +963,20 @@ callback_new_week(gboolean calculate)
 	show_players(NULL, NULL, 0, NULL, 0);
     }
     
-    if(my_team < 114 && week == 49)
-      season_awards();
+    
 
-    if(week == 50 && options[OPT_OBJECTIVE] == 1) {//check objective
+    if(week == 49 && options[OPT_OBJECTIVE] == 1) {//check objective
 		int i=0;		
-		while(i<MAX_OBJECTIVE && objective_is_success(my_team,seasonObjective+i))
+		while(i<MAX_OBJECTIVE && objective_is_success(my_team,season_objective+i))
 			i++;
 		if(i!=MAX_OBJECTIVE)
 			show_job_offer(JOB_OBJECTIVE);				
 	}
+	
+    if(my_team < 114 && week == 49)
+      season_awards();
+	
+	
     if(week == 50)
     {
 		season_end();
@@ -984,25 +988,12 @@ callback_new_week(gboolean calculate)
 	show_popup_window("Your stadium safety's low. ", NULL);
 
 
-    
-	if(week == OBJECTIVE_REFRESH && options[OPT_OBJECTIVE] == 1){
-		int i=0;
-		gchar tmp[BIG];
-		//Refresh objective
-		objective_generate(my_team,seasonObjective);
-		//show new objective;	  
-		strcpy(tmp,_("Objective from Team Manager :"));
-		for(i=0;i<MAX_OBJECTIVE;i++) {			
-			gchar * obj_string=objective_get_message(seasonObjective+i);	
-			if(obj_string) {
-				gchar * tmpDup=strdup(tmp);
-				sprintf(tmp,"%s\n- %s",tmpDup,obj_string);
-				g_free(obj_string);
-				g_free(tmpDup);
-			}
-		}
-		show_popup_window(tmp,NULL);	  
-	}
+    if(week == (OBJECTIVE_REFRESH_MIN-1) ){
+	generate_objective_refresh_week();
+    }
+    if(week == objective_refresh_week){
+	change_objective();
+    }
 	
     gtk_widget_set_sensitive(button_new_week, TRUE);
 }

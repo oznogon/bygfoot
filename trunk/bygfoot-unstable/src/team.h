@@ -181,4 +181,6 @@ print_average_skill(gint league);
 void
 season_awards_team(gint prized_teams[][2]);
 
+/* generate new objective and display */
+void change_objective();
 #endif

@@ -13,8 +13,10 @@
 #define FIX_END 3000
 /** Max objective */
 #define MAX_OBJECTIVE 1
-#define OBJECTIVE_REFRESH 6
-
+#define OBJECTIVE_REFRESH_MIN 5
+#define OBJECTIVE_REFRESH_MAX 10
+/** last week for generate a new objective */
+#define OBJECTIVE_LAST_TIME 18
 /** Max player per team */
 #define MAX_PLAYER 20
 

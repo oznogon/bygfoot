@@ -421,3 +421,7 @@ generate_teams(void)
     for(i=0;i<3;i++)
 	teams[175 + i].id = order[i + 2];
 }
+
+void generate_objective_refresh_week() {
+	objective_refresh_week=rnd(OBJECTIVE_REFRESH_MIN,OBJECTIVE_REFRESH_MAX);
+}

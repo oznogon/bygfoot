@@ -1042,7 +1042,7 @@ process_week_games(gint week_number)
 
 
 
-void objective_generate(gint teamID,objective * obj) {
+void objective_generate(gint team_id,objective * obj) {
 	gint i;
 	gint leagueID;
 	gint boundID[2];
@@ -1057,7 +1057,7 @@ void objective_generate(gint teamID,objective * obj) {
 	//We have the theoric position at the end of season :-) .
 	//At this stage - 19 dec 2004-	this is the only one we set.
 	//TODO : Implement more objective 
-	leagueID=get_league_from_id(teamID);
+	leagueID=get_league_from_id(team_id);
 	get_league_bounds(leagueID,boundID);
 	sortedTeams=g_malloc((sizeof(gint))*teams_in_league(leagueID));
 	
@@ -1066,7 +1066,7 @@ void objective_generate(gint teamID,objective * obj) {
 				0,teams_in_league(leagueID)-1,
 				team_compare_skills);
 	i=0;
-	while(sortedTeams[i]!=teamID)
+	while(sortedTeams[i]!=team_id)
 		i++;
 	//we are in the first three team, we must be promoted
 	if(i<=3) {
@@ -1123,12 +1123,12 @@ gchar * objective_get_message(objective * obj) {
 	return msg;
 }
 
-gboolean objective_is_success(gint teamID,objective * obj) {
+gboolean objective_is_success(gint team_id,objective * obj) {
 	gboolean success=FALSE;
 	gint bound[2];
 	//retrieve rank and bounds
 	gint rank=get_current_rank();
-	get_league_bounds(get_league_from_id(teamID),bound);	
+	get_league_bounds(get_league_from_id(team_id),bound);	
 	switch(obj->type) {
 		case OBJ_NONE:success=TRUE;break;
 		case OBJ_NO_RELEGATED: 		
