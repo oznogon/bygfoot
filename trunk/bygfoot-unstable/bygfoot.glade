@@ -1040,7 +1040,7 @@
 		  <property name="use_underline">True</property>
 
 		  <child internal-child="image">
-		    <widget class="GtkImage" id="image69">
+		    <widget class="GtkImage" id="image78">
 		      <property name="visible">True</property>
 		      <property name="stock">gtk-execute</property>
 		      <property name="icon_size">1</property>
@@ -1063,7 +1063,7 @@
 			  <signal name="activate" handler="on_show_info_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image70">
+			    <widget class="GtkImage" id="image79">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-dialog-info</property>
 			      <property name="icon_size">1</property>
@@ -1085,7 +1085,7 @@
 			  <signal name="activate" handler="on_put_on_transfer_list_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image71">
+			    <widget class="GtkImage" id="image80">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-yes</property>
 			      <property name="icon_size">1</property>
@@ -1107,7 +1107,7 @@
 			  <signal name="activate" handler="on_remove_from_transfer_list_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image72">
+			    <widget class="GtkImage" id="image81">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-no</property>
 			      <property name="icon_size">1</property>
@@ -1129,9 +1129,30 @@
 			  <signal name="activate" handler="on_fire_activate" last_modification_time="Mon, 26 Jul 2004 16:44:38 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image73">
+			    <widget class="GtkImage" id="image82">
 			      <property name="visible">True</property>
 			      <property name="pixbuf">fire_player.png</property>
+			      <property name="xalign">0.5</property>
+			      <property name="yalign">0.5</property>
+			      <property name="xpad">0</property>
+			      <property name="ypad">0</property>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkImageMenuItem" id="shoots_penalties">
+			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">The selected player will shoot the penalties in regulation and extra time if he plays.</property>
+			  <property name="label" translatable="yes">Shoots penalties</property>
+			  <property name="use_underline">True</property>
+			  <signal name="activate" handler="on_shoots_penalties_activate" last_modification_time="Sun, 22 Aug 2004 15:01:28 GMT"/>
+
+			  <child internal-child="image">
+			    <widget class="GtkImage" id="image83">
+			      <property name="visible">True</property>
+			      <property name="pixbuf">football.png</property>
 			      <property name="xalign">0.5</property>
 			      <property name="yalign">0.5</property>
 			      <property name="xpad">0</property>

@@ -1,4 +1,4 @@
-08/20/2004: v1.7.0
+08/30/2004: v1.7.0
 	- added injuries and cards display for opponent teams in the match
 	summary
 	- clicking on a team name in the tables shows the team's player list
@@ -8,11 +8,37 @@
 	job
 	- a player can suffer an injury that forces him to retire
 	- added own goals and penalties in regulation and extra time
+	- added reasons why a player was banned
 
-08/20/2004: v1.4.4
+08/30/2004: v1.6.0
+	- added possibility to have messages shown instead of popups
+	when possible
+	- added extended stadium capacity enlargement possibilities
+	- added possibility to fire a player
+	- added 'Player actions' button
+	- changed the current skill and fitness display a bit: current
+	skill is now the skill that's really used when computing games
+	(except for the home advantage factor); fitness can be 100% now
+	and is shown in different colors (thanks to arnaudus)
+	- corrected a minor display bug (you could see the updated rank in
+	the main window when playing two live games already after the
+	first one)
+	- added uninstall possibility for the src version
+	- added manpage
+	- added a configuration file:
+	$HOME/.bygfoot/text_files/bygfoot.conf; this way, your favourite
+	settings get loaded even if you start a new game
+	- added physician quality (like scout); better physician costs
+	more but players heal better on average
+	- healing time of players can be overestimated; until now it was
+	always underestimated (i.e. the player was injured _at least_ as
+	long as the expected recovery time)
 	- corrected a save/load bug that occurred when you saved a game
 	just before getting a new scout
 
+	NOTE: The 1.6 branch is not savegame-compatible to the 1.4.x
+	versions.
+	
 08/17/2004: v1.5.2
 	- added possibility to have messages shown instead of popups
 	when possible

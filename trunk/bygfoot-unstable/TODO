@@ -52,9 +52,6 @@ The TODO list:
 - add 'country' file for the world (based on the fifa rating list
   perhaps) P D
 
-- add reasons for a player having been banned (grammar?), just like
-  for injuries P DD
-
 - change country file system: i'd like to have only two files instead
   of the current 6 or 7, one with all the leagues (Premier Division,
   Bundesliga etc.) and another that consists of sections, each

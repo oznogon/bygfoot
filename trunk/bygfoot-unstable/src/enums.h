@@ -13,7 +13,8 @@
 #define BUF_SIZE_BIG 1000000
 #define BUF_SIZE_SMALL 10000
 
-/*  */
+/* the amount of money the user has for transactions:
+   the money on his account plus his drawing credit */
 #define BUDGET finances[FIN_MONEY] + calculate_max_loan_credit(1)
 
 /**************************************************
@@ -130,7 +131,8 @@ gint finances[FIN_END];
    notify_*: criteria for notification (age bounds etc.)
    jobs: show job offers from other teams when the
          human player's team is successful
-   mess: how messages are displayed */
+   mess: how messages are displayed
+   penalty_shooter: the player who shoots the penalties */
 
 /* opt_att: indices for the attributes which determine
    the columns that are shown when displaying the player list.
@@ -200,6 +202,7 @@ enum
     OPT_ATT_WAGE,
     OPT_ATT_TEAM,
     OPT_ATT_LEAGUE,
+    OPT_PENALTY_SHOOTER,
     OPT_DUMMY1,
     OPT_DUMMY2,
     OPT_DUMMY3,

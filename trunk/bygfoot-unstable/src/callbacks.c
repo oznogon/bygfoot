@@ -802,3 +802,11 @@ on_show_info_activate                  (GtkMenuItem     *menuitem,
     on_button_back_to_main_clicked(NULL, NULL);
     callback_show_player_info(NULL, NULL);
 }
+
+void
+on_shoots_penalties_activate           (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+    callback_penalty_shooter();
+}
+

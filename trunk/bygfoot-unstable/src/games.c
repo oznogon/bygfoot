@@ -257,7 +257,11 @@ get_scorer_pen(gint team_id, gint *scorer)
 
     sort_best_players(team_id, order);
 
-    *scorer = order[0];
+    if(options[OPT_PENALTY_SHOOTER] >= 0 &&
+       options[OPT_PENALTY_SHOOTER] < 11)
+	*scorer = options[OPT_PENALTY_SHOOTER];
+    else
+	*scorer = order[0];
 }
 
 void
@@ -527,6 +531,7 @@ void calculate_booking_player(fixture fix, gint team,
 	    {
 		pl->booked += i + 1;
 		pl->cskill = 0;
+		pl->booked += rndi(1, 7) * 100;
 	    }
     }
     /* yellow */
@@ -536,7 +541,7 @@ void calculate_booking_player(fixture fix, gint team,
 	   a week */
 	if(pl->booked == 40)
 	{
-	    pl->booked = 2;
+	    pl->booked = 802;
 	    pl->cskill = 0;
 	}
 	else

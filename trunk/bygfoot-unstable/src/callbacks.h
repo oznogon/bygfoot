@@ -1,5 +1,9 @@
 #include "defs.h"
 
+/* make the selected player the one responsible for penalties */
+void
+callback_penalty_shooter(void);
+
 /* show a popup telling the user that some players' careers
    had to stop because of a severe injury */
 void
@@ -366,4 +370,8 @@ on_remove_from_transfer_list_activate  (GtkMenuItem     *menuitem,
 
 void
 on_fire_activate                       (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_shoots_penalties_activate           (GtkMenuItem     *menuitem,
                                         gpointer         user_data);

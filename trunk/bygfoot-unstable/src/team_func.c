@@ -481,9 +481,13 @@ update_teams_players(gint team_id)
 		teams[team_id].players[i].booked--;
 
 		if(teams[team_id].players[i].booked % 10 == 0)
+		{
+		    teams[team_id].players[i].booked = 
+			get_place(teams[team_id].players[i].booked, 2) * 10;
 		    teams[team_id].players[i].cskill = 
 			calculate_cskill(teams[team_id].
 					 players[i]);
+		}
 	    }
 	}
     }

@@ -33,6 +33,26 @@ set_injury_info_into_cell(gint team_id, gint player_number,
 	    injury[health[0] - 1], health[1]);
 }
 
+/* print some information about why the player's banned into 'buf' */
+void
+set_ban_info_into_cell(gint team_id, gint player_number,
+		       gchar *buf)
+{
+    gchar *ban[8] =
+	{"repeated dissent",
+	 "repeated delayed play",
+	 "deliberate, goal-blocking foul",
+	 "repeated bad tackle",
+	 "dangerous tackle",
+	 "violent conduct",
+	 "spat at player",
+	 "fifth yellow card"};
+
+    sprintf(buf, "banned for %d weeks (%s)",
+	    teams[team_id].players[player_number].booked % 10,
+	    ban[get_place(teams[team_id].players[player_number].booked, 11) - 1]);
+}
+
 void
 set_status_into_cell(GtkCellRenderer *renderer,
 		     gint team_id, 
@@ -62,9 +82,7 @@ set_status_into_cell(GtkCellRenderer *renderer,
 		    teams[team_id].players[player_number].
 		    booked % 10);
 	else
-	    sprintf(buf, "banned for %d weeks",
-		    teams[team_id].players[player_number].
-		    booked % 10);
+	    set_ban_info_into_cell(team_id, player_number, buf);
     }
 }
 

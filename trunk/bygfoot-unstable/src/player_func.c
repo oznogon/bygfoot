@@ -526,8 +526,15 @@ swap_players(gint team_id1, gint player_number1,
 	    }
 	}
 
-    /* update injury, bookings and goals information */
+    /* update penalty shooter */
+    if(team_id1 == my_team && team_id2 == my_team &&
+       (player_number1 == options[OPT_PENALTY_SHOOTER] ||
+	player_number2 == options[OPT_PENALTY_SHOOTER]) )
+	options[OPT_PENALTY_SHOOTER] =
+	    (player_number1 == options[OPT_PENALTY_SHOOTER]) ?
+	    player_number2 : player_number1;
 
+    /* update injury, bookings and goals information */
     if(injuries[0][11] == -1)
 	return;
     

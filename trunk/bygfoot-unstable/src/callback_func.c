@@ -1307,3 +1307,28 @@ callback_notify_injury(void)
 
     show_popup_window(buf, NULL);
 }
+
+/* make the selected player the one responsible for penalties */
+void
+callback_penalty_shooter(void)
+{
+    gint player_number = 
+	selected_rows[0];
+    gchar buf[BUF_SIZE_SMALL];
+
+    if(player_number < 0) 
+    {
+	print_message("You haven't selected a player");
+	return;
+    }
+
+    options[OPT_PENALTY_SHOOTER] = player_number;
+
+    if(player_number > 10)
+	sprintf(buf, "%s is a substitute. He will only shoot the penalties if you move him into the team; otherwise the field player with highest skill will shoot.", teams[my_team].players[player_number].name);
+    else
+	sprintf(buf, "%s will shoot the penalties in regulation and extra time.",
+		teams[my_team].players[player_number].name);
+
+    print_message(buf);
+}

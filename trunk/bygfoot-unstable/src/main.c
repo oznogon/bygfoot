@@ -51,6 +51,9 @@ void set_variables(void)
     /* this plays a role in case the human player has
        specified a country file on the command line */
     strcpy(teams[0].name, "");    
+
+    /* default penalty shooter: noone */
+    options[OPT_PENALTY_SHOOTER] = -1;
 }
 
 gint bygfoot_init(gint argc, gchar *argv[])
