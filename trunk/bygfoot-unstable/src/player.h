@@ -183,4 +183,9 @@ get_best_players(gint league, gint best_players[][2],
 void
 season_awards_player(gint prized_players[][3]);
 
+#define BOOST_SKILL_EFFECT 1.3
+#define BOOST_FITNESS_EFFECT 2.0
+#define BOOST_INJURY_EFFECT 2.0
+#define BOOST_CARD_EFFECT 2.0
+
 #endif

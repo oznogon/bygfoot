@@ -286,22 +286,22 @@ generate_player(gint team_id, gfloat team_factor,
 gfloat
 calculate_cskill(player pl)
 {
-    gfloat reduce_factor = 0.75;
-
-    if(pl.health > 0 || pl.booked % 10 > 0)
-	return 0;
+    gfloat cskill_factor = 1.00;
     
-    if(pl.pos == pl.cpos)
-	return pl.skill;
+    if(pl.health > 0 || pl.booked % 10 > 0)
+	cskill_factor = 0.0;
+	
+    if(pl.pos != pl.cpos)
+    	cskill_factor = 0.75;
 
     /* goalies play poorly as field players and vice versa */
-    if(pl.cpos == 0 || pl.pos == 0)
-	reduce_factor = 0.5;
+    if(pl.cpos * pl.pos == 0 &&
+       pl.cpos != pl.pos)
+	cskill_factor = 0.5;
     else if(abs(pl.cpos - pl.pos) == 2)
-	reduce_factor = 0.65;
-
-    return (pl.talent * reduce_factor < pl.skill) ?
-	pl.talent * reduce_factor : pl.skill;
+	cskill_factor = 0.65;
+	
+    return MIN(pl.talent * cskill_factor, pl.skill);
 }
 
 /* update a player's skill depending on age, talent
@@ -418,12 +418,18 @@ gfloat calculate_new_fitness(player pl, gint increase)
     }
     else
     {
+    	gfloat decrease_factor = 1.0;
+    	if(options[OPT_BOOST] == 1 && pl.team_id == my_team)
+	    decrease_factor = BOOST_FITNESS_EFFECT;
 	if(pl.age > pl.peak_age + 2)
-	    new_fitness -= gauss_dist(0.04,0.04,0.08,0.1);
+	    new_fitness -= gauss_dist(0.04, 0.04 * decrease_factor, 0.08 * decrease_factor, 
+				      0.1 * decrease_factor);
 	else if(pl.age < 23 || pl.age > pl.peak_age + 1)
-	    new_fitness -= gauss_dist(0.03,0.03,0.08,0.8);
+	    new_fitness -= gauss_dist(0.03, 0.03 * decrease_factor, 0.08 * decrease_factor,
+				      0.08 * decrease_factor);
 	else
-	    new_fitness -= gauss_dist(0.02,0.02,0.06,0.08);
+	    new_fitness -= gauss_dist(0.02, 0.02 * decrease_factor, 0.06 * decrease_factor,
+				      0.08 * decrease_factor);
 	
 	if(new_fitness < 0)
 	    new_fitness = 0;

@@ -78,14 +78,19 @@ is_draw(fixture fix, gint type)
    his team */
 gfloat
 prg_player_contribution(gint team_id, gint player_number,
-			   gfloat home_advantage, gint attack)
+			gfloat home_advantage, gint attack)
 {
     gfloat weights[3];
+    gfloat boost_factor = 1;
+
+    if(team_id == my_team && options[OPT_BOOST] == 1)
+	boost_factor = BOOST_SKILL_EFFECT;
 
     if(teams[team_id].players[player_number].cpos == 0)
 	return home_advantage *
 	    teams[team_id].players[player_number].cskill *
-	    powf(teams[team_id].players[player_number].fitness, 0.25);
+	    powf(teams[team_id].players[player_number].fitness, 0.25) *
+	    boost_factor;
 
     weights[1] = 0.625;
 
@@ -104,7 +109,8 @@ prg_player_contribution(gint team_id, gint player_number,
 	weights[ teams[team_id].
 		 players[player_number].cpos - 1 ] *
 	teams[team_id].players[player_number].cskill *
-	powf(teams[team_id].players[player_number].fitness, 0.25);
+	powf(teams[team_id].players[player_number].fitness, 0.25) * 
+	boost_factor;
 }
 
 /* calculate the values that decide a game */
@@ -397,7 +403,7 @@ prg_simulate_chances(fixture *fix, gfloat *attack_value,
    to have a bookmaker's tip */
 void
 process_result_game(fixture *fix, gfloat *home_advantage,
-			 gint extra_time, gboolean bookmaker)
+		    gint extra_time, gboolean bookmaker)
 {
     /* attacking and defending values of both teams */
     gfloat attack_value[2], defend_value[2];
@@ -414,7 +420,7 @@ process_result_game(fixture *fix, gfloat *home_advantage,
     prg_calculate_values(*fix, attack_value, defend_value,
 			 goalie_value, scoring_probability,
 			 player_score_probs, home_advantage);
-    
+
     /* simulate a couple of goal chances */
     prg_simulate_chances(fix, attack_value, defend_value,
 			 goalie_value, scoring_probability,
@@ -517,7 +523,7 @@ process_result_penalties(fixture *fix)
 
 void
 calculate_booking_player(fixture fix, gint team,
-			      gint player_number)
+			 gint player_number)
 {
     gint i;
     gfloat rndom = rnd(0,1);
@@ -540,14 +546,18 @@ calculate_booking_player(fixture fix, gint team,
        in weeks: 1,2,3,4 or 5 */
     gfloat duration[6]={0,0.7,0.85,0.95,0.975,1};
 
+    gfloat increasing_factor = 1.0;
+    if (options[OPT_BOOST] && fix.team_id[team] == my_team)
+    	increasing_factor = BOOST_CARD_EFFECT;
+
     /* injured or banned players don't really participate
        in the game */
     if(!pl->cskill ||
-       rndom > prob[pl->cpos][1] )
+       rndom > prob[pl->cpos][1] * increasing_factor)
 	return;
 
     /* sent off */
-    if(rndom <= prob[pl->cpos][0])
+    if(rndom <= prob[pl->cpos][0] * increasing_factor)
     {
 	rndom = rnd(0,1);
 	for(i=1;i<6;i++)
@@ -560,7 +570,7 @@ calculate_booking_player(fixture fix, gint team,
 	    }
     }
     /* yellow */
-    else if(rndom <= prob[pl->cpos][1])
+    else if(rndom <= prob[pl->cpos][1] * increasing_factor)
     {
 	/* if it's his 5th yellow card, he gets banned for
 	   a week */
@@ -627,6 +637,9 @@ calculate_injury_player(fixture fix, gint team,
 	(pl->fitness < 0.025) ?
 	40 * position_factor :
 	1 / pl->fitness * position_factor;
+	
+    if (options[OPT_BOOST] && fix.team_id[team] == my_team)
+    	prob *= BOOST_INJURY_EFFECT;
 
     /* no career stop in cpu teams */
     if(pl->team_id != my_team)

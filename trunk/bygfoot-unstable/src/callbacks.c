@@ -937,3 +937,14 @@ on_optionmenu_finstad_changed          (GtkOptionMenu   *optionmenu,
 
     set_buttons();
 }
+
+void
+on_checkbutton_boost_toggled           (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+    options[OPT_BOOST] = 
+	gtk_toggle_button_get_active(togglebutton);
+
+    bookmaker_re_tip();
+}
+

@@ -89,7 +89,6 @@ write_opt_names(gchar opt_names[][50])
     strcpy(opt_names[OPT_PREFER_MESS], "prefer_messages");
 
     strcpy(opt_names[OPT_AUTOSAVE], "autosave");
-    strcpy(opt_names[OPT_XML], "save_xml");
 
     strcpy(opt_names[OPT_SKIP_WEEKS], "skip_weeks");
     strcpy(opt_names[OPT_SORT_TRANSFERS], "sort_transfer_list");
@@ -139,6 +138,8 @@ write_opt_names(gchar opt_names[][50])
     strcpy(opt_names[OPT_HISTORY_PLAYER_MAX], "history_player_max");
     strcpy(opt_names[OPT_HISTORY_TEAM_DELETE], "history_team_delete");
     strcpy(opt_names[OPT_HISTORY_PLAYER_DELETE], "history_player_delete");
+
+    strcpy(opt_names[OPT_BOOST], "boost");
 }
 
 /* write the game options to the file

@@ -153,6 +153,7 @@ create_main_window (void)
   GtkWidget *style_balanced;
   GtkWidget *style_attack;
   GtkWidget *style_aoattack;
+  GtkWidget *checkbutton_boost;
   GtkWidget *vseparator9;
   GtkWidget *vbox5;
   GtkWidget *label15;
@@ -869,6 +870,11 @@ create_main_window (void)
 
   gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu_style), menu1);
 
+  checkbutton_boost = gtk_check_button_new_with_mnemonic (_("Boost"));
+  gtk_widget_show (checkbutton_boost);
+  gtk_box_pack_start (GTK_BOX (vbox4), checkbutton_boost, FALSE, FALSE, 0);
+  gtk_tooltips_set_tip (tooltips, checkbutton_boost, _("This gives your players extra motivation for this weeks' games, giving them higher cskill. However, their fitness decrease will be higher, and they're more likely to get hurt or banned."), NULL);
+
   vseparator9 = gtk_vseparator_new ();
   gtk_widget_show (vseparator9);
   gtk_box_pack_start (GTK_BOX (hbox8), vseparator9, FALSE, TRUE, 0);
@@ -1465,6 +1471,9 @@ create_main_window (void)
   g_signal_connect ((gpointer) optionmenu_style, "changed",
                     G_CALLBACK (on_style_optionmenu_changed),
                     NULL);
+  g_signal_connect ((gpointer) checkbutton_boost, "toggled",
+                    G_CALLBACK (on_checkbutton_boost_toggled),
+                    NULL);
   g_signal_connect ((gpointer) entry_structure, "activate",
                     G_CALLBACK (on_structure_entry_activate),
                     NULL);
@@ -1641,6 +1650,7 @@ create_main_window (void)
   GLADE_HOOKUP_OBJECT (main_window, style_balanced, "style_balanced");
   GLADE_HOOKUP_OBJECT (main_window, style_attack, "style_attack");
   GLADE_HOOKUP_OBJECT (main_window, style_aoattack, "style_aoattack");
+  GLADE_HOOKUP_OBJECT (main_window, checkbutton_boost, "checkbutton_boost");
   GLADE_HOOKUP_OBJECT (main_window, vseparator9, "vseparator9");
   GLADE_HOOKUP_OBJECT (main_window, vbox5, "vbox5");
   GLADE_HOOKUP_OBJECT (main_window, label15, "label15");

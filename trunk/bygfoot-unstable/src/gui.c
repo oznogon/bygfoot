@@ -437,6 +437,8 @@ initialize_main_window(void)
 	lookup_widget(main_window, "entry_structure");
     GtkWidget *notebook_player = 
 	lookup_widget(main_window, "notebook_player");
+    GtkWidget *checkbutton_boost =
+	lookup_widget(main_window, "checkbutton_boost");
     GtkWidget *quick_opt_items[4];
     gint quick_opt_options[4] =
 	{options[OPT_NOTIFY],
@@ -480,6 +482,9 @@ initialize_main_window(void)
 	gtk_check_menu_item_set_active(
 	    GTK_CHECK_MENU_ITEM(quick_opt_items[i]),
 	    quick_opt_options[i]);
+
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbutton_boost),
+				 options[OPT_BOOST]);
 
     set_header();
 }

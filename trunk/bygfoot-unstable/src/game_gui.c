@@ -291,6 +291,8 @@ update_variables(void)
     for(i=0;i<2;i++)
 	for(j=0;j<2;j++)
 	    bookmaker_tips[i][j] = -1;
+
+    options[OPT_BOOST] = 0;
 }
 
 void

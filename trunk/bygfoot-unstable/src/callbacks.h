@@ -273,3 +273,7 @@ void
 on_optionmenu_finstad_changed          (GtkOptionMenu   *optionmenu,
                                         gpointer         user_data);
 #endif
+
+void
+on_checkbutton_boost_toggled           (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
