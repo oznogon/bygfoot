@@ -33,7 +33,10 @@ void set_variables(void)
     /* debug mode or no? */
     debug = FALSE;
 
-    status = save_status = notify_status = popups_active = 0;
+    for(i=0;i<NOTIFY_END;i++)
+	notify_status[i] = FALSE;
+
+    status = save_status = popups_active = 0;
     /* reset main window pointer */
     main_window = NULL;
     /* reset default save file name */

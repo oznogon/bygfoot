@@ -39,8 +39,8 @@ gint rank[130];
    injured or booked in league games, so those variables are
    simple arrays) */
 goal goals[2][50];
-gint injuries[11];
-gint booked[11];
+gint injuries[2][12];
+gint booked[2][12];
 
 /* attendance and special events for two games */
 gint stadium_facts[2][2];
@@ -80,9 +80,8 @@ gint status;
 /* whether the game's saved or not */
 gboolean save_status;
 
-/* whether there's a player on the transfer list
-   that interests the user */
-gboolean notify_status;
+/* information whether some popup notification has to be shown */
+gint notify_status[NOTIFY_END];
 
 /* ages of the two players that were swapped lastly */
 gfloat undo_info[2];

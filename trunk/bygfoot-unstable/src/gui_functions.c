@@ -957,8 +957,9 @@ season_end_nullify(void)
 
 	if(i<20)
 	    transferlist[i].time = -1;
-	if(i<11)
-	    injuries[i] = booked[i] = -1;
+	if(i<12)
+	    for(j=0;j<2;j++)
+		injuries[j][i] = booked[j][i] = -1;
 	if(i<2)
 	    stadium_facts[i][0] =
 		stadium_facts[i][1] = 0;
@@ -1442,7 +1443,7 @@ show_live_game(gint idx)
     }
 
     for(i=0;i<50;i++)
-	if(goals[goal_idx][i].type > 1)
+	if(goals[goal_idx][i].time == GOAL_TIME_PENALTY)
 	    break;
 
     for(k=i;k<50;k++)

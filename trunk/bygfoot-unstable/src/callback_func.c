@@ -9,7 +9,7 @@
 /* get the integer value in the first column of a treeview */
 gint
 get_row_index(GtkTreeSelection *selection,
-		   GdkEventButton *event)
+	      GdkEventButton *event, gint column)
 {
     GtkTreeView *treeview = 
 	gtk_tree_selection_get_tree_view(selection);
@@ -33,7 +33,7 @@ get_row_index(GtkTreeSelection *selection,
     }
 
     gtk_tree_model_get_iter(model, &iter, path);
-    gtk_tree_model_get(model, &iter, 0, &idx, -1);    
+    gtk_tree_model_get(model, &iter, column, &idx, -1);
 
     gtk_tree_path_free(path);
 
@@ -48,7 +48,7 @@ callback_show_player_info(GtkTreeSelection *selection,
 			  GdkEventButton *event)
 {
     gint player_number = (selection != NULL) ?
-	get_row_index(selection, event) - 1 : selected_rows[0];
+	get_row_index(selection, event, 0) - 1 : selected_rows[0];
 
     if(player_number < 0)
     {
@@ -96,7 +96,7 @@ callback_select_player(GtkTreeSelection *selection,
     gfloat old_average_cskill = 
 	average_skill(my_team, 11, TRUE);
     gint new_number = 
-	get_row_index(selection, event) - 1;
+	get_row_index(selection, event, 0) - 1;
     gint old_number = selected_rows[0];
     GtkTreeView *treeview = 
 	gtk_tree_selection_get_tree_view(selection);
@@ -186,25 +186,21 @@ show_recommend(gint idx)
 
 /* handle a click on the transfer list */
 gint
-callback_transfer_select(GtkTreeSelection *selection,
-			 GdkEventButton  *event)
+callback_transfer_select(gint row_idx)
 {
-    gint idx =
-	get_row_index(selection, event) - 1;
-
-    if(idx < 0)
+    if(row_idx < 0)
 	return 0;
 
-    status = status - get_place(status, 22) + idx;
+    status = status - get_place(status, 22) + row_idx;
 
-    if(transferlist[idx].team_id == my_team)
+    if(transferlist[row_idx].team_id == my_team)
     {
-	remove_transfer(idx, TRUE);
+	remove_transfer(row_idx, TRUE);
 	on_button_transfers_clicked(NULL, NULL);
 	return 0;
     }
     else
-	show_recommend(idx);
+	show_recommend(row_idx);
 
     return 1;
 }
@@ -268,18 +264,14 @@ callback_make_transfer_offer(GtkWidget *widget)
 
 /* handle a click on the 'browse teams' button */
 void
-callback_transfer_team_select(GtkTreeSelection *selection,
-				   GdkEventButton *event)
+callback_transfer_team_select(gint row_idx)
 {
-    gint team_id =
-	get_row_index(selection, event) - 1;
-
-    if(team_id < 0)
+    if(row_idx < 0)
 	return;
 
-    show_team_browse(team_id, NULL);
+    show_team_browse(row_idx, NULL);
 
-    status = 130000 + team_id;
+    status = 130000 + row_idx;
 }
 
 /* show the next or previous team in browse mode */
@@ -306,12 +298,10 @@ callback_transfers_browse_teams(gint direction)
 /* handle a left-click in the player_info when 
    the human player browses the teams to buy players */
 void
-callback_transfer_buy_player(GtkTreeSelection *selection,
-				  GdkEventButton *event)
+callback_transfer_buy_player(gint row_idx)
 {    
     gint team_id = status % 1000;
-    gint player_number = 
-	get_row_index(selection, event) -1;
+    gint player_number = row_idx;
     gint value, wage;
     gint popup_status[3];
     gchar buf[BUF_SIZE_SMALL];
@@ -641,19 +631,14 @@ callback_pay_the_loan(void)
 
 /* show player list of the opposing team */
 void
-callback_show_opponent_team(GtkTreeSelection *selection,
-				 GdkEventButton *event)
+callback_show_opponent_team(gint row_idx)
 {
-    gint team_id = get_row_index(selection, event);
-
-    if(team_id < 0)
+    if(row_idx < 0)
 	return;
 
-    status = 500000 + team_id;
+    status = 500000 + row_idx;
 
-    show_team_browse(team_id, NULL);
-
-    set_buttons();
+    show_team_browse(row_idx, NULL);
 }
 
 /* sort the field players and goalies and
@@ -1271,7 +1256,7 @@ callback_fire_player(GtkTreeSelection *selection,
 {
     gint i;
     gint player_number = (selection != NULL) ?
-	get_row_index(selection, event) - 1 : selected_rows[0];
+	get_row_index(selection, event, 0) - 1 : selected_rows[0];
     gint popup_status[3] = {61, my_team, player_number};
 
     if(player_number < 0) 
@@ -1290,4 +1275,35 @@ callback_fire_player(GtkTreeSelection *selection,
     }
 
     show_popup_window("", popup_status);
+}
+
+/* show a popup telling the user that some players' careers
+   had to stop because of a severe injury */
+void
+callback_notify_injury(void)
+{
+    gint i;
+    gchar names[11][19];
+    gchar buf[BUF_SIZE_SMALL];
+
+    for(i=0;i<11;i++)
+    {
+	strcpy(names[i], "");
+	if(teams[my_team].players[i].health > 12000)
+	{
+	    strcpy(names[i], teams[my_team].players[i].name);
+	    remove_player(my_team, i);
+	}
+    }
+
+    sprintf(buf, "I'm sorry to tell you that one or more of your players have suffered severe injuries. They won't be able to play football on a professional level anymore and had to retire:\n   ");
+    
+    for(i=1;i<11;i++)
+	if(strlen(names[i]) > 0)
+	{
+	    strcat(buf, names[i]);
+	    strcat(buf, "\n   ");
+	}
+
+    show_popup_window(buf, NULL);
 }

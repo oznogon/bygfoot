@@ -1,5 +1,10 @@
 #include "defs.h"
 
+/* show a popup telling the user that some players' careers
+   had to stop because of a severe injury */
+void
+callback_notify_injury(void);
+
 /* fire the selected player */
 void
 callback_fire_player(GtkTreeSelection *selection,
@@ -15,8 +20,7 @@ show_stadium_window(void);
 
 /* show player list of the opposing team */
 void
-callback_show_opponent_team(GtkTreeSelection *selection,
-				 GdkEventButton *event);
+callback_show_opponent_team(gint row_idx);
 
 /* undo the swapping of two players */
 void
@@ -97,8 +101,7 @@ callback_select_player(GtkTreeSelection *selection,
 
 /* handle a left-click on the player_list */
 gint
-callback_transfer_select(GtkTreeSelection *selection,
-			      GdkEventButton *event);
+callback_transfer_select(gint row_idx);
 
 /* handle the click on the 'ok' button the human player
    makes a transfer offer with */
@@ -107,8 +110,7 @@ callback_make_transfer_offer(GtkWidget *widget);
 
 /* handle a click on the 'browse teams' button */
 void
-callback_transfer_team_select(GtkTreeSelection *selection,
-				   GdkEventButton *event);
+callback_transfer_team_select(gint row_idx);
 
 /* show the next or previous team in browse mode */
 void
@@ -117,8 +119,7 @@ callback_transfers_browse_teams(gint direction);
 /* handle a left-click in the player_info when 
    the human player browses the teams to buy players */
 void
-callback_transfer_buy_player(GtkTreeSelection *selection,
-				  GdkEventButton *event);
+callback_transfer_buy_player(gint row_idx);
 
 /* display the fixtures in the leagues the human player's team
    participates in */

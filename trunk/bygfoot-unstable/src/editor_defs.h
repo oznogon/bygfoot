@@ -1,10 +1,11 @@
 /* in editor mode we don't need some globale variables
    but need others so we rename them */
 #define structure2 save_status
-#define selected_player notify_status
+#define selected_player notify_status[0]
 #define birth_dates rank
 
-void callback_load_team_file(void);
+void
+callback_load_team_file(void);
 
 /* load a team from the team def file */
 void callback_load_team(void);

@@ -95,9 +95,10 @@ struct _stadium
 
 struct _goal
 {
-    gint minute;
+    gint minute;    
     gint team_id;
     gint scorer;
+    gint time;
     gint type;
 };
 

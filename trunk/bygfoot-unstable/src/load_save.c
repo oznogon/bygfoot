@@ -372,7 +372,7 @@ void load_transfers(FILE *fil)
 
 void save_options(FILE *fil)
 {
-    gint i;
+    gint i, j;
 
     fwrite((void*)&my_team, sizeof(gint), 1, fil);
     fwrite((void*)&season, sizeof(gint), 1, fil);
@@ -400,29 +400,31 @@ void save_options(FILE *fil)
 	    fwrite((void*)&finances[i], sizeof(gint), 1, fil);
 	if(i<LEAGUE_NAMES_END)
 	    fwrite((void*)league_names[i], 50, 1, fil);
-	if(i<11)
+	if(i<12)
 	{
-	    fwrite((void*)&injuries[i], sizeof(gint), 1, fil);
-	    fwrite((void*)&booked[i], sizeof(gint), 1, fil);
+	    for(j=0;j<2;j++)
+	    {
+		fwrite((void*)&injuries[j][i], sizeof(gint), 1, fil);
+		fwrite((void*)&booked[j][i], sizeof(gint), 1, fil);
+	    }
 	}
 	if(i<50)
 	{
-	    fwrite((void*)&(goals[0][i].minute), sizeof(gint), 1, fil);
-	    fwrite((void*)&(goals[0][i].team_id), sizeof(gint), 1, fil);
-	    fwrite((void*)&(goals[0][i].scorer), sizeof(gint), 1, fil);
-	    fwrite((void*)&(goals[0][i].type), sizeof(gint), 1, fil);
-
-	    fwrite((void*)&(goals[1][i].minute), sizeof(gint), 1, fil);
-	    fwrite((void*)&(goals[1][i].team_id), sizeof(gint), 1, fil);
-	    fwrite((void*)&(goals[1][i].scorer), sizeof(gint), 1, fil);
-	    fwrite((void*)&(goals[1][i].type), sizeof(gint), 1, fil);
+	    for(j=0;j<2;j++)
+	    {
+		fwrite((void*)&(goals[j][i].minute), sizeof(gint), 1, fil);
+		fwrite((void*)&(goals[j][i].team_id), sizeof(gint), 1, fil);
+		fwrite((void*)&(goals[j][i].scorer), sizeof(gint), 1, fil);
+		fwrite((void*)&(goals[j][i].time), sizeof(gint), 1, fil);
+		fwrite((void*)&(goals[j][i].type), sizeof(gint), 1, fil);
+	    }
 	}
     }
 }
 
 void load_options(FILE *fil)
 {
-    gint i;
+    gint i, j;
 
     fread((void*)&my_team, sizeof(gint), 1, fil);
     fread((void*)&season, sizeof(gint), 1, fil);
@@ -450,22 +452,24 @@ void load_options(FILE *fil)
 	    fread((void*)&finances[i], sizeof(gint), 1, fil);
 	if(i<LEAGUE_NAMES_END)
 	    fread((void*)&(league_names[i]), 50, 1, fil);
-	if(i<11)
+	if(i<12)
 	{
-	    fread((void*)&injuries[i], sizeof(gint), 1, fil);
-	    fread((void*)&booked[i], sizeof(gint), 1, fil);
+	    for(j=0;j<2;j++)
+	    {
+		fread((void*)&injuries[j][i], sizeof(gint), 1, fil);
+		fread((void*)&booked[j][i], sizeof(gint), 1, fil);
+	    }
 	}
 	if(i<50)
 	{
-	    fread((void*)&(goals[0][i].minute), sizeof(gint), 1, fil);
-	    fread((void*)&(goals[0][i].team_id), sizeof(gint), 1, fil);
-	    fread((void*)&(goals[0][i].scorer), sizeof(gint), 1, fil);
-	    fread((void*)&(goals[0][i].type), sizeof(gint), 1, fil);
-
-	    fread((void*)&(goals[1][i].minute), sizeof(gint), 1, fil);
-	    fread((void*)&(goals[1][i].team_id), sizeof(gint), 1, fil);
-	    fread((void*)&(goals[1][i].scorer), sizeof(gint), 1, fil);
-	    fread((void*)&(goals[1][i].type), sizeof(gint), 1, fil);
+	    for(j=0;j<2;j++)
+	    {
+		fread((void*)&(goals[0][i].minute), sizeof(gint), 1, fil);
+		fread((void*)&(goals[0][i].team_id), sizeof(gint), 1, fil);
+		fread((void*)&(goals[0][i].scorer), sizeof(gint), 1, fil);
+		fread((void*)&(goals[0][i].time), sizeof(gint), 1, fil);
+		fread((void*)&(goals[0][i].type), sizeof(gint), 1, fil);
+	    }
 	}
     }
 }

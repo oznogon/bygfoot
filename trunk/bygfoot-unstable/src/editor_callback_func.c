@@ -510,7 +510,7 @@ void callback_edit_player(GtkTreeSelection *selection,
 			  GdkEventButton *event)
 {   
     gint selected = 
-	get_row_index(selection, event) - 1;
+	get_row_index(selection, event, 0) - 1;
 
     if(selected < 0)
 	return;

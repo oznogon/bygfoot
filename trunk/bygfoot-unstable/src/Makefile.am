@@ -28,10 +28,12 @@ bygfoot_SOURCES = \
 	misc2_interface.c  \
 	options_callbacks.c options_callbacks.h  \
 	options_interface.c  \
+	player_func.c defs.h \
 	startup.c startup.h  defs.h \
 	support.c support.h \
-	team_func.c defs.h \
+	team_func.c team_func.h defs.h \
 	text_files.c defs.h \
+	treeview_cell.c treeview_cell.h defs.h \
 	treeview_func.c treeview_func.h defs.h \
 	windows.c interface.h misc_interface.h options_interface.h editor_interface.h defs.h windows.h editor_defs.h 
 

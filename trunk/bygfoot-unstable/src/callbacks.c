@@ -24,7 +24,9 @@ on_menu_new_activate                   (GtkMenuItem     *menuitem,
 	start(1);
     }
     else
-	show_popup_window("Are you sure you want to start a new game and discard your current game?", popup_status);    
+	show_popup_window(
+	    "Are you sure you want to start a new game and discard your current game?",
+	    popup_status);    
 }
 
 
@@ -269,21 +271,40 @@ on_player_info_button_press_event      (GtkWidget       *widget,
 {
     GtkTreeSelection *selection = 
 	gtk_tree_view_get_selection(GTK_TREE_VIEW(widget));
-
+    gint row_idx = 
+	get_row_index(selection, event, (get_place(status, 12) == 22));
+    gint id;
+    
     if(event->type == GDK_BUTTON_PRESS)
     {
 	if(status == 0)
-	    callback_show_opponent_team(selection, event);
+	    callback_show_opponent_team(row_idx);
 	else if(get_place(status, 12) == 10 ||
 	   get_place(status, 12) == 11)
 	{
-	    if(callback_transfer_select(selection, event) == 1)
+	    if(callback_transfer_select(row_idx - 1) == 1)
 		status = 110000 + get_place(status, 22);
 	}
 	else if(status == 120000)
-	    callback_transfer_team_select(selection, event);   
+	    callback_transfer_team_select(row_idx - 1);   
 	else if(get_place(status, 12) == 13)
-	    callback_transfer_buy_player(selection, event);
+	    callback_transfer_buy_player(row_idx - 1);
+	else if(get_place(status, 12) == 22 && row_idx != my_team &&
+		row_idx >= 0 && row_idx < 130)
+	{
+	    id = teams[row_idx].id;
+	    status = 500000 + id;
+	    show_team_browse(id, NULL);
+	}
+	else if(get_place(status, 12) == 21 &&
+		row_idx >= 0 && row_idx < FIX_END)
+	{
+	    id = fixtures[row_idx].team_id[(event->button == 3)];
+	    if(id == my_team)
+		id = fixtures[row_idx].team_id[(event->button != 3)];
+	    status = 500000 + id;
+	    show_team_browse(id, NULL);
+	}
     }
 
     set_buttons();
@@ -420,17 +441,23 @@ on_button_back_to_main_clicked         (GtkButton       *button,
 {
     gint popup_status[3] = {0, -1, -1};
 
+    if(notify_status[NOTIFY_TRANSFERS])
+    {	
+	notify_status[NOTIFY_TRANSFERS] = FALSE;
+	show_popup_window("You might want to have a look at the transfer list. ",
+			  popup_status);
+    }
+    
+    if(notify_status[NOTIFY_INJURY] == 1)
+    {
+	notify_status[NOTIFY_INJURY] = FALSE;
+	callback_notify_injury();
+    }
+
     initialize_main_window();
     status = 0;
     
     set_buttons();
-
-    if(notify_status)
-    {	
-	notify_status = FALSE;
-	show_popup_window("You might want to have a look at the transfer list. ",
-			  popup_status);
-    }
 }
 
 

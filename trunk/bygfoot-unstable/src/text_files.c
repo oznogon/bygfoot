@@ -392,3 +392,243 @@ text_file_number_to_char(gint number, gchar *filename, gboolean full_path)
     strcpy(filename, buf);
 }
 
+void
+read_structures(FILE *fil, gint team_id, gint *structure2)
+{
+    gchar buf[BUF_SIZE_SMALL];
+    gint i, structure1;
+
+    /* read structures */
+    fscanf(fil, "%[\n ]*", buf);
+    fscanf(fil, "%d", &structure1);
+
+    if(get_place(structure1, 1) + 
+       get_place(structure1, 2) + 
+       get_place(structure1, 3) != 10)
+    {
+	g_print("\n\n*** Invalid playing structure: %d ***\n\n", structure1);
+	structure1 = assign_playing_structure();
+    }
+
+    teams[team_id].structure = structure1;
+
+    fscanf(fil, "%[\n ]*", buf);
+    fscanf(fil, "%d", structure2);
+
+    if(get_place(*structure2, 1) + 
+       get_place(*structure2, 2) + 
+       get_place(*structure2, 3) != 8)
+    {
+	g_print("\n\n*** Invalid playing structure: %d ***\n\n", *structure2);
+	*structure2 = 332;
+    }
+
+    for(i=0;i<20;i++)
+	teams[team_id].players[i].pos =
+	    teams[team_id].players[i].cpos =
+	    get_position_from_structure(team_id, (i > 10) * *structure2,
+					i, 1);
+}
+
+void
+read_player(FILE *fil, gint team_id, gint read, gint player_number, gint *birth_dates)
+{
+    gchar buf[BUF_SIZE_SMALL];
+    gint intbuf;
+    gint i;
+
+    /* move file stream pointer */
+    fscanf(fil, "%[\n ]*", buf);
+    fscanf(fil, "%[&]", buf);
+    fscanf(fil, "%[\n ]*", buf);
+
+    if(player_number > -1 && player_number < 20)
+    {
+	fscanf(fil, "%[^&]", buf);
+
+	/* cut away trailing whitespaces */
+	for(i = strlen(buf) - 1; i >= 0; i--)
+	    if(buf[i] == ' ' || buf[i] == '\t' || buf[i] == '\n')
+		buf[i] = '\0';
+	    else
+		break;
+
+	if( read % 10 != 0 ||
+	    (read >= 10 && team_id == my_team) )
+	    snprintf(teams[team_id].players[player_number].name, 19, "%s", buf);
+
+	fscanf(fil, "%[&]", buf);
+	fscanf(fil, "%[\n ]*", buf);
+
+	/* maybe the human player wants only the name;
+	   or, this is a european team and since the strength of
+	   those has to vary depending on the strength of league 1,
+	   we don't allow changes */
+	if( (read % 10 == 2 && team_id < 115) ||
+	    (read >= 10 && team_id == my_team) )
+	{
+	    fscanf(fil, "%d", &intbuf);
+	    fscanf(fil, "%[\n ]*", buf);
+	    fscanf(fil, "%[&]", buf); fscanf(fil, "%[\n ]*", buf);
+		    
+	    if(intbuf > 9 && intbuf <= 99)
+		teams[team_id].players[player_number].skill = 
+		    teams[team_id].players[player_number].cskill =
+		    (gfloat)intbuf / 10;
+		    
+	    fscanf(fil, "%d", &intbuf);
+	    fscanf(fil, "%[\n ]*", buf);
+	    fscanf(fil, "%[&]", buf); fscanf(fil, "%[\n ]*", buf);
+
+	    if(intbuf >= teams[team_id].players[player_number].skill * 10 &&
+	       intbuf <= 99)
+		teams[team_id].players[player_number].talent = (gfloat)intbuf / 10;
+	    else if(teams[team_id].players[player_number].skill >
+		    teams[team_id].players[player_number].talent)
+		teams[team_id].players[player_number].talent = 
+		    calculate_talent(get_league_from_id(team_id),
+				     teams[team_id].players[player_number]);			
+		
+	    fscanf(fil, "%d", &intbuf);
+	    fscanf(fil, "%[\n ]*", buf);
+	    fscanf(fil, "%[&]", buf);
+	    fscanf(fil, "%[\n ]*", buf);
+
+	    if(intbuf > 0)
+		teams[team_id].players[player_number].age = 
+		    get_age_from_birth(intbuf);
+
+	    if(birth_dates != NULL)
+		birth_dates[player_number] = intbuf;
+	    
+	    if(teams[team_id].players[player_number].peak_age < 
+	       teams[team_id].players[player_number].age)
+		teams[team_id].players[player_number].peak_age =
+		    teams[team_id].players[player_number].age;
+
+	    teams[team_id].players[player_number].etal =
+		estimate_talent(teams[team_id].players[player_number]);
+	    teams[team_id].players[player_number].value =
+		assign_value(teams[team_id].players[player_number]);
+	    teams[team_id].players[player_number].wage =
+		assign_wage(teams[team_id].players[player_number]);
+	    teams[team_id].players[player_number].fitness =
+		gauss_dist(.7,.85,.99,.99);
+	}
+	else
+	    fscanf(fil, "%[^\n]", buf);
+    }
+    else
+	fscanf(fil, "%[^\n]", buf);
+}
+
+/* fill in the players of a team from the teams file */
+void
+read_team(FILE *fil, gint team_id, gint *structure2, gint read, gint *birth_dates)
+{
+    /* structure1: positions of the first 10 field players,
+     like 442 or 433;
+     structure2: positions of the substitute field players,
+     like 332 or 422;
+     the first and 12th players are always goalies */
+    gint local_structure2;
+    gchar buf[BUF_SIZE_SMALL];
+
+    if( read % 10 > 0 ||
+	(read >= 10 && team_id == my_team) )
+	read_structures(fil, team_id,
+			&local_structure2);
+    
+    if(structure2 != NULL)
+	*structure2 = local_structure2;
+    
+    /* read players */
+    while(1)
+    {
+	fscanf(fil, "%[\n ]*", buf);
+	fscanf(fil, "%[^\n &]", buf);
+
+	if(strcmp(buf, "end_players") == 0)
+	    return;
+
+	/* skip comments */
+	if(buf[0] != '#')
+	    read_player(fil, team_id, read,
+			(gint)strtol(buf, NULL, 10) - 1,
+			birth_dates);
+	else
+	    fscanf(fil, "%[^\n]", buf);
+    }
+}
+
+/* read the teams file which specifies (perhaps)
+   some data about the players of a team;
+   'read' tells us which parts to read: either
+   names and values (read=2), only names (1) or
+   nothing(0); if 'team_name' isn't NULL, read that
+   team to team number 114 */
+void
+read_teams_file(gint read, const gchar *team_name, gint *structure2, 
+		     gint *birth_dates)
+{
+    gint i;
+    gchar buf[BUF_SIZE_SMALL];
+    FILE *fil;
+
+    text_file_number_to_char(TEXT_FILES_DEFINITIONS, buf, TRUE);
+    fil = fopen(buf, "r");
+
+    if(read == 0 || fil == NULL)
+    {
+	if(read != 0)
+	    g_print("\n\n*** Could not open team definitions file. ***\n\n");
+
+	return;
+    }
+
+    while(1)
+    {
+	fscanf(fil, "%[\n ]*", buf);
+	fscanf(fil, "%[^\n]", buf);
+	
+	if(feof(fil) != 0)
+	    return;
+
+	/* first line that's not blank or a comment line;
+	   or, the line with the team name specified
+	   as function argument */
+	if( buf[0] != '#' && 
+	    (team_name == NULL ||
+	     strcmp(buf, team_name) == 0) )
+	{
+	    /* find out whether we have a team name
+	       that's in one of the current leagues */
+	    for(i=0;i<175;i++)
+		if(strcmp(teams[i].name, buf) == 0 && i != 114 && i != 130)
+		    break;
+
+	    /* if not, skip the player section */
+	    if(i == 175 && team_name == NULL)
+	    {
+		while(strcmp(buf, "end_players") != 0 &&
+		      feof(fil) == 0 )
+		{
+		    fscanf(fil, "%[\n ]*", buf);
+		    fscanf(fil, "%[^\n]", buf);		    
+		}
+	    }
+	    
+	    /* read the players from the file */
+	    else
+	    {
+		if(team_name == NULL)
+		    read_team(fil, i, NULL, read, birth_dates);
+		else
+		    read_team(fil, 114, structure2, read, birth_dates);
+	    }
+	}
+    }
+
+    fclose(fil);
+}
+

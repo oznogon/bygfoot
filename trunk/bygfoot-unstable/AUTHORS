@@ -1,0 +1,26 @@
+Bygfoot Football Manager
+AUTHOR: Gyozo Both (gyboth@bygfoot.com)
+http://www.bygfoot.com
+
+Homepage maintainer:
+Jose Geraldo Gouvea (Brazil)
+
+Country file contributors:
+- Romania: Cristian Spoiala
+- Brazil: Jose Geraldo Gouvea
+  (though I'm to blame for North American countries being
+  in the file, Gy. B.; this should be corrected in one of
+  the forthcoming versions)
+- Poland: Michal Rudolf
+
+Former Debian packager:
+Gerhard Hotz (Germany)
+
+Debian maintainer:
+Isaac Clerencia (Spain)
+
+FreeBSD port:
+Pav Lucistnik (Czech Republic)
+
+Some nice and useful patches (see ChangeLog):
+Arnaud Le Rouzic

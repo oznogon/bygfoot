@@ -345,3 +345,30 @@ enum
     JOB_OFFER_END
 };
 
+/* indices for the notify_status variable */
+enum
+{
+    NOTIFY_TRANSFERS = 0,
+    NOTIFY_INJURY,
+    NOTIFY_END
+};
+
+enum
+{
+    GOAL_TIME_REGULATION = 0,
+    GOAL_TIME_EXTRA,
+    GOAL_TIME_PENALTY,
+    GOAL_TIME_END
+};
+
+enum
+{
+    GOAL_TYPE_NORMAL = 0,
+    GOAL_TYPE_PEN,
+    GOAL_TYPE_PEN_MISSED,
+    GOAL_TYPE_PEN_SAVE,
+    GOAL_TYPE_PEN_POST,
+    GOAL_TYPE_PEN_CROSS,
+    GOAL_TYPE_OWN,
+    GOAL_TYPE_END
+};

@@ -20,10 +20,11 @@
 /* global variables */
 #include "variables.h"
 
-/* function prototypes */
-
+/* macros */
 #define rnd(lower,upper) ((gfloat)random()/(gfloat)0x7fffffff*((upper)-(lower))+(lower))
 #define rndi(lower,upper) ((gint)rint( rnd((gfloat)(lower) - 0.499, (gfloat)(upper) + 0.499) ))
+
+/* function prototypes */
 
 /**************************************************
  * functions from callback_func.c                 *
@@ -32,7 +33,7 @@
 /* get the integer value in the first column of a treeview */
 gint
 get_row_index(GtkTreeSelection *selection,
-	      GdkEventButton *event);
+	      GdkEventButton *event, gint column);
 
 /* return either the maximum amount of money the bank
    grants a team or the human player's drawing credit;
@@ -289,10 +290,14 @@ gint
 sum(gint *array, gint min, gint max);
 
 
-
 /***********************************
- * functions from team_func.c *
+ * functions from player_func.c *
  ***********************************/
+
+/* return a player's talent depending on his league and skill */
+gfloat
+calculate_talent(gint league, player pl);
+
 
 /* determine on which position a given player plays
    depending on his number in the team and on the structure
@@ -302,6 +307,46 @@ gint
 get_position_from_structure(gint team_id, gint structure,
 				 gint player_number,
 				 gint generation);
+
+/* estimate a player's talent; depends on the quality
+   of the human player's scout */
+gfloat
+estimate_talent(player pl);
+
+/* assign value and wage for a player, depending
+   on skill, talent, league and age */
+gint
+assign_value(player pl);
+gint
+assign_wage(player pl);
+
+/* fill in a player's data depending on league and
+   the player's number in his team */
+void
+generate_player(gint team_id, gfloat team_factor,
+		     gint player_number);
+
+/* return the number of players in the human player's team */
+gint
+players_in_team(void);
+
+/* swap two players */
+void
+swap_players(gint team_id1, gint team_id2,
+		  gint player_number1, gint player_number2);
+
+/* remove a player from a team */
+void
+remove_player(gint team_id, gint player_number);
+
+/* move the player from team1 to team2 and replace
+   him by a new one */
+void
+move_player(gint team1, gint player_number, gint team2);
+
+/***********************************
+ * functions from team_func.c *
+ ***********************************/
 
 /* finance and other settings for a new human player team.
    remove some players from the team. the human player's
@@ -325,24 +370,6 @@ get_league_from_id(gint team_id);
 void
 get_league_name_from_id(gint team_id, gchar *name);
 
-/* estimate a player's talent; depends on the quality
-   of the human player's scout */
-gfloat
-estimate_talent(player pl);
-
-/* assign value and wage for a player, depending
-   on skill, talent, league and age */
-gint
-assign_value(player pl);
-gint
-assign_wage(player pl);
-
-/* fill in a player's data depending on league and
-   the player's number in his team */
-void
-generate_player(gint team_id, gfloat team_factor,
-		     gint player_number);
-
 /* return a playing structure like 442 or 433 */
 gint
 assign_playing_structure(void);
@@ -350,10 +377,6 @@ assign_playing_structure(void);
 /* return random playing style from -2 to 2 */
 gint
 assign_playing_style(void);
-
-/* return the number of players in the human player's team */
-gint
-players_in_team(void);
 
 /* change the playing structure of the human player's team */
 void
@@ -379,20 +402,6 @@ add_transfer(gint team_id, gint player_number, gint time);
 /* remove a player from the transfer list and resort the list (sometimes) */
 void
 remove_transfer(gint number, gboolean resort);
-
-/* swap two players */
-void
-swap_players(gint team_id1, gint team_id2,
-		  gint player_number1, gint player_number2);
-
-/* remove a player from a team */
-void
-remove_player(gint team_id, gint player_number);
-
-/* move the player from team1 to team2 and replace
-   him by a new one */
-void
-move_player(gint team1, gint player_number, gint team2);
 
 /* move a player from the transferlist to the human player's team
    and replace him */

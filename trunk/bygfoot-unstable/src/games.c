@@ -192,14 +192,15 @@ void prg_calculate_values(fixture fix, gfloat *attack_value,
 
 /* store information about a goal */
 void prg_write_goal(fixture fix, gint team, gint scorer,
-		    gint type)
+		    gint time, gint type)
 {
     gint i;
     gint goal_idx[2];
 
     /* first increase the number of goals for the player */
     if((fix.type < 6000 || my_team > 114) &&
-       teams[fix.team_id[team]].players[scorer].pos != 0)
+       teams[fix.team_id[team]].players[scorer].pos != 0 &&
+       type != GOAL_TYPE_OWN)
 	teams[fix.team_id[team]].players[scorer].goals++;
     
     /* if the human player's team is not involved
@@ -218,19 +219,70 @@ void prg_write_goal(fixture fix, gint team, gint scorer,
 	}
     
     goals[goal_idx[0]][goal_idx[1]].type = type;
+    goals[goal_idx[0]][goal_idx[1]].time = time;
 
     /* assign rndom time */
     /* penalties */
-    if(type > 1)
+    if(time == GOAL_TIME_PENALTY)
 	goals[goal_idx[0]][goal_idx[1]].minute = 125;
+    else if(time == GOAL_TIME_REGULATION)
+	goals[goal_idx[0]][goal_idx[1]].minute = rndi(1, 93);
     else
-	goals[goal_idx[0]][goal_idx[1]].minute = (type) ?
-	    rndi(94, 120) :
-	    rndi(1, 93);
+	goals[goal_idx[0]][goal_idx[1]].minute = rndi(94, 120);
 
     goals[goal_idx[0]][goal_idx[1]].team_id = fix.team_id[team];
-
     goals[goal_idx[0]][goal_idx[1]].scorer = scorer;	    
+}
+
+void
+sort_best_players(gint team_id, gint *order)
+{
+    gint j;
+    gfloat player_values[11];
+    
+    for(j=0;j<11;j++)
+	player_values[j] =
+	    teams[team_id].players[j].skill *
+	    powf(teams[team_id].players[j].fitness, 0.25) *
+	    ((j) ? 1 : 0);
+    
+    sort_float_array(player_values,
+		     order,0, 10);
+}
+
+void
+get_scorer_pen(gint team_id, gint *scorer)
+{
+    gint order[11];
+
+    sort_best_players(team_id, order);
+
+    *scorer = order[0];
+}
+
+void
+get_scorer(gfloat *player_score_probs, gint *scorer, gboolean own_goal)
+{
+    gint i;
+    gfloat local_probs[9];
+    gfloat rndom = rnd(0,1);
+
+    if(own_goal)
+	for(i=0;i<9;i++)
+	    local_probs[i] = player_score_probs[8 - i];
+    else
+	for(i=0;i<9;i++)
+	    local_probs[i] = player_score_probs[i];
+
+    if(rndom >= local_probs[8])
+	*scorer = 10;
+    else if(rndom < local_probs[0])
+	*scorer = 1;
+    else
+	for(i=1;i<9;i++)
+	    if(local_probs[i - 1] <= rndom &&
+	       rndom < local_probs[i])
+		*scorer = i + 1;    
 }
 
 /* simulate one goal chance */
@@ -240,7 +292,8 @@ void prg_simulate_chance(fixture *fix,
 			 gint extra_time, gint team,
 			 gboolean bookmaker)
 {
-    gint i, scorer = -1;
+    gint scorer = -1, local_team = team;
+    gint type = -1, time = -1;
     gfloat rndom = rnd(0,1);
 
     /* find out whether it's a goal */
@@ -260,22 +313,33 @@ void prg_simulate_chance(fixture *fix,
        !bookmaker)
 	teams[fix->team_id[(team + 1) % 2]].
 	    players[0].goals++;
-    
-    /* find out who's scored it */
-    rndom = rnd(0,1);
-    
-    if(rndom >= player_score_probs[team][8])
-	scorer = 10;
-    else if(rndom < player_score_probs[team][0])
-	scorer = 1;
-    else
-	for(i=1;i<9;i++)
-	    if(player_score_probs[team][i - 1] <= rndom &&
-	       rndom < player_score_probs[team][i])
-		scorer = i + 1;
 
+    if(extra_time == 1)
+	time = GOAL_TIME_EXTRA;
+    else
+	time = GOAL_TIME_REGULATION;
+    
+    /* own goal? penalty? */
+    rndom = rnd(0,1);
+    if(rndom < 0.015)
+    {
+	local_team = (team + 1) % 2;
+	get_scorer(player_score_probs[local_team], &scorer, TRUE);
+	type = GOAL_TYPE_OWN;
+    }
+    else if(rndom < 0.075)
+    {
+	get_scorer_pen(fix->team_id[team], &scorer);
+	type = GOAL_TYPE_PEN;
+    }
+    else
+    {
+	get_scorer(player_score_probs[team],  &scorer, FALSE);
+	type = GOAL_TYPE_NORMAL;
+    }
+ 
     if(!bookmaker)
-	prg_write_goal(*fix, team, scorer, extra_time);
+	prg_write_goal(*fix, local_team, scorer, time, type);
 }
 
 /* simulate a number of goal chances and store the results
@@ -350,13 +414,14 @@ void simulate_penalty(fixture *fix, gfloat goalie_value,
     /* record a failure as a special type of goal */
     if(rndom > scoring_probability)
     {	
-	prg_write_goal(*fix, team, player_number, 15 + rndi(0, 3));
+	prg_write_goal(*fix, team, player_number, 
+		       GOAL_TIME_PENALTY, rndi(GOAL_TYPE_PEN_MISSED, GOAL_TYPE_PEN_CROSS));
 	return;
     }
 
     fix->result[team][2] += 1;
     
-    prg_write_goal(*fix, team, player_number, 2);
+    prg_write_goal(*fix, team, player_number, GOAL_TIME_PENALTY, GOAL_TYPE_PEN);
 }
 
 /* calculate penalties. here we have no home advantage */
@@ -366,7 +431,6 @@ void process_result_penalties(fixture *fix)
     gint ended = 0;
     gint shooter[2];
     gint order[2][11];
-    gfloat player_values[2][11];
     gfloat goalie_values[2];
 
     for(i=0;i<2;i++)
@@ -379,14 +443,7 @@ void process_result_penalties(fixture *fix)
 	/* sort players so that we might take the five best
 	   players to shoot the penalties. here we count the
 	   real skill values not cskill */
-	for(j=0;j<11;j++)
-	    player_values[i][j] =
-		teams[fix->team_id[i]].players[j].skill *
-		powf(teams[fix->team_id[i]].players[j].fitness, 0.25) *
-		((j) ? 1 : 0);
-	
-	sort_float_array(player_values[i],
-			 order[i],0, 10);
+	sort_best_players(fix->team_id[i], order[i]);
     }
     
     /* simulate the first five penalties */
@@ -486,8 +543,8 @@ void calculate_booking_player(fixture fix, gint team,
 	    pl->booked += 10;	
     }
 
-    if(fix.team_id[team] == my_team)
-	booked[player_number] = player_number;
+    if(my_team_involved(fix))
+	booked[team][player_number] = player_number;
 }
 
 void calculate_injury_player(fixture fix, gint team,
@@ -519,10 +576,10 @@ void calculate_injury_player(fixture fix, gint team,
 	1 / pl->fitness * position_factor;
 
     /* probabilities of different injuries */
-    gfloat injury_probs[12]={0,
+    gfloat injury_probs[13]={0,
 			     0.2, // concussion
 			     0.4, // pulled muscle
-			     0.55, // hamstring 
+			     0.55, // hamstring
 			     0.7, // groin injury
 			     0.8, // fractured ankle
 			     0.875, // cracked rib
@@ -530,15 +587,20 @@ void calculate_injury_player(fixture fix, gint team,
 			     0.955, // broken ankle
 			     0.975, //  broken arm
 			     0.99, // broken shoulder
-			     1};  // torn crucial ligament
+			     0.997, // torn crucial ligament
+			     1}; // career stop
 
     /* duration of the injuries in weeks
        in the form of {min,max} */
-    gint duration[11][2]={{1,4},{2,5},{3,7},{2,7},{4,8},
-			  {4,12},{5,12},{6,16},{3,8},
-			  {5,14},{12,30}};
+    gint duration[12][2]={ {1,4}, {2,5}, {3,7}, {2,7}, {4,8},
+			   {4,12}, {5,12}, {6,16}, {3,8},
+			   {5,14}, {12,30}, {40, 50}};
     
-    for(i=1;i<12;i++)
+    /* no career stop in cpu teams */
+    if(pl->team_id != my_team)
+	injury_probs[12] = 0.99;
+
+    for(i=1;i<13;i++)
 	if(injury_probs[i - 1] * prob < rndom &&
 	   rndom <= injury_probs[i] * prob &&
 	   pl->cskill != 0)
@@ -548,10 +610,13 @@ void calculate_injury_player(fixture fix, gint team,
 			   duration[i-1][1], duration[i-1][1]));
 	    pl->fitness = pl->cskill = 0;
 
-	    /* if the player is in the human player's 
-	       team store the fact that he's injured */
-	    if(fix.team_id[team] == my_team)
-		injuries[player_number] = player_number;
+	    /* if we have a league match with the human player 
+	       involved, we store the injury */
+	    if(my_team_involved(fix))
+		injuries[team][player_number] = player_number;
+
+	    if(pl->health > 12000)
+		notify_status[NOTIFY_INJURY] = TRUE;
 	}
 }
 
@@ -816,7 +881,7 @@ void process_game_sort_goals(fixture fix)
     gint idx = 
 	get_statistics_variable_index(fix);
     gfloat to_order[50];
-    gint team_id[50], scorer[50], type[50];
+    gint team_id[50], scorer[50], type[50], time[50];
     gint order[50];
 
     if(!my_team_involved(fix))
@@ -829,8 +894,10 @@ void process_game_sort_goals(fixture fix)
 	    team_id[i] = goals[idx][i].team_id;
 	    scorer[i] = goals[idx][i].scorer;
 	    type[i] = goals[idx][i].type;
+	    time[i] = goals[idx][i].time;
 
-	    if(goals[idx][i].type < 2)
+	    if(goals[idx][i].time == GOAL_TIME_REGULATION ||
+	       goals[idx][i].time == GOAL_TIME_EXTRA)
 		to_order[i] = (gfloat)goals[idx][i].minute * -1;
 	    else
 		to_order[i] = -125 - (gfloat)i / 20;
@@ -846,6 +913,7 @@ void process_game_sort_goals(fixture fix)
 	{
 	    goals[idx][i].team_id = team_id[order[i]];
 	    goals[idx][i].scorer = scorer[order[i]];
+	    goals[idx][i].time = time[order[i]];
 	    goals[idx][i].type = type[order[i]];
 	    goals[idx][i].minute = (gint)(to_order[order[i]] * -1);
 	}
@@ -887,15 +955,15 @@ void process_game(fixture *fix)
 /* calculate the results of a week's games */
 void process_week_games(gint week_number)
 {
-    gint k;
+    gint i, k;
 
     for(k=0;k<50;k++)
     {
 	goals[0][k].minute = goals[1][k].minute = -1;
-	if(k < 11)
+	if(k < 12)
 	{
-	    injuries[k] = injuries[k] = -1;
-	    booked[k] = booked[k] = -1;
+	    for(i=0;i<2;i++)
+		injuries[i][k] = booked[i][k] = -1;
 	}
 
 	if(k<2)
@@ -907,6 +975,12 @@ void process_week_games(gint week_number)
     {
 	if(fixtures[k].type != -1 &&
 	   fixtures[k].week_number == week_number)
+	{
 	    process_game(&fixtures[k]);	
+	    if(my_team_involved(fixtures[k]) &&
+	       fixtures[k].type < 6000)
+		for(i=0;i<2;i++)
+		    injuries[i][11] = booked[i][11] = fixtures[k].team_id[i];
+	}
     }
 }

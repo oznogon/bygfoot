@@ -1,7 +1,17 @@
+08/20/2004: v1.7.0
+	- added injuries and cards display for opponent teams in the match
+	summary
+	- clicking on a team name in the tables shows the team's player list
+	- clicking on a fixture shows the player list of one of the teams,
+	depending on the mouse button you use
+	- job offers show a lot more information on the team offering the
+	job
+	- a player can suffer an injury that forces him to retire
+	- added own goals and penalties in regulation and extra time
+
 08/20/2004: v1.4.4
 	- corrected a save/load bug that occurred when you saved a game
 	just before getting a new scout
-
 
 08/17/2004: v1.5.2
 	- added possibility to have messages shown instead of popups
