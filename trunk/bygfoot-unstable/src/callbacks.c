@@ -981,3 +981,28 @@ on_checkbutton_boost_toggled           (GtkToggleButton *togglebutton,
 
     bookmaker_re_tip();
 }
+
+void
+on_style_up_activate                   (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+    gint old_style = teams[my_team].style;
+    gint new_style = (old_style == -2) ? 2 : old_style - 1;
+
+    set_save(FALSE);
+    gtk_option_menu_set_history(
+	GTK_OPTION_MENU(lookup_widget(main_window, "optionmenu_style")), new_style + 2);
+}
+
+void
+on_style_down_activate                 (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+    gint old_style = teams[my_team].style;
+    gint new_style = (old_style == 2) ? -2 : old_style + 1;
+
+    set_save(FALSE);
+    gtk_option_menu_set_history(
+	GTK_OPTION_MENU(lookup_widget(main_window, "optionmenu_style")), new_style + 2);
+}
+

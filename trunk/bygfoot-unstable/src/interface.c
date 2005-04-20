@@ -43,15 +43,19 @@ create_main_window (void)
   GtkWidget *menu_options;
   GtkWidget *separatormenuitem1;
   GtkWidget *start_editor;
-  GtkWidget *image107;
+  GtkWidget *image172;
   GtkWidget *start_update;
-  GtkWidget *image108;
+  GtkWidget *image173;
   GtkWidget *trennlinie2;
   GtkWidget *menu_quit;
   GtkWidget *menuitem4;
   GtkWidget *menuitem4_menu;
   GtkWidget *menu_about;
   GtkWidget *team_editor_help1;
+  GtkWidget *shortcuts;
+  GtkWidget *shortcuts_menu;
+  GtkWidget *style_up;
+  GtkWidget *style_down;
   GtkWidget *hbox1;
   GtkWidget *button_load;
   GtkWidget *image11;
@@ -312,7 +316,7 @@ create_main_window (void)
   gtk_widget_show (menu_save_as);
   gtk_container_add (GTK_CONTAINER (menuitem1_menu), menu_save_as);
 
-  trennlinie1 = gtk_menu_item_new ();
+  trennlinie1 = gtk_separator_menu_item_new ();
   gtk_widget_show (trennlinie1);
   gtk_container_add (GTK_CONTAINER (menuitem1_menu), trennlinie1);
   gtk_widget_set_sensitive (trennlinie1, FALSE);
@@ -321,7 +325,7 @@ create_main_window (void)
   gtk_widget_show (menu_options);
   gtk_container_add (GTK_CONTAINER (menuitem1_menu), menu_options);
 
-  separatormenuitem1 = gtk_menu_item_new ();
+  separatormenuitem1 = gtk_separator_menu_item_new ();
   gtk_widget_show (separatormenuitem1);
   gtk_container_add (GTK_CONTAINER (menuitem1_menu), separatormenuitem1);
   gtk_widget_set_sensitive (separatormenuitem1, FALSE);
@@ -330,19 +334,19 @@ create_main_window (void)
   gtk_widget_show (start_editor);
   gtk_container_add (GTK_CONTAINER (menuitem1_menu), start_editor);
 
-  image107 = gtk_image_new_from_stock ("gtk-preferences", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image107);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (start_editor), image107);
+  image172 = gtk_image_new_from_stock ("gtk-preferences", GTK_ICON_SIZE_MENU);
+  gtk_widget_show (image172);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (start_editor), image172);
 
   start_update = gtk_image_menu_item_new_with_mnemonic (_("Start Bygfoot Online Update"));
   gtk_widget_show (start_update);
   gtk_container_add (GTK_CONTAINER (menuitem1_menu), start_update);
 
-  image108 = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image108);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (start_update), image108);
+  image173 = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_MENU);
+  gtk_widget_show (image173);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (start_update), image173);
 
-  trennlinie2 = gtk_menu_item_new ();
+  trennlinie2 = gtk_separator_menu_item_new ();
   gtk_widget_show (trennlinie2);
   gtk_container_add (GTK_CONTAINER (menuitem1_menu), trennlinie2);
   gtk_widget_set_sensitive (trennlinie2, FALSE);
@@ -365,6 +369,30 @@ create_main_window (void)
   team_editor_help1 = gtk_menu_item_new_with_mnemonic (_("Team Editor Help"));
   gtk_widget_show (team_editor_help1);
   gtk_container_add (GTK_CONTAINER (menuitem4_menu), team_editor_help1);
+
+  shortcuts = gtk_menu_item_new_with_mnemonic (_("Shortcuts"));
+  gtk_widget_show (shortcuts);
+  gtk_container_add (GTK_CONTAINER (menubar1), shortcuts);
+  gtk_tooltips_set_tip (tooltips, shortcuts, _("The purpose of these items is to enable keyboard shortcuts for miscellaneous actions"), NULL);
+
+  shortcuts_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (shortcuts), shortcuts_menu);
+
+  style_up = gtk_menu_item_new_with_mnemonic (_("Style up"));
+  gtk_widget_show (style_up);
+  gtk_container_add (GTK_CONTAINER (shortcuts_menu), style_up);
+  gtk_tooltips_set_tip (tooltips, style_up, _("Change playing style 'upwards'"), NULL);
+  gtk_widget_add_accelerator (style_up, "activate", accel_group,
+                              GDK_less, 0,
+                              GTK_ACCEL_VISIBLE);
+
+  style_down = gtk_menu_item_new_with_mnemonic (_("Style down"));
+  gtk_widget_show (style_down);
+  gtk_container_add (GTK_CONTAINER (shortcuts_menu), style_down);
+  gtk_tooltips_set_tip (tooltips, style_down, _("Change playing style 'downwards'"), NULL);
+  gtk_widget_add_accelerator (style_down, "activate", accel_group,
+                              GDK_greater, 0,
+                              GTK_ACCEL_VISIBLE);
 
   hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox1);
@@ -1395,6 +1423,12 @@ create_main_window (void)
   g_signal_connect ((gpointer) team_editor_help1, "activate",
                     G_CALLBACK (on_menu_team_editor_help_activate),
                     NULL);
+  g_signal_connect ((gpointer) style_up, "activate",
+                    G_CALLBACK (on_style_up_activate),
+                    NULL);
+  g_signal_connect ((gpointer) style_down, "activate",
+                    G_CALLBACK (on_style_down_activate),
+                    NULL);
   g_signal_connect ((gpointer) button_load, "clicked",
                     G_CALLBACK (on_button_load_clicked),
                     NULL);
@@ -1533,15 +1567,19 @@ create_main_window (void)
   GLADE_HOOKUP_OBJECT (main_window, menu_options, "menu_options");
   GLADE_HOOKUP_OBJECT (main_window, separatormenuitem1, "separatormenuitem1");
   GLADE_HOOKUP_OBJECT (main_window, start_editor, "start_editor");
-  GLADE_HOOKUP_OBJECT (main_window, image107, "image107");
+  GLADE_HOOKUP_OBJECT (main_window, image172, "image172");
   GLADE_HOOKUP_OBJECT (main_window, start_update, "start_update");
-  GLADE_HOOKUP_OBJECT (main_window, image108, "image108");
+  GLADE_HOOKUP_OBJECT (main_window, image173, "image173");
   GLADE_HOOKUP_OBJECT (main_window, trennlinie2, "trennlinie2");
   GLADE_HOOKUP_OBJECT (main_window, menu_quit, "menu_quit");
   GLADE_HOOKUP_OBJECT (main_window, menuitem4, "menuitem4");
   GLADE_HOOKUP_OBJECT (main_window, menuitem4_menu, "menuitem4_menu");
   GLADE_HOOKUP_OBJECT (main_window, menu_about, "menu_about");
   GLADE_HOOKUP_OBJECT (main_window, team_editor_help1, "team_editor_help1");
+  GLADE_HOOKUP_OBJECT (main_window, shortcuts, "shortcuts");
+  GLADE_HOOKUP_OBJECT (main_window, shortcuts_menu, "shortcuts_menu");
+  GLADE_HOOKUP_OBJECT (main_window, style_up, "style_up");
+  GLADE_HOOKUP_OBJECT (main_window, style_down, "style_down");
   GLADE_HOOKUP_OBJECT (main_window, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (main_window, button_load, "button_load");
   GLADE_HOOKUP_OBJECT (main_window, image11, "image11");
