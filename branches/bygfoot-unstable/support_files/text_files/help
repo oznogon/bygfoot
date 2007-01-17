@@ -1,0 +1,1255 @@
+Bygfoot Documentation
+
+
+Bygfoot Football Manager
+http://www.bygfoot.com
+AUTHOR: Gyözö Both <gyboth@bygfoot.com>
+
+This documentation is a copy of the one found on the Bygfoot website, so don't
+be surpised if you find a hyperlink here and there. If you'd like to view it more
+comfortably or if you have a question, a feature request or a bug to report, please
+visit us at http://www.bygfoot.com.
+
+This help text is (most probably) read from your home directory. If you've upgraded
+Bygfoot to a newer version, the Bygfoot files in your home dir didn't get overwritten,
+so the help text shipped with the newer program version might be newer than this one.
+If you remove the older version ('rm $HOME/.bygfoot/text_files/help'), Bygfoot should copy
+the help file going with the current program version to your home dir automatically next
+time you start it.
+
+-------------------------------------
+1. Overview
+2. Beginner's Guide
+  1. Running Bygfoot
+  2. The Start-Up Window
+  3. Game Interface
+  4. Keyboard shortcuts
+  5. Saving and loading files
+  6. Basic game behaviour
+3. Intermediate Guide
+  1. Command Line Options
+  2. Managing players
+  3. Managing the stadium
+  4. Buying and selling players
+  5. Managing your team's finances
+  6. Starting Bygfoot more comfortably
+  7. Parts of a "Season"
+4. Advanced Guide
+  1. Preferences
+  2. Keeping your job
+  3. Playing a season
+  4. Player fitness and injuries
+5. Customization Guide
+  1. Introduction
+  2. Editing teams
+  3. Writing country files
+  4. Importing and exporting teams
+  5. Managing team definitions
+6. FAQ
+
+-------------------------------------
+
+  Overview
+  ========
+
+
+Bygfoot is a football (a.k.a. soccer) management game for Linux and 
+other UNIX look-alikes. It is an original concept by Gyözö Both and has been 
+improved with suggestions by players from all over the world.
+
+Bygfoot allows you to manage a team by training the players, buying and 
+selling them, contracting loans, maintaining the stadium, etc. You can be
+promoted or relegated, even become a champion. It includes a "team editor" 
+which you can use to create your own teams or edit the existing ones. The 
+game is deliberately kept simple (though not easy): you only have to keep 
+one eye at your players and another at your stadium.
+
+You can customise Bygfoot by writing your own country definitions file 
+or by creating your own team definitions files. A lot of files should be
+available from our extras (extras.html) section soon. 
+
+Bygfoot is licensed under the GNU General Public License (GPL) and has 
+been compiled successfully in several Linux distros. It is a living project 
+and has been very active lately and your help is really welcome. If you
+are a C programmer, acquainted with GTK+, and would like to get to know 
+Bygfoot from the inside, please contact (feedback.html) the
+project owner and come in!
+-------------------------------------
+
+  Beginner's Guide
+  ================
+
+
+
+	Running Bygfoot
+	===============
+
+
+There are two possible ways to run Bygfoot.
+
+If you have installed it system-wide, the executable will be in the $PATH environment so you
+only need to type bygfoot at a command line to run it.
+
+If you are using locally the compiled binary you will need to use a terminal window to enter
+the directory where the executable is and type ./bygfoot.
+
+TIP: Add an alias alias bygfoot='path_to_the_executable/bygfoot -d path_to_the_support_dir'
+to your $HOME/.alias file and you'll be able to run Bygfoot from anywhere. Example:
+alias bygfoot='/home/john/games/bygfoot/bygfoot -d /home/john/games/bygfoot/support_files'.
+
+
+	The Start-Up Window
+	===================
+
+
+Upon starting, Bygfoot will show you a window containing the following sections (downwards):
+
+- Team Selection
+- League Selection
+- Country Selection
+- Team Options
+- File Options
+
+
+		Team Selection
+		==============
+
+
+This is a list of 114 teams you can choose from. By default, this list contain English teams (because
+England is Bygfoot's default country). To select a team you can either click or scroll down with the
+arrow keys. You can also use the scrollbar to navigate through the list.
+
+
+		League Selection
+		================
+
+
+The second row asks you which League you want to play in. By default the "Current League" option will be
+selected. This means that if you choose a team from 5th division it will play 5th but if you choose a team
+from Premier League it will play Premier League.
+
+The other options are:
+
+- League 1: You will start in 1st division, regardless of the team you choose.
+- League 5 (the hard way): You will start from 5th division, even if you choose a 1st division team.
+- CL: Champions' League only.
+- CWC/Conm.: You will only play the Cup Winners' Cup.
+- UEFA/Sul-Americana: You will only play the UEFA Cup.
+
+Some info on Brazilian leagues (brazil.html)
+
+
+		Country Selection
+		=================
+
+
+The third row allows you to select which country to play with. The current Bygfoot version is shipped
+with 8 country files: England (default), Germany, Italy, France, Spain, Romania, Brazil and Poland.
+
+If none of them pleases you (or if you wish to play a different one) you can select a custom country file by
+clicking the "Select a country file" button.
+
+
+		Team Options
+		============
+
+
+Here are some options affecting the team definitions:
+
+- Don't load team definitions will cause Bygfoot to generate all teams from scratch. All teams will be
+composed by randomly generated players.
+- Load only names from team definition file will cause Bygfoot to attribute random skills to players.
+- Load my team from definitions file will cause only your team to be read from definitions. The others will
+be full of "nobodies".
+
+The button labelled "Start Bygfoot Team Editor" will start Bygfoot in editing mode, allowing you to create
+or modify teams.
+
+
+		File Options
+		============
+
+
+- You can start playing with the selected (or pre-selected) options by clicking "OK".
+- You can leave Bygfoot by clicking "Cancel".
+- Or you can load a saved game by clicking "Load game".
+
+
+	Game Interface
+	==============
+
+
+After the Start-Up Window, Bygfoot will generate the game and the playing window will appear, containing the
+following elements:
+
+- Menu Bar
+- Toolbar
+- Status Bar
+- Message Bar
+- Left Panel
+- Right Panel
+- Management Bar (appears sometimes below the right panel)
+
+
+		Menu Bar
+		========
+
+
+Contains only two menus:
+
+- File
+  - New
+  - Open
+  - Save
+  - Save As...
+  - Preferences
+  - Start Bygfoot Team Editor
+  - Quit
+- Help
+  - Information
+  - Team Editor Help
+
+Which we hope to be self-explanatory. ;-)
+
+
+		Tool Bar
+		========
+
+
+From left to right, the toolbar contains the following icons:
+
+- Load Game: Reads a saved game. ;-)
+- Save Game to file: Saves current game to a file. ;-)
+- Quit (without saving): Quits game, without saving. ;-)
+- Preferences: Lets you edit game prefs. ;-)
+- Quick Options: You can turn on/off some features, like:
+  - Transfer List Notification. Do you want to be notified when players according to your preferences
+  are available for hiring?
+  - Job Offers. Do you want to receive invitations to work elsewhere if you are succeeding with your current team?
+  - Live Game. Do you want to watch a thrilling demo of the game?
+  - Overwrite. Do you want Bygfoot to automatically overwrite your saved game when you tell it to save?
+- Back to Main Menu: Shows again the main info window.
+- Show Transferlist: Shows a list of the players available.
+- Finances and Stadium: Shows you info aboutn your finances and stadium. ;-)
+- Weekly Info: Shows you a summary of the previous week and your fixtures for the next.
+- Extended Information Selector: You can view special info windows containing:
+  - Fixtures. Matches played last week. You can browse weeks by clicking on the arrows below the
+    right pane.
+  - Tables. The leagues in statistics.
+  - Best Players. Best field players (more goals scored) and goalies (less goals suffered).
+  - History. Which teams won each championship the previous year(s).
+- Begin a New Week: Starts a new week. ;-)
+- Help: Lets you read the help file. ;-)
+
+
+		Status Bar
+		==========
+
+
+Right below the tool bar there is the status bar, where you can find static info on the present
+state of the game you are playing:
+
+- Season #. How many "years" (in the game) you have been playing.
+- Week #. How many "weeks" (in the game) have elapsed in the current season.
+- Team name. The name of the team you are currently hired by.
+- League name. The name of the league the team is currently in.
+- Rank position. Your situation in the league tables.
+- Money $$$. How much money you have in your bank account.
+- Average Skills. The first figure is the average current skill of the first 11 players
+  (which means, the players that would play in the next match). The second 
+  one is the average (normal) skill of all players.
+
+
+		Message Bar
+		===========
+
+
+Where important messages are written for you to read. ;-)
+
+
+		Left Panel
+		==========
+
+
+The left panel shows a lot of information about your players:
+
+- Name
+- Current skill. If he plays in his natural position this will always be
+the same as...
+- Skill. How good a player is.
+- Fitness. They should be always above 90% to prevent bad things from
+happening. Cycle them as they get tired so that they can rest.
+- Games played.
+- Goals scored.
+- Status. Usually "OK". Possible other values are "Injured (# of weeks)" or 
+"Banned (# of weeks)".
+- Age
+- Estimated talent. How good he can come to be someday (or was someday).
+
+
+		Right Panel
+		===========
+
+
+The right panel shows information about your next match:
+
+- "Home" or "Away" indicating whether you'll play home or away (duh! ;-)
+- Opponent Name.
+- Opponent's rank (and league).
+- Average skills and the difference to your average skills ('-' means you're better).
+- Playing style.
+- Team structure.
+- Latest results.
+- Goals (for : against)
+- Your results this season against the same team.
+- Bookmaker's tip.
+
+If you click on one of the rows, the player list of your opponent will be shown.
+
+
+		Management Bar
+		==============
+
+
+The lower tool bar contains icons that allow you to effectively manage your team:
+
+- Playing Style. Currently Bygfoot supports five playing styles: "All Out Defend", "Defend",
+"Balanced", "Attack" and "All Out Attack" (my favourite, jgg).
+- Team Structure. You can either enter directly your desired structure, cycle the available 
+options, re-order players or undo a swap action.
+- Scout. You can choose whether you want a good scout or not. There are four skill levels for 
+scouts: "Bad", "Average", "Good" and "Best".
+- Physio (since v1.5.0). The quality of your physio.
+
+If you have chosen the Transfer List view, a small  icon with a looking-glass will appear at the right
+side: it allows you to browse teams to find the players you wish to buy. WARNING: Players bought
+this way are much more expensive and demand much higher wages.
+
+If you have chosen the Finances/Stadium view, some other icons will appear:
+
+- Capacity (CAP). Allows you to increase your stadium capacity by 500 seats.
+- Safety (SAF). Allows you increase the security level in your stadium.
+- Loan Money.
+- Pay Loan.
+
+If you have chosen the Week Summary, Fixtures or Tables view, these icons will be available:
+
+- Fixtures. Shows you the full list of matches that have been played last week. You can browse
+fixtures too, checking past and future weeks.
+- Tables. Shows you the current table of classification. You can browse tables, checking other 
+leagues as well (though I don't know what use this feature has...)
+- Fixtures by League. You can browse the fixtures of other leagues as well, though (once again)
+it is hard to understand why one would wish to do so...
+- Show my league results. Shows your results against league opponents.
+
+Most views also add "next" and "previous" arrows so that you can navigate around.
+
+
+	Keyboard Shortcuts
+	==================
+
+
+These are always shown as tooltips, too.
+
+Generally, when an 'OK' button can be clicked, 'Return' will do just
+that; when a 'Cancel' or 'Close' button can be clicked or a popup window
+can be closed, 'Escape' will do it.
+
+
+		File Operations
+		===============
+
+
+ | L or Ctrl-O | Load game |
+ | S or Ctrl-S | Save game |
+ | Ctrl-N | New game |
+ | Q or Ctrl-Q | Quit |
+ | H | Show this help screen |
+
+
+		Game Operations
+		===============
+
+
+ | Space | Begin new week |
+ | O | Options (Preferences) |
+ | Escape | Back to main |
+ | T | Show transferlist |
+ | F | Show finances and stadium info |
+ | P or F1 | Show preview |
+ | F4 | Show fixtures |
+ | F5 | Show tables |
+ | 1 and 2 | Previous / Next page (e.g. when looking at fixtures) |
+
+
+These last two will be replaced by "Q" and "W" in versions > 1.4.2 and
+> 1.5.1. 
+
+
+		Management Operations
+		=====================
+
+
+ | C | Change team structure |
+ | R | Rearrange team |
+ | Y or Ctrl-Z | Undo last swap-action |
+
+
+
+	Saving and Loading Files
+	========================
+
+
+Bygfoot uses the following types of files to store information it will use:
+
+1. "Country File" -- where team and league names are stored. This is a UTF-8 plain text file.
+2. "Player Names" -- where the names that will be randomly attributed to "nobodies" are stored.
+3. "Teams" -- where team definitions are stored.
+4. "Savegames" -- encoded files in which information about a game is stored.
+
+A Country File must be written using a UTF-8 enabled text editor like yudit (www.yudit.org) and
+must follow some rules so that it won't crash Bygfoot. We'll learn more about them later.
+
+You can edit the Player Names file and add or remove any names you wish to appear in the game.
+But please keep it big so that players with repeated names don't appear quite often. This file
+is always loaded by Bygfoot during startup.
+
+The Teams file stores the team definitions you have written or imported. It is also automatically
+loaded during startup (unless you forbid Bygfoot from doing so), but it contains definitions
+of only a couple of teams yet.
+
+Savegames are stored under $HOME/.bygfoot/saves and can be loaded in three ways:
+
+- As a short command-line switch: bygfoot savegame where "savegame" is the name of a file located
+in $HOME/.bygfoot/saves.
+- As a long command-line switch: bygfoot [full path]/savegame where "full path" is the full address
+of the file "savegame" in your system. This option is mandatory if your savegames are saved in another
+directory but $HOME/.bygfoot/saves (why would you do that?).
+- From the game interface selecting "Load Game".
+
+
+	The Game Behaviour (Basic)
+	==========================
+
+
+In startup Bygfoot will read team definitions and generate all teams that are not defined. After the
+process is complete (may take some time in slow systems) you will see the game interface.
+If you want to continue a previously saved game, you can let Bygfoot skip the team generation
+by calling it with the savegame file as an argument: "bygfoot my_save_game". See also
+command line options (intermediate.html#toc1).
+
+To play, you must make some choices:
+
+- Select the players you want to be playing by clicking on their names with the left mouse button. If you
+click on a player name and then on another, they'll swap positions.
+- Select the desired team structure and playing strategy.
+- Click on the "Begin a new week" button. Bygfoot will hang for a short while an then the "Live Game"
+window will pop up. 
+- After the game "ends", click the "Close" button to go back to the main window.
+
+TIP 1 - Don't let your players get too tired or they can be injured more easily. If a player goes
+below 90% of his fitness, let him rest for a week by putting another one in his place.
+
+TIP 2 - Pay attention to the size and the security of your stadium. The stadium is your
+main source of money.
+
+-------------------------------------
+
+  Intermediate Guide
+  ==================
+
+
+
+	Command Line Options
+	====================
+
+
+- You can specify a directory with the pixmaps and the text-files
+needed by adding -d your_pixmap_dir at the command line.
+
+bygfoot -d ~/.pixmaps  
+
+- You can specify a custom country-file by adding -f your_country_file 
+at the command line.
+
+bygfoot -f ~/country_uzb
+
+- You can load a saved game directly by giving Bygfoot its name
+on the command line. If it's located in the "$HOME/.bygfoot/saves" dir,
+you can omit the path to the file.
+
+bygfoot michal-1
+
+
+	Managing players
+	================
+
+
+- Right clicking on a player will write extended information about him
+into the right window, except when you're in transfer mode.
+
+- Young players get gradually better (skill-wise); older players get
+worse; the age at which a player reaches his peak ability differs
+with each player. Goalies decay more slowly.
+
+- A player's peak ability is his talent value, which is only
+indirectly accessible for you through your scout. You only have your
+scout's estimation about a player's talent.
+
+- Getting better or worse means also an update of the player's value
+and sometimes his estimated talent. If a player improves, his wage
+increases. If he gets worse, his wage stays the same (nasty, isn't it?).
+
+- If a young player never plays, his improvement is slower; if he's
+injured, his development is retarded (so a player who seldom plays
+and always gets injured when he does may never reach his talent
+value). Conversely, if an older player gets injured, his "decay"
+speeds up a bit.
+
+- Skill is rather more important than fitness (if you have a 8.0 / 90%
+and a 7.5 / 95% player, i'd let the first one play -- at least in
+important games), BUT: the worse the fitness value of a player, the
+more likely the occurance of an injury.
+
+- The accuracy of the estimated talent depends on your scout's ability.
+
+- Goalies only count in the "Best players" statistic if they have
+participated in at least half of the league games.
+
+- Goalies lose their ability more slowly as they pass their peak age
+(which is also later).
+
+
+	Managing the stadium
+	====================
+
+
+- The safer your stadium is, the more people will come to watch your
+matches.
+
+- The attendance depends not only on the safety but also on the type
+of game: in a Nationwide Conference game there won't be more than a
+couple of thousand spectators no matter how safe your stadium is;
+whereas a UEFA Cup final will guarantee a full stadium.
+
+- In stadiums with bad safety, fires can break out or riots can happen.
+
+- Your home games are (except for transfers and prize money) your only
+source of money, so keep an eye on your stadium (safety decreases
+with time).
+
+
+	Buying and selling players
+	==========================
+
+
+- When in transfer mode (the Transfer List displayed in the right
+  window), you can put players from your team on the list by
+  right-clicking on them in the left window and remove them by
+  right- or left- or middle- or whatever-clicking on them in
+  the right window.
+
+- You can temporarily sort the transfer list by clicking on one of the column
+  headers, e.g. Skill. If you go back to main menu, the sorting is
+  undone. You can sort the list permanently by switching it on in the
+  options menu.
+
+- You can have Bygfoot warn you with a popup window whenever an
+  interesting player appears on the transfer list by specifying some
+  conditions in the options menu.
+
+- When in transfer mode, there's a small, inconspicuous button (the Browse teams button)
+  with a search symbol on it in the lower right corner of the main window. Clicking on it will
+  show a list of all teams in the game except your own team. If you click on a team name, the player list
+  of the team is displayed (the attributes shown depend on the quality of your scout). Now you can try
+  to buy a player by clicking on the row he's in. In most cases the team owner will refuse to sell the
+  player because there's no adequate replacement. But if you're lucky, they have a replacement and you receive
+  an offer. But don't be surprised: you'll have to pay a lot more for the player than for players on the
+  transfer list; and the player will demand a very high wage.
+
+- The scout is the most important factor when buying or selling
+  players. A better scout will:
+
+ - have more information about players in other teams (such as status
+ or age)
+
+ - be more precise when estimating the player's talent, value and
+ wage
+
+ - find a buyer for your player faster
+
+ - get more money for the player you sell
+
+
+	Managing your team's finances
+	=============================
+
+
+Money usually comes in by three ways:
+
+1. Ticket sales. They only bring you money when you play at 
+home (this means: take good care of your stadium and extend it as you can). 
+2. Player sales. This one is seldom used (you won't want to disband your 
+team, do you?). 
+3. Prizes. If you finish a season as first, second or third, you get some 
+prize money (you also get some money for being the winner of the promotion 
+games or 4th in league 1).
+
+If you desperately need money (e.g. to buy an outstanding player
+from the transferlist), you can get a loan from the bank. The amount
+of money you can be granted at most depends on the value of your
+players and your stadium. You'll have to pay back your loan within
+15 weeks, but if you pay it back partly before that, the time limit
+might be extended. There's a variable interest rate per week which
+depends on the amount you owe (7,5% at most). If you fail to pay 
+back your loan in time, you'll get fired.
+
+There's also a "drawing credit" feature, which allows you to draw more
+money from you bank account than your current position. Your drawing credit
+depends -- just like the maximum loan -- on your stadium and your players.
+
+
+	Starting Bygfoot more comfortably
+	=================================
+
+
+This tip is intended for those who are using the 'bin' package of
+Bygfoot:
+
+1. copy the directory 'support_files' to your home directory and rename
+  it to .bygfoot.
+2. copy the executable to a dir in your PATH (e.g. the directory you store
+  the bash scripts you've written).
+
+Now you should be able to start Bygfoot from any directory.
+
+
+	Parts of a "Season"
+	===================
+
+
+NOTE -- Cup and League names in this section refer to the English
+country file (which is also the template country file... ;-)
+
+- You can browse the fixtures by clicking on "Figures -> Fixtures". Of
+  course you won't see all fixtures, but only of those leagues you
+  participate in and only of those rounds (in the cups) which have
+  been played or for which lots have already been drawn.
+
+- Each season there are:
+
+  1. League games (5 national leagues),
+  2. FA Cup games (featuring all English teams, though some teams from
+    the first two leagues have a wildcard for the first round),
+  3. League Cup games (Nationwide Conference teams aren't participating
+    here)
+  4. International Cups:
+    1. Champions' League games (you'll participate if you win the
+    Premiership),
+    2. Cup Winner's Cup games (you'll participate if you win the
+    FA Cup and don't win the Premiership) and
+    3. UEFA Cup games (you'll participate if you finish 2nd to 4th in
+    Premier Division and don't  win the FA Cup)
+  5. Additionally there's the 
+    1. Charity Shield between the Premiership champion (or runner-up if
+    there's a double winner) and the FA Cup winner and the
+    2. UEFA Supercup between the CL winner and the UEFA Cup winner.
+-------------------------------------
+=Advanced Guide=
+
+==Preferences==
+
+The "Preferences" window that pops-up when you select "File > Preferences" or
+click the "Preferences" tool bar button allows you to change quite a while
+the behaviour and appearance of the game. From the top to the bottom, these
+are the available options:
+
+===Confirmations===
+
+Whether Bygfoot should ask you every time you tell it to start a new week,
+start a new week with injured or banned players in your team or quit without
+having saved.
+
+===Look & Feel===
+
+What windows should Bygfoot show you at startup, the duration factor of the
+"Live Game", the font to be used in the main windows, the behaviour of the
+message bar, etc.
+
+===Player Attributes===
+
+Which information to show about your players. You can uncheck any of those that
+are shown by default or check others that are not. Extra information tabs 
+not displayed by default are "yellow cards", "wage" and "value".
+
+===Miscellaneous===
+
+Options concering the general behaviour of the game. Among others, you can specify
+here whether Bygfoot should warn you when an interesting player appears on
+the transfer list.
+
+=== Saving your settings ===
+
+This feature applies to versions >= 1.5.0.
+
+If you click on OK, your settings will be saved for your current
+game. If you'd like to save them for future games, too, you can check
+the Save to file box on the left of the OK button. Clicking on OK
+will save your settings to $HOME/.bygfoot/text_files/bygfoot.conf, and
+each time you start Bygfoot, they get loaded automatically.
+
+
+	Keeping your job
+	================
+
+
+There is one reason for other teams to try and hire you: your team's
+success. So if you're first in a league for 20 consecutive weeks
+don't be surprised if they try to contract you. If it gets on your
+nerves, you can switch it off in the options window or via the quick
+options menu.
+
+If you get promoted, you'll count as quite successful. If you get relegated 
+(or your team's last for 20 consecutive weeks or so), you'll count as 
+rather unsuccessful and your team owners might consider firing you.
+
+There are two additional reasons why you could get fired. First, if
+you fail to pay back a loan. Second, if you're financial management
+is bad and you're bank account gets below your drawing credit three
+times in a season. Each time you'll get some weeks to get positive,
+but each time the limit will be shorter.
+
+If you finish in a league among the last 4 teams, you get relegated
+(except, of course, the last division).
+
+If you finish in a league among the first three, you get promoted
+(except, of course, the first Division).
+
+If you finish in a league (except the Premier Division) from 4th to
+7th, you will play promotion games: one round of home/away games, and
+if you win, another round against the other winner. If you win this
+one, you're promoted.
+
+
+	Playing a Season
+	================
+
+
+Parts of a season's fixtures are generated while playing (e.g. FA
+Cup from round 2 upwards) because they depend on previous results.
+
+At the end of each season a history page will be written. It
+contains your result at the end of the season (rank, team and
+league), all champions and cup winners and the best players of each
+league.
+
+
+	Player fitness and injuries
+	===========================
+
+
+One of the most frequently asked questions about Bygfoot is, How does
+the fitness value influence the probability of a player getting injured? 
+(see FAQ (manager-faq.html)) The answer is short and simple: the probability
+is inversely proportional to the fitness value. If your player has only
+fitness 50%, the probability is twice as high as the probability with
+fitness 99%. This sounds very dangerous, but in fact the normal probability
+(i.e. with maximum fitness) is only 1,5% for a field player and 0,75% for
+a goalie. So a 50%-player is still unlikely (3% probability) to get injured.
+-------------------------------------
+
+  Customization Guide
+  ===================
+
+
+
+	Introduction
+	============
+
+
+All Bygfoot text files are UTF-8-encoded. If you edit one, take
+care that your editor doesn"t mess up the encoding. As a workaround,
+you can change the coding of the file first with recode (e.g. 
+recode UTF-8..ISO-8859-1 country_eng), edit, and recode again.
+
+A text editor that doesn"t mix up the UTF-encoding is 
+yudit (http://www.yudit.org). Unfortunately is not meant to be a
+programmer"s tool. You can also try GEdit (which comes bundled with
+any Gnome2 installation) or KATE (from KDE).
+
+The reason why I work with UTF-8 files only is that this way almost
+any special character can be loaded and displayed correctly. If you 
+are not used to international characters, you can expect to see 
+uncanny symbols.
+
+This chapter teaches you how to customize the game.
+
+
+	Editing Teams
+	=============
+
+
+You can start the Team Editor from the team selection window at startup
+or by calling Bygfoot with one of the "-e" or "--editor" command-line switches.
+
+At startup, the game looks only for teams with names that are in the
+list of the league teams (i.e. among the first 114 in the country
+file, in other words those you can choose from at the beginning) in
+the definitions file. Because of this it doesn"t make sense to specify
+a team with a name that's not in one of the country files.
+
+If you'd like to edit the definitions file directly, see the comments
+in the file. And take care that you don"t mix up the encoding.
+
+You have to specify three things to be able to edit a team:
+
+- the team definitions file already edited from which teams are read from 
+and newly edited ones get written to,
+- the country file the team is in,
+- the team name.
+
+The default team definitions file is $HOME.bygfoot/text_files/teams. 
+If you don't want to touch it, you can specify another one or create a new one;
+you have to keep in mind, though, that Bygfoot only reads team definitions 
+from $HOME/.bygfoot/text_files/teams or support_files/text_files/teams
+directory (located in /usr/share/bygfoot or so).
+
+Writing all teams to a definitions file with a different name can be useful if 
+you'd like to exchange definitions files with someone else (see Export/Import 
+section).
+
+You can't edit a team that's not in a country file because all team names in 
+the game get read from country files. But of course you can change a team 
+name to anything you like with the editor.
+
+Attention: Before choosing a another team after editing a team, you have 
+to save the changes you've made with the Save button. Otherwise they are 
+lost.
+
+
+			The structures
+			==============
+
+
+The first structure value specifies the number of defenders, midfielders and forwards among the first 11 players.
+The first and 12th players are always goalies. Accordingly, the second value specifies the positions of the
+players 13 to 20.
+
+To change the position of a player, you either have to swap him with another player using the Swap button,
+or you change the team structure. Example: you want player 18 to be a forward, additionally to players 19 and 20.
+Solution: you set the second structure to 233 or 323. 
+
+
+			The average skill
+			=================
+
+
+The average skill spinbutton shows you the average skill of all players (except the '# NOBODY's). If you'd like to
+increase or decrease the skills of all players simultaneously, you can use this button.
+
+
+			Editing a player...
+			===================
+
+
+...is quite straightforward. You select a player by clicking on his row; now you can edit his name, skill, talent
+and birth date.
+
+You can also move him up or down in the list and swap him with another player.
+
+Note that you have to click on the Update player information button for the changes to take effect.
+
+
+		Save / Export / Import
+		======================
+
+
+When you're done with editing, you have a couple of possibilities:
+
+- discard the changes you've made and play the game,
+- save the changes and play,
+- save the changes and quit,
+- export the edited team.
+
+Additionally, if you'd like to add all teams in an existing definitions file 
+to you definitions file, you can use the Import feature.
+Importing a file basically means that all team definitions found in the 
+specified file are appended to your definitions file.
+
+If you'd like to export the currently edited team to a file, click on the 
+Export button and select a filename.
+
+
+		Exchanging team definitions with others
+		=======================================
+
+
+This is really simple. If you've edited a team you're proud of, and you'd 
+like to share it with other Bygfoot users, export the team to a new file, 
+say ManchesterUnited.John. All your friend Paul has to do now is start the 
+Editor, click on Import, select the file he received from you, and 
+John's Manchester United is added to Paul's definitions file.
+
+An even simpler possibility (for the technically-minded) to import a file 
+would be to cat it to the  definitions file:
+
+cat ManchesterUnited.John >> /home/paul/.bygfoot/text_files/teams
+
+NOTE: If there's a team with the same name (in this case, Manchester 
+United) in Paul's definitions file, importing John's file kind of overrides 
+Paul's definition of ManU, because the last definition in the file counts.
+
+
+	Writing country files
+	=====================
+
+
+Country files contain team names, league names and cup names. Each
+time you select another flag when you"re asked to choose a team at the
+beginning of the game, a new country file is loaded. 
+
+The simplest way to make a new country file would be to copy one of
+the existing ones and edit it.
+
+The default country files contain a lot of comments, so you don"t
+really have to read the description below.
+
+The structure of a country file is as follows (see also the comments
+in "country_eng"):
+
+- comment lines (beginning with "#") and blank lines are ignored
+- the first part consists of 114 newline-separated team names;
+these will take part in the 5 leagues in Bygfoot.
+- the second part consists of 16 blocks of team names, each preceded by a number
+(1 to 16) on a single line. From these blocks the teams
+participating in the international cups (Champions' League etc.)
+are loaded
+- the third part contains the league and cup names (e.g. "Premier
+Division" for England, "Primera División" for Spain)
+- the second and third parts MUST be separated by a "1000" on a
+single line
+
+If you write a country file, please be gentle enough to translate the comments
+in the file to that country's language -- if you can. If you come across a country
+file which is not yet translated to the country's language, please do the translation
+and send the file back to us.
+
+When writing country files, be careful to use a sensible naming convention.
+We, the Bygfoot development team, would like you all to use this scheme:
+
+country_XXX_year_contributor_version.gz
+
+Which means:
+
+- country: the word "country".
+- XXX: the three-letter ISO code for a given country ("arg", "usa", "jpn").
+- year: the year that country file corresponds to.
+- contributor: a nickname by which we should call you.
+- version: if you are updating a previous contribution, use letters to indicate 
+this.
+
+An example:
+
+country_ita_2004_vicenzototti_a.gz
+
+
+	Importing and exporting teams
+	=============================
+
+
+From inside the Team Editor you can import or export team definitions into standalone
+text files. This feature is intended to allow users to exchange team definitions,
+which is a quicker way to extend the game than expecting someone to write all team
+definitions.
+
+However, the Team Editor was not intended to be THE tool to manage the teams file.
+You can also use UTF-8 enabled text editors to do so.
+
+Importing and exporting can also be done by the cat command (see man cat to learn
+how) or by the command less a_team >> teams.
+
+There will be a collection of standalone teams here (../extras.html) that you will
+be able to play with.
+
+
+	Managing team definitions
+	=========================
+
+
+As all team definitions are stored to a single text file, it can happen that this
+file will someday become too big. The Team Editor does not currently include any
+facility to manage this so,  if it happens, you will have to open the "team definitions
+file" in a text editor and remove those teams you don't want any more.
+
+It can happen also that a same team will be defined there two or more times. In this
+case Bygfoot will always used the one that appears last in the teams file so,
+if you accidentally import a team that you don't like, open the teams file and delete
+it.
+
+It is always a good idea to keep backup copies of the teams you like most somewhere
+safe. Whenever something goes wrong -- or if you need to delete your ~/.bygfoot dir --
+you will be able to recover them.
+
+When exporting teams to standalone files, be careful to use a sensible naming convention.
+We, the Bygfoot development team, would like you all to use this scheme:
+
+XXX_teamname_year_contributor_version.btd.gz
+
+Which means:
+
+- XXX the country the team plays in, in iso three-letter format (eng, bra, esp, ita, etc.).
+- teamname: a name by which your team will be easily recognised, say "realmadrid".
+- year: the year you wrote the file definition, so that people know whether your definition
+is still valid.
+- contributor: a nickname by which you want us to refer to you (we may want to group
+definitions by contributors).
+- version: if you update the file within the same year. Initial version is optional. Further
+versions should be indicated by "a", "b", "c", etc.
+- btd: is the file extension you should use so that you know what is the content of
+your team definition -- this is useful because they are, after all, only plain text
+files.
+- gz: is because you might want to compress the files to save space or bandwidth (you
+are supposed to send us team definitions tarred, if more than one, or at least gzipped,
+if alone).
+
+An example:
+
+bra_atleticomineiro_2004_jggouvea_b.btd.gz
+-------------------------------------
+
+  Frequently Asked Questions
+  ==========================
+
+
+
+  Football Manager FAQ
+  ====================
+
+
+1. Do new players ever appear in the game?
+
+Yes. Each week a handful of players 
+in CPU teams are replaced by new ones.
+
+2. Do the players with numbers 12-20 influence the outcome of a game?
+
+No. Only 
+the field players.
+
+3. What happens if a player gets sent off in the first (cup) game of a week?
+
+In
+ the first game, players never get sent off or injured. I might change this 
+ some day, if I implement substitutions after game 1.
+
+4. Do players get yellow cards in cup games?
+
+No. Otherwise it could happen
+that they get their 5th yellow card, which would automatically lead to a red 
+card.
+
+5. Do players have a real talent value, or only this 'estimated talent' thing?
+
+They
+have a real talent value which never changes. Their development when they're 
+young depends on their talent value, as well as their peak skill. But of 
+course you only see your scout's estimate of this value.
+
+6. How precisely do scouts estimate the talent value of a player?
+
+The best scout's estimate has an error up to 1.0 points, i.e. he might 
+think a player with 7.0 talent has talent 8 (or 6). But this is the maximum 
+error, he'll estimate better normally. The other scouts' errors are 2, 3 
+and 4 points.
+
+7. What is the second value after team skill average?
+
+The first value is the average current skill of the first 11 players 
+(i.e. those who'll count when you play a match). The second value is 
+the average cskill value of all your players.
+
+8. How does playing style and team structure influence the playing 
+strength of my team?
+
+Each team has an attacking and defending value. If you have 
+structure 532, i.e. five defenders but only two forwards, your defending value 
+is rather high, because the defenders cskill is weighted much more 
+for defense than the cskill of your forwards. Accordingly your attacking 
+value is rather low because the cskill of your defenders has only a small 
+weight for your offense. Midfielders' cskills are weighted equally for 
+defense and offense. Now if you have playing style 'Attack', the defending 
+value is diminished, and the attacking value is increased (symmetrically,
+e.g. -5% and +5%). If you have 'All Out Attack', the defending value
+is diminished even more and the attacking value is increased even
+more.
+
+9. How do players improve? When does their skill reach their top talent value?
+
+Young players improve best if they play often and stay healthy. 
+If they play approximately every 3 weeks and stay healthy, they improve
+about every 14-15 weeks. Old players' skill gets worse no matter if
+they play or not; it gets worse even faster if they're injured.
+It might happen that a player never reaches his talent value if he's
+injured often. But on average field players reach their highest skill
+approx. at the age of 31-32. Goalies 1 or 2 years later.
+
+10. Does switching live game on or off influence the performance of my team?
+
+In short: no. The 'live game' isn't really live, the result's already 
+computed before the game is shown.
+
+11. How can a team score twice within a fraction of a second in a live game?
+
+The live game shows 90+ minutes within 20 or 30 seconds, so 1 match
+minute means only 0.3 seconds in reality. If a team scores twice
+within a match minute, this leads to two goals in the live game within
+less than a second; and the tendency bar simply doesn't have time to
+move to center position.
+
+12. Is there any advantage of having a scout after the transfer deadline?
+
+No. 
+If you're short on money, fire him. 
+
+13. Why are there sometimes two matches a week?
+
+There are simply too many 
+matches to have each week only one. But perhaps I'll implement substituting 
+players after the first one, at least.
+
+14. How does fitness influence the performance of players in matches?
+
+Not very much. An 8.0 player with fitness 80% still performs a
+little bit better than a 7.5 player with fitness 99%. 
+
+15. How does fitness influence the probability to get injured?
+
+The injury 
+probability is inversely proportional to the fitness value. 
+A player with fitness 50% has twice the probability of getting injured 
+compared to a 99% player. However, if you take just one player, the
+probability's still small, about 3% (with fitness 50%). But if all of
+your players have low fitness, one of them will probably get injured.
+
+----------------------------------------------
+
+ | Back to FAQ (faq.html) |
+
+
+  Team Editor FAQ
+  ===============
+
+
+1. I'd like to edit a team from a Spanish league but I only see English
+teams to choose from.
+
+You have to select a different country file, in this case 'country_es'.
+
+2. Why is the background of three substitute players grey?
+
+The human player always starts with 17 players; mainly, because this 
+way he has room for transfered players from the beginning. So each time 
+you start a new game and your team is loaded from the definitions file, 
+players with numbers 13, 16 and 19 are omitted. Practically this means: 
+don't put important players on the positions with grey background.
+
+3. I have edited a team and would like to play with it. But each time I
+start the game and choose the edited team, some players don't appear in
+the player list.
+
+See previous question.
+
+4. Why should I edit those grey-backgrounded players if they don't get
+loaded anyway?
+
+CPU-teams have 20 players, so if you choose a different
+team from the one you edited, the CPU-team that goes with the edited
+team will contain all 20 players, even the grey-backgrounded ones.
+
+5. No matter which team I choose, they always contain 20 "nobodies".
+
+I have specified only a few teams in the default definitions file until
+now Real Madrid (Spain), Bayern München, Werder Bremen, Borussia Dortmund
+(Germany) and Arsenal (England). So all other teams are blank (as yet). I
+hope that a lot of people add their favourite teams to the definitions
+file and send it to me, so that I can extend the default file somewhat
+in subsequent versions.
+
+6. I'd like player number X to be a goalie, but he's always a defender.
+
+The position of a player is determined by the two structure values above
+the right upper corner of the player list. If the first is 442, it means
+that players with numbers 2 to 5 are defenders, 6 to 9 midfielders and
+10 and 11 forwards. Players 1 and 12 are always goalies. The positions
+of the rest of the substitutes, players 13 to 20 are determined by the
+second structure value, e.g. 332. If you'd like to change the position
+of a player, you either have to change the structure accordingly or swap
+the player with another one.
+
+7. Can I enter special characters like Ü or Ô and the like?
+
+Definitely. They should even get displayed correctly in the game. 
+Special characters are the reason why I switched to UTF-8 encoding.
+
+8. Can I delete a player completely?
+
+You can't in the sense that you don't see him in the list afterwards, but 
+if you specify a name with a "#" as first character, the player won't be 
+loaded at startup.
+
+9. I've got a player who'll turn 30 in two months. In the list, however,
+he's 30 already!
+
+The ages are stored as floating-point numbers, and in the list they're 
+rounded to integer numbers. So a player between 29 years and 6 months and 
+30 years and 5 month is shown as a 30-year-old.
+
+10. What does this "Average skill" part of the window mean?
+It shows the average skill of the team you currently edit. Its purpose is 
+mainly to help you create a team that's not very out-of-place compared to 
+the other teams in the game. In your first season, teams in League 1 have
+average skills of around 8.0; very good teams perhaps 8.7 or 8.8, bad
+teams 7.0 or 7.2.  UEFA-Cup teams are on average as good as League 1
+teams, CWC and CL teams about 0.2 and 0.4 better, respectively.
+
+11. I appreciate the whole definitions stuff, but in my opinion it makes the
+game more predictable and unbalanced. Can't I turn it off?
+
+Of course. Simply check the "Don't load team definitions" checkbutton in 
+the team selection window and loading definitions is switched off completely.
+If you'd still like to have the names of the players, but random skill
+values etc., check the 'Load only names' checkbutton. If you'd like
+to load your team only, check the "Load my team" and "Don't load team
+definitions" buttons.
+
+12. I've edited a team. Where can I find the definitions file the editor
+stored it in?
+
+The first time you start the Bygfoot Team Editor, it
+tries to create a directory called .bygfoot in your home directory and
+the subdirectories text_files and saves. It then tries to copy the
+customizable text files to the former subdirectory (the saves subdir
+is meant for your savegames). Your edited teams should be in the file
+~/.bygfoot/text_files/teams.
+
+13. I have edited a team which isn't in one of the five leagues, but takes
+part in a European cup. The names get loaded correctly, but when I look
+at the team in transfer browse mode, the skill and talent and age values
+are all wrong!
+
+For international cup teams only the names get loaded.
+This is because they have to have a certain average skill level (otherwise
+it'd be too easy or too hard to win a cup), and I don't want to have
+this level all messed up.
+
+14. I have written definitions of 2.450.320 teams from different
+countries. Would you like to have them?
+ YES! Send them to Gyözö Both
+<gyboth_at_bygfoot_dot_com> so that I can include them in the default
+definitions file of the next Bygfoot version. But try to be truthful,
+don't put only 9.9 players into your favourite team.
+
+
+
+
+
