@@ -1,0 +1,86 @@
+#!/bin/bash
+
+. scripts.cfg
+
+version=$1
+dir=${bygfoot_base_release}-${version}
+echo "BFMAKESRC: creating source version $version"
+
+echo "BFMAKESRC: creating directory $dir"
+mkdir $dir
+
+echo "BFMAKESRC: updating Makefile"
+bfmakefile
+
+echo "BFMAKESRC: copying support files"
+cp -R $bygfoot_source/support_files $dir
+rm -f $(find $dir/support_files/ -name '*~')
+
+echo "BFMAKESRC: copying todo etc."
+for i in \
+    TODO \
+    ChangeLog \
+    AUTHORS \
+    COPYING \
+    UPDATE \
+    README \
+    INSTALL
+  do
+  cp $bygfoot_source/$i $dir/$i
+done
+
+mkdir $dir/src
+mkdir $dir/po
+
+echo "BFMAKESRC: copying source files and makefiles"
+cp $bygfoot_source/src/*[ch] $dir/src
+cp $bygfoot_source/src/Makefile.in $dir/src
+
+echo "BFMAKESRC: copying gettext files"
+cp $bygfoot_source/po/Makefile.in.in $dir/po
+cp $bygfoot_source/po/POTFILES.in $dir/po
+cp $bygfoot_source/po/*po $dir/po
+
+echo "BFMAKESRC: copying config files and revision number"
+for i in \
+    config.h.in \
+    configure \
+    configure.in \
+    Makefile.in \
+    revision_number
+  do
+  cp $bygfoot_source/$i $dir/$i
+done
+
+echo "BFMAKESRC: copying update script"
+cp -L $bygfoot_source/bygfoot-update $dir
+
+echo "BFMAKESRC: inserting version number $version"
+cd $dir
+for i in INSTALL README bygfoot-update; do
+    sed s/UNKNOWN_VERSION/$version/g $i > $i.tmp && mv $i.tmp $i
+done
+chmod 744 bygfoot-update
+cd ..
+
+echo "BFMAKESRC: copying install files"
+for i in \
+    depcomp \
+    install-sh \
+    missing \
+    mkinstalldirs
+  do
+  cp -L $bygfoot_source/$i $dir/$i
+done
+
+if [ -e $bygfoot_source/ReleaseNotes ]; then
+    cp $bygfoot_source/ReleaseNotes $dir
+    tar cfj $dir.tar.bz2 $dir
+else
+    echo
+    echo "BFMAKESRC: didn't find ReleaseNotes..."
+    echo "BFMAKESRC: didn't create tar.bz2..."    
+fi
+
+echo
+echo "BFMAKESRC: done."

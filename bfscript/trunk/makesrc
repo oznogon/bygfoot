@@ -1,0 +1,42 @@
+#!/bin/bash
+. scripts.cfg
+mkdir $1
+mkdir $1/src
+mkdir $1/po
+
+cp $bygfoot_source/src/*[ch] $1/src
+cp $bygfoot_home/src/Makefile.in $1/src
+
+cp $bygfoot_source/po/Makefile.in.in $1/po
+cp $bygfoot_source/po/POTFILES.in $1/po
+
+cp -R $bygfoot_source/support_files $1
+rm -f $1/support_files/*~
+rm -f $1/support_files/text_files/*~
+
+for i in TODO ChangeLog config.h.in configure configure.in Makefile.in;
+  do
+  cp $bygfoot_source/$i $1/$i
+done
+
+for i in
+depcomp
+install-sh
+missing
+mkinstalldirs
+  do
+  cp -L $bygfoot_source/$i $1/$i
+done
+
+echo "To do..."
+for i in
+AUTHORS
+COPYING
+INSTALL
+README
+ReleaseNotes
+  do
+  echo $i
+  done
+
+echo

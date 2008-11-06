@@ -1,0 +1,152 @@
+Hi Ronald,
+
+I'm attaching the scripts. I think a lot of them rely more or less on
+my directory structure, so you'll need to do some adapting if you want
+to use them.
+
+I'll give some explanations related to their purpose below.
+
+Cheers, Gyözö
+
+bfassignfifatalents
+
+Assign strengths to the teams in the World Cup definition based on the
+FIFA ranking.
+
+bfcheckconsts
+
+Check for unused constants (constants are parameters read from the
+files bygfoot_constants and bygfoot_app)
+
+bfcheckfuncs
+
+Check for unused functions
+
+bfcheckgettext
+
+Check for strings that are not enclosed in gettext macros (and so don't
+end up in the po files and aren't translated
+
+bfcheckgettext.learnbuffer
+
+This is a buffer (not a script) containing strings that the previous
+script will skip (not all strings have to be translated, after all)
+
+bfcheckmakefile
+
+Checks whether the c and h file dependencies are correctly described in
+the makefile (has the option -w to write a new makefile based on the
+header files)
+
+bfcheckmofiles
+
+This one copies the gmo files from the po directory to the appropriate
+directories in "./locale", so that you can try out translations during
+development (without having to install).
+
+bfcheckpotfile
+
+Check whether all c files that contain gettext strings are listed in
+the potfiles file
+
+bfcountlines
+bfcountteams
+
+Count the lines of source code (around 50K) and teams in the game
+(2,7K).
+
+bfcppatches
+
+Not relevant.
+
+bfdiffcvs
+
+Not relevant.
+
+bfgetpot
+
+Refresh the po and pot files (relevant when new translatable strings
+have been added).
+
+bfmakebin
+
+Creates a binary package. You won't use this directly, I suppose, only
+"bfpack".
+
+bfmakefile
+
+This is the one I mentioned: this one scans the filesystem and updates
+the support files and support dirs in the Makefile.
+
+bfmakepatch
+
+I think this isn't relevant any more.
+
+bfmakerpms
+
+Creates rpm package. See bfmakebins.
+
+bfmakesrc
+
+Creates source package. See bfmakebins.
+
+bfmakeupgrade
+
+Not relevant.
+
+bfpack
+
+This one creates all packages except for the windows package, of
+course. You'll need an rpm installation. It'll also list a couple of
+things at the beginning which have to be taken care of before creating
+the packages, such as changelog etc.
+
+bfupload
+bfuploadcomm
+bfuploaddef
+bfuploadhowtos
+
+I think this upload stuff isn't that relevant anymore, but possibly I'm
+wrong. This is about copying documentation to the webspace.
+
+bygfoot-update
+
+This is a symlink to the update script (that's delivered in the unix
+releases), probably broken in the attached archive.
+
+bygfoot-updated
+bygfoot-updatez
+
+Don't know what these do.. I think they can be ignored.
+
+cvc
+
+Not relevant anymore; this was automated committing of changes to CVS.
+
+deb
+
+This is an alias for "make" in the sense that it starts the gdb
+debugger if something goes wrong.
+
+diffsvn
+
+This one compares the current local development to the version in the
+svn directory.
+
+grec
+
+An alias for grepping in the c files.
+
+greh
+
+An alias for grepping in the h files.
+
+makesrc
+
+An old version of bfmakesrc. Not relevant.
+
+sav
+
+A convenient script for saving the current local development in
+enumerated archives.
+

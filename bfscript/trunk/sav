@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if echo $PWD | grep 'current\-unstable' &> /dev/null; then
+    pref=u
+    savedir="$HOME/progs/bygfoot/saves"
+elif echo $PWD | grep 'current\-stable' &> /dev/null; then
+    pref=s
+    savedir="$HOME/progs/bygfoot/saves"
+elif echo $PWD | grep 'lace' &> /dev/null; then
+    pref=l
+    savedir="$HOME/progs/bygfoot/saves"
+else
+    pref=
+    savedir="../saves"
+fi
+
+if [ -e $savedir/$pref$1.tar.gz ]; then
+    echo "File exists."
+else
+    if [ ! -z $pref ]; then
+	rm -rf $HOME/tmp/bfsav
+	mkdir $HOME/tmp/bfsav
+	cp -R * $HOME/tmp/bfsav
+	pushd $HOME/tmp/bfsav
+	rm -f *bak src/bygfoot src/*[o~] core
+	rm -f `find . -name '*~'`
+	tar cfz $savedir/$pref$1.tar.gz *
+	popd
+	rm -rf $HOME/tmp/bfsav
+    else
+	tar cfz $savedir/$pref$1.tar.gz *
+    fi
+fi

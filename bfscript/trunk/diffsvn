@@ -1,0 +1,11 @@
+#!/bin/bash
+
+pushd /home/gy/progs/bygfoot/current-unstable &> /dev/null
+
+for i in src/*[ch]; do
+    if ! diff -u $i ../svn/bygfoot/bygfoot2-unstable/$i; then
+	echo $i
+    fi
+done
+
+popd &> /dev/null

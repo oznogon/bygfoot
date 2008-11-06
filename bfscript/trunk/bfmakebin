@@ -1,0 +1,57 @@
+#!/bin/bash
+. scripts.cfg
+version=$1
+dir=$bygfoot_base_release-$1-binary
+
+echo "BFMAKEBIN: creating binary version $version"
+
+echo "BFMAKEBIN: creating directory $dir"
+mkdir $dir
+
+echo "BFMAKEBIN: copying support files"
+cp -R $bygfoot_source/support_files $dir
+rm -f $(find $dir/support_files/ -name '*~')
+
+echo "BFMAKEBIN: copying locale"
+cp -R $bygfoot_source/locale $dir
+rm -f $(find $dir/locale/ -name '*~')
+
+echo "BFMAKEBIN: copying todo etc"
+for i in \
+    TODO \
+    ChangeLog \
+    AUTHORS \
+    COPYING \
+    UPDATE \
+    README \
+    INSTALL
+  do
+  cp $bygfoot_source/$i $dir/$i
+done
+
+echo "BFMAKEBIN: copying and stripping binary"
+cp $bygfoot_source/src/bygfoot $dir
+strip $dir/bygfoot
+
+echo "BFMAKEBIN: copying update files"
+cp -L $bygfoot_source/bygfoot-update $dir
+
+echo "BFMAKEBIN: inserting version number $version"
+cd $dir
+for i in INSTALL README bygfoot-update; do
+    sed s/UNKNOWN_VERSION/$version-binary/g $i > $i.tmp && mv $i.tmp $i
+done
+chmod 744 bygfoot-update
+cd ..
+
+if [ -e $bygfoot_source/ReleaseNotes ]; then
+    cp $bygfoot_source/ReleaseNotes $dir
+    tar cfj $dir.tar.bz2 $dir
+else
+    echo
+    echo "BFMAKEBIN: didn't find ReleaseNotes..."
+    echo "BFMAKEBIN: didn't create tar.bz2..."    
+fi
+
+echo
+echo "BFMAKEBIN: done."

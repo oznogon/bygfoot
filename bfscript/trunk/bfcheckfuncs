@@ -1,0 +1,69 @@
+#!/bin/bash
+
+function str_contains_str()
+{
+    str=$1
+    shift
+
+    for string in $*; do
+	if echo $str | grep $string >& /dev/null; then
+	    return 0
+	fi
+    done
+
+    return 1
+}
+
+. scripts.cfg
+pushd ${bygfoot_source}/src
+
+if [ $# -eq 0 ]; then
+    files=*h
+else
+    files=$*
+fi
+
+for headerfile in $files; do
+    echo "__________________________________"
+    echo "**bfcheckfuncs: Checking file $headerfile..."
+    echo "----------------------------------"
+
+    cp -f $headerfile tmp
+    sed s/'[ \t]*'//g tmp > tmp2
+    for j in $(grep \( tmp2); do
+
+	funcpref=$(echo $j | sed s/'_.*$'//g)
+	if ! echo $j | grep \# &> /dev/null; then
+	    if echo $headerfile | grep $funcpref; then
+		func=$(echo $j | sed s/'[ (].*$'//g)
+		echo "**bfcheckfuncs: Checking function $func..."
+		cnt=0
+		for k in *c; do
+		    cnt=$[cnt + $(grep -c "$func[ \t]*(" $k)]
+		done
+		echo "**bfcheckfuncs: $cnt occurrences."
+		
+		if !(str_contains_str $func compare start_element end_element _text); then
+		    if [ $cnt -lt 2 ]; then
+			echo "**bfcheckfuncs: only $cnt occurrence!"
+			read a
+		    fi
+		fi
+	    fi
+	elif echo $j | grep '\#define' &>/dev/null; then
+	    macro=$(echo $j | sed s/'#define'//g | sed s/'(.*$'//g)
+	    echo "**bfcheckfuncs: Checking macro $macro..."
+	    cnt=0
+	    for k in *c; do
+		cnt=$[cnt + $(grep -c $macro $k)]
+	    done
+	    echo "**bfcheckfuncs: $cnt occurrences."
+	    if [ $cnt -lt 1 ]; then
+		echo "**bfcheckfuncs: only $cnt occurrence!"
+		read a
+	    fi
+	fi
+    done
+    echo
+done
+popd

@@ -1,0 +1,92 @@
+#!/bin/bash
+
+. scripts.cfg
+pushd $bygfoot_source/src
+
+write=0
+
+cp -f Makefile.am Makefile.tmp
+
+if [ $# -gt 0 -a "$1" = "-w" ]; then
+    write=1
+elif [ $# -gt 0 -a "$1" = "-s" ]; then
+    write=-1
+fi
+
+numfiles=$(echo $(grep -o '[a-zA-Z_0-9]*\.c' Makefile.am) | wc -w)
+cnt=0
+
+for cfile in $(grep -o '[a-zA-Z_0-9]*\.c' Makefile.am); do
+
+    cnt=$[cnt + 1]
+
+    echo "____________________________________________"
+    echo "**bfcheckmakefile: Checking file $cfile"
+    echo "--------------------------------------------"
+    
+    pref=$(echo $cfile | sed "s/\.c//g")
+
+    if [ $write -ne 1 ]; then
+	echo "**bfcheckmakefile: makefile -> c file"
+	makeheaders=$(grep "	$pref\.c" Makefile.am | sed s/"	$pref\.c"//g | sed s/' \\'//g)
+	for header in $makeheaders; do
+	    
+	    if ! grep "\#include \"$header" $cfile &> /dev/null; then
+		echo "**bfcheckmakefile: header file $header not included in $cfile."
+		read a
+	    fi
+	    
+	done
+    fi
+
+    cfileheaders=$(grep "\#include" $cfile | sed s/"\#include "//g | sed s/[\"]*//g)
+    newheaders=
+    if [ $write -ne 1 ]; then
+	echo "**bfcheckmakefile: c file -> makefile"
+    fi
+
+    for header in $cfileheaders; do
+
+	if ! echo $header | grep \< &> /dev/null; then
+	    
+	    newheaders="$newheaders $header"
+
+	    if [ $write -eq 0 ] && ! echo $makeheaders | grep "$header" &> /dev/null; then
+		echo "**bfcheckmakefile: header file $header not included in the makefile."
+		read a
+	    fi
+	fi
+
+    done
+
+    newheadsorted="$cfile $(for unsorted in $newheaders; do echo $unsorted; done | sort)"
+    newheadsorted=$(echo $newheadsorted | tr "\n" " ")
+    if [ $cnt -lt $numfiles ]; then
+	newheadsorted="$newheadsorted+"
+    fi
+
+    if [ $write -ne 0 ]; then
+	sed s/"	$pref\.c[ a-zA-Z_0-9\.]*"/"	$newheadsorted"/g Makefile.tmp > Makefile.tmp2
+	mv Makefile.tmp2 Makefile.tmp
+    fi
+
+done
+
+cat Makefile.tmp | tr '+' '\\' > Makefile.tmp2
+mv Makefile.tmp2 Makefile.tmp
+
+if [ $write -eq 1 ]; then
+    mv Makefile.am Makefile.old
+    mv Makefile.tmp Makefile.am
+    echo "Makefile.am written."
+else
+    if [ $write -eq -1 ];then
+	echo "____________________________________________"
+	cat Makefile.tmp
+	echo "--------------------------------------------"
+    fi
+
+    rm Makefile.tmp*
+fi
+
+popd

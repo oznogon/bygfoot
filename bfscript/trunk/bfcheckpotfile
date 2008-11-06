@@ -1,0 +1,49 @@
+#!/bin/bash
+. scripts.cfg
+write=0
+transcfiles=
+
+if [ $# -gt 0 -a $1 = "-w" ]; then
+    write=1
+fi
+
+pushd $bygfoot_source/src
+
+for cfile in *c; do
+    
+    pref=$(echo $cfile | sed "s/\.c//g")
+
+    echo "____________________________________________"
+    echo "**bfcheckpotfile: Checking file $cfile"
+    echo "--------------------------------------------"
+    
+    echo "**bfcheckpotfile: $cfile -> potfile.in"
+    if grep '_(' $cfile >& /dev/null; then
+	
+	transcfiles="$transcfiles src/$cfile"
+	
+	if [ $write -eq 0 ] && ! grep "src/$pref\.c" ../po/POTFILES.in &> /dev/null; then
+	    echo "**bfcheckpotfile: $cfile contains translatable string but isn't in POTFILES.in"
+	    read a
+	fi
+    fi
+
+    if [ $write -eq 0 ]; then
+	echo "**bfcheckpotfile: potfile.in -> $cfile"
+	if grep "src/$pref\.c" ../po/POTFILES.in &> /dev/null && ! grep '_(' $cfile >& /dev/null; then
+	    echo "**bfcheckpotfile: $cfile is in POTFILES.in but contains not translatable strings"
+	    read a
+	fi
+    fi
+    
+done
+
+if [ $write -eq 1 ]; then
+    echo "# List of source files containing translatable strings." > ../po/POTFILES.in
+    for cfile in  $transcfiles; do
+	echo $cfile >> ../po/POTFILES.in
+    done
+    echo "**bfcheckpotfile: POTFILE.in written."
+fi
+
+popd

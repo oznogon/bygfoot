@@ -1,0 +1,10 @@
+#!/bin/bash
+
+pushd /home/gy/progs/bygfoot/current-unstable/src
+
+for i in *[ch]; do
+    echo "++++ $i ++++"
+    diff -u $i ../../cvs/bygfoot2-unstable/src/$i
+done
+
+popd

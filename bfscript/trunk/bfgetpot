@@ -1,0 +1,11 @@
+#!/bin/bash
+. scripts.cfg
+pushd $bygfoot_source
+xgettext -c -d bygfoot -k_ --force-po -f po/POTFILES.in
+mv bygfoot.po po/bygfoot.pot
+
+pushd po
+for i in *po; do
+    msgmerge -s -U $i bygfoot.pot
+    msgfmt -c $i
+done

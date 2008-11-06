@@ -1,0 +1,5 @@
+#!/bin/bash
+. scripts.cfg
+pushd $bygfoot_source
+rm -f `find support_files -name '*~'`
+sed "s+SUPPORT_DIRS = .*$+SUPPORT_DIRS = `find support_files -type d ! -name '\.*' | tr "\n" " "`"+g Makefile.am | sed "s+SUPPORT_FILES = .*$+SUPPORT_FILES = `find support_files ! -type d ! -name '\.*' ! -regex '.*\/\..*' | tr "\n" " "`"+g > Makefile.am.tmp && mv Makefile.am.tmp Makefile.am

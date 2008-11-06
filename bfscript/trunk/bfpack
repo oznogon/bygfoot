@@ -1,0 +1,39 @@
+#!/bin/bash
+. scripts.cfg
+pushd $bygfoot_source
+arg1=$1
+arg2=$2
+arg3=$3
+
+echo "BFPACK: revision number?"
+echo "BFPACK: version number?"
+echo "BFPACK: AUTHORS?"
+echo "BFPACK: ChangeLog?"
+echo "BFPACK: ChangeLog date?"
+echo "BFPACK: default conf files?"
+echo "BFPACK: binary size?"
+echo "BFPACK: Makefile.am -> Makefile?"
+echo "BFPACK: HOMEDIRNAME?"
+echo "BFPACK: mo files updated?"
+
+read a
+
+if ! [ -e ReleaseNotes ]; then
+    echo "BFPACK: ReleaseNotes not found..."
+    exit
+fi
+
+if [ $# -lt 1 ]; then
+    arg1=
+    while [ -z $arg1 ]; do
+	echo "BFPACK: Enter new version number:"
+	read arg1
+    done
+fi
+popd
+echo
+bfmakesrc $arg1
+echo
+bfmakebin $arg1
+echo
+bfmakerpms $arg1

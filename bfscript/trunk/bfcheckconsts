@@ -1,0 +1,25 @@
+#!/bin/bash
+. scripts.cfg
+pushd $bygfoot_source
+
+for constfile in support_files/bygfoot_constants support_files/bygfoot_app; do
+    consts=$(perl -0777 -pe "s/#[^\n]*\n//msg" $constfile | perl -0777 -pe "s/([a-zA-Z_]*)[^\n]*\n/\1\n/msg" |perl -0777 -pe "s/[\n]+/\n/msg")
+
+    for i in $consts; do
+	if ! grep $i src/*[ch] &> /dev/null; then
+	    echo "Constant $i ($constfile) not used."
+	fi
+    done
+done
+
+for i in const_float const_int const_string
+  do
+  for j in $(grep $i src/*c | perl -pe "s/.*$i\(\"([^\"]*)\".*/\1\n/msg")
+    do
+    if ! grep $j support_files/bygfoot_app &> /dev/null; then
+	  if ! grep $j support_files/bygfoot_constants &> /dev/null; then
+	      echo "Constant $j used but not defined."
+	  fi
+      fi
+  done
+done

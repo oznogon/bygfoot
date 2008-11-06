@@ -1,0 +1,693 @@
++"treeview_stats"+
++"button_pause"+
++"button_resume"+
++"treeview_right"+
++"label_contract"+
++"spinbutton_contract%d"+
++"notebook_player"+
++"treeview_user_management_users"+
++"treeview_user_management_teams"+
++"%[^0-9]%d"+
++"LEAGUE"+
++"CUP"+
++"highlight"+
++"deb"+
++"Debug value set to %d."+
++"cap"+
++"Stadium capacity changed by %d."+
++"saf"+
++"Stadium safety changed by %d."+
++"mon"+
++"Money changed by %d."+
++"suc"+
++"Success counter changed by %d."+
++"help"+
++"%s%s%s"+
++"r"+
++"w"+
++"/definitions"+
++"/saves"+
++"%s/%s"+
++"mkdir -v %s/%s"+
++"bygfoot.conf"+
++"bygfoot_user.conf"+
++"bygfoot_constants"+
++"bygfoot_app"+
++"%s/%s/%s"+
++"cp -v %s %s/%s/%s"+
++"mkdir -v %s"+
++"%s/%s/%s/%s"+
++".xml"+
++"cp -v %s/%s %s"+
++"definitions"+
++"country_"+
++"%d"+
++"bygfoot_%s.conf"+
++"support_files"+
++"file_get_first_support_dir: no primary support dir found."+
++"cd 1> /dev/null %s; %s %s"+
++" "+
++"cd %s; rm -rf %s/%s*"+
++"cd %s 1> /dev/null; %s %s"+
++"-- : --"+
++"%d - %d"+
++"%s (%d - %d)"+
++"prob %.3f "+
++"%s %d%s"+
++"%s"+
++"progressbar_live"+
++"hscale_area"+
++"button_live_close"+
++"eventbox_poss0"+
++"eventbox_poss1"+
++"%d."+
++"menu_all_out_defend"+
++"menu_defend"+
++"menu_balanced"+
++"menu_attack"+
++"menu_all_out_attack"+
++"menu_scout_best"+
++"menu_scout_good"+
++"menu_scout_average"+
++"menu_scout_bad"+
++"menu_physio_best"+
++"menu_physio_good"+
++"menu_physio_average"+
++"menu_physio_bad"+
++"menu_boost_anti"+
++"menu_boost_off"+
++"menu_boost_on"+
++"label_user"+
++"label_season"+
++"label_week"+
++"label_round"+
++"label_team"+
++"label_league"+
++"label_rank"+
++"label_money"+
++"menu_next_user"+
++"menu_previous_user"+
++"label_av_skills"+
++"%.1f %.1f"+
++"image_style"+
++"image_boost"+
++"entry_message"+
++"hbox1"+
++"menu_file"+
++"menu_options"+
++"menu_figures"+
++"menu_scout"+
++"menu_physio"+
++"menu_browse_teams"+
++"menu_put_on_transfer_list"+
++"menu_remove_from_transfer_list"+
++"menu_fire"+
++"menu_manage_users"+
++"menu_user_show_last_match"+
++"menu_user_show_last_stats"+
++"menu_user_show_coming_matches"+
++"menu_user_show_history"+
++"menu_finances_stadium"+
++"menu_help"+
++"menu_browse_players"+
++"menu_offer_new_contract"+
++"button_reset_players"+
++"menu_reset_players"+
++"label_warning"+
++"label_text"+
++"label_text2"+
++"label_name"+
++"label_cap"+
++"label_saf"+
++"label_average_skill"+
++"%.1f"+
++"treeview_players"+
++"menu_job_offers"+
++"menu_live_game"+
++"menu_overwrite"+
++"label_help_text1"+
++"label_help_text2"+
++"http://mec-symonds.eng.monash.edu.au/cgi-bin/twiki/view/Bygfoot/WebHome"+
++"%s%s"+
++"progressbar"+
++"button_cl_back"+
++"button_cl_forward"+
++"button_browse_back"+
++"button_browse_forward"+
++"FIXME!"+
++"%d : %d"+
++"live_game_unit_get_minute: reached end of units array."+
++"rm -rf %s"+
++"%s/%s/saves/autosave%02d.zip"+
++"/"+
++"/support_files"+
++"%s/support_files"+
++"UTF-8"+
++"By Box and Muller, and recommended by Knuth"+
++"radiobutton_contract%d"+
++"entry_user_management"+
++"spinbutton1"+
++"spinbutton2"+
++"entry_debug"+
++"%[^-1-9]%d"+
++"- "+
++"0"+
++"treeview_startup"+
++"treeview_users"+
++"entry_player_name"+
++"comboboxentry_start_league"+
++"team_selection_ok"+
++"combo_country"+
++"label_costs_capacity"+
++"label_costs_safety"+
++"label_duration_capacity"+
++"label_duration_safety"+
++"spinbutton_capacity"+
++"spinbutton_safety"+
++"entry_font_name"+
++"spinbutton_speed"+
++"%s %s"+
++"checkbutton_conf_quit"+
++"checkbutton_conf_unfit"+
++"checkbutton_save_overwrite"+
++"checkbutton_maximize"+
++"checkbutton_pref_mess"+
++"checkbutton_skip"+
++"checkbutton_autosave"+
++"checkbutton_show_live"+
++"checkbutton_show_tendency"+
++"checkbutton_pause_injury"+
++"checkbutton_pause_red"+
++"checkbutton_pause_break"+
++"checkbutton_auto_sub"+
++"checkbutton_show_job"+
++"checkbutton_swap_adapts"+
++"checkbutton_show_overall"+
++"checkbutton_show_all_leagues"+
++"checkbutton1"+
++"checkbutton2"+
++"checkbutton3"+
++"checkbutton4"+
++"checkbutton5"+
++"checkbutton6"+
++"checkbutton7"+
++"checkbutton8"+
++"checkbutton9"+
++"checkbutton10"+
++"checkbutton11"+
++"checkbutton12"+
++"checkbutton13"+
++"checkbutton14"+
++"checkbutton15"+
++"checkbutton16"+
++"checkbutton17"+
++"checkbutton18"+
++"checkbutton19"+
++"checkbutton20"+
++"checkbutton21"+
++"checkbutton22"+
++"checkbutton23"+
++"checkbutton24"+
++"checkbutton25"+
++"checkbutton26"+
++"checkbutton27"+
++"checkbutton28"+
++"checkbutton29"+
++"checkbutton30"+
++"checkbutton31"+
++"checkbutton32"+
++"checkbutton33"+
++"checkbutton34"+
++"checkbutton35"+
++"checkbutton36"+
++"spinbutton_autosave"+
++"spinbutton_autosave_files"+
++"spinbutton_precision"+
++"spinbutton_refresh"+
++"spinbutton_live_speed"+
++"spinbutton_live_verbosity"+
++"spinbutton_contract"+
++"entry_constants_file"+
++"comboboxentry_languages"+
++"checkbutton_save_global"+
++"checkbutton_save_user"+
++"%s/bygfoot.conf"+
++"NONAME"+
++"%s/bygfoot_user.conf"+
++"%s/bygfoot_%s.conf"+
++"%s %s %s"+
++");printf("+
++"W %d : %d"+
++"L %d : %d"+
++"L "+
++"W "+
++"transfer_get_index: didn't find transfer."+
++"text"+
++"pixbuf"+
++"xalign"+
++"player_list1"+
++"player_list2"+
++"scrolledwindow9"+
++"treeview_commentary"+
++"%3d."+
++"<span background='%s' foreground='%s'>%s</span>"+
++"markup"+
++"treeview_result"+
++" </span>"+
++"<span background='%s'> "+
++"<span background='%s' foreground='%s'>%s%s</span>"+
++"<span background='%s' foreground='%s'>%s [%d]</span>"+
++"<span background='%s' foreground='%s'>%s (%d)</span>"+
++"cell-background"+
++"<span background='%s' foreground='%s'>%d</span>"+
++"%+d"+
++"%.0f%%"+
++"<span foreground='%s'>%s</span>"+
++"|"+
++"</span>"+
++"%s (%s)"+
++"%d (%s)"+
++" (<span foreground='%s'>%+.1f</span>)"+
++"<span background='%s'>%s</span>"+
++"%.1f %%"+
++"<span background='%s' foreground='%s'>%s (%s)</span>"+
++"country_%[^.]%[.xml]"+
++"flag_%s.png"+
++"treeview_contributors"+
++"player_info"+
++"font"+
++"LEAGUE%d"+
++"foreground"+
++"background"+
++"%s %d "+
++"%d(%d)"+
++"<span %s>%s</span>"+
++"<span %s>%d : %d</span>"+
++"), const_int("+
++"FIXME!!!"+
++"bygfoot_help"+
++", const_app("+
++"label_about"+
++"notebook1"+
++"Didn't find any country definition files in the support directories."+
++"%s/%s/saves/."+
++"player_menu_put_on_transfer_list"+
++"player_menu_remove_from_transfer_list"+
++"label_main"+
++"label_1"+
++"label_2"+
++"label_capacity"+
++"label_stadium_status"+
++"label_average_attendance"+
++"progressbar_safety"+
++"progressbar_average_attendance"+
++"%d%%"+
++"label_yesno"+
++"label_transfer_dialog"+
++"spinbutton_verbosity"+
++"Bygfoot Football Manager %s"+
++"???"+
++"Bygfoot debug window"+
++"_table.xml"+
++"_fixtures.xml"+
++"_teams.xml"+
++"_stat.xml"+
++"_promcup"+
++"%s/%s_teams.xml"+
++"%s/%s_fixtures.xml"+
++"%s/%s_table.xml"+
++"%s/%s_stat.xml"+
++"_table"+
++"country"+
++"name"+
++"symbol"+
++"sid"+
++"leagues"+
++"league"+
++"cups"+
++"cup"+
++"country_%s.xml"+
++"short_name"+
++"group"+
++"property"+
++"last_week"+
++"add_week"+
++"week_gap"+
++"yellow_red"+
++"skill_diff"+
++"cup_rounds"+
++"cup_round"+
++"new_teams"+
++"byes"+
++"home_away"+
++"replay"+
++"neutral"+
++"number_of_groups"+
++"number_of_advance"+
++"number_of_best_advance"+
++"choose_teams"+
++"choose_team"+
++"choose_team_sid"+
++"number_of_teams"+
++"start_idx"+
++"end_idx"+
++"randomly"+
++"generate"+
++"cup_%s.xml"+
++"layer"+
++"first_week"+
++"round_robins"+
++"average_skill"+
++"names_file"+
++"prom_rel"+
++"prom_games"+
++"prom_games_dest_sid"+
++"prom_games_loser_sid"+
++"prom_games_number_of_advance"+
++"prom_games_cup_sid"+
++"prom_rel_element"+
++"rank_start"+
++"rank_end"+
++"dest_sid"+
++"prom_rel_type"+
++"teams"+
++"team"+
++"team_name"+
++"promotion"+
++"relegation"+
++"league_%s.xml"+
++"names"+
++"last_name"+
++"first_name"+
++"player_names_%s.xml"+
++"%.*f"+
++"%.*f%%"+
++"Stadium capacity changed by %d. New: %d."+
++"Stadium safety changed by %d. New: %.2f"+
++"Money changed by %d. New: %d."+
++"Success counter changed by %d. New: %d."+
++"treeview_sponsors"+
++"label_sponsors"+
++"*.zip"+
++"%"+
++"scout"+
++"Scout changed to %d."+
++"phys"+
++"Physio changed to %d."+
++"yc"+
++"Youth coach changed to %d."+
++"pospref"+
++"Recruiting pref changed to %d."+
++"goto"+
++"testcom"+
++"tc"+
++"Commentary type displayed: %d."+
++"saves"+
++".%ssaves"+
++"%s%s%s%s%s"+
++"%s%s%s%s%s%s%s"+
++"_unix"+
++"_win32"+
++"bygfoot_lg_tokens"+
++" %s %s"+
++"%s%s%s*"+
++"menu_yc_best"+
++"menu_yc_good"+
++"menu_yc_average"+
++"menu_yc_bad"+
++"menu_recruit0"+
++"menu_recruit1"+
++"menu_recruit2"+
++"menu_recruit3"+
++"menu_recruit4"+
++"label34"+
++"%s%slocale"+
++"LANGUAGE"+
++", "+
++"%d "+
++"1 + 2"+
++"3 < 4"+
++"<"+
++">"+
++"="+
++" G "+
++" L "+
++"C"+
++"en"+
++"lg_commentary_%s.xml"+
++"lg_commentary_en.xml"+
++"type %d com **%s**"+
++"["+
++"]"+
++"%s%s%s%ssaves%sautosave%02d.zip"+
++"%s%ssupport_files"+
++"button_contract_cancel"+
++"%[^-0-9]%d"+
++"entry_mm_file"+
++"treeview_mmatches"+
++"%s%d%s"+
++"radiobutton_team_def_load"+
++"radiobutton_team_def_names"+
++"checkbutton_conf_youth"+
++"team_%s.xml"+
++"team_complete_def_sort (1): cannot sort according to structure %d (team %s)."+
++"team_complete_def_sort (2): cannot sort according to structure %d (team %s)."+
++"team_complete_def_sort (3): cannot sort according to structure %d (team %s)."+
++".bmm.zip"+
++".bmm"+
++".zip"+
++"%s.bmm.zip"+
++"label_contributors"+
++"*.bmm.zip"+
++"%s%s%s%ssaves%s"+
++"%s%ssaves%s"+
++"label_stadium_name"+
++"supernational"+
++"def_file"+
++"lg_commentary"+
++"event"+
++"commentary"+
++"cond"+
++"pri"+
++"general"+
++"start_match"+
++"half_time"+
++"extra_time"+
++"end_match"+
++"lost_possession"+
++"scoring_chance"+
++"header"+
++"penalty"+
++"free_kick"+
++"goal"+
++"own_goal"+
++"post"+
++"miss"+
++"save"+
++"cross_bar"+
++"foul"+
++"foul_yellow"+
++"foul_red"+
++"foul_red_injury"+
++"send_off"+
++"injury"+
++"temp_injury"+
++"penalties"+
++"stadium_breakdown"+
++"stadium_riots"+
++"stadium_fire"+
++"substitution"+
++"structure_change"+
++"style_change"+
++"boost_change"+
++"AND"+
++"&amp;"+
++"%smmatches"+
++"%slg%03d"+
++"stadium_name"+
++"formation"+
++"player"+
++"player_name"+
++"birth_year"+
++"birth_month"+
++"skill"+
++"talent"+
++"position"+
++"xml_team_read_end_element: too many players in team definition '%s' (only %d allowed)."+
++"bet_from_fixture: bet going with fixture %d not found"+
++"cup_get_choose_team_league_cup: no league nor cup found for chooseteam %s"+
++"label_splash_progress"+
++"progressbar_splash"+
++"hbox3"+
++"bygfoot_hints_%s"+
++"bygfoot_hints_en"+
++"bygfoot_tokens"+
++"image_lg_opp_style"+
++"image_lg_opp_boost"+
++"label_lg_formation"+
++"label_lg_avskill"+
++"treeview_lg_opponent"+
++"%.1f (%+.1f)"+
++"label29"+
++"image_lg_style"+
++"image_lg_boost"+
++"menu_youth_academy"+
++"menu_show_job_exchange"+
++"menu_move_to_youth_academy"+
++"menu_user"+
++"eventbox_lg_style"+
++"eventbox_lg_boost"+
++"job_get_team: team not found (league %s, country %s."+
++"LANG"+
++"LC_ALL"+
++"NONE"+
++"league_team_movements_assign_dest: no room in league %s for team %s."+
++"league_team_movements_assign_dest: no destinations left for team %s."+
++"_"+
++" GE "+
++" LE "+
++"%s%ssaves%sautosave%02d.zip"+
++"support-dir"+
++"DIR"+
++"debug-level"+
++"[developer] Debug level to use"+
++"N"+
++"lang"+
++"CODE"+
++"last-save"+
++"commentary-file"+
++"FILE"+
++"token-file"+
++"event-name"+
++"EVENTNAME"+
++"num-passes"+
++"calodds"+
++"[developer] Calibrate the betting odds by simulating a lot of matches"+
++"num-matches"+
++"[developer] How many matches to simulate per skill diff step"+
++"num-skilldiff"+
++"[developer] How many skill diff steps to take"+
++"[developer] A debug command like 'deb100 to set the debug level'; see the debug window and debug.c"+
++"STRING"+
++"%s%ssaves"+
++"file://receive.ogg"+
++"(%s)"+
++"("+
++")"+
++"1 = 1"+
++"1 = 2"+
++"checkbutton_randomise_teams"+
++"name_get_list_from_sid: namelist with sid %s not found"+
++"Option named '%s' already contained in optionlist."+
++"checkbutton_show_progress_pics"+
++"checkbutton_bet_show_all_leagues"+
++"checkbutton_bet_show_cups"+
++"checkbutton_bet_show_only_recent"+
++"spinbutton_bet_wager"+
++"combobox_languages"+
++"%s%sbygfoot.conf"+
++"%s%sbygfoot_user.conf"+
++"%s%sbygfoot_%s.conf"+
++"team_strategy_get_random: no strategy found."+
++"strategy_update_team_pre_match: none of the prematch conditions of strategy %s for team %s are fulfilled. remember that a strategy should contain an unconditional prematch."+
++"strategy_from_sid: strategy '%s' not found."+
++"team_of_id: team with id %d not found."+
++"%s [%d]"+
++"%s (%d)"+
++"treeview_bets"+
++"%.2f"+
++"treeview_splash_contributors"+
++"label_splash_hint"+
++"(%d/%d)"+
++"label_splash_hintcounter"+
++"image_match"+
++"soccerbabes.jpg"+
++"pics"+
++"match"+
++"checkbutton_bet_all_leagues"+
++"checkbutton_bet_cups"+
++"checkbutton_bet_user_recent"+
++"%s%s%s%ssaves"+
++"%s%swindow_settings"+
++"hpaned2"+
++"%s%s%s_teams.xml"+
++"%s%s%s_fixtures.xml"+
++"%s%s%s_table.xml"+
++"%s%s%s_stat.xml"+
++"rating"+
++"talent_diff"+
++"randomise_teams"+
++"average_talent"+
++"active"+
++"team_symbol"+
++"team_names_file"+
++"team_average_talent"+
++"xml_loadsave_live_game_write: suspicious fix id: %d."+
++"strategy"+
++"desc"+
++"priority"+
++"prematch"+
++"lineup"+
++"prematch_boost"+
++"prematch_style"+
++"match_action"+
++"boost"+
++"style"+
++"sub"+
++"in"+
++"out"+
++"min_fitness"+
++"prop"+
++"best"+
++"weakest"+
++"fittest"+
++"unfittest"+
++"on"+
++"off"+
++"anti"+
++"all-out-defend"+
++"defend"+
++"balanced"+
++"attack"+
++"all-out-attack"+
++"goalie"+
++"defender"+
++"midfielder"+
++"forward"+
++"xml_strategy_read: unconditional match action encountered in file %s. match actions MUST have conditions."+
++"xml_strategy_load_strategies: strategy directory not found."+
++"strategy_"+
++"xml_strategy_load_strategies: no CPU strategies found."+
++"xml_strategy_read (%s): The primary prematch should have at least one formation."+
++"writer"+
++"Debug writer value set to %d."+
++"Number of players in player list: %d"+
++"misc2_callbacks2.c"+
++"on_button_transfer_yes_clicked"+
++".svn"+
++"menu_training_camp"+
++"http://mec-symonds.eng.monash.edu.au/twiki/bin/view/Bygfoot/WebHome"+
++"debug-writer"+
++"[developer] Debug writer level to use"+
++"spin_ticket_price"+
++"spinbutton_recreation"+
++"label_training"+
++"combobox_hotel"+
++"checkbutton_save"+
++"rb_camp1"+
++"rb_camp2"+
++"hs_recreation"+
++"hs_training"+
++"tf_costs"+
++"hs_camp_points"+
++"rb_camp3"+
++"l_costs"+
++"l_recreation"+
++"l_training"+
++"l_camp_points"+
++"black"+
++"delay"+
++"two_match_week_start"+
++"two_match_week_end"+
++"two_match_week"+
++"break"+

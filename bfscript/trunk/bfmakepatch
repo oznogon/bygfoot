@@ -1,0 +1,88 @@
+#!/bin/bash
+
+type=
+
+echo "BFMAKEPATCH: enter version to patch:"
+read oldversion
+echo "BFMAKEPATCH: enter package type (stable/unstable) ([s]/u):"
+read type
+if [ !$type="u" ]; then
+    type=stable
+else
+    type=unstable
+fi
+
+echo "BFMAKEPATCH: enter short name:"
+read bugname
+echo
+
+echo "BFMAKEPATCH: enter description: [$bugname]"
+read patchname
+if [ -z $patchname ]; then
+    patchname=$bugname
+fi
+
+echo "BFMAKEPATCH: creating directory /home/gy/progs/bygfoot/patching/$oldversion"
+cd /home/gy/progs/bygfoot/patching
+if [ ! -d $oldversion ]; then
+    mkdir $oldversion
+fi
+cd $oldversion
+
+mkdir "$patchname"
+cd "$patchname"
+
+echo "BFMAKEPATCH: extracting old version $oldversion"
+major=$(echo $oldversion | sed s/'[0-9]\.\([0-9]\)\.[0-9]'/'\1'/g)
+minor=$(echo $oldversion | sed s/'[0-9]\.[0-9]\.\([0-9]\)'/'\1'/g)
+archive=/home/gy/progs/bygfoot/releases/$major/$minor/bygfoot-$oldversion.tar.bz2
+if ! [ -e /home/gy/progs/bygfoot/releases/$major/$minor/bygfoot-$oldversion.tar.bz2 ]; then
+    echo "BFMAKEPATCH: didn't find archive /home/gy/progs/bygfoot/releases/$major/$minor/bygfoot-$i.tar.bz2"
+    echo "BFMAKEPATCH: failure..."
+else
+    tar xfj $archive
+fi
+
+echo
+echo "BFMAKEPATCH: copying package current-$type"
+
+cp -R bygfoot-$oldversion current
+
+echo "BFMAKEPATCH: copying support files and man"
+rm -rf current/support_files
+rm -rf current/man
+cp -R /home/gy/progs/bygfoot/current-$type/support_files current
+cp -R /home/gy/progs/bygfoot/current-$type/man current
+rm -f current/support_files/*~
+rm -f current/support_files/text_files/*~
+
+echo "BFMAKEPATCH: copying source files and makefiles"
+rm current/src/*
+rm current/po/*
+cp /home/gy/progs/bygfoot/current-$type/src/*[ch] current/src
+cp /home/gy/progs/bygfoot/current-$type/src/Makefile.in current/src
+
+cp /home/gy/progs/bygfoot/current-$type/po/Makefile.in.in current/po
+cp /home/gy/progs/bygfoot/current-$type/po/POTFILES.in current/po
+
+echo "BFMAKEPATCH: copying config files"
+for i in \
+    config.h.in \
+    configure \
+    configure.in \
+    Makefile.in
+  do
+  cp --reply=yes /home/gy/progs/bygfoot/current-$type/$i current/$i
+done
+
+
+echo "BFMAKEPATCH: diffing"
+diff -Naur bygfoot-$oldversion current > patch_bygfoot_$patchname
+
+echo "BFMAKEPATCH: creating patch archive"
+cp /home/gy/progs/bygfoot/releases/common/README_PATCH ./README
+sed s/VERSION/$oldversion/g README | sed s/BUGNAME/"$bugname"/g > README.tmp && mv README.tmp README
+tar cfj patch_bygfoot_$patchname.tar.bz2 patch_bygfoot_$patchname README
+
+echo
+echo "BFMAKEPATCH: done"

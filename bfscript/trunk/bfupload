@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "**Uploading commentaries..."
+bfuploadcomm
+echo "**Uploading howtos..."
+bfuploadhowtos
+echo "**Uploading defs..."
+bfuploaddef

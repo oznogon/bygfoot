@@ -1,0 +1,14 @@
+#!/bin/bash
+
+pushd /home/gy/progs/bygfoot/current-unstable/po
+for i in *gmo; do
+    pref=$(echo $i | sed "s/\.gmo//g")
+    if [ ! -d ../locale/$pref/ ]; then
+	mkdir ../locale/$pref/
+	mkdir ../locale/$pref/LC_MESSAGES
+    fi
+
+    for j in ../locale/$pref/LC_MESSAGES/bygfoot.mo ../../cvs/bygfoot2-unstable/locale/$pref/LC_MESSAGES/bygfoot.mo; do
+	cp $i $j
+    done
+done

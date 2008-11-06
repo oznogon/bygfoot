@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if make 1> /dev/null; then
+    if [ $# -gt 0 ]; then
+	perl -i -pe "s+-d 50+$*+g" gdbrun
+    fi
+    
+    gdb --quiet --command=gdbrun src/bygfoot
+    
+    perl -i -pe "s+run.*+run -d 50+g" gdbrun
+fi

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+pushd /home/gy/progs/bygfoot/current-unstable/support_files
+rm -f `find definitions/ -name '*~'`
+tar cfj bygfoot-1.9-definitions.tar.bz2 definitions
+scf bygfoot-1.9-definitions.tar.bz2 misc && rm -f bygfoot-1.9-definitions.tar.bz2
+popd

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+ver=$1
+version=$(echo $1 | sed s/'\([0-9\.]\{3\}\).*'/'\1'/g)
+release=$(echo $1 | sed s/'[0-9\.]\{4\}'//g)
+
+echo "BFMAKERPMS: creating rpm: version $version, release $release"
+
+echo "BFMAKERPMS: inserting version and release"
+sed s/UNKNOWN_VERSION/$version/g $bygfoot_rpm_spec | sed s/RELEASE/$release/g > bygfoot-$ver.spec
+
+echo "BFMAKERPMS: copying source dir"
+cp -R $bygfoot_base_release-$ver $bygfoot_base_release-$version
+tar cfj $bygfoot_base_release/bygfoot-$ver.tar.bz2 $bygfoot_base_release-$version
+rm -rf $bygfoot_base_release-$version
+
+echo "BFMAKERPMS: running rpmbuild -ba"
+rpmbuild -ba bygfoot-$ver.spec 1> /dev/null
+
+if [ $? -eq 0 ]; then
+    echo "BFMAKERPMS: done."
+else
+    echo "BFMAKERPMS: rpmbuild failure."
+fi

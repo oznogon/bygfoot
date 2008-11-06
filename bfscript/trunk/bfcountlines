@@ -1,0 +1,19 @@
+#!/bin/bash
+. scripts.cfg
+if [ -e $bygfoot_source/src ]; then
+    pushd $bygfoot_source/src &> /dev/null
+fi
+
+cnt=0
+
+for i in *[ch]
+  do
+  if ! echo $i | grep interface &> /dev/null
+      then
+      cnt=$[cnt + $(wc -l $i | cut -d " " -f 1)]
+  fi
+done
+
+echo "$cnt source code lines, not counting Glade-generated files."
+
+popd &> /dev/null

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+rm -rf /space/Eigene Dateien/progs/bygfoot/patching.old
+
+mv /space/Eigene\ Dateien/progs/bygfoot/patching /space/Eigene\ Dateien/progs/bygfoot/patching.old
+
+cp -R /home/gy/progs/bygfoot/patching /space/Eigene\ Dateien/progs/bygfoot/

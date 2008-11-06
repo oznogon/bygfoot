@@ -1,0 +1,71 @@
+#!/bin/bash
+. scripts.cfg
+pushd $bygfoot_source/src
+
+nocheck="interface support"
+nocheckstrings="float_ int_ string_ last_save ___"
+learnfile=$bygfoot_scripts/bfcheckgettext.learnbuffer
+
+for cfile in *c; do
+
+    check=1
+
+    for nocheckname in $nocheck; do
+	if echo $cfile | grep $nocheckname &> /dev/null; then
+	    check=0
+	    break
+	fi
+    done
+    
+    if [ $check -eq 1 ]; then
+
+	echo "____________________________________________"
+	echo "**bfcheckgettext: Checking file $cfile"
+	echo "--------------------------------------------"
+	
+	strings=$(grep -o '"[^\"]*"' $cfile)
+	state=0
+
+	for string in $strings; do
+	    if echo $string | grep '"' &> /dev/null; then
+		if [ $state -eq 0 ] && ! echo $string | grep '"[^"]*"' >& /dev/null; then
+		    state=1
+		    longstring=$string
+		elif [ $state -eq 1 ] || echo $string | grep '"[^"]*"' >& /dev/null; then
+		    state=0
+		    if echo $string | grep '"[^"]*"' >& /dev/null; then
+			longstring=$string
+		    else
+			longstring="$longstring $string"
+		    fi
+
+		    checkstring=1
+		    
+		    for nostring in $nocheckstrings; do
+			if echo $longstring | grep $nostring &> /dev/null; then
+			    checkstring=0
+			fi
+		    done
+
+		    if [ $checkstring -eq 1 ] &&
+			! grep -F "+$longstring+" $learnfile &> /dev/null &&
+			! echo $longstring | grep "\.h" &> /dev/null &&
+			[ $(echo $longstring | wc -m) -ge 4 ] &&
+			! grep "g_warning($longstring" $cfile &> /dev/null &&
+			! grep "_($longstring)" $cfile &> /dev/null; then
+			echo "**bfcheckgettext: string '$longstring' not macroed."
+			read a
+			
+			if [ -z $a ]; then
+			    echo "+$longstring+" >> $learnfile
+			fi
+		    fi
+		fi
+	    else
+		longstring="$longstring $string"
+	    fi
+	done
+    fi
+done
+
+popd

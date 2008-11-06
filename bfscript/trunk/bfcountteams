@@ -1,0 +1,19 @@
+#!/bin/bash
+. scripts.cfg
+teams=0
+leagues=0
+countries=0
+
+for i in `find $bygfoot_source/support_files/definitions -name 'country_*xml'`
+  do
+  countries=$[countries + 1]
+done
+
+for i in `find $bygfoot_source/support_files/definitions/ -name 'league*xml'`
+  do
+  teams=$[teams + $(grep -c \<team_name\> $i)]
+  leagues=$[leagues + 1]
+done
+
+echo
+echo "$teams teams in $leagues leagues in $countries countries."

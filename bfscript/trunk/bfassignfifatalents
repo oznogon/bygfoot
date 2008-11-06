@@ -1,0 +1,67 @@
+#!/bin/bash
+
+FIFA=0,2548,All-May-2006,00.html
+LOCAL=fifa.txt
+CLEANUP=1
+
+function rating()
+{
+  RATING=`grep -w $1 fifa.txt | cut -f -2 -d ' '`
+}
+
+
+if [ ! -f $FIFA ]; then
+    echo "Getting FIFA rating..."
+    wget http://fifa.com/en/mens/statistics/index/$FIFA
+    rm $LOCAL
+fi
+
+
+if [ ! -f $LOCAL ]; then
+    echo "Creating clean list..."
+    lynx -dump -nolist $FIFA | grep -E 'equal\.gif|up\.gif|down\.gif' >$LOCAL
+    sed -i -e s/[[].*[\]]// $LOCAL
+    sed -i -e s'/         / /' $LOCAL
+    sed -i -e s'/     / /' $LOCAL
+    for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 ; do
+	sed -i -e s'/  / /' $LOCAL
+    done
+    sed -i -e s'/\([a-z.]\) \([A-Za-z]\)/\1_\2/' $LOCAL
+    sed -i -e s'/\([a-z.]\) \([A-Za-z]\)/\1_\2/' $LOCAL
+    sed -i -e s'/\([a-z.]\) \([A-Za-z]\)/\1_\2/' $LOCAL
+    sed -i -e s'/\([a-z.]\) \([A-Za-z]\)/\1_\2/' $LOCAL
+    
+    # Fix some teams
+    sed -i -e s"/CA´te_d'Ivoire/CÃ´te_d'Ivoire/" $LOCAL
+fi
+
+
+
+echo "Cleaning average talent values from league files... "
+for league in league*xml; do
+    echo "Cleaning $league... "
+    perl -0777 -i.bak -pe "s+.*\<team_average_talent\>[^\<]*\</team_average_talent\>.*\n++g" $league
+done
+
+
+echo "Reading teams from rank file... "
+while read id team change rating change2; do
+    team=`echo $team | tr _ ' '`
+    if ! grep "$team<" league*xml &> /dev/null; then
+	echo "*** $team not found ***"
+    else
+	talent=`expr 5000 + $rating '*' 5`
+	for league in league*xml; do
+	    if grep "$team<" $league &> /dev/null; then
+		perl -0777 -i.bak -pe "s+([ \t]*)(\<team_name\>$team\</team_name\>)+\1\2\n\1\<team_average_talent\>$talent\</team_average_talent\>+g" $league
+		echo "Assigned talent $talent to $team."
+		talent=$[talent - diff]
+	    fi
+	done
+    fi
+done < $LOCAL
+
+
+if [ z$CLEANUP == z1 ]; then
+   rm -f league*.bak
+fi

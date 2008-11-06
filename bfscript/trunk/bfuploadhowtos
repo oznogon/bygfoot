@@ -1,0 +1,6 @@
+#!/bin/bash
+
+pushd /home/gy/progs/bygfoot/howto
+gytt *t2t
+scf *t2t *html doc/1.9
+popd

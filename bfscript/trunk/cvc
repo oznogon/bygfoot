@@ -1,0 +1,37 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+    echo "Please specify comment."
+    exit -1
+fi
+
+pushd /home/gy/progs/bygfoot/current-unstable
+
+bfgetpot
+pushd po
+for i in *po; do
+    gzip -c $i > $i.gz
+    scf $i.gz extras/i18n/1.9 &
+#    rm $i.gz
+done
+
+gzip -c bygfoot.pot > bygfoot.pot.gz
+scf bygfoot.pot.gz extras/i18n/1.9 &
+#rm bygfoot.pot.gz
+popd
+
+scf ../official_names revisions &
+scf ../releases/common/ChangeLog revisions &
+scf bygfoot-update revisions &
+
+bfmakefile
+
+for i in Makefile.am configure.in bygfoot-update *glade *gladep support_files/bygfoot_constants support_files/bygfoot_app support_files/bygfoot_help support_files/bygfoot_hints* support_files/bygfoot_tokens src/*[ch] src/Makefile.am po/*po; do cp $i ../cvs/bygfoot2-unstable/$i; done
+
+cp ../releases/common/ChangeLog ../cvs/bygfoot2-unstable/
+
+pushd ../cvs/bygfoot2-unstable
+cvs commit -m "\"$*\""
+popd
+
+popd

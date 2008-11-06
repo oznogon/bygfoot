@@ -1,0 +1,43 @@
+#!/bin/bash
+
+version1=$1
+version2=$2
+
+while [ -z $version1 -o -z $version2 ]; do
+    echo "BFMAKEUPGRADE: enter old version number:"
+    read version1
+    echo "BFMAKEUPGRADE: enter new version number:"
+    read version2
+done
+
+echo "BFMAKEUPGRADE: creating directory /home/gy/progs/bygfoot/patching/$version2"
+cd /home/gy/progs/bygfoot/patching
+rm -rf $version2
+mkdir $version2
+cd $version2
+
+for i in $version1 $version2; do
+    major=$(echo $i | sed s/'[0-9]\.\([0-9]\)\.[0-9]'/'\1'/g)
+    minor=$(echo $i | sed s/'[0-9]\.[0-9]\.\([0-9]\)'/'\1'/g)
+    archive=/home/gy/progs/bygfoot/releases/$major/$minor/bygfoot-$i.tar.bz2
+    if ! [ -e /home/gy/progs/bygfoot/releases/$major/$minor/bygfoot-$i.tar.bz2 ]; then
+	echo "BFMAKEUPGRADE: didn't find archive /home/gy/progs/bygfoot/releases/$major/$minor/bygfoot-$i.tar.bz2"
+	echo "BFMAKEUPGRADE: failure..."
+    else
+	tar xfj $archive
+    fi
+done
+
+to=_to_
+patchver=$version1$to$version2
+
+echo "BFMAKEUPGRADE: diffing"
+diff -Naur bygfoot-$version1 bygfoot-$version2 > patch_bygfoot_upgrade_$patchver
+
+echo "BFMAKEUPGRADE: creating patch archive"
+cp /home/gy/progs/bygfoot/releases/common/README_UPGRADE ./README
+sed s/VERSION1/$version1/g README | sed s/VERSION2/$version2/g > README.tmp && mv README.tmp README
+tar cfj patch_bygfoot_upgrade_$patchver.tar.bz2 patch_bygfoot_upgrade_$patchver README
+
+echo
+echo "BFMAKEUPGRADE: done"
