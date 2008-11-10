@@ -691,3 +691,11 @@
 +"two_match_week_end"+
 +"two_match_week"+
 +"break"+
++"spinbutton_weekly_installment"+
++"spinbutton_start_week"+
++"%.2f%%"+
++"<span foreground='%s'>%s (%.2f%% %s)</span>"+
++"button_digits_alr"+
++"label_current_start_week"+
++"label_current_weekly_installment"+
++"label_alr_debt"+
