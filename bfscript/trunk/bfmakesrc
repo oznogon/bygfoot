@@ -15,6 +15,7 @@ bfmakefile
 echo "BFMAKESRC: copying support files"
 cp -R $bygfoot_source/support_files $dir
 rm -f $(find $dir/support_files/ -name '*~')
+rm -rf $(find $dir/support_files/ -name '.svn')
 
 echo "BFMAKESRC: copying todo etc."
 for i in \

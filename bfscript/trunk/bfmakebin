@@ -44,6 +44,9 @@ done
 chmod 744 bygfoot-update
 cd ..
 
+echo "clean out .svn directories"
+rm -rf $(find $dir -name '.svn')
+
 if [ -e $bygfoot_source/ReleaseNotes ]; then
     cp $bygfoot_source/ReleaseNotes $dir
     tar cfj $dir.tar.bz2 $dir
