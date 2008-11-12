@@ -1,7 +1,9 @@
 #!/bin/bash
 . scripts.cfg
 version=$1
-dir=$bygfoot_base_release-$1-binary
+release_directory=bygfoot-$version-binary
+release_file=bygfoot-$version-binary.tar.bz2
+dir=$bygfoot_base_release/$release_directory
 
 echo "BFMAKEBIN: creating binary version $version"
 
@@ -49,7 +51,9 @@ rm -rf $(find $dir -name '.svn')
 
 if [ -e $bygfoot_source/ReleaseNotes ]; then
     cp $bygfoot_source/ReleaseNotes $dir
-    tar cfj $dir.tar.bz2 $dir
+    pushd $bygfoot_base_release
+    tar cfj $release_file $release_directory
+    popd
 else
     echo
     echo "BFMAKEBIN: didn't find ReleaseNotes..."

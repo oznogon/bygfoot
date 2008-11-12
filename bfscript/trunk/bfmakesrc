@@ -3,7 +3,10 @@
 . scripts.cfg
 
 version=$1
-dir=${bygfoot_base_release}-${version}
+release_directory=bygfoot-$version
+release_file=bygfoot-$version.tar.bz2
+dir=$bygfoot_base_release/$release_directory
+
 echo "BFMAKESRC: creating source version $version"
 
 echo "BFMAKESRC: creating directory $dir"
@@ -76,7 +79,10 @@ done
 
 if [ -e $bygfoot_source/ReleaseNotes ]; then
     cp $bygfoot_source/ReleaseNotes $dir
-    tar cfj $dir.tar.bz2 $dir
+    pushd $bygfoot_base_release
+    tar cfj $release_file $release_directory
+    popd
+
 else
     echo
     echo "BFMAKESRC: didn't find ReleaseNotes..."
