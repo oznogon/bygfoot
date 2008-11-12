@@ -80,7 +80,7 @@ done
 if [ -e $bygfoot_source/ReleaseNotes ]; then
     cp $bygfoot_source/ReleaseNotes $dir
     pushd $bygfoot_base_release
-    tar cfj $release_file $release_directory
+    tar cjf $release_file $release_directory
     popd
 
 else

@@ -6,11 +6,11 @@ Release: %{release}
 Name: %{name}
 Summary: Bygfoot is a football (soccer) manager game
 Version: %{version}
-Source: bygfoot-%{version}.%{release}.tar.bz2
+Source: bygfoot-%{version}-%{release}.tar.bz2
 Group: Amusements/Games
 URL: http://bygfoot.sourceforge.net
 BuildRoot: /var/tmp/%{name}-buildroot
-Copyright: GPL
+License: GPL
 Prefix: /usr
 Requires: zip
 
