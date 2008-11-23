@@ -1,0 +1,132 @@
+Introduction
+
+
+%!Style: ../green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+% !PreProc(html): `` "
+% !PreProc(html): '' "
+%!Cmdline(html): --toc
+%!PostProc(html): <H1> <IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PreProc: '<!-- <p> -->' ''
+%!PreProc(tex): "\=\=NAME\=\=" "\=\ NAME:"
+%!PreProc(tex): "\=\=SYNOPSIS\=\=" "\=\ SYNOPSIS:"
+%!PreProc(tex): "\=\=DESCRIPTION\=\=" "\=\ DESCRIPTION:"
+%!PreProc(tex): "\=\=OPTIONS\=\=" "\=\ OPTIONS:"
+%!PreProc(tex): "\=\=AUTHOR\=\=" "\=\ AUTHOR:"
+%!PreProc(tex): "\=\=FILES\=\=" "\=\ FILES:"
+%!PreProc(tex): "\=\=COPYRIGHT\ NOTICE\=\=" "\=\ COPYRIGHT\ NOTICE:"
+%!PreProc(tex): "\=\=DOCUMENTATION\ AUTHORSHIP\=\=" "\=\ DOCUMENTATION\ AUTHORSHIP:"
+%!PreProc(tex): "\=\=INVITATION\=\=" "\=\ INVITATION:"
+%!PreProc(tex): "\[extras\ extras.html\]\ section" "website"
+%!PreProc(tex): "\[contact\ feedback.html\]" "contact"
+%!PostProc(tex): 'section\*' 'section'
+%!PostProc(tex): '\\subsection' '\\section'
+%!PostProc(tex): '\\subsubsection' '\\subsection'
+%!PostProc(tex): '\\newpage\\tableofcontents' ''
+
+==Overview==
+%!Include: ../overview.t2t
+==Something About ``Football''==
+
+You're supposed to skip this FAQ if you are not from countries where people
+think ``football'' is a game to be played with the hands. :-)
+
++ What is ``Football'', why is it called so and why are there so many sports
+named this same way?
+
+Well, ``Football'' is a sport invented in England in the XIX century which
+has become the most popular, the most watched and most played sport ever. 
+It is called ``football'' because it must be played with the feet (duh!).
+There are other sports also named alike, all of them splitted from the
+original ``football'' foundation. They appeared because some people thought
+that playing with the feet only was too difficult (no trolling, this is
+history).
+
++ Are you sure that the English invented ``football''?
+
+Well, they wrote the rules and played the first championships. One would say
+that this is ``inventing'' a sport. However, they derived inspiration from
+many different sources including ball games played in Japan (//kemari//), 
+Greece (//podosferiki//) and Italy (//calcio//). They had their own ``ball''
+games too, by the way: in mediaeval Britain when a viking incursion was 
+defeated the populace used to behead the invaders and kick their heads about 
+to celebrate. ;-)
+
++ How is a football team set?
+
+A football team is composed by ``10 field players and a goal-keeper''. The
+goal-keeper (usually wearing the number 1) is the only one who can touch the
+ball with his hands (but only inside a delimited part of the playing field).
+Players are usually divided into three sections: defense, midfield and forward.
+
++ Why is the goalie allowed to touch the ball?
+
+Because in the beginning the matches ended with tenths of goals scored. Someone
+thought that it would be better if the matches ended with a lower number of
+goals, so the goalie was allowed to catch the ball.
+
++ What is a 	``drawn'' game?
+
+It is a game neither of the teams managed to win. When a game ends tied, both
+teams are given 1 point only, instead of 3.
+
++ Why don't they find a way to  ``untie'' football matches, like they did to
+volleyball, tennis, American football, etc.?
+
+Well, ways to ``untie'' football matches do exist (penalty kicks, shoot-out,
+extra time, golden goal) but people think they suck because they are not from
+the game. Usually only Americans complain about tied games and want to find
+ways to work this around. Elsewhere in the world people think it's just
+natural that sometimes there is no winner or loser.
+
++ Where is football played?
+
+Are you from Venus? It is played on planet Earth, almost everywhere where
+grass grows and -- amazingly -- also in some places where people must make
+grass grow to be able to play it...
+
++ Which are the nations where football is strong?
+
+Are you from Jupiter? Besides England, where it was invented, football is popular
+everywhere but the US and Canada, India, Australia, New Zealand and some Central
+American Countries. The countries whose national teams are most successful are
+(roughly in this order): Brazil, Germany, Argentina, Italy and France.
+
++ Why is football so popular?
+
+No one knows for sure but there are some theories:
+	
+ - it is a game that is not affected by social barriers: the required gear is
+ inexpensive and the playing field is natural grass, so it can be played both
+ by the riches clubs and the poorest localities.
+ - it is a game in which intelligence is more important than brute force: good
+ footballers are not necessarily the strongest, but the ones with more body
+ flexibility and quicker of mind.
+ - it is a game in which the final score is not easily predictable: surprises
+ do occur (like Greece beating Portugal in the last Euro).
+ - it is a game that values talent above anything else: if you are a good player,
+ it doesn't matter if you are ugly, illiterate or plain stupid; you will earn
+ a lot of money and become famous. Football is known to be one of the paths
+ that can lead a poor boy to stardom (read about Pelé, for instance).
+ - it is easy to understand: for every goal scored, one point. Goals are scored
+ when the ball enters the goal. Foals are when a player hit another player 
+ instead of the ball. Fouls inside the main area become penalty kicks. The
+ ball must be controlled with any part of the body but the arm. Onlye the goalie
+ can touch the ball. When the ball is kicked off the field it reverts to the
+ other team. Violent or unfair players are warned (yellow card) and eventually 
+ sent out (red card). There's not TV aid, no measuring tape, no 
+ computer-generated statistics, no need for an electronic score keeper. The only
+ thing about the game that is a bit obscure is the offside rule, but people seem
+ to have taken it for granted for decades.
+
++ What is a football management game?
+
+It is a game that simulates a football season. You won't actually see matches
+going on: you will only take the management decisions that will cause your team
+to either become successful or unsuccessful.

@@ -1,0 +1,96 @@
+How to write Bygfoot definition files
+
+
+%! Target  : html
+%! Options : --toc
+%! Style   : ../../green.css
+%!encoding: iso-8859-1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+
+Last updated: %%mtime(%m/%d/%Y)
+
+Howtos:
+
+Overview | [Countries def_howto_countries.html] | [Leagues def_howto_leagues.html] | [Cups def_howto_cups.html] | [Player names def_howto_plnames.html] | [Teams def_howto_teams.html] | [Live game commentary def_howto_lgcommentary.html] | [CPU strategies def_howto_strategy.html] | [Next -> def_howto_countries.html]
+
+You can find a table with all the tags in the **Bygfoot** XML definition
+files [here tags_ref.html].
+
+The current **Bygfoot** definition files can be found
+[here http://bygfoot.sf.net/misc/bygfoot-1.9-definitions.tar.bz2].
+
+==Some general information==
+
+- **DO NOT USE OFFICIAL TEAM NAMES** like Real Madrid or Bayern
+  Munich.  Use abbreviations like R. Madrid instead. Don't use
+  official symbols like team badges, either. Bygfoot doesn't have
+  a licence for these things.
+
+- However, you can make a file containing official names and send
+  it to me. See [this section for instructions. def_howto_leagues.html#toc5]
+
+- Bygfoot definition files are UTF-8-encoded text files in XML
+  format.
+
+- Float values are given as integers: 1,2345 has to be written as
+  12345 (ie. you have to multiply the float value with 10 000 and
+  round it).
+
+- The definition files of a newly created country should be
+  copied into a new folder in ``$HOME/.bygfoot/definitions``,
+  e.g.  ``/home/bob/.bygfoot/definitions/jamaica``. This way
+  the game should find the definitions at startup and you can
+  test your definitions immediately after creating them.
+
+- The easiest way to make a new definition might be to copy an
+  existing one, e.g. ``country_england.xml`` (along with the
+  corresponding league and cup definition files), and edit it.
+
+- If you have any questions write me or use the Bygfoot forums at
+  the home page to get advice.
+
+
+==================================================================
+
+== Naming conventions ==
+
+Suppose you make a definition for France. The corresponding
+country file should be named ``country_france.xml``.
+
+If there are 4 leagues, say, the definition files should be
+called ``league_france1.xml`` to ``league_france4.xml``.
+
+If there is a national cup called, for instance, //Coupe de France//,
+the corresponding definition file is
+``cup_france_coupe_de_france.xml`` (the important part is
+``cup_france``, you can choose the rest; you could also call it
+``cup_france_coupe.xml`` if you like).
+
+If there is a supercup called //Supercoupe de France//, the file
+would be something like ``cup_supercup_france.xml`` or so (it
+starts with ``cup_`` because supercups are just a special type of
+cup).
+
+All these structures -- country, league, cup -- have to have a
+unique string identifier (abbreviated //sid//; see the xml file
+examples below).  The sid and the part between ``country_`` and
+``.xml`` (or ``cup_`` and ``.xml`` for cups) have to be the same. The
+sid of the first league in France would be ``france1``. The sid of
+the cup would be ``france_coupe_de_france``.  Now this is not only
+a convention, it``s a must if you want your definitions to work.
+
+To refer within definition files to other definition files, you
+use the sid. E.g. to specify that 3 teams from the first league
+in France get relegated to the second league, you have to use the
+sid ``france2`` in the prom_rel element (see below).
+
+All these files should be moved to a separate subdirectory of
+``$HOME/.bygfoot/definitions``, in this case perhaps
+``$HOME/.bygfoot/definitions/france``. The game should be able to
+find them there and you can select ``country_france.xml`` from the
+popdown menu in the startup window (if no users are selected
+yet).
+
+
+==================================================================

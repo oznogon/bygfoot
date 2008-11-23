@@ -1,0 +1,427 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../../green.css">
+<TITLE>How to write CPU team strategy definition files</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>How to write CPU team strategy definition files</H1>
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+    <UL>
+    <LI><A HREF="#toc1">How to create a strategy definition file</A>
+      <UL>
+      <LI><A HREF="#toc2">Naming convention</A>
+      <LI><A HREF="#toc3">Header part</A>
+      <LI><A HREF="#toc4">Telling a team how to begin a match: prematches</A>
+      <LI><A HREF="#toc5">Conditional prematches</A>
+      <LI><A HREF="#toc6">Rules applied in the course of a match: match_actions</A>
+      <LI><A HREF="#toc7">List of tokens</A>
+      </UL>
+    <LI><A HREF="#toc8">How to test a strategy definition file</A>
+    </UL>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+<P>
+Last updated: 07/08/2006
+</P>
+<P>
+<A HREF="def_howto_lgcommentary.html">&lt;- Previous</A> | <A HREF="def_howto.html">Overview</A> | <A HREF="def_howto_countries.html">Countries</A> | <A HREF="def_howto_leagues.html">Leagues</A> | <A HREF="def_howto_cups.html">Cups</A> | <A HREF="def_howto_plnames.html">Player names</A> | <A HREF="def_howto_teams.html">Teams</A> | <A HREF="def_howto_lgcommentary.html">Live game commentary</A> | CPU Team strategies
+</P>
+<A NAME="toc1"></A>
+<H2>How to create a strategy definition file</H2>
+<P>
+A strategy definition tells a CPU team how to set up its roster before a match
+and also which actions to take during a match. Rules can be made conditional with
+the help of tokens, a concept also used in 
+<A HREF="def_howto_lgcommentary.html">live game commentary files</A>.
+</P>
+<P>
+The examples in the following sections are taken from
+<A HREF="http://bygfoot.sf.net/misc/strategy_gy.xml">this file</A>. You may have to use the
+'View source' command of your browser to prevent it from interpreting the XML tags
+and producing rubbish.
+</P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc2"></A>
+<H3>Naming convention</H3>
+<P>
+The filename of a strategy file should start with <CODE>strategy_</CODE>,
+followed by a unique string identifier (<I>sid</I>) and the suffix <CODE>.xml</CODE>,
+e.g. <CODE>strategy_john.xml</CODE> if you're called John.
+</P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc3"></A>
+<H3>Header part</H3>
+<P>
+Here a few pieces of general information about the strategy are given:
+</P>
+<PRE>
+  &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+  &lt;strategy&gt;
+    &lt;sid&gt;gy&lt;/sid&gt;
+    &lt;desc&gt;442, balanced, best players play&lt;/desc&gt;
+    &lt;priority&gt;1&lt;/priority&gt;
+</PRE>
+<P>
+The root tag of strategy files is <CODE>strategy</CODE>.
+<CODE>sid</CODE> is the unique string identifier. It should be the same as the part of the filename
+between <CODE>strategy_</CODE> and <CODE>.xml</CODE>.
+</P>
+<P>
+<CODE>desc</CODE> is a short description of the strategy.
+</P>
+<P>
+<CODE>priority</CODE> is used in the same way as in live game commentary files.
+The default value is 1 (so we could just as well leave out the tag here), and you can
+use higher values to make it more probable that teams pick this strategy. If there are
+two strategies, one of which has priority 1 and the other one priority 9, approximately
+90% of all teams will use the second strategy.
+</P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc4"></A>
+<H3>Telling a team how to begin a match: prematches</H3>
+<P>
+In a <CODE>prematch</CODE> section we can specify which players should play in the next
+match and which formation, style and boost values should be used:
+</P>
+<PRE>
+    &lt;prematch&gt;
+      &lt;formation&gt;442&lt;/formation&gt;
+      &lt;formation&gt;352&lt;/formation&gt;
+      &lt;formation&gt;433&lt;/formation&gt;
+      &lt;formation&gt;532&lt;/formation&gt;
+      &lt;formation&gt;343&lt;/formation&gt;
+  
+      &lt;lineup min_fitness="75"&gt;best&lt;/lineup&gt;
+      &lt;prematch_boost&gt;off&lt;/prematch_boost&gt;
+      &lt;prematch_style&gt;balanced&lt;/prematch_style&gt;
+    &lt;/prematch&gt;
+</PRE>
+<P></P>
+<P>
+The tags used are quite clear here. The reason why there are several formations instead of
+only one is that some formations might be impossible to use if players are injured/banned.
+In this case the next formation is tried. If all formations fail, a few players get
+'repaired' so that the first formation is possible.
+</P>
+<P>
+The formations are ordered by priority, descending, so that 442 will be taken unless it's not
+possible.
+</P>
+<P>
+Possible values for <CODE>lineup</CODE> are <CODE>best</CODE>, <CODE>weakest</CODE>, <CODE>fittest</CODE> and <CODE>unfittest</CODE>.
+<CODE>min_fitness="75"</CODE> means, of course, that only players with fitness at least 75% are
+taken (if possible).
+</P>
+<P>
+Possible values for <CODE>prematch_boost</CODE> are <CODE>on</CODE>, <CODE>off</CODE> and <CODE>anti</CODE>.
+Possible values for <CODE>prematch_style</CODE> are <CODE>all-out-defend</CODE>, <CODE>defend</CODE>,
+<CODE>balanced</CODE>, <CODE>attack</CODE> and <CODE>all-out-attack</CODE>.
+</P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc5"></A>
+<H3>Conditional prematches</H3>
+<P>
+The prematch described above is the unconditional default prematch. There might be situations
+in which different settings are more suitable. Because of this, several <CODE>prematch</CODE> sections
+may be in a strategy file.
+</P>
+<P>
+When picking a prematch, the program browses the prematch array in reversed order, so that the
+prematch that is last in the file gets considered first. The first prematch the conditions of
+which are fulfilled is then used.
+</P>
+<P>
+Because of this, it only makes sense to have exactly one unconditional prematch at the
+beginning of the file and have only conditional prematches afterwards; the latter ones should be
+in reversed priority order, so that the prematch with highest priority comes last.
+</P>
+<P>
+Conditions are used in the same way as in live game commentary files:
+</P>
+<PRE>
+    &lt;prematch cond="_LAYERDIFF_ = 1 or _AVSKILLDIFF_ &lt; -8"&gt;
+      &lt;formation&gt;532&lt;/formation&gt;
+      &lt;formation&gt;442&lt;/formation&gt;
+      &lt;formation&gt;352&lt;/formation&gt;
+      &lt;prematch_style&gt;defend&lt;/prematch_style&gt;
+    &lt;/prematch&gt;
+</PRE>
+<P>
+This means, if the opponent is one league layer higher or on average 8 points
+stronger, the teams switches to defensive formation and style.
+</P>
+<P>
+A setting that is omitted will be filled with the default value from the unconditional
+default prematch; here, we've omitted <CODE>prematch_boost</CODE>, which is equivalent to specifying
+<CODE>&lt;prematch_boost&gt;off&lt;/prematch_boost&gt;</CODE>, since that's the setting in the default prematch.
+</P>
+<P>
+A list of possible tokens in conditions is at the end of this HOWTO. Tokens that express
+a relation between teams, e.g. <CODE>_LAYERDIFF_</CODE>, always are calculated taking the team that
+uses the strategy first. <CODE>_LAYERDIFF_ = 1</CODE> means
+'this team's layer - opponent's = 1'; <CODE>_AVSKILLDIFF_ &lt; -8</CODE> means
+'this team's average skill - opponent's &lt; -8'.
+</P>
+<P>
+Let's look at some more prematches:
+</P>
+<PRE>
+    &lt;prematch cond="_LAYERDIFF_ &lt; -1 or _AVSKILLDIFF_ &lt; -14"&gt;
+      &lt;lineup min_fitness="75"&gt;fittest&lt;/lineup&gt;
+      &lt;prematch_boost&gt;anti&lt;/prematch_boost&gt;
+    &lt;/prematch&gt;
+  
+</PRE>
+<P>
+Here we assume that a team at least two league layers lower or 14 points weaker
+can be beaten easily, so we take the fittest players (to give the unfit players a break)
+and set boost to anti.
+</P>
+<PRE>
+    &lt;prematch cond="_GOALSTOWIN_ &gt; 2"&gt;
+      &lt;formation&gt;343&lt;/formation&gt;
+      &lt;formation&gt;433&lt;/formation&gt;
+      &lt;formation&gt;352&lt;/formation&gt;
+      &lt;prematch_boost&gt;on&lt;/prematch_boost&gt;
+      &lt;prematch_style&gt;all-out-attack&lt;/prematch_style&gt;
+    &lt;/prematch&gt;
+</PRE>
+<P>
+This is a rather important token: <CODE>_GOALSTOWIN_</CODE>. It expresses how many goals the team
+must score to win a match. It also respects second-leg rules (otherwise it wouldn't make
+any sense in a prematch rule). This prematch means the following: if the team has to score
+more than two goals to win the match (e.g. in a second-leg match, the first leg of which
+was lost 1:3 at home), we start very offensively, with boost switched on and
+all-out-attacking.
+</P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc6"></A>
+<H3>Rules applied in the course of a match: match_actions</H3>
+<P>
+A match_action is -- the title says it all -- a rule applied during a match if its
+conditions are fulfilled. A match_action MUST have a condition.
+</P>
+<P>
+A match_action may change three things: the style setting of the team,
+the boost setting of the team, and the lineup via a substitution.
+</P>
+<P>
+Let's look at a few examples:
+</P>
+<PRE>
+    &lt;match_action cond="_MI_ &lt; 40 and _GOALSTOWIN_ &lt; -2"&gt;
+      &lt;style&gt;defend&lt;/style&gt;
+    &lt;/match_action&gt;
+</PRE>
+<P>
+A really simple action. If fewer than 40 minutes are played and the team may concede 2 goals and still
+wins, we switch style to defend.
+</P>
+<PRE>
+    &lt;match_action cond="_MI_ &gt;= 40 and _MI_ &lt; 65 and _GOALSTOWIN_ = 3"&gt;
+      &lt;sub cond="_SUBSLEFT_ &gt; 1"&gt;
+        &lt;in prop="best"&gt;forward&lt;/in&gt;
+        &lt;out prop="weakest"&gt;midfielder defender&lt;/out&gt;
+      &lt;/sub&gt;
+      &lt;style&gt;all-out-attack&lt;/style&gt;
+    &lt;/match_action&gt;
+</PRE>
+<P>
+And this is as complicated as it gets. Not very complicated, in fact.
+</P>
+<P>
+The first thing to note is that substitution rules (enclosed in <CODE>&lt;sub&gt;</CODE> tags)
+may have conditions, too. However, I can't think of any other token other than
+<CODE>_SUBSLEFT_</CODE> that makes sense in the sub condition.
+</P>
+<P>
+A substitution consists of two rules, both of which have two parts. An 'in' rule,
+specifying what kind of player should come into the match, and an 'out' rule,
+telling the program which player gets substituted.
+</P>
+<P>
+The attribute <CODE>prop</CODE> means 'property' and can be one of <CODE>best</CODE>, <CODE>weakest</CODE>,
+<CODE>fittest</CODE> and <CODE>unfittest</CODE>. The <CODE>&lt;in&gt;</CODE> tags itself may contain a player
+position: <CODE>goalie</CODE>, <CODE>defender</CODE>, <CODE>midfielder</CODE> or <CODE>forward</CODE>. The <CODE>&lt;out&gt;</CODE>
+tag may contain a list of positions. If more than one position is given, the program
+picks the position that the most players on the pitch have. If there are 5 defenders and
+3 midfielders, the rule would substitute a forward for a defender. If there are
+3 defenders and 5 midfielders, a midfielder gets substituted.
+</P>
+<P>
+Of course, this mainly makes sense with midfielders and defenders, since there are
+almost always fewer forwards on the pitch than either (and it would be insane to
+include a goalie in the list, too).
+</P>
+<P>
+Finally, we have a look at another match_action:
+</P>
+<PRE>
+    &lt;match_action cond="_MI_ &gt;= 40 and _MI_ &lt; 65 and _GOALSTOWIN_ &gt; 3"&gt;
+      &lt;sub cond="_SUBSLEFT_ &gt; 1"&gt;
+        &lt;in prop="fittest"&gt;midfielder&lt;/in&gt;
+        &lt;out prop="unfittest"&gt;midfielder defender&lt;/out&gt;
+      &lt;/sub&gt;
+      &lt;style&gt;balanced&lt;/style&gt;
+      &lt;boost&gt;anti&lt;/boost&gt;
+    &lt;/match_action&gt;
+</PRE>
+<P>
+This means, if between 40 and 65 minutes are played and we can concede 3 goals and
+still win, we switch style to balanced, boost to anti (to rest the players a bit)
+and substitute the unfittest midfielder for a fresh player.
+</P>
+<P>
+Match_actions should be ordered reversed by priority, so the most important ones should be
+at the end of the file.
+</P>
+<A NAME="toc7"></A>
+<H3>List of tokens</H3>
+<TABLE CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Token</TH>
+<TH>Meaning</TH>
+<TH>Available in prematch</TH>
+</TR>
+<TR>
+<TD>_AVSKILLDIFF_</TD>
+<TD>Difference of average skills (of the first 11 players) between the teams</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_LAYERDIFF_</TD>
+<TD>League layer difference between the teams</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_GOALSTOWIN__</TD>
+<TD>How many goals to score until the result is a win (can be negative)</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_HOMEADV_</TD>
+<TD>Whether there is home advantage; 0 if the match is on neutral ground, 1 if the team the that uses strategy has home advantage, -1 if the opponent has it</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_CUP_</TD>
+<TD>Whether it's a cup match (0 or 1)</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_SUBSLEFT_</TD>
+<TD>How many substitutions may still be made</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_NUMDEF_</TD>
+<TD>How many (healthy) defenders are on the pitch</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_NUMMID_</TD>
+<TD>How many (healthy) midfielders are on the pitch</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_NUMATT_</TD>
+<TD>How many (healthy) forwards are on the pitch</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_FORMATION_</TD>
+<TD>The formation of the team (e.g. 442)</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_TIME_</TD>
+<TD>The phase of the match: 0 first half, 1 second half, 2 extra time</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_MI_</TD>
+<TD>Minutes played</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_MR_</TD>
+<TD>Minutes remaining in the current phase (e.g. 10 if we have minute 35 in the first half)</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_MT_</TD>
+<TD>Minutes remaining total (e.g. 65 if we have min. 35 in the first half and the current result does not lead to extra time)</TD>
+<TD>NO</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc8"></A>
+<H2>How to test a strategy definition file</H2>
+<P>
+Now you've written your strategy file, you should test it. To do so, you have
+to place the file in the subdir <CODE>strategy</CODE> of the <B>primary</B> support directory.
+</P>
+<P>
+Which one is that? It depends on what kind of <B>Bygfoot</B> package you're using:
+</P>
+<UL>
+<LI>If you use the CVS version (and start <B>Bygfoot</B> with <CODE>./src/bygfoot</CODE>) or the 
+  binary version (and start with <CODE>./bygfoot</CODE>), the primary support dir is
+  <CODE>./support_files</CODE>, so you have to copy your <CODE>strategy_john.xml</CODE> file into
+  <CODE>./support_files/strategy</CODE>.
+<P></P>
+<LI>If you use an installed version (an RPM, or a source/CVS version you called <CODE>make install</CODE> on)
+  and call <B>Bygfoot</B> from somewhere <B>without</B> an existing <CODE>./support_dir</CODE> subdirectory,
+  the primary support directory is <CODE>$HOME/.bygfoot-1.9/</CODE> or <CODE>$HOME/.bygfoot-cvs/</CODE> if you use
+  the CVS version. Thus you have to place your file in <CODE>$HOME/.bygfoot-1.9/strategy</CODE> or
+  <CODE>$HOME/.bygfoot-cvs/strategy</CODE>.
+</UL>
+
+<P>
+Now your strategy automatically gets loaded and used by a certain number of teams in new games
+(the number depending on the priority of your strategy file relative the the priorities of the
+rest of the strategies).
+</P>
+<P>
+A minor problem is, how do you find out which teams use your strategy? The solution is to start the
+game with a debug level &gt;= 50. This will make the program display the strategy sids in brackets after
+the team names in the tables view and in the team browse mode.
+</P>
+<P>
+To start the game with a debug level, you call <CODE>bygfoot -d LEVEL</CODE>. Debug level &gt;= 50 also has the
+advantage that your players don't get injured or banned and their fitness doesn't decrease, either,
+so you can play a quick season without having to manage your team.
+</P>
+<P>
+You can also change the debug level in-game by right-clicking on the CLOSE button in the toolbar
+and immediately afterwards middle-clicking on it. This will pop up the debug window, where you
+enter <CODE>debNUM</CODE>, NUM being your desired debug level. Here you can also enter <CODE>gotoWEEK</CODE>
+(only recommended after setting the debug level to &gt;= 50) to let the game calculate results
+and skip weeks without user interference until the given week is reached.
+</P>
+<P>
+To cut a long story short: to see how good or bad your strategy is, you start the game with debug=50,
+check the tables to make sure your strategy gets used by some teams, popup the debug window and
+'fast forward' 20 or 30 weeks, and check the tables to see whether your strategy rocks or sucks.
+</P>
+
+<!-- html code generated by txt2tags 2.2 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html def_howto_strategy.t2t -->
+</BODY></HTML>

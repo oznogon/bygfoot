@@ -1,0 +1,31 @@
+Frequently Asked Questions
+
+
+%!Style: ../green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+
+-----------------------------------------------------
+
++ [Playing Bygfoot manager-faq.html]
++ [Editing Teams editor-faq.html]
++ [Writing Country Files customization.html#toc14]
++ [How do I start the game? beginners.html#toc1]
++ [What's that button? beginners.html#toc8]
++ [Can I change the way the game behaves? advanced.html#toc1]
++ [How can I contribute to the project? ../contributing.html]
+
+
+
+-----------------------------------------------------
+
+
+If your question is not answered, register it at our 
+[help corner http://sourceforge.net/tracker/?func=add&group_id=46139&atid=445177]
+and it will eventually be included in this FAQ (after being answered to you).

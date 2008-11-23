@@ -1,0 +1,72 @@
+How to translate Bygfoot
+
+
+%!Style: green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): "<HR NOSHADE SIZE=1>" "<div class=hr></div>"
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(html): '<P ALIGN="center">' ''
+
+You can contribute to our project greatly by translating the game to
+your language, thus helping those who don't speak English as well as you
+do. Here's a short guide on how to do it. You have to replace ``lang``
+and ``COUNTRY`` with the short-cut of your language, e.g. ``de`` and
+``DE`` for German, or ``hu`` and ``HU``
+for Hungarian, ``pt`` and ``BR`` for Brazilian Portuguese.
+
++ Make sure there's nobody already working on the translation you
+  want to begin ([write me feedback.html] or post at the
+  [forums forum/]).
+
++ Make sure you have [GNU gettext http://www.gnu.org/software/gettext/] installed.
+
++ Download the current **Bygfoot** ``pot`` file
+  [from here extras/i18n/1.9/bygfoot.pot.gz]). If you've already made a
+  translation, [go here extras/i18n/1.9] and download the appropriate
+  po file for your language and update it.
+  The po files there are kept up-to-date.
+  
+  The following steps apply to people who do a first translation
+  and not an update. To update your po file, go to
+  [the po/pot files page extras/i18n/1.9], get the appropriate po file
+  and edit it with your preferred po file editor.
+
++ Generate a ``lang.po`` file from the ``pot`` file by calling
+  ``msginit -l lang_COUNTRY -o lang.po -i bygfoot.pot``.
+
++ Change the ''charset='' part in the header of the resulting ``lang.po``
+  file to ''charset=UTF-8''.
+
++ Read the [notes on some translation issues doc/1.9/translation-1.9.html].
+  A lot of strings are also commented in the pot file.
+
++ Now you're ready to translate. You can do it with any UTF-8-capable text
+  editor by editing the ''msgstr'' parts of the ``lang.po`` file (I use the
+  po-mode of Emacs), or with a special tool like
+  [gtranslator http://gtranslator.sourceforge.net].
+  Make sure you use ``UTF-8`` encoding; this way you can use any
+  special characters your language contains.
+
++ Here's how to test your translation:
+  + get a CVS version of **Bygfoot**
+  (e.g. using the [bygfoot-update script http://bygfoot.sf.net/revisions/bygfoot-update])
+  + copy your ``po`` file to the ``po`` subdirectory of the build directory
+  + edit the ``configure.in`` file in the build dir:
+  add ``lang`` to the list of languages in the line starting with ``ALL_LINGUAS``
+  + run ``./autogen.sh``
+  + run ``make`` and ``make install``
+  + test the game and your translation
+
++ After finishing the work on your ``lang.po`` file, please send it to
+  gyboth_at_bygfoot_dot_com. Currently the game contains about 700 translatable
+  strings. Feel free to email me if you have any questions or are not sure how to 
+  translate something. There's also a
+  [forum devoted to Bygfoot translations http://bygfoot.sourceforge.net/forum/viewforum.php?f=13]
+
+If you come across anything else you don't know how to translate, or if
+you'd like to contact the translator for a certain language, simply
+[email me feedback.html] or post at 
+[the forum http://bygfoot.sourceforge.net/forum/viewforum.php?f=13].

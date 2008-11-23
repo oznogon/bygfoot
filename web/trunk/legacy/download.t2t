@@ -1,0 +1,50 @@
+Downloading Bygfoot
+
+
+%!Style: green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): "<HR NOSHADE SIZE=1>" "<div class=hr></div>"
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(html): '<P ALIGN="center">' ''
+
+== Latest stable release ==
+
+[Bygfoot 2.2.1 http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=109486&release_id=581124]
+(March 2, 2007). See the [ChangeLog changelog.html] to learn more. Or read the
+[release announcement http://bygfoot.sourceforge.net/forum/viewtopic.php?t=663].
+
+== Latest unstable release ==
+
+[Bygfoot 2.3.0 http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=218849&release_id=639579]
+(November 11, 2008). See the [ChangeLog changelog.html] to learn more. Or read the
+[release announcement http://bygfoot.sourceforge.net/forum/viewtopic.php?t=681].
+
+== Online update [OUTDATED] ==
+
+The online update is as of version 1.9.3 **obsolete**. The
+**bygfoot-update** script is still available, but you can't
+update source versions via patches anymore. Use the SVN version
+(you'll soon be able to get it with the script) if you'd like to have the
+newest version possible.
+
+``[nostalgia]``
+== Old text-only release ==
+
+[Bygfoot 0.5 beta http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=38890&release_id=129513]
+(Dec. 20, 2002).
+
+``[/nostalgia]``
+
+
+== All releases ==
+
+The [complete list http://sourceforge.net/project/showfiles.php?group_id=46139]
+of released packages.
+
+== How to install Bygfoot ==
+
+If you don't know how to install the game, read the
+[Installation Guide doc/install.html].

@@ -1,0 +1,231 @@
+Bygfoot XML tags reference
+
+
+%! Target  : html
+%! Options : --toc
+%! Style   : ../../green.css
+%!encoding: iso-8859-1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+
+Last updated: %%mtime(%m/%d/%Y)
+
+Here you can find a (hopefully) complete list of the available XML tags
+used in **Bygfoot** definition files. See also the
+[HOWTO def_howto.html] and the
+[current definitions http://bygfoot.sf.net/misc/bygfoot-1.9-definitions.tar.bz2]
+(Bzipped archive).
+
+The 'depth' value in the tables tells us how 'deeply' nested the tag is, ie.
+how many tags have to be closed until we arrive at the first level between
+the root tags. The root tag has depth 0.
+
+======================================================================
+
+==Tags used across different files==
+
+An //(LC)// at the end of a description means that the tag is only used
+in league and cup files.
+
+|| Depth | Name | Possible values | Default value | Description |
+|  1  | ``name`` | string | - | Name of a country, league or cup. |
+|  1  | ``symbol`` | string, an image file name | - | Symbol of a country, league or cup. An image file name (e.g. cup.png). |
+|  1  | ``sid`` | string containing a-z ASCII characters, numbers and underscores (_) | - | Unique string id, e.g. ``england1``. Should be also the part of the file name between the usual prefix (e.g. ``country_`` or ``strategy_``) and ``.xml`` |
+|  1  | ``short_name`` | string | - | Shorter name of a league or cup (LC). |
+|  1  | ``week_gap`` | integer, > 0 | 1 | Number of weeks between matchdays (LC). |
+|  1  | ``yellow_red`` | integer, > 0 | 1000 | Number of yellow cards until a player gets banned automatically for a match (LC). |
+
+======================================================================
+
+==Tags used in country files==
+
+|| Depth | Name | Possible values | Default value | Description |
+|  0  | ``country`` | - | - | Root tag. |
+|  1  | ``leagues`` | - | - | Tag enclosing the leagues list. |
+|  2  | ``league`` | a league //sid// | - | Tag enclosing a league //sid//. |
+|  1  | ``cups`` | - | - | Tag enclosing the cup list. |
+|  2  | ``cup`` | a cup //sid// | - | Tag enclosing a cup //sid//. |
+|  1  | ``supernational`` | 0, 1 | 0 | This tag, if set to 1, disables parts of the game, such as finances or transfers. It is used to create definitions like the World Cup. |
+|  1  | ``rating`` | integer, between 1 and 10 | - | This describes how strong the league of a country is. The English definition for instance should be 10, whereas the Greek one is around 5 or 6. Important for the job offer system. |
+
+
+======================================================================
+
+==Tags used in league files==
+
+|| Depth | Name | Possible values | Default value | Description |
+|  0  | ``league`` | - | - | Root tag. |
+|  1  | ``layer``  | integer, > 0 | Index + 1 | The layer of the league; important for parallel leagues. If you don't have parallel leagues in your country, you can omit this tag. First league has layer 1, parallel leagues have the same layer. |
+|  1  | ``first_week`` | integer, > 0 | 1 | The week number the league begins (ie. the first matches are played. |
+|  1  | ``round_robins`` | integer, > 0 | 2 | How many round robins are played (by default, each teams plays each other team twice during a league championship). In other words, the number of matches each team plays against each other team. |
+|  1  | ``break`` | integer, > 0 | ``week_gap`` | How many weeks there should be between round robins. Useful if you want to have a custom winter break, for instance. |
+|  1  | ``average_talent`` | integer, > 0 | 7000 | Average talent of the players in the league in ``(percentage of the maximum skill) * 100``. Maximum skill is currently 99. |
+|  1  | ``names_file`` | string | //general// | The //sid// (ie. the part between ``player_names_`` and ``.xml``) of a player names file containing last names and first names. |
+|  1  | ``active``  | 1, 0 | 1 | Whether the league is visible to the user and league matches are scheduled and played. Inactive leagues are useful as mere 'containers' for teams, e.g. in the World Cup definition. |
+|  1  | ``joined_league`` | league //sid// | - | If specified, fixtures against teams from the given league will be added to the league fixtures. Useful for fixtures across leagues like in North American conferences. |
+|  1  | ``rr`` | integer, > 0 | 2 | NOT A TAG BUT AN ATTRIBUTE to ``joined_league``. Number of round robins for the fixtures with the joined league teams. |
+|  1  | ``new_table`` | integer, > 0 | - | A week number when a new table should be added. The older tables are kept and a cumulative table is kept when there is more than one table, too. Useful for systems like apertura/clausura in South America. |
+|  1  | ``name`` | string | - | NOT A TAG BUT AN ATTRIBUTE to ``new_table``. Name of the new table. |
+|  1  | ``prom_rel`` | - | - | Tag enclosing the promotion/relegation section. |
+|  2  | ``prom_games`` | - | - | Tag enclosing the promotion games section. |
+|  3  | ``prom_games_dest_sid`` | one league //sid// or a space-separated list of league //sids// | - | The destination league of the promotion game winner(s). |
+|  3  | ``prom_games_loser_sid`` | one league //sid// or a space-separated list of league //sids// | - | The destination league of the promotion game loser(s). |
+|  3  | ``prom_games_number_of_advance`` | integer, > 0 | 1 | How many teams advance from the promotion games. All other participating teams count as losers. |
+|  3  | ``prom_games_cup_sid`` | a cup //sid// | - | //sid// of the cup specifying the cup format for the promotion games. |
+|  2  | ``prom_rel_element`` | - | - | A tag enclosing a promotion/relegation element. |
+|  3  | ``rank_start`` | integer, > 0 | 0 | The first rank in the tables that is part of the element. |
+|  3  | ``rank_end`` | integer, > 0 | 0 | The last rank in the tables that is part of the element. |
+|  3  | ``dest_sid`` | one league //sid// or a space-separated list of league //sids// | - | The destination league of the element. |
+|  3  | ``prom_rel_type`` | //promotion// or //relegation// or //none// | //none// | Whether we have a promotion or relegation element (or unspecified). Only important for colours in tables. |
+|  3  | ``from_table`` | integer, >= 0 | 0 | To which table the element refers, in case the league contains more than one. Default (0) is the cumulative table. The later a table gets added during a season, the higher its index. |
+|  1  | ``teams`` | - | - | Tag enclosing the team list. |
+|  2  | ``team`` | - | - | Tag enclosing a team section. |
+|  3  | ``team_name`` | string | - | Name of a team. |
+|  3  | ``team_symbol`` | string | - | A file with a symbol for the team. |
+|  3  | ``team_names_file`` | string | - | A file (//sid//) with player names. |
+|  3  | ``team_average_talent`` | integer, > 0 | - | The average talent of the players in the team. |
+|  3  | ``def_file`` | string | - | Part between ``team_`` and ``.xml`` of a file containing a team definition. |
+
+
+======================================================================
+
+==Tags used in cup files==
+
+|| Depth | Name | Possible values | Default value | Description |
+|  0  | ``cup`` | - | - | Root tag. |
+|  1  | ``group`` | integer | -1 | Integer grouping cups that should not feature the same teams (e.g. Champions' League and Cup Winners' Cup); those get the same group number. A value of //-1// means there are no restrictions. |
+|  1  | ``last_week`` | integer, >0 | - | The week the last match(es) of the cup are played. Just for convenience so that you can specify the week of the cup final. |
+|  1  | ``add_week`` | integer, >= -1 | 0 | Integer telling the program when the cup 'gets active', ie. when the fixtures should be written (see [HOWTO def_howto.html]). |
+|  1  | ``talent_diff`` | integer, > 0 | 0 | Difference of the average talents in the cup (if it's an international one) compared to the first league of the country in ``percentage * 100`` (e.g. 250 = +2,5%). |
+|  1  | ``property`` | string | - | A cup property. See the list with cup properties below. |
+|  1  | ``cup_rounds`` | - | - | Tag enclosing the cup rounds section. |
+|  2  | ``cup_round`` | - | - | Tag enclosing a cup round section. |
+|  3  | ``home_away`` | 0 or 1 | 1 | Whether there are home/away games. |
+|  3  | ``replay`` | 0 or 1 | 0 | Whether there are replay matches. Don't combine with ``home_away``. |
+|  3  | ``neutral`` | 0 or 1 | 0 | Whether the cup round matches are on neutral ground. |
+|  3  | ``byes`` | integer >= -1 | -1 | The number of teams to get a bye in the cup round. The default value -1 means that the program computes the number of byes needed so that in the next round the number of teams is a power of 2. |
+|  3  | ``randomise_teams`` | 0 or 1 | 1 | Whether the order of teams gets randomised before writing the fixtures. Setting this to 0 makes sense in the first round of cups that you want to keep unchanged, e.g. the World Cup def. |
+|  3  | ``number_of_groups`` | integer, >= 0 | 0 | How many groups there are if we have a round robin stage. //0// means this is not a round robin stage. |
+|  3  | ``number_of_advance`` | integer, >= 0 | 1 | How many teams advance from each group (only relevant if ``number_of_groups`` is > 0). |
+|  3  | ``number_of_best_advance`` | integer, >= 0 | 0 | How many of the best teams (apart from those already advancing via ``number_of_advance``) across all groups advance ((only relevant if ``number_of_groups`` is > 0). |
+|  3  | ``new_teams`` | integer, >= 0 | 0 | How many teams come into the cup in a cup round (only specified if some of the teams have to be generated) |
+|  3  | ``delay`` | integer | 0 | This tag can be used to delay a cup round by a certain number of weeks or make it occur earlier (if the value is negative). Take care you don't get an overlap with the previous round if you use a negative delay. |
+|  3  | ``choose_teams`` | - | - | Tag enclosing the choose_team list of a cup round. |
+|  4  | ``choose_team`` | - | - | Tag enclosing a choose_team section. |
+|  5  | ``choose_team_sid`` | league or cup //sid// | - | The league or cup the team(s) get taken from. Can be a league or cup that's part of the country or a team from one of the league xml files not part of the country. |
+|  5  | ``number_of_teams`` | integer | -1  | How many teams get chosen. //-1// means all teams. |
+|  5  | ``start_idx`` | integer | - | The index of the first team to load (only relevant if ``number_of_teams`` != -1). |
+|  5  | ``end_idx`` | integer | - | The index of the last team to load (only relevant if ``number_of_teams`` != 0). Note that not all teams between the indices get loaded if ``number_of_teams`` is smaller than the range. |
+|  5  | ``randomly`` | 0 or 1 | 0 | Whether to load the teams randomly (only makes sense if ``number_of_teams`` != -1 and the range of the indices is bigger than ``number_of_teams``). |
+|  5  | ``generate`` | 0 or 1 | 0 | Whether to look for the team in the leagues and cups of the country or load and generate the team from an 'external' league xml file. |
+|  5  | ``skip_group_check`` | 0 or 1 | 0  | Whether to skip the check for teams competing in other cups from the same cup group. |
+|  5  | ``from_table`` | integer, >= 0 | 0 | To which table the choose_team refers, in case the league contains more than one. Default (0) is the cumulative table. The later a table gets added during a season, the higher its index. |
+
+
+======================================================================
+
+==Cup properties==
+
+: national
+  National cups, no teams have to be generated
+  ('cause they're from the leagues of the country).
+: international
+  International cup. Possibly, some teams have to get loaded
+  from xml files and generated.
+: promotion
+  A promotion games cup.
+: hide
+  Whether to hide the cup (the user doesn't see it anymore) after
+  the competition's finished. This is useful for 'auxiliary' cups
+  like some cups that are only needed to determine participating
+  teams for another cup.
+: weak_at_home
+  If this property is set, teams from lower leagues play at home against
+  teams from better leagues in cup rounds with only one match.
+: highlight1
+  First highlighting colour (commonly used for international cups).
+  If a cup with this property contains choose_teams specifying teams
+  from leagues, the corresponding teams have this colour (currently lightblue)
+  as background colour in the tables. 
+: highlight2
+  Second highlighting colour. Commonly used for promotion game cups
+  (currently khaki).
+: highlight3
+  Third highlighting colour. Currently gold.
+: league_talents
+  Whether to create teams based on the talent level of their league definition file rather than using the talent_diff value.
+: silent_on_fixture_error
+  Whether to keep silent and disable the cup if the fixture checking (e.g. for fixtures with the same team playing against itself) returns an error. This is useful for cups that don't always take place, e.g. if there's a double winner so that a Supercup isn't necessary.
+
+
+======================================================================
+
+==Tags used in player names files==
+
+|| Depth | Name | Possible values | Default value | Description |
+| 0 | ``names`` | - | - | Root tag. |
+| 1 | ``first_name`` | string | - | Tag enclosing a first name, e.g. 'John'. |
+| 1 | ``last_name`` | string | - | Tag enclosing a last name, e.g. 'Arbuckle'. |
+
+
+======================================================================
+
+==Tags used in team definition files==
+
+|| Depth | Name | Possible values | Default value | Description |
+| 0 | ``team`` | - | - | Root tag. |
+| 1 | ``team_name`` | string | - | Name of the team (may be an official one). |
+| 1 | ``stadium_name`` | string | - | Name of the stadium, like Bernabeu. |
+| 1 | ``symbol`` | string | - | Name of an image file (e.g. a team badge or a flag). |
+| 1 | ``average_talent`` | integer, between 0 and 10000 | - | Average talent for additional players that get generated (apart from the ones specified in the definition) to make the team complete. |
+| 1 | ``formation`` | integer, digits sum up to 10 | - | A team formation like 442 or 433. |
+| 1 | ``names_file`` | string | - | //sid// of a names file to load player names from (for the players that aren't specified in the def file). |
+| 1 | ``player`` | - | - | Tag enclosing a player section. |
+| 2 | ``player_name`` | string | - | Name of the player. |
+| 2 | ``birth_year`` | integer, > 0 | - | Year of birth in YYYY format (e.g. 1982). |
+| 2 | ``birth_month`` | integer, between 1 and 12 | - | Month of birth, e.g. 8 for August. |
+| 2 | ``skill`` | integer, between 0 and 10000 | - | Skill of player in percentage of max skill times 10000, e.g. 8000 to get a player whose skill is 80% of the maximum skill. |
+| 2 | ``talent`` | integer, between 0 and 10000, > skill | - | Talent of player in percentage, e.g. 9000 to have a player whose talent is 90% of the maximum skill. Talent must be greater or equal the skill value. |
+| 2 | ``position`` | 0, 1, 2 or 3 | - | Position of the player. Positions are: 0 (Goalie), 1 (Defender), 2 (Midfielder), 3 (Forward). |
+|  |  |  |  |  |
+
+
+======================================================================
+
+==Tags used in live game commentary files==
+
+|| Depth | Name | Possible values | Default value | Description |
+| 0 | ``lg_commentary`` | - | - | Root tag. |
+| 1 | ``event`` | - | - | Tag enclosing an event with a name and commentary strings. |
+| 2 | ``name`` | string | - | Tag enclosing the name of an event. See the [HOWTO def_howto.html] for a list of event names. |
+| 2 | ``commentary`` | string | - | A commentary belonging to an event. |
+| 2 | ``cond`` | string | - | NOT A TAG BUT AN ATTRIBUTE. A condition specifying when the commentary may be chosen. |
+| 2 | ``pri`` | string | - | NOT A TAG BUT AN ATTRIBUTE. A priority value. A high value relative to the rest of the commentaries for the given event increases the probability that the commentary gets picked. |
+
+[Here's an archive http://bygfoot.sf.net/misc/bygfoot-1.9-commentaries.tar.bz2]
+of current commentary files.
+
+======================================================================
+
+==Tags used in CPU strategy files==
+
+|| Depth | Name | Possible values | Default value | Description |
+|  0  | ``strategy`` | - | - | Root tag. |
+|  1  | ``sid`` | string | - | The unique string id of the strategy/file. |
+|  1  | ``desc`` | string | - | A short description of the strategy. |
+|  1  | ``priority`` | integer, > 0 | 1 | Priority of the strategy relative to all other strategies. |
+|  1  | ``prematch`` | - | - | Tag enclosing a prematch section. |
+|  1  | ``cond`` | string | - | Property for the ``prematch`` tag. |
+|  2  | ``formation`` | integer, checksum = 10 | - | A team formation, e.g. 442 or 433. |
+|  2  | ``lineup`` | //best//, //weakest//, //fittest//, //unfittest// | - | A lineup description. |
+|  2  | ``min_fitness`` | integer, between 0 and 100 | 0 | Property for the ``lineup`` tag. |
+|  2  | ``prematch_boost`` | //on//, //off//, //anti// | - | Boost state. |
+|  2  | ``prematch_style`` | //all-out-defend//, //defend//, //balanced//, //attack//, //all-out-attack// | - | Playing style of a team. |
+|  1  | ``match_action`` | - | - | Tag enclosing a match action. |
+|  1  | ``cond`` | string | - | Property for the ``match_action`` tag. |
+|  2  | ``style`` | //all-out-defend//, //defend//, //balanced//, //attack//, //all-out-attack// | - | Playing style of a team. |
+|  2  | ``boost`` | //on//, //off//, //anti// | - | Boost state. |
+|  2  | ``sub`` | - | - | Tag enclosing a substitution. |
+|  3  | ``in`` | //goalie//, //forward//, //midfielder//, //defender// | - | A playing position. |
+|  3  | ``out`` | //goalie//, //forward//, //midfielder//, //defender// | - | A playing position. |
+|  3  | ``prop`` | //best//, //weakest//, //fittest//, //unfittest// | - | Property for the ``in`` and ``out`` tags. |

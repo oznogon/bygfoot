@@ -1,0 +1,77 @@
+Links related to Bygfoot
+
+
+%!Style: green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!Encoding(man): iso8859-1
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(html): '<P ALIGN="center">' ''
+%!PostProc(tex): 'section\*' 'section'
+%!PostProc(tex): '\subsection' '\section'
+%!PostProc(tex): '\\subsubsection' '\\subsection'
+
+Here are some links to pages containing stuff that helped **Bygfoot**
+a lot.
+
+== Programs Bygfoot wouldn't exist without ==
+
+[[images/glade-2.png] http://glade.gnome.org] **Glade** -- Damon Chaplin's
+wonderful GUI-builder. It certainly doesn't generate beautifully structured,
+elegantly written interfaces, but it saves you approximately 90% programming
+time.
+----------------------------------------
+[[images/emacs.png] http://www.gnu.org/software/emacs/] **Emacs** -- The best
+editor for Linux. Well, maybe not the best, but in any case better than Vi ;-)
+----------------------------------------
+[[images/greyhounds.png] http://sourceforge.net/projects/byghound] 
+**Greyhounds** -- The BEST greyhound racing manager for Linux. Well... erm...
+probably the ONLY greyhound racing manager for Linux. Written by... me!
+Seriously: **Greyhounds** was my first graphical program ever, and of course
+**Bygfoot** is a lot better. But **Bygfoot** couldn't be what it is without
+**Greyhounds**.
+----------------------------------------
+[[images/pwrbytxt2tags-2.png] http://txt2tags.sourceforge.net] **txt2tags** --
+Well, **Bygfoot** would surely exist without **txt2tags**, but probably you
+would've had to wait another year for this website.
+
+== The Game That Inspired Bygfoot ==
+[Multi-player Soccer Manager http://s64.emuunlim.com/gameinfos/multiplayersoccermanager/multiplayersoccermanager.htm] 
+was a DOS game I played with Windoze (this is unfortunately some C64 version or
+so); it absorbed me for days. It had a huge drawback, though: it crashed from
+time to time when saving games, and it //always// crashed when you've completed
+a season in the first league. So I had to write **Bygfoot**...
+
+
+== Some of the sites linking to Bygfoot ==
+[[images/sflogo.gif] http://sourceforge.net] Hosting the main project site. 
+Many many **MANY** thanks to SourceForge.net for providing virtually
+//everything// an open source developer could wish for. It was happenstance 
+that I picked SF.NET as host when I started **Bygfoot**, and it turned out to 
+be a stroke of luck.
+----------------------------------------
+[[images/fm_link_button_3.gif] http://freshmeat.org] Another big and free OS
+hoster.
+----------------------------------------
+[[images/game_tome.png] http://www.happypenguin.org] Guess what the first link
+is when you look for a ``linux football manager'' with Google? Right. 
+----------------------------------------
+[[images/gnome_files.gif] http://www.gnomefiles.org] Another place you can find
+**Bygfoot**.
+----------------------------------------
+[[images/ll_newlogo3.gif] http://www.linuxlinks.com] Yet another page linking 
+to us.
+----------------------------------------
+[Loads of LINUX Links http://loll.sourceforge.net/linux/links/index.html] Allegedly the
+no. 2 Linux site on Google.
+=======================================
+If you know of another site we could submit **Bygfoot** to, [tell us! feedback.html].
+
+== One of the reasons why Bygfoot gets developed so slowly ==
+[[images/ficsanim.gif] http://www.freechess.org] Online chess is almost as
+addictive as **Bygfoot** -- take care. Gyözö's handle there is //macska//.

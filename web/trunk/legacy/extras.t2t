@@ -1,0 +1,36 @@
+Extra Stuff
+
+
+%!Style: green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!CmdLine(html): --toc
+% !PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(html): '<P ALIGN="center">' ''
+
+== Official team names and team definitions ==
+
+Because of copyright-trademark-whatever considerations both the
+official team names and the real player names were removed from
+versions >= 1.6.2 and 1.7.2.
+
+For versions < 1.9.0, you can
+[download them from here revisions/bygfoot-countries.tar.bz2]
+(a simple ``tar.bz2`` archive).
+
+Recommended destination directory is ``$HOME/.bygfoot/text_files``.
+
+Users who have the **Bygfoot** source package can also use the
+``bygfoot-update`` script to download and unpack the archive.
+
+Users who have versions >= 1.9.0 have to use the ``bygfoot-update``
+script to get official names. Since the script isn't included
+in the Windows package, you can also
+[get the official names here extras/official_names.zip]. Unpack
+into the ``support_files`` directory (or into ``$HOME/.bygfoot-1.9``
+if you use a Linux package other than the binary package).

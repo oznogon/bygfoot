@@ -1,0 +1,47 @@
+Bygfoot Documentation
+
+
+%!Style: ../green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(html): '<P ALIGN="center">' ''
+%!PreProc: '<!-- <p> -->' ''
+
+There is no official and full-fledged documentation for **Bygfoot** 1.9. There are at
+least two reasons for this:
+
+- Writing documentation is -- justly -- regarded as a loathsome and tedious task
+  by most programmers, including me; and since **Bygfoot** is a hobby project, done
+  in my free time, nobody can force me to write documentation [../images/smileys/wink.png].
+
+- **Bygfoot** is a very simple game. It's meant to be simple, easy to grasp
+  and easy to play. There are VERY few features that aren't obvious to the user
+  after playing for half an hour.
+
+
+Nevertheless there are a few possibilities to get the information you want:
+
++ If you want to install the game, [read the Installation Guide install.html].
++ [Go to the forums ../forum] and ask away in the appropriate forum, e.g. in "Help!".
++ [Go to the Bygfoot Wiki http://mec-symonds.eng.monash.edu.au/cgi-bin/twiki/view/Bygfoot/WebHome]
+  and see if you can find anything useful there; you're also encouraged to add to the
+  Wiki.
++ There are a couple of extensive HOWTOs for the Bygfoot 1.9 definition system
+  which [can help you write your own country or team definition. 1.9/def_howto.html]
++ If you just want to quickly look up the meaning/usage of a **Bygfoot** XML tag,
+  have a look at the [tags reference 1.9/tags_ref.html].
++ If all else fails don't hesitate to [contact us ../feedback.html].
+
+
+There is still some old documentation for the 1.8 branch, some of which
+is probably still relevant for the new versions. You might want to browse
+these, too:
+
++ [The full documentation for versions < 1.9.0. fulldoc.html]
++ [FAQ faq.html] for **Bygfoot** and the **Bygfoot** Team Editor, versions < 1.9.0.

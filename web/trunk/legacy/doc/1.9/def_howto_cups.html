@@ -1,0 +1,977 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../../green.css">
+<TITLE>How to write cup definition files</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>How to write cup definition files</H1>
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+    <UL>
+    <LI><A HREF="#toc1">How to create a cup definition file</A>
+      <UL>
+      <LI><A HREF="#toc2">General info</A>
+      <LI><A HREF="#toc3">Cup stages: cup_rounds</A>
+      <LI><A HREF="#toc4">Participating teams: choose_teams</A>
+      <LI><A HREF="#toc5">Putting things together: cup rounds and chooose_teams</A>
+      <LI><A HREF="#toc6">Promotion game cups</A>
+      <LI><A HREF="#toc7">How to create a supercup definition</A>
+      </UL>
+    </UL>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+<P>
+Last updated: 07/08/2006
+</P>
+<P>
+<A HREF="def_howto_leagues.html">&lt;- Previous</A> | <A HREF="def_howto.html">Overview</A> | <A HREF="def_howto_countries.html">Countries</A> | <A HREF="def_howto_leagues.html">Leagues</A> | Cups | <A HREF="def_howto_plnames.html">Player names</A> | <A HREF="def_howto_teams.html">Teams</A> | <A HREF="def_howto_lgcommentary.html">Live game commentary</A> | <A HREF="def_howto_strategy.html">CPU strategies</A> | <A HREF="def_howto_plnames.html">Next -&gt;</A>
+</P>
+<A NAME="toc1"></A>
+<H2>How to create a cup definition file</H2>
+<A NAME="toc2"></A>
+<H3>General info</H3>
+<P>
+This is a bit harder than league definitions. Let's look first at
+the general stuff, some of which we've already seen. The example
+is from the file <CODE>cup_europe_uefa.xml</CODE>.
+</P>
+<PRE>
+  &lt;cup&gt;
+   &lt;name&gt;UEFA Cup&lt;/name&gt;
+   &lt;short_name&gt;UEFA Cup&lt;/short_name&gt;
+   &lt;symbol&gt;flag_eu.png&lt;/symbol&gt;
+   &lt;sid&gt;europe_uefa&lt;/sid&gt;
+  
+    # Name, short name, symbol and string id we
+    # already know.
+  
+    &lt;group&gt;1&lt;/group&gt;
+  
+    # This means the cup belongs to a group of cups
+    # that are related in the sense that they may not
+    # feature the same teams. All those cups should have
+    # the same group number. Currently, the UEFA Cup
+    # the Champions' League and the Cup Winners' Cup are
+    # all in the same group.
+  
+    # By default (e.g. if you leave out the tag)
+    # this value is -1, which means there is
+    # no restriction whatsoever.
+  
+    &lt;yellow_red&gt;3&lt;/yellow_red&gt;
+  
+    # We've mentioned this in the leagues: the
+    # number of yellow cards a player may accumulate
+    # before he gets banned automatically for a
+    # match.
+  
+    &lt;talent_diff&gt;250&lt;/talent_diff&gt;
+  
+    # This is a bit different from the
+    # 'average_talent' tag in league
+    # definitions. This one gives the difference of
+    # the average talent (in percentage) in the cup
+    # compared to the first league in the
+    # country. It can also be negative, of
+    # course. In this case the cup teams are on
+    # average 2,5% better than the teams in the
+    # first league.  This is only needed for
+    # international cups.
+  
+    &lt;last_week&gt;44&lt;/last_week&gt;
+  
+    # It's nicer to be able to give the week of the
+    # final, so we don't have a 'first_week' tag for
+    # cups, but a 'last_week'.
+  
+    &lt;week_gap&gt;4&lt;/week_gap&gt;
+  
+    # The week_gap tag is the same as in league
+    # definitions.
+  
+    &lt;add_week&gt;0&lt;/add_week&gt;
+    
+    # This determines when the cup fixtures get written
+    # and the cup gets added to the cups array. The user
+    # doesn't see the cup before this (in the fixtures
+    # view, for instance).
+  
+    # There are four possibilities here:
+  
+    # 1. Specify 0 (which is also the default
+    # value, so we could as well leave out the
+    # tag here). The cup gets loaded at the beginning
+    # of a season after the promotions/relegations
+    # have taken place.
+  
+    # 2. Specify -1. The cup gets loaded at
+    # the beginning of the season before
+    # promotions/relegations take place.
+  
+    # 3. Specify 1000, which means the cup fixtures
+    # get generated and the cup becomes visible to
+    # the user as soon as the leagues and cups
+    # in the cup's choose_teams (see below) are finished.
+    # This is used for cups that depend on some leagues'
+    # (and/or cups') outcome, e.g. supercups or promotion
+    # game cups.
+  
+    # 4. Specify a normal week number, like 20. In this
+    # case the cup fixtures get generated exactly at the end
+    # of week 20.
+  
+    &lt;property&gt;international&lt;/property&gt;
+  
+    # A cup property. See the tags reference for more properties.
+  
+    &lt;property&gt;highlight1&lt;/property&gt;
+  
+    # Another property. This is important for the table
+    # colouring of leagues. See the tags reference.
+  
+  ...snip...
+  
+  &lt;/cup&gt;
+</PRE>
+<P></P>
+<P>
+Another property that can be useful is <CODE>weak_at_home</CODE>. If set,
+teams from lower leagues will always play at home against
+teams from better leagues in cup rounds with only one match.
+</P>
+<A NAME="toc3"></A>
+<H3>Cup stages: cup_rounds</H3>
+<P>
+How do we know what kind of stages there are in the cup? For this
+we have the <CODE>cup_round</CODE> elements. A cup round describes a stage
+in the cup, e.g. a stage of round robin games, or a stage of
+home-away games (for instance the Champions' League
+quarter-finals).
+</P>
+<P>
+Note that you have to write the appropriate number of cup rounds
+into the definition. If you have only 8 teams, you can't have 5
+rounds of knock-out, you can have only 3. If you have 10 teams,
+you'll have 4 rounds (and 6 teams get a bye for the first round).
+</P>
+<P>
+Now, the corresponding part of <CODE>cup_europe_uefa.xml</CODE> looks a bit
+weird:
+</P>
+<PRE>
+    &lt;cup_rounds&gt;
+      &lt;cup_round&gt;
+      &lt;/cup_round&gt;
+  
+      &lt;cup_round&gt;
+      &lt;/cup_round&gt;
+  
+      &lt;cup_round&gt;
+      &lt;/cup_round&gt;
+  
+      &lt;cup_round&gt;
+      &lt;/cup_round&gt;
+  
+      &lt;cup_round&gt;
+      &lt;/cup_round&gt;
+    &lt;/cup_rounds&gt;
+</PRE>
+<P>
+Obviously we have a tag telling us that we have a cup_round
+listing here (<CODE>cup_rounds</CODE>) and 5 cup rounds. But why are they
+empty? Well, this is simply because when reading definition
+files, Bygfoot fills in the attributes that are not explicitly
+specified in the file with default values. And for the UEFA Cup
+the default values are perfectly fitting.  So let's have a look
+at the cup rounds of the <CODE>cup_europe_champ_league.xml</CODE> file:
+</P>
+<PRE>
+    &lt;cup_rounds&gt;
+      &lt;cup_round&gt;
+      &lt;number_of_groups&gt;4&lt;/number_of_groups&gt;
+  
+      # Aha. Here's something. 'number_of_groups',
+      # being non-zero, tells us that we have a
+      # round robin stage.  We have 4 groups. Of
+      # course this means that the number of teams
+      # for this cup round HAS TO BE DIVISIBLE BY 4!
+      # We'll see how to achieve this later.
+  						
+      &lt;number_of_advance&gt;2&lt;/number_of_advance&gt;
+  
+      # This one tells us, how many teams advance
+      # from each group.  Here, the first two teams
+      # advance.  A tag not used here is
+      # 'number_of_best_advance' which would cause a
+      # certain number of teams to advance even if
+      # they are not among the first in the group if
+      # they are among the best of the rest of the
+      # teams across all groups.
+  
+      &lt;/cup_round&gt;
+  
+      &lt;cup_round&gt;
+      &lt;/cup_round&gt;
+  
+      &lt;cup_round&gt;
+      &lt;/cup_round&gt;
+  
+      # Quarter-final and semi-final are default,
+      # home-away pairings.
+  
+      &lt;cup_round&gt;
+       &lt;home_away&gt;0&lt;/home_away&gt;
+       &lt;neutral&gt;1&lt;/neutral&gt;
+     &lt;/cup_round&gt;
+  
+      # But the final is is not home-away: it's one
+      # match on neutral ground.
+</PRE>
+<P></P>
+<P>
+One final example from the <CODE>cup_england_fa.xml</CODE>
+file:
+</P>
+<PRE>
+  &lt;cup&gt;
+    &lt;name&gt;FA Cup&lt;/name&gt;
+    &lt;short_name&gt;FA Cup&lt;/short_name&gt;
+    &lt;symbol&gt;flag_en.png&lt;/symbol&gt;
+    &lt;sid&gt;england_fa&lt;/sid&gt;
+    &lt;last_week&gt;47&lt;/last_week&gt;
+    &lt;week_gap&gt;4&lt;/week_gap&gt;
+    &lt;property&gt;national&lt;/property&gt;
+  
+    # Here we have a national cup.
+  
+    &lt;cup_rounds&gt;
+      &lt;cup_round&gt;
+        &lt;home_away&gt;0&lt;/home_away&gt;
+        &lt;replay&gt;1&lt;/replay&gt;
+  
+        # This is something new. If we don't have
+        # home-away matches, but only one match, we
+        # can specify a 'replay' number. This means,
+        # if the first match ends in a draw, the
+        # match gets repeated at the away team's
+        # place. The replay number can also be
+        # greater than 1, which would lead to a
+        # third match and so forth if there are
+        # draws.
+  
+        # Replay should only be used when there are
+        # no home-away matches, obviously.
+  
+        &lt;byes&gt;10&lt;/byes&gt;
+  
+        # We didn't see this tag yet, either.
+        # Here we specify how many teams get a bye.
+        # If we leave it out, the program computes
+        # how many teams have to get a bye so that
+        # in the following cup round the number of
+        # teams is a power of 2.
+  
+      &lt;/cup_round&gt;
+      &lt;cup_round&gt;
+        &lt;home_away&gt;0&lt;/home_away&gt;
+        &lt;replay&gt;1&lt;/replay&gt;
+        &lt;byes&gt;0&lt;/byes&gt;
+        
+        # byes = 0 has to be specified in order to
+        # suppress the default game behaviour to
+        # give byes so that in the following round
+        # there are 2^n teams.
+  
+      &lt;/cup_round&gt;
+      &lt;cup_round&gt;
+        &lt;home_away&gt;0&lt;/home_away&gt;
+        &lt;replay&gt;1&lt;/replay&gt;
+      &lt;/cup_round&gt;
+      &lt;cup_round&gt;
+        &lt;home_away&gt;0&lt;/home_away&gt;
+        &lt;replay&gt;1&lt;/replay&gt;
+      &lt;/cup_round&gt;
+      &lt;cup_round&gt;
+        &lt;home_away&gt;0&lt;/home_away&gt;
+        &lt;replay&gt;1&lt;/replay&gt;
+      &lt;/cup_round&gt;
+      &lt;cup_round&gt;
+        &lt;home_away&gt;0&lt;/home_away&gt;
+        &lt;replay&gt;1&lt;/replay&gt;
+      &lt;/cup_round&gt;
+      &lt;cup_round&gt;
+        &lt;home_away&gt;0&lt;/home_away&gt;
+        &lt;neutral&gt;1&lt;/neutral&gt;
+        &lt;replay&gt;1&lt;/replay&gt;
+      &lt;/cup_round&gt;
+      &lt;cup_round&gt;
+        &lt;home_away&gt;0&lt;/home_away&gt;
+        &lt;neutral&gt;1&lt;/neutral&gt;
+        &lt;replay&gt;1&lt;/replay&gt;
+      &lt;/cup_round&gt;
+    &lt;/cup_rounds&gt;
+  
+      # The semi-final and final matches of the FA
+      # Cup are on neutral ground (but still with
+      # replay, so no extra time and penalty
+      # shoot-out in the first match).
+</PRE>
+<P></P>
+<P>
+The complete list of tags available for cup rounds:
+</P>
+<UL>
+<LI>home_away
+<LI>replay
+<LI>neutral
+<LI>byes
+<LI>round_robin_number_of_groups
+<LI>round_robin_number_of_advance
+<LI>round_robin_number_of_best_advance
+<LI>delay
+</UL>
+
+<P>
+<CODE>replay</CODE> should only be used for knock-out cup rounds without home-away
+matches.
+<CODE>delay</CODE> can be used to delay a cup round by a certain number of
+weeks or make it occur earlier (if the value is negative). Take care you don't
+get an overlap with the previous round if you use a negative delay.
+</P>
+<A NAME="toc4"></A>
+<H3>Participating teams: choose_teams</H3>
+<P>
+It remains to specify which teams take part in the cup. For this
+task there is the <CODE>choose_team</CODE> tag and the CupChooseTeam struct
+in the source code.  Let's see how this is done in the
+<CODE>cup_england_league.xml</CODE> file:
+</P>
+<PRE>
+    &lt;choose_teams&gt;
+  
+    # Tag enclosing the choose_team elements.
+  
+      &lt;choose_team&gt;
+        &lt;choose_team_sid&gt;england1&lt;/choose_team_sid&gt;
+        &lt;/choose_team&gt;
+  
+      # An element. The league the teams get loaded
+      # from is given with its string id.
+  
+      # Since nothing else is specified here, all
+      # teams from that league get loaded.
+  
+      &lt;choose_team&gt;
+        &lt;choose_team_sid&gt;england2&lt;/choose_team_sid&gt;
+        &lt;/choose_team&gt;
+         &lt;choose_team&gt;
+        &lt;choose_team_sid&gt;england3&lt;/choose_team_sid&gt;
+        &lt;/choose_team&gt;
+         &lt;choose_team&gt;
+        &lt;choose_team_sid&gt;england4&lt;/choose_team_sid&gt;
+        &lt;/choose_team&gt;
+  
+      # Apparently, all teams from the first four English
+      # leagues take part.  Since the number of
+      # teams isn't a power of 2, in general, a
+      # couple of teams will have a bye for the
+      # first cup round (teams from the first leagues
+      # are preferred).
+  
+    &lt;/choose_teams&gt;
+</PRE>
+<P>
+Things are a bit more complicated for international cups. The
+choose_teams part of <CODE>cup_europe_champ_league.xml</CODE> looks like this:
+</P>
+<PRE>
+    &lt;choose_teams&gt;
+    
+    &lt;choose_team&gt;
+    &lt;choose_team_sid&gt;LEAGUE1&lt;/choose_team_sid&gt;
+  
+    # ATTENTION: this isn't a normal string id like
+    # 'england1'. Here we have ids like 'LEAGUE1',
+    # 'LEAGUE2' or 'CUP1', which refer to the
+    # leagues and cup arrays of the
+    # country. 'LEAGUE1' tells the program to fetch
+    # the first team (in the tables) of the first
+    # league in the leagues array. In this case we
+    # would get (at the end of the season) the
+    # Premiership champion.
+  
+    &lt;number_of_teams&gt;1&lt;/number_of_teams&gt;
+  
+    # How many teams do we choose? One.
+  
+    &lt;start_idx&gt;1&lt;/start_idx&gt;
+    &lt;end_idx&gt;1&lt;/end_idx&gt;
+  
+    # The first one.
+  
+    &lt;/choose_team&gt;
+  
+  
+    # Here come the normal choose_team elements.
+    
+    &lt;choose_team&gt;
+    &lt;choose_team_sid&gt;france1&lt;/choose_team_sid&gt;
+  
+    # Now this is a normal string id again, telling
+    # us to get the teams from the
+    # 'league_france1.xml' file.
+  
+    &lt;number_of_teams&gt;1&lt;/number_of_teams&gt;
+  
+    # One team only.
+  
+    &lt;randomly&gt;1&lt;/randomly&gt;
+  
+    # Randomly chosen. Since we don't specify a
+    # range with 'start_idx' and 'end_idx', the team
+    # gets chosen from all teams in the league.
+  
+    &lt;generate&gt;1&lt;/generate&gt;
+  
+    # This tells the program to load the team name
+    # from an xml file and generate it instead of looking
+    # for it in the local leagues. The default value for
+    # this tag is 0, which is why it's omitted in the
+    # choose_teams in the national cups.
+  
+    &lt;/choose_team&gt;
+  
+    ...snip...
+  
+    &lt;choose_team&gt;
+    &lt;choose_team_sid&gt;denmark1_short&lt;/choose_team_sid&gt;
+    &lt;number_of_teams&gt;1&lt;/number_of_teams&gt;
+    &lt;randomly&gt;1&lt;/randomly&gt; &lt;/choose_team&gt;
+    &lt;generate&gt;1&lt;/generate&gt;
+  
+    # All the other 'choose_team' elements look the
+    # same.  The interesting thing is, there are 17
+    # choose_teams. But note that 'england1'
+    # is among the choose_teams.  The program
+    # notices it if a choose_team has the same sid
+    # as a league in the country and omits the
+    # choose_team. Like this it's possible for
+    # country_france.xml to include the cup without
+    # problems; in that case, the French choose_team
+    # gets omitted.
+    # Now if you make some exotic definition like
+    # Luxemburg, you can still include this cup; if
+    # the program notices there are 17 teams instead
+    # of the 16 given in &lt;overall_teams&gt;, one 
+    # choose_team gets removed.
+</PRE>
+<P>
+Let's look at the <CODE>choose_team</CODE> stuff in the
+<CODE>cup_europe_uefa.xml</CODE> file:
+</P>
+<PRE>
+    &lt;choose_team&gt;
+    &lt;choose_team_sid&gt;LEAGUE1&lt;/choose_team_sid&gt;
+  
+    # The teams from the first league participate,
+    # of course.
+  
+    &lt;number_of_teams&gt;3&lt;/number_of_teams&gt;
+  
+    # Three teams.
+    
+    &lt;start_idx&gt;2&lt;/start_idx&gt;
+    &lt;end_idx&gt;5&lt;/end_idx&gt;
+  
+    # Now this is weird. Why do we start at index 2
+    # and end at index 5 (which makes 4 teams) if we
+    # only need 3 teams? The answer is, one of the
+    # teams ranked 2nd to 4th could be the FA Cup
+    # winner, which would lead to the team taking
+    # part in the Cup Winners' Cup.  And we don't
+    # want a team to take part in two international
+    # cups.  So if e.g. the second team wins the FA
+    # Cup, the 5th team would take part in the UEFA
+    # Cup. (See also the notes on the order of cups
+    # at the end of the country file section).
+  
+    &lt;/choose_team&gt;
+  
+    &lt;choose_teams&gt;
+     &lt;choose_team&gt;
+    &lt;choose_team_sid&gt;england1 france1 germany1_short
+    greece1_short italy1_short netherlands1_short
+    portugal1_short russia1_short scotland1_short
+    spain1_short switzerland1_short turkey1_short
+    ukraine1_short belgium1_short czech1_short
+    denmark1_short&lt;/choose_team_sid&gt;
+  
+    # Wow! What's this? A list of string ids?
+    # Yes. This is an easy way make the program load
+    # a lot of teams from a lot of different
+    # leagues.
+  
+    &lt;number_of_teams&gt;29&lt;/number_of_teams&gt;
+  
+    # We load 29 teams (which makes 32 overall
+    # together with the 3 from the first league).
+  
+    &lt;randomly&gt;1&lt;/randomly&gt;
+  
+    # We load them randomly.
+  
+    &lt;generate&gt;1&lt;/generate&gt;
+  
+    # They have to be generated.
+  
+    &lt;/choose_team&gt; &lt;/choose_teams&gt;
+</PRE>
+<P>
+Finally, we take a look at the first <CODE>choose_team</CODE> in the Cup
+Winners' Cup definition file <CODE>cup_europe_cwc.xml</CODE>:
+</P>
+<PRE>
+    &lt;choose_team&gt;
+    &lt;choose_team_sid&gt;CUP1&lt;/choose_team_sid&gt;
+  
+    # Again, we have a special kind of string id,
+    # telling us to get a team from the first cup in
+    # the cups array.  If we play with the English country,
+    # this would be the FA Cup.
+  
+    # ATTENTION: If the cup containing this choose_team is
+    # one that gets generated at the beginning of each season
+    # (which is the case here) and is not a supercup or so,
+    # that's generated during a season, the cup specified in
+    # the choose_team should be a national one, because the teams
+    # from international cups get deleted at the end of each season.
+  
+    &lt;number_of_teams&gt;1&lt;/number_of_teams&gt;
+  
+    # We only need one team.
+  
+    &lt;start_idx&gt;1&lt;/start_idx&gt;
+    &lt;end_idx&gt;2&lt;/end_idx&gt;
+  
+    # But the FA Cup winner could be the same team
+    # that won the Premiership, and in that case the
+    # team takes part in the Champions' League, so
+    # we have to specify a range of two teams
+    # instead of only one.
+  
+    # We have no 'generate' tag, because he team is
+    # a league team, so the 'generate' value will be
+    # the default 0 value.
+  
+    &lt;/choose_team&gt;
+</PRE>
+<P></P>
+<P>
+Let's have a look at all the tags relevant for <CODE>choose_teams</CODE>:
+</P>
+<UL>
+<LI>choose_team_sid
+<LI>number_of_teams
+<LI>start_idx
+<LI>end_idx
+<LI>randomly
+<LI>generate
+</UL>
+
+<P>
+The <CODE>number_of_teams</CODE> is by default -1, so that all teams from
+the specified league get loaded (so that the <CODE>start_idx</CODE> and
+<CODE>end_idx</CODE> values aren't considered). <CODE>randomly</CODE> is by default 0,
+just like <CODE>generate</CODE>.
+</P>
+<P>
+The string id can also consist of a white-space separated list of
+string ids.
+</P>
+<P>
+Two special kinds of <I>sids</I> are <CODE>LEAGUEX</CODE> and <CODE>CUPX</CODE> with
+<CODE>X</CODE> being a number between 1 and the number of leagues (or cups)
+in the country.
+</P>
+<P>
+If the cup round is a knockout round and the number of teams isn't
+a power of 2, as many teams get a bye as is required so that the advancing
+teams and the teams with a bye make a power of 2.
+</P>
+<P>
+If the cup round is round robin, and the number of teams isn't divisible
+by the number of groups, as many teams get a bye as is required so that
+the number of teams gets divisible by the number of groups.
+</P>
+<A NAME="toc5"></A>
+<H3>Putting things together: cup rounds and chooose_teams</H3>
+<P>
+Until now it seemed that <CODE>choose_teams</CODE> and <CODE>cup_rounds</CODE> are both
+equal parts of the cup definition. But the two are nested: the <CODE>choose_teams</CODE>
+have to be put into the cup rounds! We've concealed the choose_team
+parts of the cup rounds in the cup round section to keep things simple.
+</P>
+<P>
+The things explained about the two structures are of course still valid.
+Just don't make the error of putting the choose_teams and the cup rounds
+separately.
+</P>
+<P>
+Now let's look at some cup rounds with choose_teams included. The first
+round of the UEFA Cup (<CODE>cup_europe_uefa.xml</CODE>) looks like this:
+</P>
+<PRE>
+      &lt;cup_round&gt;
+        &lt;new_teams&gt;32&lt;/new_teams&gt;
+  
+        # This is one tag we didn't mention above because
+        # it's directly related to the choose_teams.
+  
+        # This number has to be specified each time new
+        # teams get loaded AND generated. It's the total number
+        # of teams that should be taken from the choose_teams,
+        # ie. local league teams are counted, too.
+  
+        # Here we'll have 32 teams, 3 of which come from
+        # the local league 1.
+  
+        # If all the choose_teams refer to teams already
+        # generated (e.g. if it's a national cup or a
+        # supercup), this tag can be left out.
+  
+        &lt;choose_teams&gt;
+  
+  	&lt;choose_team&gt;
+  	  &lt;choose_team_sid&gt;LEAGUE1&lt;/choose_team_sid&gt;
+  	  &lt;number_of_teams&gt;3&lt;/number_of_teams&gt;
+  	  &lt;start_idx&gt;2&lt;/start_idx&gt;
+  	  &lt;end_idx&gt;5&lt;/end_idx&gt;
+  	&lt;/choose_team&gt;
+  
+  	&lt;choose_team&gt;
+  	  &lt;choose_team_sid&gt;england1 france1 germany1_short greece1_short
+  	    italy1_short netherlands1_short portugal1_short russia1_short
+  	    scotland1_short spain1_short switzerland1_short turkey1_short
+  	    ukraine1_short belgium1 czech1_short
+  	    denmark1_short&lt;/choose_team_sid&gt;
+  	  &lt;number_of_teams&gt;29&lt;/number_of_teams&gt;
+  	  &lt;randomly&gt;1&lt;/randomly&gt;
+  	  &lt;generate&gt;1&lt;/generate&gt;
+  	&lt;/choose_team&gt;
+  
+        &lt;/choose_teams&gt;
+  
+      &lt;/cup_round&gt;
+  
+      # What does this all mean? Well, for the first cup round
+      # the above specified teams get loaded and the fixtures
+      # get generated using them.    
+</PRE>
+<P>
+Now, why should the choose_teams be part of the cup rounds? Because this way,
+we can load new teams in later cup rounds. Say, you first want the teams from
+weaker countries to play against each other, and then in the second cup round
+the teams from the stronger countries come into play. You can simply specify
+the choose_teams of the first cup round to include the weak countries, and
+those of the second cup round to include the stronger ones. The teams loaded
+in the second round will then play against the winners from the first round.
+</P>
+<P>
+You only have to take care not to forget the <CODE>new_teams</CODE> tag if new teams
+get actually generated (<CODE>generate</CODE> = 1 in the choose_teams) in a cup round,
+and to have the appropriate number of cup rounds.
+</P>
+<P>
+One more example from the <CODE>cup_england_league.xml</CODE> file:
+</P>
+<PRE>
+      &lt;cup_round&gt;
+        &lt;home_away&gt;0&lt;/home_away&gt;
+  
+        # Note that there is no 'new_teams' tag here. This is
+        # because all teams are from leagues and don't have to
+        # be generated.
+  
+        &lt;choose_teams&gt;
+  	&lt;choose_team&gt;
+  	  &lt;choose_team_sid&gt;england1&lt;/choose_team_sid&gt;
+  	&lt;/choose_team&gt;
+  
+  	# No 'number_of_teams' tag, no start and end indices:
+  	# all teams get loaded.
+  
+  	&lt;choose_team&gt;
+  	  &lt;choose_team_sid&gt;england2&lt;/choose_team_sid&gt;
+  	&lt;/choose_team&gt;
+  	&lt;choose_team&gt;
+  	  &lt;choose_team_sid&gt;england3&lt;/choose_team_sid&gt;
+  	&lt;/choose_team&gt;
+  	&lt;choose_team&gt;
+  	  &lt;choose_team_sid&gt;england4&lt;/choose_team_sid&gt;
+  	&lt;/choose_team&gt;
+        &lt;/choose_teams&gt;
+  
+      &lt;/cup_round&gt;
+</PRE>
+<P></P>
+<A NAME="toc6"></A>
+<H3>Promotion game cups</H3>
+<P>
+Promotion game cups (specified in the league definition) are
+are an example of cups that only get visible to the user after
+quite a few weeks in the season.
+</P>
+<P>
+<B>Attention:</B> Even if teams from more then one league participate
+in the cup, the promotion game (containing the cup <I>sid</I>) should
+only be defined in one league definition file (and <B>not</B> in all
+of them).
+</P>
+<P>
+Let's have a look at the header of the
+<CODE>cup_england_prom_games2.xml</CODE> file:
+</P>
+<PRE>
+    &lt;name&gt;Promotion Games FLC&lt;/name&gt;
+    &lt;short_name&gt;Prom. Gam.&lt;/short_name&gt;
+    &lt;symbol&gt;flag_en.png&lt;/symbol&gt;
+    &lt;sid&gt;england_prom_games2&lt;/sid&gt;
+    &lt;add_week&gt;1000&lt;/add_week&gt;
+  
+    # This is one of the special values (the
+    # others being -1 and 0) that can be specified. This
+    # means that the cup gets visible (and the fixtures
+    # get written) as soon as all the leagues and cups
+    # given in the choose_teams are finished.
+  
+    # Because of this, the 'last_week' tag is left
+    # out, the cup begins in the week just after the
+    # last one of the competitions given in the choose_teams
+    # is finished.
+  
+    &lt;property&gt;national&lt;/property&gt;
+    &lt;property&gt;highlight2&lt;/property&gt;
+  
+</PRE>
+<P></P>
+<P>
+Note that the following tags are omitted:
+</P>
+<UL>
+<LI>talent_diff
+<LI>last_week (determined automatically)
+<LI>week_gap (optional, default value 1)
+</UL>
+
+<P>
+Cup rounds and choose_teams are completely normal here:
+</P>
+<PRE>
+    &lt;cup_rounds&gt;
+    &lt;cup_round&gt;
+      &lt;home_away&gt;1&lt;/home_away&gt;
+  
+      &lt;choose_teams&gt;
+        &lt;choose_team&gt;
+        &lt;choose_team_sid&gt;england2&lt;/choose_team_sid&gt;
+        &lt;number_of_teams&gt;4&lt;/number_of_teams&gt;
+        &lt;start_idx&gt;3&lt;/start_idx&gt;
+        &lt;end_idx&gt;6&lt;/end_idx&gt;
+        &lt;/choose_team&gt;
+      &lt;/choose_teams&gt;
+  
+    # Here we take the teams ranked 3rd to 6th from
+    # the second league in England. You could also
+    # specify teams from different leagues, you just
+    # have to take care that the number of teams in
+    # the leagues stays the same after the teams get
+    # promoted and relegated. Probably you'd have to
+    # use the 'prom_games_loser_sid' tag to achieve
+    # this (see the league section).
+  
+    &lt;/cup_round&gt;
+    &lt;cup_round&gt;
+      &lt;home_away&gt;0&lt;/home_away&gt;
+      &lt;neutral&gt;1&lt;/neutral&gt;
+    &lt;/cup_round&gt;
+    &lt;/cup_rounds&gt;
+  
+    # Two cup rounds (we load 4 teams), one
+    # home_away and the second on neutral ground.
+  
+    # Since we've given an add_week value of 1000
+    # in the header part, the cup fixtures will be
+    # written after the second English league is
+    # finished (which is the logical thing to do,
+    # because we only know at the end of the league
+    # which teams qualify for the promotion games).
+  
+  &lt;/cup&gt;
+</PRE>
+<P></P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc7"></A>
+<H3>How to create a supercup definition</H3>
+<P>
+A supercup is a match-up between two season winners, e.g. the
+champion of the first league and the national cup or the winners
+of two different cups. A supercup definition is a normal cup
+definition with a few specialties. Here's the example, the
+<CODE>cup_supercup_europe_uefa.xml</CODE> file:
+</P>
+<PRE>
+  &lt;cup&gt;
+    &lt;name&gt;UEFA Supercup&lt;/name&gt;
+    &lt;short_name&gt;UEFA SC&lt;/short_name&gt;
+    &lt;sid&gt;supercup_europe_uefa&lt;/sid&gt;
+    &lt;add_week&gt;1000&lt;/add_week&gt;
+    &lt;property&gt;international&lt;/property&gt;
+  
+    # The general stuff. We
+    # have add_week 1000; week_gap and last_week
+    # are not specified, on the other hand (last_week
+    # gets determined automatically, and week_gap is
+    # the default 1; it isn't relevant anyway because
+    # we have only one match in the cup).
+  
+    # You could also give a normal week number for
+    # 'add_week', if you want the supercup to begin later;
+    # you just have to take care that the leagues and cups
+    # in the choose_teams are already finished at that
+    # time of the season.
+  
+    &lt;cup_rounds&gt;
+      &lt;cup_round&gt;
+      &lt;home_away&gt;0&lt;/home_away&gt;
+      &lt;neutral&gt;1&lt;/neutral&gt;
+  
+      &lt;choose_teams&gt;
+    
+       &lt;choose_team&gt;
+       &lt;choose_team_sid&gt;europe_champ_league&lt;/choose_team_sid&gt;
+       &lt;number_of_teams&gt;1&lt;/number_of_teams&gt;
+       &lt;start_idx&gt;1&lt;/start_idx&gt;
+       &lt;end_idx&gt;1&lt;/end_idx&gt;
+       &lt;/choose_team&gt;
+  
+       # The first team is the winner of the Champions'
+       # League. Take care not to
+       # include the 'cup_' prefix in the sid.
+  
+      &lt;choose_team&gt;
+      &lt;choose_team_sid&gt;europe_cwc&lt;/choose_team_sid&gt;
+      &lt;number_of_teams&gt;1&lt;/number_of_teams&gt;
+      &lt;start_idx&gt;1&lt;/start_idx&gt;
+      &lt;end_idx&gt;1&lt;/end_idx&gt;
+      &lt;/choose_team&gt;
+  
+      # The second team is the winner of the Cup
+      # Winners' Cup.  Since the teams participating
+      # in the two cups are different (the cups have
+      # the same 'group' value), we don't need a
+      # special rule in case the same team wins both.
+  
+     &lt;/choose_teams&gt;
+  
+     &lt;/cup_round&gt;
+    &lt;/cup_rounds&gt;
+  
+    # Only one cup round because we have only two
+    # teams.
+  
+  &lt;/cup&gt;
+</PRE>
+<P></P>
+<P>
+A second, slightly more complicated example, the
+<CODE>cup_supercup_league_vs_cup.xml</CODE> file. This can be used
+in any country definition where there is a supercup between
+the first league champion and the first cup champion.
+</P>
+<PRE>
+  &lt;cup&gt;
+    &lt;name&gt;National Supercup&lt;/name&gt;
+    &lt;short_name&gt;Nat. Supercup&lt;/short_name&gt;
+    &lt;sid&gt;supercup_league_vs_cup&lt;/sid&gt;
+    &lt;add_week&gt;1000&lt;/add_week&gt;
+    &lt;group&gt;137&lt;/group&gt;
+    &lt;property&gt;national&lt;/property&gt;
+  
+    # Since this definition can be used in a lot of
+    # different country files, we don't have a
+    # country-specific name here.
+    
+    # The league champion and the cup champion could
+    # be the same team, so a group number is given
+    # (a fairly unique one).
+  
+    &lt;cup_rounds&gt;
+      &lt;cup_round&gt;
+      &lt;home_away&gt;0&lt;/home_away&gt;
+      &lt;neutral&gt;1&lt;/neutral&gt;
+  
+      &lt;choose_teams&gt;
+    
+        &lt;choose_team&gt;
+        &lt;choose_team_sid&gt;CUP1&lt;/choose_team_sid&gt;
+        &lt;number_of_teams&gt;1&lt;/number_of_teams&gt;
+        &lt;start_idx&gt;1&lt;/start_idx&gt;
+        &lt;end_idx&gt;1&lt;/end_idx&gt;
+        &lt;/choose_team&gt;
+  
+        # We have a general string id here.
+        # This tells the program to fetch the
+        # winner of the first cup in the cups array (if
+        # you have a look at 'country_england.xml',
+        # you'll see that that's the FA Cup) for the
+        # supercup.
+  
+        &lt;choose_team&gt;
+        &lt;choose_team_sid&gt;LEAGUE1&lt;/choose_team_sid&gt;
+        &lt;number_of_teams&gt;1&lt;/number_of_teams&gt;
+        &lt;start_idx&gt;1&lt;/start_idx&gt;
+        &lt;end_idx&gt;2&lt;/end_idx&gt;
+        &lt;/choose_team&gt;
+  
+        # Here we take the champion of the first league
+        # in the leagues array (in 'country_england.xml'
+        # that'd be the Premier League).  The important
+        # thing here is that the start- and end-indices
+        # specify a range of TWO teams. This doesn't
+        # mean the program will load two teams from the
+        # league (because number_of_teams is 1); it's
+        # meant to deal with the possibility that the
+        # same team wins both the league and the cup.
+        # In this case the second team from the league
+        # (the league runner-up) would be picked.
+  
+        # Of course it's possible to do things the other
+        # way round. If you write the choose_team for
+        # the league first, with indices 1 and 1, and
+        # the cup second, with indices 1 and 2, the cup
+        # runner-up gets loaded in case there is a
+        # double winner.
+  
+      &lt;/choose_teams&gt;
+  
+      &lt;/cup_round&gt;
+    &lt;/cup_rounds&gt;
+  
+    # As usual for supercups, one match on neutral
+    # ground.
+  
+  &lt;/cup&gt;
+</PRE>
+
+<!-- html code generated by txt2tags 2.2 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html def_howto_cups.t2t -->
+</BODY></HTML>

@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../../green.css">
+<TITLE>How to write country definition files</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>How to write country definition files</H1>
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+    <UL>
+    <LI><A HREF="#toc1">How to create a country file</A>
+    </UL>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+<P>
+Last updated: 07/08/2006
+</P>
+<P>
+<A HREF="def_howto.html">&lt;- Previous</A> | <A HREF="def_howto.html">Overview</A> | Countries | <A HREF="def_howto_leagues.html">Leagues</A> | <A HREF="def_howto_cups.html">Cups</A> | <A HREF="def_howto_plnames.html">Player names</A> | <A HREF="def_howto_teams.html">Teams</A> | <A HREF="def_howto_lgcommentary.html">Live game commentary</A> | <A HREF="def_howto_strategy.html">CPU strategies</A> | <A HREF="def_howto_leagues.html">Next -&gt;</A>
+</P>
+<A NAME="toc1"></A>
+<H2>How to create a country file</H2>
+<div class=hr></div>
+<P>
+<B>IMPORTANT:</B> If you create a European country for which there is
+already a short definition, e.g. you make the French leagues and
+there is already <CODE>league_france1_short.xml</CODE> (in the <CODE>short_leagues</CODE>
+subdirectory of the <CODE>support_files</CODE> directory), you have to edit the
+European cup files (<CODE>cup_europe_champ_league.xml</CODE>,
+<CODE>cup_europe_uefa.xml</CODE> and <CODE>cup_europe__cwc.xml</CODE>) and change all
+entries <CODE>league_france1_short</CODE> to <CODE>league_france1</CODE> (the sid of
+the first league of your new country). Otherwise you'll get an
+error when loading the cup teams.
+</P>
+<div class=hr></div>
+<P></P>
+<P>
+Countries consist only of leagues, cups and some strings.
+Let's start with an example (you probably won't need more
+than that, anyway): the file <CODE>country_england.xml</CODE> looks
+like this:
+</P>
+<PRE>
+  &lt;country&gt;
+   &lt;name&gt;England&lt;/name&gt;
+  
+    # This is the name of the country.
+  
+    &lt;symbol&gt;flag_en.png&lt;/symbol&gt;
+  
+    # The symbol, some image file (jpg etc. would
+    # work, too).  The file should be somewhere in
+    # the support directories.
+  
+    &lt;sid&gt;england&lt;/sid&gt;
+  
+    # The unique string id of the country. This
+    # should be the same as the part of the file
+    # name between 'country_' and '.xml'.
+  
+    &lt;leagues&gt;
+  
+    # The array of leagues of the country.
+  
+    # The leagues are given with their string ids,
+    # ie.  the corresponding league definition
+    # files are called 'league_england1.xml' etc.
+  
+      &lt;league&gt;england1&lt;/league&gt;
+      &lt;league&gt;england2&lt;/league&gt;
+      &lt;league&gt;england3&lt;/league&gt;
+      &lt;league&gt;england4&lt;/league&gt;
+      &lt;league&gt;england5&lt;/league&gt;
+   &lt;/leagues&gt;
+  
+    &lt;cups&gt;
+  
+    # The array of cups.
+  
+      &lt;cup&gt;england_fa&lt;/cup&gt;
+  
+      # The cups are also given with their string
+      # ids, so one of the cup definition files that
+      # gets loaded would be 'cup_england_fa.xml'
+  
+      &lt;cup&gt;england_league&lt;/cup&gt;
+      &lt;cup&gt;europe_uefa&lt;/cup&gt;
+      &lt;cup&gt;europe_cwc&lt;/cup&gt;
+      &lt;cup&gt;europe_champ_league&lt;/cup&gt;
+      &lt;cup&gt;supercup_league_vs_cup&lt;/cup&gt;
+      &lt;cup&gt;supercup_europe_uefa&lt;/cup&gt;
+      &lt;cup&gt;england_prom_games2&lt;/cup&gt;
+      &lt;cup&gt;england_prom_games3&lt;/cup&gt;
+      &lt;cup&gt;england_prom_games4&lt;/cup&gt;
+      &lt;/cups&gt;
+  
+  &lt;/country&gt;
+</PRE>
+<P></P>
+<P>
+Some notes:
+</P>
+<UL>
+<LI>You should take care that the average talents in the leagues
+are not too far apart, otherwise promotion/relegation will
+be a mess (the same teams that got promoted get relegated
+the next season, obviously). I'd say 700-800 is the biggest
+difference there should be between two leagues connected by
+promotion/relegation.
+<P></P>
+<LI>The order of the cups is important. If the European
+Cup Winners' Cup is included, it takes the winner of the
+first cup in the cups array as the participant from the
+country, in this case the FA Cup. If we specify the League Cup
+as the first cup, the winner of the League Cup participates
+in the CWC.
+<P></P>
+<LI>If there are cups that 'compete' against each other
+concerning the teams that participate in them, e.g. the
+Champions' League and the CWC (what does this mean? If there's
+a double winner, e.g. a team winning both the first league and
+the first cup, the league runner-up should participate in the 
+CWC.), they should be listed in reversed priority order. In our
+case, the CL participant gets chosen first. If the team is also
+qualified for the CWC (ie. a double winner), he doesn't participate
+in the CWC as well, but the runner-up gets chosen. So, in a way,
+the CL wins against the CWC.
+<P></P>
+<LI>Generally, cups that provide participants for other cups 
+(FA Cup winner -&gt; Cup Winners' Cup) have to come <I>before</I>
+the second cup; cups that contain teams that may not participate
+in other cups (with the same <CODE>group</CODE> value, see below) should
+come <I>after</I> these cups.
+</UL>
+
+<P>
+That's it for country files.
+</P>
+
+<!-- html code generated by txt2tags 2.2 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html def_howto_countries.t2t -->
+</BODY></HTML>

@@ -1,0 +1,54 @@
+
+
+
+%!Style: green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!PostProc(html): '@logo' '<center><img src="bygfoot-logo.png"></center>'
+%!PostProc(html): "<HR NOSHADE SIZE=1>" "<div class=hr></div>"
+%!PostProc(html): '@2' '<h2 align="right">'
+%!PostProc(html): '2@' '</h2>'
+%!PostProc: @center <center><small>
+%!PostProc: center@ </small></center>
+%!PostProc: @br <br>
+%!PostProc: '@table' '<table width="100%" cellpadding="3" cellspacing="0" border="0">'
+%!PostProc: '@th' '<tr bgcolor="#ccccbb" valign="top">'
+%!PostProc: '@cell' '<td width="50%">'
+%!PostProc: 'cell@' '</td><td width="50%">'
+%!PostProc: '@row' '</td></tr><tr valign="top"><td>'
+%!PostProc: 'table@' '</td></tr></table>'
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc: 'cellpadding=4' 'cellpadding=2'
+%!PostProc: 'border=1' 'border=0'
+%!PostProc: '>La' ' align="right">La'
+%!PostProc: '<P>' ''
+%!PostProc: '&lt;!-- &lt;p&gt; --&gt;' '<p>'
+@logo
+
+@table
+@th
+@cell
+
+==Overview==
+
+cell@
+
+==Latest News==
+
+@row
+
+%!include: overview.t2t
+
+cell@
+ 
+%!include: latest.t2t
+
+table@ 
+---------------------------------------
+@center
+**This page wast last updated on %%date(%c)**
+@br
+Page Design by José Geraldo Gouvêa (jggouvea_at_bygfoot_dot_com). Page
+maintenance by Mark Lawrenz (mark_at_bygfoot_dot_com).
+center@

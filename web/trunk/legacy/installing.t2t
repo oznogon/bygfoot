@@ -1,0 +1,235 @@
+Installation Guide
+
+
+%!Style: green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!CmdLine(html): --toc
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+% !PreProc(html): `` "
+% !PreProc(html): '' "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(tex): 'section\*' 'section'
+%!PostProc(tex): '\\subsection' '\\section'
+%!PostProc(tex): '\\subsubsection' '\\subsection'
+%!PostProc(html): '<P ALIGN="center">' ''
+
+==Installing ``Binaries''==
+
+Linux programs are sometimes distributed in ``binary'' format (though this is 
+not recommended). A ``binary'' is a compressed file containing a program ready 
+to run on any system. However, ``binaries'' may fail to run if your system's 
+configuration is too different from the compiler's.
+
+You can recognise the ``binaries'' because they are named like
+`bygfoot-X.Y.Z-bin.tar.bz2` (where X.Y.Z stand for the version numbers. 
+
+Some binaries need to be installed (and are usually provided with an ``install''
+program you are supposed to run as root before using. **Bygfoot** binaries, 
+however, are ran without system-wide installation. Local installation has some 
+downsides, but it sure won't tamper with your system.
+
+To run **Bygfoot** binaries you only need to unpack (i.e. ``uncompress) the
+binary [tarball glossary.html#tarball] using this command: `tar xjf bygfoot-X.X.X-bin.tar.bz2`
+
+Once you have unpacked **Bygfoot**, enter the directory just created and run the
+executable file in there.
+
+==Installing ``Packages''==
+
+``Packages'' are special files used by Linus distros to distribute the programs they 
+supply (or are supplied by third-part ``packagers''). The three most-popular package
+formats for Linux are the RedHat Package Manager format (RPM), the Debian packages
+(DEB) and the Slackware Packages (TGZ, a.k.a. ``Slackpacks'').
+
+Installing from packages is a much better option if your system uses the same
+configuration as the packager. It will allow you to update **Bygfoot** easily when
+the next version comes and will prevent left-over files to remain lurking in your
+system if you ever choose to uninstall it.
+
+= RPM packages:
+  To install RPM packages (*.rpm) just type `rpm -Uvh bygfoot-X.Y.Z.arch.rpm`
+  at the command-line. Where ``arch'' is the architecture of the system (i386 
+  means Intel-standard motherboards 386 and up). To uninstall you only need to 
+  type `rpm -e bygfoot` (notice that to uninstall you only type the package 
+  name). There are also some graphical front-ends for the rpm tool, like 
+  [Kpackage http://docs.kde.org/3.0/kdeadmin/kpackage], 
+  xrpm (seems to be dead), [gnorpm http://www.virtualworlds.de/GRPM] and 
+  [Synaptic http://www.nongnu.org/synaptic].
+  
+= DEB packages:
+  To install DEB packages (*.deb) just type `dpkg --add bygfoot-X.X.X.arch.deb`
+  at the command-line. **Bygfoot** is now part of the ``unstable'' branch of the
+  Debian system, which means that now you can install it using `apt-get install`
+  like any good and respectable official Debian package... You can always use
+  graphical front-ends too, like [Gnome-dpkg http://freshmeat.net/projects/gdpm]
+  or [Synaptic http://www.nongnu.org/synaptic].
+ 
+= Slackware Packages:
+  It seems (no one of us uses Slackware) that packages are installed by the
+  `pkgtool` command. You should refer to its manpage to learn more. There are
+  front-ends for pkgtool as well, like [gnome-pkgtool http://freshmeat.net/projects/gnome-pkgtool].
+  
+
+==Compiling from Sources==
+
+This is the most-recommended method of installation, especially for those users
+who have mastered Linux to some point and for those who wish to install **Bygfoot**
+on other systems.
+
+===System Requirements===
+
+To compile **Bygfoot** from source you must have available the
+following resources:
+
+- A C compiler (the GNU C Compiler -- gcc is highly recommended).
+              
+- The Gimp Tool Kit (a.k.a. GTK+) version 2 (but Gnome is not used).
+              
+- Some development packages:
+  - pango
+  - atk
+  - freetype2
+  - glib2
+
+- At least 64 MB RAM so that the game won't seem to run like a turtle...
+              
+- A Pentium II class processor at 400 Mhz at least. This requirement is meant
+for Intel-based systems, if you are somewhere else I don't even guess how much
+processing power you will need.
+
+	    
+===Supported Platforms===
+
+Up to now, **Bygfoot** has been successfully compiled in the following 
+systems (in alphabetical order):
+	      
+- FreeBSD
+- Conectiva Linux (9, 8 must work too)
+- Debian Testing
+- Mandrake Linux (8)
+- Red Hat Linux (7.3)
+- Suse Linux (9.0, others should work, too)
+- Windows (through the Unix/Linux emulator [Cygwin http://www.cygwin.com/],
+   a native Win32 port is yet to be tried)
+
+
+We strongly encourage you to port Bygfoot to your OS and send us the news. We
+will link back to you and add your name to our [Thank You thanks.html] page.
+
+**Bygfoot** must be easy to port to any POSIX-compliant system where the above
+required resources are available. There is already a port to FreeBSD available 
+[here http://www.freebsd.org/cgi/cvsweb.cgi/ports/games/bygfoot].
+              
+
+===Step by Step Compilation===
+
+In order to compile **Bygfoot** you must have all the development libraries. 
+In my Conectiva 9 system this means the packages ``task-c-devel'' and ``gtk+2-devel''.
+If you have all that is necessary to compile the tarball, follow these steps to
+easily compiling it (all commands within a terminal window):
+
++ Unpack the compressed file: `tar -xzf file.tar.gz`
+              
++ Enter the source directory: `cd bygfoot-X.Y.Z/` (replace X, Y, Z
+with the appropriate version numbers)
+              
++ Let ``configure'' test whether you have all that is necessary 
+to compile the package and prepare the Makefile: `./configure` (pay
+attention to the dot and the slash, they're required to run the 
+configure script).
+              
++ Compile everything: `make all-recursive`
+              
++ If no errors are found, install the package (as root): `make install`
+              
+
+If you didn't understand any of the compilation directives given
+above, you are not prepared to compile bygfoot and should refer to one
+of the binary packages (bin, rpm or deb).
+
+==Building Packages==
+
+The bygfoot-X.Y.Z.src.rpm package is there to allow you to build your own
+RPM package. If you have all the required software, you can just type
+`rpm --rebuild bygfoot-X.Y.Z.src.rpm` and wait for the (long) process
+of building. The compilation won't even start if something is missing and
+will stop if there's any incompatibility along the way.
+
+Sometimes it may happen that you have a required package, but under a 
+different name. E.g.: in Mandrake systems you have ``gtk2'' and ``libgtk2-devel'',
+while in Conectiva systems you have ``gtk+2'' and ``gtk+2-devel''. If this
+happens, you can circumvent this by editing the ``.spec'' file used as template
+for compilation. By default this file will be found at /usr/src/rpm/SPECS/.
+
+==Upgrading==
+
+New versions are expected to appear quite often. So, you must be aware of the
+processes needed to upgrade.
+
+**IMPORTANT** -- If you are about to upgrade to a version that is not compatible
+with saved games or text files from previous versions, remove manually (or rename)
+your local configuration directory ($HOME/.bygfoot) before running the game for 
+the first time. Otherwise the game may freeze or refuse to start.
+
+There is no need to uninstall **Bygfoot** before upgrading if you
+can use RPM ``packages'' because the default installation command (`rpm -Uvh`)
+automagically checks whether an older version is installed and -- if yes -- 
+switches to updating. If you usually install programs using the `rpm -i`
+command (not recommended) you will get an error message though. Use `rpm -U`
+and everything will be OK.
+
+On Debian systems upgrading is easy if you have added **Bygfoot**'s repository
+to your `sources.list` configuration. Whenever a new version is uploaded you
+will be able to upgrade with the `apt-get upgrade` command. Otherwise you 
+will have to use `dpkg`.
+
+Slackware users please refer to the manpage of your pkgtool.
+
+If you have compiled **Bygfoot** from Sources, you must remove it before 
+installing a new version. You can remove it with the `make uninstall` command,
+but you may also have to remove manually the directories where the default 
+resources were installed (`$PREFIX/share/bygfoot`).
+
+==Post-Installation==
+
+Your **Bygfoot** installation will only be done after the first time you run
+it successfully. During the first run, several files will be copied from the
+shared configuration directory (`$PREFIX/share/bygfoot`) to your local 
+configuration directory (`$HOME/.bygfoot`). Don't interrupt this process.
+If anything goes wrong, remove the local configuration directory so that
+**Bygfoot** ``thinks'' it is a first run and does the copying again... :-)
+
+
+==Online update==
+
+As of versions 1.6.1 and 1.7.1 there's an online update script called
+`bygfoot-update` for the source package, located in the directory with
+the configure script. In theory, users using the source package
+shouldn't have to download new versions anymore, they can simply use
+the update script to keep their version up-to-date.
+
+You need an internet connection and the programs `wget` and `patch` to
+be able to use the script. If you have these, do the following:
+
++ Connect to the internet.
++ Call `bygfoot-update`.
++ Enter the directory of your source package (default is PWD, so you
+  don't have to enter anything if you're already in the directory).
++ Enter a temp directory you have read/write access to (default is
+  `/tmp`).
+
+
+Now the script tries to find out your revision number and package type
+(stable/unstable) from the file `revision_number` in the package
+directory. Then it retrieves a list of available revision patches from
+the Bygfoot homepage and asks you whether to apply those which are
+new.
+
+I hope this will work well. The idea is great (isn't it?) but I don't
+have a lot of experience with such things. If you find a bug,
+[contact me feedback.html].

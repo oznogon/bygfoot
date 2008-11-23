@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-15">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../green.css">
+<TITLE>Installation Guide</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<CENTER><IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>Installation Guide</H1>
+<FONT SIZE="4">
+
+
+<P></P>
+<div class=hr></div>
+<P></P>
+    <UL>
+    <LI><A HREF="#toc1">Distributions</A>
+      <UL>
+      <LI><A HREF="#toc2">Debian / Ubuntu</A>
+      <LI><A HREF="#toc3">Gentoo</A>
+      <LI><A HREF="#toc4">SuSE</A>
+      <LI><A HREF="#toc5">FreeBSD</A>
+      </UL>
+    <LI><A HREF="#toc6">Windows</A>
+    <LI><A HREF="#toc7">The binary package for Linux</A>
+    <LI><A HREF="#toc8">The source package</A>
+      <UL>
+      <LI><A HREF="#toc9">Requirements</A>
+      <LI><A HREF="#toc10">Compiling</A>
+      </UL>
+    <LI><A HREF="#toc11">Updating the source package</A>
+    <LI><A HREF="#toc12">Getting a CVS version</A>
+    </UL>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+<P>
+Last updated: 07/08/2006
+</P>
+<A NAME="toc1"></A>
+<H2>Distributions</H2>
+<P>
+There are a few Unix/Linux distributions that include <B>Bygfoot</B> in their
+repositories. In such a case, it is recommended to use the distribution specific
+installing method, since it keeps your system clear and your package manager
+informed about installed packages.
+</P>
+<P>
+In case you know of other distros including <B>Bygfoot</B>, please
+<A HREF="feedback.html">email me</A> so that I include them here.
+</P>
+<A NAME="toc2"></A>
+<H3>Debian / Ubuntu</H3>
+<P>
+Debian branches include various <B>Bygfoot</B> versions. Stable has the old 1.8.0
+version currently, whereas 1.9.1 is in testing and the latest versio, 1.9.2,
+is in unstable. Generally, the latest <B>Bygfoot</B> version gets uploaded to
+Debian within a few weeks after the release at most.
+</P>
+<P>
+To install <B>Bygfoot</B>, edit your <CODE>sources.list</CODE> file appropriately and execute
+<CODE>apt-get install bygfoot</CODE>.
+</P>
+<P>
+I usually also upload the deb package created by the maintainer to the
+SourceForge.Net project site. If you want to install the game using this package,
+you have to type <CODE>dpkg -i package.deb</CODE>. However, this won't resolve dependencies
+like <CODE>apt-get</CODE> does.
+</P>
+<P>
+Ubuntu includes  <B>Bygfoot</B> in the <I>universe</I> repository (last time I checked
+they had the very latest version). After adding <I>universe</I> to your sources,
+you should be able to install the game with <CODE>apt-get</CODE> just like with Debian.
+</P>
+<A NAME="toc3"></A>
+<H3>Gentoo</H3>
+<P>
+Last time I made a new release, it got included in Gentoo's portage the same day (without me
+doing anything -- in the case of Debian, I usually email the maintainer of the <B>Bygfoot</B> package).
+</P>
+<P>
+Right after a release, the package is masked in portage (naturally), but it becomes 'testing' after
+a few days.
+</P>
+<P>
+To install, call <CODE>emerge bygfoot</CODE> (after making the appropriate adjustments to your portage
+configuration files if necessary).
+</P>
+<A NAME="toc4"></A>
+<H3>SuSE</H3>
+<P>
+SuSE doesn't include <B>Bygfoot</B> in official releases; however, I usually provide RPM and SRPM packages
+with <B>Bygfoot</B> releases -- they should work on your SuSE system, provided you have the necessary
+supplementary packages installed (GTK+2, mainly).
+</P>
+<P>
+There's also a Belgian guy who regularly makes SuSE packages when I release new versions
+(so I guess my RPMS aren't that perfect). I don't know how long he'll kept this up (I don't know
+him at all), but anyway, <A HREF="http://linux01.gwdg.de/~pbleser/pnews.php">here's the link to his page</A>.
+</P>
+<P>
+To install an RPM (this applies to other RPM-based distributions, too), call
+<CODE>rpm -Uvh bygfoot-XYZ.rpm</CODE>.
+</P>
+<A NAME="toc5"></A>
+<H3>FreeBSD</H3>
+<P>
+<B>Bygfoot</B> also gets regularly ported to FreeBSD by Pav Lucistnik. However,
+I don't know how installing packages on BSD systems work, so you're alone
+there.
+</P>
+<A NAME="toc6"></A>
+<H2>Windows</H2>
+<P>
+<B>NOTE:</B> As of <B>Bygfoot 2.0.0</B>, there's a Windows package bundled with all
+the necessary GTK+ files. The package is around 4 MB bigger than the one
+without GTK+. The advantage is that you won't have to download and install the
+runtime environment at all, you can simply unpack the bundle and play the
+game. The bundled package has a <CODE>-GTK</CODE> suffix.
+</P>
+<P>
+If you prefer the non-bundled package, read on. 
+</P>
+<P>
+Since <B>Bygfoot</B> is a GTK program, you first need the GTK+2 runtime environment
+for Windows. You can get it 
+<A HREF="http://sourceforge.net/project/showfiles.php?group_id=121075&amp;package_id=132255">here</A>
+(you need the .exe 32-bit Windows version).
+</P>
+<P>
+After installing the runtime environment, you can download and unpack the
+<B>Bygfoot</B> Windows package, switch to the game directory and start the game.
+</P>
+<P>
+Of course, you don't have to reinstall the runtime environment to be able to
+play later <B>Bygfoot</B> versions, you only have to do it once (you only have to
+update the RE if some newer <B>Bygfoot</B> version uses functions only available
+in newer GTK+2 versions).
+</P>
+<A NAME="toc7"></A>
+<H2>The binary package for Linux</H2>
+<P>
+This might be the easiest way to try out <B>Bygfoot</B> on a Linux x86-system.
+</P>
+<P>
+The binary package is a simple tar.bz2 archive containing everything you need
+(except for the GTK+2 RE, which should be installed on your system). You don't have
+to install it, you just unpack it and type <CODE>./bygfoot</CODE>.
+</P>
+<P>
+If it doesn't work, you have to resort to a package for your distro or the
+source package.
+</P>
+<A NAME="toc8"></A>
+<H2>The source package</H2>
+<P>
+This section is directed at Linux users. If you use Windows and REALLY REALLY want
+to try to compile the source package, have a look at
+<A HREF="http://bygfoot.sourceforge.net/forum/viewtopic.php?t=457">this thread at the forums</A>.
+</P>
+<A NAME="toc9"></A>
+<H3>Requirements</H3>
+<P>
+To be able to compile the source package, you need to have the following development packages
+installed (note the word <I>development</I>; it means that on a common system, it doesn't suffice
+to have gtk-VERSION installed you need gtk-devel-VERSION or something similar).
+</P>
+<UL>
+<LI>gtk+2
+<LI>pango
+<LI>atk
+<LI>glib2
+<LI>pkgconfig
+</UL>
+
+<P>
+To build, you also need GNU make and a C compiler, of course.
+</P>
+<A NAME="toc10"></A>
+<H3>Compiling</H3>
+<P>
+If the requirements are fulfilled, extract the source package (called <CODE>bygfoot-X.Y.Z.tar.bz2</CODE>)
+by calling <CODE>tar xfj bygfoot-X.Y.Z.tar.bz2</CODE>, go to the build directory (called bygfoot-X.Y.Z)
+and type <CODE>./configure</CODE>. (To see a list of options that can be passed to the script,
+type <CODE>./configure --help</CODE>.)
+</P>
+<P>
+If the script runs fine and creates the Makefiles you can proceed by typing <CODE>make</CODE>
+to compile the sources. If the configure script exits with an error, have a look
+at the error message and try to figure out what's missing (e.g. GTK+2 version too
+old).
+</P>
+<P>
+After you've compiled the sources, you have to become superuser (type <CODE>su -</CODE>
+followed by the root password); switch to the build directory and type
+<CODE>make install</CODE>. This will copy the compiled executables and the data files
+to the appropriate destinations, typically to <CODE>/usr/local/bin</CODE> (executables)
+and <CODE>/usr/local/share/bygfoot</CODE> (data files).
+</P>
+<P>
+To uninstall the game, type <CODE>make uninstall</CODE> in the build directory; you have
+to be superuser to do this.
+</P>
+<P>
+Because of this uninstall possibility, you should leave the build dir alone even
+after you've installed the game successfully (unless you don't mind if your system
+gets cluttered with compiled packages).
+</P>
+<A NAME="toc11"></A>
+<H2>Updating the source package</H2>
+<P>
+As of versions 1.6.1 and 1.7.1 an online update script called
+<CODE>bygfoot-update</CODE> is shipped with Linux/Unix packages. The script can be used
+to accomplish various tasks:
+</P>
+<UL>
+<LI>Update the source package. This is meant to be an easy way of keeping
+  your <B>Bygfoot</B> package up-to-date without having to check the website
+  regularly.
+<LI>Get official player and team names. Since I don't have a license for official
+  team names, in <B>Bygfoot</B> packages mostly city names are used as team names.
+  You can use this feature of the update script to replace the inofficial names
+  with the official names.
+<LI>Download a package. The script can be used to download a <B>Bygfoot</B> package
+  without having to visit the website.
+<LI>Get a CVS version. The script can be used to get the current CVS version of <B>Bygfoot</B>
+  without having to mess with the <CODE>cvs</CODE> syntax.
+</UL>
+
+<P>
+Since the script is menu-driven (using <B>zenity</B> if available or <B>dialog</B> if not),
+there isn't much to explain about it. You can call <CODE>bygfoot-update --help</CODE> (or <CODE>-h</CODE>)
+to see a summary of command line options.
+</P>
+<A NAME="toc12"></A>
+<H2>Getting a CVS version</H2>
+<P>
+The CVS version is the bleeding-edge <B>Bygfoot</B> version.
+You can use it to explore features that are being developed before they get
+included in an official release. You can also help iron out bugs before
+releases.
+</P>
+<P>
+I've never used CVS with Windows, so I can't help Windows users here.
+The rest of this section applies to Unix/Linux users.
+</P>
+<P>
+The easiest way to get a CVS version is to use the update script.
+Just call <CODE>bygfoot-update --cvs</CODE>, select a directory where the cvs version
+should get downloaded to, choose 'anonymous' as username and press OK.
+</P>
+<P>
+You can also use <CODE>cvs</CODE> directly, but the <CODE>cvs</CODE> syntax isn't simple
+and you better read the
+<A HREF="http://sourceforge.net/cvs/?group_id=46139">SourceForge.Net instructions</A>
+first.
+</P>
+<P>
+After downloading the CVS version, you have to first call <CODE>./autogen.sh</CODE>
+and then <CODE>make</CODE>.
+</P>
+<P>
+<B>IMPORTANT:</B> The CVS version isn't meant to be installed like the source
+package (with <CODE>make install</CODE>). You have to start the game with <CODE>./src/bygfoot</CODE>
+from the build directory (the dir containing the <CODE>autogen.sh</CODE> script).
+</P>
+
+<!-- html code generated by txt2tags 2.2 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -toc -t html install.t2t -->
+</BODY></HTML>

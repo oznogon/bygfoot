@@ -1,0 +1,170 @@
+How to write team definition files
+
+
+%! Target  : html
+%! Options : --toc
+%! Style   : ../../green.css
+%!encoding: iso-8859-1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+
+Last updated: %%mtime(%m/%d/%Y)
+
+[<- Previous def_howto_plnames.html] | [Overview def_howto.html] | [Countries def_howto_countries.html] | [Leagues def_howto_leagues.html] | [Cups def_howto_cups.html] | [Player names def_howto_plnames.html] | Teams | [Live game commentary def_howto_lgcommentary.html] | [CPU strategies def_howto_strategy.html] | [Next -> def_howto_lgcommentary.html]
+
+== How to create a team definition file ==
+
+**Remark:**Team definition files can't be part of official **Bygfoot**
+packages since they contain official team names. You'll have to download
+them from the homepage or via the update script (as soon as there are
+some available).
+
+===The easy way...===
+
+Use Sebastián Moncho's editor! This nice chap from Valencia, Spain
+wrote a simple Java gui for creating team definitions. You have to have the
+Java Runtime Environment installed and the Java executable must be in your PATH
+to run the editor, which you can get
+[here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=196683].
+Run ``java -jar bygfoot-team-creator-XXX.jar`` (XXX being the version) to start the
+program.
+
+===Naming convention===
+
+The filename of a team definition file should start with ``team_``,
+followed by the country the team is from, e.g. ``team_germany_``.
+You can choose the last part as you like, e.g. ``team_germany_bayern.xml``
+for Bayern München.
+
+
+===Team info===
+
+Here's an example (``team_germany_bayern.xml``) showing you all the tags
+available to describe the team itself:
+```
+<team>
+  <team_name>Bayern München</team_name>
+
+  # The team name. This can be an official name
+  # (contrary to the team names in league definition
+  # files), since the team definition files won't
+  # be part of the official Bygfoot packages.
+
+  <stadium_name>Allianz-Arena</stadium_name>
+
+  # Name of the stadium.
+
+  <symbol>flag_germany.png</symbol>
+  
+  # Team symbol file. Can be any reasonable image
+  # file (jpg, gif etc.) showing a team badge or 
+  # a flag or so.
+
+  <average_talent>8500</average_talent>
+
+  # Average talent of the players that get
+  # additionally generated (in case the
+  # definition doesn't contain as many players
+  # as is possible; currently 20)
+
+  <formation>442</formation>
+  
+  # Team formation, like 442 or 433 or 352.
+
+  <names_file>germany</names_file>
+
+  # The file the player names for generated
+  # (not defined) players should be taken
+  # from.
+
+...snip...
+
+</team>
+
+```
+
+===Players===
+
+To add a player to the team, you simply add a section like the following
+one to the team definition (depth 1, ie. ``<player>`` has the same depth as
+``<name>``, for instance). Currently, team defs can only contain 20
+players.
+
+```
+...snip...
+
+  <names_file>germany</names_file>
+
+  <player>
+  
+  # Starting tag of a player.
+
+    <player_name>Oliver Kahn</player_name>
+
+    # Player name.
+
+    <birth_year>1969</birth_year>
+    <birth_month>6</birth_month>
+
+    # Birth year and month. Used to calculate
+    # the player age.
+
+    <skill>9000</skill>
+    <talent>9800</talent>
+    
+    # Skill and talent in percentage of the maximum
+    # skill times 10000. In this case, Kahn will have
+    # 90% of the maximum possible player skill, and
+    # if he were young, he could reach at most 98%.
+
+    # Talent has to be greater or equal to the skill!!!
+
+    <position>0</position>
+
+    # The position of the player. Positions are:
+    # 0: Goalie
+    # 1: Defender
+    # 2: Midfielder
+    # 3: Forward
+
+  </player>
+...snip...
+</team>
+```
+
+=== How to make Bygfoot load the team definition ===
+
+To tell the program that it should load the team settings and
+players from a definition file, the file should be somewhere in
+the support directories (e.g. ``./support_files/teams`` or
+``$HOME/.bygfoot-1.9/definitions/teams``) and the team section
+in the league definition has to link to the file.
+
+Such a link is established by adding the tag ``<def_file>`` to the
+team section (containing ``<team_name>``) containing the part of
+the team definition file name between ``team_`` and ``.xml``. In our
+case the corresponding part of the league definition ``league_germany1.xml``
+looks like this:
+```
+...snip...
+  <teams>
+    <team>
+      <team_name>München</team_name>
+      <def_file>germany_bayern</def_file>
+    </team>
+    <team>
+...snip...
+  </teams>
+</league>
+```
+
+The definition file was called ``team_germany_bayern.xml``, remember? So we write
+``germany_bayern`` into the ``def_file`` tag.
+
+You see, team definition files are really simple.
+
+When loading a team def, hardly any error checking is done, so take care to create
+clean definitions.
+
+You can have a look at the example file ``team_germany_bayern.xml``
+[here http://bygfoot.sf.net/misc/team_germany_bayern.xml.zip].

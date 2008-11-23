@@ -1,0 +1,701 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../../green.css">
+<TITLE>How to write live game commentary files</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>How to write live game commentary files</H1>
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+    <UL>
+    <LI><A HREF="#toc1">How to create a live game commentary file</A>
+      <UL>
+      <LI><A HREF="#toc2">Name convention and syntax</A>
+      <LI><A HREF="#toc3">Simple commentaries</A>
+      <LI><A HREF="#toc4">Conditional commentaries</A>
+      <LI><A HREF="#toc5">Advanced commentaries</A>
+      <LI><A HREF="#toc6">Priorities</A>
+      <LI><A HREF="#toc7">List of tokens and events</A>
+      </UL>
+    </UL>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+<P>
+Last updated: 07/08/2006
+</P>
+<P>
+<A HREF="def_howto_teams.html">&lt;- Previous</A> | <A HREF="def_howto.html">Overview</A> | <A HREF="def_howto_countries.html">Countries</A> | <A HREF="def_howto_leagues.html">Leagues</A> | <A HREF="def_howto_cups.html">Cups</A> | <A HREF="def_howto_plnames.html">Player names</A> | <A HREF="def_howto_teams.html">Teams</A> | Live game commentary | <A HREF="def_howto_strategy.html">CPU strategies</A> | <A HREF="def_howto_strategy.html">Next -&gt;</A>
+</P>
+<A NAME="toc1"></A>
+<H2>How to create a live game commentary file</H2>
+<P>
+A live game commentary file is an xml file containing commentary strings for the
+live game in <B>Bygfoot</B>. The live game consists of several events, all of which
+need separate commentary.
+</P>
+<P>
+You can get an archive with the current commentary files
+<A HREF="http://bygfoot.sf.net/misc/bygfoot-1.9-commentaries.tar.bz2">here</A>.
+</P>
+<A NAME="toc2"></A>
+<H3>Name convention and syntax</H3>
+<P>
+Live game commentary files have to have a file name like
+<CODE>lg_commentary_lang.xml</CODE>, with <CODE>lang</CODE> being a language shortcut, e.g.
+<CODE>en</CODE> or <CODE>de</CODE>.
+</P>
+<P>
+There are only a few tags in the file (see also the <A HREF="tags_ref.html">tags reference</A>): 
+<CODE>&lt;lg_commentary&gt;</CODE> is the root tag, <CODE>&lt;event&gt;</CODE> describes an event; an event contains a
+<CODE>&lt;name&gt;</CODE> and several <CODE>&lt;commentary&gt;</CODE> entries.
+</P>
+<P>
+<CODE>&lt;commentary&gt;</CODE> can have two attributes: <CODE>cond</CODE> and <CODE>pri</CODE>. The latter means <I>priority</I>;
+a commentary with high priority value relative to the rest of the commentaries for the given
+event is more likely to get chosen. <CODE>cond</CODE> means <I>condition</I>; we're going to see how to handle
+those later.
+</P>
+<P>
+To write a new commentary file it might be best to copy one of the existing ones
+and replace/translate/extend the commentaries in the file.
+</P>
+<P>
+Here's an excerpt from the <CODE>lg_commentary_en.xml</CODE> file:
+</P>
+<PRE>
+  &lt;lg_commentary&gt;
+    &lt;event&gt;
+      &lt;name&gt;general&lt;/name&gt;
+      &lt;commentary&gt;_P1_ feeds the ball through to _P0_&lt;/commentary&gt;
+      &lt;commentary&gt;_P1_ threads a great ball to _P0_ &lt;/commentary&gt;
+      &lt;commentary&gt;Lovely pass from _P1_ releases _P0_&lt;/commentary&gt;
+      
+      ...snip...
+  
+      &lt;commentary&gt;_P0_ spins past his marker&lt;/commentary&gt;
+    &lt;/event&gt;
+    &lt;event&gt;
+      &lt;name&gt;lost_possession&lt;/name&gt;
+      &lt;commentary&gt;_P0_ wins the ball with a perfectly timed challenge&lt;/commentary&gt;
+      &lt;commentary&gt;Bad control by _P1_ lets _P0_ steal the ball off him&lt;/commentary&gt;
+      &lt;commentary&gt;_P0_ takes the ball away from _P1_ with a sliding tackle&lt;/commentary&gt;
+      &lt;commentary&gt;Loose ball falls to _P0_&lt;/commentary&gt;
+    &lt;/event&gt;
+  
+    ...snip...
+  
+  &lt;/lg_commentary&gt;
+</PRE>
+<P>
+As you can see the tags are really simple. Now what are those weird _P0_ things about?
+</P>
+<A NAME="toc3"></A>
+<H3>Simple commentaries</H3>
+<P>
+We call those things 'tokens'. They get replaced by player names and such when the
+commentary is actually generated. The list of available tokens is at the bottom of this page,
+as is a list of events.
+</P>
+<P>
+To write a simple commentary, you just take a look at the events list to see which tokens
+are available for the event and let your imagination run. You could write for a goal event
+for instance
+</P>
+<PRE>
+  &lt;commentary&gt;_P0_ scores! He already shot _PLGOALS0_ in the _LEAGUECUPNAME_!&lt;/commentary&gt;
+</PRE>
+<P></P>
+<P>
+This would lead in the live game to something like 'Jeremy scores! He already shot 5 goals in the FA Cup!'.
+</P>
+<P>
+There are events for which the tokens available vary; e.g. in a general event, there might be two players
+involved (one passing to the other) or only one (after a player took away the ball from his opponent).
+This shouldn't worry you at all. Just write commentaries for both cases, and when only one player is available
+only commentaries featuring one player token get considered.
+</P>
+<A NAME="toc4"></A>
+<H3>Conditional commentaries</H3>
+<P>
+Let's take a look what the <CODE>cond</CODE> attribute in the <CODE>commentary</CODE> tag is for.
+</P>
+<P>
+You might want to write commentary particularly suited for some situations. E.g. if a lot
+of goals get scored in a match, you want to exclaim 'My god! 7 goals within 50 minutes!'.
+</P>
+<P>
+To be able to write this kind of commentary you need to specify a condition in the commentary
+tag. You can use all numeric tokens from the token list (ie. tokens with integer value). To
+write a commentary like the one above you'd write
+</P>
+<PRE>
+  &lt;commentary cond="_G0_ + _G1_ &gt;= 6"&gt;_P0_ scores! We have incredible [_G0_ + _G1_] goals in this match!&lt;/commentary&gt;
+</PRE>
+<P>
+As you can see, if you want the program to perform some arithmetic operation in the commentary text,
+you have to enclose the expression in square brackets: <CODE>[_G0_ + _G1]</CODE>.
+</P>
+<P>
+Now this is a very simple condition. Not only <CODE>&gt;=</CODE>, <CODE>&gt;</CODE>, <CODE>&lt;</CODE>, <CODE>=</CODE> and <CODE>!=</CODE> may be used, but also
+<CODE>and</CODE> and <CODE>or</CODE> to create more complex expressions. <CODE>and</CODE> bind stronger than ''or'', so
+'1 &lt; 2 and 2 &lt; 2 or 3 &lt; 4' would evaluate to FALSE (= 0).
+</P>
+<P>
+So to have a more complex commentary you might write
+</P>
+<PRE>
+  &lt;commentary cond="_GD_ &gt;= 2 and _GD_ &lt; 4 and _MT_ &gt; 60"&gt;_TL_ is _GD_ goals behind but there are still _MT_ minutes to go&lt;/commentary&gt;
+</PRE>
+<P></P>
+<A NAME="toc5"></A>
+<H3>Advanced commentaries</H3>
+<P>
+Sometimes one would like to express, 'If one of the teams has 70% possession then write
+"Team TEAM is dominating the match."', with TEAM the appropriate team name. Now one could
+achieve this by writing
+</P>
+<PRE>
+  &lt;commentary cond="_POSS0_ &gt;= 70"&gt;_T0_ is dominating the match&lt;/commentary&gt;
+  &lt;commentary cond="_POSS1_ &gt;= 70"&gt;_T1_ is dominating the match&lt;/commentary&gt;
+</PRE>
+<P>
+This would work, but it's a bad solution. We'd have to write two or three commentaries
+leading to the same text.
+</P>
+<P>
+The more elegant way is to take advantage of the properties of the tokens. You've seen there are
+a lot of tokens ending with 0 and 1. But 0 and 1 are also the two possible outcomes when evaluating
+a condition. And 0 and 1 are the possible values for the ball possession token _POSS_, as well.
+</P>
+<P>
+Here's a simple example: You want to have the name of the team that's in possession of the ball.
+You just write <CODE>_T_POSS__</CODE>. Easy. Given that the home team is in possession, this becomes
+<CODE>_T0_</CODE> and then the name of the home team.
+</P>
+<P>
+Another example: You want to have the name of the team leading (let's suppose that
+the result isn't a draw and ignore that a convenience token for this, <CODE>_TL_</CODE> already exists).
+You just write <CODE>_T[_GOALS1_ G _GOALS0_]_</CODE>. (Note that here we need the brackets because
+an expression -- arithmetic with + and - or logical or both -- has to be
+evaluated.)
+</P>
+<P>
+<CODE>G</CODE> stands for <I>greater than</I>; if you want <I>less than</I> you have to write <CODE>L</CODE>.
+We can't use <CODE>&gt;</CODE> and <CODE>&lt;</CODE> because those are special XML characters. Instead
+of <CODE>&lt;=</CODE> and <CODE>&gt;=</CODE> you have to write <CODE>LE</CODE> and <CODE>GE</CODE> (<I>less or equal</I> and
+<I>greater or equal</I>). Take care to leave a space before and after <CODE>G</CODE> and
+<CODE>L</CODE>.
+</P>
+<P>
+Why does this work? There are two possibilities (remember that we suppose we don't have
+a draw): home team is leading or away team is leading. If the first is the case, the
+expression evaluates to FALSE (= 0), because the home team has more goals;
+so we'll get <CODE>_T0_</CODE> after the evaluation is done. If the second is the case, the
+expression evaluates to 1, so we get <CODE>_T1_</CODE>. In both cases we get the name of the
+leading team. Great, isn't it?
+</P>
+<P>
+Now you can use these tricks with all numerical tokens. To create an elegant solution
+for the problem about ball possession you can write
+</P>
+<PRE>
+  &lt;commentary cond="_POSS0_ &gt;= 70 or _POSS1_ &gt;= 70"&gt;_T[_POSS1_ GE 70]_ is dominating the match&lt;/commentary&gt;
+</PRE>
+<P></P>
+<P>
+It is also possible to do this in conditions. E.g. if a team leads with more than 3 goals,
+we want to have a commentary like 'What a shame for TEAM', with TEAM being the losing team.
+But what if it's a national cup match, and the losing team is three leagues lower than the
+other team? Then it isn't a shame, such a result is to be expected. Here we need the method
+described above to create a condition that covers this case:
+</P>
+<PRE>
+  &lt;commentary cond="_GD_ &gt; 3 and _TLAYER[_GOALS1_ &gt; _GOALS0_]_ &gt;= _TLAYER[_GOALS1_ &lt; _GOALS0_]_"&gt;_RE_, what a shame for _TL_&lt;/commentary&gt;
+</PRE>
+<P></P>
+<P>
+<CODE>_TLAYER[_GOALS1_ &gt; _GOALS0_]_</CODE> evaluates to the league layer of the leading team and
+<CODE>_TLAYER[_GOALS1_ &gt; _GOALS0_]_</CODE> becomes the layer of the losing team, so the commentary only
+gets considered if the losing team is at least on the same league level as the winning team.
+</P>
+<P>
+We can use here <CODE>&lt;</CODE> and <CODE>&gt;</CODE> because in attributes it's allowed.
+</P>
+<A NAME="toc6"></A>
+<H3>Priorities</H3>
+<P>
+Sometimes we want to make it very probable that a commentary gets chosen. E.g. if a player gets
+a yellow card and is automatically banned for the next match, we'd almost always like to have
+the commentary '_P1_ will be banned for the next _LEAGUECUPNAME_ match'.
+</P>
+<P>
+To achieve this, we give a high priority value to the commentary:
+</P>
+<PRE>
+  &lt;commentary cond="_PLYELLOWS_ = _YELLOWLIMIT_" pri="10"&gt;_P1_ will be banned next _LEAGUECUPNAME_ match.&lt;/commentary&gt;
+</PRE>
+<P></P>
+<P>
+The priority value increases the probability if it's high relative to the other commentaries. If the rest
+of the yellow card commentaries have priority 10, too, they all have the same probability.
+</P>
+<A NAME="toc7"></A>
+<H3>List of tokens and events</H3>
+<P>
+<B>Basic tokens</B>
+</P>
+<TABLE CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Token</TH>
+<TH>Meaning</TH>
+<TH>Always available</TH>
+</TR>
+<TR>
+<TD>_LEAGUECUPNAME_</TD>
+<TD>Name of the competition, e.g. 'FA Cup'.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_CUPROUNDNAME_</TD>
+<TD>Name of the cup round, e.g. 'Final'.</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_AT_</TD>
+<TD>Attendance, e.g. '50 204'.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_RE_</TD>
+<TD>Current result, e.g. '1 : 2'.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_TIME_</TD>
+<TD>Part of the match: 0, 1, 2 and 3, meaning first half, second half, extra time and penalty shoot-out.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_MI_</TD>
+<TD>Current minute, e.g. '34'.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_MR_</TD>
+<TD>Minutes remaining in the part of the game, e.g. 10 if the current minute is 35.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_MT_</TD>
+<TD>Total minutes remaining, e.g. 65 if the current minute is 35, or 95 if the current minute is 35 and the current result would lead to extra time.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_YELLOWLIMIT_</TD>
+<TD>Limit for yellow cards in the competition.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_GOALS0_</TD>
+<TD>Goals the home team scored.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_GOALS1_</TD>
+<TD>Goals the away team scored.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_GD_</TD>
+<TD>Goal difference (absolute value).</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_POSS_</TD>
+<TD>The team that is in possession of the ball; 0 or 1.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_NPOSS_</TD>
+<TD>The team that is not in possession of the ball; 0 or 1.</TD>
+<TD>YES</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+<B>Team tokens</B>
+</P>
+<TABLE CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Token</TH>
+<TH>Meaning</TH>
+<TH>Always available</TH>
+</TR>
+<TR>
+<TD>_T0_</TD>
+<TD>Home team name.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_T1_</TD>
+<TD>Away team name.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_TW_</TD>
+<TD>Team winning (name).</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_TL_</TD>
+<TD>Team losing (name).</TD>
+<TD>YES (if it's a draw, commentaries containing this token get ignored)</TD>
+</TR>
+<TR>
+<TD>_TWN_</TD>
+<TD>Team winning (number, 0 or 1).</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_TLN_</TD>
+<TD>Team losing (number, 0 or 1).</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_TT_</TD>
+<TD>Team (number, 0 or 1).</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_TLAYER0_</TD>
+<TD>League layer of home team, e.g. 1 for the first league.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_TLAYER1_</TD>
+<TD>League layer of away team.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_TAVSKILL0_</TD>
+<TD>Average skill of home team, e.g. 75.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_TAVSKILL1_</TD>
+<TD>Average skill of away team.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_TAVSKILLDIFF_</TD>
+<TD>Difference between the average skills (absolute value).</TD>
+<TD>YES</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+<B>Player tokens</B>
+</P>
+<TABLE CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Token</TH>
+<TH>Meaning</TH>
+<TH>Always available</TH>
+</TR>
+<TR>
+<TD>_P0_</TD>
+<TD>A player name (see events list).</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_P1_</TD>
+<TD>Another player name (see events list).</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_PLGOALS0_</TD>
+<TD>Goals in the competition of the player.</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_PLGOALSALL0_</TD>
+<TD>All goals in the season of the player.</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_PLGOALS1_</TD>
+<TD>Goals in the competition of the player.</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_PLGOALSALL1_</TD>
+<TD>All goals in the season of the player.</TD>
+<TD>NO</TD>
+</TR>
+<TR>
+<TD>_PLYELLOWS_</TD>
+<TD>Yellow cards of the player in the competition.</TD>
+<TD>NO</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+<B>Stats tokens</B>
+</P>
+<P>
+All of these have a variant for the home team (those ending with a '0') and
+for the away team (ending with '1'). Only the home team tokens are listed,
+just replace the '0' with the '1' to get the stat value for the away team.
+</P>
+<TABLE CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Token</TH>
+<TH>Meaning</TH>
+<TH>Always available</TH>
+</TR>
+<TR>
+<TD>_SHOTS0_</TD>
+<TD>Number of shots.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_SHOTPER0_</TD>
+<TD>Shot percentage.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_POSS0_</TD>
+<TD>Possession of home team in %, e.g. 50.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_PEN0_</TD>
+<TD>Penalties of home team in the game (those in penalty-shootout are not counted).</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_FOULS0_</TD>
+<TD>Fouls committed by home team.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_YELLOWS0_</TD>
+<TD>Yellow cards for home team.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_REDS0_</TD>
+<TD>Red cards for home team.</TD>
+<TD>YES</TD>
+</TR>
+<TR>
+<TD>_INJS0_</TD>
+<TD>Injuries for home team.</TD>
+<TD>YES</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+<B>Miscellaneous tokens</B>
+</P>
+<TABLE CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Token</TH>
+<TH>Meaning</TH>
+<TH>Always available</TH>
+</TR>
+<TR>
+<TD>_EX_</TD>
+<TD>Extra data (e.g. the new playing style 'ATTACK' when a team changes style).</TD>
+<TD>NO</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+<B>Events</B>
+</P>
+<P>
+Let's see which events there are (their <CODE>&lt;name&gt;</CODE>) and what tokens they are
+allowed to contain (the tokens that are always available -- see above table -- 
+aren't mentioned):
+</P>
+<TABLE CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Name</TH>
+<TH>Description</TH>
+<TH>Tokens</TH>
+</TR>
+<TR>
+<TD><CODE>general</CODE></TD>
+<TD>A passing event, or one player has the ball</TD>
+<TD>P0 (player who has the ball), sometimes P1 (player who passed). In these cases we make both commentaries which only contain _P0_ and commentaries containing _P0_ and _P1_</TD>
+</TR>
+<TR>
+<TD><CODE>lost_possession</CODE></TD>
+<TD>A player lost possession of the ball</TD>
+<TD>_P1_ the player who lost possession, _P0_ the player who took the ball</TD>
+</TR>
+<TR>
+<TD><CODE>foul</CODE></TD>
+<TD>A foul</TD>
+<TD>_P0_ the player who got fouled, _P1_ the player who fouled</TD>
+</TR>
+<TR>
+<TD><CODE>scoring_chance</CODE></TD>
+<TD>A scoring chance</TD>
+<TD>_P0_ the player who has the scoring chance, sometimes _P1_ who passed the ball</TD>
+</TR>
+<TR>
+<TD><CODE>header</CODE></TD>
+<TD>A header</TD>
+<TD>see <CODE>scoring_chance</CODE></TD>
+</TR>
+<TR>
+<TD><CODE>goal</CODE></TD>
+<TD>A goal</TD>
+<TD>_P0_ the player who scored, _P1_ the goalie</TD>
+</TR>
+<TR>
+<TD><CODE>miss</CODE></TD>
+<TD>A miss</TD>
+<TD>see <CODE>goal</CODE></TD>
+</TR>
+<TR>
+<TD><CODE>save</CODE></TD>
+<TD>A save</TD>
+<TD>see <CODE>goal</CODE></TD>
+</TR>
+<TR>
+<TD><CODE>post</CODE></TD>
+<TD>A shot off the post</TD>
+<TD>see <CODE>goal</CODE></TD>
+</TR>
+<TR>
+<TD><CODE>cross_bar</CODE></TD>
+<TD>A shot off the cross-bar</TD>
+<TD>see <CODE>goal</CODE></TD>
+</TR>
+<TR>
+<TD><CODE>own_goal</CODE></TD>
+<TD>Own goal</TD>
+<TD>_P0_ player who scored, _TT_ team number of the player</TD>
+</TR>
+<TR>
+<TD><CODE>start_match</CODE></TD>
+<TD>Match started</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD><CODE>half_time</CODE></TD>
+<TD>Half time</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD><CODE>extra_time</CODE></TD>
+<TD>Extra time begins</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD><CODE>penalties</CODE></TD>
+<TD>Penalty shoot-out begins</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD><CODE>end_match</CODE></TD>
+<TD>End of match</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD><CODE>penalty</CODE></TD>
+<TD>A penalty</TD>
+<TD>_P0_ player who shoots, _P1_ goalie</TD>
+</TR>
+<TR>
+<TD><CODE>free_kick</CODE></TD>
+<TD>A free kick</TD>
+<TD>see <CODE>penalty</CODE></TD>
+</TR>
+<TR>
+<TD><CODE>foul_yellow</CODE></TD>
+<TD>A foul leading to a yellow card</TD>
+<TD>_P0_ player who got fouled, _P1_ player who fouled, _TT_ team number of the fouling player</TD>
+</TR>
+<TR>
+<TD><CODE>foul_red</CODE></TD>
+<TD>Foul leading to red card</TD>
+<TD>see <CODE>foul_yellow</CODE></TD>
+</TR>
+<TR>
+<TD><CODE>foul_red_injury</CODE></TD>
+<TD>Foul leading to red card and injury of the fouled player</TD>
+<TD>see <CODE>foul_yellow</CODE></TD>
+</TR>
+<TR>
+<TD><CODE>send_off</CODE></TD>
+<TD>A player gets sent off</TD>
+<TD>_P0_ the player, _TT_ the team number of the player</TD>
+</TR>
+<TR>
+<TD><CODE>injury</CODE></TD>
+<TD>A player is injured</TD>
+<TD>_P0_ the player, _TT_ his team number</TD>
+</TR>
+<TR>
+<TD><CODE>temp_injury</CODE></TD>
+<TD>A player is injured but can continute</TD>
+<TD>see <CODE>injury</CODE></TD>
+</TR>
+<TR>
+<TD><CODE>stadium_breakdown</CODE></TD>
+<TD>Technical problems in the stadium</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD><CODE>stadium_riots</CODE></TD>
+<TD>Riots in the stadium</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD><CODE>stadium_fire</CODE></TD>
+<TD>Fire in the stadium</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD><CODE>substitution</CODE></TD>
+<TD>A substitution</TD>
+<TD>_P0_ player who comes in, _P1_ player who gets substituted, _TT_ their team number</TD>
+</TR>
+<TR>
+<TD><CODE>structure_change</CODE></TD>
+<TD>A team changes its formation</TD>
+<TD>_TT_ the team number, _EX_ the new formation (e.g. 442)</TD>
+</TR>
+<TR>
+<TD><CODE>style_change</CODE></TD>
+<TD>A team changes its playing style</TD>
+<TD>_TT_ the team number, _EX_ the new style</TD>
+</TR>
+<TR>
+<TD><CODE>boost_change</CODE></TD>
+<TD>A team changes its boost value</TD>
+<TD>_TT_ the team number, _EX_ the new boost value (e.g. OFF)</TD>
+</TR>
+</TABLE>
+
+
+<!-- html code generated by txt2tags 2.2 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html def_howto_lgcommentary.t2t -->
+</BODY></HTML>

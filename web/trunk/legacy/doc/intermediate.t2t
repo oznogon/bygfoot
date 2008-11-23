@@ -1,0 +1,237 @@
+Intermediate Guide
+
+
+%!Style: ../green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!CmdLine(html): --toc
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>' 
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(tex): 'section\*' 'section'
+%!PostProc(tex): '\\subsection' '\\section'
+%!PostProc(tex): '\\subsubsection' '\\subsection'
+
+==Command Line Options==
+
+- You can specify a directory with the pixmaps and the text-files
+needed by adding `-d your_pixmap_dir` at the command line.
+
+`bygfoot -d ~/.pixmaps`  
+
+- You can specify a custom country-file by adding `-f your_country_file` 
+at the command line.
+
+`bygfoot -f ~/country_uzb`
+
+- You can load a saved game directly by giving Bygfoot its name
+on the command line. If it's located in the ``$HOME/.bygfoot/saves'' dir,
+you can omit the path to the file.
+
+`bygfoot michal-1`
+
+- You can start the **Bygfoot** Online Update Frontend by calling
+
+  `bygfoot -u` or `bygfoot --update`.
+
+   This will work only for those using the **Bygfoot** source package
+  and a version higher than 1.7.1 rev2. Those who use a source package
+  of an older version (but higher than 1.6.1) can use the
+  `bygfoot-update` bash script located in the package directory.
+
+
+==Managing players==
+
+- Right clicking on a player will write extended information about him
+into the right window, except when you're in transfer mode. You can
+also select the player and click on the `Player` button and `Show info`
+to achieve the same.
+
+- Young players get gradually better (skill-wise); older players get
+worse; the age at which a player reaches his peak ability differs
+with each player. Goalies' skill decays more slowly.
+
+- A player's peak ability is his talent value, which is only
+indirectly accessible for you through your scout. You only have your
+scout's estimation about a player's talent.
+
+- Getting better or worse means also an update of the player's value
+and sometimes his estimated talent. If a player improves, his wage
+increases. If he gets worse, his wage stays the same (nasty, isn't it?).
+
+- If a young player never plays, his improvement is slower; if he's
+injured, his development is retarded (so a player who seldom plays
+and always gets injured when he does may never reach his talent
+value). Conversely, if an older player gets injured, his ``decay''
+speeds up a bit.
+
+- Skill is rather more important than fitness (if you have a 8.0 / 90%
+and a 7.5 / 95% player, i'd let the first one play -- at least in
+important games), BUT: the worse the fitness value of a player, the
+more likely the occurance of an injury.
+
+- The accuracy of the estimated talent depends on your scout's ability.
+
+- Goalies only count in the ``Best players'' statistic if they have
+participated in at least half of the league games.
+
+- Goalies lose their ability more slowly as they pass their peak age
+(which is also later).
+
+
+
+==Managing the stadium==
+
+- The safer your stadium is, the more people will come to watch your
+matches.
+
+- The attendance depends not only on the safety but also on the type
+of game: in a Nationwide Conference game there won't be more than a
+couple of thousand spectators no matter how safe your stadium is;
+whereas a UEFA Cup final will guarantee a full stadium.
+
+- In stadiums with bad safety, fires can break out or riots can happen.
+
+- Your home games are (except for transfers and prize money) your only
+source of money, so keep an eye on your stadium (safety decreases
+with time).
+
+
+==Buying, selling and firing players==
+
+- When in transfer mode (the Transfer List displayed in the right
+  window), you can put players from your team on the list by
+  right-clicking on them in the left window and remove them by
+  right- or left- or middle- or whatever-clicking on them in
+  the right window. You can also use the `Player` button to do
+  these things.
+
+- You can temporarily sort the transfer list by clicking on one of the column
+  headers, e.g. `Skill`. If you go back to main menu, the sorting is
+  undone. You can sort the list permanently by switching it on in the
+  options menu (see [Preferences advanced.html#toc1]).
+
+- You can have **Bygfoot** warn you with a popup window whenever an
+  interesting player appears on the transfer list by specifying some
+  conditions in the options menu (see [Preferences advanced.html#toc1]).
+
+- When in transfer mode, there's a small, inconspicuous button (the
+  `Browse teams` button) with a search symbol on it in the lower right
+  corner of the main window. Clicking on it will show a list of all
+  teams in the game except your own team. If you click on a team name,
+  the player list of the team is displayed (the attributes shown
+  depend on the quality of your scout). Now you can try to buy a
+  player by clicking on the row he's in. In most cases the team owner
+  will refuse to sell the player because there's no adequate
+  replacement. But if you're lucky, they have a replacement and you
+  receive an offer. But don't be surprised: you'll have to pay a lot
+  more for the player than for players on the transfer list; and the
+  player will demand a very high wage.
+
+- **(Versions >= 1.7.0)** Instead of using the `Browse teams` button,
+  you can also click on a team name in the tables or click on a
+  fixture in the fixtures display (in the latter case, left and right
+  clicking will show you the home and away team, respectively) to see
+  the player list of the team.
+
+
+== Scout and physio ==
+
+- The scout is the most important factor when buying or selling
+  players. A better scout will:
+
+ - have more information about players in other teams (such as status
+   or age)
+
+ - be more precise when estimating the player's talent, value and
+   wage
+
+ - find a buyer for your player faster
+
+ - get more money for the player you sell
+
+
+On the other hand, the better your scout, the higher his wage (which you
+pay every week).
+
+
+- The physio is important when your players are injured.
+  A better physio will heal the players faster, but his wage
+  depends on his quality. If no player is injured, you don't
+  have to pay your physio.
+
+
+==Managing your team's finances==
+
+Money usually comes in by three ways:
+
++ Ticket sales. They only bring you money when you play at 
+home (this means: take good care of your stadium and extend it as you can). 
++ Player sales. This one is seldom used (you won't want to disband your 
+team, do you?). 
++ Prizes. If you finish a season as first, second or third, you get some 
+prize money. You also get some money for being the winner of the promotion 
+games or 4th in league 1, and if one of your players finishes in the top 3
+of the goalies or goal scorers statistics, or if he's voted best player.
+ 
+
+If you desperately need money (e.g. to buy an outstanding player
+from the transferlist), you can get a loan from the bank. The amount
+of money you can be granted at most depends on the value of your
+players and your stadium. You'll have to pay back your loan within
+15 weeks, but if you pay it back partly before that, the time limit
+might be extended. There's a variable interest rate per week which
+depends on the amount you owe (7,5% at most). If you fail to pay 
+back your loan in time, you'll get fired.
+
+There's also a ``drawing credit'' feature, which allows you to draw more
+money from you bank account than your current position. Your drawing credit
+depends -- just like the maximum loan -- on your stadium and your players.
+
+==Starting Bygfoot more comfortably==
+
+This tip is intended for those who are using the binary package of
+**Bygfoot**:
+
++ copy the directory `support_files` to your home directory and rename
+  it to `.bygfoot`.
++ copy the executable to a dir in your PATH (e.g. the directory you store
+  the bash scripts you've written).
+
+
+Now you should be able to start **Bygfoot** from any directory.
+
+==Parts of a ``Season''==
+
+**NOTE** -- Cup and League names in this section refer to the English
+country file (which is also the template country file... ;-)
+
+- You can browse the fixtures by clicking on ``Figures -> Fixtures''. Of
+  course you won't see all fixtures, but only of those leagues you
+  participate in and only of those rounds (in the cups) which have
+  been played or for which lots have already been drawn.
+
+- Each season there are:
+
+  + League games (5 national leagues),
+  + FA Cup games (featuring all English teams, though some teams from
+    the first two leagues have a wildcard for the first round),
+  + League Cup games (Nationwide Conference teams aren't participating
+    here)
+  + International Cups:
+    + Champions' League games (you'll participate if you win the
+    Premiership),
+    + Cup Winner's Cup games (you'll participate if you win the
+    FA Cup and don't win the Premiership) and
+    + UEFA Cup games (you'll participate if you finish 2nd to 4th in
+    Premier Division and don't  win the FA Cup)
+  + Additionally there's the 
+    + Charity Shield between the Premiership champion (or runner-up if
+    there's a double winner) and the FA Cup winner and the
+    + UEFA Supercup between the CL winner and the UEFA Cup winner.
+  + In leagues 2 to 5, the teams ranked 4th to 7th play promotion games
+    (a pair of home/away and a final on neutral ground). The winner gets promoted
+    along with the first 3 teams in the table.

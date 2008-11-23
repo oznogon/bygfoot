@@ -1,0 +1,1011 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../../green.css">
+<TITLE>Bygfoot XML tags reference</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>Bygfoot XML tags reference</H1>
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+    <UL>
+    <LI><A HREF="#toc1">Tags used across different files</A>
+    <LI><A HREF="#toc2">Tags used in country files</A>
+    <LI><A HREF="#toc3">Tags used in league files</A>
+    <LI><A HREF="#toc4">Tags used in cup files</A>
+    <LI><A HREF="#toc5">Cup properties</A>
+    <LI><A HREF="#toc6">Tags used in player names files</A>
+    <LI><A HREF="#toc7">Tags used in team definition files</A>
+    <LI><A HREF="#toc8">Tags used in live game commentary files</A>
+    <LI><A HREF="#toc9">Tags used in CPU strategy files</A>
+    </UL>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+<P>
+Last updated: 11/23/2008
+</P>
+<P>
+Here you can find a (hopefully) complete list of the available XML tags
+used in <B>Bygfoot</B> definition files. See also the
+<A HREF="def_howto.html">HOWTO</A> and the
+<A HREF="http://bygfoot.sf.net/misc/bygfoot-1.9-definitions.tar.bz2">current definitions</A>
+(Bzipped archive).
+</P>
+<P>
+The 'depth' value in the tables tells us how 'deeply' nested the tag is, ie.
+how many tags have to be closed until we arrive at the first level between
+the root tags. The root tag has depth 0.
+</P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc1"></A>
+<H2>Tags used across different files</H2>
+<P>
+An <I>(LC)</I> at the end of a description means that the tag is only used
+in league and cup files.
+</P>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Depth</TH>
+<TH>Name</TH>
+<TH>Possible values</TH>
+<TH>Default value</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>name</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Name of a country, league or cup.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>symbol</CODE></TD>
+<TD>string, an image file name</TD>
+<TD>-</TD>
+<TD>Symbol of a country, league or cup. An image file name (e.g. cup.png).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>sid</CODE></TD>
+<TD>string containing a-z ASCII characters, numbers and underscores (_)</TD>
+<TD>-</TD>
+<TD>Unique string id, e.g. <CODE>england1</CODE>. Should be also the part of the file name between the usual prefix (e.g. <CODE>country_</CODE> or <CODE>strategy_</CODE>) and <CODE>.xml</CODE></TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>short_name</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Shorter name of a league or cup (LC).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>week_gap</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>1</TD>
+<TD>Number of weeks between matchdays (LC).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>yellow_red</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>1000</TD>
+<TD>Number of yellow cards until a player gets banned automatically for a match (LC).</TD>
+</TR>
+</TABLE>
+
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc2"></A>
+<H2>Tags used in country files</H2>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Depth</TH>
+<TH>Name</TH>
+<TH>Possible values</TH>
+<TH>Default value</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD><CODE>country</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Root tag.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>leagues</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing the leagues list.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>league</CODE></TD>
+<TD>a league <I>sid</I></TD>
+<TD>-</TD>
+<TD>Tag enclosing a league <I>sid</I>.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>cups</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing the cup list.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>cup</CODE></TD>
+<TD>a cup <I>sid</I></TD>
+<TD>-</TD>
+<TD>Tag enclosing a cup <I>sid</I>.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>supernational</CODE></TD>
+<TD>0, 1</TD>
+<TD>0</TD>
+<TD>This tag, if set to 1, disables parts of the game, such as finances or transfers. It is used to create definitions like the World Cup.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>rating</CODE></TD>
+<TD>integer, between 1 and 10</TD>
+<TD>-</TD>
+<TD>This describes how strong the league of a country is. The English definition for instance should be 10, whereas the Greek one is around 5 or 6. Important for the job offer system.</TD>
+</TR>
+</TABLE>
+
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc3"></A>
+<H2>Tags used in league files</H2>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Depth</TH>
+<TH>Name</TH>
+<TH>Possible values</TH>
+<TH>Default value</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD><CODE>league</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Root tag.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>layer</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>Index + 1</TD>
+<TD>The layer of the league; important for parallel leagues. If you don't have parallel leagues in your country, you can omit this tag. First league has layer 1, parallel leagues have the same layer.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>first_week</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>1</TD>
+<TD>The week number the league begins (ie. the first matches are played.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>round_robins</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>2</TD>
+<TD>How many round robins are played (by default, each teams plays each other team twice during a league championship). In other words, the number of matches each team plays against each other team.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>break</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD><CODE>week_gap</CODE></TD>
+<TD>How many weeks there should be between round robins. Useful if you want to have a custom winter break, for instance.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>average_talent</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>7000</TD>
+<TD>Average talent of the players in the league in <CODE>(percentage of the maximum skill) * 100</CODE>. Maximum skill is currently 99.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>names_file</CODE></TD>
+<TD>string</TD>
+<TD><I>general</I></TD>
+<TD>The <I>sid</I> (ie. the part between <CODE>player_names_</CODE> and <CODE>.xml</CODE>) of a player names file containing last names and first names.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>active</CODE></TD>
+<TD>1, 0</TD>
+<TD>1</TD>
+<TD>Whether the league is visible to the user and league matches are scheduled and played. Inactive leagues are useful as mere 'containers' for teams, e.g. in the World Cup definition.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>joined_league</CODE></TD>
+<TD>league <I>sid</I></TD>
+<TD>-</TD>
+<TD>If specified, fixtures against teams from the given league will be added to the league fixtures. Useful for fixtures across leagues like in North American conferences.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>rr</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>2</TD>
+<TD>NOT A TAG BUT AN ATTRIBUTE to <CODE>joined_league</CODE>. Number of round robins for the fixtures with the joined league teams.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>new_table</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>-</TD>
+<TD>A week number when a new table should be added. The older tables are kept and a cumulative table is kept when there is more than one table, too. Useful for systems like apertura/clausura in South America.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>name</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>NOT A TAG BUT AN ATTRIBUTE to <CODE>new_table</CODE>. Name of the new table.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>prom_rel</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing the promotion/relegation section.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>prom_games</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing the promotion games section.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>prom_games_dest_sid</CODE></TD>
+<TD>one league <I>sid</I> or a space-separated list of league <I>sids</I></TD>
+<TD>-</TD>
+<TD>The destination league of the promotion game winner(s).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>prom_games_loser_sid</CODE></TD>
+<TD>one league <I>sid</I> or a space-separated list of league <I>sids</I></TD>
+<TD>-</TD>
+<TD>The destination league of the promotion game loser(s).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>prom_games_number_of_advance</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>1</TD>
+<TD>How many teams advance from the promotion games. All other participating teams count as losers.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>prom_games_cup_sid</CODE></TD>
+<TD>a cup <I>sid</I></TD>
+<TD>-</TD>
+<TD><I>sid</I> of the cup specifying the cup format for the promotion games.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>prom_rel_element</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>A tag enclosing a promotion/relegation element.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>rank_start</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>0</TD>
+<TD>The first rank in the tables that is part of the element.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>rank_end</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>0</TD>
+<TD>The last rank in the tables that is part of the element.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>dest_sid</CODE></TD>
+<TD>one league <I>sid</I> or a space-separated list of league <I>sids</I></TD>
+<TD>-</TD>
+<TD>The destination league of the element.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>prom_rel_type</CODE></TD>
+<TD><I>promotion</I> or <I>relegation</I> or <I>none</I></TD>
+<TD><I>none</I></TD>
+<TD>Whether we have a promotion or relegation element (or unspecified). Only important for colours in tables.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>from_table</CODE></TD>
+<TD>integer, &gt;= 0</TD>
+<TD>0</TD>
+<TD>To which table the element refers, in case the league contains more than one. Default (0) is the cumulative table. The later a table gets added during a season, the higher its index.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>teams</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing the team list.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>team</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing a team section.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>team_name</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Name of a team.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>team_symbol</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>A file with a symbol for the team.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>team_names_file</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>A file (<I>sid</I>) with player names.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>team_average_talent</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>-</TD>
+<TD>The average talent of the players in the team.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>def_file</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Part between <CODE>team_</CODE> and <CODE>.xml</CODE> of a file containing a team definition.</TD>
+</TR>
+</TABLE>
+
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc4"></A>
+<H2>Tags used in cup files</H2>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Depth</TH>
+<TH>Name</TH>
+<TH>Possible values</TH>
+<TH>Default value</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD><CODE>cup</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Root tag.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>group</CODE></TD>
+<TD>integer</TD>
+<TD>-1</TD>
+<TD>Integer grouping cups that should not feature the same teams (e.g. Champions' League and Cup Winners' Cup); those get the same group number. A value of <I>-1</I> means there are no restrictions.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>last_week</CODE></TD>
+<TD>integer, &gt;0</TD>
+<TD>-</TD>
+<TD>The week the last match(es) of the cup are played. Just for convenience so that you can specify the week of the cup final.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>add_week</CODE></TD>
+<TD>integer, &gt;= -1</TD>
+<TD>0</TD>
+<TD>Integer telling the program when the cup 'gets active', ie. when the fixtures should be written (see <A HREF="def_howto.html">HOWTO</A>).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>talent_diff</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>0</TD>
+<TD>Difference of the average talents in the cup (if it's an international one) compared to the first league of the country in <CODE>percentage * 100</CODE> (e.g. 250 = +2,5%).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>property</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>A cup property. See the list with cup properties below.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>cup_rounds</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing the cup rounds section.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>cup_round</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing a cup round section.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>home_away</CODE></TD>
+<TD>0 or 1</TD>
+<TD>1</TD>
+<TD>Whether there are home/away games.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>replay</CODE></TD>
+<TD>0 or 1</TD>
+<TD>0</TD>
+<TD>Whether there are replay matches. Don't combine with <CODE>home_away</CODE>.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>neutral</CODE></TD>
+<TD>0 or 1</TD>
+<TD>0</TD>
+<TD>Whether the cup round matches are on neutral ground.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>byes</CODE></TD>
+<TD>integer &gt;= -1</TD>
+<TD>-1</TD>
+<TD>The number of teams to get a bye in the cup round. The default value -1 means that the program computes the number of byes needed so that in the next round the number of teams is a power of 2.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>randomise_teams</CODE></TD>
+<TD>0 or 1</TD>
+<TD>1</TD>
+<TD>Whether the order of teams gets randomised before writing the fixtures. Setting this to 0 makes sense in the first round of cups that you want to keep unchanged, e.g. the World Cup def.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>number_of_groups</CODE></TD>
+<TD>integer, &gt;= 0</TD>
+<TD>0</TD>
+<TD>How many groups there are if we have a round robin stage. <I>0</I> means this is not a round robin stage.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>number_of_advance</CODE></TD>
+<TD>integer, &gt;= 0</TD>
+<TD>1</TD>
+<TD>How many teams advance from each group (only relevant if <CODE>number_of_groups</CODE> is &gt; 0).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>number_of_best_advance</CODE></TD>
+<TD>integer, &gt;= 0</TD>
+<TD>0</TD>
+<TD>How many of the best teams (apart from those already advancing via <CODE>number_of_advance</CODE>) across all groups advance ((only relevant if <CODE>number_of_groups</CODE> is &gt; 0).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>new_teams</CODE></TD>
+<TD>integer, &gt;= 0</TD>
+<TD>0</TD>
+<TD>How many teams come into the cup in a cup round (only specified if some of the teams have to be generated)</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>delay</CODE></TD>
+<TD>integer</TD>
+<TD>0</TD>
+<TD>This tag can be used to delay a cup round by a certain number of weeks or make it occur earlier (if the value is negative). Take care you don't get an overlap with the previous round if you use a negative delay.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>choose_teams</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing the choose_team list of a cup round.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">4</TD>
+<TD><CODE>choose_team</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing a choose_team section.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">5</TD>
+<TD><CODE>choose_team_sid</CODE></TD>
+<TD>league or cup <I>sid</I></TD>
+<TD>-</TD>
+<TD>The league or cup the team(s) get taken from. Can be a league or cup that's part of the country or a team from one of the league xml files not part of the country.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">5</TD>
+<TD><CODE>number_of_teams</CODE></TD>
+<TD>integer</TD>
+<TD>-1</TD>
+<TD>How many teams get chosen. <I>-1</I> means all teams.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">5</TD>
+<TD><CODE>start_idx</CODE></TD>
+<TD>integer</TD>
+<TD>-</TD>
+<TD>The index of the first team to load (only relevant if <CODE>number_of_teams</CODE> != -1).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">5</TD>
+<TD><CODE>end_idx</CODE></TD>
+<TD>integer</TD>
+<TD>-</TD>
+<TD>The index of the last team to load (only relevant if <CODE>number_of_teams</CODE> != 0). Note that not all teams between the indices get loaded if <CODE>number_of_teams</CODE> is smaller than the range.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">5</TD>
+<TD><CODE>randomly</CODE></TD>
+<TD>0 or 1</TD>
+<TD>0</TD>
+<TD>Whether to load the teams randomly (only makes sense if <CODE>number_of_teams</CODE> != -1 and the range of the indices is bigger than <CODE>number_of_teams</CODE>).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">5</TD>
+<TD><CODE>generate</CODE></TD>
+<TD>0 or 1</TD>
+<TD>0</TD>
+<TD>Whether to look for the team in the leagues and cups of the country or load and generate the team from an 'external' league xml file.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">5</TD>
+<TD><CODE>skip_group_check</CODE></TD>
+<TD>0 or 1</TD>
+<TD>0</TD>
+<TD>Whether to skip the check for teams competing in other cups from the same cup group.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">5</TD>
+<TD><CODE>from_table</CODE></TD>
+<TD>integer, &gt;= 0</TD>
+<TD>0</TD>
+<TD>To which table the choose_team refers, in case the league contains more than one. Default (0) is the cumulative table. The later a table gets added during a season, the higher its index.</TD>
+</TR>
+</TABLE>
+
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc5"></A>
+<H2>Cup properties</H2>
+<DL>
+<DT>national</DT><DD>
+  National cups, no teams have to be generated
+  ('cause they're from the leagues of the country).
+<DT>international</DT><DD>
+  International cup. Possibly, some teams have to get loaded
+  from xml files and generated.
+<DT>promotion</DT><DD>
+  A promotion games cup.
+<DT>hide</DT><DD>
+  Whether to hide the cup (the user doesn't see it anymore) after
+  the competition's finished. This is useful for 'auxiliary' cups
+  like some cups that are only needed to determine participating
+  teams for another cup.
+<DT>weak_at_home</DT><DD>
+  If this property is set, teams from lower leagues play at home against
+  teams from better leagues in cup rounds with only one match.
+<DT>highlight1</DT><DD>
+  First highlighting colour (commonly used for international cups).
+  If a cup with this property contains choose_teams specifying teams
+  from leagues, the corresponding teams have this colour (currently lightblue)
+  as background colour in the tables. 
+<DT>highlight2</DT><DD>
+  Second highlighting colour. Commonly used for promotion game cups
+  (currently khaki).
+<DT>highlight3</DT><DD>
+  Third highlighting colour. Currently gold.
+<DT>league_talents</DT><DD>
+  Whether to create teams based on the talent level of their league definition file rather than using the talent_diff value.
+<DT>silent_on_fixture_error</DT><DD>
+  Whether to keep silent and disable the cup if the fixture checking (e.g. for fixtures with the same team playing against itself) returns an error. This is useful for cups that don't always take place, e.g. if there's a double winner so that a Supercup isn't necessary.
+</DL>
+
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc6"></A>
+<H2>Tags used in player names files</H2>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Depth</TH>
+<TH>Name</TH>
+<TH>Possible values</TH>
+<TH>Default value</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>0</TD>
+<TD><CODE>names</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Root tag.</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD><CODE>first_name</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Tag enclosing a first name, e.g. 'John'.</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD><CODE>last_name</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Tag enclosing a last name, e.g. 'Arbuckle'.</TD>
+</TR>
+</TABLE>
+
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc7"></A>
+<H2>Tags used in team definition files</H2>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Depth</TH>
+<TH>Name</TH>
+<TH>Possible values</TH>
+<TH>Default value</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>0</TD>
+<TD><CODE>team</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Root tag.</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD><CODE>team_name</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Name of the team (may be an official one).</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD><CODE>stadium_name</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Name of the stadium, like Bernabeu.</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD><CODE>symbol</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Name of an image file (e.g. a team badge or a flag).</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD><CODE>average_talent</CODE></TD>
+<TD>integer, between 0 and 10000</TD>
+<TD>-</TD>
+<TD>Average talent for additional players that get generated (apart from the ones specified in the definition) to make the team complete.</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD><CODE>formation</CODE></TD>
+<TD>integer, digits sum up to 10</TD>
+<TD>-</TD>
+<TD>A team formation like 442 or 433.</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD><CODE>names_file</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD><I>sid</I> of a names file to load player names from (for the players that aren't specified in the def file).</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD><CODE>player</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing a player section.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>player_name</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Name of the player.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>birth_year</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>-</TD>
+<TD>Year of birth in YYYY format (e.g. 1982).</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>birth_month</CODE></TD>
+<TD>integer, between 1 and 12</TD>
+<TD>-</TD>
+<TD>Month of birth, e.g. 8 for August.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>skill</CODE></TD>
+<TD>integer, between 0 and 10000</TD>
+<TD>-</TD>
+<TD>Skill of player in percentage of max skill times 10000, e.g. 8000 to get a player whose skill is 80% of the maximum skill.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>talent</CODE></TD>
+<TD>integer, between 0 and 10000, &gt; skill</TD>
+<TD>-</TD>
+<TD>Talent of player in percentage, e.g. 9000 to have a player whose talent is 90% of the maximum skill. Talent must be greater or equal the skill value.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>position</CODE></TD>
+<TD>0, 1, 2 or 3</TD>
+<TD>-</TD>
+<TD>Position of the player. Positions are: 0 (Goalie), 1 (Defender), 2 (Midfielder), 3 (Forward).</TD>
+</TR>
+<TR>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+</TABLE>
+
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc8"></A>
+<H2>Tags used in live game commentary files</H2>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Depth</TH>
+<TH>Name</TH>
+<TH>Possible values</TH>
+<TH>Default value</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>0</TD>
+<TD><CODE>lg_commentary</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Root tag.</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD><CODE>event</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing an event with a name and commentary strings.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>name</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Tag enclosing the name of an event. See the <A HREF="def_howto.html">HOWTO</A> for a list of event names.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>commentary</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>A commentary belonging to an event.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>cond</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>NOT A TAG BUT AN ATTRIBUTE. A condition specifying when the commentary may be chosen.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>pri</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>NOT A TAG BUT AN ATTRIBUTE. A priority value. A high value relative to the rest of the commentaries for the given event increases the probability that the commentary gets picked.</TD>
+</TR>
+</TABLE>
+
+<P>
+<A HREF="http://bygfoot.sf.net/misc/bygfoot-1.9-commentaries.tar.bz2">Here's an archive</A>
+of current commentary files.
+</P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc9"></A>
+<H2>Tags used in CPU strategy files</H2>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Depth</TH>
+<TH>Name</TH>
+<TH>Possible values</TH>
+<TH>Default value</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD><CODE>strategy</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Root tag.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>sid</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>The unique string id of the strategy/file.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>desc</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>A short description of the strategy.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>priority</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>1</TD>
+<TD>Priority of the strategy relative to all other strategies.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>prematch</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing a prematch section.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>cond</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Property for the <CODE>prematch</CODE> tag.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>formation</CODE></TD>
+<TD>integer, checksum = 10</TD>
+<TD>-</TD>
+<TD>A team formation, e.g. 442 or 433.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>lineup</CODE></TD>
+<TD><I>best</I>, <I>weakest</I>, <I>fittest</I>, <I>unfittest</I></TD>
+<TD>-</TD>
+<TD>A lineup description.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>min_fitness</CODE></TD>
+<TD>integer, between 0 and 100</TD>
+<TD>0</TD>
+<TD>Property for the <CODE>lineup</CODE> tag.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>prematch_boost</CODE></TD>
+<TD><I>on</I>, <I>off</I>, <I>anti</I></TD>
+<TD>-</TD>
+<TD>Boost state.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>prematch_style</CODE></TD>
+<TD><I>all-out-defend</I>, <I>defend</I>, <I>balanced</I>, <I>attack</I>, <I>all-out-attack</I></TD>
+<TD>-</TD>
+<TD>Playing style of a team.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>match_action</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing a match action.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>cond</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>Property for the <CODE>match_action</CODE> tag.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>style</CODE></TD>
+<TD><I>all-out-defend</I>, <I>defend</I>, <I>balanced</I>, <I>attack</I>, <I>all-out-attack</I></TD>
+<TD>-</TD>
+<TD>Playing style of a team.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>boost</CODE></TD>
+<TD><I>on</I>, <I>off</I>, <I>anti</I></TD>
+<TD>-</TD>
+<TD>Boost state.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD><CODE>sub</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing a substitution.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>in</CODE></TD>
+<TD><I>goalie</I>, <I>forward</I>, <I>midfielder</I>, <I>defender</I></TD>
+<TD>-</TD>
+<TD>A playing position.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>out</CODE></TD>
+<TD><I>goalie</I>, <I>forward</I>, <I>midfielder</I>, <I>defender</I></TD>
+<TD>-</TD>
+<TD>A playing position.</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>prop</CODE></TD>
+<TD><I>best</I>, <I>weakest</I>, <I>fittest</I>, <I>unfittest</I></TD>
+<TD>-</TD>
+<TD>Property for the <CODE>in</CODE> and <CODE>out</CODE> tags.</TD>
+</TR>
+</TABLE>
+
+
+<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html tags_ref.t2t -->
+</BODY></HTML>

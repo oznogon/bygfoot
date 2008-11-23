@@ -1,0 +1,186 @@
+Installation Guide
+
+
+%! Target  : html
+%! Options : --toc
+%! Style   : ../green.css
+%!encoding: iso-8859-1
+% !PostProc: <H1> <IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+% !PostProc(html): "<FONT SIZE=4>" ""
+% !PostProc(html): "</FONT></CENTER>" ""
+
+Last updated: %%mtime(%m/%d/%Y)
+
+== Distributions ==
+
+There are a few Unix/Linux distributions that include **Bygfoot** in their
+repositories. In such a case, it is recommended to use the distribution specific
+installing method, since it keeps your system clear and your package manager
+informed about installed packages.
+
+In case you know of other distros including **Bygfoot**, please
+[email me feedback.html] so that I include them here.
+
+=== Debian / Ubuntu ===
+
+Debian branches include various **Bygfoot** versions. Stable has the old 1.8.0
+version currently, whereas 1.9.1 is in testing and the latest versio, 1.9.2,
+is in unstable. Generally, the latest **Bygfoot** version gets uploaded to
+Debian within a few weeks after the release at most.
+
+To install **Bygfoot**, edit your ``sources.list`` file appropriately and execute
+``apt-get install bygfoot``.
+
+I usually also upload the deb package created by the maintainer to the
+SourceForge.Net project site. If you want to install the game using this package,
+you have to type ``dpkg -i package.deb``. However, this won't resolve dependencies
+like ``apt-get`` does.
+
+Ubuntu includes  **Bygfoot** in the //universe// repository (last time I checked
+they had the very latest version). After adding //universe// to your sources,
+you should be able to install the game with ``apt-get`` just like with Debian.
+
+=== Gentoo ===
+
+Last time I made a new release, it got included in Gentoo's portage the same day (without me
+doing anything -- in the case of Debian, I usually email the maintainer of the **Bygfoot** package).
+
+Right after a release, the package is masked in portage (naturally), but it becomes 'testing' after
+a few days.
+
+To install, call ``emerge bygfoot`` (after making the appropriate adjustments to your portage
+configuration files if necessary).
+
+=== SuSE ===
+
+SuSE doesn't include **Bygfoot** in official releases; however, I usually provide RPM and SRPM packages
+with **Bygfoot** releases -- they should work on your SuSE system, provided you have the necessary
+supplementary packages installed (GTK+2, mainly).
+
+There's also a Belgian guy who regularly makes SuSE packages when I release new versions
+(so I guess my RPMS aren't that perfect). I don't know how long he'll kept this up (I don't know
+him at all), but anyway, [here's the link to his page http://linux01.gwdg.de/~pbleser/pnews.php].
+
+To install an RPM (this applies to other RPM-based distributions, too), call
+``rpm -Uvh bygfoot-XYZ.rpm``.
+
+=== FreeBSD ===
+
+**Bygfoot** also gets regularly ported to FreeBSD by Pav Lucistnik. However,
+I don't know how installing packages on BSD systems work, so you're alone
+there.
+
+== Windows ==
+
+Since **Bygfoot** is a GTK program, you first need the GTK+2 runtime environment
+for Windows. You can get it 
+[here http://sourceforge.net/project/showfiles.php?group_id=121075&package_id=132255]
+(you need the .exe 32-bit Windows version).
+
+After installing the runtime environment, you can download and unpack the **Bygfoot** Windows
+package, switch to the game directory and start the game.
+
+Of course, you don't have to reinstall the runtime environment to be able to
+play later **Bygfoot** versions, you only have to do it once (you only have to
+update the RE if some newer **Bygfoot** version uses functions only available
+in newer GTK+2 versions).
+
+== The binary package for Linux (Unix?) ==
+
+This might be the easiest way to try out **Bygfoot** on a Linux x86-system.
+
+The binary package is a simple tar.bz2 archive containing everything you need
+(except for the GTK+2 RE, which should be installed on your system). You don't have
+to install it, you just unpack it and type ``./bygfoot``.
+
+If it doesn't work, you have to resort to a package for your distro or the
+source package.
+
+== The source package ==
+
+This section is directed at Linux users. If you use Windows and REALLY REALLY want
+to try to compile the source package, have a look at
+[this thread at the forums http://bygfoot.sourceforge.net/forum/viewtopic.php?t=457].
+
+=== Requirements ===
+
+To be able to compile the source package, you need to have the following development packages
+installed (note the word //development//; it means that on a common system, it doesn't suffice
+to have gtk-VERSION installed you need gtk-devel-VERSION or something similar).
+
+- gtk+2
+- pango
+- atk
+- glib2
+- pkgconfig
+
+
+To build, you also need GNU make and a C compiler, of course.
+
+=== Compiling ===
+
+If the requirements are fulfilled, extract the source package (called ``bygfoot-X.Y.Z.tar.bz2``)
+by calling ``tar xfj bygfoot-X.Y.Z.tar.bz2``, go to the build directory (called bygfoot-X.Y.Z)
+and type ``./configure``. (To see a list of options that can be passed to the script,
+type ``./configure --help``.)
+
+If the script runs fine and creates the Makefiles you can proceed by typing ``make``
+to compile the sources. If the configure script exits with an error, have a look
+at the error message and try to figure out what's missing (e.g. GTK+2 version too
+old).
+
+After you've compiled the sources, you have to become superuser (type ``su -``
+followed by the root password); switch to the build directory and type
+``make install``. This will copy the compiled executables and the data files
+to the appropriate destinations, typically to ``/usr/local/bin`` (executables)
+and ``/usr/local/share/bygfoot`` (data files).
+
+To uninstall the game, type ``make uninstall`` in the build directory; you have
+to be superuser to do this.
+
+Because of this uninstall possibility, you should leave the build dir alone even
+after you've installed the game successfully (unless you don't mind if your system
+gets cluttered with compiled packages).
+
+== Updating the source package ==
+
+As of versions 1.6.1 and 1.7.1 an online update script called
+``bygfoot-update`` is shipped with Linux/Unix packages. The script can be used
+to accomplish various tasks:
+- Update the source package. This is meant to be an easy way of keeping
+  your **Bygfoot** package up-to-date without having to check the website
+  regularly.
+- Get official player and team names. Since I don't have a license for official
+  team names, in **Bygfoot** packages mostly city names are used as team names.
+  You can use this feature of the update script to replace the inofficial names
+  with the official names.
+- Download a package. The script can be used to download a **Bygfoot** package
+  without having to visit the website.
+- Get a CVS version. The script can be used to get the current CVS version of **Bygfoot**
+  without having to mess with the ``cvs`` syntax.
+
+
+Since the script is menu-driven (using **zenity** if available or **dialog** if not),
+there isn't much to explain about it. You can call ``bygfoot-update --help`` (or ``-h``)
+to see a summary of command line options.
+
+
+== Getting a CVS version ==
+
+The CVS version is the bleeding-edge **Bygfoot** version.
+You can use it to explore features that are being developed before they get
+included in an official release. You can also help iron out bugs before
+releases.
+
+I've never used CVS with Windows, so I can't help Windows users here.
+The rest of this section applies to Unix/Linux users.
+
+The easiest way to get a CVS version is to use the update script.
+Just call ``bygfoot-update --cvs``, select a directory where the cvs version
+should get downloaded to, choose 'anonymous' as username and press OK.
+
+You can also use ``cvs`` directly, but the ``cvs`` syntax isn't simple
+and you better read the
+[SourceForge.Net instructions http://sourceforge.net/cvs/?group_id=46139]
+first.

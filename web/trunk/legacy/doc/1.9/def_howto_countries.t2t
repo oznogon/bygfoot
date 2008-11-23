@@ -1,0 +1,124 @@
+How to write country definition files
+
+
+%! Target  : html
+%! Options : --toc
+%! Style   : ../../green.css
+%!encoding: iso-8859-1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+
+Last updated: %%mtime(%m/%d/%Y)
+
+[<- Previous def_howto.html] | [Overview def_howto.html] | Countries | [Leagues def_howto_leagues.html] | [Cups def_howto_cups.html] | [Player names def_howto_plnames.html] | [Teams def_howto_teams.html] | [Live game commentary def_howto_lgcommentary.html] | [CPU strategies def_howto_strategy.html] | [Next -> def_howto_leagues.html]
+
+== How to create a country file ==
+
+--------------------------------------------
+**IMPORTANT:** If you create a European country for which there is
+already a short definition, e.g. you make the French leagues and
+there is already ``league_france1_short.xml`` (in the ``short_leagues``
+subdirectory of the ``support_files`` directory), you have to edit the
+European cup files (``cup_europe_champ_league.xml``,
+``cup_europe_uefa.xml`` and ``cup_europe__cwc.xml``) and change all
+entries ``league_france1_short`` to ``league_france1`` (the sid of
+the first league of your new country). Otherwise you'll get an
+error when loading the cup teams.
+--------------------------------------------
+
+Countries consist only of leagues, cups and some strings.
+Let's start with an example (you probably won't need more
+than that, anyway): the file ``country_england.xml`` looks
+like this:
+```
+<country>
+ <name>England</name>
+
+  # This is the name of the country.
+
+  <symbol>flag_en.png</symbol>
+
+  # The symbol, some image file (jpg etc. would
+  # work, too).  The file should be somewhere in
+  # the support directories.
+
+  <sid>england</sid>
+
+  # The unique string id of the country. This
+  # should be the same as the part of the file
+  # name between 'country_' and '.xml'.
+
+  <leagues>
+
+  # The array of leagues of the country.
+
+  # The leagues are given with their string ids,
+  # ie.  the corresponding league definition
+  # files are called 'league_england1.xml' etc.
+
+    <league>england1</league>
+    <league>england2</league>
+    <league>england3</league>
+    <league>england4</league>
+    <league>england5</league>
+ </leagues>
+
+  <cups>
+
+  # The array of cups.
+
+    <cup>england_fa</cup>
+
+    # The cups are also given with their string
+    # ids, so one of the cup definition files that
+    # gets loaded would be 'cup_england_fa.xml'
+
+    <cup>england_league</cup>
+    <cup>europe_uefa</cup>
+    <cup>europe_cwc</cup>
+    <cup>europe_champ_league</cup>
+    <cup>supercup_league_vs_cup</cup>
+    <cup>supercup_europe_uefa</cup>
+    <cup>england_prom_games2</cup>
+    <cup>england_prom_games3</cup>
+    <cup>england_prom_games4</cup>
+    </cups>
+
+</country>
+```
+
+Some notes:
+
+- You should take care that the average talents in the leagues
+are not too far apart, otherwise promotion/relegation will
+be a mess (the same teams that got promoted get relegated
+the next season, obviously). I'd say 700-800 is the biggest
+difference there should be between two leagues connected by
+promotion/relegation.
+
+- The order of the cups is important. If the European
+Cup Winners' Cup is included, it takes the winner of the
+first cup in the cups array as the participant from the
+country, in this case the FA Cup. If we specify the League Cup
+as the first cup, the winner of the League Cup participates
+in the CWC.
+
+- If there are cups that 'compete' against each other
+concerning the teams that participate in them, e.g. the
+Champions' League and the CWC (what does this mean? If there's
+a double winner, e.g. a team winning both the first league and
+the first cup, the league runner-up should participate in the 
+CWC.), they should be listed in reversed priority order. In our
+case, the CL participant gets chosen first. If the team is also
+qualified for the CWC (ie. a double winner), he doesn't participate
+in the CWC as well, but the runner-up gets chosen. So, in a way,
+the CL wins against the CWC.
+
+- Generally, cups that provide participants for other cups 
+(FA Cup winner -> Cup Winners' Cup) have to come //before//
+the second cup; cups that contain teams that may not participate
+in other cups (with the same ``group`` value, see below) should
+come //after// these cups.
+
+
+That's it for country files.

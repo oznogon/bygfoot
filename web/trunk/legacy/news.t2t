@@ -1,0 +1,472 @@
+News Archive
+
+
+%!Style: green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): "<HR NOSHADE SIZE=1>" "<div class=hr></div>"
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(html): '<P ALIGN="center">' ''
+
+===September 11, 2005===
+
+Since the forums are very sluggish lately, here's
+the announcement for the 1.9.1 version:
+
+**Bygfoot Football Manager 1.9.1 is released**
+
+This release fixes a couple of bugs and adds minor feature enhancements and
+improvements, such as
+- Youth Academy
+- Sponsorship money
+- Memorable matches
+
+
+Translations were added and updated, as well.  You can find the
+[detailed ChangeLog here http://bygfoot.sourceforge.net/changelog.html].
+Click [here to see some screenshots http://bygfoot.sourceforge.net/screenshots.html].
+
+
+This version is also the first one including a package for the Windows
+operating system. You need to install the GTK+ runtime environment first,
+which [you can get here http://sourceforge.net/project/showfiles.php?group_id=121075&package_id=132255]
+(you need the .exe 32-bit Windows version).
+
+Get the appropriate package for your system
+[at the SourceForge.net project site http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=121174&release_id=355505].
+A Debian package is also available from Debian unstable mirrors.
+
+Bug reports can be filed
+[in the Bug reports forum http://bygfoot.sourceforge.net/phpBB2/viewforum.php?f=1].
+
+**This version is NOT savegame compatible to previous versions!**
+ It is even recommended that you delete your $HOME/.bygfoot-X folder(s).
+
+Team/League/Country count for this release:
+1485 teams in 105 leagues in 17 countries.
+
+Have fun!
+
+Gyözö Both
+
+
+===June 18, 2005 News section deprecated===
+
+As of today, news will be maintained at
+[the forums http://bygfoot.sourceforge.net/forum]. The latest news
+items from the frontpage will link there.
+
+
+===February 21, 2005===
+
+**Bygfoot** 1.8.1 is released. This version contains some minor bugfixes
+and a country file for Belgium (thanks to ATD). Unfortunately just after releasing
+this version I found the job offer bug. If you're really really annoyed by that
+one, get a CVS version (easiest with the `bygfoot-update` script) or get a patch
+for your src package (ditto).
+
+You can download the new packages
+[here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=109486&release_id=306902].
+
+
+===January 31, 2005===
+
+A new major stable release is available. **Bygfoot** 1.8.0 is mostly identical
+to the last release of the development branch, **Bygfoot** 1.7.3.
+You can download different packages
+[here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=109486&release_id=301142]
+or using the `bygfoot-update` script (a Debian package will be provided in a few days).
+
+See the [ChangeLog changelog.html] to see a more or less complete list
+of changes.
+
+Being the first release of a new stable branch, this version is bound to
+contain a lot of bugs. Please [email me feedback.html] or report at the
+[home page forums forum] if you find any.
+
+Contrary to my usual release policy there isn't a simultaneous development
+release (1.9.0) because I'm currently rewriting the game from scratch using
+a lot of GLib magic and other stuff I've learned while writing 0.5 - 1.8.
+So 1.9 will take quite some time. Please be patient, I hope it'll be worth the
+waiting.
+
+
+===December 18, 2004===
+
+Browsing the [Wesnoth http://www.wesnoth.org] forums, I realized that
+the forums for bug reports, feature requests etc. at SourceForge are
+quite Spartan and sparse in comparison. So I asked Isaac Clerencia,
+who's one of the Wesnoth admins (and does the Debian packages for Bygfoot),
+how they manage their forums. It turned out be simple and easy (using
+[phpBB http://www.phpBB.com]), so:
+[do have a look at the new forum system! http://bygfoot.sourceforge.net/forum]
+
+Please don't post anymore at the forums at the SF.net project site; use these instead.
+
+===December 13, 2004===
+
+There's a Wiki for **Bygfoot** containing some tips for the game. It consists of a few
+pages only, but I'm really hoping it will replace the game documentation some day
+in the future. You can find
+[the Wiki here http://mec-symonds.eng.monash.edu.au/cgi-bin/twiki/view/Bygfoot/WebHome].
+Feel free to contribute if you have any interesting tips and documentation about the game
+(you have to register, but it's free).
+
+===November 23, 2004===
+
+**Bygfoot** 1.6.3 and 1.7.3 are available. You can download the stable release
+[here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=109486&release_id=284911]
+and the unstable packages
+[here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=121174&release_id=284910].
+
+If you have the source package of an older version containing the `bygfoot-update` script, you can
+also use the script to upgrade.
+
+The main new features of 1.7.3 are
+- save files are zip-compressed XML files (instead of binary),
+- there's a history for the development of players and teams.
+- added gettext support and some languages 
+
+
+The stable release only contains some minor bugfixes.
+
+[Click here changelog.html] to see the complete list of changes.
+
+
+===October 31, 2004===
+
+Arnaud Le Rouzic worked out how Bygfoot can be internationalized. If
+you'd like to translate the game to your language, (we'll be very grateful
+if you do) [here's a short guide on how to do it i18n.html].
+
+
+===October 23, 2004===
+
+Reviczky Ádám János has made a country file for Hungary. You can
+download it from the [extras section extras.html] or using the `bygfoot-update` script
+(to download the official team names package).
+
+He's also edited the team TSV 1860 München from Germany; the definition's available from
+the [extras section extras.html], too.
+
+--------------------------------
+
+Current development plans are:
++ Make ''histories'' for players and teams (ie., the development of values like
+  skill, wage, goals for players; or rank, money, goal difference for teams, is
+  stored in an array). This is already implemented in the CVS version, but histories
+  lead to HUGE save files, and we're still trying to find a solution.
++ Switch the load/save system to XML. This is implemented, too, but there are
+  still problems to solve; e.g., loading an XML file requires a lot of memory,
+  which doesn't get freed afterwards, miraculously.
++ After the above issues are resolved, release 1.7.3. 1.6.3 might be released earlier.
++ After the releases, I'm planning to begin work on a thorough rewriting of the league,
+  cup and fixtures system, which should lead to a lot more flexibility. Having exactly
+  the systems used in different countries (e.g. different number of teams in the leagues,
+  different cup systems, different promotion/relegation systems) shouldn't be a problem
+  then. This will lead to the next major unstable release, 1.9.0. Though it'll take quite
+  a lot of time, obviously.
+
+
+===October 1, 2004===
+
+**Bygfoot** 1.6.2 (stable) and **Bygfoot** 1.7.2 (development) are
+available. You can
+[dowload 1.6.2 here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=109486&release_id=271988].
+Get [the unstable version here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=121174&release_id=271987].
+
+There weren't any major changes; some bugs were fixed and I had to remove the official team names
+and real player names from the game because of trademark considerations. You can still download
+an archive with the official names [here extras.html#toc1].
+
+To see an overview with the changes in the new releases [have a look at the ChangeLog changelog.html].
+
+If you've compiled **Bygfoot** 1.7.1 or 1.6.1 yourself, you can use the
+`bygfoot-update` script to upgrade to 1.7.2 or 1.6.1. However, the update script
+shipped with 1.7.1 is a bit immature, so here's how you have to do the
+update (you shouldn't experience problems if you update 1.6.1):
+
++ First possibility:
+ + Call `bygfoot-update` and apply the first patch (revision 2).
+ + Quit the update by pressing `Ctrl-C`.
+ + Call the update script again and apply the remaining patches.
+
+ This should make sure that everything's all right.
+
++ Second possibility:
+ + Call `bygfoot-update` and apply all patches.
+ + Call `bygfoot-update` again. This will update the update script but of
+   course won't install new patches because your package is already up-to-date.
+   The old `bygfoot-update` script will be saved to `bygfoot-update.old`; you
+   can remove it if you like.
+ + There's a GUI frontend for the update script in `support-files` called
+   `bygfoot-update-gui`. Unfortunately it's not executable, although it should be.
+   So now you do a `chmod 744 support-files/bygfoot-update-gui`.
+   
+ 
+ Done.
+
+
+===September 13, 2004===
+
+Arturo Mendez has created a country file for Mexico. You can download
+it in the [extras section extras.html]. He's also edited his favourite
+team Tigres UANL; you can download the team definition from the
+[same section extras.html].
+
+Marco Fabbri has updated the country file for Italy. Get it from the
+[extras section extras.html].
+
+The online update script, the first version of which was shipped with
+**Bygfoot** 1.6.1 and 1.7.1, has been improved a lot. Those who use the **Bygfoot**
+source package of the mentioned versions can upgrade their package by
+calling `bygfoot-update` in the source package directory. The patch
+for 1.6.1 updates the update script and the country file for Italy.
+
+There are two patches for 1.7.1; please download the second one using
+the `bygfoot-update` script that has been updated with the first patch
+(in other words: call `bygfoot-update`, apply revision 2, quit `bygfoot-update`;
+now call `bygfoot-update` again and apply revision 3).
+
+The updates contain the country files for Mexico and Italy, a GUI frontend for
+the update script and an improved version of the script.
+
+
+===September 9, 2004===
+
+**Bygfoot** 1.6.1 and 1.7.1 are available. There are only two differences compared
+to the previous versions:
+
++ The infamous 'game-hangs-at-end-of-season-when-live-game-is-switched-on-and-there-are-no-games'
+  bug is corrected; I hope there won't be any serious bugs in the 1.6 branch anymore.
+
++ The source packages contain the first version of the `bygfoot-update` script that
+  should make it easy (in theory) for those who use the source package to keep their
+  **Bygfoot** version up-to-date without having to download new packages.
+  [Here's a short description on how the online update works installing.html#toc10].
+
+
+You can [download Bygfoot 1.6.1 here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=109486&release_id=266686].
+Get [Bygfoot 1.7.1 here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=121174&release_id=266687].
+
+
+===September 6, 2004===
+
+There are new major releases: **Bygfoot** 1.6.0 (stable version) and 1.7.0
+(development version). 1.6.0 is essentially the former development version 1.5.2,
+which is hopefully stable enough now; at least there weren't any bug reports.
+[Download 1.6.0 here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=109486&release_id=265713]
+and [1.7.0 here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=121174&release_id=265712].
+There should be patches available upgrading 1.4.3 to 1.6.0 and 1.5.2 to 1.7.0 for those with 14K modems
+[in the patches section http://sourceforge.net/tracker/?atid=445178&group_id=46139&func=browse].
+
+The new stable version is unfortunately not savegame-compatible to the 1.4 branch.
+
+Here's a short list with the most important changes. You can have a look at the
+[complete ChangeLog here. changelog.html]
+
+**Bygfoot** 1.6.0
+- added extended stadium capacity enlargement possibilities
+- added possibility to fire a player
+- added uninstall possibility for the src version
+- added manpage
+- added global configuration file
+- added physician quality (like scout)
+
+
+**Bygfoot** 1.7.0
+- clicking on a team name in the tables shows the team's player list
+- job offers show a lot more information on the team offering the job
+- a player can suffer an injury that forces him to retire
+- added own goals and penalties in regulation and extra time
+- added player and some more team awards (with prize money) at the end of a season
+
+
+===August 18, 2004===
+
+There's a CVS repository for **Bygfoot** now, which means the current development 
+version (i.e., the version that's being worked on and that will eventuall become
+the next official development release) is accessible for anyone now.
+
+To see the current ChangeLog (which will tell you about the changes compared 
+to the latest official releases) visit
+[the Bygfoot CVS repository http://cvs.sourceforge.net/viewcvs.py/bygfoot/bygfoot-unstable/],
+click on the ChangeLog file and then on the "view" link.
+
+To get a CVS version you need a CVS client (which should be included in your 
+linux distro). You type
+
+--- cvs -d:pserver:anonymous@cvs.sf.net:/cvsroot/bygfoot checkout bygfoot-unstable
+
+in a console window. This will download a directory called "bygfoot-unstable". 
+You can compile and install the downloaded package just like any other src 
+package with "./configure && make" and "make install".
+
+The package also contains the glade files needed to modify the **Bygfoot**
+interface (which is generated by [Glade http://glade.gnome.org]). If you'd 
+like to change the source code of **Bygfoot**, have a look at the README_CVS file.
+
+ATTENTION: the CVS version is not compressed and its size is approx. 2 MB.
+
+
+===August 18, 2004===
+
+**Bygfoot** 1.4.3 and 1.5.2 are available. The stable version contains some minor bugfixes.
+The development version contains a couple of new features such as extended stadium enlargement
+possibilities, the possibility to fire a player and different colors for the fitness percentage.
+Have a look at the [detailed ChangeLog changelog.html].
+
+Get the new versions in the [download section download.html].
+
+
+=== July 27, 2004 ===
+
++ The new development version 1.5.2 should be released soon. It will contain the possibility
+  to fire players and there will be extended stadium enlargement options. Probably there'll be
+  a stable version (1.4.3) containing some minor corrections, too.
+
++ There's a new version of José Geraldo Gouvêa's country file for Brazil. It contains only
+  South-American teams now, those out-of-place North-American ones are removed. Get it in
+  [the Extras section extras.html]
+
++ There's a team definition for the Spanish team Badajoz (Segunda Division D) available
+  in [the Extras section extras.html]. You can add it to your own definitions file via
+  the **Bygfoot** Editor Import function.
+
+
+===July 19, 2004===
+
+**Bygfoot** is available on Debian servers now (unstable). Because of this, there will be no more deb
+packages available on the SourceForge project site. If you absolutely don't want to add an unstable
+source to your sources.list file, you can
+[download Bygfoot deb packages here http://pulsar.unizar.es/~isaac/debian/].
+
+===July 12, 2004===
+
+**Bygfoot** 1.4.2 and 1.5.1 are available. Having released 1.4.1 and 1.5.0
+seems to have been quite a waste of time now [images/smileys/sad.png]. But since people were complaining
+about the transfer list bug (I've got to admit, it really was an annoying bug)
+I didn't want to release only a patch; especially considering that the rpm-version of 1.4.0
+was the most successful of the different packages.
+
+So, the only difference between the previous releases and these ones is the correction
+of the transfer list bug. If you don't experience problems (I suspect the bug doesn't occur
+if you let the program sort the list), you don't have to upgrade.
+
+Get the new packages and patches in the [download section download.html].
+The ChangeLog doesn't contain much information, but if you're curious: [here it is changelog.html].
+
+===July 10, 2004===
+
+**Bygfoot** 1.4.1 and 1.5.0 are released. 1.4.0 is merely a bugfix release, prompted by
+the bookmaker's tip bug:
+
+- corrected the freeze bug that occurred when you had a
+`$HOME/.bygfoot` directory from an older Bygfoot version
+- fixed bookmaker's tip bug (thanks to metoneca)
+- changed that absurd 'physicist' to 'physio'
+- reduced the damage a fire caused to the stadium
+
+
+1.5.0 contains additionally some new and untested features.
+
+Download the new releases [here download.html] or view the [full ChangeLog changelog.html].
+
+===July 9, 2004===
+
+We have decided to adapt a convention concerning the version numbering 
+introduced and followed by projects that are not as famous as Bygfoot 
+but nevertheless nice and well-done, e.g. the Linux kernel.
+
+In the future there will be two parallel versions of the program, the 
+stable version with version numbers X.Y.Z where Y is an even number, and 
+a development version with version numbers X.(Y + 1).Z where Y is the middle 
+version number of the current stable version. Releases for the stable branch 
+will only contain bugfixes and stability improvements, the development 
+version will be the playground for new features; the latter will lead 
+after a period of testing to the new stable version with number X.(Y + 2).Z.
+
+To sum it up: the next two releases (which will probably appear simultaneously)
+will have version numbers 1.4.1 and 1.5.0. There won't be a great 
+difference between them (at this point we have to forget my news 
+about version numbers that i wrote some days ago); 1.4.1 will 
+contain some bugfixes and 1.5.0 will additionally contain one or 
+two new features that need some testing.
+
+===July 7, 2004===
+
+There's a [patch http://sourceforge.net/tracker/?atid=445178&group_id=46139&func=browse]
+available correcting the bookmaker's tip bug in Bygfoot 1.4.0. The bookmaker 
+produced nonsense tips sometimes, like 'W 1:3' although you played at home.
+
+===July 7, 2004===
+
+The current version 1.4.0 should be available on Debian mirrors 
+in about a week. Thanks to Isaac Clerencia.
+
+1.4.0 has also been ported to FreeBSD by Pav Lucistnik. 
+Thanks! See http://www.freebsd.org/cgi/cvsweb.cgi/ports/games/bygfoot/
+
+===July 4, 2004===
+
+**Bygfoot** 1.4.0 is released. Read more and have a look at the ChangeLog 
+[here news.html]. Download it [here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=109486&release_id=250614]
+
+*/IMPORTANT NOTE:/* Unfortunately there's a bug in the new version that 
+occurs when you have a `$HOME/.bygfoot` directory created by a version
+1.3. Fortunately there are some simple solutions to the problem:
+
++ The ruthless way: delete `$HOME/.bygfoot`. You can't use your old savegames, 
+anyway.
+
++ The not-so-ruthless way: delete only `$HOME/.bygfoot/text_files/teams`. 
+This file causes the problem. 
+
++ The developer's way: delete the line that reads `end_definitions` from 
+the file `$HOME/.bygfoot/text_files/teams`.
+
+
+You can download the appropriate package for your system
+[here http://sourceforge.net/project/showfiles.php?group_id=46139&package_id=109486&release_id=250614].
+
+Wanna look at the complete [ChangeLog changelog.html]?.
+
+The most important changes are:
+
+- possibility to play in international cups only (e.g. participate
+in Champions' League only, without playing regular league games)
+
+- you can see information on your next opponents in the right part
+of the main window; clicking leads you to your opponent's player list
+
+- swapping two players automatically adapts team structure (but
+you can switch this off, of course)
+
+- the "Rearrange Team" button automatically changes the team
+structure to the appropriate value
+
+- added export/import features to the Editor; you can export
+individual teams to files and import such files into your local
+team definitions file
+
+- extended the filter rules for transfer list notification
+
+- players are put onto the transfer list by right-clicking instead
+of left-clicking; left-clicking always swaps players now
+
+- savegames located in the `$HOME/.bygfoot/saves` directory can be
+loaded from the command line without full path names
+
+- introduced playing style for cpu-teams (they always played
+balanced until now)
+
+- added variable interest rates for your debts (the more you owe,
+the lower the interest rate)
+
+- added possibility to display fixtures of all leagues
+
+
+NOTE: This version is unfortunately not compatible anymore to
+saved games of previous versions.

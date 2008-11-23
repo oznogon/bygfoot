@@ -1,0 +1,39 @@
+Collected Tips
+
+
+%!Style: ../green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PreProc(html): '%html%' ''
+% !PostProc(html): '<P>' '<div class="center">'
+% !PostProc(html): '@center' '<div class="center">'
+% !PostProc(html): 'center@' '</div>'
+%!PostProc(html): 'cellpadding=4 border=1' 'cellpadding=4 class=button'
+
+
+==Statistics==
+
++ Goalies only count in the ``Best players'' statistic if they have
+  participated in at least half of the league games.
+  
++ You can browse the fixtures by clicking on ``Figures -> Fixtures''. Of
+  course you won't see all fixtures, but only of those leagues you
+  participate in and only of those rounds (in the cups) which have
+  been played or for which lots have already been drawn.
+
++ To browse the fixtures of a league/cup you don't participate in, use
+  the `Fixtures by league` option menu after clicking on ``Fixtures''.
+
++ You can see your league results sorted by opponent if you click on
+  ``Fixtures'' and on the colorful button on the left of the arrow
+  buttons. 
+  
+  
+%html%----------------------------------------------
+%html% | [Back to Documentation Index index.html] |

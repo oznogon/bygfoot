@@ -1,0 +1,301 @@
+How to write live game commentary files
+
+
+%! Target  : html
+%! Options : --toc
+%! Style   : ../../green.css
+%!encoding: iso-8859-1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+
+Last updated: %%mtime(%m/%d/%Y)
+
+[<- Previous def_howto_teams.html] | [Overview def_howto.html] | [Countries def_howto_countries.html] | [Leagues def_howto_leagues.html] | [Cups def_howto_cups.html] | [Player names def_howto_plnames.html] | [Teams def_howto_teams.html] | Live game commentary | [CPU strategies def_howto_strategy.html] | [Next -> def_howto_strategy.html]
+
+== How to create a live game commentary file ==
+
+A live game commentary file is an xml file containing commentary strings for the
+live game in **Bygfoot**. The live game consists of several events, all of which
+need separate commentary.
+
+You can get an archive with the current commentary files
+[here http://bygfoot.sf.net/misc/bygfoot-1.9-commentaries.tar.bz2].
+
+===Name convention and syntax===
+
+Live game commentary files have to have a file name like
+``lg_commentary_lang.xml``, with ``lang`` being a language shortcut, e.g.
+``en`` or ``de``.
+
+There are only a few tags in the file (see also the [tags reference tags_ref.html]): 
+``<lg_commentary>`` is the root tag, ``<event>`` describes an event; an event contains a
+``<name>`` and several ``<commentary>`` entries.
+
+``<commentary>`` can have two attributes: ``cond`` and ``pri``. The latter means //priority//;
+a commentary with high priority value relative to the rest of the commentaries for the given
+event is more likely to get chosen. ``cond`` means //condition//; we're going to see how to handle
+those later.
+
+To write a new commentary file it might be best to copy one of the existing ones
+and replace/translate/extend the commentaries in the file.
+
+Here's an excerpt from the ``lg_commentary_en.xml`` file:
+```
+<lg_commentary>
+  <event>
+    <name>general</name>
+    <commentary>_P1_ feeds the ball through to _P0_</commentary>
+    <commentary>_P1_ threads a great ball to _P0_ </commentary>
+    <commentary>Lovely pass from _P1_ releases _P0_</commentary>
+    
+    ...snip...
+
+    <commentary>_P0_ spins past his marker</commentary>
+  </event>
+  <event>
+    <name>lost_possession</name>
+    <commentary>_P0_ wins the ball with a perfectly timed challenge</commentary>
+    <commentary>Bad control by _P1_ lets _P0_ steal the ball off him</commentary>
+    <commentary>_P0_ takes the ball away from _P1_ with a sliding tackle</commentary>
+    <commentary>Loose ball falls to _P0_</commentary>
+  </event>
+
+  ...snip...
+
+</lg_commentary>
+```
+As you can see the tags are really simple. Now what are those weird _P0_ things about?
+
+===Simple commentaries===
+
+We call those things 'tokens'. They get replaced by player names and such when the
+commentary is actually generated. The list of available tokens is at the bottom of this page,
+as is a list of events.
+
+To write a simple commentary, you just take a look at the events list to see which tokens
+are available for the event and let your imagination run. You could write for a goal event
+for instance
+```
+<commentary>_P0_ scores! He already shot _PLGOALS0_ in the _LEAGUECUPNAME_!</commentary>
+```
+
+This would lead in the live game to something like 'Jeremy scores! He already shot 5 goals in the FA Cup!'.
+
+There are events for which the tokens available vary; e.g. in a general event, there might be two players
+involved (one passing to the other) or only one (after a player took away the ball from his opponent).
+This shouldn't worry you at all. Just write commentaries for both cases, and when only one player is available
+only commentaries featuring one player token get considered.
+
+
+=== Conditional commentaries ===
+
+Let's take a look what the ``cond`` attribute in the ``commentary`` tag is for.
+
+You might want to write commentary particularly suited for some situations. E.g. if a lot
+of goals get scored in a match, you want to exclaim 'My god! 7 goals within 50 minutes!'.
+
+To be able to write this kind of commentary you need to specify a condition in the commentary
+tag. You can use all numeric tokens from the token list (ie. tokens with integer value). To
+write a commentary like the one above you'd write
+```
+<commentary cond="_G0_ + _G1_ >= 6">_P0_ scores! We have incredible [_G0_ + _G1_] goals in this match!</commentary>
+```
+As you can see, if you want the program to perform some arithmetic operation in the commentary text,
+you have to enclose the expression in square brackets: ``[_G0_ + _G1]``.
+
+Now this is a very simple condition. Not only ``>=``, ``>``, ``<``, ``=`` and ``!=`` may be used, but also
+``and`` and ``or`` to create more complex expressions. ``and`` bind stronger than ''or'', so
+'1 < 2 and 2 < 2 or 3 < 4' would evaluate to FALSE (= 0).
+
+So to have a more complex commentary you might write
+```
+<commentary cond="_GD_ >= 2 and _GD_ < 4 and _MT_ > 60">_TL_ is _GD_ goals behind but there are still _MT_ minutes to go</commentary>
+```
+
+===Advanced commentaries===
+
+Sometimes one would like to express, 'If one of the teams has 70% possession then write
+"Team TEAM is dominating the match."', with TEAM the appropriate team name. Now one could
+achieve this by writing
+```
+<commentary cond="_POSS0_ >= 70">_T0_ is dominating the match</commentary>
+<commentary cond="_POSS1_ >= 70">_T1_ is dominating the match</commentary>
+```
+This would work, but it's a bad solution. We'd have to write two or three commentaries
+leading to the same text.
+
+The more elegant way is to take advantage of the properties of the tokens. You've seen there are
+a lot of tokens ending with 0 and 1. But 0 and 1 are also the two possible outcomes when evaluating
+a condition. And 0 and 1 are the possible values for the ball possession token _POSS_, as well.
+
+Here's a simple example: You want to have the name of the team that's in possession of the ball.
+You just write ``_T_POSS__``. Easy. Given that the home team is in possession, this becomes
+``_T0_`` and then the name of the home team.
+
+Another example: You want to have the name of the team leading (let's suppose that
+the result isn't a draw and ignore that a convenience token for this, ``_TL_`` already exists).
+You just write ``_T[_GOALS1_ G _GOALS0_]_``. (Note that here we need the brackets because
+an expression -- arithmetic with + and - or logical or both -- has to be
+evaluated.)
+
+``G`` stands for //greater than//; if you want //less than// you have to write ``L``.
+We can't use ``>`` and ``<`` because those are special XML characters. Instead
+of ``<=`` and ``>=`` you have to write ``LE`` and ``GE`` (//less or equal// and
+//greater or equal//). Take care to leave a space before and after ``G`` and
+``L``.
+
+Why does this work? There are two possibilities (remember that we suppose we don't have
+a draw): home team is leading or away team is leading. If the first is the case, the
+expression evaluates to FALSE (= 0), because the home team has more goals;
+so we'll get ``_T0_`` after the evaluation is done. If the second is the case, the
+expression evaluates to 1, so we get ``_T1_``. In both cases we get the name of the
+leading team. Great, isn't it?
+
+Now you can use these tricks with all numerical tokens. To create an elegant solution
+for the problem about ball possession you can write
+```
+<commentary cond="_POSS0_ >= 70 or _POSS1_ >= 70">_T[_POSS1_ GE 70]_ is dominating the match</commentary>
+```
+
+It is also possible to do this in conditions. E.g. if a team leads with more than 3 goals,
+we want to have a commentary like 'What a shame for TEAM', with TEAM being the losing team.
+But what if it's a national cup match, and the losing team is three leagues lower than the
+other team? Then it isn't a shame, such a result is to be expected. Here we need the method
+described above to create a condition that covers this case:
+```
+<commentary cond="_GD_ > 3 and _TLAYER[_GOALS1_ > _GOALS0_]_ >= _TLAYER[_GOALS1_ < _GOALS0_]_">_RE_, what a shame for _TL_</commentary>
+```
+
+``_TLAYER[_GOALS1_ > _GOALS0_]_`` evaluates to the league layer of the leading team and
+``_TLAYER[_GOALS1_ > _GOALS0_]_`` becomes the layer of the losing team, so the commentary only
+gets considered if the losing team is at least on the same league level as the winning team.
+
+We can use here ``<`` and ``>`` because in attributes it's allowed.
+
+
+===Priorities===
+
+Sometimes we want to make it very probable that a commentary gets chosen. E.g. if a player gets
+a yellow card and is automatically banned for the next match, we'd almost always like to have
+the commentary '_P1_ will be banned for the next _LEAGUECUPNAME_ match'.
+
+To achieve this, we give a high priority value to the commentary:
+```
+<commentary cond="_PLYELLOWS_ = _YELLOWLIMIT_" pri="10">_P1_ will be banned next _LEAGUECUPNAME_ match.</commentary>
+```
+
+The priority value increases the probability if it's high relative to the other commentaries. If the rest
+of the yellow card commentaries have priority 10, too, they all have the same probability.
+
+
+=== List of tokens and events ===
+
+**Basic tokens**
+
+|| Token | Meaning | Always available |
+| _LEAGUECUPNAME_ | Name of the competition, e.g. 'FA Cup'. | YES |
+| _CUPROUNDNAME_ | Name of the cup round, e.g. 'Final'. | NO |
+| _AT_ | Attendance, e.g. '50 204'. | YES |
+| _RE_ | Current result, e.g. '1 : 2'. | YES |
+| _TIME_ | Part of the match: 0, 1, 2 and 3, meaning first half, second half, extra time and penalty shoot-out. | YES |
+| _MI_ | Current minute, e.g. '34'. | YES |
+| _MR_ | Minutes remaining in the part of the game, e.g. 10 if the current minute is 35. | YES |
+| _MT_ | Total minutes remaining, e.g. 65 if the current minute is 35, or 95 if the current minute is 35 and the current result would lead to extra time. | YES |
+| _YELLOWLIMIT_ | Limit for yellow cards in the competition. | YES |
+| _GOALS0_ | Goals the home team scored. | YES |
+| _GOALS1_ | Goals the away team scored. | YES |
+| _GD_ | Goal difference (absolute value). | YES |
+| _POSS_ | The team that is in possession of the ball; 0 or 1. | YES |
+| _NPOSS_ | The team that is not in possession of the ball; 0 or 1. | YES |
+ 
+
+**Team tokens**
+
+|| Token | Meaning | Always available |
+| _T0_ | Home team name. | YES |
+| _T1_ | Away team name. | YES |
+| _TW_ | Team winning (name). | YES |
+| _TL_ | Team losing (name). | YES (if it's a draw, commentaries containing this token get ignored) |
+| _TWN_ | Team winning (number, 0 or 1). | YES |
+| _TLN_ | Team losing (number, 0 or 1). | YES |
+| _TT_ | Team (number, 0 or 1). | NO |
+| _TLAYER0_ | League layer of home team, e.g. 1 for the first league. | YES |
+| _TLAYER1_ | League layer of away team. | YES |
+| _TAVSKILL0_ | Average skill of home team, e.g. 75. | YES |
+| _TAVSKILL1_ | Average skill of away team. | YES |
+| _TAVSKILLDIFF_ | Difference between the average skills (absolute value). | YES |
+
+
+**Player tokens**
+
+|| Token | Meaning | Always available |
+| _P0_ | A player name (see events list). | NO |
+| _P1_ | Another player name (see events list). | NO |
+| _PLGOALS0_ | Goals in the competition of the player. | NO |
+| _PLGOALSALL0_ | All goals in the season of the player. | NO |
+| _PLGOALS1_ | Goals in the competition of the player. | NO |
+| _PLGOALSALL1_ | All goals in the season of the player. | NO |
+| _PLYELLOWS_ | Yellow cards of the player in the competition. | NO |
+
+
+**Stats tokens**
+
+All of these have a variant for the home team (those ending with a '0') and
+for the away team (ending with '1'). Only the home team tokens are listed,
+just replace the '0' with the '1' to get the stat value for the away team.
+
+|| Token | Meaning | Always available |
+| _SHOTS0_ | Number of shots. | YES |
+| _SHOTPER0_ | Shot percentage. | YES |
+| _POSS0_ | Possession of home team in %, e.g. 50. | YES |
+| _PEN0_ | Penalties of home team in the game (those in penalty-shootout are not counted). | YES |
+| _FOULS0_ | Fouls committed by home team. | YES |
+| _YELLOWS0_ | Yellow cards for home team. | YES |
+| _REDS0_ | Red cards for home team. | YES |
+| _INJS0_ | Injuries for home team. | YES |
+
+
+**Miscellaneous tokens**
+
+|| Token | Meaning | Always available |
+| _EX_ | Extra data (e.g. the new playing style 'ATTACK' when a team changes style). | NO |
+
+
+**Events**
+
+Let's see which events there are (their ``<name>``) and what tokens they are
+allowed to contain (the tokens that are always available -- see above table -- 
+aren't mentioned):
+
+|| Name | Description | Tokens |
+| ``general`` | A passing event, or one player has the ball | P0 (player who has the ball), sometimes P1 (player who passed). In these cases we make both commentaries which only contain _P0_ and commentaries containing _P0_ and _P1_ |
+| ``lost_possession`` | A player lost possession of the ball | _P1_ the player who lost possession, _P0_ the player who took the ball |
+| ``foul`` | A foul | _P0_ the player who got fouled, _P1_ the player who fouled |
+| ``scoring_chance`` | A scoring chance | _P0_ the player who has the scoring chance, sometimes _P1_ who passed the ball |
+| ``header`` | A header | see ``scoring_chance`` |
+| ``goal`` | A goal | _P0_ the player who scored, _P1_ the goalie |
+| ``miss`` | A miss | see ``goal`` |
+| ``save`` | A save | see ``goal`` |
+| ``post`` | A shot off the post | see ``goal`` |
+| ``cross_bar`` | A shot off the cross-bar | see ``goal`` |
+| ``own_goal`` | Own goal | _P0_ player who scored, _TT_ team number of the player |
+| ``start_match`` | Match started | - |
+| ``half_time`` | Half time | - |
+| ``extra_time`` | Extra time begins | - |
+| ``penalties`` | Penalty shoot-out begins | - |
+| ``end_match`` | End of match | - |
+| ``penalty`` | A penalty | _P0_ player who shoots, _P1_ goalie |
+| ``free_kick`` | A free kick | see ``penalty`` |
+| ``foul_yellow`` | A foul leading to a yellow card | _P0_ player who got fouled, _P1_ player who fouled, _TT_ team number of the fouling player |
+| ``foul_red`` | Foul leading to red card | see ``foul_yellow`` |
+| ``foul_red_injury`` | Foul leading to red card and injury of the fouled player | see ``foul_yellow`` |
+| ``send_off`` | A player gets sent off | _P0_ the player, _TT_ the team number of the player |
+| ``injury`` | A player is injured | _P0_ the player, _TT_ his team number |
+| ``temp_injury`` | A player is injured but can continute | see ``injury`` |
+| ``stadium_breakdown`` | Technical problems in the stadium | - |
+| ``stadium_riots`` | Riots in the stadium | - |
+| ``stadium_fire`` | Fire in the stadium | - |
+| ``substitution`` | A substitution | _P0_ player who comes in, _P1_ player who gets substituted, _TT_ their team number |
+| ``structure_change`` | A team changes its formation | _TT_ the team number, _EX_ the new formation (e.g. 442) |
+| ``style_change`` | A team changes its playing style | _TT_ the team number, _EX_ the new style |
+| ``boost_change`` | A team changes its boost value | _TT_ the team number, _EX_ the new boost value (e.g. OFF) |

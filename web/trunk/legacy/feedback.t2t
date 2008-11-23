@@ -1,0 +1,39 @@
+Feedback and Contact
+
+
+%!Style: green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!Encoding(man): iso8859-1
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(html): '<P ALIGN="center">' ''
+
+If you enjoy **Bygfoot** you'll probably enjoy interacting with the developers
+and other players as well. There is a lot of different ways to do so, thanks to
+the incredible, amazing, excellent, [SourceForge.net http://www.sourceforge.net]
+OpenSource hoster.
+
++ The main public channel for feedback and interaction is 
+  [the Bygfoot forum http://bygfoot.sourceforge.net/forum]. Here you can
+  - report bugs,
+  - request help,
+  - post feature requests,
+  - discuss the game,
+  - discuss the game code,
+  - peek into current development stages.
+
++ [Join our mailing-list http://lists.sourceforge.net/mailman/listinfo/bygfoot-general]:
+  Do you want to receive regulary information about new versions, tips, extra
+  stuff, etc.? You can also join the mailing-list by sending mail-commands to 
+  <bygfoot-general-request_at_lists.sourceforge_dot_net>. The three commands you
+  are most likely to use are `subscribe`, `unsubscribe` and `help`.
+
+And -- last, but not least -- you can always contact us personally.
+Write to Ronald Sterckx <ronald_at_bygfoot_dot_com> if you want to reach the lead developer
+of **Bygfoot**. Write him about game-related stuff like bugs, feature wishes,
+patches and praise. ;-)

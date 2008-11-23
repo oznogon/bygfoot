@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-15">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../green.css">
+<TITLE>Advanced Guide</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<CENTER><IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>Advanced Guide</H1>
+
+
+
+<P>
+<div class=hr></div>
+<P>
+<P>
+  <UL>
+  <LI><A HREF="#toc1">Preferences</A>
+   <UL>
+   <LI><A HREF="#toc2">Confirmations</A>
+   <LI><A HREF="#toc3">Look &amp; Feel</A>
+   <LI><A HREF="#toc4">Player Attributes</A>
+   <LI><A HREF="#toc5">Miscellaneous</A>
+   <LI><A HREF="#toc6">Saving your settings to a configuration file</A>
+   </UL>
+  <LI><A HREF="#toc7">Keeping your job</A>
+  <LI><A HREF="#toc8">Playing a Season</A>
+  <LI><A HREF="#toc9">Player fitness and injuries</A>
+  </UL>
+<P>
+<div class=hr></div>
+<P>
+<P>
+<a name="toc1"></a>
+<H2>Preferences</H2>
+<P>
+The "Preferences" window that pops-up when you select "File &gt; Preferences" or
+click the "Preferences" tool bar button or press <CODE>O</CODE> (for <CODE>Options</CODE>)
+allows you to change the behaviour and appearance of the game. All options
+have tooltips, so this documentation section isn't very extensive.
+From top to bottom, these are the available options:
+<P>
+<a name="toc2"></a>
+<H3>Confirmations</H3>
+<P>
+Whether <B>Bygfoot</B> should ask for confirmation every time you tell it to start a new week,
+start a new week with injured or banned players in your team or quit without
+having saved.
+<P>
+<a name="toc3"></a>
+<H3>Look &amp; Feel</H3>
+<P>
+Here you can switch live games on and off, configure the message bar and the font the game
+uses, change the name of your team and a lot more.
+<P>
+<a name="toc4"></a>
+<H3>Player Attributes</H3>
+<P>
+What information to show about your players. You can uncheck any of those that
+are shown by default or check others that are not. Extra information tabs 
+not displayed by default are "yellow cards", "wage" and "value".
+<P>
+<a name="toc5"></a>
+<H3>Miscellaneous</H3>
+<P>
+Options concering the general behaviour of the game. Among others, you can specify
+here whether <B>Bygfoot</B> should warn you when an interesting player appears on
+the transfer list and whether you'd like the transfer list to be sorted.
+<P>
+<a name="toc6"></a>
+<H3>Saving your settings to a configuration file</H3>
+<P>
+If you click on "OK", your settings will be saved for your current
+game. If you'd like to save them for future games, too, you can check
+the "Save to file" box on the left of the "OK" button. Clicking on "OK"
+will save your settings to <CODE>$HOME/.bygfoot/text_files/bygfoot.conf</CODE>, and
+each time you start <B>Bygfoot</B>, they get loaded automatically.
+<P>
+<a name="toc7"></a>
+<H2>Keeping your job</H2>
+<P>
+There is one reason for other teams to try and hire you: your team's
+success. So if you're first in a league for 20 consecutive weeks
+don't be surprised if they try to contract you. If it gets on your
+nerves, you can switch it off in the options window or via the quick
+options menu.
+<P>
+If you get promoted, you'll count as quite successful. If you get relegated 
+(or your team's last for 20 consecutive weeks or so), you'll count as 
+rather unsuccessful and your team owners might consider firing you.
+<P>
+There are two additional reasons why you could get fired. First, if
+you fail to pay back a loan. Second, if you're financial management
+is bad and you're bank account gets below your drawing credit three
+times in a season. Each time you'll get some weeks to get positive,
+but each time the limit will be shorter.
+<P>
+If you finish in a league among the last 4 teams, you get relegated
+(except, of course, the last division).
+<P>
+If you finish in a league among the first three, you get promoted
+(except, of course, the first Division).
+<P>
+If you finish in a league (except the Premier Division) from 4th to
+7th, you will play promotion games: one round of home/away games, and
+if you win, a game on neutral ground against the other winner. If you win this
+one, you're promoted.
+<P>
+<a name="toc8"></a>
+<H2>Playing a Season</H2>
+<P>
+Parts of a season's fixtures are generated while playing (e.g. FA
+Cup from round 2 upwards) because they depend on previous results.
+<P>
+You can see how your team fared against your league opponents (i.e.,
+the results of the two league games against team XYZ) if you click
+on the (quite colorful) <CODE>Show league results</CODE> button that appears
+below the right panel when you click on <CODE>Fixtures</CODE>.
+<P>
+At the end of each season a history page will be written. It
+contains your result at the end of the season (rank, team and
+league), champions and cup winners and the best players.
+<P>
+Also at the end of a season there's prize money for:
+<P>
+<UL>
+<LI>the teams ranked 1st to 3rd and the promotion games winner (or
+  the team ranked 4th in league 1),
+<P>
+<LI><B>(versions &gt;= 1.7.0)</B> the best 3 goalies and goal scorers,
+<P>
+<LI><B>(versions &gt;= 1.7.0)</B> the best offensive and defensive teams,
+<P>
+<LI><B>(versions &gt;= 1.7.0)</B> the best player (overall),
+<P>
+<LI><B>(versions &gt;= 1.7.0)</B> the best defender, midfielder and forward
+  (voted by the managers).
+</UL>
+<a name="toc9"></a>
+<H2>Player fitness and injuries</H2>
+<P>
+One of the most frequently asked questions about <B>Bygfoot</B> is, How does
+the fitness value influence the probability of a player getting injured? 
+(see <A HREF="manager-faq.html">FAQ</A>) The answer is short and simple: the probability
+is inversely proportional to the fitness value. If your player has only
+fitness 50%, the probability is twice as high as the probability with
+fitness 99%. This sounds very dangerous, but in fact the normal probability
+(i.e. with maximum fitness) is only 1,5% for a field player and 0,75% for
+a goalie. So a 50%-player is still unlikely (3% probability) to get injured.
+
+<!-- html code generated by txt2tags 1.7 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -\-toc -t html advanced.t2t -->
+</BODY></HTML>

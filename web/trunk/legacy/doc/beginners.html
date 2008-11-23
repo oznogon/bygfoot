@@ -1,0 +1,501 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-15">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../green.css">
+<TITLE>Beginner's Guide</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>Beginner's Guide</H1>
+
+
+
+<P>
+<div class=hr></div>
+<P>
+<P>
+  <UL>
+  <LI><A HREF="#toc1">Running Bygfoot</A>
+  <LI><A HREF="#toc2">The Start-Up Window</A>
+   <UL>
+   <LI><A HREF="#toc3">Team Selection</A>
+   <LI><A HREF="#toc4">League Selection</A>
+   <LI><A HREF="#toc5">Country Selection</A>
+   <LI><A HREF="#toc6">Team Options</A>
+   <LI><A HREF="#toc7">File Options</A>
+   </UL>
+  <LI><A HREF="#toc8">Game Interface</A>
+   <UL>
+   <LI><A HREF="#toc9">Menu Bar</A>
+   <LI><A HREF="#toc10">Tool Bar</A>
+   <LI><A HREF="#toc11">Status Bar</A>
+   <LI><A HREF="#toc12">Message Bar</A>
+   <LI><A HREF="#toc13">Left Panel</A>
+   <LI><A HREF="#toc14">Right Panel</A>
+   <LI><A HREF="#toc15">Management Bar</A>
+   </UL>
+  <LI><A HREF="#toc16">Keyboard Shortcuts</A>
+   <UL>
+   <LI><A HREF="#toc17">File Operations</A>
+   <LI><A HREF="#toc18">Game Operations</A>
+   <LI><A HREF="#toc19">Management Operations</A>
+   </UL>
+  <LI><A HREF="#toc20">Saving and Loading Files</A>
+  <LI><A HREF="#toc21">The Game Behaviour (Basic)</A>
+  </UL>
+<P>
+<div class=hr></div>
+<P>
+<P>
+<a name="toc1"></a>
+<H2>Running Bygfoot</H2>
+<P>
+There are two possible ways to run <B>Bygfoot</B>.
+<P>
+If you have installed it system-wide, the executable will be in the $PATH
+environment so you only need to type <CODE>bygfoot</CODE> at a command line to run it.
+<P>
+If you are using locally the compiled binary you will need to use a terminal
+window to enter the directory where the executable is and type <CODE>./bygfoot</CODE>.
+<P>
+<B>TIP</B>: Add an alias `alias bygfoot='path_to_the_executable/bygfoot -d
+path_to_the_support_dir'<CODE> to your </CODE>$HOME/.alias` file and you'll be able to 
+run <B>Bygfoot</B> from anywhere. Example: `alias 
+bygfoot='/home/john/games/bygfoot/bygfoot -d 
+/home/john/games/bygfoot/support_files'`.
+<P>
+<a name="toc2"></a>
+<H2>The Start-Up Window</H2>
+<P>
+Upon starting, <B>Bygfoot</B> will show you a window containing the following
+sections (downwards):
+<P>
+<UL>
+<LI>Team Selection
+<LI>League Selection
+<LI>Country Selection
+<LI>Team Options
+<LI>File Options
+</UL>
+<a name="toc3"></a>
+<H3>Team Selection</H3>
+<P>
+This is a list of 114 teams you can choose from. By default, this list contains
+English teams (because England is <B>Bygfoot</B>'s default country). To select a
+team you can either click or scroll down with the arrow keys. You can also use
+the scrollbar to navigate through the list.
+<P>
+<a name="toc4"></a>
+<H3>League Selection</H3>
+<P>
+The second row asks you which League you want to play in. By default the
+"Current League" option will be selected. This means that if you choose a 
+team from 5th division it will play 5th but if you choose a team 
+from Premier League it will play Premier League.
+<P>
+The other options are:
+<P>
+<UL>
+<LI><B>Top League</B>: You will start in 1st league, regardless of the team you
+choose.
+<LI><B>Bottom League (the hard way)</B>: You will start in 5th league, even if you
+choose a 1st league team.
+<LI><B>CL</B>: Champions' League only.
+<LI><B>CWC/Conm.</B>: You will only play the Cup Winners' Cup.
+<LI><B>UEFA/Sul-Americana</B>: You will only play the UEFA Cup.
+</UL>
+<a name="toc5"></a>
+<H3>Country Selection</H3>
+<P>
+The third row allows you to select which country to play with. The current
+<B>Bygfoot</B> version is shipped with 8 country files: England (default), Germany,
+Italy, France, Spain, Romania, Brazil and Poland.
+<P>
+If none of them pleases you (or if you wish to play a different one) you can
+select a custom country file by clicking the "Select a country file" button.
+<P>
+<a name="toc6"></a>
+<H3>Team Options</H3>
+<P>
+Here are some options affecting the team definitions:
+<P>
+<UL>
+<LI><B>Don't load team definitions</B> will cause <B>Bygfoot</B> to generate all 
+teams from scratch. All teams will be composed by randomly generated players.
+<LI><B>Load only names from team definition file</B> will cause <B>Bygfoot</B> to
+attribute random skills to players. 
+<LI><B>Load my team from definitions file</B> will cause only your team to be read
+from definitions. The others will be full of "nobodies".
+</UL>
+The button labelled "Start Bygfoot Team Editor" will start <B>Bygfoot</B> in
+editing mode, allowing you to create or modify teams.
+<P>
+<a name="toc7"></a>
+<H3>File Options</H3>
+<P>
+<UL>
+<LI>You can start playing with the selected (or pre-selected) options by clicking
+"OK".
+<LI>You can leave <B>Bygfoot</B> by clicking "Cancel".
+<LI>Or you can load a saved game by clicking "Load game".
+</UL>
+<a name="toc8"></a>
+<H2>Game Interface</H2>
+<P>
+After the Start-Up Window, <B>Bygfoot</B> will generate the game and the playing
+window will appear, containing the following elements:
+<P>
+<UL>
+<LI>Menu Bar
+<LI>Toolbar
+<LI>Status Bar (directly below the toolbar)
+<LI>Message Bar (between the panels and the status bar)
+<LI>Left Panel
+<LI>Right Panel
+<LI>Management Bar
+</UL>
+<a name="toc9"></a>
+<H3>Menu Bar</H3>
+<P>
+Contains only two menus:
+<P>
+<UL>
+<LI><B>File</B>
+  <UL>
+  <LI>New
+  <LI>Open
+  <LI>Save
+  <LI>Save As...
+  <LI>Preferences
+  <LI>Start Bygfoot Team Editor
+  <LI>Quit
+  </UL>
+<LI><B>Help</B>
+  <UL>
+  <LI>Information
+  <LI>Team Editor Help
+  </UL>
+</UL>
+Which we hope to be self-explanatory. ;-)
+<P>
+<a name="toc10"></a>
+<H3>Tool Bar</H3>
+<P>
+From left to right, the toolbar contains the following icons:
+<P>
+<DL>
+<DT>Load Game</DT><DD> Reads a saved game. 
+<DT>Save Game to file</DT><DD> Saves current game to a file. 
+<DT>Quit (without saving)</DT><DD> Quits game, without saving. 
+<DT>Preferences</DT><DD> Lets you edit game prefs. 
+<DT>Quick Options</DT><DD> You can turn some features on/off, like:
+  <UL>
+  <LI><I>Transfer List Notification</I>. Do you want to be notified when players
+  according to your preferences are available for hiring?
+  <LI><I>Job Offers</I>. Do you want to receive invitations to work elsewhere if 
+  you are succeeding with your current team?
+  <LI><I>Live Game</I>. Do you want to watch the games of your team in
+  accelerated time in an extra window?
+  <LI><I>Overwrite</I>. Do you want <B>Bygfoot</B> to automatically overwrite your 
+  saved game when you tell it to save?
+  </UL>
+<DT>Back to Main Menu</DT><DD> Shows again the main info window.
+<DT>Show Transferlist</DT><DD> Shows a list of the players available.
+<DT>Finances and Stadium</DT><DD> Shows you info aboutn your finances and stadium. 
+<DT>Weekly Info</DT><DD> Shows you a summary of the previous week and your fixtures 
+for the next.
+<DT>Extended Information Selector</DT><DD> You can view special info windows containing:
+  <UL>
+  <LI><I>Fixtures</I>. Matches played last week. You can browse weeks by clicking 
+  on the arrows below the right pane.
+  <LI><I>Tables</I>. Leagues tables.
+  <LI><I>Best Players</I>. Best field players (more goals scored) and goalies 
+  (less goals suffered).
+  <LI><I>History</I>. Which teams won each championship the previous year(s).
+  </UL>
+<DT>Begin a New Week</DT><DD> Starts a new week. 
+<DT>Help</DT><DD> Lets you read the help file. 
+<DT>Player action button</DT><DD> This button isn't really part of the tool bar,
+it's placed on the left side of the message bar. You can use this button (which
+is in fact an option menu) to fire players, put them on the transfer list or
+remove them from the list, or see extended information on the selected player.
+</DL>
+<a name="toc11"></a>
+<H3>Status Bar</H3>
+<P>
+Right below the tool bar there is the status bar, where you can find static 
+info on the present state of the game you are playing:
+<P>
+<UL>
+<LI><I>Season #</I>. How many "years" (in the game) you have been playing.
+<LI><I>Week #</I>. How many "weeks" (in the game) have elapsed in the current
+season.
+<LI><I>Team name</I>. The name of the team you are currently hired by.
+<LI><I>League name</I>. The name of the league the team is currently in.
+<LI><I>Rank #</I>. Your situation in the league tables.
+<LI><I>Money $$$</I>. How much money you have in your bank account.
+<LI><I>Average Skills</I>. The first figure is the average current skill of the 
+first 11 players (which means, the players that would play in the next match).
+The second one is the average (normal) skill of all players.
+</UL>
+<a name="toc12"></a>
+<H3>Message Bar</H3>
+<P>
+This is used sometimes when the program wants to tell you something,
+e.g. "You can't do this or that".
+<P>
+<a name="toc13"></a>
+<H3>Left Panel</H3>
+<P>
+The left panel shows a lot of information about your players:
+<P>
+<UL>
+<LI><I>Name</I>
+<LI><I>Current skill</I>. This is computed from the Skill value and the Fitness
+  value. The position of a player also plays an important role. Example:
+  a forward plays a lot better on a 
+<LI><I>Skill</I>. How good a player is.
+<LI><I>Fitness</I>. They should be always above 90% to prevent bad things from
+happening. Cycle them as they get tired so that they can rest.
+<LI><I>Games played</I>.
+<LI><I>Goals scored</I> (or suffered, in the case of goalies).
+<LI><I>Status</I>. Usually "OK". Possible other values are "Injured (# of 
+weeks)" or  "Banned (# of weeks)".
+<LI><I>Age</I>
+<LI><I>Estimated talent</I>. How good he can come to be someday (or was someday),
+in your scout's opinion.
+</UL>
+<a name="toc14"></a>
+<H3>Right Panel</H3>
+<P>
+The right panel shows information about your next match:
+<P>
+<UL>
+<LI>"Home" or "Away" indicating whether you'll play home or away (duh! ;-)
+<LI>Opponent Name.
+<LI>Opponent's rank (and league).
+<LI>Average skills and the difference to your average skills ('-' means you're better).
+<LI>Playing style.
+<LI>Team structure.
+<LI>Latest results.
+<LI>Goals (for : against)
+<LI>Your results this season against the same team.
+<LI>Bookmaker's tip.
+</UL>
+If you click on one of the rows, the player list of your opponent will be shown.
+<P>
+<a name="toc15"></a>
+<H3>Management Bar</H3>
+<P>
+The lower tool bar contains icons that allow you to effectively manage 
+your team:
+<P>
+<UL>
+<LI><I>Playing Style</I>. Currently <B>Bygfoot</B> supports five playing styles: 
+"All Out Defend", "Defend", "Balanced", "Attack" and "All Out Attack".
+<LI><I>Team Structure</I>. You can either enter directly your desired structure,
+cycle the available options, re-order players or undo a swap action. 
+<LI><I>Scout</I>. You can choose whether you want a good scout or not. There are 
+four skill levels for scouts: "Bad", "Average", "Good" and "Best".
+<LI><I>Physio</I>. The quality of your physio.
+</UL>
+If you have chosen the Transfer List view, a small  icon with a looking-glass
+will appear at the right side: it allows you to browse teams to find the 
+players you wish to buy. <B>WARNING</B>: Players bought this way are much more
+expensive and demand much higher wages.
+<P>
+If you have chosen the Finances/Stadium view, some other icons will appear:
+<P>
+<UL>
+<LI><I>Capacity (CAP)</I>. Allows you to increase your stadium capacity by
+  500 - 2000 seats (depending on how much you'd like to spend and how
+  soon you want the seats to be available).
+<LI><I>Safety (SAF)</I>. Allows you increase the security level in your stadium.
+<LI><I>Loan Money</I>.
+<LI><I>Pay Loan</I>.
+</UL>
+If you have chosen the Week Summary, Fixtures or Tables view, these icons 
+will be available:
+<P>
+<UL>
+<LI><I>Fixtures</I>. Shows you the full list of matches that have been played 
+last week. You can browse fixtures too, checking past and future weeks.
+<LI><I>Tables</I>. Shows you the current table of classification. You can 
+browse tables, checking other leagues as well.
+<LI><I>Fixtures by League</I>. You can browse the fixtures of other leagues as 
+well.
+<LI><I>Show my league results</I>. Shows your results against league opponents.
+</UL>
+Most views also add "next" and "previous" arrows so that you can 
+navigate around.
+<P>
+<a name="toc16"></a>
+<H2>Keyboard Shortcuts</H2>
+<P>
+These are always shown as tooltips, too.
+<P>
+Generally, when an "OK" button can be clicked, "Return" will do just
+that; when a "Cancel" or "Close" button can be clicked or a popup window
+can be closed, "Escape" will do it.
+<P>
+<a name="toc17"></a>
+<H3>File Operations</H3>
+<table align="center" cellpadding=4 border=1>
+<tr>
+<td>L or Ctrl-O</td>
+<td>Load game</td>
+</tr>
+<tr>
+<td>S or Ctrl-S</td>
+<td>Save game</td>
+</tr>
+<tr>
+<td>Ctrl-N</td>
+<td>New game</td>
+</tr>
+<tr>
+<td>Q or Ctrl-Q</td>
+<td>Quit (Q works only when the arrows below the right panel aren't shown)</td>
+</tr>
+<tr>
+<td>H</td>
+<td>Show this help screen</td>
+</tr>
+</table>
+
+<a name="toc18"></a>
+<H3>Game Operations</H3>
+<table align="center" cellpadding=4 border=1>
+<tr>
+<td>Space</td>
+<td>Begin new week</td>
+</tr>
+<tr>
+<td>O</td>
+<td>Options (Preferences)</td>
+</tr>
+<tr>
+<td>Escape</td>
+<td>Back to main</td>
+</tr>
+<tr>
+<td>T</td>
+<td>Show transferlist</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Show finances and stadium info</td>
+</tr>
+<tr>
+<td>P or F1</td>
+<td>Show preview</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Show fixtures</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>Show tables</td>
+</tr>
+<tr>
+<td>Q and W</td>
+<td>Previous / Next page (e.g. when looking at fixtures)</td>
+</tr>
+</table>
+
+<P>
+These last two have been adopted in place of "1" and "2" since versions
+1.4-2 (stable) and 1.5-1 (development).
+<P>
+<a name="toc19"></a>
+<H3>Management Operations</H3>
+<table align="center" cellpadding=4 border=1>
+<tr>
+<td>C</td>
+<td>Change team structure</td>
+</tr>
+<tr>
+<td>R</td>
+<td>Rearrange team</td>
+</tr>
+<tr>
+<td>Y or Ctrl-Z</td>
+<td>Undo last swap-action</td>
+</tr>
+</table>
+
+<P>
+<a name="toc20"></a>
+<H2>Saving and Loading Files</H2>
+<P>
+<B>Bygfoot</B> uses the following types of files to store information it will use:
+<P>
+<OL>
+<LI><I>Country File</I> -- <CODE>country_XYZ</CODE> -- where team and league names are stored. This is a UTF-8
+plain text file.
+<LI><I>Player Names</I> -- <CODE>player_names</CODE> -- where the names that will be randomly attributed to
+"nobodies" are stored.
+<LI><I>Teams</I> -- <CODE>teams</CODE> -- where team definitions are stored.
+<LI><I>Savegames</I> -- encoded files in which information about a game you're
+  currently playing is stored.
+</OL>
+A country file must be written using a UTF-8 enabled text editor like 
+<A HREF="http://www.yudit.org">yudit</A> and must follow some rules so that it won't crash
+<B>Bygfoot</B>. We'll learn more about them later.
+<P>
+You can edit the <CODE>player_names</CODE> file and add or remove any names you wish 
+to appear in the game. But please keep it big so that players with repeated
+names don't appear quite often. This file is always loaded by <B>Bygfoot</B> 
+during startup.
+<P>
+The <CODE>teams</CODE> file stores the team definitions you have written or imported. 
+It is also automatically loaded during startup (unless you forbid 
+<B>Bygfoot</B> from doing so), but it contains definitions of only a couple 
+of teams yet.
+<P>
+Savegames are stored under <CODE>$HOME/.bygfoot/saves</CODE> and can be loaded in 
+4 ways: 
+<P>
+<UL>
+<LI>As a short command-line switch: <CODE>bygfoot savegame</CODE> where "savegame" is 
+the name of a file located in <CODE>$HOME/.bygfoot/saves</CODE>.
+<LI>As a long command-line switch: <CODE>bygfoot [full path]/savegame</CODE> where "full
+path" is the full address of the file "savegame" in your system. This 
+option is mandatory if your savegames are saved in another directory but
+<CODE>$HOME/.bygfoot/saves</CODE> (why would you do that?).
+<LI>From the startup window by selecting "Load Game"
+<LI>From the game interface by selecting "Load Game".
+</UL>
+<a name="toc21"></a>
+<H2>The Game Behaviour (Basic)</H2>
+<P>
+At startup <B>Bygfoot</B> will read team definitions and generate all teams 
+that are not defined. After the process is complete (may take some time on 
+slow systems) you will see the game interface. If you want to continue a
+previously saved game, you can let <B>Bygfoot</B> skip the team generation
+by calling it with the savegame file as an argument: <CODE>bygfoot my_save_game</CODE>. 
+See also <A HREF="intermediate.html#toc1">command line options</A>.
+<P>
+To play, you must make some choices:
+<P>
+<UL>
+<LI>Select the players you want to be playing by clicking on their names with 
+the left mouse button. If you click on a player name and then on another,
+they'll swap positions.
+<LI>Select the desired team structure and playing strategy.
+<LI>Click on the "Begin a new week" button. <B>Bygfoot</B> will hang for a 
+short while an then the "Live Game" window will pop up. 
+<LI>After the game "ends", click the "Close" button to go back to the 
+main window.
+</UL>
+<B>TIP 1</B> - Don't let your players get too tired or they can be injured more
+easily. If a player goes below 90% of his fitness, let him rest for a week by
+putting another one in his place.
+<P>
+<B>TIP 2</B> - Pay attention to the size and the security of your stadium. The
+stadium is your main source of money.
+
+<!-- html code generated by txt2tags 1.7 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -\-toc -t html beginners.t2t -->
+</BODY></HTML>

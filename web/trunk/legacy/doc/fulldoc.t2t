@@ -1,0 +1,21 @@
+Bygfoot 1.8 Full Documentation
+
+
+%!Style: ../green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(html): '<P ALIGN="center">' ''
+%!PreProc: '<!-- <p> -->' ''
+
+%!include: toc.t2t
+-------------------------------------
+**NOTE:** Parts of the documentation are reproduced from elsewhere in the site.
+
+If you haven't found what you are looking for, you can also find some help
+in the [feedback section ../feedback.html].

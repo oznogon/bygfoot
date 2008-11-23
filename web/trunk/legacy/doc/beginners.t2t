@@ -1,0 +1,379 @@
+Beginner's Guide
+
+
+%!Style: ../green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!CmdLine(html): --toc
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>' 
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(tex): 'section\*' 'section'
+%!PostProc(tex): '\\subsection' '\\section'
+%!PostProc(tex): '\\subsubsection' '\\subsection'
+
+==Running Bygfoot==
+
+There are two possible ways to run **Bygfoot**.
+
+If you have installed it system-wide, the executable will be in the $PATH
+environment so you only need to type `bygfoot` at a command line to run it.
+
+If you are using locally the compiled binary you will need to use a terminal
+window to enter the directory where the executable is and type `./bygfoot`.
+
+**TIP**: Add an alias `alias bygfoot='path_to_the_executable/bygfoot -d
+path_to_the_support_dir'` to your `$HOME/.alias` file and you'll be able to 
+run **Bygfoot** from anywhere. Example: `alias 
+bygfoot='/home/john/games/bygfoot/bygfoot -d 
+/home/john/games/bygfoot/support_files'`.
+
+==The Start-Up Window==
+
+Upon starting, **Bygfoot** will show you a window containing the following
+sections (downwards):
+
+- Team Selection
+- League Selection
+- Country Selection
+- Team Options
+- File Options
+
+
+===Team Selection===
+
+This is a list of 114 teams you can choose from. By default, this list contains
+English teams (because England is **Bygfoot**'s default country). To select a
+team you can either click or scroll down with the arrow keys. You can also use
+the scrollbar to navigate through the list.
+
+===League Selection===
+
+The second row asks you which League you want to play in. By default the
+``Current League'' option will be selected. This means that if you choose a 
+team from 5th division it will play 5th but if you choose a team 
+from Premier League it will play Premier League.
+
+The other options are:
+
+- **Top League**: You will start in 1st league, regardless of the team you
+choose.
+- **Bottom League (the hard way)**: You will start in 5th league, even if you
+choose a 1st league team.
+- **CL**: Champions' League only.
+- **CWC/Conm.**: You will only play the Cup Winners' Cup.
+- **UEFA/Sul-Americana**: You will only play the UEFA Cup.
+
+
+===Country Selection===
+
+The third row allows you to select which country to play with. The current
+**Bygfoot** version is shipped with 8 country files: England (default), Germany,
+Italy, France, Spain, Romania, Brazil and Poland.
+
+If none of them pleases you (or if you wish to play a different one) you can
+select a custom country file by clicking the ``Select a country file'' button.
+
+===Team Options===
+
+Here are some options affecting the team definitions:
+
+- **Don't load team definitions** will cause **Bygfoot** to generate all 
+teams from scratch. All teams will be composed by randomly generated players.
+- **Load only names from team definition file** will cause **Bygfoot** to
+attribute random skills to players. 
+- **Load my team from definitions file** will cause only your team to be read
+from definitions. The others will be full of ``nobodies''.
+
+
+The button labelled ``Start Bygfoot Team Editor'' will start **Bygfoot** in
+editing mode, allowing you to create or modify teams.
+
+===File Options===
+
+- You can start playing with the selected (or pre-selected) options by clicking
+``OK''.
+- You can leave **Bygfoot** by clicking ``Cancel''.
+- Or you can load a saved game by clicking ``Load game''.
+
+
+==Game Interface==
+
+After the Start-Up Window, **Bygfoot** will generate the game and the playing
+window will appear, containing the following elements:
+
+- Menu Bar
+- Toolbar
+- Status Bar (directly below the toolbar)
+- Message Bar (between the panels and the status bar)
+- Left Panel
+- Right Panel
+- Management Bar
+
+
+===Menu Bar===
+
+Contains only two menus:
+
+- **File**
+  - New
+  - Open
+  - Save
+  - Save As...
+  - Preferences
+  - Start Bygfoot Team Editor
+  - Quit
+- **Help**
+  - Information
+  - Team Editor Help
+  
+  
+Which we hope to be self-explanatory. ;-)
+
+===Tool Bar===
+
+From left to right, the toolbar contains the following icons:
+
+= Load Game: Reads a saved game. 
+= Save Game to file: Saves current game to a file. 
+= Quit (without saving): Quits game, without saving. 
+= Preferences: Lets you edit game prefs. 
+= Quick Options: You can turn some features on/off, like:
+  - //Transfer List Notification//. Do you want to be notified when players
+  according to your preferences are available for hiring?
+  - //Job Offers//. Do you want to receive invitations to work elsewhere if 
+  you are succeeding with your current team?
+  - //Live Game//. Do you want to watch the games of your team in
+  accelerated time in an extra window?
+  - //Overwrite//. Do you want **Bygfoot** to automatically overwrite your 
+  saved game when you tell it to save?
+= Back to Main Menu: Shows again the main info window.
+= Show Transferlist: Shows a list of the players available.
+= Finances and Stadium: Shows you info aboutn your finances and stadium. 
+= Weekly Info: Shows you a summary of the previous week and your fixtures 
+for the next.
+= Extended Information Selector: You can view special info windows containing:
+  - //Fixtures//. Matches played last week. You can browse weeks by clicking 
+  on the arrows below the right pane.
+  - //Tables//. Leagues tables.
+  - //Best Players//. Best field players (more goals scored) and goalies 
+  (less goals suffered).
+  - //History//. Which teams won each championship the previous year(s).
+= Begin a New Week: Starts a new week. 
+= Help: Lets you read the help file. 
+= Player action button: This button isn't really part of the tool bar,
+it's placed on the left side of the message bar. You can use this button (which
+is in fact an option menu) to fire players, put them on the transfer list or
+remove them from the list, or see extended information on the selected player.
+
+
+===Status Bar===
+
+Right below the tool bar there is the status bar, where you can find static 
+info on the present state of the game you are playing:
+
+- //Season #//. How many ``years'' (in the game) you have been playing.
+- //Week #//. How many ``weeks'' (in the game) have elapsed in the current
+season.
+- //Team name//. The name of the team you are currently hired by.
+- //League name//. The name of the league the team is currently in.
+- //Rank #//. Your situation in the league tables.
+- //Money $$$//. How much money you have in your bank account.
+- //Average Skills//. The first figure is the average current skill of the 
+first 11 players (which means, the players that would play in the next match).
+The second one is the average (normal) skill of all players.
+	
+
+===Message Bar===
+
+This is used sometimes when the program wants to tell you something,
+e.g. ``You can't do this or that''.
+
+===Left Panel===
+
+The left panel shows a lot of information about your players:
+
+- //Name//
+- //Current skill//. This is computed from the Skill value and the Fitness
+  value. The position of a player also plays an important role. Example:
+  a forward plays a lot better on a 
+- //Skill//. How good a player is.
+- //Fitness//. They should be always above 90% to prevent bad things from
+happening. Cycle them as they get tired so that they can rest.
+- //Games played//.
+- //Goals scored// (or suffered, in the case of goalies).
+- //Status//. Usually ``OK''. Possible other values are ``Injured (# of 
+weeks)'' or  ``Banned (# of weeks)''.
+- //Age//
+- //Estimated talent//. How good he can come to be someday (or was someday),
+in your scout's opinion.
+
+
+===Right Panel=== 
+
+The right panel shows information about your next match:
+
+- ``Home'' or ``Away'' indicating whether you'll play home or away (duh! ;-)
+- Opponent Name.
+- Opponent's rank (and league).
+- Average skills and the difference to your average skills ('-' means you're better).
+- Playing style.
+- Team structure.
+- Latest results.
+- Goals (for : against)
+- Your results this season against the same team.
+- Bookmaker's tip.
+
+
+If you click on one of the rows, the player list of your opponent will be shown.
+
+===Management Bar===
+
+The lower tool bar contains icons that allow you to effectively manage 
+your team:
+
+- //Playing Style//. Currently **Bygfoot** supports five playing styles: 
+``All Out Defend'', ``Defend'', ``Balanced'', ``Attack'' and ``All Out Attack''.
+- //Team Structure//. You can either enter directly your desired structure,
+cycle the available options, re-order players or undo a swap action. 
+- //Scout//. You can choose whether you want a good scout or not. There are 
+four skill levels for scouts: ``Bad'', ``Average'', ``Good'' and ``Best''.
+- //Physio//. The quality of your physio.
+
+	
+If you have chosen the Transfer List view, a small  icon with a looking-glass
+will appear at the right side: it allows you to browse teams to find the 
+players you wish to buy. **WARNING**: Players bought this way are much more
+expensive and demand much higher wages.
+
+If you have chosen the Finances/Stadium view, some other icons will appear:
+
+- //Capacity (CAP)//. Allows you to increase your stadium capacity by
+  500 - 2000 seats (depending on how much you'd like to spend and how
+  soon you want the seats to be available).
+- //Safety (SAF)//. Allows you increase the security level in your stadium.
+- //Loan Money//.
+- //Pay Loan//.
+ 
+
+If you have chosen the Week Summary, Fixtures or Tables view, these icons 
+will be available:
+
+- //Fixtures//. Shows you the full list of matches that have been played 
+last week. You can browse fixtures too, checking past and future weeks.
+- //Tables//. Shows you the current table of classification. You can 
+browse tables, checking other leagues as well.
+- //Fixtures by League//. You can browse the fixtures of other leagues as 
+well.
+- //Show my league results//. Shows your results against league opponents.
+
+
+Most views also add ``next'' and ``previous'' arrows so that you can 
+navigate around.
+
+==Keyboard Shortcuts==
+
+These are always shown as tooltips, too.
+
+Generally, when an ``OK'' button can be clicked, ``Return'' will do just
+that; when a ``Cancel'' or ``Close'' button can be clicked or a popup window
+can be closed, ``Escape'' will do it.
+
+===File Operations===
+ | L or Ctrl-O | Load game |
+ | S or Ctrl-S | Save game |
+ | Ctrl-N | New game |
+ | Q or Ctrl-Q | Quit (Q works only when the arrows below the right panel aren't shown) |
+ | H | Show this help screen |
+===Game Operations===
+ | Space | Begin new week |
+ | O | Options (Preferences) |
+ | Escape | Back to main |
+ | T | Show transferlist |
+ | F | Show finances and stadium info |
+ | P or F1 | Show preview |
+ | F4 | Show fixtures |
+ | F5 | Show tables |
+ | Q and W | Previous / Next page (e.g. when looking at fixtures) |
+
+
+These last two have been adopted in place of ``1'' and ``2'' since versions
+1.4-2 (stable) and 1.5-1 (development).
+
+===Management Operations===
+ | C | Change team structure |
+ | R | Rearrange team |
+ | Y or Ctrl-Z | Undo last swap-action |
+
+
+==Saving and Loading Files==
+
+**Bygfoot** uses the following types of files to store information it will use:
+
++ //Country File// -- `country_XYZ` -- where team and league names are stored. This is a UTF-8
+plain text file.
++ //Player Names// -- `player_names` -- where the names that will be randomly attributed to
+``nobodies'' are stored.
++ //Teams// -- `teams` -- where team definitions are stored.
++ //Savegames// -- encoded files in which information about a game you're
+  currently playing is stored.
+
+
+A country file must be written using a UTF-8 enabled text editor like 
+[yudit www.yudit.org] and must follow some rules so that it won't crash
+**Bygfoot**. We'll learn more about them later.
+
+You can edit the `player_names` file and add or remove any names you wish 
+to appear in the game. But please keep it big so that players with repeated
+names don't appear quite often. This file is always loaded by **Bygfoot** 
+during startup.
+
+The `teams` file stores the team definitions you have written or imported. 
+It is also automatically loaded during startup (unless you forbid 
+**Bygfoot** from doing so), but it contains definitions of only a couple 
+of teams yet.
+
+Savegames are stored under `$HOME/.bygfoot/saves` and can be loaded in 
+4 ways: 
+
+- As a short command-line switch: `bygfoot savegame` where ``savegame'' is 
+the name of a file located in `$HOME/.bygfoot/saves`.
+- As a long command-line switch: `bygfoot [full path]/savegame` where ``full
+path'' is the full address of the file ``savegame'' in your system. This 
+option is mandatory if your savegames are saved in another directory but
+`$HOME/.bygfoot/saves` (why would you do that?).
+- From the startup window by selecting ``Load Game''
+- From the game interface by selecting ``Load Game''.
+
+
+==The Game Behaviour (Basic)==
+
+At startup **Bygfoot** will read team definitions and generate all teams 
+that are not defined. After the process is complete (may take some time on 
+slow systems) you will see the game interface. If you want to continue a
+previously saved game, you can let **Bygfoot** skip the team generation
+by calling it with the savegame file as an argument: `bygfoot my_save_game`. 
+See also [command line options intermediate.html#toc1].
+
+To play, you must make some choices:
+
+- Select the players you want to be playing by clicking on their names with 
+the left mouse button. If you click on a player name and then on another,
+they'll swap positions.
+- Select the desired team structure and playing strategy.
+- Click on the ``Begin a new week'' button. **Bygfoot** will hang for a 
+short while an then the ``Live Game'' window will pop up. 
+- After the game ``ends'', click the ``Close'' button to go back to the 
+main window.
+
+
+**TIP 1** - Don't let your players get too tired or they can be injured more
+easily. If a player goes below 90% of his fitness, let him rest for a week by
+putting another one in his place.
+
+
+**TIP 2** - Pay attention to the size and the security of your stadium. The
+stadium is your main source of money.

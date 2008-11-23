@@ -1,0 +1,80 @@
+Acknowledgements
+
+
+%!Style: green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(tex): 'section\*' 'section'
+%!PostProc(tex): '\subsection' '\section'
+%!PostProc(tex): '\\subsubsection\*' '\\subsection'
+%!PostProc(html): '<P ALIGN="center">' ''
+
+Big ``Thank Yous'' to the following people for writing country files and
+suggesting interesting and often unimplementable ;-) new features:
+
+- Arnaud Le Rouzic aka arnaudus (France; lots of hints on
+  good programming style [images/smileys/wink.png]; French translation)
+
+- Frederic Forjan aka GeoVah; Alexandre Beraud (France; French translation)
+
+- Mark Symonds aka Vector (Australia; a lot of beautiful icons)
+
+- Cristian Spoiala (Romania; Romanian country file; Romanian translation)
+
+- Gerhard Hotz (Germany; former Debian packager)
+
+- Isaac Clerencia (Spain; Debian maintainer)
+
+- [José Geraldo Gouvêa http://www.leopoldina.com.br/~jggouvea/] (Brazil; Brazilian
+  country file; additionally: thanks for the homepage!; Portuguese translation)
+
+- Michal Rudolf (Poland; Polish country file, translation)
+
+- Pavel Lucistnik (Czeck Republic; BSD port)
+
+- Arturo Mendez (Mexico; Mexican country file)
+
+- Marco Fabbri (Italy; Italian country file)
+
+- Reviczky Ádám János (Hungary; Hungarian country file; Hungarian translation)
+
+- Andrej Kropachev (Russian translation)
+
+- Julio Saldivar (Chile; country file for Chile)
+
+- Arne and Tobe Deprez (Belgium; Dutch translation and country file for
+  Belgium)
+
+- Mark Calderbank (England; country files for England, Wales, Ireland,
+  Spain, Victoria, Bulgaria; some nice ideas and patches)
+
+- Rostislav "zbrox" Raykov (Bulgaria; Bulgarian translation; [new alpha website http://bygfoot.sourceforge.net/ver2])
+
+- Celso Goya (Brazil; Brazilian country definition)
+
+- Simon Binns (Australia; Windows port)
+
+- Pechorin (definition for Serbia &amp; Montenegro)
+
+- Koen Pijnenburg (Netherlands; definition for the Netherlands)
+
+- Benyuan Liu (China; Chinese translation)
+
+- Marcelo Garrone (Spanish translation, splash screen image)
+
+- Daniel Nylander (Sweden; Swedish translation and country file)
+
+- Sebastián Moncho (Spain; Bygfoot Editors)
+
+- Christopher Hunter (USA; definitions for Argentina, Japan, Mexico, USA)
+
+
+Forgotten anyone? [Write me! feedback.html]
+
+**Thanks!**

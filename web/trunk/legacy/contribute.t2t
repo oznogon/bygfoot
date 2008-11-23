@@ -1,0 +1,40 @@
+Contribute
+
+
+%!Style: green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!Encoding(man): iso8859-1
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(html): '<P ALIGN="center">' ''
+
+There are a number of ways for you to contribute to the **Bygfoot**
+Project and give back some of the pleasure it gave you.
+
++ [Donate to Bygfoot http://sourceforge.net/donate/index.php?group_id=46139]:
+  If you really enjoy **Bygfoot** you could support its development by making
+  donations to the developers.
+
++ [Add to the Bygfoot Wiki. http://mec-symonds.eng.monash.edu.au/twiki/bin/view/Bygfoot/WebHome]
+  If you've played a lot and would like to help us extend our Wiki documentation,
+  go ahead!
+
++ [Translate Bygfoot to your language i18n.html]. Help your fellow countrymen
+  who don't speak English as well as you do.
+
++ [Write a team definition http://bygfoot.sourceforge.net/doc/1.9/def_howto_teams.html].
+  If you have a favourite football team which appears in the game,
+  you can create a definition for it and send it to us.
+
++ [Write a country file http://bygfoot.sourceforge.net/doc/1.9/def_howto.html].
+  If you'd like the leagues in your country to become a part of **Bygfoot**,
+  you can create a country file and [send it to us feedback.html]. If creating
+  a definition seems too complicated, you can post the information about the
+  league and cup rules and teams at the forum
+  ([Definitions section http://bygfoot.sourceforge.net/phpBB2/viewforum.php?f=12])
+  and others can help you.

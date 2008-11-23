@@ -1,0 +1,123 @@
+Football Manager FAQ
+
+
+%!Style: ../green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): "<HR NOSHADE SIZE=1>" "<div class=hr></div>"
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(html): 'cellpadding=4 border=1' 'cellpadding="4" class="button"'
+%!PreProc(tex): '^%tex% ' ''
+
+%tex% =Football Manager FAQ=
+
++ Do new players ever appear in the game?
+
+Yes. Each week a handful of players 
+in CPU teams are replaced by new ones.
+
++ Do the players with numbers 12-20 influence the outcome of a game?
+
+No. Only 
+the field players.
+
++ What happens if a player gets sent off in the first (cup) game of a week?
+
+In
+ the first game, players never get sent off or injured. I might change this 
+ some day, if I implement substitutions after game 1.
+
++ Do players get yellow cards in cup games?
+
+No. Otherwise it could happen
+that they get their 5th yellow card, which would automatically lead to a red 
+card.
+
++ Do players have a real talent value, or only this 'estimated talent' thing?
+
+They
+have a real talent value which never changes. Their development when they're 
+young depends on their talent value, as well as their peak skill. But of 
+course you only see your scout's estimate of this value.
+
++ How precisely do scouts estimate the talent value of a player?
+
+The best scout's estimate has an error up to 1.0 points, i.e. he might 
+think a player with 7.0 talent has talent 8 (or 6). But this is the maximum 
+error, he'll estimate better normally. The other scouts' errors are 2, 3 
+and 4 points.
+
++ What is the second value after team skill average?
+
+The first value is the average current skill of the first 11 players 
+(i.e. those who'll count when you play a match). The second value is 
+the average cskill value of all your players.
+
++ How does playing style and team structure influence the playing 
+strength of my team?
+
+Each team has an attacking and defending value. If you have 
+structure 532, i.e. five defenders but only two forwards, your defending value 
+is rather high, because the defenders cskill is weighted much more 
+for defense than the cskill of your forwards. Accordingly your attacking 
+value is rather low because the cskill of your defenders has only a small 
+weight for your offense. Midfielders' cskills are weighted equally for 
+defense and offense. Now if you have playing style 'Attack', the defending 
+value is diminished, and the attacking value is increased (symmetrically,
+e.g. -5% and +5%). If you have 'All Out Attack', the defending value
+is diminished even more and the attacking value is increased even
+more.
+
++ How do players improve? When does their skill reach their top talent value?
+
+Young players improve best if they play often and stay healthy. 
+If they play approximately every 3 weeks and stay healthy, they improve
+about every 14-15 weeks. Old players' skill gets worse no matter if
+they play or not; it gets worse even faster if they're injured.
+It might happen that a player never reaches his talent value if he's
+injured often. But on average field players reach their highest skill
+approx. at the age of 31-32. Goalies 1 or 2 years later.
+
++ Does switching live game on or off influence the performance of my team?
+
+In short: no. The 'live game' isn't really live, the result's already 
+computed before the game is shown.
+
++ How can a team score twice within a fraction of a second in a live game?
+
+The live game shows 90+ minutes within 20 or 30 seconds, so 1 match
+minute means only 0.3 seconds in reality. If a team scores twice
+within a match minute, this leads to two goals in the live game within
+less than a second; and the tendency bar simply doesn't have time to
+move to center position.
+
++ Is there any advantage of having a scout after the transfer deadline?
+
+No. 
+If you're short on money, fire him. 
+
++ Why are there sometimes two matches a week?
+
+There are simply too many 
+matches to have each week only one. But perhaps I'll implement substituting 
+players after the first one, at least.
+
++ How does fitness influence the performance of players in matches?
+
+Not very much. An 8.0 player with fitness 80% still performs a
+little bit better than a 7.5 player with fitness 99%. 
+
++ How does fitness influence the probability to get injured?
+
+The injury 
+probability is inversely proportional to the fitness value. 
+A player with fitness 50% has twice the probability of getting injured 
+compared to a 99% player. However, if you take just one player, the
+probability's still small, about 3% (with fitness 50%). But if all of
+your players have low fitness, one of them will probably get injured.
+
+
+----------------------------------------------
+ | [Back to FAQ faq.html] |

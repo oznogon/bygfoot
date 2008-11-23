@@ -1,0 +1,54 @@
+How to write player names files
+
+
+%! Target  : html
+%! Options : --toc
+%! Style   : ../../green.css
+%!encoding: iso-8859-1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+
+Last updated: %%mtime(%m/%d/%Y)
+
+[<- Previous def_howto_cups.html] | [Overview def_howto.html] | [Countries def_howto_countries.html] | [Leagues def_howto_leagues.html] | [Cups def_howto_cups.html] | Player names | [Teams def_howto_teams.html] | [Live game commentary def_howto_lgcommentary.html] | [CPU strategies def_howto_strategy.html] | [Next -> def_howto_teams.html]
+
+==How to create a player names file==
+
+Player names files are country-specific and contain last names and
+first names from a given country.
+
+Making a player names file isn't really necessary for a country definition
+to work, but of course it's nicer if the player names of the teams in the
+country's leagues sound like original names from the country.
+
+Player names files should begin with ``player_names_`` and end with ``.xml``
+(of course); in between you put the country name, e.g.
+``player_names_england.xml`` or ``player_names_germany.xml``.
+
+The files should be put into the ``support_files/names`` directory.
+
+To make the program load the names for a league from a certain names file,
+you have to add a tag ``<names_file>sid</names_file>`` to the league definition
+file, //sid// being the part of the file name between ``player_names_`` and ``.xml``.
+
+The syntax of the names files is pretty simple, only three tags are used:
+``names`` is the root tag, ``first_name`` encloses a first name, and
+``last_name`` encloses a last name. The following example is taken from
+``player_names_germany.xml``:
+```
+<names>
+  <first_name>Lucas</first_name>
+  <first_name>Lukas</first_name>
+  <first_name>Nicklas</first_name>
+
+...snip...
+
+  <last_name>Wurster</last_name>
+  <last_name>Zieren</last_name>
+  <last_name>Zinn</last_name>
+  <last_name>Zwilling</last_name>
+</names>
+```
+If possible, there should be more last names in the file than first names, maybe
+about twice as many as first names. 100 first and 200 last names make a nice names
+file already.

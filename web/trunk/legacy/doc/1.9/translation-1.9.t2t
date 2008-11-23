@@ -1,0 +1,61 @@
+Bygfoot 1.9 -- Translation mysteries uncovered
+
+
+%! Target  : html
+%! Options : --toc
+%! Style   : ../../green.css
+%!encoding: iso-8859-1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+
+Last updated: %%mtime(%m/%d/%Y)
+
+To translate **Bygfoot** you have to do three things:
+- Translate the pot file (see 
+  [translation howto http://bygfoot.sourceforge.net/i18n.html]).
+- Translate [the hints file http://bygfoot.sourceforge.net/extras/i18n/1.9/bygfoot_hints_en]. This is done by simply copying the file to ``bygfoot_hints_LANG`` where LANG is the
+  shortcut for your language (e.g. ``de`` or ``fr``) and replacing the english text
+  with the translation.
+- Create a live game commentary file.
+[See the howto http://bygfoot.sourceforge.net/doc/1.9/definitions_howto.html].
+
+
+Generally, the strings that are a bit mysterious are commented in the pot file.
+However, there are a few that can't be commented, and for these
+we have the following table.
+
+([Click here ../../i18n.html] to go to the po files howto page.)
+
+Some hints beforehand:
+- There are strings like 'Industrial', "& Co.", "Systems" in the pot file.
+  These are used for sponsor names. You don't have to translate them
+  literally, you could also make up names that are used in companies
+  of your country. You can probably find a lot of them if you browse the stock market.
+
+- You should test your translation before you submit it
+  ([see these instructions ../../i18n.html])
+
+- If you've got a translation question, you can write me (gyboth bygfoot com)
+  or post [at the forums http://bygfoot.sourceforge.net/forum/viewforum.php?f=13].
+
+
+|| String | Meaning |
+| <span background=...> | Copy the stuff between the ``<`` and ``>`` and only translate the text in between. |
+| Constants file | The file holding a lot of not-hardcoded fine-tuning settings (e.g. a lot of probabilities). |
+| FinStad | Finances and Stadium |
+| Fire | Fire a player |
+| List 1, List 2 | The list of player attributes in the options window. |
+| Misc. | Tab with miscellaneous options in the options window. |
+| Pause when break | Whether the live game pauses automatically when there is a half time or extra time break. |
+| Player attribute precision | How many digits after the decimal point are shown for player values. |
+| Space | The space button on the keyboard |
+| Start | The button you press to start the game. |
+| Verbosity | Live game verbosity. |
+| _Pause | Pause live game. |
+| Erm... | This is the title of the popup warning window. Like 'Erm.. sorry to disturb you, but...' |
+| &amp; | Translate literally. |
+| Return | The return key on the keyboard. |
+| Any | Look for any position when recruiting youths (not for forwards, for instance). |
+| Academy | The youth academy of a team. |
+| Set investment | Setting percentage of the income spent on the youth academy. |
+|  |  |

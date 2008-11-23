@@ -1,0 +1,127 @@
+Team Editor FAQ
+
+
+%!Style: ../green.css 
+%!Encoding(html): iso8859-15 
+%!Encoding(tex): latin1 
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1> 
+%!PostProc(html): "<HR NOSHADE SIZE=1>" "<divclass=hr></div>" 
+%!PostProc(html): '<FONT SIZE=4>' '' 
+%!PostProc(html): '</FONT></CENTER>' '' 
+%!PostProc(html): 'cellpadding=4 border=1' 'cellpadding="4" class="button"' 
+%!PreProc(tex): '^%tex% ' ''
+
+%tex% =Team Editor FAQ=
+
++ I'd like to edit a team from a Spanish league but I only see English
+teams to choose from.
+
+You have to select a different country file, in this case 'country_es'.
+
++ Why is the background of three substitute players grey?
+
+The human player always starts with 17 players; mainly, because this 
+way he has room for transfered players from the beginning. So each time 
+you start a new game and your team is loaded from the definitions file, 
+players with numbers 13, 16 and 19 are omitted. Practically this means: 
+don't put important players on the positions with grey background.
+
++ I have edited a team and would like to play with it. But each time I
+start the game and choose the edited team, some players don't appear in
+the player list.
+
+See previous question.
+
++ Why should I edit those grey-backgrounded players if they don't get
+loaded anyway?
+
+CPU-teams have 20 players, so if you choose a different
+team from the one you edited, the CPU-team that goes with the edited
+team will contain all 20 players, even the grey-backgrounded ones.
+
++ No matter which team I choose, they always contain 20 "nobodies".
+
+I have specified only a few teams in the default definitions file until
+now Real Madrid (Spain), Bayern München, Werder Bremen, Borussia Dortmund
+(Germany) and Arsenal (England). So all other teams are blank (as yet). I
+hope that a lot of people add their favourite teams to the definitions
+file and send it to me, so that I can extend the default file somewhat
+in subsequent versions.
+
++ I'd like player number X to be a goalie, but he's always a defender.
+
+The position of a player is determined by the two structure values above
+the right upper corner of the player list. If the first is 442, it means
+that players with numbers 2 to 5 are defenders, 6 to 9 midfielders and
+10 and 11 forwards. Players 1 and 12 are always goalies. The positions
+of the rest of the substitutes, players 13 to 20 are determined by the
+second structure value, e.g. 332. If you'd like to change the position
+of a player, you either have to change the structure accordingly or swap
+the player with another one.
+
++ Can I enter special characters like Ü or Ô and the like?
+
+Definitely. They should even get displayed correctly in the game. 
+Special characters are the reason why I switched to UTF-8 encoding.
+
++ Can I delete a player completely?
+
+You can't in the sense that you don't see him in the list afterwards, but 
+if you specify a name with a "#" as first character, the player won't be 
+loaded at startup.
+
++ I've got a player who'll turn 30 in two months. In the list, however,
+he's 30 already!
+ 
+The ages are stored as floating-point numbers, and in the list they're 
+rounded to integer numbers. So a player between 29 years and 6 months and 
+30 years and 5 month is shown as a 30-year-old.
+
++ What does this "Average skill" part of the window mean?
+It shows the average skill of the team you currently edit. Its purpose is 
+mainly to help you create a team that's not very out-of-place compared to 
+the other teams in the game. In your first season, teams in League 1 have
+average skills of around 8.0; very good teams perhaps 8.7 or 8.8, bad
+teams 7.0 or 7.2.  UEFA-Cup teams are on average as good as League 1
+teams, CWC and CL teams about 0.2 and 0.4 better, respectively.
+
++ I appreciate the whole definitions stuff, but in my opinion it makes the
+game more predictable and unbalanced. Can't I turn it off?
+
+Of course. Simply check the "Don't load team definitions" checkbutton in 
+the team selection window and loading definitions is switched off completely.
+If you'd still like to have the names of the players, but random skill
+values etc., check the 'Load only names' checkbutton. If you'd like
+to load your team only, check the "Load my team" and "Don't load team
+definitions" buttons.
+
++ I've edited a team. Where can I find the definitions file the editor
+stored it in?
+
+The first time you start the Bygfoot Team Editor, it
+tries to create a directory called `.bygfoot` in your home directory and
+the subdirectories `text_files` and `saves`. It then tries to copy the
+customizable text files to the former subdirectory (the `saves` subdir
+is meant for your savegames). Your edited teams should be in the file
+`~/.bygfoot/text_files/teams`.
+
++ I have edited a team which isn't in one of the five leagues, but takes
+part in a European cup. The names get loaded correctly, but when I look
+at the team in transfer browse mode, the skill and talent and age values
+are all wrong!
+
+For international cup teams only the names get loaded.
+This is because they have to have a certain average skill level (otherwise
+it'd be too easy or too hard to win a cup), and I don't want to have
+this level all messed up.
+
++ I have written definitions of 2.450.320 teams from different
+countries. Would you like to have them?
+ YES! Send them to Gyözö Both
+<gyboth_at_bygfoot_dot_com> so that I can include them in the default
+definitions file of the next **Bygfoot** version. But try to be truthful,
+don't put only 9.9 players into your favourite team.
+
+
+----------------------------------------------
+ | [Back to FAQ faq.html] |

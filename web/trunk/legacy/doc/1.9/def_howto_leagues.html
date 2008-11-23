@@ -1,0 +1,429 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../../green.css">
+<TITLE>How to write league definition files</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>How to write league definition files</H1>
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+    <UL>
+    <LI><A HREF="#toc1">How to create a league definition file</A>
+      <UL>
+      <LI><A HREF="#toc2">General info</A>
+      <LI><A HREF="#toc3">Promotion and relegation</A>
+      <LI><A HREF="#toc4">Teams</A>
+      <LI><A HREF="#toc5">Official team names</A>
+      </UL>
+    </UL>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+<P>
+Last updated: 07/08/2006
+</P>
+<P>
+<A HREF="def_howto_countries.html">&lt;- Previous</A> | <A HREF="def_howto.html">Overview</A> | <A HREF="def_howto_countries.html">Countries</A> | Leagues | <A HREF="def_howto_cups.html">Cups</A> | <A HREF="def_howto_plnames.html">Player names</A> | <A HREF="def_howto_teams.html">Teams</A> | <A HREF="def_howto_lgcommentary.html">Live game commentary</A> | <A HREF="def_howto_strategy.html">CPU strategies</A> | <A HREF="def_howto_cups.html">Next -&gt;</A>
+</P>
+<A NAME="toc1"></A>
+<H2>How to create a league definition file</H2>
+<A NAME="toc2"></A>
+<H3>General info</H3>
+<P>
+This is a lot more complicated than creating a country file,
+unfortunately.  Let's have a look at the example
+<CODE>league_england3.xml</CODE>:
+</P>
+<PRE>
+  &lt;league&gt;
+  
+    &lt;sid&gt;england3&lt;/sid&gt;
+  
+    # This one we already know.
+  
+    &lt;name&gt;Football League One&lt;/name&gt;
+    &lt;short_name&gt;F. L. One&lt;/short_name&gt;
+  
+    # The short name which can be used in the
+    # program when there isn't a lot of room for a
+    # long name.
+  
+    &lt;symbol&gt;flag_en.png&lt;/symbol&gt;
+  
+    &lt;first_week&gt;1&lt;/first_week&gt;
+  
+    # The first week there are matches in the
+    # league.  Normally this is 1, but if you prefer
+    # all leagues to have their last matchday in the
+    # same week you can adjust their starting weeks
+    # however you like.
+  
+    &lt;week_gap&gt;1&lt;/week_gap&gt;
+  
+    # The number of weeks between matchdays. For
+    # leagues this is normally 1.
+  
+    &lt;average_talent&gt;6000&lt;/average_talent&gt;
+  
+    # The average talent in the league IN PERCENTAGE
+    # OF THE MAXIMUM SKILL as given in the constants
+    # file.  See the 'bygfoot_constants' file.
+    # Since floats are given as integers in our
+    # definition files, in this example the teams
+    # will have average talents of about 60% of the
+    # maximum skill (which is currently 99).
+  
+    &lt;names_file&gt;england&lt;/names_file&gt;
+  
+    # The sid of the player names file to use.
+    # In this case the names of most players in
+    # the league will get loaded from the file
+    # 'player_names_england.xml' which contains
+    # English first names and last names.
+  
+    # See also the section about names files.
+  
+  ...snip...
+  
+  &lt;/league&gt;
+</PRE>
+<P>
+One tag that's not mentioned is <CODE>&lt;yellow_red&gt;</CODE>. This one takes an
+integer value; it signifies the number of yellow cards in the
+league after which a player gets banned automatically for a
+week. In the English leagues there isn't such a rule, so the
+tag's missing above (which leads to a default value of 1000 when
+the definition file gets loaded), but in the German Bundesliga
+the value would be 5, for instance.
+</P>
+<P>
+Another tag that won't be used in most of the leagues is <CODE>&lt;round_robins&gt;</CODE>.
+This specifies how many round robins are played (a round robin meaning only
+ONE match for each team versus each other team); in most leagues this is 2,
+which is also the default value, but in leagues with only a few teams,
+eg. the Austrian league or the Scottish one, during a league championships
+a team play four times or so against each of the other teams, so you'd specify
+4 (in fact for the Scottish league it's 3).
+</P>
+<P>
+If you want to have a custom break between round robins (instead of the default
+value <CODE>week_gap</CODE>, that's 1 for most leagues), you can write
+<CODE>&lt;break&gt;3&lt;/break&gt;</CODE>, for instance. This will cause each round robin to start
+3 weeks later than the end of the previous one.
+</P>
+<P>
+A third tag not mentioned is <CODE>layer</CODE>. This gives the 'depth' of the league,
+where the first league has layer 1, the leagues directly below the first league
+have layer 2 etc. This plays a role in countries with parallel leagues, e.g.
+in the German country file there is a first league, a second league and two
+parallel third leagues. By default, the layer value of a league is its index in
+the leagues array + 1. In the German definitions a layer value of 3 is given
+for the two parallel third leagues; the other leagues get the default values
+1 and 2.
+</P>
+<P>
+If you'd like to use a league only to be able to have some teams in the
+definition, and don't want the league to be visible or league matches to
+be scheduled and played, you can use the <CODE>active</CODE> tag
+(<CODE>&lt;active&gt;0&lt;/active&gt;</CODE>). This is used in the World Cup definition, for
+instance, where there are no leagues as such, only cups.
+</P>
+<A NAME="toc3"></A>
+<H3>Promotion and relegation</H3>
+<P>
+Let's look at how promotion and relegation is managed. We are
+still in the `league_england3.xml` file.
+</P>
+<PRE>
+  &lt;league&gt;
+  
+  ...snip...
+  
+    &lt;prom_rel&gt;
+  
+    # The beginning tag of the promotion and
+    # relegation section.
+  
+      &lt;prom_games&gt;
+  
+    # This is a specialty of English leagues (as far
+    # as I know): at the end of a season a couple of
+    # teams that haven't finished at the very top,
+    # eg.  those ranked 4th to 7th play a cup
+    # (eg. two rounds of knock-out, if we have 4
+    # teams) and the winner(s) gets promoted (this
+    # of course only holds in lower leagues, not
+    # Premiership).
+  
+        &lt;prom_games_dest_sid&gt;england2&lt;/prom_games_dest_sid&gt;
+  
+         # The string id of the league the advancing
+         # teams get promoted to.
+  
+         # It's also possible to give a space-separated
+         # list of league sids. In that case, the teams
+         # get moved alternately and randomly to the leagues
+         # specified (the number of teams should be divisible
+         # by the number of sids, of course). See also the
+         # section below.
+  
+         # One possible tag not used here is
+         # &lt;prom_games_loser_sid&gt; which would tell
+         # the program to move all teams
+         # participating in the promotion games that
+         # are not among the first
+         # 'number_of_advance' (see below) to the
+         # league with the specified string id. You can give
+         # a space-separated list of sids here, too.
+  
+        &lt;prom_games_number_of_advance&gt;1&lt;/prom_games_number_of_advance&gt;
+  
+        # How many teams advance to the destination
+        # league.
+        # The default value is 1, so you can leave out this
+        # tag if only the winner of the cup gets promoted.
+  
+        &lt;prom_games_cup_sid&gt;england_prom_games3&lt;/prom_games_cup_sid&gt;
+  
+        # The string id of the cup that determines
+        # the cup format.  Note that the
+        # choose_teams in the cup definition should
+        # only feature league teams.
+  
+        # This cup has to be part of the cups array
+        # in the country definition.
+        
+        # See the cup howto section on how to define
+        # a cup.
+  
+      &lt;/prom_games&gt;
+      
+  
+      &lt;prom_rel_element&gt;
+  
+      # An element describing the movement of a
+      # range of teams from the league to another
+      # one.
+  
+        &lt;rank_start&gt;1&lt;/rank_start&gt;
+  
+        # The beginning of the range (referring to
+        # the rank of the teams in the table at the
+        # end of the season).
+  
+        &lt;rank_end&gt;2&lt;/rank_end&gt;
+  
+        # The end of the range. The two values are
+        # INCLUSIVE.
+  
+        &lt;dest_sid&gt;england2&lt;/dest_sid&gt;
+  
+        # The string id of the league the teams get
+        # moved to. Space-separated list of sids is
+        # allowed, too.
+  
+        &lt;prom_rel_type&gt;promotion&lt;/prom_rel_type&gt;
+  
+        # The type of the element: either
+        # 'promotion' or 'relegation' or
+        # 'none'. This is only important to
+        # determine the background colours in the
+        # table.
+  
+        
+        # So in this element describes the promotion
+        # of the first two teams to the league with
+        # id 'england2' (which should be described
+        # in the file 'league_england2.xml').
+  
+      &lt;/prom_rel_element&gt;
+  
+  
+      &lt;prom_rel_element&gt;
+  
+      # This element describes the relegation of the
+      # last 4 teams to the league 'england4'.  The
+      # only differences to the above element...
+  
+        &lt;rank_start&gt;21&lt;/rank_start&gt;
+        &lt;rank_end&gt;24&lt;/rank_end&gt;
+        &lt;dest_sid&gt;england4&lt;/dest_sid&gt;
+  
+        # ...are the destination league (the one
+        # below the current one, and...
+  
+        &lt;prom_rel_type&gt;relegation&lt;/prom_rel_type&gt;
+  
+        # ...the type: relegation.
+  
+      &lt;/prom_rel_element&gt;
+  
+   &lt;/prom_rel&gt;
+  
+  ...snip...
+  
+  &lt;/league&gt;
+</PRE>
+<P>
+A note concerning parallel leagues: in a lot of countries
+there are lower leagues which are parallel, in the sense
+that teams from the leagues get promoted or relegated to the
+same league. Say we have league 1 and leagues 2a and 2b; two
+teams from league 1 get relegated, and the champions of 2a
+and 2b get promoted. Now with the above syntax we could
+specify that the last team from league 1 gets moved to 2a
+and the last-but-one to 2b. This would work fine, but if you
+play 20 seasons, league 2b will be stronger than 2a,
+because it always got a slightly better team added from
+league 1. The solution is to specify only ONE
+prom_rel_element in league 1 and give two dest_sids. The
+following example is taken from <CODE>league_belgium2.xml</CODE>:
+</P>
+<PRE>
+  &lt;prom_rel_element&gt;
+  	&lt;rank_start&gt;17&lt;/rank_start&gt;
+  	&lt;rank_end&gt;18&lt;/rank_end&gt;
+  	&lt;dest_sid&gt;belgium3a belgium3b&lt;/dest_sid&gt;
+  
+  	# This is the important part. Two dest_sids are
+          # given. The resulting relegation will happen
+          # randomly, so at times the last team will move to
+          # belgium3b and the last-but-one to belgium3a, and
+          # sometimes the other way round.
+  	# As long as the number of teams moved is divisible
+          # by the number of sids, the number of teams moved
+          # to each league is the same. So specifying four
+          # teams and two sids would work too, each of the two
+          # leagues would receive two random teams.
+  	
+  	&lt;prom_rel_type&gt;relegation&lt;/prom_rel_type&gt;
+  &lt;/prom_rel_element&gt;
+</PRE>
+<P></P>
+<P>
+So to conclude, promotion and relegation is managed by these
+prom_rel_elements which allow arbitrary movement of ranges of
+teams after a season across different leagues.  All leagues that
+occur in an element should be part of the country definition, of
+course.
+</P>
+<P>
+A special form of promotion/relegation are the promotion games.
+</P>
+<P>
+The important tags we've seen in this section were:
+</P>
+<UL>
+<LI>prom_games_dest_sid
+<LI>prom_games_loser_sid
+<LI>prom_games_number_of_advance
+<LI>prom_games_cup_sid
+<LI>prom_rel_element
+<LI>rank_start
+<LI>rank_end
+<LI>dest_sid
+<LI>prom_rel_type
+</UL>
+
+<A NAME="toc4"></A>
+<H3>Teams</H3>
+<P>
+The last part of the league definition consists of the
+teams. Currently there are four tags for teams:
+</P>
+<UL>
+<LI><CODE>team_name</CODE> gives the name of the team
+<LI>[optional] <CODE>team_symbol</CODE> gives a symbol for the team. If unspecified,
+   the team gets the symbol of the league.
+<LI>[optional] <CODE>team_average_talent</CODE> gives the average talent of the players
+  in the team. If unspecified, the team gets more or less the average
+  talent of the league.
+<LI>[optional] <CODE>team_names_file</CODE> gives the file the player names get loaded
+  from (see the <CODE>names_file</CODE> tag for leagues).
+<LI>[optional] <CODE>def_file</CODE> gives a team definition file that contains additional
+  information (see the howto about <A HREF="def_howto_teams.html">team definitions</A>).
+  The information in the def file overwrites the info given in the
+  previous tags.
+</UL>
+
+<PRE>
+  &lt;league&gt;
+  
+  ...snip...
+  
+    &lt;teams&gt;
+  
+    # Starting tag for the team list.
+  
+      &lt;team&gt;
+  
+      # A team!
+  
+        &lt;team_name&gt;Barnsley&lt;/team_name&gt;
+  
+       # The team name. 
+  
+      &lt;/team&gt;
+       &lt;team&gt;
+  	&lt;team_name&gt;Blackpool&lt;/team_name&gt;
+  	&lt;team_symbol&gt;team_england_blackpool.png&lt;/team_symbol&gt;
+       &lt;/team&gt;
+  
+       # A team with an image file.
+  
+  ...snip...
+  
+    &lt;/teams&gt;
+  
+  &lt;/league&gt;
+</PRE>
+<P></P>
+<A NAME="toc5"></A>
+<H3>Official team names</H3>
+<P>
+League definitions may not contain official team names like
+Real Madrid or Manchester United, only R. Madrid and Manchester
+(or Manchester U.).
+</P>
+<P>
+However, you can make a file with official names that can be
+downloaded with the <CODE>bygfoot-update</CODE> script and used to patch
+the def files with unofficial names.
+The official names file should have a format like this:
+</P>
+<PRE>
+  League: country
+  	inofficial name: official name
+  	inofficial name: official name
+  	inofficial name: official name
+  	inofficial name: official name
+</PRE>
+<P></P>
+<P>
+<CODE>country</CODE> should be the common part of the sids of the country's leagues,
+e.g. <CODE>england</CODE> (the english league files are called league_england1.xml
+to league_england5.xml, remember?).
+</P>
+<P>
+The inofficial name should be the name used in the league definition file,
+e.g. R. Madrid. Take care to copy the names exactly, otherwise they won't
+get replaced by the official names.
+</P>
+<P>
+The official names are the real names of the clubs, e.g. Real Madrid.
+</P>
+<P>
+You can have a look at the current official names file
+<A HREF="http://bygfoot.sf.net/revisions/official_names">here.</A>
+</P>
+
+<!-- html code generated by txt2tags 2.2 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -t html def_howto_leagues.t2t -->
+</BODY></HTML>

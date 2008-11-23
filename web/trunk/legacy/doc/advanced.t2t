@@ -1,0 +1,126 @@
+Advanced Guide
+
+
+%!Style: ../green.css
+%!Encoding(html): iso8859-15
+%!Encoding(tex): latin1
+%!CmdLine(html): --toc
+%!PreProc(html): '``' '"'
+%!PreProc(html): "''" "
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>' 
+%!PostProc(html): '<FONT SIZE=4>' ''
+%!PostProc(html): '<P ALIGN="center">' ''
+%!PostProc(html): '</FONT></CENTER>' ''
+%!PostProc(tex): 'section\*' 'section'
+%!PostProc(tex): '\\subsection' '\\section'
+%!PostProc(tex): '\\subsubsection' '\\subsection'
+
+==Preferences==
+
+The ``Preferences'' window that pops-up when you select ``File > Preferences'' or
+click the ``Preferences'' tool bar button or press `O` (for `Options`)
+allows you to change the behaviour and appearance of the game. All options
+have tooltips, so this documentation section isn't very extensive.
+From top to bottom, these are the available options:
+
+===Confirmations===
+
+Whether **Bygfoot** should ask for confirmation every time you tell it to start a new week,
+start a new week with injured or banned players in your team or quit without
+having saved.
+
+===Look & Feel===
+
+Here you can switch live games on and off, configure the message bar and the font the game
+uses, change the name of your team and a lot more.
+
+===Player Attributes===
+
+What information to show about your players. You can uncheck any of those that
+are shown by default or check others that are not. Extra information tabs 
+not displayed by default are ``yellow cards'', ``wage'' and ``value''.
+
+===Miscellaneous===
+
+Options concering the general behaviour of the game. Among others, you can specify
+here whether **Bygfoot** should warn you when an interesting player appears on
+the transfer list and whether you'd like the transfer list to be sorted.
+
+=== Saving your settings to a configuration file ===
+
+If you click on ``OK'', your settings will be saved for your current
+game. If you'd like to save them for future games, too, you can check
+the ``Save to file'' box on the left of the ``OK'' button. Clicking on ``OK''
+will save your settings to `$HOME/.bygfoot/text_files/bygfoot.conf`, and
+each time you start **Bygfoot**, they get loaded automatically.
+
+
+==Keeping your job==
+
+There is one reason for other teams to try and hire you: your team's
+success. So if you're first in a league for 20 consecutive weeks
+don't be surprised if they try to contract you. If it gets on your
+nerves, you can switch it off in the options window or via the quick
+options menu.
+
+If you get promoted, you'll count as quite successful. If you get relegated 
+(or your team's last for 20 consecutive weeks or so), you'll count as 
+rather unsuccessful and your team owners might consider firing you.
+
+There are two additional reasons why you could get fired. First, if
+you fail to pay back a loan. Second, if you're financial management
+is bad and you're bank account gets below your drawing credit three
+times in a season. Each time you'll get some weeks to get positive,
+but each time the limit will be shorter.
+
+If you finish in a league among the last 4 teams, you get relegated
+(except, of course, the last division).
+
+If you finish in a league among the first three, you get promoted
+(except, of course, the first Division).
+
+If you finish in a league (except the Premier Division) from 4th to
+7th, you will play promotion games: one round of home/away games, and
+if you win, a game on neutral ground against the other winner. If you win this
+one, you're promoted.
+
+==Playing a Season==
+
+Parts of a season's fixtures are generated while playing (e.g. FA
+Cup from round 2 upwards) because they depend on previous results.
+
+You can see how your team fared against your league opponents (i.e.,
+the results of the two league games against team XYZ) if you click
+on the (quite colorful) `Show league results` button that appears
+below the right panel when you click on `Fixtures`.
+
+At the end of each season a history page will be written. It
+contains your result at the end of the season (rank, team and
+league), champions and cup winners and the best players.
+
+Also at the end of a season there's prize money for:
+
+- the teams ranked 1st to 3rd and the promotion games winner (or
+  the team ranked 4th in league 1),
+
+- **(versions >= 1.7.0)** the best 3 goalies and goal scorers,
+
+- **(versions >= 1.7.0)** the best offensive and defensive teams,
+
+- **(versions >= 1.7.0)** the best player (overall),
+
+- **(versions >= 1.7.0)** the best defender, midfielder and forward
+  (voted by the managers).
+
+
+==Player fitness and injuries==
+
+One of the most frequently asked questions about **Bygfoot** is, How does
+the fitness value influence the probability of a player getting injured? 
+(see [FAQ manager-faq.html]) The answer is short and simple: the probability
+is inversely proportional to the fitness value. If your player has only
+fitness 50%, the probability is twice as high as the probability with
+fitness 99%. This sounds very dangerous, but in fact the normal probability
+(i.e. with maximum fitness) is only 1,5% for a field player and 0,75% for
+a goalie. So a 50%-player is still unlikely (3% probability) to get injured.

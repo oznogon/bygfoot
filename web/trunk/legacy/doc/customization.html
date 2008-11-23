@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-15">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../green.css">
+<TITLE>Customization Guide</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><IMG ALIGN="center" SRC="../bygfoot-logo.png" BORDER="0"></center><H1>Customization Guide</H1>
+
+
+
+<P>
+<div class=hr></div>
+<P>
+<P>
+  <UL>
+  <LI><A HREF="#toc1">The "Text Files"</A>
+  <LI><A HREF="#toc2">The File Formats</A>
+  <LI><A HREF="#toc3">Editing Teams</A>
+   <UL>
+   <LI><A HREF="#toc4">The Team Editor interface</A>
+   <LI><A HREF="#toc5">Editing/Creating a team</A>
+   <LI><A HREF="#toc6">Structures</A>
+   <LI><A HREF="#toc7">Skill</A>
+   <LI><A HREF="#toc8">Editing a player</A>
+   <LI><A HREF="#toc9">Finishing</A>
+   </UL>
+  <LI><A HREF="#toc10">Managing teams</A>
+   <UL>
+   <LI><A HREF="#toc11">Team definition files</A>
+   <LI><A HREF="#toc12">Exchanging teams</A>
+   <LI><A HREF="#toc13">Managing team definitions</A>
+   </UL>
+  <LI><A HREF="#toc14">Writing country files</A>
+   <UL>
+   <LI><A HREF="#toc15">Structure</A>
+   <LI><A HREF="#toc16">Managing Country Files</A>
+   </UL>
+  </UL>
+<P>
+<div class=hr></div>
+<P>
+<P>
+<a name="toc1"></a>
+<H2>The "Text Files"</H2>
+<P>
+There are two possible ways (up to now) to customise <B>Bygfoot</B>: writing team 
+definitions and writing country files. Both ways involve editing text files but
+the non technically minded user can, nevertheless do it without much hassle, as 
+we are going to see.
+<P>
+<B>Bygfoot</B> currently uses two main text files to store definitions: the <CODE>teams</CODE>
+file (where team data are stored) and the <CODE>country_XXX</CODE> files (where data about
+the leagues are stored).
+<P>
+By editing the <CODE>teams</CODE> file you can create or modify the available teams.
+<P>
+By editing the or creating <CODE>country_XXX</CODE> files you can modify the existing leagues
+or add new ones.
+<P>
+<a name="toc2"></a>
+<H2>The File Formats</H2>
+<P>
+<B>Bygfoot</B> text files are UTF-8-encoded. The reason for this is to make it possible
+to show the names of teams and players from most countries using all international
+characters needed. UTF-8 currently supports all alphabetical scripts and a large deal
+of CJK (When is someone going to send us Russian, Egyptian, Indian or Georgian country
+files so that we demonstrate this better? ;-).
+<P>
+Using UTF-8 is, however, quite a nuisance because it is not easy to type in it without
+a suitable text editor. If your editor doesn't support UTF-8 you may either load the
+file with lots of empty boxes in the places of non-ASCII characters or have it automatically
+converted to your locale encoding. So, if you edit a <B>Bygfoot</B> text file by hand you 
+must take care that your editor doesn't mess up the encoding. 
+<P>
+The easiest way to overcome  any encoding mess is to use the ubiquitious <CODE>iconv</CODE> 
+command (available everywhere a  <CODE>glibc</CODE> is fully installed, i.e. all Linux, Unix and 
+BSD flavours).
+<P>
+To decode a UTF-8 file to your locale encoding (for instance Western
+European), use this:
+<P>
+<PRE>
+  iconv -f utf-8 -t iso8859-15 [file]
+</PRE>
+<P>
+To convert back into unicode, use this:
+<P>
+<PRE>
+  iconv -f iso8859-15 -t utf-8 [file]
+</PRE>
+<P>
+You can also use <CODE>recode</CODE> (not so usually available): 
+<P>
+<PRE>
+  recode UTF-8..ISO-8859-1 country_eng
+</PRE>
+<P>
+But the best way to prevent this from happening is to use a text
+editor that understands UTF-8. A text editor that doesn't mix up the 
+UTF-encoding is <A HREF="http://www.yudit.org">yudit</A>. We strongly recommend it,
+although it is not a programmer's tool.
+<P>
+<a name="toc3"></a>
+<H2>Editing Teams</H2>
+<P>
+You can start the Team Editor from the team selection window at startup
+or by calling Bygfoot with one of the "-e" or "--editor" command-line 
+switches.
+<P>
+At startup, the game looks only for teams with names that are in the
+list of the league teams (i.e. among the first 114 in the country
+file, in other words those you can choose from at the beginning) in
+the definitions file. Because of this it doesn't make sense to specify
+a team with a name that's not in one of the country files.
+<P>
+If you'd like to edit the definitions file directly, see the comments
+in the file. And take care that you don't mix up the encoding.
+<P>
+<a name="toc4"></a>
+<H3>The Team Editor interface</H3>
+<P>
+Upon starting the Team Editor you will see a window containing the
+following elements, from the top to the bottom:
+<P>
+<DL>
+<DT>Team definitions file</DT><DD> the file the teams are being
+currently read from and written to.
+<P>
+<B>Attention:</B> <B>Bygfoot</B> looks at startup only for
+team definitions in <CODE>$HOME/.bygfoot/text_files/teams</CODE>,
+so it doesn't really make sense to change the name of
+the definitions file if you want to use it normally with <B>Bygfoot</B>.
+<P>
+<DT>Country file</DT><DD> the file from which the team list is read. Only teams
+listed in this country file will be available for editing.
+<P>
+<DT>Teams in the country file</DT><DD> the list of the teams you can choose
+from.
+<P>
+<DT>Team structures, Average skills</DT><DD> see below.
+<P>
+<DT>Players' list</DT><DD> The list of players of a team. If a player isn't yet edited,
+his name field reads "# NOBODY".
+<P>
+<DT>Player editing fields, Player moving buttons, Function buttons</DT><DD>
+  Self-explanatory. See also below.
+</DL>
+<a name="toc5"></a>
+<H3>Editing/Creating a team</H3>
+You have to specify three things to be able to edit a team:
+<P>
+<OL>
+<LI>Team definitions file. Already edited teams are read from this file 
+and newly-edited teams get written to it (by default).
+<LI>Country file. Any team you create is automatically assigned to the
+country file that is selected when you edit it.
+<LI>Team name.
+</OL>
+<B>Tip:</B> If you want to change the names of quite a lot of teams, you should
+consider creating your own custom country file (see below).
+<P>
+<B>Attention:</B> Before choosing another team, you have to save the changes 
+you've made with the <CODE>Save</CODE> button. Otherwise they are lost.
+<P>
+<a name="toc6"></a>
+<H3>Structures</H3>
+<P>
+"Structure" is the way the players get distributed while playing. You must be
+used to hearing commentators mention the most widely-adopted ones: 4-4-2, 
+3-5-2, 4-3-3 and 4-5-1. Those of you not much acquainted with football (I mean, 
+Americans, Aussies, New Zealanders, Canadians and Indians), please notice that
+these numbers mean the amount of defenders, midfielders and forwards. Notice also
+that the goal-keepers (a.k.a. "goalies") are not counted in the structure.
+<P>
+Those not much acquainted with football should read the "Overview" section
+of the documentation before playing or editing.
+<P>
+The first structure value specifies the distribution of the players that will take
+part in the game, the second specifies the positions of the other players in your
+team. In short: by choosing these numbers you are saying how much players of each
+position your team will have.
+<P>
+Players #1 and #12 are always goalies.
+<P>
+To change the position of a player, you either have to swap him with another player 
+using the "Swap" button or change the team structure. 
+<P>
+<UL>
+<LI><B>Example:</B> you want player 18 to be a forward, additionally to players 19 and 20. 
+<LI><B>Solution:</B> you set the second structure to 233 or 323. 
+</UL>
+<a name="toc7"></a>
+<H3>Skill</H3>
+<P>
+The average skill spinbutton shows you the average skill of all players 
+(except the "nobodies"). If you'd like to increase or decrease the skills of all 
+players simultaneously, you can use this button.
+<P>
+This button is the one to be used to determine the level of the team you are
+editing, so that your "Real Madrid" won't be a lot weaker than your "Rayo Vallecano".
+<P>
+Notice that <B>Bygfoot</B> uses four Skill values:
+<P>
+<OL>
+<LI>Current Skill (Cskill): is the skill the player is able to use right now. It exist
+because  you can put a player in a position other than his best.
+<LI>Skill: is the skill the player has "nowadays" (in the game).
+<LI>Estimated Talent (Etal): is the estimation (made by your scout) of the player's ability
+in his peak.
+<LI>Talent: is the real ability the player can reach. This value is hidden (the game uses
+it but you never know it).
+</OL>
+<a name="toc8"></a>
+<H3>Editing a player</H3>
+<P>
+This is quite straightforward. After selecting a player by clicking on his row, you can 
+edit his name, skill, talent and birth date. You can also move him up or down in the 
+list and swap him with another player.
+<P>
+<OL>
+<LI><B>Skill</B> is the "real skill" the player will start with.
+<LI><B>Talent</B> is the potential skill the player may reach someday (or the maximum skill
+he may have reached in the past) when in his peak.
+<LI><B>Birth Year</B> and <B>Month</B> are used by the game to update the player's age.
+</OL>
+<B>IMPORTANT:</B> <B>Bygfoot</B> uses real time to determine the player's ages. So, as time goes
+by, your teams get really old (even if you don't play with them) because the ages are
+determined by comparison of the data written to the team file and the current system
+date.
+<P>
+To avoid problems with this (e.g. if you edit Zidane, who's already 33 or so, which is rather
+old for <B>Bygfoot</B>, you won't have much fun with him because he probably gets worse immediately),
+user-edited players get worse no earlier than 1 or 2 years after you begin to play with them.
+Of course this could lead to quite absurd player development, so i might change this in some
+later version.
+<P>
+<B>WARNING:</B> You have to click the "Update player information" button for the changes 
+to take effect before you edit another player, otherwise they are lost.
+<P>
+<a name="toc9"></a>
+<H3>Finishing</H3>
+When you're done with editing, you have a these possibilities:
+<P>
+<UL>
+<LI>discard the changes you've made and play the game,
+<LI>save the changes and play,
+<LI>save the changes and quit,
+<LI>export the edited team to an individual file (see naming convention below)
+</UL>
+<a name="toc10"></a>
+<H2>Managing teams</H2>
+<P>
+From inside the Team Editor you can import or export team definitions 
+into standalone text files. This feature is intended to allow users to 
+exchange team definitions, which is a quicker way to extend the game than 
+expecting someone to write all team definitions.
+<P>
+However, the Team Editor was not intended to be THE tool to manage the 
+teams file (although it is the easiest one). You can also use UTF-8 
+enabled text editors to do so because the <CODE>teams</CODE> file is only a plain
+text file encoded in UTF-8.
+<P>
+<a name="toc11"></a>
+<H3>Team definition files</H3>
+<P>
+The default team definitions file is <CODE>$HOME.bygfoot/text_files/teams</CODE>. 
+If you don't want to touch it, you can specify another one or create a new one;
+you have to keep in mind, though, that <B>Bygfoot</B> only reads team definitions 
+from the <CODE>$HOME/.bygfoot/text_files/teams</CODE> or the
+<CODE>$PREFIX/support_files/text_files/teams</CODE> files.
+<P>
+Writing all teams to a definitions file with a different name can be useful if 
+you'd like to exchange definitions files with someone else, but it is a better 
+idea to export individual teams to files.
+<P>
+You can't edit a team that's not in a country file because all team names in 
+the game get read from it. But of course you can change a team name to anything 
+you like with the editor. 
+<P>
+Additionally, if you'd like to add all teams in an existing definitions file 
+to you definitions file, you can use the "Import" feature.
+Importing a file basically means that all team definitions found in the 
+specified file are appended to your definitions file.
+<P>
+If you'd like to export the currently edited team to a file, click on the 
+"Export" button and choose a filename.
+<P>
+<a name="toc12"></a>
+<H3>Exchanging teams</H3>
+<P>
+Exchanging team definitions with others is really simple. If you've edited a 
+team you're proud of, and you'd like to share it with other <B>Bygfoot</B> users, 
+export the team to a new file, say <CODE>ManchesterUnited.John</CODE>. All your friend Paul 
+has to do now is start the <B>Editor</B>, click on "Import", select the file he 
+received from you, and John's Manchester United is added to Paul's definitions file.
+<P>
+<B>NOTE:</B> If there's a team with the same name (in this case, Manchester 
+United) in Paul's definitions file, importing John's file kind of overrides 
+Paul's definition of ManU, because the last definition in the file counts.
+<P>
+An even simpler possibility (for the technically-minded) to import a file 
+would be to <CODE>cat</CODE> it to the  definitions file:
+<P>
+<PRE>
+  cat ManchesterUnited.John &gt;&gt; /home/paul/.bygfoot/text_files/teams
+</PRE>
+<P>
+This can also be done using the <CODE>less</CODE> command:
+<P>
+<PRE>
+  less a_team &gt;&gt; teams
+</PRE>
+<P>
+There will be a collection of standalone teams <A HREF="../extras.html">here</A> that you will
+be able to play with.
+<P>
+<a name="toc13"></a>
+<H3>Managing team definitions</H3>
+<P>
+As all team definitions are stored to a single text file, it can happen that this
+file will someday become too big. The Team Editor does not currently include any
+facility to manage this.  So,  if it happens, you will have to open the teams file
+in a text editor and remove those teams you don't want any more.
+<P>
+It can happen also that a same team will be defined there two or more times. In this
+case <B>Bygfoot</B> will always used the one that appears last in the teams file but 
+the garbage data will inflate the file unnecessarily. If you accidentally import 
+a team that you don't like, open the teams file and delete it before importing another
+one. However, there is no harm in "Importing" teams from files if you don't save
+them. So, you can browse a collection of teams and choose those you want and those
+you don't want.
+<P>
+It is a good idea to keep backup copies of the teams you like most somewhere
+safe. Whenever something goes wrong -- or if you need to delete your <CODE>~/.bygfoot</CODE> dir --
+you will be able to recover them.
+<P>
+When exporting teams to standalone files, be careful to use a sensible naming convention
+so that, when you exchange them with others, people will be able to keep track of what
+is the content of the files. We, from the <B>Bygfoot</B> development team, would like you all 
+to use this scheme:
+<P>
+<CODE>XXX_Y_teamname_year_contributor_version.btd.gz</CODE>
+<P>
+Which means:
+<P>
+<DL>
+<DT>XXX</DT><DD> the country the team plays in, in iso three-letter format (eng, bra, esp, ita, etc.).
+<DT>Y</DT><DD> the league the team is in, e.g. 1 for the best league
+<DT>teamname</DT><DD> a name by which your team will be easily recognised, say "realmadrid".
+<DT>year</DT><DD> the year you wrote the file definition, so that people know whether your definition
+is still valid.
+<DT>contributor</DT><DD> a nickname by which you want us to refer to you (we may want to group
+definitions by contributors).
+<DT>version</DT><DD> if you update the file within the same year. Initial version is not indicated. Further
+versions should be numbered by "a", "b", "c", etc.
+<DT>btd</DT><DD> is the file extension you should use so that you know that this file is a **Bygfoot
+Team Definition** -- this is useful because they are, after all, only plain text files.
+<DT>gz</DT><DD> is because you might want to compress the files to save space or bandwidth.
+</DL>
+An example:
+<P>
+<PRE>
+  bra_1_atleticomineiro_2004_jggouvea_b.btd.gz
+</PRE>
+<P>
+Which means a bra(zilian) team named "atleticomineiro", in the first brazilian league,
+as it was in 2004, as written by one "jggouvea". This is the second revision he made that year.
+<P>
+<a name="toc14"></a>
+<H2>Writing country files</H2>
+<P>
+Country files contain team names, league names and cup names. Each
+time you select another flag when you're asked to choose a team at the
+beginning of the game, a new country file is loaded. 
+<P>
+The simplest way to make a new country file would be to copy one of
+the existing ones and edit it.
+<P>
+The default country files contain a lot of comments, so you don't
+really have to read the description below.
+<P>
+<B>IMPORTANT:</B> If you want to submit a country file to us, don't remove
+all those comments: they're useful for the newbies. You are even 
+encouraged to translate them to country's language.
+<P>
+<a name="toc15"></a>
+<H3>Structure</H3>
+<P>
+A country file is divided into the following sections
+<P>
+<DL>
+<DT>Preamble</DT><DD> Some blah-blah useful for newbies.
+<DT>Team List</DT><DD> consists of 114 newline-separated team names; these will take part 
+in the 5 national leagues.
+<DT>List of Foreign Teams</DT><DD> consists of 16 blocks of team names, each block 
+identified by a number instead of a name. Each team must
+be on a line of its own. From these blocks the teams participating in the 
+international cups (Champions' League etc.) are loaded.
+<DT>League and cup names</DT><DD> (e.g. "Premier Division" for England, "Primera División"
+for Spain).
+</DL>
+<B>IMPORTANT:</B> Please do not use the official team names of your
+  country, e.g. "Real Madrid", because it is illegal without a license
+  (which <B>Bygfoot</B> doesn't have, of course). Use city names and perhaps
+  abbreviations instead, e.g. "R. Madrid".
+<P>
+The Preamble must have all lines commented (if you don't understand this,
+don't touch it!). It contains some generic info supposed to be helpful to 
+teach newbies how to edit a country file.
+<P>
+The Team list MUST be ended by a line reading "1000".
+<P>
+<a name="toc16"></a>
+<H3>Managing Country Files</H3>
+<P>
+If you write a country file, please be gentle enough to translate the comments
+in the file to that country's language -- if you can. You are even encouraged to
+translate country files you have not written: if you come across a country
+file whose comments are not yet translated to the country's language, please do 
+the translation and send the file back to us.
+<P>
+When writing country files, be careful to use a sensible naming convention. This
+naming convention is supposed to help us keep track of who wrote what and when.
+We, the <B>Bygfoot</B> development team, would like you all to use this scheme:
+<P>
+<CODE>country_XXX_year_contributor_version.gz</CODE>
+<P>
+Which means:
+<P>
+<UL>
+<LI>country: the word "country". ;-)
+<LI>XXX: the three-letter ISO code for a given country ("arg", "usa", "jpn").
+<LI>year: the year that country file corresponds to (supposed to be the current
+year when the file was written or would someone wish to write a country file
+reflecting the classifications of the Italian leagues of 1969?).
+<LI>contributor: a nickname by which we should call you (please don't use a nickname
+that has already been taken by someone else).
+<LI>version: if you are updating a previous contribution, use letters to indicate 
+this.
+</UL>
+An example:
+<P>
+<PRE>
+  country_ita_2004_vicenzototti_a.gz
+</PRE>
+<P>
+Which means that this file is for Italy, was written in 2004 by someone who wishes 
+us to call him "vicenzototti" and is the second version (a) of the Italian file
+he wrote.
+
+<!-- html code generated by txt2tags 1.7 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -\-toc -t html customization.t2t -->
+</BODY></HTML>
