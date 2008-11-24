@@ -17,19 +17,20 @@
     <LI><A HREF="#toc1">Tags used across different files</A>
     <LI><A HREF="#toc2">Tags used in country files</A>
     <LI><A HREF="#toc3">Tags used in league files</A>
-    <LI><A HREF="#toc4">Tags used in cup files</A>
-    <LI><A HREF="#toc5">Cup properties</A>
-    <LI><A HREF="#toc6">Tags used in player names files</A>
-    <LI><A HREF="#toc7">Tags used in team definition files</A>
-    <LI><A HREF="#toc8">Tags used in live game commentary files</A>
-    <LI><A HREF="#toc9">Tags used in CPU strategy files</A>
+    <LI><A HREF="#toc4">League properties</A>
+    <LI><A HREF="#toc5">Tags used in cup files</A>
+    <LI><A HREF="#toc6">Cup properties</A>
+    <LI><A HREF="#toc7">Tags used in player names files</A>
+    <LI><A HREF="#toc8">Tags used in team definition files</A>
+    <LI><A HREF="#toc9">Tags used in live game commentary files</A>
+    <LI><A HREF="#toc10">Tags used in CPU strategy files</A>
     </UL>
 
 <P></P>
 <div class=hr></div>
 <P></P>
 <P>
-Last updated: 11/23/2008
+Last updated: 11/24/2008
 </P>
 <P>
 Here you can find a (hopefully) complete list of the available XML tags
@@ -100,6 +101,13 @@ in league and cup files.
 <TD>integer, &gt; 0</TD>
 <TD>1000</TD>
 <TD>Number of yellow cards until a player gets banned automatically for a match (LC).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD><CODE>property</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>A league or cup property. See the list with properties below (LC).</TD>
 </TR>
 </TABLE>
 
@@ -226,13 +234,6 @@ in league and cup files.
 <TD>string</TD>
 <TD><I>general</I></TD>
 <TD>The <I>sid</I> (ie. the part between <CODE>player_names_</CODE> and <CODE>.xml</CODE>) of a player names file containing last names and first names.</TD>
-</TR>
-<TR>
-<TD ALIGN="center">1</TD>
-<TD><CODE>active</CODE></TD>
-<TD>1, 0</TD>
-<TD>1</TD>
-<TD>Whether the league is visible to the user and league matches are scheduled and played. Inactive leagues are useful as mere 'containers' for teams, e.g. in the World Cup definition.</TD>
 </TR>
 <TR>
 <TD ALIGN="center">1</TD>
@@ -400,6 +401,20 @@ in league and cup files.
 <HR NOSHADE SIZE=5>
 <P></P>
 <A NAME="toc4"></A>
+<H2>League properties</H2>
+<DL>
+<DT>inactive</DT><DD>
+  Whether the league is visible to the user and league
+  matches are scheduled and played. Inactive leagues are useful as
+  mere 'containers' for teams, e.g. in the World Cup definition.
+<DT>omit_from_history</DT><DD>
+  No entry is written for the league in the season history.
+  Useful for auxiliary leagues that are not terribly important.
+</DL>
+
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc5"></A>
 <H2>Tags used in cup files</H2>
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
@@ -443,13 +458,6 @@ in league and cup files.
 <TD>integer, &gt; 0</TD>
 <TD>0</TD>
 <TD>Difference of the average talents in the cup (if it's an international one) compared to the first league of the country in <CODE>percentage * 100</CODE> (e.g. 250 = +2,5%).</TD>
-</TR>
-<TR>
-<TD ALIGN="center">1</TD>
-<TD><CODE>property</CODE></TD>
-<TD>string</TD>
-<TD>-</TD>
-<TD>A cup property. See the list with cup properties below.</TD>
 </TR>
 <TR>
 <TD ALIGN="center">1</TD>
@@ -609,7 +617,7 @@ in league and cup files.
 
 <HR NOSHADE SIZE=5>
 <P></P>
-<A NAME="toc5"></A>
+<A NAME="toc6"></A>
 <H2>Cup properties</H2>
 <DL>
 <DT>national</DT><DD>
@@ -639,14 +647,21 @@ in league and cup files.
 <DT>highlight3</DT><DD>
   Third highlighting colour. Currently gold.
 <DT>league_talents</DT><DD>
-  Whether to create teams based on the talent level of their league definition file rather than using the talent_diff value.
+  Whether to create teams based on the talent level
+  of their league definition file rather than using the talent_diff value.
 <DT>silent_on_fixture_error</DT><DD>
-  Whether to keep silent and disable the cup if the fixture checking (e.g. for fixtures with the same team playing against itself) returns an error. This is useful for cups that don't always take place, e.g. if there's a double winner so that a Supercup isn't necessary.
+  Whether to keep silent and disable the cup if the fixture checking
+  (e.g. for fixtures with the same team playing against itself)
+  returns an error. This is useful for cups that don't always take place,
+  e.g. if there's a double winner so that a Supercup isn't necessary.
+<DT>omit_from_history</DT><DD>
+  No entry is written for the league in the season history.
+  Useful for auxiliary leagues that are not terribly important.
 </DL>
 
 <HR NOSHADE SIZE=5>
 <P></P>
-<A NAME="toc6"></A>
+<A NAME="toc7"></A>
 <H2>Tags used in player names files</H2>
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
@@ -681,7 +696,7 @@ in league and cup files.
 
 <HR NOSHADE SIZE=5>
 <P></P>
-<A NAME="toc7"></A>
+<A NAME="toc8"></A>
 <H2>Tags used in team definition files</H2>
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
@@ -800,7 +815,7 @@ in league and cup files.
 
 <HR NOSHADE SIZE=5>
 <P></P>
-<A NAME="toc8"></A>
+<A NAME="toc9"></A>
 <H2>Tags used in live game commentary files</H2>
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
@@ -860,7 +875,7 @@ of current commentary files.
 </P>
 <HR NOSHADE SIZE=5>
 <P></P>
-<A NAME="toc9"></A>
+<A NAME="toc10"></A>
 <H2>Tags used in CPU strategy files</H2>
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>

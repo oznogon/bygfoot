@@ -34,6 +34,7 @@ in league and cup files.
 |  1  | ``short_name`` | string | - | Shorter name of a league or cup (LC). |
 |  1  | ``week_gap`` | integer, > 0 | 1 | Number of weeks between matchdays (LC). |
 |  1  | ``yellow_red`` | integer, > 0 | 1000 | Number of yellow cards until a player gets banned automatically for a match (LC). |
+|  1  | ``property`` | string | - | A league or cup property. See the list with properties below (LC). |
 
 ======================================================================
 
@@ -48,7 +49,6 @@ in league and cup files.
 |  1  | ``supernational`` | 0, 1 | 0 | This tag, if set to 1, disables parts of the game, such as finances or transfers. It is used to create definitions like the World Cup. |
 |  1  | ``rating`` | integer, between 1 and 10 | - | This describes how strong the league of a country is. The English definition for instance should be 10, whereas the Greek one is around 5 or 6. Important for the job offer system. |
 
-
 ======================================================================
 
 ==Tags used in league files==
@@ -61,7 +61,6 @@ in league and cup files.
 |  1  | ``break`` | integer, > 0 | ``week_gap`` | How many weeks there should be between round robins. Useful if you want to have a custom winter break, for instance. |
 |  1  | ``average_talent`` | integer, > 0 | 7000 | Average talent of the players in the league in ``(percentage of the maximum skill) * 100``. Maximum skill is currently 99. |
 |  1  | ``names_file`` | string | //general// | The //sid// (ie. the part between ``player_names_`` and ``.xml``) of a player names file containing last names and first names. |
-|  1  | ``active``  | 1, 0 | 1 | Whether the league is visible to the user and league matches are scheduled and played. Inactive leagues are useful as mere 'containers' for teams, e.g. in the World Cup definition. |
 |  1  | ``joined_league`` | league //sid// | - | If specified, fixtures against teams from the given league will be added to the league fixtures. Useful for fixtures across leagues like in North American conferences. |
 |  1  | ``rr`` | integer, > 0 | 2 | NOT A TAG BUT AN ATTRIBUTE to ``joined_league``. Number of round robins for the fixtures with the joined league teams. |
 |  1  | ``new_table`` | integer, > 0 | - | A week number when a new table should be added. The older tables are kept and a cumulative table is kept when there is more than one table, too. Useful for systems like apertura/clausura in South America. |
@@ -86,6 +85,18 @@ in league and cup files.
 |  3  | ``team_average_talent`` | integer, > 0 | - | The average talent of the players in the team. |
 |  3  | ``def_file`` | string | - | Part between ``team_`` and ``.xml`` of a file containing a team definition. |
 
+======================================================================
+
+==League properties==
+
+: inactive
+  Whether the league is visible to the user and league
+  matches are scheduled and played. Inactive leagues are useful as
+  mere 'containers' for teams, e.g. in the World Cup definition.
+: omit_from_history
+  No entry is written for the league in the season history.
+  Useful for auxiliary leagues that are not terribly important.
+
 
 ======================================================================
 
@@ -97,7 +108,6 @@ in league and cup files.
 |  1  | ``last_week`` | integer, >0 | - | The week the last match(es) of the cup are played. Just for convenience so that you can specify the week of the cup final. |
 |  1  | ``add_week`` | integer, >= -1 | 0 | Integer telling the program when the cup 'gets active', ie. when the fixtures should be written (see [HOWTO def_howto.html]). |
 |  1  | ``talent_diff`` | integer, > 0 | 0 | Difference of the average talents in the cup (if it's an international one) compared to the first league of the country in ``percentage * 100`` (e.g. 250 = +2,5%). |
-|  1  | ``property`` | string | - | A cup property. See the list with cup properties below. |
 |  1  | ``cup_rounds`` | - | - | Tag enclosing the cup rounds section. |
 |  2  | ``cup_round`` | - | - | Tag enclosing a cup round section. |
 |  3  | ``home_away`` | 0 or 1 | 1 | Whether there are home/away games. |
@@ -120,7 +130,6 @@ in league and cup files.
 |  5  | ``generate`` | 0 or 1 | 0 | Whether to look for the team in the leagues and cups of the country or load and generate the team from an 'external' league xml file. |
 |  5  | ``skip_group_check`` | 0 or 1 | 0  | Whether to skip the check for teams competing in other cups from the same cup group. |
 |  5  | ``from_table`` | integer, >= 0 | 0 | To which table the choose_team refers, in case the league contains more than one. Default (0) is the cumulative table. The later a table gets added during a season, the higher its index. |
-
 
 ======================================================================
 
@@ -153,9 +162,16 @@ in league and cup files.
 : highlight3
   Third highlighting colour. Currently gold.
 : league_talents
-  Whether to create teams based on the talent level of their league definition file rather than using the talent_diff value.
+  Whether to create teams based on the talent level
+  of their league definition file rather than using the talent_diff value.
 : silent_on_fixture_error
-  Whether to keep silent and disable the cup if the fixture checking (e.g. for fixtures with the same team playing against itself) returns an error. This is useful for cups that don't always take place, e.g. if there's a double winner so that a Supercup isn't necessary.
+  Whether to keep silent and disable the cup if the fixture checking
+  (e.g. for fixtures with the same team playing against itself)
+  returns an error. This is useful for cups that don't always take place,
+  e.g. if there's a double winner so that a Supercup isn't necessary.
+: omit_from_history
+  No entry is written for the league in the season history.
+  Useful for auxiliary leagues that are not terribly important.
 
 
 ======================================================================

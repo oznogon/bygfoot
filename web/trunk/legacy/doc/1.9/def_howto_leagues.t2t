@@ -104,8 +104,8 @@ for the two parallel third leagues; the other leagues get the default values
 
 If you'd like to use a league only to be able to have some teams in the
 definition, and don't want the league to be visible or league matches to
-be scheduled and played, you can use the ``active`` tag
-(``<active>0</active>``). This is used in the World Cup definition, for
+be scheduled and played, you can use the ``inactive`` property
+(``<property>inactive</property>``). This is used in the World Cup definition, for
 instance, where there are no leagues as such, only cups.
 
 
