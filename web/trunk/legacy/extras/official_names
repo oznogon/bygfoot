@@ -1,0 +1,474 @@
+League: italy
+    C. Verona: Chievo Verona
+    Firenze:  Fiorentina
+    H. Verona: Verona
+    I. Milano: Inter Milano
+    J. Torino: Juventus Torino
+    L. Roma: Lazio Roma
+    Milano: AC Milano
+    Roma:  AS Roma
+    S. Genoa: Sampdoria Genoa
+    Udine:  Udinese
+League: germany
+    München : Bayern München
+    Schalke : Schalke 04
+    Stuttgart : VfB Stuttgart
+    Berlin : Hertha BSC Berlin
+    Bremen : Werder Bremen
+    Leverkusen : Bayer Leverkusen
+    Dortmund : Borussia Dortmund
+    Hamburg : Hamburger SV
+    Wolfsburg : VfL Wolfsburg
+    Hannover : Hannover 96
+    Kaiserslautern  : 1. FC Kaiserslautern
+    Mainz : Mainz 05
+    Bielefeld : Arminia Bielefeld
+    Nürnberg : 1. FC Nürnberg
+    Mönchengladbach : Borussia Mönchengladbach
+    Köln : 1. FC Köln
+    Duisburg : MSV Duisburg
+    Frankfurt : Eintracht Frankfurt
+    Rostock : Hansa Rostock
+    Freiburg : SC Freiburg
+    T. München : TSV 1860 München
+    Aachen : Alemannia Aachen
+    Fürth : Greuther Fürth
+    Aue : Erzgebirge Aue
+    Burghausen : Wacker Burghausen
+    Dresden : Dynamo Dresden
+    Unterhaching : SpVgg Unterhaching
+    Karlsruhe  : Karlsruher SC
+    Saarbrücken : 1. FC Saarbrücken
+    Cottbus : Energie Cottbus
+    Trier : Eintracht Trier
+    Ahlen : LR Ahlen
+    Essen : Rot-Weiß Essen
+    Oberhausen : Rot-Weiß Oberhausen
+    Erfurt : Rot-Weiß Erfurt
+League: england
+    London: Arsenal
+    Aston: Aston Villa
+    Birmingham: Birmingham City
+    Blackburn: Blackburn Rovers
+    Bolton: Bolton Wanderers
+    Charlton: Charlton Athletic
+    Manchester C.: Manchester City
+    Manchester: Manchester United
+    Newcastle: Newcastle United
+    Tottenham: Tottenham Hotspur
+    West Bromwich: West Bromwich Albion
+    West Ham: West Ham United
+    Wigan: Wigan Athletic
+    Brighton and Hove: Brighton and Hove Albion
+    Cardiff: Cardiff City
+    Coventry: Coventry City
+    Crewe: Crewe Alexandra
+    Derby: Derby County
+    Hull: Hull City
+    Ipswich: Ipswich Town
+    Leeds: Leeds United
+    Leicester: Leicester City
+    Luton: Luton Town
+    Norwich: Norwich City
+    Plymouth: Plymouth Argyle
+    Preston: Preston North End
+    Queens Park: Queens Park Rangers
+    Sheffield: Sheffield United
+    Sheffield W.: Sheffield Wednesday
+    Stoke: Stoke City
+    Wolverhampton: Wolverhampton Wanderers
+    Bournemouth: AFC Bournemouth
+    Bradford: Bradford City
+    Bristol C.: Bristol City
+    Colchester: Colchester United
+    Doncaster: Doncaster Rovers
+    Hartlepool: Hartlepool United
+    Huddersfield: Huddersfield Town
+    Milton Keynes: Milton Keynes Dons
+    Nottingham: Nottingham Forest
+    Oldham: Oldham Athletic
+    Rotherham: Rotherham United
+    Scunthorpe: Scunthorpe United
+    Southend: Southend United
+    Swansea: Swansea City
+    Swindon: Swindon Town
+    Tranmere: Tranmere Rovers
+    Yeovil: Yeovil Town
+    Boston: Boston United
+    Bristol: Bristol Rovers
+    Carlisle: Carlisle United
+    Cheltenham: Cheltenham Town
+    Chester: Chester City
+    Grimsby: Grimsby Town
+    Leyton: Leyton Orient
+    Lincoln: Lincoln City
+    Macclesfield: Macclesfield Town
+    Mansfield: Mansfield Town
+    Northampton: Northampton Town
+    Notts County: Notts County
+    Oxford: Oxford United
+    Peterborough: Peterborough United
+    Rushden and Irthlingbro': Rushden and Diamonds
+    Shrewsbury: Shrewsbury Town
+    Stockport: Stockport County
+    Torquay: Torquay United
+    Wycombe: Wycombe Wanderers
+    Accrington: Accrington Stanley
+    Aldershot: Aldershot Town
+    Burton: Burton Albion
+    Cambridge: Cambridge United
+    Crawley: Crawley Town
+    Dagenham and Redbridge: Dagenham and Redbridge
+    Exeter: Exeter City
+    Gravesend and Northfleet: Gravesend and Northfleet
+    Grays: Grays Athletic
+    Halifax: Halifax Town
+    Hereford: Hereford United
+    Kidderminster: Kidderminster Harriers
+    Northwich: Northwich Victoria
+    Stevenage: Stevenage Borough
+    York: York City
+    St. Albans: St. Albans City
+    Stafford: Stafford Rangers
+League: wales
+    Aberystsyth: Aberystwyth Town
+    Broughton: Airbus UK
+    Bangor: Bangor City
+    Caernarfon: Caernarfon Town
+    Caersws: Caersws
+    Carmarthen: Carmarthen Town
+    Cefn Mawr: NEWI Cefn Druids
+    Connahs Quay: Connahs Quay Nomads
+    Cwmbran: Cwmbran Town
+    Grange: Grange Harlequins
+    Haverfordwest: Haverfordwest County
+    Llanelli: Llanelli AFC
+    Newtown: Newtown AFC
+    Port Talbot: Port Talbot Town
+    Porthmadog: CPD Porthmadog
+    Rhyl: Rhyl
+    Llansantffraid: Total Network Solutions
+    Welshpool: Welshpool Town
+    Llwydcoed: AFC Llwydcoed
+    Port Talbot AL: Afan Lido
+    Barry: Barry Town
+    Bettws: Bettws
+    Bridgend: Bridgend Town
+    Briton Ferry: Briton Ferry
+    Bryntirion: Bryntirion Athletic
+    Caerleon: Caerleon
+    Dinas Powys: Dinas Powys
+    Ely: Ely Rangers
+    Goytre: Goytre United
+    Maesteg: Maesteg Park
+    Neath: Neath
+    Newport: Newport YMCA
+    Pontardawe: Pontardawe
+    Taffs Well: Taffs Well
+    Ton Pentre: Ton Pentre
+    UWIC: UWIC
+    Bala: Bala Town
+    Bodedern: Bodedern
+    Buckley: Buckley Town
+    Flint: Flint Town United
+    Glantraeth: Glantraeth
+    Gresford: Gresford Athletic
+    Guilsfield: Guilsfield
+    Halkyn: Halkyn United
+    Holyhead: Holyhead Hotspur
+    Holywell: Holywell Town
+    Lex: Lex XI
+    Llandyrnog: Llandyrnog
+    Llangefni: Llangefni Town
+    Llandudno: Llandudno
+    Llanfair PG: Llanfair PG
+    Penrhyncoch: Penrhyncoch
+    Queens Park: Queens Park
+    Ruthin: Ruthin Town
+League: ireland
+    Cork: Cork City
+    Shelbourne: Shelbourne
+    Drogheda: Drogheda United
+    Derry: Derry City
+    Dublin B.: Bohemians
+    Waterford: Waterford United
+    Longford: Longford Town
+    Bray: Bray Wanderers
+    Dublin St. P: St. Patrick's Athletic
+    U.C.D.: U.C.D.
+    Ballybofey: Finn Harps
+    Dublin S.: Shamrock Rovers
+    Dublin C.: Dublin City
+    Sligo: Sligo Rovers
+    Limerick: Limerick
+    Cobh: Cobh Ramblers
+    Kildare: Kildare County
+    Dundalk: Dundalk
+    Monaghan: Monaghan United
+    Athlone: Athlone Town
+    Galway: Galway United
+    Kilkenny: Kilkenny City
+League: france
+    Lyon: Olympique Lyon
+    Monaco: AS Monaco
+    Marseille: Olympique Marseille
+    Auxerre: AJ Auxerre
+    Paris SG: Paris Saint-Germain
+League: belgium
+    Brugge: Club Brugge
+    S. Luik: Standard
+    Genk: RC Genk
+    Gent: AA Gent
+    C. Brugge: Cercle Brugge
+    Lier: Lierse
+    G. Beerschot: Germinal Beerschot
+    Moeskroen: Excelsior Moeskroen
+    Brussel: FC Brussels
+    Roeselare: SV Roeselare
+    Oostende: KV Oostende
+    Waasland: KVR Waasland
+    Antwerpen: Antwerp
+    Heusden-Zolder: Beringen-Heusden-Zolder
+    Kortrijk: KV Kortrijk
+    Maasmechelen: Patro Maasmechelen
+    Hamme: VW Hamme
+    Dessel: Dessel Sport
+    U. Sint-Gillis: Union
+    Overpelt-Lommel: KVSK United
+    Leuven: OH Leuven
+    Mechelen: KV Mechelen
+    Boom: Ruppel-Boom
+    Willebroek: Willebroek-Meerhout
+    Turnhout: KV Turnhout
+    Torhout: Torhout 1992 KM
+    Sint-Niklaas: Nieuwkerke-Sint-Niklaas
+    Maldegem: SK Maldegem
+    R. Mechelen: RC Mechelen
+    Woluwe: Red Star Woluwe
+    West: Sporting West
+    Verviers: CS Verviers
+    O. Charleroi: Olympic Charleroi
+    Namen: UR Namen
+    F.B. Boussu: Francs Borains
+    V. Oostende: VG Oostende
+    C. Haine-Sint-Pierre: URS du Centre
+    Wevelgem: Wevelgem City
+    Berchem: Berchem Sport
+    Dilbeek: Dilbeek Sport
+    Grimbergen: SC Grimbergen
+    Kampenhout: SK Kampenhout
+    Kontich: FC Kontich
+    Lebbeke: RC Lebbeke
+    S. Lebeke: SK Lebeke Aalst
+    Londerzeel: SK Londerzeel
+    Opstal: Eendreacht Opstal
+    Opwijk: SK Opwijk
+    Verrewinkel: Rode Verrewinkel
+    Schoten: SK Sochten
+    Temse: SV Temse
+    Wilrijk: KFCO Wilrijk
+    ZL Rijkevorsel: Zwarte Leeuw
+    Lichtaart: Lichtaart Sport
+    Millen: Hedera Millen
+    Lier II: Lyra
+    Luik: Club Luik
+    Hannuit: Hannutois
+    Couvin: Couvin-Mariembourg
+    Seilles: Andenne-Seilles
+    Ciney: R.U. Wallonne Ciney
+    Bertrige: Bertrigeoise
+    Fleurus: Lambusart-Fleurus
+    Arlon: FC Le Lorrain Arlon
+League: scotland
+    Aberdeen: Aberdeen FC
+    C. Glasgow: Celtic Glasgow
+    Glasgow R.: Glasgow Rangers
+    Falkirk: Falkirk FC
+    Dundee U.: Dundee United
+    Dunfermline: Dunfermline Athletic
+    Edinburgh HM: Hearts Of Midlothian
+    Edinburgh H.: Hibernian FC
+    Inverness: Inverness Caledonian Thistle
+    Kilmarnock: Kilmarnock FC
+    Livingston: Livingston FC
+    Motherwell: Motherwell FC
+    Airdrie: Airdrie United
+    Clyde: Clyde Glasgow
+    Dundee: Dundee FC
+    Hamilton: Hamilton Academical
+    Stranraer: Stranraer FC
+    Dumfries: Queen Of The South
+    Brechin: Brechin City
+    Ross County: Ross County FC
+    St Johnstone: Saint Johnstone
+    St Mirren: Saint Mirren
+    Peterhead: Peterhead
+    Ayr: Ayr United
+    Gretna: Gretna
+    Raith: Raith Rovers
+    Dumbarton: Dumbarton
+    Forfar: Forfar Athletic
+    Greenock: Morton
+    Partick: Partick Thistle
+    Stirling: Stirling Albion
+    Alloa: Alloa Athletic
+    Albion: Albion Rovers
+    Cowdenbeath: Cowdenbeath
+    East Fife: East Fife
+    East Stirlingshire: East Stirlingshire
+    Elgin: Elgin City
+    Berwick: Berwick Rangers
+    Montrose: Montrose
+    Arbroath: Arbroath
+    Stenhousemuir: Stenhousemuir
+    QP Glasgow: Queens Park
+League: brazil
+    B. Rio de Janeiro: Botafogo-RJ
+    Flu. Rio de Janeiro:  Fluminense-RJ
+    A. M. Belo Horizonte: Atlético Mineiro
+    P. São Paulo: Palmeiras-SP
+    C. Belo Horizonte: Cruzeiro
+    P.P. Campinas: Ponte Preta
+    J. Caxias: Juventude
+    F. Rio de Janeiro:  Flamengo-RJ
+    V.d.G. Rio de Janeiro: Vasco da Gama-RJ
+    Sport Clube C.:  Corinthians
+    B. Brasília: Brasiliense
+    A. P. Curitiba: Atlético Paranaense
+    I. Porto Alegre: Internacional
+    F. Florianópolis: Figueirense
+    P. Belém: Paysandu
+    P.d.D. São Paulo: Portuguesa-SP
+    S. C. Recife: Sport Clube Recife
+    V. Bahia: Vitória
+    San. C. Recife: Santa Cruz
+    A. Florianópolis: Avaí
+    G. de Porto Alegre: Grêmio
+    V. Nova Goiás: Vila Nova-GO
+    U. Santa Bárbara: União Barbarense
+    N. Recife: Náutico
+    G. Campinas: Guarani
+    H.A. Rio Grande do Sul: Hermann Ainchinger-SC
+League: poland
+    Wisła K.: Wisła Kraków
+    Legia: Legia Warszawa
+    Grodzisk Wlkp.: Dyskobolia Grodzisk Wlkp.
+    Amica: Amica Wronki
+    Wisła P.: Wisła Płock
+    Górnik Z.: Górnik Zabrze
+    Lubin: Zagłębie Lubin
+    Polonia W.: Polonia Warszawa
+    Łęczna: Górnik Łęczna
+    Pogoń: Pogoń Szczecin
+    Wodzisław: Odra Wodzisław
+    Arka G.: Arka Gdynia
+    Korona K.: Korona Kielce
+    Bełchatów: GKS Bełchatów
+    Lech: Lech Poznań
+    Widzew: Widzew Łódź
+    Kujawiak: Kujawiak Włocławek
+    Ostrowiec: KSZO Ostrowiec
+    Nowy Dwór: Świt Nowy Dwór
+    J. Białystok: Jagiellonia Białystok
+    Ruch Ch.: Ruch Chorzów
+    Radomiak: Radomiak Radom
+    Śląsk W.: Śląsk Wrocław
+    ŁKS: ŁKS Łódź
+League: australia
+    Adelaide U: Adelaide United
+    Central Coast M: Central Coast Mariners
+    Melbourne V: Melbourne Victory
+    New Zealand K: New Zealand Knights
+    Newcastle U J: Newcastle United Jets
+    Perth G: Perth Glory
+    Queensland R: Queensland Roar
+    Sydney : Sydney FC
+League: aus_victoria
+    Altona M: Altona Magic
+    Bentleigh G: Bentleigh Greens
+    Bulleen Z: Bulleen Zebras
+    Essendon R: Essendon Royals
+    Frankston P: Frankston Pines
+    Green Gully C: Green Gully Cavs
+    Heidelberg U: Heidelberg United
+    Melbourne K: Melbourne Knights
+    Oakleigh C: Oakleigh Cannons
+    Preston L: Preston Lions
+    St. Albans S: St. Albans Saints
+    Sunshine G: Sunshine Georgies
+    Altona E: Altona East Phoenix
+    Dandenong T: Dandenong Thunder
+    North Coburg U: North Coburg Utd
+    Pt Melbourne S: Pt Melbourne Sharks
+    Lalor U: Lalor Utd
+    Nth Geelong W: Nth Geelong Warriors
+    Nth Sunshine E: Nth Sunshine Eagles
+    Thomastown D: Thomastown Devils
+    Yarraville G: Yarraville Glory
+    Clifton Hill U: Clifton Hill Utd
+    Cranbourne C: Cranbourne Comets
+    Diamond Valley U: Diamond Valley Utd
+    Doncaster R: Doncaster Rovers
+    Eastern L: Eastern Lions
+    Morwell P: Morwell Pegasus
+    Albion R: Albion Rovers
+    Darebin U: Darebin Utd
+    Maribyrnong G: Maribyrnong Greens
+    Sunbury U: Sunbury Utd
+    Western E: Western Eagles
+    Croydon City A: Croydon City Arrows
+    Endeavour U: Endeavour Utd
+    Frankston S: Frankston Strikers
+    Heatherton U: Heatherton Utd
+    Waverley W: Waverley Wanderers
+    Broadmeadows U: Broadmeadows Utd
+    Geelong R: Geelong Rangers
+    Hume U: Hume Utd
+    La Trobe U: La Trobe University
+    Melbourne U: Melbourne University
+    Moreland U: Moreland Utd
+    Carrum U: Carrum Utd
+    Monash U: Monash University
+    Noble Park U: Noble Park Utd
+    Riversdale : Riversdale
+    Rowville E: Rowville Eagles
+    Seaford U: Seaford Utd
+    Southern Suburbs: Southern Suburbs
+    Springvale City: Springvale City
+    Templestowe E: Templestowe Eagles
+    Warragul U: Warragul Utd
+    Melbourne U B: Uni. Of Melb Blues
+    North City L: North City Lions
+    Northern U: Northern Utd
+    Plenty Valley L: Plenty Valley Lions
+    Whittlesea U: Whittlesea Utd
+    Dandenong W: Dandenong Warriors
+    Dandenong W S: White Star Dandenong
+    Lyndale U: Lyndale Utd
+    Melburnians O: Old Melburnians
+    Mitcham U: Mitcham Utd
+    Trinity G: Old Trinity Grammar
+    Xaverians O: Old Xaverians
+    Melbourne T: Melbourne Tornado
+    Northern F: Northern Falcons
+    Reservoir U: Reservoir Utd
+    Thornbury U: Thornbury Utd
+    Youth U: Youth Utd
+    Berwick K: Berwick Kings
+    Boroondara L: Boroondara Lions
+    Camberwell G: Old Camberwell Gramm
+    Carey O: Old Carey
+    Caulfield U: Caulfield Utd
+    Dandenong S: Dandenong Sparrows
+    Scotch O B: Scotch Old Boys
+League: spain
+    A. Madrid: Atheltico Madrid
+    A. Bilbao: Athletic Bilbao
+    B. Sevilla: Betis Sevilla
+    C. Vigo: Celta Vigo
+    La Coruña: Deportivo La Coruña
+    E. Barcelona: Español Barcelona
+    R. Madrid: Real Madrid
+    R. Sociedad: Real Sociedad
+    R. Santander: Racing Santander
+    Zaragoza: Real Zaragoza
