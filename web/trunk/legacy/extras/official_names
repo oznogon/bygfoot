@@ -1,327 +1,2089 @@
-League: italy
-    C. Verona: Chievo Verona
-    Firenze:  Fiorentina
-    H. Verona: Verona
-    I. Milano: Inter Milano
-    J. Torino: Juventus Torino
-    L. Roma: Lazio Roma
-    Milano: AC Milano
-    Roma:  AS Roma
-    S. Genoa: Sampdoria Genoa
-    Udine:  Udinese
-League: germany
-    München : Bayern München
-    Schalke : Schalke 04
-    Stuttgart : VfB Stuttgart
-    Berlin : Hertha BSC Berlin
-    Bremen : Werder Bremen
-    Leverkusen : Bayer Leverkusen
-    Dortmund : Borussia Dortmund
-    Hamburg : Hamburger SV
-    Wolfsburg : VfL Wolfsburg
-    Hannover : Hannover 96
-    Kaiserslautern  : 1. FC Kaiserslautern
-    Mainz : Mainz 05
-    Bielefeld : Arminia Bielefeld
-    Nürnberg : 1. FC Nürnberg
-    Mönchengladbach : Borussia Mönchengladbach
-    Köln : 1. FC Köln
-    Duisburg : MSV Duisburg
-    Frankfurt : Eintracht Frankfurt
-    Rostock : Hansa Rostock
-    Freiburg : SC Freiburg
-    T. München : TSV 1860 München
-    Aachen : Alemannia Aachen
-    Fürth : Greuther Fürth
-    Aue : Erzgebirge Aue
-    Burghausen : Wacker Burghausen
-    Dresden : Dynamo Dresden
-    Unterhaching : SpVgg Unterhaching
-    Karlsruhe  : Karlsruher SC
-    Saarbrücken : 1. FC Saarbrücken
-    Cottbus : Energie Cottbus
-    Trier : Eintracht Trier
-    Ahlen : LR Ahlen
-    Essen : Rot-Weiß Essen
-    Oberhausen : Rot-Weiß Oberhausen
-    Erfurt : Rot-Weiß Erfurt
+League: albania
+    Tirana: SK Tiranë
+    Vllaznia: Vllaznia Shkodër
+    Shkumbini: KS Shkumbini
+    D. Tirana: Dinamo Tirana
+    Elbasani: SK Elbasani
+    Teuta: Teuta Durrës
+    Besa: KS Besa
+    Flamurtari: KS Flamurtari
+    Bylis: Bylis Ballsh
+    Apolonia: KS Apolonia
+    Partizani: FK Partizani
+    Lushnja: KS Lushnja
+League: andorra
+    S. Coloma: FC Santa Coloma
+    S. Julià: UE Sant Julià
+    Lusitans: FC Lusitans
+    UE S. Coloma: UE Santa Coloma
+    Principat: CE Principat
+    Ranger's: FC Ranger's
+    I. C. d'Escaldes: Inter Club d'Escaldes
+    Engordany: UE Engordany
+League: armenia
+    P. Yerevan: FC Pyunik Yerevan
+    A. Yerevan: FC Ararat Yerevan	
+    G. Kapan: FC Gandzasar Kapan
+    M. Ashtarak: FC MIKA Ashtarak
+    B. Yerevan: FC Banants Yerevan
+    U. Yerevan: FC Ulis Yerevan
+    S. Gyumri: FC Shirak Gyumri
+    K. Yerevan: FC Kilikia Yerevan
+League: austria
+    R. B. Salzburg: Red Bull Salzburg
+    S. Graz: Sturm Graz
+    R. Wien: Rapid Wien	
+    A. Wien: Austria Wien
+    A. Kärnten: Austria Kärnten
+    Ried: SV Ried
+    Linz: LASK Linz
+    Mattersburg: SV Mattersburg
+    Kapfenberg: Kapfenberger SV
+    Altach: SCR Altach
+    W. Innsbruck: FC Wacker Innsbruck 
+    Gratkorn: FC Gratkorn
+    A. Lustenau: SC Austria Lustenau
+    Lustenau: FC Lustenau 07
+    A. Wien Am.: FK Austria Wien Amateure
+    R. B. Jun. Salzburg: Red Bull Juniors Salzburg
+    M. Wiener Neustadt: FC Magna Wiener Neustadt
+    Leoben: DSV Leoben
+    Trenkwalder: Trenkwalder Admira
+    St. Pölten: SKN St. Pölten
+    Grödig: SV Grödig
+    Vöcklabruck: 1. FC Vöcklabruck
+League: azerbaijan
+    K. Lankaran: FK Khazar Lankaran
+    İ. Bakı: FC İnter Bakı
+    F. Bakı: FK Bakı
+    S. Zaqatala: Simurq PFC
+    K. Evlakh: FK Karvan Evlakh
+    Q. Agdam: FK Qarabağ
+    O. Bakı: FK Olimpik Bakı
+    S. Bakı: FK Standard Bakı
+    Qäbälä: FK Qäbälä
+    N. Bakı: PFC Neftçi
+    N. Salyan: FK NBC Salyan
+    M. Bakı: FK MOIK
+    T. Tovuz: PFK Turan Tovuz
+    F. Bakili: FK Bakili
+League: belarus
+    B. Borisov: FC BATE Borisov
+    D. Minsk: FC Dinamo Minsk
+    M. R. Minsk: FC MTZ-RIPO Minsk
+    S. Soligorsk: FC Shakhtyor Soligorsk
+    Vitebsk: FC Vitebsk
+    D. Brest: FC Dinamo Brest
+    N. Novopolotsk: FC Naftan Novopolotsk
+    D. Mogilev: FC Dnepr Mogilev
+    Smorgon: FC Smorgon
+    G. Mikashevichi: FC Granit Mikashevichi
+    Gomel: FC Gomel
+    T. Zhodino: FC Torpedo Zhodino
+    N. Grodno: FC Neman Grodno
+    L. Minsk: FC Lokomotiv Minsk
+    S. Mogilev: FC Savit Mogilev
+    D. Zhdanovichi: FC Darida Zhdanovichi
+League: belgium
+    Cl. Brugge: Club Brugge
+    S. Liege: Standard Liège
+    Westerlo: K.V.C. Westerlo
+    A. Brussels: R.S.C. Anderlecht
+    E. Moeskroen: Excelsior Mouscron
+    R. Genk: Racing Genk
+    Gent: AA Gent
+    Lokeren: K.S.C. Lokeren 
+    Ce. Brugge: Cercle Brugge
+    Charleroi: R. Charleroi
+    Z. Waregem: S.V. Zulte-Waregem
+    Dender: Dender EH
+    Kortrijk: K.V. Kortrijk
+    Mons: R.A.E.C. Mons
+    Tubize: A.F.C. Tubize
+    K. Mechelen: KV Mechelen
+    G. Beerschot: Germinal Beerschot
+    Roeselare: K.S.V. Roeselare
+    Antwerpen: Royal Antwerp FC 
+    Beveren: K.S.K. Beveren
+    Charleroi-M.: R.O.C. de Charleroi-Marchienne
+    Deinze: K.M.S.K. Deinze 
+    Eupen: K.A.S. Eupen
+    Hamme: K.F.C. V.W. Hamme 
+    Leuven: Oud-Heverlee Leuven
+    R. Liège: R.F.C. de Liège
+    Lierse: K. Lierse S.K.
+    Overpelt-Lommel: K.V.S.K. United
+    Namur: UR Namur
+    Oostende: K.V. Oostende
+    Ronse: K.S.K. Ronse
+    Brussels: FC Brussels
+    R. S. Waasland: K.V. Red Star Waasland
+    Sint-Truiden: K. Sint-Truidense V.V.
+    Tienen: K.V.K. Tienen
+    Tournai: R.F.C. Tournai
+    Virton: R.E. Virton
+    E. Aalst: Eendracht Aalst
+    U. Centre: URS Centre
+    Diegem
+    F. Borains: Francs Borains
+    Gent-Zeehaven
+    La Louvière
+    Oudenaarde
+    Péruwelz
+    Sint-Niklaas: Nieuwkerke-Sint-Niklaas
+    Union S.: Union SG
+    Waregem: RC Waregem
+    Wetteren: St. Wetteren
+    Wielsbeke: SC Wielsbeke
+    Woluwé: WS Woluwé
+    Woluwé-Z.: Woluwe-Zaventem
+    Zottegem
+    Bocholt
+    Cappellen
+    Dessel S.: Dessel Sport
+    Geel
+    Hamoir
+    Hoogstraten
+    R. Mechelen: RC Mechelen
+    Mol-Wezel
+    Rupel B.: Rupel Boom
+    Sérésien: RFC Sérésien
+    Tongeren
+    Turnhout: KV Turnhout
+    Veldwezelt
+    Verviers: CS Verviétois
+    Visé
+    Willebroek-Meerhof
+League: bosnia_herzegovina
+    Z. Mostar: NK Zrinjski
+    S. Lukavica: FK Slavija Sarajevo
+    Laktaši: FK Laktaši
+    Š. Brijeg: NK Široki Brijeg
+    Sarajevo: FK Sarajevo
+    Z. Gradačac: NK Zvijezda Gradačac
+    S. Tuzla: FK Sloboda Tuzla
+    Z. Sarajevo: NK Željeznicar Sarajevo
+    Orašje: NK Orašje
+    Posušje: NK Posušje
+    L. Trebinje: FK Leotar
+    M. Maxima: FK Modriča Maxima
+    B. Banja Luka: FK Borac Banja Luka
+    Č. Zenica: NK Čelik Zenica
+    V. Mostar: FK Velež Mostar
+    Travnik: NK Travnik
+League: bulgaria
+    C. Sofia: CSKA Sofia
+    Le. Sofia: Levski Sofia
+    L. Lovech: Litex Lovech
+    Sliven: Sliven 2000
+    Lo. Sofia: Lokomotiv Sofia
+    C. M. Varna: Cherno More Varna
+    L. Mezdra: Lokomotiv Mezdra
+    C. Burgas: Chernomorets Burgas
+    S. Sofia: Slavia Sofia
+    M. Pernik: Minyor Pernik
+    P. Blagoevgrad: Pirin Blagoevgrad
+    L. Plovdiv: Lokomotiv Plovdiv
+    B. Plovdiv: Botev Plovdiv
+    Vihren
+    S. Varna: Spartak Varna
+    B. Petrich: Belasitsa Petrich
+League: croatia
+    D. Zagreb: NK Dinamo Zagreb
+    S. B. Koprivnica: NK Slaven Koprivnica
+    H. Split: HNK Hajduk Split
+    Šibenik: HNK Šibenik
+    Osijek: NK Osijek
+    N. Zagreb: NK Zagreb
+    V. Varazdin: NK Varteks
+    Rijeka: HNK Rijeka
+    C. Sesvete: NK Croatia Sesvete
+    Cibalia: HNK Cibalia
+    I. Zaprešic: NK Inter Zaprešic
+    Zadar: NK Zadar
+League: cyprus
+    Omonia: AC Omonia
+    A. Nikosia: APOEL FC
+    A. Famagusta: Anorthosis Famagusta FC
+    Ap. Limassol: Apollon Limassol FC
+    A. Limassol: AEL Limassol FC
+    E. Paralimni: Enosis Neon Paralimni FC
+    E. Achnas: Ethnikos Achnas FC
+    A. Peyias: APOP Kinyras Peyias FC
+    D. Katokopia: Doxa Katokopia FC
+    A. Kyperounda: APEP Kyperounda FC
+    Al. Larnaca: Alki Larnaca FC
+    A. Paphos: AEP Paphos FC
+    A. Larnaca: AEK Larnaca FC
+    A. Yeroskipou: Atromitos Yeroskipou
+    Ar. Limassol: Aris Limassol
+    A. Lysi: ASIL Lysi
+    Ayia Napa: AO Ayia Napa
+    D. Morphou: Digenis Morphou
+    Lakatamia: ENTHOI Lakatamia
+    E. Aradippou: Ermis Aradippou
+    E. Assia: Ethnikos Assia
+    C. Idaliou: Chalkanoras Idaliou
+    M. Nisou: MEAP Nisou
+    N. Salamis: Nea Salamis
+    Olympiakos
+    Omonia A.: Omonia Aradippou
+    O. Sotira: Onisilos Sotira
+    PAEEK
+League: czech
+    Sl. Praha: Slavia Praha
+    B. Ostrava: Baník Ostrava
+    S. Liberec: Slovan Liberec
+    Mladá Boleslav: FK Mladá Boleslav
+    Sp. Praha: Sparta Praha	
+    S. Olomouc: Sigma Olomouc
+    Teplice: FK Teplice
+    V. Plzeň: Viktoria Plzeň
+    Jablonec: FK Jablonec 97
+    M. Pribram: FK Marila Pribram
+    Brno: 1. FC Brno
+    B. Praha: Bohemians Praha
+    České Budějovice: Dynamo Ceské Budejovice
+    Kladno: SK Kladno
+    Zlín: Tescoma Zlín
+    V. Žižkov: Viktoria Žižkov
+League: denmark
+    Odense: OB
+    København: FC København
+    B. København: Brøndby IF
+    Midtjylland: FC Midtjylland
+    Randers: Randers FC
+    Aarhus: AGF
+    Nordsjælland: FC Nordsjælland
+    Aalborg: AaB
+    Horsens: AC Horsens	
+    Vejle: Vejle Boldklub	
+    SønderjyskE
+    Esbjerg: Esbjerg fB
+    Aarhus F.: Aarhus Fremad
+    A. Copenhagen: AB Copenhagen
+    Frem: BK Frem
+    Fredericia: FC Fredericia
+    Hellerup: Hellerup IK
+    Herfølge: Herfølge BK
+    Hvidovre: Hvidovre IF
+    Kolding: Kolding FC
+    Køge: Køge BK
+    Lolland-Falster: Lolland-Falster Alliancen
+    Lyngby: Lyngby BK
+    Næstved: Næstved BK
+    Silkeborg: Silkeborg IF
+    Skive: Skive IK
+    Viborg: Viborg FF
+    Ølstykke: Ølstykke FC
 League: england
-    London: Arsenal
-    Aston: Aston Villa
-    Birmingham: Birmingham City
+    C. London: Chelsea
+    Manchester U.: Manchester United
+    A. London: Arsenal
+    A. V. Birmingham: Aston Villa
     Blackburn: Blackburn Rovers
     Bolton: Bolton Wanderers
-    Charlton: Charlton Athletic
-    Manchester C.: Manchester City
-    Manchester: Manchester United
-    Newcastle: Newcastle United
-    Tottenham: Tottenham Hotspur
-    West Bromwich: West Bromwich Albion
-    West Ham: West Ham United
-    Wigan: Wigan Athletic
-    Brighton and Hove: Brighton and Hove Albion
-    Cardiff: Cardiff City
-    Coventry: Coventry City
-    Crewe: Crewe Alexandra
-    Derby: Derby County
+    E. Liverpool: Everton
+    F. London: Fulham
     Hull: Hull City
-    Ipswich: Ipswich Town
-    Leeds: Leeds United
-    Leicester: Leicester City
-    Luton: Luton Town
-    Norwich: Norwich City
-    Plymouth: Plymouth Argyle
-    Preston: Preston North End
-    Queens Park: Queens Park Rangers
-    Sheffield: Sheffield United
-    Sheffield W.: Sheffield Wednesday
+    Manchester C.: Manchester City
+    Middlesbrough
+    Newcastle: Newcastle United
+    Portsmouth
     Stoke: Stoke City
-    Wolverhampton: Wolverhampton Wanderers
-    Bournemouth: AFC Bournemouth
-    Bradford: Bradford City
-    Bristol C.: Bristol City
-    Colchester: Colchester United
+    Sunderland: AFC Sunderland
+    T. London: Tottenham Hotspur
+    W. B. Birmingham: West Bromwich Albion
+    W. H. London: West Ham United
+    Wigan: Wigan Athletic
+    Wolverhampton: Wolverhampton Wanderers 
+    Birmingham: Birmingham City
+    Reading 
+    Sheffield U.: Sheffield Utd 
+    Burnley 
+    Cardiff: Cardiff City 
+    Plymouth: Plymouth Argyle
+    Ipswich: Ipswich Town 
+    Swansea: Swansea City 
+    Preston: Preston North End
+    Bristol C.: Bristol City 
+    Q. London: QPR 
+    Derby: Derby County 
+    C. P. London: Crystal Palace 
+    Coventry: Coventry City 
+    Sheffield W.: Sheffield Wednesday
+    Barnsley 
+    Blackpool
+    Norwich: Norwich City 
+    Southampton 
+    Watford 
+    Charlton: Charlton Athletic
     Doncaster: Doncaster Rovers
+    Nottingham: Nottingham Forest
+    Leicester: Leicester City 
+    Milton Keynes: MK Dons 
+    Scunthorpe: Scunthorpe United
+    Millwall 
+    Peterborough: Peterborough United
+    Leeds: Leeds United 
+    Oldham: Oldham Athletic
+    Stockport: Stockport County
+    Southend: Southend United
+    Walsall 
+    Tranmere: Tranmere Rovers
     Hartlepool: Hartlepool United
     Huddersfield: Huddersfield Town
-    Milton Keynes: Milton Keynes Dons
-    Nottingham: Nottingham Forest
-    Oldham: Oldham Athletic
-    Rotherham: Rotherham United
-    Scunthorpe: Scunthorpe United
-    Southend: Southend United
-    Swansea: Swansea City
-    Swindon: Swindon Town
-    Tranmere: Tranmere Rovers
-    Yeovil: Yeovil Town
-    Boston: Boston United
-    Bristol: Bristol Rovers
-    Carlisle: Carlisle United
-    Cheltenham: Cheltenham Town
-    Chester: Chester City
-    Grimsby: Grimsby Town
-    Leyton: Leyton Orient
-    Lincoln: Lincoln City
-    Macclesfield: Macclesfield Town
-    Mansfield: Mansfield Town
+    Bristol R.: Bristol Rovers 
     Northampton: Northampton Town
-    Notts County: Notts County
-    Oxford: Oxford United
-    Peterborough: Peterborough United
-    Rushden and Irthlingbro': Rushden and Diamonds
-    Shrewsbury: Shrewsbury Town
-    Stockport: Stockport County
-    Torquay: Torquay United
-    Wycombe: Wycombe Wanderers
-    Accrington: Accrington Stanley
-    Aldershot: Aldershot Town
-    Burton: Burton Albion
-    Cambridge: Cambridge United
-    Crawley: Crawley Town
-    Dagenham and Redbridge: Dagenham and Redbridge
-    Exeter: Exeter City
-    Gravesend and Northfleet: Gravesend and Northfleet
-    Grays: Grays Athletic
-    Halifax: Halifax Town
+    Carlisle: Carlisle United
+    Brighton: Brighton and Hove Albion
+    Swindon: Swindon Town
+    Yeovil: Yeovil Town 
+    Leyton O.: Leyton Orient 	
+    Colchester: Colchester United
     Hereford: Hereford United
-    Kidderminster: Kidderminster Harriers
-    Northwich: Northwich Victoria
-    Stevenage: Stevenage Borough
-    York: York City
-    St. Albans: St. Albans City
-    Stafford: Stafford Rangers
-League: wales
-    Aberystsyth: Aberystwyth Town
-    Broughton: Airbus UK
-    Bangor: Bangor City
-    Caernarfon: Caernarfon Town
-    Caersws: Caersws
-    Carmarthen: Carmarthen Town
-    Cefn Mawr: NEWI Cefn Druids
-    Connahs Quay: Connahs Quay Nomads
-    Cwmbran: Cwmbran Town
-    Grange: Grange Harlequins
-    Haverfordwest: Haverfordwest County
-    Llanelli: Llanelli AFC
-    Newtown: Newtown AFC
-    Port Talbot: Port Talbot Town
-    Porthmadog: CPD Porthmadog
-    Rhyl: Rhyl
-    Llansantffraid: Total Network Solutions
-    Welshpool: Welshpool Town
-    Llwydcoed: AFC Llwydcoed
-    Port Talbot AL: Afan Lido
-    Barry: Barry Town
-    Bettws: Bettws
-    Bridgend: Bridgend Town
-    Briton Ferry: Briton Ferry
-    Bryntirion: Bryntirion Athletic
-    Caerleon: Caerleon
-    Dinas Powys: Dinas Powys
-    Ely: Ely Rangers
-    Goytre: Goytre United
-    Maesteg: Maesteg Park
-    Neath: Neath
-    Newport: Newport YMCA
-    Pontardawe: Pontardawe
-    Taffs Well: Taffs Well
-    Ton Pentre: Ton Pentre
-    UWIC: UWIC
-    Bala: Bala Town
-    Bodedern: Bodedern
-    Buckley: Buckley Town
-    Flint: Flint Town United
-    Glantraeth: Glantraeth
-    Gresford: Gresford Athletic
-    Guilsfield: Guilsfield
-    Halkyn: Halkyn United
-    Holyhead: Holyhead Hotspur
-    Holywell: Holywell Town
-    Lex: Lex XI
-    Llandyrnog: Llandyrnog
-    Llangefni: Llangefni Town
-    Llandudno: Llandudno
-    Llanfair PG: Llanfair PG
-    Penrhyncoch: Penrhyncoch
-    Queens Park: Queens Park
-    Ruthin: Ruthin Town
-League: ireland
-    Cork: Cork City
-    Shelbourne: Shelbourne
-    Drogheda: Drogheda United
-    Derry: Derry City
-    Dublin B.: Bohemians
-    Waterford: Waterford United
-    Longford: Longford Town
-    Bray: Bray Wanderers
-    Dublin St. P: St. Patrick's Athletic
-    U.C.D.: U.C.D.
-    Ballybofey: Finn Harps
-    Dublin S.: Shamrock Rovers
-    Dublin C.: Dublin City
-    Sligo: Sligo Rovers
-    Limerick: Limerick
-    Cobh: Cobh Ramblers
-    Kildare: Kildare County
-    Dundalk: Dundalk
-    Monaghan: Monaghan United
-    Athlone: Athlone Town
-    Galway: Galway United
-    Kilkenny: Kilkenny City
+    Cheltenham: Cheltenham Town
+    Crewe: Crewe Alexandra
+    Wycombe: Wycombe Wanderers
+    Darlington 
+    Rochdale 
+    Bradford: Bradford City 
+    Shrewsbury: Shrewsbury Town
+    Bury 
+    Brentford
+    Exeter: Exeter City 
+    Dagenham and R.: Dagenham and Red
+    Gillingham 
+    Aldershot: Aldershot Town 
+    Chesterfield 
+    Lincoln: Lincoln City 
+    Accrington: Accrington Stanley
+    P. V. Stoke: Port Vale 
+    Notts C: Notts County
+    Morecambe 
+    Macclesfield: Macclesfield Town
+    Chester: Chester City 
+    Barnet 
+    Grimsby: Grimsby Town
+    Rotherham: Rotherham United
+    Bournemouth
+    Luton: Luton Town
+    Histon
+    Burton: Burton Albion 
+    Torquay: Torquay United
+    Kidderminster: Kidderminster Harriers 
+    Cambridge: Cambridge United
+    Kettering: Kettering Town
+    Crawley: Crawley Town
+    Wrexham 
+    Weymouth 
+    Rushden and D.: Rushden and Diamonds 
+    Altrincham 
+    Stevenage B.: Stevenage Borough 
+    Ebbsfleet: Ebbsfleet United
+    Salisbury: Salisbury City 
+    Barrow 
+    York: York City 
+    Oxford: Oxford United 
+    Eastbourne: Eastbourne Borough
+    Mansfield: Mansfield Town 
+    Woking 
+    Forest Green: Forest Green Rovers
+    Northwich: Northwich Victoria 
+    Grays: Grays Athletic 
+    Lewes
+League: estonia
+    L. Tallinn: FC Levadia Tallinn
+    F. Tallinn: FC Flora Tallinn
+    T. Tallinn: FC TVMK Tallinn	
+    T. Narva: JK Trans Narva
+    N. Kalju: JK Nõmme Kalju
+    K. Sillamäe: JK Sillamäe Kalev
+    T. Viljandi: JK Tulevik Viljandi
+    M. T. Tartu: JK Maag Tammeka Tartu
+    K. Tallinn: JK Tallinna Kalev
+    V. Pärnu: JK Vaprus Pärnu
+    F. Tallinn II: FC Flora Tallinn II
+    F. Paide: Flora Paide LM
+    F. Rakvere: Flora Rakvere
+    Kuressaare: FC Kuressaare
+    A. Lasnamäe: FC Lasnamäe Ajax
+    L. Tallinn II: FC Levadia Tallinn II
+    M. T. Tartu II: JK Maag Tammeka Tartu II
+    Tamme Auto
+    T. Tallinn II: FC TVMK Tallinn II
+    Warrior
+League: fyr_macedonia
+    Ma. Skopje: FK Makedonija GP Skopje
+    V. Skopje: FK Vardar Skopje
+    R. Cepciste: FK Renova Cepciste
+    Milano: FK Milano
+    R. Skopje: FK Rabotnicki Skopje
+    P. Prilep: FK Pobeda Prilep
+    P. Bitola: FK Pelister Bitola
+    S. Kratovo: FK Sileks Kratovo
+    N. Kicevo: FK Napredok Kicevo
+    Turnovo: FK Turnovo	
+    Me. Skopje: FK Metalurg Skopje
+League: faroe_islands
+    Streymur: EB/Streymur
+    H. Tórshavn: HB Tórshavn
+    B. Tórshavn: B36 Tórshavn
+    N. Runavík: NSÍ Runavík
+    Vikingur
+    B. Toftir: B68 Toftir
+    Fuglafjørdur: ÍF Fuglafjørdur
+    K. Klaksvík: KÍ Klaksvík
+    B. Sandur: B71 Sandur
+    Skála I.: Skála Ítróttarfelag
+League: finland
+    H. Valkeakoski: FC Haka
+    H. Espoo: FC Honka
+    Helsinki: HJK
+    J. Pietarsaari: FF Jaro
+    Kuopio: KuPS
+    Lahti: FC Lahti
+    K. Kotka: FC KooTeePee
+    I. Turku: FC Inter
+    I. Mariehamn: IFK Mariehamn
+    M. Anjalankoski: MyPa
+    R. Rovaniemi: RoPS
+    Tampere U.: Tampere United
+    T. Turku: TPS
+    V. Vaasa: VPS
+    A. Helsinki: Atlantis FC
+    I. Grankulla: GrIFK
+    Hämeenlinna: FC Hämeenlinna
+    Joensuu: JIPPO
+    Jyväskylä: JJK
+    Kemi: PS Kemi
+    Kokkola: KPV
+    K. Helsinki: KäPa
+    A. Oulu: AC Oulu
+    P. Helsinki: PK-35
+    T. Seinäjoki: TP-47
+    T. Tampere: TPV
+    I. Vasa: VIFK
+    V. Helsinki: FC Viikingit
+    C. S. Helsinki: City Stars
+    G. Helsinki: Gnistan
+    I. Helsinki: HIFK
+    H. Hyrylä: HyPS
+    FCJ
+    Kl. Helsinki: Klubi 04
+    Kon. Helsinki: FC Kontu
+    Kuusankoski: FC Kuusankoski
+    K. Kotka: KTP
+    K-Uusimaa: PK K-Uusimaa
+    LPS
+    Mikkeli: MP
+    R. Kotka: Rakuunat
+    Warkaus: Warkaus JK
+    I. Ekenäs: EIF
+    Espoo: FC Espoo
+    Forssa: FJK
+    H. Äänekoski: Huima
+    IFFK
+    I. Tampere: Ilves
+    Kaarina: KaaPo
+    Lohja: LoPa
+    P. Rauma: P-Iirot
+    Pori: PoPa
+    P. Tampere: PP-70
+    Salo: SalPa
+    S. Turku: Sinimustat
+    I. Åbo: ÅIFK
+    G. Kokkola: GBK
+    JBK
+    K. Kuopio: Kings
+    Kiisto: FC Kiisto
+    Närpes K.: Närpes Kraft
+    Norrvalla: Norrvalla FF
+    OL. Oulu: OLS
+    OPA
+    OP. Oulu: OPS-jp
+    PK-37
+    SJK
+    TUS
+    V-j. Vaasa: VPS-j
+    YPA
 League: france
-    Lyon: Olympique Lyon
+    Auxerre: A.J. Auxerre
+    Bordeaux: Girondins de Bordeaux
+    Caen: S. M. Caen
+    Grenoble: Grenoble Foot 38
+    Le Havre: Le Havre Athletic Club
+    Le Mans: Le Mans Union Club 72
+    Lille: Lille OSC
+    Lorient: FC Lorient Bretagne Sud
+    Lyon: Olympique Lyonnais
+    Marseille: Olympique de Marseille
     Monaco: AS Monaco
-    Marseille: Olympique Marseille
-    Auxerre: AJ Auxerre
+    Nancy: AS Nancy Lorraine
+    Nantes: FC Nantes
+    Nice: OGC Nice
     Paris SG: Paris Saint-Germain
-League: belgium
-    Brugge: Club Brugge
-    S. Luik: Standard
-    Genk: RC Genk
-    Gent: AA Gent
-    C. Brugge: Cercle Brugge
-    Lier: Lierse
-    G. Beerschot: Germinal Beerschot
-    Moeskroen: Excelsior Moeskroen
-    Brussel: FC Brussels
-    Roeselare: SV Roeselare
-    Oostende: KV Oostende
-    Waasland: KVR Waasland
-    Antwerpen: Antwerp
-    Heusden-Zolder: Beringen-Heusden-Zolder
-    Kortrijk: KV Kortrijk
-    Maasmechelen: Patro Maasmechelen
-    Hamme: VW Hamme
-    Dessel: Dessel Sport
-    U. Sint-Gillis: Union
-    Overpelt-Lommel: KVSK United
-    Leuven: OH Leuven
-    Mechelen: KV Mechelen
-    Boom: Ruppel-Boom
-    Willebroek: Willebroek-Meerhout
-    Turnhout: KV Turnhout
-    Torhout: Torhout 1992 KM
-    Sint-Niklaas: Nieuwkerke-Sint-Niklaas
-    Maldegem: SK Maldegem
-    R. Mechelen: RC Mechelen
-    Woluwe: Red Star Woluwe
-    West: Sporting West
-    Verviers: CS Verviers
-    O. Charleroi: Olympic Charleroi
-    Namen: UR Namen
-    F.B. Boussu: Francs Borains
-    V. Oostende: VG Oostende
-    C. Haine-Sint-Pierre: URS du Centre
-    Wevelgem: Wevelgem City
-    Berchem: Berchem Sport
-    Dilbeek: Dilbeek Sport
-    Grimbergen: SC Grimbergen
-    Kampenhout: SK Kampenhout
-    Kontich: FC Kontich
-    Lebbeke: RC Lebbeke
-    S. Lebeke: SK Lebeke Aalst
-    Londerzeel: SK Londerzeel
-    Opstal: Eendreacht Opstal
-    Opwijk: SK Opwijk
-    Verrewinkel: Rode Verrewinkel
-    Schoten: SK Sochten
-    Temse: SV Temse
-    Wilrijk: KFCO Wilrijk
-    ZL Rijkevorsel: Zwarte Leeuw
-    Lichtaart: Lichtaart Sport
-    Millen: Hedera Millen
-    Lier II: Lyra
-    Luik: Club Luik
-    Hannuit: Hannutois
-    Couvin: Couvin-Mariembourg
-    Seilles: Andenne-Seilles
-    Ciney: R.U. Wallonne Ciney
-    Bertrige: Bertrigeoise
-    Fleurus: Lambusart-Fleurus
-    Arlon: FC Le Lorrain Arlon
+    Rennes: Stade Rennais F.C.
+    Saint-Etienne: AS Saint-Étienne
+    Sochaux: FC Sochaux-Montbeliard
+    Toulouse: FC Toulouse
+    Valenciennes: Valenciennes FC
+    Ajaccio: AC Ajaccio
+    Amiens: Amiens SC
+    Angers: Angers SCO
+    Bastia: SC Bastia
+    Boulogne-sur-Mer: US Boulogne Cote Opale
+    Brest: Stade Brestois
+    Châteauroux: Berrichone de Châteauroux
+    Clermont Foot: Clermont Foot Auvergne
+    Dijon: Dijon FCO
+    Guingamp: En Avant de Guingamp
+    Lens: Racing Club de Lens
+    Metz: FC Metz
+    Montpellier: Montpellier-Herault SC
+    Nîmes: Nîmes Olympique
+    Reims: Stade de Reims
+    Sedan: Club Sportif Sedan-Ardennes
+    Strasbourg: RC Strasbourg
+    Tours FC
+    Troyes
+    Vannes OC
+    Arles
+    Bayonne
+    Beauvais
+    Calais
+    Cannes
+    Cassis-Carnoux
+    Cherbourg
+    Croix-de-Savoie
+    Créteil
+    L'Entente SSG
+    Gueugnon
+    Istres
+    Laval
+    Libourne/Saint-Seurin
+    Louhans-Cuiseaux
+    Niort
+    Pacy-sur-Eure
+    Paris FC
+    Rodez
+    Sète
+    Besançon
+    Colmar
+    Compiègne
+    Dunkerque
+    Lens B: Racing Club de Lens B
+    Lille B: Lille OSC B
+    Metz B: FC Metz B
+    Moissy
+    Montceau
+    Mulhouse
+    Nancy B: AS Nancy Lorraine B
+    Noisy-le-Sec
+    Raon-l'Étape
+    Romorantin
+    Sainte-Geneviève
+    Sochaux B: FC Sochaux-Montbeliard B
+    Strasbourg B: RC Strasbourg B
+    Vesoul
+    Agde
+    Andrézieux
+    CA Bastia
+    Fréjus
+    Gap
+    Gazélec
+    Hyères
+    Jura Sud
+    AS Lyon
+    Lyon B: Olympique Lyonnais B
+    Marignane
+    Monaco B: AS Monaco B
+    Montpellier B: Montpellier-Herault SC B
+    Saint-Étienne B: AS Saint-Étienne B
+    Saint-Priest
+    Toulon
+    Villefranche
+    Albi
+    Anglet
+    Aurillac
+    Auxerre B: A.J. Auxerre B
+    Balma
+    Bergerac
+    Bordeaux B: Girondins de Bordeaux B
+    Bordelais
+    Châtellerault
+    Colomiers
+    Fontenay
+    Le Mans B: Le Mans Union Club 72 B
+    Luçon
+    Luzenac
+    Montluçon
+    Moulins
+    Pau
+    Yzeure
+    Alfortville
+    Caen B: S. M. Caen B
+    Guingamp B: En Avant de Guingamp B
+    Le Havre B: Le Havre Athletic Club B
+    Orléans
+    PSG B: Paris Saint-Germain B
+    Plabennec
+    Pontivy
+    Quevilly
+    Quimper
+    RC Paris
+    Red Star
+    Rennes B: Stade Rennais F.C. B
+    Rouen
+    Villemomble
+    Viry-Châtillon
+    Vitré
+    Vitréenne
+League: georgia
+    L. Tbilisi: FC Lokomotiv Tbilisi
+    W. G. Tbilisi: FC WIT Georgia Tbilisi
+    Zestaponi: FC Zestaponi	
+    D. Tbilisi: FC Dinamo Tbilisi	
+    M. Zugdidi: FC Mglebi Zugdidi	
+    S. Bolnisi: FC Sioni Bolnisi	
+    Borjomi: FC Borjomi	
+    M. Tbilisi: FC Meskheti Tbilisi	
+    Gagra: FC Gagra	
+    O. Rustavi: FC Olimpi Rustavi	
+    S. Tskhinvali: FC Spartaki Tskhinvali
+League: germany
+    Hoffenheim: 1899 Hoffenheim
+    Leverkusen: Bayer Leverkusen
+    B. München: Bayern München
+    H. Berlin: Hertha BSC
+    B. Dortmund: Borussia Dortmund
+    Schalke: FC Schalke 04
+    Hamburg: Hamburger SV
+    Wolfsburg: VfL Wolfsburg
+    W. Bremen: Werder Bremen
+    Köln: 1. FC Köln
+    Stuttgart: VfB Stuttgart
+    E. Frankfurt: Eintracht Frankfurt
+    Hannover: Hannover 96
+    Bielefeld: Arminia Bielefeld
+    M'gladbach: Borussia M'gladbach
+    Bochum: VfL Bochum
+    Karlsruhe: Karlsruher SC
+    Cottbus: Energie Cottbus
+    Mainz: 1. FSV Mainz 05
+    Kaiserslautern: 1. FC Kaiserslautern
+    Freiburg: SC Freiburg 
+    Aachen: Alemannia Aachen
+    Ahlen: Rot-Weiss Ahlen 
+    G. Fürth: SpVgg Greuther Fürth
+    S. P. Hamburg: FC St. Pauli
+    T. München: 1860 München
+    Duisburg: MSV Duisburg
+    Nürnberg: 1. FC Nürnberg
+    Ingolstadt: FC Ingolstadt 04
+    Oberhausen: Rot-Weiß Oberhausen
+    Augsburg: FC Augsburg 
+    Rostock: Hansa Rostock
+    Osnabrück: VfL Osnabrück
+    W. Wiesbaden: SV Wehen Wiesbaden
+    Koblenz: TuS Koblenz 
+    F. Frankfurt: FSV Frankfurt
+    Paderborn: SC Paderborn 07 
+    F. Düsseldorf: Fortuna Düsseldorf
+    U. Berlin: 1. FC Union Berlin 
+    K. Emden: Kickers Emden
+    Erfurt: Rot-Weiß Erfurt
+    K. Offenbach: Kickers Offenbach
+    B. München II: Bayern München II
+    Stuttgart II: VfB Stuttgart II
+    Sandhausen: SV Sandhausen
+    Unterhaching: SpVgg Unterhaching
+    C. Z. Jena: Carl Zeiss Jena
+    Aalen: VfR Aalen
+    E. Aue: Erzgebirge Aue
+    E. Braunschweig: Eintracht Braunschweig
+    Wuppertal: Wuppertaler SV Bor.
+    D. Dresden: Dynamo Dresden
+    W. Burghausen: Wacker Burghausen
+     J. Regensburg: Jahn Regensburg
+    Stuttgarter K.: Stuttgarter Kickers
+    W. Bremen II: Werder Bremen II
+    H. Kiel: Holstein Kiel
+    Babelsberg: SV Babelsberg 03
+    Halle: Hallescher FC
+    Magdeburg: 1. FC Magdeburg
+    Wilhelmshaven: SV Wilhelmshaven
+    Wolfsburg II: VfL Wolfsburg II
+    Hannover II: Hannover 96 II
+    Plauen: VFC Plauen
+    Oberneuland: FC Oberneuland
+    Rostock II: Hansa Rostock II
+    Altona: Altona 93
+    Chemnitz: Chemnitzer FC
+    Hamburg II: Hamburger SV II
+    Lübeck: VfB Lübeck
+    T. Berlin: Türkiyemspor Berlin
+    H. Berlin II: Hertha BSC II
+    S. Leipzig: Sachsen Leipzig
+     Cottbus II: Energie Cottbus II
+    Kaiserslautern II: 1. FC Kaiserslautern II
+    Essen: Rot-Weiss Essen
+    P. Münster: Preußen Münster
+    Köln II: 1. FC Köln II
+    Elversberg: SV Elversberg
+    B. Dortmund II: Borussia Dortmund II
+    M'gladbach II: Borussia M'gladbach II
+    Verl: SC Verl
+    Oggersheim: FSV LU-Oggersheim
+    B. Leverkusen II: Bayer Leverkusen II
+    Bochum II: VfL Bochum II
+    Schalke II: FC Schalke 04 II
+    S. Lotte: Sportfreunde Lotte
+    E. Trier: Eintracht Trier
+    Worms: Wormatia Worms
+    Mainz II: 1. FSV Mainz 05 II
+    Kleve: 1. FC Kleve
+    Cloppenburg: BV Cloppenburg
+    E. Frankfurt II: Eintracht Frankfurt II
+    H. Kassel: Hessen Kassel
+    Ulm: SSV Ulm 1846
+    Heidenheim: 1. FC Heidenheim
+    W. Mannheim: Waldhof Mannheim
+    Pfullendorf: SC Pfullendorf
+    Nürnberg II: 1. FC Nürnberg II
+    W. Wiesbaden II: SV Wehen Wiesbaden II
+    G. Fürth II: SpVgg Greuther Fürth II
+    Darmstadt: SV Darmstadt 98
+    V. Aschaffenburg: Viktoria Aschaffenburg
+    Karlsruhe II: Karlsruher SC II
+    Reutlingen: SSV Reutlingen
+    T. München II: 1860 München II
+    E. Bamberg: 1. FC Eintracht Bamberg
+    Großbardorf: TSV Großbardorf
+    Freiburg II: SC Freiburg II
+    Unterhaching II: SpVgg Unterhaching II
+League: greece
+    O. Piraeus: Olympiacos
+    P. Thessaloniki: PAOK
+    S. Xanthi: Skoda Xanthi
+    P. Athena: Panathinaikos
+    A. Athena: AEK Athinai
+    Ergotelis
+    A. Thessaloniki: Aris
+    Larissa
+    Levadiakos
+    Panthrakikos
+    Iraklis
+    Panionios
+    A. Tripolis: Asteras Tripolis
+    Panserraikos
+    Thrasivoulos
+    OFI
+    A. Asteras: Agrotikos Asteras
+    A. Karditsa: Anagennisi Karditsa
+    A. Kalamaria: Apollon Kalamaria
+    Atromitos
+    Diagoras
+    E. Asteras: Ethnikos Asteras
+    E. Piraeus: Ethnikos Piraeus
+    Ilisiakos
+    Ionikos
+    Kalamata
+    Kallithea
+    Kastoria
+    Kavala: Kavala FC
+    Kerkyra
+    O.Volou: Olympiakos Volos
+    P. Giannina: PAS Giannina
+    Pierikos
+    Veria
+League: hungary
+    M. H. Budapest: MTK Hungária FC Budapest
+    H. Budapest: Budapest Honvéd FC
+    R. Budapest: Rákospalotai EAC Budapest
+    Ú. Budapest: Újpest FC Budapest
+    V. Budapest: Vasas SC Budapest
+    Debrecen: Debreceni VSC
+    Győr: Győr ETO FC
+    Kaposvár: Kaposvári Rákóczi FC
+    D. Miskolc: Diósgyőri VTK
+    Paks: Paksi SE
+    S. Haladás: Szombathelyi Haladás
+    F. Székesfehérvár: FC Fehérvár
+    Kecskemét: Kecskeméti TE
+    Zalaegerszeg: Zalaegerszegi TE FC
+    N. Spartacus: Nyíregyháza Spartacus
+    Siófok: BFC Siófok
+    Ajka: FC Ajka
+    Bajai: Bajai LSE
+    Barcs: Barcsi SC
+    Budaörs: Budaörsi SC
+    Dunaújváros: Dunaújváros FC
+    Felcsút: FC Felcsút
+    Gyirmót: Gyirmót SE
+    Győr II: Győri ETO FC II
+    I. D. Győr: Integrál-DAC Győr
+    K. Nagyberki: Kaposvölgye VSC
+    Kozármisleny: Kozármisleny SE
+    L. Pápa: Lombard-Pápa TFC
+    P. Pécs: Pécsi Mecsek FC
+    Százhalombattai: Százhalombattai LK
+    Tatabánya: FC Tatabánya
+    Zalaegerszeg II: Zalaegerszegi TE II
+    Baktalórántháza: Baktalórántháza VSE
+    Békéscsaba: Békéscsaba 1912 Előre SE
+    B. E. Budapest: BKV Előre SC Budapest
+    Bőcs: Bőcs KSC
+    Cegléd: Ceglédi VSE
+    Debrecen II: Debreceni VSC II
+    E. Budapest: ESMTK Budapest
+    Fe. Budapest: Ferencvárosi TC
+    Jászberény: Jászberényi SE
+    Kazincbarcika: Kazincbarcikai SC
+    Makó: Makói FC
+    M. Budapest II: MTK Hungária II Budapest
+    Szolnok: Szolnoki MÁV FC
+    Tököl:Tököl KSK
+    Vác: Vác-Újbuda LTC
+    Vecsés: Vecsési FC
+League: iceland
+    Hafnarfjördur: FH Hafnarfjördur
+    Keflavík
+    Fr. Reykjavík: Fram Reykjavík
+    K. Reykjavík: KR Reykjavík
+    V. Reykjavík: Valur Reykjavík
+    Fjölnir
+    Grindavík
+    Breidablik
+    Fy. Reykjavik: Fylkir	
+    T. Reykjavík: Thróttur Reykjavík
+    Kópavogs: HK Kópavogs
+    Akranes: ÍA Akranes
+    Haukar
+    Vestmannaeyjar: ÍBV Vestmannaeyjar
+    K. Akureyri: KA Akureyri
+    Fjarðabyggð: KF Fjarðabyggð
+    Leiftur: KS/Leiftur
+    Le. Reykjavík: Leiknir Reykjavík
+    Njarðvík
+    Selfoss
+    Stjarnan
+    V. Ólafsvík: Víkingur Ólafsvík
+    Ví. Reykjavík: Víkingur Reykjavík
+    Þ. Akureyri: Þór Akureyri
+League: ireland
+    Bohemians	
+    St. P. Dublin: St. Patrick's Athletic	
+    Derry: Derry City	
+    Sligo: Sligo Rovers	
+    Cork: Cork City	
+    Drogheda: Drogheda United	
+    Bray: Bray Wanderers	
+    Shamrock R.: Shamrock Rovers	
+    Galway: Galway United
+    Finn H.: Finn Harps	
+    Cobh R.: Cobh Ramblers	
+    U.C.D.: UCD	
+    Athlone: Athlone Town
+    Dundalk
+    Kildare: Kildare County
+    Limerick: Limerick 37
+    Longford: Longford Town
+    Monaghan: Monaghan United
+    Shelbourne
+    S. Fingal: Sporting Fingal
+    Waterford: Waterford United
+    Wexford Y.: Wexford Youths
+League: israel
+    Ashdod: F.C. Ashdod
+    M. Haifa: Maccabi Haifa
+    M. Netanya: Maccabi Netanya
+    B. Jerusalem: Beitar Jerusalem
+    M. Petach Tikva: Maccabi Petach Tikva
+    H. Petach Tikva: Hapoel Petach Tikva
+    H. I. Kiryat Shmona: Hapoel Ironi Kiryat Shmona
+    B. Sakhnin: Bnei Sakhnin
+    H. Tel Aviv: Hapoel Tel Aviv
+    M. Tel Aviv: Maccabi Tel Aviv
+    B. Y. Tel Aviv: Bnei Yehuda Tel Aviv
+    H. Ramat Gan: Hakoah Ramat Gan
+    H. Acre: Hapoel Acre
+    H. Be'er Sheva: Hapoel Be'er Sheva
+    H. Bnei Lod: Hapoel Bnei Lod
+    H. Haifa: Hapoel Haifa
+    H. Jerusalem: Hapoel Jerusalem
+    H. Kfar Saba: Hapoel Kfar Saba
+    H. Ra'anana: Hapoel Ra'anana
+    H. Ramat Gan: Hapoel Ramat Gan
+    I. Ramat HaSharon: Ironi Ramat HaSharon
+    M. Ahi Nazareth: Maccabi Ahi Nazareth
+    M. Kiryat Ata: Maccabi Kiryat Ata
+    M. Herzliya: Maccabi Herzliya
+League: italy
+    I. Milano: Internazionale
+    A. Milano: Milan
+    J. Torino: Juventus
+    F. Firenze: ACF Fiorentina
+    Napoli: SSC Napoli
+    L. Roma: SS Lazio
+    U. Udine: Udinese
+    Catania: Calcio Catania
+    Genoa: Genoa FC
+    A. Bergamo: Atalanta
+    Palermo: US Città di Palermo
+    Cagliari: Cagliari Calcio
+    Siena: AC Siena
+    S. Genoa: UC Sampdoria
+    Lecce: US Lecce
+    Torino: Torino FC
+    Roma: AS Roma
+    Bologna: Bologna FC
+    Reggina: Reggina Calcio
+    C. Verona: AC Chievo Verona
+    Albinoleffe
+    Ancona
+    Ascoli
+    Avellino
+    Bari
+    Brescia
+    Cittadella
+    Empoli
+    Frosinone
+    Grosseto
+    Livorno
+    Mantova
+    Modena
+    Parma: AC Parma
+    Piacenza
+    Pisa
+    Rimini
+    Salernitana
+    Sassuolo
+    Treviso
+    Triestina
+    Vicenza
+    Pro Patria	
+    SPAL
+    Padova
+    Novara	
+    Cremona: Cremonese
+    Reggiana	
+    Lumezzane
+    Cesena
+    Verona: Hellas Verona
+    Pro Sesto
+    Lecco
+    Pergocrema
+    Sambenedettese
+    Legnano
+    Monza
+    Ravenna
+    Portosummaga
+    Venezia
+    Crotone
+    Gallipoli	
+    Arezzo	
+    Foggia
+    Benevento
+    Cavese
+    Pescara
+    Paganese	
+    Juve Stabia
+    Perugia
+    Taranto 
+    Marcianese
+    Ternana
+    Sorrento	
+    Lanciano	
+    Foligno
+    Pistoiese
+    Potenza
+League: kazakhstan
+    A. Lento: FC Aktobe
+    Almaty: FC Almaty
+    Astana: FC Astana
+    Atyrau: FC Atyrau
+    I. Pavlodar: FC Irtysh Pavlodar
+    E. Pavlodar: FC Energetik Pavlodar
+    K. Almaty: FC Kairat Almaty
+    K. Kyzylorda: FC Kaisar Kyzylorda
+    M. Almaty: FC Megasport Almaty
+    O. Kokshetau: FC Okzhetpes Kokshetau
+    O. Shymkent: FC Ordabasy Shymkent
+    S. Karagandy: FC Shakhtyor Karagandy
+    T. Kostanay: FC Tobol Kostanay
+    V. Oskemen: FC Vostok Oskemen
+    E. B. Petropavl: FC Esil Bogatyr Petropavl
+    Z. Taldykorgan: FC Zhetysu Taldykorgan
+    A. Oral: FC Akzhayik Oral
+    A. Petropavl: FC Avangard Petropavl
+    B. Temirtau: FC Bolat Temirtau
+    C. Aktau: FC Caspiy Aktau
+    G. Khromtau: FC Gornyak Khromtau
+    K. Satpaev: FC Kazakhmys Satpaev
+    S. Semey: FC Spartak Semey
+    Taraz: FC Taraz
+League: latvia
+    Ventspils: FK Ventspils
+    Liepājas M.: SK Liepājas Metalurgs
+    S. Riga: Skonto FC Rīga
+    D. Daugavpils: FC Dinaburg
+    Daugava: FC Daugava
+    F. Rīga: FK Rīga
+    Jūrmala: FK Jūrmala
+    V. Ventspils: FK Vindava Ventspils
+    B. Rezekne: SK Blāzma Rezekne
+    O. Riga: JFK Olimps
+    A. Smiltene: FK Abuls Smiltene
+    A. Rīga: FK Auda/Alberts Rīga
+    D. Rīga: FK Daugava Riga
+    Gulbene: FB Gulbene-2005
+    J. Rīga: FK Jaunība Rīga
+    Jēkabpils: FK Jēkabpils
+    Jelgava: FK Jelgava
+    K. Jūrmala: JFC Kauguri/PBLC Jūrmala
+    Liepājas M. II: FK Liepājas Metalurgs-2
+    M-L. U. Rīga: FS Metta-Latvijas Universitāte Rīga
+    S. Jūrmala: FK Spartaks Jūrmala
+    T. Ventspils: FK Tranzīts Ventspils
+    Tukums: FK Tukums 2000
+    Valmiera: FK Valmiera
+    Z. Ilūkste: FK Zibens Zemessardze Ilūkste
+League: lithuania
+    E. Panevezys: Ekranas Panevezys
+    Kaunas: FBK Kaunas
+    V. Vilnius: Vetra Vilnius
+    S. Marijampole: Suduva Marijampole
+    Ž. Vilnius: Zalgiris Vilnius	
+    A. Klaipeda: Atlantas Klaipeda	
+    Šiauliai: KFK Siauliai
+    Šilutė: FK Silute
+League: luxembourg
+    A. Beggen: FC Avenir Beggen
+    Differdange: FC Differdange 03
+    Dudelange: F91 Dudelange
+    E. Ettelbrück: FC Etzella Ettelbruck
+    Grevenmacher: CS Grevenmacher
+    J. Esch: AS Jeunesse Esch
+    K. Bascharage: UN Käerjeng 97
+    F. Esch: CS Fola Esch
+    P. Niedercorn: FC Progrès Niedercorn
+    R. U. Luxembourg: Racing FC Union Luxembourg
+    R. H. B. Luxembourg: FC RM Hamm Benfica
+    S. Hesperange: FC Swift Hesperange
+    S. Steinfort: FC Sporting Steinfort
+    Rumelange: US Rumelange
+    A. Bissen: FC Attert Bissen
+    B. B. Muhlenbach: Blue Boys Muhlenbach
+    J. Canach: FC Jeunesse Canach
+    Cessange-B.: Cessange-Bracarenses 2001
+    Erpeldange: FC Erpeldange 72
+    Mamer: FC Mamer 32
+    U. Mertert-Wasserbillig: Union Mertert-Wasserbillig
+    M. Lintgen: FC Minerva Lintgen
+    Mondercange: FC Mondercange
+    Obercorn: CS Obercorn
+    S. Mertzig: FC Sporting Mertzig
+    Pétange: CS Pétange
+    V. Rosport: FC Victoria Rosport
+    Wiltz: FC Wiltz 71
+League: malta
+    Birkirkara: Birkirkara F.C.
+    Floriana: Floriana F.C.
+    Hamrun S.: Ħamrun Spartans
+    H. Paola: Hibernians F.C.
+    Marsaxlokk: Marsaxlokk F.C.
+    Msida S. J.: Msida Saint-Joseph F.C.
+    Qormi: Qormi FC
+    Sliema W.: Sliema Wanderers F.C.
+    Tarxien R.: Tarxien Rainbows F.C.
+    Valletta: Valletta F.C.
+    Mosta: Mosta F.C.
+    Dingli S.: Dingli Swallows
+    Mqabba: Mqabba F.C.
+    Pietà H.: Pietà Hotspurs F.C.
+    Rabat A.: Rabat Ajax F.C.
+    San Gwann: San Gwann F.C.
+    Senglea A.: Senglea Athletics
+    S. G. Cospicua: St. George's F.C.
+    S. P. Zabbar: St. Patrick F.C.
+    V. S. Birgu: Vittoriosa Stars F.C.
+League: moldova
+    S. Tiraspol: FC Sheriff Tiraspol
+    Z. Chişinău: FC Zimbru Chişinău
+    D. Chişinău: FC Dacia Chişinău
+    I-S. Ribnita: FC Iskra-Stali Ribnita
+    D. Bender: FC Dinamo Bender
+    N. Otaci: FC Nistru Otaci	
+    O. Balti: FC Olimpia Balti
+    T. Tiraspol: FC Tiligul Tiraspol
+    F. Tiraspol: FC Tiraspol
+    C. R. Chişinău: CSCA-Rapid Chişinău
+    A. Chişinău: FC Academia UTM Chişinău
+League: montenegro
+    Grbalj: OFK Grbalj
+    Mogren: FK Mogren
+    B. Podgorica: FK Budućnost Podgorica
+    Sutjeska: FK Sutjeska
+    Zeta: FK Zeta
+    R. Pljevlja: FK Rudar Pljevlja
+    Petrovac: FK Petrovac
+    Kom: FK Kom
+    Lovćen: FK Lovćen
+    J. Plav: FK Jezero
+    J. Bijelo Polje: FK Jedinstvo Bijelo Polje
+    Dečić: FK Dečić
+    A. Tivat: FK Arsenal Tivat
+    Berane: FK Berane
+    Bokelj: FK Bokelj
+    B. Cijevna: FK Bratstvo
+    C. S. Tološi: FK Crvena Stijena
+    Č. Nikšić: FK Čelik
+    Gusinje: FK Gusinje
+    I. Rožaje: FK Ibar
+    Mladost: FK Mladost
+    O. Ulcinj: FK Otrant
+    T. Bijelo Polje: FK Tekstilac
+    Zabjelo: FK Zabjelo
+League: netherlands
+    A. Amsterdam: Ajax
+    Breda: NAC Breda
+    Groningen: FC Groningen
+    Alkmaar: AZ Alkmaar
+    Heerenveen: SC Heerenveen
+    P. Eindhoven: PSV
+    Nijmegen: NEC
+    T. Enschede: FC Twente
+    W. II Tillburg: Willem II
+    Utrecht: FC Utrecht
+    H. Almelo: Heracles Almelo
+    F. Rotterdam: Feyenoord
+    S. Rotterdam: Sparta Rotterdam
+    Den Haag: ADO Den Haag
+    V. Arnhem: Vitesse
+    R. Kerkrade: Roda JC
+    De Graafschap
+    Volendam: FC Volendam
+    Venlo: VVV-Venlo
+    Excelsior: Excelsior
+    R. Waalwijk: RKC Waalwijk
+    Helmond: Helmond Sport
+    Cambuur: SC Cambuur-Leeuwarden
+    Den Bosch: FC Den Bosch
+    Maastricht: MVV
+    Zwolle: FC Zwolle
+    Apeldoorn: AGOVV Apeldoorn
+    Haarlem: HFC Haarlem
+    Roosendaal: RBC Roosendaal
+    Veendam: BV Veendam
+    G. A. Eagles: Go Ahead Eagles
+    Telstar
+    Eindhoven: FC Eindhoven
+    T. Oss: TOP Oss
+    Emmen: FC Emmen
+    F. Sittard: Fortuna Sittard
+    Dordrecht: FC Dordrecht
+    F. Omniworld: FC Omniworld
+    ADO '20
+    AFC
+    Argon
+    DWV
+    Elinkwijk
+    Haaglandia
+    HBS
+    Hilversum
+    Hollandia
+    Omniworld
+    Türkiyemspor
+    VUC
+    VVSB
+    Westlandia
+    Baronie
+    DESK
+    Deurne
+    Dijkse B.: Dijkse Boys
+    EVV
+    Cuijk: JVC Cuijk
+    Gemert
+    Longa
+    Meerssen
+    Rosmalen: OJC Rosmalen
+    Papendrecht
+    Schijndel
+    UNA
+    Venray
+    Achilles '29
+    Alcides
+    Babberich
+    De Bataven
+    B. Quick: Be Quick 1887
+    Germania
+    HSC '21
+    Joure
+    Lienden
+    Quick '20
+    Sneek: Sneek Wit Zwart
+    De Treffers
+    WKE
+    WSV
+League: n_ireland
+    Ballymena: Ballymena United
+    Bangor
+    Cliftonville
+    Coleraine
+    Crusaders
+    Dungannon: Dungannon Swifts
+    Glenavon
+    Glentoran
+    Institute
+    Linfield
+    Lisburn D.: Lisburn Distillery
+    Newry C.: Newry City
+    Ards
+    Armagh: Armagh City
+    Ballinamallard: Ballinamallard United
+    Ballyclare: Ballyclare Comrades
+    Ballymoney: Ballymoney United
+    Banbridge: Banbridge Town
+    Carrick: Carrick Rangers
+    Coagh: Coagh United
+    Dergview
+    Donegal: Donegal Celtic
+    Glebe: Glebe Rangers
+    Killymoon: Killymoon Rangers
+    Larne
+    Limavady: Limavady United
+    Loughgall
+    Portadown
+    Tobermore: Tobermore United
+League: norway
+    S. Bærum: Stabæk
+    Fredrikstad: Fredrikstad FK
+    Tromsø: Tromsø IL
+    Bodø/Glimt: FK Bodø/Glimt
+    R. Trondheim: Rosenborg BK
+    V. Stavanger: Viking FK
+    L. Oslo: FC Lyn
+    B. Bergen: SK Brann
+    Molde: Molde FK
+    V. Oslo: Vålerenga
+    S. Drammen: Strømsgodset IF
+    Lillestrøm: Lillestrøm SK
+    Aalesund: Aalesunds FK
+    Ham-Kam
+    Alta
+    Bryne
+    Haugesund
+    Hødd
+    Hønefoss
+    Kongsvinger
+    Løv-Ham
+    Moss
+    Notodden
+    Nybergsund
+    O. Grenland: Odd Grenland
+    S. Sarpsborg: Sparta Sarpsborg
+    Sandefjord
+    Sandnes Ulf
+    Start
+    Sogndal
+    Drøbak/Frogn
+    F. Ski: Follo Ski
+    Fredrikstad II
+    Lørenskog
+    M. S. Oslo: Manglerud Star
+    Mjøndalen
+    M. Åmot: Modum FK
+    Raufoss
+    S. Jeløy: Sprint/Jeløy
+    S. II Bærum: Stabæk II
+    Strømmen
+    S. II Drammen: Strømsgodset II
+    V. Fagernes: Valdres
+    Ø. Fredrikstad: Østsiden Fredrikstad
+    B. Trondheim: Byåsen Trondheim
+    Gr. Oslo: Groruddalen Oslo
+    Hemne: KIL/Hemne
+    Kj. Oslo: Kjelsås Oslo
+    Ko. Oslo: Korsvoll Oslo
+    Kristiansund
+    Levanger
+    L. Oslo II: FC Lyn Oslo II
+    Ra. Trondheim: Ranheim Trondheim
+    S. Ålesund: Skarbøvik Ålesund
+    Sk. Oslo: Skeid Oslo
+    Steinkjær
+    Str. Trondheim: Strindheim Trondheim
+    V. Oslo II: Vålerenga II
+    Fa. Bergen: Fana Bergen
+    Flekkerøy
+    Fy. Bergen: Fyllingen Bergen
+    Lillestrøm II
+    Mandal: Mandalskameratene
+    N-S. Ågotnes: Nest-Sotra Ågotnes
+    O. Osøyro: Os Osøyro
+    Randaberg
+    Stavanger: Stavanger IF
+    V. Haugesund: Vard Haugesund
+    V. Stavanger II: Viking II
+    V. Vennesla: Vindbjart Vennesla
+    Ålgård
+    Å. Bergen: Åsane Bergen
+    Asker
+    Bærum
+    Eidsvoll: Eidsvold Turn
+    L. Svolvær: Lofoten Svolvær/Kabelvåg
+    Mo: Mo i Rana
+    P. G. Porsgrunn: Pors Grenland
+    R. Trondheim II: Rosenborg II
+    S. Silsand: FK Senja Silsand
+    Sk. Tromsø: Skarp Tromsø
+    Skjetten
+    Tromsdalen
+    Tromsø II
+    Tønsberg: FK Tønsberg
+    U. K. Jessheim: Ull/Kisa Jessheim
+League: poland
+    W. Kraków: Wisla Kraków
+    P. Warszawa: Polonia Warszawa
+    L. Poznań: Lech Poznan
+    L. Warszawa: Legia Warszawa
+    Bełchatów: GKS Belchatów
+    Ś. Wrocław: Slask Wroclaw
+    R. Chorzów: Ruch Chorzów
+    P. Bytom: Polonia Bytom
+    J. Białystok: Jagiellonia Bialystok
+    A. Gdynia: Arka Gdynia
+    L. Gdańsk: Lechia Gdansk
+    O. Wodzisław: Odra Wodzislaw Slaski
+    P. Gliwice: GKS Piast Gliwice
+    C. Kraków: Cracovia Kraków
+    Łódź: LKS Lódz
+    G. Zabrze: Górnik Zabrze
+    Z. Lubin: Zagłębie Lubin
+    W. Łódź: Widzew Łódź
+    K. Kielce: Korona Kielce
+    P. Bielsko-Biała: Podbeskidzie Bielsko-Biała
+    Z. Pruszków: Znicz Pruszków
+    F. Świnoujście: Flota Świnoujście
+    G. Łęczna: Górnik Łęczna
+    W. Płock: Wisła Płock
+    T. Turek: Tur Turek
+    O. Opole: Odra Opole
+    K. Zabierzów: Kmita Zabierzów
+    Wa. Poznań: Warta Poznań
+    D. Ząbki: Dolcan Ząbki
+    Jastrzębie-Zdrój: GKS Jastrzębie-Zdrój
+    G. Wielkopolski: GKP Gorzów Wielkopolski
+    S. Stalowa Wola: Stal Stalowa Wola
+    M. Lublin: Motor Lublin
+    Katowice: GKS Katowice
+    G. K. Wola: Gawin Królewska Wola
+    Kluczbork: MKS Kluczbork
+    U. Janikowo: Unia Janikowo
+    K. Kołobrzeg: Kotwica Kołobrzeg
+    N. Wągrowiec: Nielba Wągrowiec
+    Tychy: GKS Tychy
+    L. Z. Góra: Lechia Zielona Góra
+    Z. Bydgoszcz: Zawisza Bydgoszcz
+    Chemik P.: Chemik Police
+    J. Jarocin: Jarota Jarocin
+    P. Szczecin: Pogon Szczecin
+    E. Toruń: TKP Elana Toruń
+    V. Koronowo: Victoria Koronowo
+    R. Częstochowa: Raków Częstochowa
+    C. Zagan: Czarni Zagan
+    Z. Sosnowiec: Zaglebie Sosnowiec
+    M. Legnica: Miedź Legnica
+    P. Słubice: Polonia Słubice
+    S. Otwock: Start Otwock
+    G. Wieliczka: Górnik Wieliczka
+    W. Suwałki: Wigry Suwałki
+    K. Stróże: Kolejarz Stróże
+    O. Świętokrzyski: KSZO Ostrowiec Świętokrzyski
+    P. Lowicz: Pelikan Lowicz
+    S. S. A. Łódzki: Sokół Syguła Aleksandrów Łódzki
+    F. R. W. Mazowieckie: Freskovita Ruch Wysokie Mazowieckie
+    S. Nowy Sącz: Sandecja Nowy Sącz
+    P. Wolbrom: Przebój Wolbrom
+    H. Zamość: Hetman Zamość
+    J. Ilawa: Jeziorak Ilawa
+    O. Olsztyn: OKS 1945 Olsztyn
+    C. P. Trybunalski: Concordia Piotrków Trybunalski
+    P. N. Pinczow: Ponidzie Nida Pinczow
+    O. K. Brzesko: Okocimski KS Brzesko
+    Lomza: LKS Lomza
+    S. Poniatowa: Stal Poniatowa
+League: portugal
+    Leixões: Leixões SC
+    B. Lisboa: Benfica
+    Maritimo: CS Marítimo
+    Porto: FC Porto
+    N. da Madeira: CD Nacional
+    S. Lisboa: Sporting CP
+    S. Braga: Sporting Braga
+    Naval
+    E. Amadora: Estrela Amadora
+    V. Guimarães: Vitória Guimarães
+    A. de Coimbra: Académica de Coimbra
+    V. Setúbal: Vitória Setúbal
+    Belenenses
+    Rio Ave: Rio Ave FC
+    Paços Ferreira: FC Paços de Ferreira
+    Trofense: CD Trofense
+    Beira-Mar: SC Beira-Mar
+    Boavista: Boavista FC
+    Estoril: GD Estoril-Praia
+    das Aves: CD das Aves
+    Feirense: CD Feirense
+    Freamunde: SC Freamunde
+    G. Vicente: Gil Vicente FC
+    Gondomar: Gondomar SC
+    Olhanense: SC Olhanense
+    Oliveirense: UD Oliveirense
+    Portimonense: Portimonense SC
+    Santa Clara: CD Santa Clara
+    Covilhã: SC da Covilhã
+    Leiria: UD de Leiria
+    Varzim: Varzim SC
+    Vizela: FC Vizela
+League: russia
+    R. Kazan: FC Rubin Kazan
+    C. Moskva: PFC CSKA Moskva
+    D. Moskva: FC Dinamo Moskva
+    A. Perm: FC Amkar Perm	
+    Z. St. Petersburg: FC Zenit St. Petersburg
+    Sp. Moskva: FC Spartak Moskva
+    K. S. Samara: FC Krylya Sovetov Samara
+    L. Moskva: FC Lokomotiv Moskva
+    F. Moskva: FC Moskva
+    Sp. Nalchik: FC Spartak Nalchik
+    T. Grozny: FC Terek Grozny
+    T. Tomsk: FC Tom Tomsk
+    Sat. Moskva: FC Saturn Moskovskaya Oblast
+    Khimki: FC Khimki
+    L. E. Vladivostok: FC Luch-Energia Vladivostok
+    S. Yaroslavl: FC Shinnik Yaroslavl
+    A. Vladikavkaz: FC Alania Vladikavkaz
+    A. Makhachkala: FC Anzhi Makhachkala
+    B. Kaliningrad: FC Baltika Kaliningrad
+    Chernomorets N.: FC Chernomorets Novorossiysk
+    D. Barnaul: FC Dynamo Barnaul
+    D. Bryansk: FC Dynamo Bryansk
+    K. N. Chelny: FC KAMAZ Naberezhnye Chelny
+    K. Krasnodar: FC Kuban Krasnodar
+    M. Pyatigorsk: FC Mashuk-KMV Pyatigorsk
+    M. Novokuznetsk: FC Metallurg-Kuzbass Novokuznetsk
+    N. Novotroitsk: FC Nosta Novotroitsk
+    Rostov: FC Rostov
+    S. E. Belgorod: FC Salyut-Energia Belgorod
+    S. Novosibirsk: FC Sibir Novosibirsk
+    S. Rostov-on-Don: FC SKA Rostov-on-Don
+    S. E. Khabarovsk: FC SKA-Energia Khabarovsk
+    Spo. Moscow: FC Sportakademklub Moscow
+    Tor. Moscow: FC Torpedo Moscow
+    U. Sverdlovsk: FC Ural Sverdlovsk Oblast
+    V. Podolsk: FC Vityaz Podolsk
+    V. Ulyanovsk: FC Volga Ulyanovsk
+    Z. Irkutsk: FC Zvezda Irkutsk
+League: san_marino
+    Virtus: S.S. Virtus
+    Libertas: SP Libertas
+    La Fiorita: SP La Fiorita
+    Juvenes-Dogana: AC Juvenes-Dogana
+    Tre Penne: SP Tre Penne
+    Domagnano: Domagnano FC
+    Pennarossa: S.S. Pennarossa
+    Tre Fiori: SP Tre Fiori
+    Faetano: SC Faetano
+    Folgore: S.S. Folgore
+    Murata: S.S. Murata
+    Cosmos: S.S. Cosmos
+    Cailungo: SP Cailungo
+    Fiorentino: S.S. Fiorentino
+    San Giovanni: S.S. San Giovanni
 League: scotland
     Aberdeen: Aberdeen FC
-    C. Glasgow: Celtic Glasgow
-    Glasgow R.: Glasgow Rangers
-    Falkirk: Falkirk FC
+    Glasgow C.: Celtic
     Dundee U.: Dundee United
-    Dunfermline: Dunfermline Athletic
-    Edinburgh HM: Hearts Of Midlothian
-    Edinburgh H.: Hibernian FC
-    Inverness: Inverness Caledonian Thistle
+    Falkirk: Falkirk FC
+    Hamilton: Hamilton Accies
+    H. M. Edinburgh: Hearts
+    Hi. Edinburgh: Hibernian
+    Inverness: Inverness CT
     Kilmarnock: Kilmarnock FC
-    Livingston: Livingston FC
     Motherwell: Motherwell FC
+    Glasgow R.: Rangers
+    St Mirren
     Airdrie: Airdrie United
-    Clyde: Clyde Glasgow
+    Clyde
     Dundee: Dundee FC
-    Hamilton: Hamilton Academical
-    Stranraer: Stranraer FC
-    Dumfries: Queen Of The South
-    Brechin: Brechin City
-    Ross County: Ross County FC
-    St Johnstone: Saint Johnstone
-    St Mirren: Saint Mirren
-    Peterhead: Peterhead
-    Ayr: Ayr United
-    Gretna: Gretna
-    Raith: Raith Rovers
-    Dumbarton: Dumbarton
-    Forfar: Forfar Athletic
-    Greenock: Morton
+    Dunfermline: Dunfermline Athletic
+    Livingston: Livingston FC
+    Morton
     Partick: Partick Thistle
-    Stirling: Stirling Albion
+    Queen of S.: Queen of the South
+    Ross C.: Ross County
+    St. Johnstone
     Alloa: Alloa Athletic
+    Arbroath
+    Ayr: Ayr United
+    Brechin: Brechin City
+    East Fife
+    Peterhead
+    Queen’s Park
+    Raith: Raith Rovers
+    Stirling: Stirling Albion
+    Stranraer: Stranraer FC
     Albion: Albion Rovers
-    Cowdenbeath: Cowdenbeath
-    East Fife: East Fife
-    East Stirlingshire: East Stirlingshire
-    Elgin: Elgin City
+    Annan: Annan Athletic
     Berwick: Berwick Rangers
-    Montrose: Montrose
-    Arbroath: Arbroath
-    Stenhousemuir: Stenhousemuir
-    QP Glasgow: Queens Park
+    Cowdenbeath
+    Dumbarton
+    East Stirlingshire
+    Elgin: Elgin City
+    Forfar: Forfar Athletic
+    Montrose
+    Stenhousemuir
+League: scg
+    P. Belgrade: Partizan Beograd
+    C. Z. Belgrade: Crvena Zvezda
+    O. Belgrade: OFK Beograd
+    J. Ivanjica: Javor Ivanjica
+    Jagodina
+    B. Čačak: Borac Čačak
+    H. Kula: Hajduk Kula
+    Č. Belgrade: Čukarički Beograd
+    B. Zrenjanin: Banat Zrenjanin
+    R. Belgrade: Rad Beograd
+    N. Kruševac: Napredak Kruševac
+    V. Novi Sad: Vojvodina Novi Sad
+    Bežanija: FK Bežanija
+    Borča: FK BSK Borča
+    C. Pivara: FK ČSK Pivara
+    D. Vranje: FK Dinamo Vranje
+    H. Beograd: FK Hajduk Beograd
+    Inđija: FK Inđija
+    Kolubara: FK Kolubara
+    M. G. Milanovac: FK Metalac Gornji Milanovac
+    M. Radnik: FK Mladi Radnik
+    M. Apatin: FK Mladost Apatin
+    M. Lučani: FK Mladost Lučani
+    Novi Pazar: FK Novi Pazar
+    Novi Sad: FK Novi Sad
+    Sevojno: FK Sevojno
+    Smederevo: FK Smederevo
+    Srem: FK Srem
+    Voždovac: FK Voždovac
+    Z. Voda: FK Zlatibor Voda
+    B. Dimitrovgrad: FK Balkanski Dimitrovgrad
+    C. Konstantin: FK Car Konstantin
+    D. Leskovac: FK Dubočica Leskovac
+    H. Veljko: FK Hajduk Veljko
+    J. Paraćin: FK Jedinstvo Paraćin
+    K. Brus: FK Kopaonik Brus
+    R. Surdulica: FK Radnik Surdulica
+    R. Niš: FK Radnički Niš
+    R. Pirot: FK Radnički Pirot
+    S. Niš: FK Sinđelić Niš
+    Svrljig: FK Svrljig
+    T. Zaječar: FK Timok Zaječar
+    Topličanin: FK Topličanin
+    V. Vlasotince: FK Vlasina Vlasotince
+    Z. Niš: FK Železničar Niš
+    Z. Aleksandrovac: FK Župa Aleksandrovac
+    B. Beograd: BASK Beograd
+    F. Beograd: FK Beograd
+    Dorćol: FK Dorćol
+    Lisović: FK Lisović
+    O. Mladenovac: OFK Mladenovac
+    P. P. Skela: PKB Padinska Skela
+    Palilulac: FK Palilulac
+    R. Jugopetrol: FK Radnički Jugopetrol
+    R. Obrenovac: FK Radnički Obrenovac
+    Si. Beograd: FK Sinđelić Beograd
+    Sopot: FK Sopot
+    Sr. Beograd: FK Srem Beograd
+    Š. Jagnjilo: FK Šumadija Jagnjilo
+    Teleoptik: FK Teleoptik
+    Zemun: FK Zemun
+    Ž. Beograd: FK Železničar Beograd
+    Bačka: FK Bačka
+    B. B. Bačinci: FK Big Bul Bačinci
+    Kikinda: FK Kikinda
+    M. Futog: FK Metalac Futog
+    M. B. Jarak: FK Mladost Bački Jarak
+    Palić: FK Palić
+    P. Novi Sad: FK Proleter Novi Sad
+    R. Nova Pazova: FK Radnički Nova Pazova
+    R. Sombor: FK Radnički Sombor
+    R. Šid: FK Radnički Šid
+    Senta: FK Senta
+    S. Temerin: FK Sloga Temerin
+    S. Ruma: FK Sloven Ruma
+    S. Debeljača: FK Spartak Debeljača
+    T. Ites: FK Tekstilac Ites
+    Vršac: FK Vršac
+    B. Valjevo: FK Budućnost Valjevo
+    FAP: FK FAP
+    INON: FK INON
+    J. Ub: FK Jedinstvo Ub
+    Loznica: FK Loznica
+    M. Šabac: FK Mačva Šabac
+    M. Kraljevo: FK Metalac Kraljevo
+    R. Kragujevac: FK Radnički Kragujevac
+    R. Stobex: FK Radnički Stobex
+    S. Čačak: FK Sloboda Čačak
+    S. Užice: FK Sloboda Užice
+    S. Kraljevo: FK Sloga Kraljevo
+    S. Požega: FK Sloga Požega
+    S. Petrovac na Mlavi: FK Sloga Petrovac na Mlavi
+    V. Voda: FK Vujić Voda
+    Ž. Lajkovac: FK Železničar Lajkovac
+League: slovakia
+    S. Bratislava: ŠK Slovan Bratislava
+    Žilina: MŠK Žilina
+    S. Trnava: FC Spartak Trnava
+    Košice: MFK Košice
+    Ružomberok: MFK Ružomberok
+    T. Prešov: 1. FC Tatran Prešov
+    D. Streda: DAC 1904 Dunajská Streda
+    Dubnica: MFK Dubnica
+    Nitra: FC Nitra
+    A. Petržalka: FC Artmedia Petržalka
+    D. Banska Bystrica: Dukla Banská Bystrica
+    V. Z. Moravce: FC ViOn Zlaté Moravce
+    D. Streda II: DAC Dunajská Streda II
+    Humenné: 1. HFC Humenné
+    I. Bratislava: FK Inter Bratislava
+    Košice II: MFK Košice II
+    L. Lučenec: FK LAFC Lučenec
+    Prievidza: HFK Prievidza
+    R. Sobota: FC Rimavská Sobota
+    Ružomberok II: MFK Ružomberok II
+    S. Duslo Šaľa: FK Slovan Duslo Šaľa
+    Š. Podbrezová: ŽP ŠPORT Podbrezová
+    A. Trenčín: FK AS Trenčín
+    Z. Michalovce: MFK Zemplín Michalovce
+League: slovenia
+    Maribor: NK Maribor
+    N. Lendava: NK Nafta Lendava
+    Celje: NK Celje
+    I. Ljubljana: NK IB Ljubljana
+    H. Gorica: NK Gorica	
+    B. Domžale: NK Domžale
+    R. Velenje: NK Rudar Velenje
+    Drava: NK Drava
+    P. Ajdovscina: NK Primorje Ajdovscina
+    Koper: NK Koper
+League: spain
+    R. Madrid: Real Madrid
+    Villarreal: Villarreal CF
+    Barcelona: FC Barcelona
+    A. Madrid: Atlético de Madrid
+    Sevilla: Sevilla FC
+    R. Santander: Racing Santander
+    Mallorca: Real Mallorca
+    Almería: UD Almería
+    D. La Coruna: Deportivo de La Coruña
+    Valencia: Valencia CF
+    A. Bilbao: Athletic Club Bilbao
+    E. Barcelona: RCD Espanyol
+    B. Sevilla: Real Betis
+    G. Madrid: Getafe CF
+    Valladolid: Real Valladolid
+    R. Huelva: Recreativo de Huelva
+    Osasuna
+    Numancia: CD Numancia
+    Málaga: Málaga CF
+    S. Gijon: Sporting Gijón
+    Alavés
+    Albacete
+    Alicante
+    Castellón
+    C. Vigo: Celta de Vigo
+    Córdoba
+    Eibar
+    Elche
+    Gimnàstic: Gimnàstic de Tarragona
+    Girona
+    Hércules
+    Huesca
+    Las Palmas
+    L. Valencia: Levante
+    Murcia
+    R. V. Madrid: Rayo Vallecano
+    R. Sociedad: Real Sociedad
+    Salamanca
+    Sevilla A.: Sevilla Atlético
+    Tenerife
+    Xerez
+    Zaragoza: Real Zaragoza
+    Barakaldo
+    Bilbao A.: Bilbao Athletic
+    C. Vigo B: Celta de Vigo B
+    C. Santiago: Ciudad Santiago
+    C. Leonesa: Cultural Leonesa
+    D. La Coruna B: Deportivo B
+    Guijuelo
+    Lemona
+    Lugo
+    Marino
+    Ponferradina
+    Pontevedra
+    R. Santander B: Racing Santander B
+    R. Ferrol: Racing Ferrol
+    Sestao
+    S. Gijon B: Sporting Gijon B
+    R. Sociedad B: Real Sociedad B
+    R. Unión: Real Unión
+    Valladolid B
+    Zamora
+    Águilas
+    Alcorcón
+    Alfaro
+    A. Madrid B: Atlético de Madrid B
+    Cartagena
+    Castilla
+    Atl. Ciudad
+    Fuerteventura
+    Las Palmas A.: Las Palmas Atl.
+    Lanzarote
+    Leganés
+    Lorca D.: Lorca Dptva
+    Mérida
+    Murcia I.: Murcia Imp.
+    Navalcarnero
+    P. Playas
+    Sangonera A.: Sangonera Atl.
+    U. Las Palmas: Univ. Las Palmas
+    Vecindario
+    V.S. Brígida
+    Alcoyano
+    Alzira
+    A. Baleares: Atl. Baleares
+    Badalona
+    Barcelona A.: Barcelona Atlètic
+    Benidorm
+    Dénia
+    Eivissa-Ibiza
+    Gavà
+    Gramenet
+    Lleida
+    Ontinyent
+    Orihuela
+    Osasuna B
+    Sabadell
+    S. Eulalia: Santa Eulalia
+    S. Andreu: Sant Andreu
+    Terrassa
+    Valencia M.: Valencia Mestalla
+    Villarreal B
+    Antequera
+    Cádiz
+    Ceuta
+    Conquense
+    Écija
+    Granada
+    Granada 74
+    Guadalajara
+    Linares
+    Linense
+    Lucena
+    Marbella
+    Melilla
+    Poli Ejido
+    Portuense
+    Puertollano
+    B. Sevilla B: Real Betis B
+    Jaén: Real Jaén
+    Roquetas
+    San Fernando
+League: sweden
+    Kalmar: Kalmar FF	
+    Elfsborg: IF Elfsborg
+    I. Göteborg: IFK Göteborg
+    Helsingborg: Helsingborgs IF
+    A. Solna: AIK
+    Malmö: Malmö FF
+    Örebro: Örebro SK
+    Halmstad: Halmstads BK
+    H. Stockholm: Hammarby IF
+    Trelleborg: Trelleborgs FF
+    G. Göteborg: GAIS	
+    D. Stockholm: Djurgårdens IF
+    Gefle: Gefle IF
+    Ljungskile: Ljungskile SK
+    Sundsvall: GIF Sundsvall
+    Norrköping: IFK Norrköping
+    Assyriska: Assyriska Föreningen
+    Brommapojkarna: IF Brommapojkarna
+    Bunkeflo: Bunkeflo IF
+    Degerfors: Degerfors IF
+    Enköping: Enköpings SK
+    Falkenberg: Falkenbergs FF
+    Häcken: BK Häcken
+    Jönköping: Jönköpings Södra IF
+    Landskrona: Landskrona BoIS
+    Mjällby: Mjällby AIF
+    Qviding: Qviding FIF
+    Sirius: IK Sirius
+    Väsby: Väsby United
+    Åtvidaberg: Åtvidabergs FF
+    Ängelholm: Ängelholms FF
+    Örgryte: Örgryte IS
+    Arameiska/S.: Arameiska/Syrianska KIF
+    Boden: Bodens BK
+    Brage: IK Brage
+    Ersboda: Ersboda SK
+    Falu: Falu FK
+    Forward: BK Forward
+    Gröndal: Gröndals IK
+    Sylvia: IF Sylvia
+    Syrianska: Syrianska FC
+    Umeå: Umeå FC
+    V. Syrianska: Valsta Syrianska IK
+    Vasalund/Essinge: Vasalund/Essinge IF
+    Västerås: Västerås SK
+    Östersund: Östersunds FK
+    Karlstad U.: Karlstad United BK
+    Husqvarna: Husqvarna FF
+    Lindome: Lindome GIF
+    I. Malmö: IFK Malmö
+    Malmö A.: Malmö Anadolu BI
+    Motala: Motala AIF
+    Norrby: Norrby IF
+    Skärhamn: Skärhamns IK
+    Skövde: Skövde AIK
+    Torslanda: Torslanda IK
+    Trollhättan: FC Trollhättan
+    Värnamo: IFK Värnamo
+    V. F. Göteborg: Västra Frölunda IF
+    Öster: Östers IF
+    Anundsjö: Anundsjö IF
+    Friska Viljor: Friska Viljor FC
+    Holmsund: IFK Holmsund
+    Infjärden: Infjärdens SK
+    Kiruna: Kiruna FF
+    Luleå: IFK Luleå
+    Mariehem: Mariehems SK
+    Piteå: Piteå IF
+    Robertsfors: Robertsfors IK
+    Skellefteå: Skellefteå FF
+    Timrå: IFK Timrå
+    Umedalen: Umedalens IF
+    Akropolis: Akropolis IF
+    Enskede: Enskede IK
+    I. Eskilstuna: IFK Eskilstuna
+    Eskilstuna C.: Eskilstuna City FK
+    Hammarby T.: Hammarby TFF
+    Karlskoga: KB Karlskoga
+    Karlslund: Karlslunds IF HF
+    Panellinios: Panellinios IF
+    Rynninge: Rynninge IK
+    Visby I.: Visby IF Gute
+    Värmbol: Värmbols FC
+    Älvsjö: Älvsjö AIK
+    Ahlafors: Ahlafors IF
+    Annelund: Annelunds IF
+    Fässberg: Fässbergs IF
+    Gunnilse: Gunnilse IS
+    Jonsered: Jonsereds IF
+    Kinna: Kinna IF
+    Laholm: Laholms FK
+    Lärje-Angered: Lärje/Angereds IF
+    Mellerud: Melleruds IF
+    Oddevold: IK Oddevold
+    Utsikten: Utsikten BK
+    Varberg: Varbergs BoIS
+    Brynäs: Brynäs IF
+    Grönaberg: Grönabergs IF
+    Frej: IK Frej
+    Heby: Heby AIF
+    Hudiksvall: Hudiksvalls ABK
+    Råsunda: Råsunda IS
+    Sandviken: Sandvikens IF
+    Skiljebo: Skiljebo SK
+    Sollentuna U.: Sollentuna United
+    Söderhamn: Söderhamns FF
+    Vallentuna: Vallentuna BK
+    Västerås I.: Västerås IK
+    Kenty: BK Kenty
+    Lindsdal: Lindsdals IF
+    Lindö: Lindö FF
+    Linköping: Linköpings FF
+    Ljungby: Ljungby IF
+    Myresjö: Myresjö IF
+    Nybro: Nybro IF
+    Nyköping: Nyköpings BIS
+    Sleipner: IK Sleipner
+    Smedby: Smedby AIS
+    Tenhult: Tenhults IF
+    Tord: IK Tord
+    Asmundtorp: Asmundtorps IF
+    Helsingborg S.: Helsingborgs Södra BIS
+    Hässleholm: IFK Hässleholm
+    Högaborg: Högaborgs BK
+    Höllviken: Höllvikens GIF
+    Karlskrona: Karlskrona AIF
+    Klagshamn: IFK Klagshamn
+    Kristianstad: Kristianstads FF
+    Lund: Lunds BK
+    Markaryd: Markaryds IF
+    N. Lomma: GIF Nike Lomma
+    Sölvesborg: Sölvesborgs GoIF
+League: switzerland
+    Y. B. Bern: BSC Young Boys
+    Aarau: FC Aarau
+    Basel: FC Basel
+    Lucerne: FC Luzern
+    Sion: FC Sion
+    Vaduz: FC Vaduz
+    Bellinzona: AC Bellinzona
+    Zürich: FC Zürich
+    G. Zürich: Grasshopper-Club Zürich
+    Neuchâtel X.: Neuchâtel Xamax
+    Biel: FC Biel/Bienne
+    La Chaux-de-Fonds: FC La Chaux-de-Fonds
+    C. Basel: FC Concordia Basel
+    Gossau: FC Gossau
+    Lausanne: FC Lausanne-Sport
+    Locarno: FC Locarno
+    Lugano: AC Lugano
+    St. Gallen: FC St. Gallen
+    Schaffhausen: FC Schaffhausen
+    S. Geneve: Servette FC Geneve
+    Nyon: FC Stade Nyonnais
+    Thun: FC Thun
+    Wil: FC Wil 1900
+    Winterthur: FC Winterthur
+    Wohlen: FC Wohlen
+    Yverdon: FC Yverdon-Sport
+League: turkey
+    Trabzonspor
+    Ankaraspor: Ankaraspor AS
+    Sivasspor
+    Beşiktaş: Beşiktaş JK
+    Galatasaray: Galatasaray AŞ
+    Kayserispor
+    Bursaspor
+    Gaziantepspor
+    Fenerbahçe: Fenerbahçe SK
+    Eskisehirspor
+    Konyaspor
+    Gençlerbirliği: Gençlerbirliği SK
+    Istanbul BB SK
+    Hacettepe SK
+    Denizlispor
+    Ankaragücü: MKE Ankaragücü
+    Antalyaspor
+    Kocaelispor
+    Adanaspor
+    Altay: Altay S.K.
+    Boluspor
+    Rizespor: Çaykur Rizespor
+    Diyarbakirspor
+    Gaziantep: Gaziantep B.B.K.
+    Giresunspor
+    Güngören B.: Güngören Bs. İstanbul
+    Karabükspor: Kardemir Karabükspor
+    Karsiyaka: Karşıyaka S.K. İzmir
+    Kartal: Kartal S.K. Istanbul
+    Kasimpasa: Kasımpaşa S.K. Istanbul
+    Erciyesspor: Kayseri Erciyesspor
+    Malatyaspor: Malatya S.K.
+    Manisaspor
+    Orduspor
+    Sakaryaspor
+    Samsunspor
+League: ukraine
+    D. Kyiv: FC Dynamo Kyiv
+    M. Kharkiv: FC Metalist Kharkiv
+    M. Donetsk: FC Metalurh Donetsk
+    V. Poltava: FC Vorskla Poltava
+    M. Zaporizhya: FC Metalurh Zaporizhya
+    D. Dnipropetrovsk: FC Dnipro Dnipropetrovsk
+    S. Donetsk: FC Shakhtar Donetsk
+    Z. Luhansk: FC Zorya Luhansk
+    C. Odesa: FC Chornomorets Odesa
+    K. Kryvyi Rih: FC Kryvbas Kryvyi Rih
+    K. Lviv: FC Karpaty Lviv
+    I. Mariupil: FC Illychivets Mariupil
+    A. Kyiv: FC Arsenal Kyiv
+    T. Simferopol: SC Tavriya Simferopol
+    Lviv: FC Lviv
+    Kharkiv: FC Kharkiv
+    D. Chernihiv: Desna Chernihiv
+    D. Ovidiopol: Dniester Ovidiopol
+    D. Kyiv II: Dynamo Kyiv II
+    E. Burshtyn: Enerhetyk Burshtyn
+    F. I. Kalinine: Feniks-Illichivets Kalinine
+    H. Kharkiv: Helios Kharkiv
+    I. Simferopol: Ihroservice Simferopol
+    K. Schaslyve: Knyazha Schaslyve
+    K. Molodizhne: Krymteplitsia Molodizhne
+    N. U. Okhtyrka: Naftovyk-Ukrnafta Okhtyrka
+    O. Kyiv: Obolon Kyiv
+    Oleksandria: PFC Oleksandria
+    P. Ivano-Frankivsk: Prykarpattya Ivano-Frankivsk
+    S. Alchevsk: Stal Alchevsk
+    V. Lutsk: Volyn Lutsk
+    Z. Uzhhorod: Zakarpattia Uzhhorod
+    Sevastopol: PFC Sevastopol
+League: wales
+    Llanelli: Llanelli AFC
+    Rhyl: Rhyl FC
+    New S.: The New Saints FC
+    Bangor: Bangor City FC
+    Haverfordwest: Haverfordwest County AFC
+    Carmarthen: Carmarthen Town AFC
+    Aberystwyth: Aberystwyth Town FC
+    Connah's Quay: Connah's Quay Nomads FC
+    Prestatyn: Prestatyn Town FC
+    Caersws: Caersws FC
+    Port Talbot: Port Talbot Town FC
+    Newtown: Newtown AFC
+    A. U. Broughton: Airbus UK FC
+    Porthmadog: Porthmadog FC
+    Neath: Neath Athletic AFC
+    Newi Cefn: Newi Cefn Druids AFC
+    Welshpool: Welshpool Town FC
+    Caernarfon: Caernarfon Town FC
+    Afan Lido
+    Barry: Barry Town
+    Bettws
+    Bridgend: Bridgend Town
+    Bryntirion: Bryntirion Athletic
+    Caerleon
+    Caldicot: Caldicot Town
+    Cardiff Co.: Cardiff Corinthians
+    Cambrian and Clydach
+    Croesyceiliog
+    Cwmbran: Cwmbran Town
+    Dinas Powys
+    E. Aberaman: ENTO Aberaman Athletic
+    Goytre: Goytre United
+    Newport: Newport YMCA
+    Pontardawe: Pontardawe Town
+    Taff's Well
+    Ton Pentre
+    Bala: Bala Town
+    Buckley: Buckley Town
+    Denbigh: Denbigh Town
+    Flint: Flint Town United
+    Glantraeth
+    Gresford: Gresford Athletic
+    Guilsfield
+    Holyhead: Holyhead Hotspur
+    Lex XI
+    Llandudno: Llandudno Town
+    Llandyrnog: Llandyrnog United
+    Llanfairpwll
+    Llangefni: Llangefni Town
+    Mold A.: Mold Alexandra
+    Mynydd I.: Mynydd Isa
+    Penrhyncoch
+    Ruthin: Ruthin Town
 League: brazil
     B. Rio de Janeiro: Botafogo-RJ
     Flu. Rio de Janeiro:  Fluminense-RJ
@@ -349,31 +2111,6 @@ League: brazil
     N. Recife: Náutico
     G. Campinas: Guarani
     H.A. Rio Grande do Sul: Hermann Ainchinger-SC
-League: poland
-    Wisła K.: Wisła Kraków
-    Legia: Legia Warszawa
-    Grodzisk Wlkp.: Dyskobolia Grodzisk Wlkp.
-    Amica: Amica Wronki
-    Wisła P.: Wisła Płock
-    Górnik Z.: Górnik Zabrze
-    Lubin: Zagłębie Lubin
-    Polonia W.: Polonia Warszawa
-    Łęczna: Górnik Łęczna
-    Pogoń: Pogoń Szczecin
-    Wodzisław: Odra Wodzisław
-    Arka G.: Arka Gdynia
-    Korona K.: Korona Kielce
-    Bełchatów: GKS Bełchatów
-    Lech: Lech Poznań
-    Widzew: Widzew Łódź
-    Kujawiak: Kujawiak Włocławek
-    Ostrowiec: KSZO Ostrowiec
-    Nowy Dwór: Świt Nowy Dwór
-    J. Białystok: Jagiellonia Białystok
-    Ruch Ch.: Ruch Chorzów
-    Radomiak: Radomiak Radom
-    Śląsk W.: Śląsk Wrocław
-    ŁKS: ŁKS Łódź
 League: australia
     Adelaide U: Adelaide United
     Central Coast M: Central Coast Mariners
@@ -461,14 +2198,3 @@ League: aus_victoria
     Caulfield U: Caulfield Utd
     Dandenong S: Dandenong Sparrows
     Scotch O B: Scotch Old Boys
-League: spain
-    A. Madrid: Atheltico Madrid
-    A. Bilbao: Athletic Bilbao
-    B. Sevilla: Betis Sevilla
-    C. Vigo: Celta Vigo
-    La Coruña: Deportivo La Coruña
-    E. Barcelona: Español Barcelona
-    R. Madrid: Real Madrid
-    R. Sociedad: Real Sociedad
-    R. Santander: Racing Santander
-    Zaragoza: Real Zaragoza
