@@ -226,10 +226,10 @@ League: cyprus
     C. Idaliou: Chalkanoras Idaliou
     M. Nisou: MEAP Nisou
     N. Salamis: Nea Salamis
-    Olympiakos
+    Olympiakos: Olympiakos
     Omonia A.: Omonia Aradippou
     O. Sotira: Onisilos Sotira
-    PAEEK
+    PAEEK: PAEEK
 League: czech
     Sl. Praha: Slavia Praha
     B. Ostrava: Baník Ostrava
@@ -258,7 +258,7 @@ League: denmark
     Aalborg: AaB
     Horsens: AC Horsens	
     Vejle: Vejle Boldklub	
-    SønderjyskE
+    SønderjyskE: SønderjyskE
     Esbjerg: Esbjerg fB
     A. Copenhagen: AB Copenhagen
     Amager: FC Amager
@@ -287,9 +287,9 @@ League: england
     F. London: Fulham
     Hull: Hull City
     Manchester C.: Manchester City
-    Middlesbrough
+    Middlesbrough: Middlesbrough
     Newcastle: Newcastle United
-    Portsmouth
+    Portsmouth: Portsmouth
     Stoke: Stoke City
     Sunderland: AFC Sunderland
     T. London: Tottenham Hotspur
@@ -298,9 +298,9 @@ League: england
     Wigan: Wigan Athletic
     Wolverhampton: Wolverhampton Wanderers 
     Birmingham: Birmingham City
-    Reading 
+    Reading : Reading FC
     Sheffield U.: Sheffield Utd 
-    Burnley 
+    Burnley : Burnley FC
     Cardiff: Cardiff City 
     Plymouth: Plymouth Argyle
     Ipswich: Ipswich Town 
@@ -312,24 +312,24 @@ League: england
     C. P. London: Crystal Palace 
     Coventry: Coventry City 
     Sheffield W.: Sheffield Wednesday
-    Barnsley 
-    Blackpool
+    Barnsley: Barnsley FC
+    Blackpool: Blackpool FC
     Norwich: Norwich City 
-    Southampton 
-    Watford 
+    Southampton: Southampton FC
+    Watford: Watford
     Charlton: Charlton Athletic
     Doncaster: Doncaster Rovers
     Nottingham: Nottingham Forest
     Leicester: Leicester City 
     Milton Keynes: MK Dons 
     Scunthorpe: Scunthorpe United
-    Millwall 
+    Millwall: Millwall FC
     Peterborough: Peterborough United
     Leeds: Leeds United 
     Oldham: Oldham Athletic
     Stockport: Stockport County
     Southend: Southend United
-    Walsall 
+    Walsall: Walsall FC
     Tranmere: Tranmere Rovers
     Hartlepool: Hartlepool United
     Huddersfield: Huddersfield Town
@@ -345,53 +345,53 @@ League: england
     Cheltenham: Cheltenham Town
     Crewe: Crewe Alexandra
     Wycombe: Wycombe Wanderers
-    Darlington 
-    Rochdale 
+    Darlington: Darlington FC
+    Rochdale: Rochdale
     Bradford: Bradford City 
     Shrewsbury: Shrewsbury Town
-    Bury 
-    Brentford
+    Bury: Bury
+    Brentford: Brentford FC
     Exeter: Exeter City 
-    Dagenham and R.: Dagenham and Red
-    Gillingham 
+    Dagenham and R.: Dagenham and Redbridge
+    Gillingham: Gillingham
     Aldershot: Aldershot Town 
-    Chesterfield 
+    Chesterfield: Chesterfield FC
     Lincoln: Lincoln City 
     Accrington: Accrington Stanley
     P. V. Stoke: Port Vale 
     Notts C: Notts County
-    Morecambe 
+    Morecambe: Morecambe
     Macclesfield: Macclesfield Town
     Chester: Chester City 
-    Barnet 
+    Barnet: Barnet FC
     Grimsby: Grimsby Town
     Rotherham: Rotherham United
-    Bournemouth
+    Bournemouth: AFC Bournemouth
     Luton: Luton Town
-    Histon
+    Histon: Histon
     Burton: Burton Albion 
     Torquay: Torquay United
     Kidderminster: Kidderminster Harriers 
     Cambridge: Cambridge United
     Kettering: Kettering Town
     Crawley: Crawley Town
-    Wrexham 
-    Weymouth 
+    Wrexham: Wrexham AFC
+    Weymouth: Weymouth
     Rushden and D.: Rushden and Diamonds 
-    Altrincham 
+    Altrincham: Altrincham
     Stevenage B.: Stevenage Borough 
     Ebbsfleet: Ebbsfleet United
     Salisbury: Salisbury City 
-    Barrow 
+    Barrow: Barrow
     York: York City 
     Oxford: Oxford United 
     Eastbourne: Eastbourne Borough
     Mansfield: Mansfield Town 
-    Woking 
+    Woking: Woking
     Forest Green: Forest Green Rovers
     Northwich: Northwich Victoria 
     Grays: Grays Athletic 
-    Lewes
+    Lewes: Lewes
 League: estonia
     L. Tallinn: FC Levadia Tallinn
     F. Tallinn: FC Flora Tallinn
@@ -410,9 +410,9 @@ League: estonia
     A. Lasnamäe: FC Lasnamäe Ajax
     L. Tallinn II: FC Levadia Tallinn II
     M. T. Tartu II: JK Maag Tammeka Tartu II
-    Tamme Auto
+    Tamme Auto: Tamme Auto
     T. Tallinn II: FC TVMK Tallinn II
-    Warrior
+    Warrior: Warrior
 League: fyr_macedonia
     Ma. Skopje: FK Makedonija GP Skopje
     V. Skopje: FK Vardar Skopje
@@ -430,7 +430,7 @@ League: faroe_islands
     H. Tórshavn: HB Tórshavn
     B. Tórshavn: B36 Tórshavn
     N. Runavík: NSÍ Runavík
-    Vikingur
+    Vikingur: Vikingur
     B. Toftir: B68 Toftir
     Fuglafjørdur: ÍF Fuglafjørdur
     K. Klaksvík: KÍ Klaksvík
@@ -469,13 +469,13 @@ League: finland
     G. Helsinki: Gnistan
     I. Helsinki: HIFK
     H. Hyrylä: HyPS
-    FCJ
+    FCJ: FCJ
     Kl. Helsinki: Klubi 04
     Kon. Helsinki: FC Kontu
     Kuusankoski: FC Kuusankoski
     K. Kotka: KTP
     K-Uusimaa: PK K-Uusimaa
-    LPS
+    LPS: LPS
     Mikkeli: MP
     R. Kotka: Rakuunat
     Warkaus: Warkaus JK
@@ -483,7 +483,7 @@ League: finland
     Espoo: FC Espoo
     Forssa: FJK
     H. Äänekoski: Huima
-    IFFK
+    IFFK: IFFK
     I. Tampere: Ilves
     Kaarina: KaaPo
     Lohja: LoPa
@@ -494,19 +494,19 @@ League: finland
     S. Turku: Sinimustat
     I. Åbo: ÅIFK
     G. Kokkola: GBK
-    JBK
+    JBK: JBK
     K. Kuopio: Kings
     Kiisto: FC Kiisto
     Närpes K.: Närpes Kraft
     Norrvalla: Norrvalla FF
     OL. Oulu: OLS
-    OPA
+    OPA: OPA
     OP. Oulu: OPS-jp
-    PK-37
-    SJK
-    TUS
+    PK-37: PK-37
+    SJK: SJK
+    TUS: TUS
     V-j. Vaasa: VPS-j
-    YPA
+    YPA: YPA
 League: france
     Auxerre: AJ Auxerre
     Bordeaux: Girondins de Bordeaux
@@ -545,9 +545,9 @@ League: france
     Reims: Stade de Reims
     Sedan: Club Sportif Sedan-Ardennes
     Strasbourg: RC Strasbourg
-    Tours FC
-    Troyes
-    Vannes OC
+    Tours: Tours FC
+    Troyes: Troyes
+    Vannes: Vannes OC
     Arles: AC Arles
     Bayonne: Aviron Bayonnais FC
     Beauvais: AS Beauvais Oise
@@ -565,7 +565,7 @@ League: france
     Louhans-Cuiseaux: CS Louhans-Cuiseaux
     Niort: Chamois Niortais FC
     Pacy-sur-Eure: Pacy Vallée d Eure
-    Paris FC
+    Paris FC: Paris FC
     Rodez: Rodez AF
     Sète: FC Sète 34
     Auxerre B: AJ Auxerre B
@@ -588,7 +588,7 @@ League: france
     Vesoul: Vesoul Haute Saône
     Agde: RCO Agde
     Andrézieux: ASF Andrézieux
-    CA Bastia
+    C. Bastia: CA Bastia
     Fréjus: ES Fréjus
     Gap: Gap FC
     Gazélec: Gazélec FCO Ajaccio
@@ -769,17 +769,17 @@ League: greece
     S. Xanthi: Skoda Xanthi
     P. Athena: Panathinaikos
     A. Athena: AEK Athinai
-    Ergotelis
+    Ergotelis: Ergotelis
     A. Thessaloniki: Aris
-    Larissa
-    Levadiakos
-    Panthrakikos
+    Larissa: Larissa
+    Levadiakos: Levadiakos
+    Panthrakikos: Panthrakikos
     I. Thessaloniki: Iraklis
-    Panionios
+    Panionios: Panionios
     A. Tripolis: Asteras Tripolis
-    Panserraikos
-    Thrasivoulos
-    OFI
+    Panserraikos: Panserraikos
+    Thrasivoulos: Thrasivoulos
+    OFI: OFI
     A. Asteras: Agrotikos Asteras
     A. Karditsa: Anagennisi Karditsa
     A. Kalamaria: Apollon Kalamaria
@@ -789,15 +789,15 @@ League: greece
     E. Piraeus: Ethnikos Piraeus
     I. Zografou: Ilisiakos
     I. Nikaias: Ionikos
-    Kalamata
-    Kallithea
-    Kastoria
+    Kalamata: Kalamata
+    Kallithea: Kallithea
+    Kastoria: Kastoria
     Kavala: Kavala FC
-    Kerkyra
+    Kerkyra: Kerkyra
     O.Volou: Olympiakos Volos
     P. Giannina: PAS Giannina
     P. Katerini: Pierikos
-    Veria
+    Veria: Veria
 League: hungary
     M. H. Budapest: MTK Hungária FC Budapest
     H. Budapest: Budapest Honvéd FC
@@ -844,54 +844,54 @@ League: hungary
     Makó: Makói FC
     M. Budapest II: MTK Hungária II Budapest
     Szolnok: Szolnoki MÁV FC
-    Tököl:Tököl KSK
+    Tököl: Tököl KSK
     Vác: Vác-Újbuda LTC
     Vecsés: Vecsési FC
 League: iceland
     Hafnarfjördur: FH Hafnarfjördur
-    Keflavík
+    Keflavík: Keflavík
     Fr. Reykjavík: Fram Reykjavík
     K. Reykjavík: KR Reykjavík
     V. Reykjavík: Valur Reykjavík
-    Fjölnir
-    Grindavík
-    Breidablik
+    Fjölnir: Fjölnir
+    Grindavík: Grindavík
+    Breidablik: Breiðablik
     Fy. Reykjavik: Fylkir	
     T. Reykjavík: Thróttur Reykjavík
     Kópavogs: HK Kópavogs
     Akranes: ÍA Akranes
-    Haukar
+    Haukar: Haukar
     Vestmannaeyjar: ÍBV Vestmannaeyjar
     K. Akureyri: KA Akureyri
     Fjarðabyggð: KF Fjarðabyggð
     Leiftur: KS/Leiftur
     Le. Reykjavík: Leiknir Reykjavík
-    Njarðvík
-    Selfoss
-    Stjarnan
+    Njarðvík: Njarðvík
+    Selfoss: Selfoss
+    Stjarnan: Stjarnan
     V. Ólafsvík: Víkingur Ólafsvík
     Ví. Reykjavík: Víkingur Reykjavík
     Þ. Akureyri: Þór Akureyri
 League: ireland
-    Bohemians	
-    St. P. Dublin: St. Patrick's Athletic	
-    Derry: Derry City	
-    Sligo: Sligo Rovers	
-    Cork: Cork City	
-    Drogheda: Drogheda United	
-    Bray: Bray Wanderers	
-    Shamrock R.: Shamrock Rovers	
+    Bohemians: Bohemians
+    St. P. Dublin: St. Patrick's Athletic
+    Derry: Derry City
+    Sligo: Sligo Rovers
+    Cork: Cork City
+    Drogheda: Drogheda United
+    Bray: Bray Wanderers
+    Shamrock R.: Shamrock Rovers
     Galway: Galway United
-    Finn H.: Finn Harps	
-    Cobh R.: Cobh Ramblers	
-    U.C.D.: UCD	
+    Finn H.: Finn Harps
+    Cobh R.: Cobh Ramblers
+    U.C.D.: UCD
     Athlone: Athlone Town
-    Dundalk
+    Dundalk: Dundalk
     Kildare: Kildare County
     Limerick: Limerick 37
     Longford: Longford Town
     Monaghan: Monaghan United
-    Shelbourne
+    Shelbourne: Shelbourne
     S. Fingal: Sporting Fingal
     Waterford: Waterford United
     Wexford Y.: Wexford Youths
@@ -963,7 +963,7 @@ League: italy
     Treviso: FBC Treviso
     Triestina: US Triestina Calcio
     Vicenza: Vicenza Calcio
-    Pro Patria
+    Pro Patria: Pro Patria
     SPAL: SPAL 1907
     Padova: Calcio Padova
     Novara: Novara Calcio
@@ -1163,7 +1163,7 @@ League: netherlands
     Den Haag: ADO Den Haag
     V. Arnhem: Vitesse
     R. Kerkrade: Roda JC
-    De Graafschap
+    De Graafschap: De Graafschap
     Volendam: FC Volendam
     Venlo: VVV-Venlo
     Excelsior: Excelsior
@@ -1178,69 +1178,69 @@ League: netherlands
     Roosendaal: RBC Roosendaal
     Veendam: BV Veendam
     G. A. Eagles: Go Ahead Eagles
-    Telstar
+    Telstar: Telstar
     Eindhoven: FC Eindhoven
     T. Oss: TOP Oss
     Emmen: FC Emmen
     F. Sittard: Fortuna Sittard
     Dordrecht: FC Dordrecht
     F. Omniworld: FC Omniworld
-    ADO '20
-    AFC
+    ADO '20: ADO '20
+    AFC: AFC
     Argon: SV Argon
-    DWV
+    DWV: DWV
     Elinkwijk: USV Elinkwijk
-    Haaglandia
-    HBS
+    Haaglandia: Haaglandia
+    HBS: HBS
     Hilversum: Hilversum FC
     Hollandia: HVV Hollandia
     Omniworld Am.: FC Omniworld Amateurs
     T. Amsterdam: Turkiyemspor Amsterdam FC
-    VUC
-    VVSB
+    VUC: VUC
+    VVSB; VVSB
     Westlandia: RKVV Westlandia
-    Baronie
-    DESK
+    Baronie: Baronie
+    DESK: DESK
     Deurne: SV Deurne
     Dijkse B.: Dijkse Boys
-    EVV
+    EVV: EVV
     Cuijk: JVC Cuijk
-    Gemert
-    Longa
+    Gemert: Gemert
+    Longa: Longa
     Meerssen: SV Meerssen
     Rosmalen: OJC Rosmalen
-    Papendrecht
+    Papendrecht: Papendrecht
     Schijndel: RKSV Schijndel
-    UNA
+    UNA: UNA
     Venray: SV Venray
-    Achilles '29
-    Alcides
+    Achilles '29: Achilles '29
+    Alcides: Alcides
     Babberich: RKSV Babberich
-    De Bataven
+    De Bataven: De Bataven
     B. Quick: Be Quick 1887
-    Germania
-    HSC '21
+    Germania: Germania
+    HSC '21: HSC '21
     Joure: SC Joure
     Lienden: FC Lienden
-    Quick '20
+    Quick '20: Quick '20
     Sneek: Sneek Wit Zwart
-    De Treffers
-    WKE
-    WSV
+    De Treffers: De Treffers
+    WKE: WKE
+    WSV: WSV
 League: n_ireland
     Ballymena: Ballymena United
-    Bangor
-    Cliftonville
-    Coleraine
-    Crusaders
+    Bangor: Bangor
+    Cliftonville: Cliftonville
+    Coleraine: Coleraine
+    Crusaders: Crusaders
     Dungannon: Dungannon Swifts
-    Glenavon
-    Glentoran
-    Institute
-    Linfield
+    Glenavon: Glenavon
+    Glentoran: Glentoran
+    Institute: Institute
+    Linfield: Linfield
     Lisburn D.: Lisburn Distillery
     Newry C.: Newry City
-    Ards
+    Ards: Ards
     Armagh: Armagh City
     Ballinamallard: Ballinamallard United
     Ballyclare: Ballyclare Comrades
@@ -1248,14 +1248,14 @@ League: n_ireland
     Banbridge: Banbridge Town
     Carrick: Carrick Rangers
     Coagh: Coagh United
-    Dergview
+    Dergview: Dergview
     Donegal: Donegal Celtic
     Glebe: Glebe Rangers
     Killymoon: Killymoon Rangers
-    Larne
+    Larne: Larne
     Limavady: Limavady United
-    Loughgall
-    Portadown
+    Loughgall: Loughgall
+    Portadown: Portadown
     Tobermore: Tobermore United
 League: norway
     S. Bærum: Stabæk
@@ -1271,35 +1271,35 @@ League: norway
     S. Drammen: Strømsgodset IF
     Lillestrøm: Lillestrøm SK
     Aalesund: Aalesunds FK
-    Ham-Kam
-    Alta
-    Bryne
-    Haugesund
-    Hødd
-    Hønefoss
-    Kongsvinger
-    Løv-Ham
-    Moss
-    Notodden
-    Nybergsund
+    Ham-Kam: Ham-Kam
+    Alta: Alta
+    Bryne: Bryne
+    Haugesund: Haugesund
+    Hødd: Hødd
+    Hønefoss: Hønefoss
+    Kongsvinger: Kongsvinger
+    Løv-Ham: Løv-Ham
+    Moss: Moss
+    Notodden: Notodden
+    Nybergsund: Nybergsund
     O. Grenland: Odd Grenland
     S. Sarpsborg: Sparta Sarpsborg
-    Sandefjord
-    Sandnes Ulf
-    Start
-    Sogndal
-    Drøbak/Frogn
+    Sandefjord: Sandefjord
+    Sandnes Ulf: Sandnes Ulf
+    Start: Start
+    Sogndal: Sogndal
+    Drøbak/Frogn: Drøbak/Frogn
     F. Ski: Follo Ski
-    Fredrikstad II
-    Lørenskog
+    Fredrikstad II: Fredrikstad FK II
+    Lørenskog: Lørenskog
     M. S. Oslo: Manglerud Star
-    Mjøndalen
+    Mjøndalen: Mjøndalen
     M. Åmot: Modum FK
-    Raufoss
+    Raufoss: Raufoss
     S. Jeløy: Sprint/Jeløy
     S. II Bærum: Stabæk II
-    Strømmen
-    S. II Drammen: Strømsgodset II
+    Strømmen: Strømmen
+    S. II Drammen: Strømsgodset IF II
     V. Fagernes: Valdres
     Ø. Fredrikstad: Østsiden Fredrikstad
     B. Trondheim: Byåsen Trondheim
@@ -1307,41 +1307,41 @@ League: norway
     Hemne: KIL/Hemne
     Kj. Oslo: Kjelsås Oslo
     Ko. Oslo: Korsvoll Oslo
-    Kristiansund
-    Levanger
+    Kristiansund: Kristiansund
+    Levanger: Levanger
     L. Oslo II: FC Lyn Oslo II
     Ra. Trondheim: Ranheim Trondheim
     S. Ålesund: Skarbøvik Ålesund
     Sk. Oslo: Skeid Oslo
-    Steinkjær
+    Steinkjær: Steinkjær
     Str. Trondheim: Strindheim Trondheim
     V. Oslo II: Vålerenga II
     Fa. Bergen: Fana Bergen
-    Flekkerøy
+    Flekkerøy: Flekkerøy
     Fy. Bergen: Fyllingen Bergen
-    Lillestrøm II
+    Lillestrøm II: Lillestrøm SK II
     Mandal: Mandalskameratene
     N-S. Ågotnes: Nest-Sotra Ågotnes
     O. Osøyro: Os Osøyro
-    Randaberg
+    Randaberg: Randaberg
     Stavanger: Stavanger IF
     V. Haugesund: Vard Haugesund
-    V. Stavanger II: Viking II
+    V. Stavanger II: Viking FK II
     V. Vennesla: Vindbjart Vennesla
-    Ålgård
+    Ålgård: Ålgård
     Å. Bergen: Åsane Bergen
-    Asker
-    Bærum
+    Asker: Asker
+    Bærum: Bærum
     Eidsvoll: Eidsvold Turn
     L. Svolvær: Lofoten Svolvær/Kabelvåg
     Mo: Mo i Rana
     P. G. Porsgrunn: Pors Grenland
-    R. Trondheim II: Rosenborg II
+    R. Trondheim II: Rosenborg BK II
     S. Silsand: FK Senja Silsand
     Sk. Tromsø: Skarp Tromsø
-    Skjetten
-    Tromsdalen
-    Tromsø II
+    Skjetten: Skjetten
+    Tromsdalen: Tromsdalen
+    Tromsø II: Tromsø IL II
     Tønsberg: FK Tønsberg
     U. K. Jessheim: Ull/Kisa Jessheim
 League: poland
@@ -1423,12 +1423,12 @@ League: portugal
     N. da Madeira: CD Nacional
     S. Lisboa: Sporting CP
     S. Braga: Sporting Braga
-    Naval
+    Naval: Naval
     E. Amadora: Estrela Amadora
     V. Guimarães: Vitória Guimarães
     A. de Coimbra: Académica de Coimbra
     V. Setúbal: Vitória Setúbal
-    Belenenses
+    Belenenses: Os Belenenses
     Rio Ave: Rio Ave FC
     Paços Ferreira: FC Paços de Ferreira
     Trofense: CD Trofense
@@ -1515,43 +1515,43 @@ League: scotland
     Kilmarnock: Kilmarnock FC
     Motherwell: Motherwell FC
     Glasgow R.: Rangers
-    St Mirren
+    St Mirren: St Mirren
     Airdrie: Airdrie United
-    Clyde
+    Clyde: Clyde
     Dundee: Dundee FC
     Dunfermline: Dunfermline Athletic
     Livingston: Livingston FC
-    Morton
+    Morton: Morton
     Partick: Partick Thistle
     Queen of S.: Queen of the South
     Ross C.: Ross County
-    St. Johnstone
+    St. Johnstone: St. Johnstone
     Alloa: Alloa Athletic
-    Arbroath
+    Arbroath: Arbroath
     Ayr: Ayr United
     Brechin: Brechin City
-    East Fife
-    Peterhead
-    Queen’s Park
+    East Fife: East Fife
+    Peterhead: Peterhead
+    Queen’s Park: Queen’s Park
     Raith: Raith Rovers
     Stirling: Stirling Albion
     Stranraer: Stranraer FC
     Albion: Albion Rovers
     Annan: Annan Athletic
     Berwick: Berwick Rangers
-    Cowdenbeath
-    Dumbarton
-    East Stirlingshire
+    Cowdenbeath: Cowdenbeath
+    Dumbarton: Dumbarton
+    East Stirlingshire: East Stirlingshire
     Elgin: Elgin City
     Forfar: Forfar Athletic
-    Montrose
-    Stenhousemuir
+    Montrose: Montrose
+    Stenhousemuir: Stenhousemuir
 League: scg
     P. Belgrade: Partizan Beograd
     C. Z. Belgrade: Crvena Zvezda
     O. Belgrade: OFK Beograd
     J. Ivanjica: Javor Ivanjica
-    Jagodina
+    Jagodina: Jagodina
     B. Čačak: Borac Čačak
     H. Kula: Hajduk Kula
     Č. Belgrade: Čukarički Beograd
@@ -1694,31 +1694,31 @@ League: spain
     G. Madrid: Getafe CF
     Valladolid: Real Valladolid
     R. Huelva: Recreativo de Huelva
-    Osasuna
+    Osasuna: Osasuna
     Numancia: CD Numancia
     Málaga: Málaga CF
     S. Gijon: Sporting Gijón
-    Alavés
-    Albacete
-    Alicante
-    Castellón
+    Alavés: Alavés
+    Albacete: Albacete
+    Alicante: Alicante
+    Castellón: Castellón
     C. Vigo: Celta de Vigo
-    Córdoba
-    Eibar
-    Elche
+    Córdoba: Córdoba
+    Eibar: Eibar
+    Elche: Elche
     Gimnàstic: Gimnàstic de Tarragona
-    Girona
-    Hércules
-    Huesca
-    Las Palmas
+    Girona: Girona
+    Hércules: Hércules
+    Huesca: Huesca
+    Las Palmas: Las Palmas
     L. Valencia: Levante
-    Murcia
+    Murcia: Real Murcia
     R. V. Madrid: Rayo Vallecano
     R. Sociedad: Real Sociedad
-    Salamanca
+    Salamanca: Salamanca
     Sevilla A.: Sevilla Atlético
-    Tenerife
-    Xerez
+    Tenerife: Tenerife
+    Xerez: Xerez
     Zaragoza: Real Zaragoza
     Barakaldo: Barakaldo CF
     Bilbao A.: Bilbao Athletic
@@ -1961,31 +1961,31 @@ League: switzerland
     Wohlen: FC Wohlen
     Yverdon: FC Yverdon-Sport
 League: turkey
-    Trabzonspor
+    Trabzonspor: Trabzonspor
     Ankaraspor: Ankaraspor AS
-    Sivasspor
+    Sivasspor: Sivasspor
     Beşiktaş: Beşiktaş JK
     Galatasaray: Galatasaray AŞ
-    Kayserispor
-    Bursaspor
-    Gaziantepspor
+    Kayserispor: Kayserispor
+    Bursaspor: Bursaspor
+    Gaziantepspor: Gaziantepspor
     Fenerbahçe: Fenerbahçe SK
-    Eskisehirspor
-    Konyaspor
+    Eskisehirspor: Eskisehirspor
+    Konyaspor: Konyaspor
     Gençlerbirliği: Gençlerbirliği SK
-    Istanbul BB SK
-    Hacettepe SK
-    Denizlispor
+    Istanbul BB SK: Istanbul BB SK
+    Hacettepe SK: Hacettepe SK
+    Denizlispor: Denizlispor
     Ankaragücü: MKE Ankaragücü
-    Antalyaspor
-    Kocaelispor
-    Adanaspor
+    Antalyaspor: Antalyaspor
+    Kocaelispor: Kocaelispor
+    Adanaspor: Adanaspor
     Altay: Altay S.K.
-    Boluspor
+    Boluspor: Boluspor
     Rizespor: Çaykur Rizespor
-    Diyarbakirspor
+    Diyarbakirspor: Diyarbakirspor
     Gaziantep: Gaziantep B.B.K.
-    Giresunspor
+    Giresunspor: Giresunspor
     Güngören B.: Güngören Bs. İstanbul
     Karabükspor: Kardemir Karabükspor
     Karsiyaka: Karşıyaka S.K. İzmir
@@ -1993,10 +1993,10 @@ League: turkey
     Kasimpasa: Kasımpaşa S.K. Istanbul
     Erciyesspor: Kayseri Erciyesspor
     Malatyaspor: Malatya S.K.
-    Manisaspor
-    Orduspor
-    Sakaryaspor
-    Samsunspor
+    Manisaspor: Manisaspor
+    Orduspor: Orduspor
+    Sakaryaspor: Sakaryaspor
+    Samsunspor: Samsunspor
 League: ukraine
     D. Kyiv: FC Dynamo Kyiv
     M. Kharkiv: FC Metalist Kharkiv
@@ -2050,40 +2050,40 @@ League: wales
     Newi Cefn: Newi Cefn Druids AFC
     Welshpool: Welshpool Town FC
     Caernarfon: Caernarfon Town FC
-    Afan Lido
+    Afan Lido: Afan Lido
     Barry: Barry Town
-    Bettws
+    Bettws: Bettws
     Bridgend: Bridgend Town
     Bryntirion: Bryntirion Athletic
-    Caerleon
+    Caerleon: Caerleon
     Caldicot: Caldicot Town
     Cardiff Co.: Cardiff Corinthians
     Cambrian and Clydach
-    Croesyceiliog
+    Croesyceiliog: Croesyceiliog
     Cwmbran: Cwmbran Town
-    Dinas Powys
+    Dinas Powys: Dinas Powys
     E. Aberaman: ENTO Aberaman Athletic
     Goytre: Goytre United
     Newport: Newport YMCA
     Pontardawe: Pontardawe Town
-    Taff's Well
-    Ton Pentre
+    Taff's Well: Taff's Well
+    Ton Pentre: Ton Pentre
     Bala: Bala Town
     Buckley: Buckley Town
     Denbigh: Denbigh Town
     Flint: Flint Town United
-    Glantraeth
+    Glantraeth: Glantraeth
     Gresford: Gresford Athletic
-    Guilsfield
+    Guilsfield: Guilsfield
     Holyhead: Holyhead Hotspur
-    Lex XI
+    Lex XI: Lex XI
     Llandudno: Llandudno Town
     Llandyrnog: Llandyrnog United
-    Llanfairpwll
+    Llanfairpwll: Llanfairpwll
     Llangefni: Llangefni Town
     Mold A.: Mold Alexandra
     Mynydd I.: Mynydd Isa
-    Penrhyncoch
+    Penrhyncoch: Penrhyncoch
     Ruthin: Ruthin Town
 League: brazil
     B. Rio de Janeiro: Botafogo-RJ
