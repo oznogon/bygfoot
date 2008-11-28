@@ -298,9 +298,9 @@ League: england
     Wigan: Wigan Athletic
     Wolverhampton: Wolverhampton Wanderers 
     Birmingham: Birmingham City
-    Reading : Reading FC
+    Reading: Reading FC
     Sheffield U.: Sheffield Utd 
-    Burnley : Burnley FC
+    Burnley: Burnley FC
     Cardiff: Cardiff City 
     Plymouth: Plymouth Argyle
     Ipswich: Ipswich Town 
@@ -763,6 +763,218 @@ League: germany
     Großbardorf: TSV Großbardorf
     Freiburg II: SC Freiburg II
     Unterhaching II: SpVgg Unterhaching II
+    Balingen: TSG Balingen
+    Crailsheim: TSV 1846 Crailsheim
+    V. Mannheim: VfR Mannheim
+    Bahling: Bahlinger SC
+    Freiberg: SGV Freiberg
+    Villingen: FC 08 Villingen
+    Nöttingen: FC Nöttingen 1957
+    Gmünd: 1. FC Normannia Gmünd
+    Großaspach: SG Sonnenhof Großaspach
+    Illertissen: FV Illertissen 1921
+    Kehl: Kehler FV 07
+    Durlach: ASV Durlach 1902
+    Stuttgarter K. II: SV Stuttgarter Kickers II
+    Hoffenheim II: TSG 1899 Hoffenheim II
+    Kirchheim: VfL Kirchheim unter Teck
+    A. Walldorf: FC Astoria Walldorf
+    Offenburg: Offenburger FV 1907
+    Au Iller: SpVgg Au Iller 1928
+    Bayreuth: SpVgg Bayreuth
+    Aindling: TSV Aindling
+    Weiden: SpVgg Weiden
+    Buchbach: TSV Buchbach
+    Memmingen: FC Memmingen
+    Bad Kötzting: 1. FC Bad Kötzting
+    B. Hof: SpVgg Bayern Hof
+    Seligenporten: SV Seligenporten
+    Würzburg F.: Würzburger FV
+    Ismaning: FC Ismaning
+    Frohnlach: VfL Frohnlach 1919
+    Würzburger K.: FC Würzburger Kickers
+    Ingolstadt II: FC Ingolstadt 04 II
+    Schweinfurt: 1. FC Schweinfurt 05
+    Ansbach: SpVgg Ansbach 09
+    Rain am Lech: TSV 1896 Rain am Lech
+    Erlangen-Bruck: FSV Erlangen Bruck
+    Thannhausen: TSG Thannhausen
+    Waldgirmes: SC Waldgirmes 1929
+    Klein-Karben: KSV Klein Karben
+    Alzenau: FC Bayern Alzenau 1920
+    B. Fulda: SC Borussia 04 Fulda
+    B. Flieden: SV Buchonia Flieden 1912
+    Wörsdorf: TSG Wörsdorf 1887
+    R. W. Frankfurt: SG Rot-Weiss Frankfurt 01
+    Eschborn: 1. FC Eschborn 1930
+    Würges: RSV Würges
+    Baunatal: KSV Baunatal
+    Hünfeld: Hünfelder SV
+    Fernwald: FSV 1926 Fernwald
+    E. Stadtallendorf: TSV Eintracht Stadtallendorf
+    Vellmar: OSC Vellmar
+    K. Offenbach II: Kickers Offenbach II
+    Ober-Roden: 1. FC Germania Ober Roden
+    V. Uberach: FC Viktoria 09 Uberach
+    H. Kassel II: KSV Hessen Kassel II
+    Lohfelden: FSC Lohfelden 1924
+    D. Berlin: Berliner FC Dynamo
+    Ludwigsfeld: Ludwigsfelder FC
+    Lichterfeld: Lichterfelder FC
+    Greif: Torgelower SV Greif
+    P. Berlin: Berliner FC Preussen
+    Neustrelitz: TSG Neustrelitz
+    Schöneiche: Germania Schöneiche
+    Falkensee F.: SV Falkensee Finkenkrug
+    Berlin An.: Berlin Ankaraspor 07
+    Spandau: Spandauer SV
+    Rathenow: FSV Optik Rathenow
+    Greifswald: Greifswalder SV 04
+    Reinickendorf: Reinickendorfer Füchse
+    Bentwisch: FSV Bentwisch
+    T. B. Berlin: Tennis Borussia Berlin
+    Brandenburg S.: Brandenburger SC Süd 05
+    Eilenburg: FC Eilenburg
+    Meuselwitz: ZFC Meuselwitz
+    L. Leipzig: 1. FC Lokomotive Leipzig
+    B. Dresden: SC Borea Dresden
+    R. W. Erfurt II: FC Rot Weiss Erfurt II
+    B. Bautzen: FSV Budissa Bautzen
+    G. Halberstadt: VfB Germania Halberstadt
+    Pößneck: VfB Pößneck
+    Zwickau: FSV Zwickau
+    C. Z. Jena II: FC Carl Zeiss Jena II
+    E. Aue II: FC Erzgebirge Aue II
+    Markranstädt: SSV Markranstädt
+    V. Auerbach: VfB Auerbach
+    Gera: 1. FC Gera
+    F. Magdeburg II: 1. FC Magdeburg II
+    Wolfen: FC Grün-Weiß Wolfen
+    C. Hamburg: SC Concordia Hamburg
+    Vi. Hamburg: SC Victoria Hamburg
+    C. Neuengamme: SV Curslack Neuengamme
+    E. Norderstedt: FC Eintracht Norderstedt
+    Bergedorf: ASV Bergedorf Lohbrügge
+    Egenbüttel: SC Egenbüttel
+    S. P. Hamburg II: FC St. Pauli II
+    V. Ohe: FC Voran 1949 Ohe
+    Buchholz: TSV Buchholz
+    Meiendorf: Meiendorfer SV
+    Vorwärts W.: SC Vorwärts Wacker 1904
+    L. Hamburg: SV Lurup 23 Hamburg
+    Condor: SC Condor 1956
+    B. Uhlenhorst: HSV Barmbek Uhlenhorst
+    H. Rellingen: SV Halstenbek Rellingen
+    Vf. Hamburg: VfL 93 Hamburg
+    Uhlenhorst: Uhlenhorster SC Paloma
+    Niendorf: Niendorfer TSV
+    Brinkum: Brinkumer SV
+    F. Bremerhaven: FC Bremerhaven
+    Bremen S.: Bremer SV
+    Blumenthal: Blumenthaler SV
+    O. Bremerhaven: OSC Bremerhaven
+    W. Bremen III: SV Werder Bremen III
+    Habenhausen: Habenhauser FV
+    T. Bremen: SV Türkspor Bremen Nord
+    A. Vegasack: SG Aumund Vegasack
+    B. Melchiorshausen: TSV BW Melchiorshausen
+    V. Bremen: VfL 07 Bremen
+    Wulsdorf: TSV Wulsdorf
+    Schwachhausen: TuS Schwachhausen
+    V. Blockdiek: SC Vahr Blockdiek
+    Osterholz: TSV Osterholz Tenever
+    V. S. Bremen: KSV Vatan Spor Bremen
+    Saarbrücken: 1. FC Saarbrücken
+    Pirmasens: FK Pirmasens
+    Homburg S.: FC 08 Homburg Saar
+    Wirges: SpVgg EGC Wirges
+    Mechtersheim: TuS Mechtersheim 1914
+    Hauenstein: SC Hauenstein 1919
+    Elversberg II: SV 07 Elversberg II
+    Mettlach: SV 1920 Mettlach
+    Neunkirchen: VfB Borussia Neunkirchen
+    Hasborn: SV Rot-Weiß Hasborn
+    Mayen: TuS Mayen
+    Niederauerbach: SV Niederauerbach
+    Betzdorf: SG 06 Betzdorf
+    Bad Breisig: SG Bad Breisig
+    A. Waldalgesheim: Alemannia Waldalgesheim
+    Rossbach: SV Roßbach Wied 1968
+    Köllerbach: Sportfreunde Köllerbach
+    Idar Oberstein: SC Idar Oberstein
+    Bonn: Bonner SC
+    Herne: SC Westfalia 04 Herne
+    Gütersloh: FC Gütersloh 2000
+    Delbrück: Delbrücker SC
+    A. Aachen II: Alemannia Aachen II
+    F. Düsseldorf II: Fortuna Düsseldorf II
+    Oestrich: SF Oestrich Iserlohn 1949
+    A. Bielefeld II: Arminia Bielefeld II
+    Duisburg II: MSV Duisburg II
+    S. F. Köln: SC Fortuna Köln
+    Hüls: VfB Hüls
+    Wattenscheid: SG Wattenscheid 09
+    S. W. Essen: ETB Schwarz Weiß Essen
+    G. Dattenfeld: FC Germania Dattenfeld 1910
+    S. Siegen: Sportfreunde Siegen 1899
+    Schermbeck: SV Schermbeck 1912
+    R. W. Essen II: Rot-Weiß Essen II
+    Hammer: Hammer SpVg
+    Velbert: SSVg Velbert 1902
+    H. Rhen: SV Henstedt Rhen
+    H. Kiel II: Holstein Kiel II
+    E. Büdelsdorf: FT Eider Büdelsdorf
+    Itzehoe: Itzehoer SV 09
+    Schleswig S.: 1. Schleswiger SV 06
+    Neumunster: VfR Neumunster 1910
+    Heid: Heider SV
+    Kropp: TSV Kropp 1946
+    V. Lübeck II: VfB Lübeck II
+    Heikendorf: Heikendorfer SV
+    Flensburg: Flensburger SV 08
+    Eckernförd: Eckernförder SV 1923
+    V. Horst: VfR Horst 1946
+    C. Kiel: SC Comet Kiel
+    Altenholz: TSV Altenholz
+    Husum: Husumer SV
+    Kilia: FC Kilia 1902
+    N. Strand: NTSV Strand 08
+    Meppen: SV Meppen 1912
+    E. Nordhorn: SV Eintracht Nordhorn
+    VB. Oldenburg: VfB Oldenburg 1897
+    Bavenstedt: SV Bavenstedt 1946
+    VL. Oldenburg: VfL Oldenburg 1894
+    G. Leer: VfL Germania Leer
+    Havelse: TSV Havelse
+    B. Rothenfelde: SV Bad Rothenfelde
+    Langenhagen: SC Langenhagen
+    V. Osnabrück II: VfL Osnabrück II
+    Pewsum: TuS Pewsum
+    P. Hameln: SpVgg Preußen Hameln
+    B. Hildesheim: VfV Borussia 06 Hildesheim
+    S. W. Rehden: BSV Schwarz-Weiß Rehden
+    A. Hannover: SV Arminia Hannover
+    Lingen: TuS Lingen 1910
+    Heessel: Heesseler SV
+    Wilhelmshaven II: SV Wilhelmshaven II
+    Goslar: Goslarer SC 08
+    E. Braunschweig II: Eintracht Braunschweig II
+    H. Lüneburg: FC Hansa Lüneburg
+    T. Ottersberg: TSV Ottersberg
+    Heeslingen: TuS Heeslingen
+    Gifhorn: MTV Gifhorn 1861
+    D. Assel: SV Drochtersen Assel
+    O. Scharmbeck: VSK Osterholz Scharmbeck
+    Celle: TuS Celle FC
+    E. Northeim: FC Eintracht Northeim
+    Maschen: VfL Maschen 1911
+    Ölper: BSV Ölper 2000
+    F. Braunschweig: FT Braunschweig
+    W. Göttingen: SC Weende Göttingen
+    B. W. Bornreihe: SV Blau-Weiß Bornreihe
+    Güldenstern S.: TuS Güldenstern Stade
+    Rotenburg: Rotenburger SV
+    Vorsfelde: SSV Vorsfelde
 League: greece
     O. Piraeus: Olympiacos
     P. Thessaloniki: PAOK
@@ -1698,27 +1910,27 @@ League: spain
     Numancia: CD Numancia
     Málaga: Málaga CF
     S. Gijon: Sporting Gijón
-    Alavés: Alavés
-    Albacete: Albacete
-    Alicante: Alicante
-    Castellón: Castellón
+    Alavés: Deportivo Alavés
+    Albacete: Albacete Balompié
+    Alicante: Alicante CF
+    Castellón: CD Castellón
     C. Vigo: Celta de Vigo
-    Córdoba: Córdoba
-    Eibar: Eibar
-    Elche: Elche
+    Córdoba: Córdoba CF
+    Eibar: SD Eibar
+    Elche: Elche CF
     Gimnàstic: Gimnàstic de Tarragona
-    Girona: Girona
-    Hércules: Hércules
-    Huesca: Huesca
-    Las Palmas: Las Palmas
-    L. Valencia: Levante
+    Girona: Girona FC
+    Hércules: Hércules CF
+    Huesca: SD Huesca
+    Las Palmas: UD Las Palmas
+    L. Valencia: Levante UD
     Murcia: Real Murcia
     R. V. Madrid: Rayo Vallecano
     R. Sociedad: Real Sociedad
-    Salamanca: Salamanca
+    Salamanca: UD Salamanca
     Sevilla A.: Sevilla Atlético
-    Tenerife: Tenerife
-    Xerez: Xerez
+    Tenerife: CD Tenerife
+    Xerez: Xerez CD
     Zaragoza: Real Zaragoza
     Barakaldo: Barakaldo CF
     Bilbao A.: Bilbao Athletic
@@ -1933,6 +2145,91 @@ League: sweden
     Markaryd: Markaryds IF
     N. Lomma: GIF Nike Lomma
     Sölvesborg: Sölvesborgs GoIF
+    Grimsås: Grimsås IF
+    Heimer: IF Heimer
+    I. Falköping: IFK Falköping
+    I. Mariestad: IFK Mariestad
+    Gauthiod: IK Gauthiod
+    Tibro: Tibro AIK FK
+    Mariedal: Mariedals IK
+    I. Östersund: IFK Östersund
+    Junsele: Junsele IF
+    Krokom/Dvärsätt: Krokom/Dvärsätt IF
+    Kubikenborg: Kubikenborgs IF
+    Sandåkern: Sandåkerns SK
+    Sollefteå: Sollefteå GIF
+    I. Sundsvall: IFK Sundsvall
+    Assyriska F.: Assyriska Föreningen
+    Derby: BK Derby
+    Ö. Lambohov: Östria Lambohov
+    Gullringen: Gullringens GoIF
+    Hagapojkarna: IF Hagapojkarna
+    Mjölby AI: Mjölby AI FF
+    Nässjö: Nässjö FF
+    Kongahälla: IK Kongahälla
+    Sävedalen: Sävedalens IF
+    Ytterby: Ytterby IS
+    Åsebro: Åsebro IF
+    Alvik: Alviks IK
+    Bureå: Bureå IF
+    Gällivare/Malmberget
+    Hemmingsmark: Hemmingsmarks IF
+    Luleå F.: Luleå FF
+    Sävast: Sävast AIF
+    Morön: Morön BK
+    Notviken: Notvikens IK
+    Ohtanajärvi/Aapua: Ohtana/Aapua FF
+    Sunnanå: Sunnanå SK
+    Gimo: Gimo IF FK
+    Järfälla: FC Järfälla
+    Gamla Upsala: Gamla Upsala SK
+    B. Norrtälje: BKV Norrtälje
+    Värtan: Värtans IK
+    Täby: Täby IS
+    Spånga: Spånga IS FK
+    Ängby: Ängby IF
+    Gantofta: Gantofta IF
+    Höganäs: Höganäs BK
+    Kirseberg: Kirseberg IF
+    Sjöbo: Sjöbo IF
+    Stavsten/Ymor: Stavstens IF FK
+    I. Trelleborg: IFK Trelleborg
+    Tomelilla: Tomelilla IF
+    Hässleholm: Hässleholms IF
+    Bollnäs: Bollnäs GIF FF
+    Dala-Järna: Dala-Järna IK
+    Järbo: Järbo IF
+    Kvarnsveden: Kvarnsvedens IK
+    Rengsjö: Rengsjö SK
+    Valbo: Valbo FF
+    F. Farsta: FoC Farsta
+    Huddinge: Huddinge IF
+    Viljan: IK Viljan
+    Konyaspor: Konyaspor KIF
+    Spårvägen: Spårvägens FF
+    Tyresö: Tyresö FF
+    Värmdö: Värmdö IF
+    Älmeboda/Linneryd: FK Älmeboda/Linneryd
+    Kalmar A.: Kalmar AIK FK
+    Oskarshamn: Oskarshamns AIK
+    Rödeby: Rödeby AIF
+    Saxemara: Saxemara IF
+    VMA: VMA IK
+    Växjö Norra: Växjö Norra IF
+    Skene: Skene IF
+    Slottskog/Godh
+    Åstorp: Åstorps FF
+    Väster: IF Väster
+    Kumla: IFK Kumla FK
+    I. Örebro: IFK Örebro
+    E. Örebro: Eker Örebro
+    F. Karlstad: FBK Karlstad
+    Karlstad B.: Karlstad BK
+    Köping: Köping FF
+    Ölme: IFK Ölme
+    Ludvika: Ludvika FK
+    Örebro Syr.: Örebro Syri
+    Örebro S. U.: Örebro SK Ungdom
 League: switzerland
     Y. B. Bern: BSC Young Boys
     Aarau: FC Aarau
@@ -1961,42 +2258,42 @@ League: switzerland
     Wohlen: FC Wohlen
     Yverdon: FC Yverdon-Sport
 League: turkey
-    Trabzonspor: Trabzonspor
-    Ankaraspor: Ankaraspor AS
-    Sivasspor: Sivasspor
-    Beşiktaş: Beşiktaş JK
-    Galatasaray: Galatasaray AŞ
-    Kayserispor: Kayserispor
-    Bursaspor: Bursaspor
-    Gaziantepspor: Gaziantepspor
-    Fenerbahçe: Fenerbahçe SK
-    Eskisehirspor: Eskisehirspor
-    Konyaspor: Konyaspor
-    Gençlerbirliği: Gençlerbirliği SK
-    Istanbul BB SK: Istanbul BB SK
-    Hacettepe SK: Hacettepe SK
-    Denizlispor: Denizlispor
-    Ankaragücü: MKE Ankaragücü
-    Antalyaspor: Antalyaspor
-    Kocaelispor: Kocaelispor
-    Adanaspor: Adanaspor
-    Altay: Altay S.K.
-    Boluspor: Boluspor
-    Rizespor: Çaykur Rizespor
-    Diyarbakirspor: Diyarbakirspor
-    Gaziantep: Gaziantep B.B.K.
-    Giresunspor: Giresunspor
-    Güngören B.: Güngören Bs. İstanbul
-    Karabükspor: Kardemir Karabükspor
-    Karsiyaka: Karşıyaka S.K. İzmir
-    Kartal: Kartal S.K. Istanbul
-    Kasimpasa: Kasımpaşa S.K. Istanbul
-    Erciyesspor: Kayseri Erciyesspor
-    Malatyaspor: Malatya S.K.
-    Manisaspor: Manisaspor
-    Orduspor: Orduspor
-    Sakaryaspor: Sakaryaspor
-    Samsunspor: Samsunspor
+    Trabzon: Trabzonspor
+    Ankara S: Ankaraspor AS
+    Sivas: Sivasspor
+    Be. İstanbul: Beşiktaş JK
+    Ga. İstanbul: Galatasaray AŞ
+    Kayseri: Kayserispor
+    Bursa: Bursaspor
+    Gaziantep: Gaziantepspor
+    F. İstanbul: Fenerbahçe SK
+    Eskişehir: Eskişehirspor
+    Konya: Konyaspor
+    Ge. Ankara: Gençlerbirliği SK
+    Istanbul B.: Istanbul BB SK
+    H. Ankara: Hacettepe SK
+    Denizli: Denizlispor
+    M. Ankara: MKE Ankaragücü
+    Antalya: Antalyaspor
+    Kocaeli: Kocaelispor
+    Adana: Adanaspor
+    A. İzmir: Altay S.K.
+    Bolu: Boluspor
+    Diyarbakır: Diyarbakirspor
+    Gaziantep B.: Gaziantep B.B.K.
+    Giresun: Giresunspor
+    Gü. İstanbul: Güngören Bs. İstanbul
+    Karabük: Kardemir Karabükspor
+    Ka. İzmir: Karşıyaka S.K. İzmir
+    Kar. İstanbul: Kartal S.K. Istanbul
+    Kas. İstanbul: Kasımpaşa S.K. Istanbul
+    Kayseri: Kayseri Erciyesspor
+    Malatya: Malatya S.K.
+    Manisa: Manisaspor
+    Ordu: Orduspor
+    Rize: Çaykur Rizespor
+    Sakarya: Sakaryaspor
+    Samsun: Samsunspor
 League: ukraine
     D. Kyiv: FC Dynamo Kyiv
     M. Kharkiv: FC Metalist Kharkiv
