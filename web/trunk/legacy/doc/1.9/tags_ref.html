@@ -30,7 +30,7 @@
 <div class=hr></div>
 <P></P>
 <P>
-Last updated: 11/24/2008
+Last updated: 12/14/2008
 </P>
 <P>
 Here you can find a (hopefully) complete list of the available XML tags
@@ -108,6 +108,20 @@ in league and cup files.
 <TD>string</TD>
 <TD>-</TD>
 <TD>A league or cup property. See the list with properties below (LC).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1, 3</TD>
+<TD><CODE>round_robins</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>2</TD>
+<TD>How many round robins are played (by default, each teams plays each other team twice during a league championship or in a cup round robin stage). In other words, the number of matches each team plays against each other team. Used in league defs and cup round stages with round robin. (LC)</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1, 3</TD>
+<TD><CODE>break</CODE></TD>
+<TD>string</TD>
+<TD><CODE>week_gap</CODE></TD>
+<TD>A comma separated list of integers specifying the number of weeks between round robins. Consequently, the number of breaks should be the number of round robins - 1. If fewer are given, (e.g. only one number), then the last one is used for the missing values. Useful for winter breaks, for instance. Used in league defs and cup round stages with round robin. (LC)</TD>
 </TR>
 </TABLE>
 
@@ -206,20 +220,6 @@ in league and cup files.
 <TD>integer, &gt; 0</TD>
 <TD>1</TD>
 <TD>The week number the league begins (ie. the first matches are played.</TD>
-</TR>
-<TR>
-<TD ALIGN="center">1</TD>
-<TD><CODE>round_robins</CODE></TD>
-<TD>integer, &gt; 0</TD>
-<TD>2</TD>
-<TD>How many round robins are played (by default, each teams plays each other team twice during a league championship). In other words, the number of matches each team plays against each other team.</TD>
-</TR>
-<TR>
-<TD ALIGN="center">1</TD>
-<TD><CODE>break</CODE></TD>
-<TD>integer, &gt; 0</TD>
-<TD><CODE>week_gap</CODE></TD>
-<TD>How many weeks there should be between round robins. Useful if you want to have a custom winter break, for instance.</TD>
 </TR>
 <TR>
 <TD ALIGN="center">1</TD>
@@ -528,6 +528,13 @@ in league and cup files.
 <TD>integer, &gt;= 0</TD>
 <TD>0</TD>
 <TD>How many of the best teams (apart from those already advancing via <CODE>number_of_advance</CODE>) across all groups advance ((only relevant if <CODE>number_of_groups</CODE> is &gt; 0).</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD><CODE>round_robins</CODE></TD>
+<TD>integer, &gt;= 1</TD>
+<TD>2</TD>
+<TD>How often each team plays every other team in the group phase. If <CODE>home_away</CODE>is set to 0, this value is overwritten with 1.</TD>
 </TR>
 <TR>
 <TD ALIGN="center">3</TD>
