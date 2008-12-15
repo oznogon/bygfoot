@@ -24,14 +24,14 @@ for Hungarian, ``pt`` and ``BR`` for Brazilian Portuguese.
 + Make sure you have [GNU gettext http://www.gnu.org/software/gettext/] installed.
 
 + Download the current **Bygfoot** ``pot`` file
-  [from here extras/i18n/1.9/bygfoot.pot.gz]). If you've already made a
-  translation, [go here extras/i18n/1.9] and download the appropriate
+  [from here http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/po/bygfoot.pot]). If you've already made a
+  translation, [go here http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/po/] and download the appropriate
   po file for your language and update it.
   The po files there are kept up-to-date.
   
   The following steps apply to people who do a first translation
   and not an update. To update your po file, go to
-  [the po/pot files page extras/i18n/1.9], get the appropriate po file
+  [the po/pot files page http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/po/], get the appropriate po file
   and edit it with your preferred po file editor.
 
 + Generate a ``lang.po`` file from the ``pot`` file by calling
