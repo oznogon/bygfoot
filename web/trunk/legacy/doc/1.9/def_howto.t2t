@@ -10,15 +10,7 @@ How to write Bygfoot definition files
 
 Last updated: %%mtime(%m/%d/%Y)
 
-Howtos:
-
-Overview | [Countries def_howto_countries.html] | [Leagues def_howto_leagues.html] | [Cups def_howto_cups.html] | [Player names def_howto_plnames.html] | [Teams def_howto_teams.html] | [Live game commentary def_howto_lgcommentary.html] | [CPU strategies def_howto_strategy.html] | [Next -> def_howto_countries.html]
-
-You can find a table with all the tags in the **Bygfoot** XML definition
-files [here tags_ref.html].
-
-The current **Bygfoot** definition files can be found
-[here http://bygfoot.sf.net/misc/bygfoot-1.9-definitions.tar.bz2].
+%!include: toc.t2t
 
 ==Some general information==
 

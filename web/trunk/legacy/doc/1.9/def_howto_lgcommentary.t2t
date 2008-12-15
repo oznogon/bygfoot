@@ -10,18 +10,18 @@ How to write live game commentary files
 
 Last updated: %%mtime(%m/%d/%Y)
 
-[<- Previous def_howto_teams.html] | [Overview def_howto.html] | [Countries def_howto_countries.html] | [Leagues def_howto_leagues.html] | [Cups def_howto_cups.html] | [Player names def_howto_plnames.html] | [Teams def_howto_teams.html] | Live game commentary | [CPU strategies def_howto_strategy.html] | [Next -> def_howto_strategy.html]
+%!include: toc.t2t
 
-== How to create a live game commentary file ==
+= How to create a live game commentary file =
 
 A live game commentary file is an xml file containing commentary strings for the
 live game in **Bygfoot**. The live game consists of several events, all of which
 need separate commentary.
 
 You can get an archive with the current commentary files
-[here http://bygfoot.sf.net/misc/bygfoot-1.9-commentaries.tar.bz2].
+[here http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/lg_commentary.tar.gz?view=tar].
 
-===Name convention and syntax===
+==Name convention and syntax==
 
 Live game commentary files have to have a file name like
 ``lg_commentary_lang.xml``, with ``lang`` being a language shortcut, e.g.
@@ -66,7 +66,7 @@ Here's an excerpt from the ``lg_commentary_en.xml`` file:
 ```
 As you can see the tags are really simple. Now what are those weird _P0_ things about?
 
-===Simple commentaries===
+==Simple commentaries==
 
 We call those things 'tokens'. They get replaced by player names and such when the
 commentary is actually generated. The list of available tokens is at the bottom of this page,
@@ -87,7 +87,7 @@ This shouldn't worry you at all. Just write commentaries for both cases, and whe
 only commentaries featuring one player token get considered.
 
 
-=== Conditional commentaries ===
+== Conditional commentaries ==
 
 Let's take a look what the ``cond`` attribute in the ``commentary`` tag is for.
 
@@ -112,7 +112,7 @@ So to have a more complex commentary you might write
 <commentary cond="_GD_ >= 2 and _GD_ < 4 and _MT_ > 60">_TL_ is _GD_ goals behind but there are still _MT_ minutes to go</commentary>
 ```
 
-===Advanced commentaries===
+==Advanced commentaries==
 
 Sometimes one would like to express, 'If one of the teams has 70% possession then write
 "Team TEAM is dominating the match."', with TEAM the appropriate team name. Now one could
@@ -173,7 +173,7 @@ gets considered if the losing team is at least on the same league level as the w
 We can use here ``<`` and ``>`` because in attributes it's allowed.
 
 
-===Priorities===
+==Priorities==
 
 Sometimes we want to make it very probable that a commentary gets chosen. E.g. if a player gets
 a yellow card and is automatically banned for the next match, we'd almost always like to have
@@ -188,9 +188,9 @@ The priority value increases the probability if it's high relative to the other 
 of the yellow card commentaries have priority 10, too, they all have the same probability.
 
 
-=== List of tokens and events ===
+== List of tokens and events ==
 
-**Basic tokens**
+===Basic tokens===
 
 || Token | Meaning | Always available |
 | _LEAGUECUPNAME_ | Name of the competition, e.g. 'FA Cup'. | YES |
@@ -209,7 +209,7 @@ of the yellow card commentaries have priority 10, too, they all have the same pr
 | _NPOSS_ | The team that is not in possession of the ball; 0 or 1. | YES |
  
 
-**Team tokens**
+===Team tokens===
 
 || Token | Meaning | Always available |
 | _T0_ | Home team name. | YES |
@@ -226,7 +226,7 @@ of the yellow card commentaries have priority 10, too, they all have the same pr
 | _TAVSKILLDIFF_ | Difference between the average skills (absolute value). | YES |
 
 
-**Player tokens**
+===Player tokens===
 
 || Token | Meaning | Always available |
 | _P0_ | A player name (see events list). | NO |
@@ -238,7 +238,7 @@ of the yellow card commentaries have priority 10, too, they all have the same pr
 | _PLYELLOWS_ | Yellow cards of the player in the competition. | NO |
 
 
-**Stats tokens**
+===Stats tokens===
 
 All of these have a variant for the home team (those ending with a '0') and
 for the away team (ending with '1'). Only the home team tokens are listed,
@@ -255,13 +255,13 @@ just replace the '0' with the '1' to get the stat value for the away team.
 | _INJS0_ | Injuries for home team. | YES |
 
 
-**Miscellaneous tokens**
+===Miscellaneous tokens===
 
 || Token | Meaning | Always available |
 | _EX_ | Extra data (e.g. the new playing style 'ATTACK' when a team changes style). | NO |
 
 
-**Events**
+===Events===
 
 Let's see which events there are (their ``<name>``) and what tokens they are
 allowed to contain (the tokens that are always available -- see above table -- 

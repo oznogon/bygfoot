@@ -13,29 +13,51 @@
 <P></P>
 <div class=hr></div>
 <P></P>
+  <UL>
+  <LI><A HREF="#toc1">How to create a live game commentary file</A>
     <UL>
-    <LI><A HREF="#toc1">How to create a live game commentary file</A>
+    <LI><A HREF="#toc2">Name convention and syntax</A>
+    <LI><A HREF="#toc3">Simple commentaries</A>
+    <LI><A HREF="#toc4">Conditional commentaries</A>
+    <LI><A HREF="#toc5">Advanced commentaries</A>
+    <LI><A HREF="#toc6">Priorities</A>
+    <LI><A HREF="#toc7">List of tokens and events</A>
       <UL>
-      <LI><A HREF="#toc2">Name convention and syntax</A>
-      <LI><A HREF="#toc3">Simple commentaries</A>
-      <LI><A HREF="#toc4">Conditional commentaries</A>
-      <LI><A HREF="#toc5">Advanced commentaries</A>
-      <LI><A HREF="#toc6">Priorities</A>
-      <LI><A HREF="#toc7">List of tokens and events</A>
+      <LI><A HREF="#toc8">Basic tokens</A>
+      <LI><A HREF="#toc9">Team tokens</A>
+      <LI><A HREF="#toc10">Player tokens</A>
+      <LI><A HREF="#toc11">Stats tokens</A>
+      <LI><A HREF="#toc12">Miscellaneous tokens</A>
+      <LI><A HREF="#toc13">Events</A>
       </UL>
     </UL>
+  </UL>
 
 <P></P>
 <div class=hr></div>
 <P></P>
 <P>
-Last updated: 07/08/2006
+Last updated: 12/15/2008
 </P>
 <P>
-<A HREF="def_howto_teams.html">&lt;- Previous</A> | <A HREF="def_howto.html">Overview</A> | <A HREF="def_howto_countries.html">Countries</A> | <A HREF="def_howto_leagues.html">Leagues</A> | <A HREF="def_howto_cups.html">Cups</A> | <A HREF="def_howto_plnames.html">Player names</A> | <A HREF="def_howto_teams.html">Teams</A> | Live game commentary | <A HREF="def_howto_strategy.html">CPU strategies</A> | <A HREF="def_howto_strategy.html">Next -&gt;</A>
+Howtos:
 </P>
+<UL>
+<LI><A HREF="def_howto.html">Overview</A>
+<LI><A HREF="def_howto_countries.html">Countries</A>
+<LI><A HREF="def_howto_leagues.html">Leagues</A>
+<LI><A HREF="def_howto_cups.html">Cups</A>
+<LI><A HREF="def_howto_plnames.html">Player names</A>
+<LI><A HREF="def_howto_teams.html">Teams</A>
+<LI><A HREF="def_howto_lgcommentary.html">Live game commentary</A>
+<LI><A HREF="def_howto_news.html">News</A>
+<LI><A HREF="def_howto_strategy.html">CPU strategies</A>
+<LI><B><A HREF="tags_ref.html">Tags reference</A></B>
+<LI><A HREF="http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/definitions.tar.gz?view=tar">Download current definitions</A>
+</UL>
+
 <A NAME="toc1"></A>
-<H2>How to create a live game commentary file</H2>
+<IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>How to create a live game commentary file</H1>
 <P>
 A live game commentary file is an xml file containing commentary strings for the
 live game in <B>Bygfoot</B>. The live game consists of several events, all of which
@@ -43,10 +65,10 @@ need separate commentary.
 </P>
 <P>
 You can get an archive with the current commentary files
-<A HREF="http://bygfoot.sf.net/misc/bygfoot-1.9-commentaries.tar.bz2">here</A>.
+<A HREF="http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/lg_commentary.tar.gz?view=tar">here</A>.
 </P>
 <A NAME="toc2"></A>
-<H3>Name convention and syntax</H3>
+<H2>Name convention and syntax</H2>
 <P>
 Live game commentary files have to have a file name like
 <CODE>lg_commentary_lang.xml</CODE>, with <CODE>lang</CODE> being a language shortcut, e.g.
@@ -98,7 +120,7 @@ Here's an excerpt from the <CODE>lg_commentary_en.xml</CODE> file:
 As you can see the tags are really simple. Now what are those weird _P0_ things about?
 </P>
 <A NAME="toc3"></A>
-<H3>Simple commentaries</H3>
+<H2>Simple commentaries</H2>
 <P>
 We call those things 'tokens'. They get replaced by player names and such when the
 commentary is actually generated. The list of available tokens is at the bottom of this page,
@@ -123,7 +145,7 @@ This shouldn't worry you at all. Just write commentaries for both cases, and whe
 only commentaries featuring one player token get considered.
 </P>
 <A NAME="toc4"></A>
-<H3>Conditional commentaries</H3>
+<H2>Conditional commentaries</H2>
 <P>
 Let's take a look what the <CODE>cond</CODE> attribute in the <CODE>commentary</CODE> tag is for.
 </P>
@@ -156,7 +178,7 @@ So to have a more complex commentary you might write
 </PRE>
 <P></P>
 <A NAME="toc5"></A>
-<H3>Advanced commentaries</H3>
+<H2>Advanced commentaries</H2>
 <P>
 Sometimes one would like to express, 'If one of the teams has 70% possession then write
 "Team TEAM is dominating the match."', with TEAM the appropriate team name. Now one could
@@ -230,7 +252,7 @@ gets considered if the losing team is at least on the same league level as the w
 We can use here <CODE>&lt;</CODE> and <CODE>&gt;</CODE> because in attributes it's allowed.
 </P>
 <A NAME="toc6"></A>
-<H3>Priorities</H3>
+<H2>Priorities</H2>
 <P>
 Sometimes we want to make it very probable that a commentary gets chosen. E.g. if a player gets
 a yellow card and is automatically banned for the next match, we'd almost always like to have
@@ -248,11 +270,10 @@ The priority value increases the probability if it's high relative to the other 
 of the yellow card commentaries have priority 10, too, they all have the same probability.
 </P>
 <A NAME="toc7"></A>
-<H3>List of tokens and events</H3>
-<P>
-<B>Basic tokens</B>
-</P>
-<TABLE CELLPADDING="4" BORDER="1">
+<H2>List of tokens and events</H2>
+<A NAME="toc8"></A>
+<H3>Basic tokens</H3>
+<TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TH>Token</TH>
 <TH>Meaning</TH>
@@ -330,11 +351,9 @@ of the yellow card commentaries have priority 10, too, they all have the same pr
 </TR>
 </TABLE>
 
-<P></P>
-<P>
-<B>Team tokens</B>
-</P>
-<TABLE CELLPADDING="4" BORDER="1">
+<A NAME="toc9"></A>
+<H3>Team tokens</H3>
+<TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TH>Token</TH>
 <TH>Meaning</TH>
@@ -402,11 +421,9 @@ of the yellow card commentaries have priority 10, too, they all have the same pr
 </TR>
 </TABLE>
 
-<P></P>
-<P>
-<B>Player tokens</B>
-</P>
-<TABLE CELLPADDING="4" BORDER="1">
+<A NAME="toc10"></A>
+<H3>Player tokens</H3>
+<TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TH>Token</TH>
 <TH>Meaning</TH>
@@ -449,16 +466,14 @@ of the yellow card commentaries have priority 10, too, they all have the same pr
 </TR>
 </TABLE>
 
-<P></P>
-<P>
-<B>Stats tokens</B>
-</P>
+<A NAME="toc11"></A>
+<H3>Stats tokens</H3>
 <P>
 All of these have a variant for the home team (those ending with a '0') and
 for the away team (ending with '1'). Only the home team tokens are listed,
 just replace the '0' with the '1' to get the stat value for the away team.
 </P>
-<TABLE CELLPADDING="4" BORDER="1">
+<TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TH>Token</TH>
 <TH>Meaning</TH>
@@ -506,11 +521,9 @@ just replace the '0' with the '1' to get the stat value for the away team.
 </TR>
 </TABLE>
 
-<P></P>
-<P>
-<B>Miscellaneous tokens</B>
-</P>
-<TABLE CELLPADDING="4" BORDER="1">
+<A NAME="toc12"></A>
+<H3>Miscellaneous tokens</H3>
+<TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TH>Token</TH>
 <TH>Meaning</TH>
@@ -523,16 +536,14 @@ just replace the '0' with the '1' to get the stat value for the away team.
 </TR>
 </TABLE>
 
-<P></P>
-<P>
-<B>Events</B>
-</P>
+<A NAME="toc13"></A>
+<H3>Events</H3>
 <P>
 Let's see which events there are (their <CODE>&lt;name&gt;</CODE>) and what tokens they are
 allowed to contain (the tokens that are always available -- see above table -- 
 aren't mentioned):
 </P>
-<TABLE CELLPADDING="4" BORDER="1">
+<TABLE BORDER="1" CELLPADDING="4">
 <TR>
 <TH>Name</TH>
 <TH>Description</TH>
@@ -696,6 +707,6 @@ aren't mentioned):
 </TABLE>
 
 
-<!-- html code generated by txt2tags 2.2 (http://txt2tags.sf.net) -->
-<!-- cmdline: txt2tags -t html def_howto_lgcommentary.t2t -->
+<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags def_howto.t2t def_howto_countries.t2t def_howto_cups.t2t def_howto_leagues.t2t def_howto_lgcommentary.t2t def_howto_news.t2t def_howto_plnames.t2t def_howto_strategy.t2t def_howto_teams.t2t tags_ref.t2t toc.t2t translation-1.9.t2t -->
 </BODY></HTML>

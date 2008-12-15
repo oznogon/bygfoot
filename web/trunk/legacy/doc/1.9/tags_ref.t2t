@@ -13,8 +13,8 @@ Last updated: %%mtime(%m/%d/%Y)
 Here you can find a (hopefully) complete list of the available XML tags
 used in **Bygfoot** definition files. See also the
 [HOWTO def_howto.html] and the
-[current definitions http://bygfoot.sf.net/misc/bygfoot-1.9-definitions.tar.bz2]
-(Bzipped archive).
+[current definitions http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/definitions.tar.gz?view=tar]
+(Gzipped archive).
 
 The 'depth' value in the tables tells us how 'deeply' nested the tag is, ie.
 how many tags have to be closed until we arrive at the first level between

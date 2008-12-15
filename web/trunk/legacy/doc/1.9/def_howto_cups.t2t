@@ -10,7 +10,7 @@ How to write cup definition files
 
 Last updated: %%mtime(%m/%d/%Y)
 
-[<- Previous def_howto_leagues.html] | [Overview def_howto.html] | [Countries def_howto_countries.html] | [Leagues def_howto_leagues.html] | Cups | [Player names def_howto_plnames.html] | [Teams def_howto_teams.html] | [Live game commentary def_howto_lgcommentary.html] | [CPU strategies def_howto_strategy.html] | [Next -> def_howto_plnames.html]
+%!include: toc.t2t
 
 ==How to create a cup definition file==
 
