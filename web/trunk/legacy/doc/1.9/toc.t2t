@@ -1,0 +1,24 @@
+Toc
+
+
+%! Target  : html
+%! Options : --toc
+%! Style   : ../../green.css
+%!encoding: iso-8859-1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+
+Howtos:
+- [Overview def_howto.html]
+- [Countries def_howto_countries.html]
+- [Leagues def_howto_leagues.html]
+- [Cups def_howto_cups.html]
+- [Player names def_howto_plnames.html]
+- [Teams def_howto_teams.html]
+- [Live game commentary def_howto_lgcommentary.html]
+- [News def_howto_news.html]
+- [CPU strategies def_howto_strategy.html]
+- **[Tags reference tags_ref.html]**
+- [Download current definitions http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/definitions.tar.gz?view=tar]
+
+

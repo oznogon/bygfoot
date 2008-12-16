@@ -1,0 +1,375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="../../green.css">
+<TITLE>How to write news files</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>How to write news files</H1>
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+  <UL>
+  <LI><A HREF="#toc1">How to create a news file</A>
+    <UL>
+    <LI><A HREF="#toc2">Name convention and syntax</A>
+    <LI><A HREF="#toc3">List of tokens</A>
+      <UL>
+      <LI><A HREF="#toc4">Basic tokens</A>
+      <LI><A HREF="#toc5">Team tokens</A>
+      <LI><A HREF="#toc6">Stats tokens</A>
+      <LI><A HREF="#toc7">Miscellaneous tokens</A>
+      </UL>
+    </UL>
+  </UL>
+
+<P></P>
+<div class=hr></div>
+<P></P>
+<P>
+Last updated: 12/16/2008
+</P>
+<P>
+Howtos:
+</P>
+<UL>
+<LI><A HREF="def_howto.html">Overview</A>
+<LI><A HREF="def_howto_countries.html">Countries</A>
+<LI><A HREF="def_howto_leagues.html">Leagues</A>
+<LI><A HREF="def_howto_cups.html">Cups</A>
+<LI><A HREF="def_howto_plnames.html">Player names</A>
+<LI><A HREF="def_howto_teams.html">Teams</A>
+<LI><A HREF="def_howto_lgcommentary.html">Live game commentary</A>
+<LI><A HREF="def_howto_news.html">News</A>
+<LI><A HREF="def_howto_strategy.html">CPU strategies</A>
+<LI><B><A HREF="tags_ref.html">Tags reference</A></B>
+<LI><A HREF="http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/definitions.tar.gz?view=tar">Download current definitions</A>
+</UL>
+
+<A NAME="toc1"></A>
+<IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>How to create a news file</H1>
+<P>
+A news file is a file used by <B>Bygfoot</B> to create short newspaper
+articles. You are strongly encouraged to read and understand <A HREF="def_howto_lgcommentary.html">the howto about live game commentary</A>,
+since this howto contains a lot of references to the techniques used there.
+</P>
+<P>
+Articles in the game consist of
+</P>
+<UL>
+<LI>a neutral event description which is created automatically (e.g. the
+result of a match)
+<LI>a title which shouldn't be too long
+<LI>a subtitle which should elaborate on the title
+</UL>
+
+<P>
+However, in the news file titles and subtitles are given independently
+and <B>Bygfoot</B> picks a random title and a random subtitle (more or less).
+</P>
+<P>
+You can get an archive with the current news files
+<A HREF="http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/news.tar.gz?view=tar">here</A>.
+</P>
+<A NAME="toc2"></A>
+<H2>Name convention and syntax</H2>
+<P>
+News files have to have a file name like
+<CODE>news_lang.xml</CODE>, with <CODE>lang</CODE> being a language shortcut, e.g.
+<CODE>en</CODE> or <CODE>de</CODE>.
+</P>
+<P>
+There are only a few tags in the file (see also the <A HREF="tags_ref.html">tags reference</A>): 
+</P>
+<UL>
+<LI><CODE>&lt;news&gt;</CODE> is the root tag
+<LI><CODE>&lt;news_article&gt;</CODE> groups a bunch of related titles and subtitles
+<LI><CODE>&lt;type&gt;</CODE> gives the type of the article; currently, only
+<CODE>match</CODE> is used, but later more types will be added
+<LI><CODE>&lt;condition&gt;</CODE> is a condition for the article
+(see <A HREF="file://localhost/Users/gy/progs/website/legacy/doc/1.9/def_howto_lgcommentary.html#toc4">the relevant section in the live game commentary howto</A>)
+<LI><CODE>&lt;priority&gt;</CODE> is a priority for the article
+(see <A HREF="file://localhost/Users/gy/progs/website/legacy/doc/1.9/def_howto_lgcommentary.html#toc6">the relevant section in the live game commentary howto</A>)
+<LI><CODE>&lt;title&gt;</CODE> and <CODE>&lt;subtitle&gt;</CODE> are structured the same way; they contain article titles and subtitles, respectively, and may
+contain the attributes <CODE>condition</CODE> and <CODE>priority</CODE> to make more fitting news possible
+</UL>
+
+<P>
+To write a new news file it might be best to copy one of the existing ones
+and replace/translate/extend the articles in the file.
+</P>
+<P>
+Let's have a look at a minimal news file:
+</P>
+<PRE>
+  &lt;news&gt;
+    &lt;news_article&gt;
+      &lt;type&gt;match&lt;/type&gt;
+      &lt;title&gt;_TW_ beats _TN_&lt;/title&gt;
+      &lt;subtitle&gt;_TN_ succumbs to _TW_ in _LEAGUECUPNAME_.&lt;/subtitle&gt;
+    &lt;/news_article&gt;
+  &lt;/news&gt;
+</PRE>
+<P>
+No magic here. This will yield very boring and repetitive news articles, though, so let's add some variation with
+the trick known from live game commentaries:
+</P>
+<PRE>
+      &lt;title&gt;_TW_ [beats|overcomes|defeats] _TN_&lt;/title&gt;
+</PRE>
+<P>
+Like with the commentaries, if a token can't be filled (e.g. when there's a draw in this case),
+the title or subtitle gets ignored by the news selection mechanism.
+</P>
+<P>
+What if the match was lopsided?
+</P>
+<PRE>
+    &lt;news_article&gt;
+      &lt;type&gt;match&lt;/type&gt;
+      &lt;title&gt;_TW_ [beats|overcomes|defeats] _TN_&lt;/title&gt;
+      &lt;subtitle&gt;_TN_ succumbs to _TW_ in _LEAGUECUPNAME_.&lt;/subtitle&gt;
+      &lt;subtitle condition="GD &gt; 2"&gt;_TN_ concedes _GOALS_TWN__ goals in crushing defeat.&lt;/subtitle&gt;
+    &lt;/news_article&gt;
+</PRE>
+<P>
+Of course, it makes more sense to have such a condition on article level and add several titles and subtitles
+that are fitting:
+</P>
+<PRE>
+    &lt;news_article&gt;
+      &lt;type&gt;match&lt;/type&gt;
+      &lt;condition&gt;GD = 1&lt;/condition&gt;
+      &lt;title&gt;_TW_ [beats|overcomes|defeats] _TN_&lt;/title&gt;
+      &lt;title&gt;Tight match between _T0_ and _T1_&lt;/title&gt;
+      &lt;subtitle&gt;_TW_ edges out _TN_ in _LEAGUECUPNAME_.&lt;/subtitle&gt;
+      &lt;subtitle condition="_GOALS_TWN__ = 1"&gt;One goal enough for _TW_ to win against _TL_.&lt;/subtitle&gt;
+    &lt;/news_article&gt;
+</PRE>
+<P>
+If you're very fond of a particular title, subtitle or even a whole article section, you can prioritize it
+(see <A HREF="def_howto_lgcommentary.html#toc6">the live game commentary on priorities</A>):
+</P>
+<PRE>
+    &lt;news_article&gt;
+      &lt;type&gt;match&lt;/type&gt;
+      &lt;condition&gt;GD = 1&lt;/condition&gt;
+      &lt;priority&gt;10&lt;/priority&gt;
+      &lt;title&gt;_TW_ [beats|overcomes|defeats] _TN_&lt;/title&gt;
+      &lt;title&gt;Tight match between _T0_ and _T1_&lt;/title&gt;
+      &lt;subtitle&gt;_TW_ edges out _TN_ in _LEAGUECUPNAME_.&lt;/subtitle&gt;
+      &lt;subtitle condition="_GOALS_TWN__ = 1"&gt;One goal enough for _TW_ to win against _TL_.&lt;/subtitle&gt;
+      &lt;subtitle condition="_GOALS_TWN__ = 1" priority="20"&gt;_SCORERS_TWN__ scores lone goal in an exciting duel.&lt;/subtitle&gt;
+    &lt;/news_article&gt;
+</PRE>
+<P></P>
+<P>
+And that's it, more or less. The more articles, titles and subtitles you create, the more varied the newspaper
+in the game will become.
+</P>
+<P>
+Note that you mustn't use <CODE>&lt;</CODE>, <CODE>&gt;</CODE>, <CODE>&gt;=</CODE> and <CODE>&lt;=</CODE> in article conditions, since &lt; and &gt; are XML characters.
+You have to use <CODE>L</CODE>, <CODE>G</CODE>, <CODE>GE</CODE> and <CODE>LE</CODE> instead. You may use them in title/subtitle conditions, however.
+</P>
+<A NAME="toc3"></A>
+<H2>List of tokens</H2>
+<A NAME="toc4"></A>
+<H3>Basic tokens</H3>
+<P>
+Tokens ending with a 0 refer to the home team.
+There is always an analogous token ending with 1 for the away team. 
+</P>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Token</TH>
+<TH>Meaning</TH>
+</TR>
+<TR>
+<TD>_LEAGUECUPNAME_</TD>
+<TD>Name of the competition, e.g. 'FA Cup'.</TD>
+</TR>
+<TR>
+<TD>_CUPROUNDNAME_</TD>
+<TD>Name of the cup round, e.g. 'Final'.</TD>
+</TR>
+<TR>
+<TD>_AT_</TD>
+<TD>Attendance, e.g. '50 204'.</TD>
+</TR>
+<TR>
+<TD>_RE_</TD>
+<TD>Current result, e.g. '1 : 2'.</TD>
+</TR>
+<TR>
+<TD>_GOALS0_</TD>
+<TD>Goals the home team scored.</TD>
+</TR>
+<TR>
+<TD>_GD_</TD>
+<TD>Goal difference (absolute value).</TD>
+</TR>
+</TABLE>
+
+<A NAME="toc5"></A>
+<H3>Team tokens</H3>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Token</TH>
+<TH>Meaning</TH>
+</TR>
+<TR>
+<TD>_T0_</TD>
+<TD>Home team name.</TD>
+</TR>
+<TR>
+<TD>_TW_</TD>
+<TD>Team winning (name).</TD>
+</TR>
+<TR>
+<TD>_TL_</TD>
+<TD>Team losing (name).</TD>
+</TR>
+<TR>
+<TD>_TWN_</TD>
+<TD>Team winning (number, 0 or 1).</TD>
+</TR>
+<TR>
+<TD>_TLN_</TD>
+<TD>Team losing (number, 0 or 1).</TD>
+</TR>
+<TR>
+<TD>_TLAYER0_</TD>
+<TD>League layer of home team, e.g. 1 for the first league.</TD>
+</TR>
+<TR>
+<TD>_TAVSKILL0_</TD>
+<TD>Average skill of home team, e.g. 75.</TD>
+</TR>
+<TR>
+<TD>_TAVSKILLDIFF_</TD>
+<TD>Difference between the average skills (absolute value).</TD>
+</TR>
+</TABLE>
+
+<A NAME="toc6"></A>
+<H3>Stats tokens</H3>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Token</TH>
+<TH>Meaning</TH>
+</TR>
+<TR>
+<TD>_SHOTS0_</TD>
+<TD>Number of shots.</TD>
+</TR>
+<TR>
+<TD>_SHOTPER0_</TD>
+<TD>Shot percentage.</TD>
+</TR>
+<TR>
+<TD>_POSS0_</TD>
+<TD>Possession of home team in %, e.g. 50.</TD>
+</TR>
+<TR>
+<TD>_PEN0_</TD>
+<TD>Penalties of home team in the game (those in penalty-shootout are not counted).</TD>
+</TR>
+<TR>
+<TD>_FOULS0_</TD>
+<TD>Fouls committed by home team.</TD>
+</TR>
+<TR>
+<TD>_YELLOWS0_</TD>
+<TD>Yellow cards for home team.</TD>
+</TR>
+<TR>
+<TD>_REDS0_</TD>
+<TD>Red cards for home team.</TD>
+</TR>
+<TR>
+<TD>_INJS0_</TD>
+<TD>Injuries for home team.</TD>
+</TR>
+</TABLE>
+
+<A NAME="toc7"></A>
+<H3>Miscellaneous tokens</H3>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Token</TH>
+<TH>Meaning</TH>
+</TR>
+<TR>
+<TD>_CUP_</TD>
+<TD>Whether it's a cup match; 0 or 1.</TD>
+</TR>
+<TR>
+<TD>_CUPKO_</TD>
+<TD>Whether it's a cup KO stage (or round robin); 0 or 1.</TD>
+</TR>
+<TR>
+<TD>_CUPSTAGE_</TD>
+<TD>1 for final, 2 for semi final etc.</TD>
+</TR>
+<TR>
+<TD>_CUPMATCHWINNER_</TD>
+<TD>The team that won the cup match-up overall, not only the game.</TD>
+</TR>
+<TR>
+<TD>_MULTIPLESCORERS0_</TD>
+<TD>Whether more than one player scored for team 0.</TD>
+</TR>
+<TR>
+<TD>_SCORERS0_</TD>
+<TD>The scorers, e.g. "Jameson" or "Jameson (2) and Bryant".</TD>
+</TR>
+<TR>
+<TD>_HIGHSCORER0_</TD>
+<TD>The player who scored most goals in the match (this token is always filled if there is at least one scorer).</TD>
+</TR>
+<TR>
+<TD>_HIGHGOALS0_</TD>
+<TD>The number of goals the player with most goals scored.</TD>
+</TR>
+<TR>
+<TD>_RANK0_</TD>
+<TD>The rank in the tables after the match.</TD>
+</TR>
+<TR>
+<TD>_OLDRANK0_</TD>
+<TD>The rank in the tables before the match.</TD>
+</TR>
+<TR>
+<TD>_WON0_</TD>
+<TD>Matches won in a row.</TD>
+</TR>
+<TR>
+<TD>_LOST0_</TD>
+<TD>Matches lost in a row.</TD>
+</TR>
+<TR>
+<TD>_LEAGUEWON0_</TD>
+<TD>League matches won in a row.</TD>
+</TR>
+<TR>
+<TD>_LEAGUELOST0_</TD>
+<TD>League matches lost in a row.</TD>
+</TR>
+<TR>
+<TD>_UNBEATEN0_</TD>
+<TD>Matches without loss in a row.</TD>
+</TR>
+<TR>
+<TD>_LEAGUEUNBEATEN0_</TD>
+<TD>League matches without loss in a row.</TD>
+</TR>
+</TABLE>
+
+
+<!-- html code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags def_howto.t2t def_howto_countries.t2t def_howto_cups.t2t def_howto_leagues.t2t def_howto_lgcommentary.t2t def_howto_news.t2t def_howto_plnames.t2t def_howto_strategy.t2t def_howto_teams.t2t tags_ref.t2t toc.t2t translation-1.9.t2t -->
+</BODY></HTML>

@@ -1,0 +1,174 @@
+How to write news files
+
+
+%! Target  : html
+%! Options : --toc
+%! Style   : ../../green.css
+%!encoding: iso-8859-1
+%!PostProc: <H1> <IMG ALIGN="center" SRC="../../bygfoot-logo.png" BORDER="0"></center><H1>
+%!PostProc(html): '<HR NOSHADE SIZE=1>' '<div class=hr></div>'
+
+Last updated: %%mtime(%m/%d/%Y)
+
+%!include: toc.t2t
+
+= How to create a news file =
+
+A news file is a file used by **Bygfoot** to create short newspaper
+articles. You are strongly encouraged to read and understand [the howto about live game commentary def_howto_lgcommentary.html],
+since this howto contains a lot of references to the techniques used there.
+
+Articles in the game consist of
+- a neutral event description which is created automatically (e.g. the
+result of a match)
+- a title which shouldn't be too long
+- a subtitle which should elaborate on the title
+
+
+However, in the news file titles and subtitles are given independently
+and **Bygfoot** picks a random title and a random subtitle (more or less).
+
+You can get an archive with the current news files
+[here http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/news.tar.gz?view=tar].
+
+==Name convention and syntax==
+
+News files have to have a file name like
+``news_lang.xml``, with ``lang`` being a language shortcut, e.g.
+``en`` or ``de``.
+
+There are only a few tags in the file (see also the [tags reference tags_ref.html]): 
+- ``<news>`` is the root tag
+- ``<news_article>`` groups a bunch of related titles and subtitles
+- ``<type>`` gives the type of the article; currently, only
+``match`` is used, but later more types will be added
+- ``<condition>`` is a condition for the article
+(see [the relevant section in the live game commentary howto file://localhost/Users/gy/progs/website/legacy/doc/1.9/def_howto_lgcommentary.html#toc4])
+- ``<priority>`` is a priority for the article
+(see [the relevant section in the live game commentary howto file://localhost/Users/gy/progs/website/legacy/doc/1.9/def_howto_lgcommentary.html#toc6])
+- ``<title>`` and ``<subtitle>`` are structured the same way; they contain article titles and subtitles, respectively, and may
+contain the attributes ``condition`` and ``priority`` to make more fitting news possible
+
+
+To write a new news file it might be best to copy one of the existing ones
+and replace/translate/extend the articles in the file.
+
+Let's have a look at a minimal news file:
+```
+<news>
+  <news_article>
+    <type>match</type>
+    <title>_TW_ beats _TN_</title>
+    <subtitle>_TN_ succumbs to _TW_ in _LEAGUECUPNAME_.</subtitle>
+  </news_article>
+</news>
+```
+No magic here. This will yield very boring and repetitive news articles, though, so let's add some variation with
+the trick known from live game commentaries:
+```
+    <title>_TW_ [beats|overcomes|defeats] _TN_</title>
+```
+Like with the commentaries, if a token can't be filled (e.g. when there's a draw in this case),
+the title or subtitle gets ignored by the news selection mechanism.
+
+What if the match was lopsided?
+```
+  <news_article>
+    <type>match</type>
+    <title>_TW_ [beats|overcomes|defeats] _TN_</title>
+    <subtitle>_TN_ succumbs to _TW_ in _LEAGUECUPNAME_.</subtitle>
+    <subtitle condition="GD > 2">_TN_ concedes _GOALS_TWN__ goals in crushing defeat.</subtitle>
+  </news_article>
+```
+Of course, it makes more sense to have such a condition on article level and add several titles and subtitles
+that are fitting:
+```
+  <news_article>
+    <type>match</type>
+    <condition>GD = 1</condition>
+    <title>_TW_ [beats|overcomes|defeats] _TN_</title>
+    <title>Tight match between _T0_ and _T1_</title>
+    <subtitle>_TW_ edges out _TN_ in _LEAGUECUPNAME_.</subtitle>
+    <subtitle condition="_GOALS_TWN__ = 1">One goal enough for _TW_ to win against _TL_.</subtitle>
+  </news_article>
+```
+If you're very fond of a particular title, subtitle or even a whole article section, you can prioritize it
+(see [the live game commentary on priorities def_howto_lgcommentary.html#toc6]):
+```
+  <news_article>
+    <type>match</type>
+    <condition>GD = 1</condition>
+    <priority>10</priority>
+    <title>_TW_ [beats|overcomes|defeats] _TN_</title>
+    <title>Tight match between _T0_ and _T1_</title>
+    <subtitle>_TW_ edges out _TN_ in _LEAGUECUPNAME_.</subtitle>
+    <subtitle condition="_GOALS_TWN__ = 1">One goal enough for _TW_ to win against _TL_.</subtitle>
+    <subtitle condition="_GOALS_TWN__ = 1" priority="20">_SCORERS_TWN__ scores lone goal in an exciting duel.</subtitle>
+  </news_article>
+```
+
+And that's it, more or less. The more articles, titles and subtitles you create, the more varied the newspaper
+in the game will become.
+
+Note that you mustn't use ``<``, ``>``, ``>=`` and ``<=`` in article conditions, since < and > are XML characters.
+You have to use ``L``, ``G``, ``GE`` and ``LE`` instead. You may use them in title/subtitle conditions, however.
+
+
+== List of tokens ==
+
+===Basic tokens===
+
+Tokens ending with a 0 refer to the home team.
+There is always an analogous token ending with 1 for the away team. 
+
+|| Token | Meaning |
+| _LEAGUECUPNAME_ | Name of the competition, e.g. 'FA Cup'. |
+| _CUPROUNDNAME_ | Name of the cup round, e.g. 'Final'. |
+| _AT_ | Attendance, e.g. '50 204'. |
+| _RE_ | Current result, e.g. '1 : 2'. |
+| _GOALS0_ | Goals the home team scored. |
+| _GD_ | Goal difference (absolute value). | 
+
+===Team tokens===
+
+|| Token | Meaning |
+| _T0_ | Home team name. |
+| _TW_ | Team winning (name). |
+| _TL_ | Team losing (name). |
+| _TWN_ | Team winning (number, 0 or 1). |
+| _TLN_ | Team losing (number, 0 or 1). |
+| _TLAYER0_ | League layer of home team, e.g. 1 for the first league. |
+| _TAVSKILL0_ | Average skill of home team, e.g. 75. |
+| _TAVSKILLDIFF_ | Difference between the average skills (absolute value). |
+
+===Stats tokens===
+
+|| Token | Meaning |
+| _SHOTS0_ | Number of shots. |
+| _SHOTPER0_ | Shot percentage. |
+| _POSS0_ | Possession of home team in %, e.g. 50. |
+| _PEN0_ | Penalties of home team in the game (those in penalty-shootout are not counted). |
+| _FOULS0_ | Fouls committed by home team. |
+| _YELLOWS0_ | Yellow cards for home team. |
+| _REDS0_ | Red cards for home team. |
+| _INJS0_ | Injuries for home team. |
+
+===Miscellaneous tokens===
+
+|| Token | Meaning |
+| _CUP_ | Whether it's a cup match; 0 or 1. |
+| _CUPKO_ | Whether it's a cup KO stage (or round robin); 0 or 1. |
+| _CUPSTAGE_ | 1 for final, 2 for semi final etc. |
+| _CUPMATCHWINNER_ | The team that won the cup match-up overall, not only the game. |
+| _MULTIPLESCORERS0_ | Whether more than one player scored for team 0. |
+| _SCORERS0_ | The scorers, e.g. "Jameson" or "Jameson (2) and Bryant". |
+| _HIGHSCORER0_ | The player who scored most goals in the match (this token is always filled if there is at least one scorer). |
+| _HIGHGOALS0_ | The number of goals the player with most goals scored. |
+| _RANK0_ | The rank in the tables after the match. |
+| _OLDRANK0_ | The rank in the tables before the match. |
+| _WON0_ | Matches won in a row. |
+| _LOST0_ | Matches lost in a row. |
+| _LEAGUEWON0_ | League matches won in a row. |
+| _LEAGUELOST0_ | League matches lost in a row. |
+| _UNBEATEN0_ | Matches without loss in a row. |
+| _LEAGUEUNBEATEN0_ | League matches without loss in a row. |
