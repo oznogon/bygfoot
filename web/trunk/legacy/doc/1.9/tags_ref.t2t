@@ -13,7 +13,7 @@ Last updated: %%mtime(%m/%d/%Y)
 Here you can find a (hopefully) complete list of the available XML tags
 used in **Bygfoot** definition files. See also the
 [HOWTO def_howto.html] and the
-[current definitions http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/definitions.tar.gz?view=tar]
+[current country definitions http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/definitions.tar.gz?view=tar]
 (Gzipped archive).
 
 The 'depth' value in the tables tells us how 'deeply' nested the tag is, ie.
@@ -107,7 +107,7 @@ in league and cup files.
 |  0  | ``cup`` | - | - | Root tag. |
 |  1  | ``group`` | integer | -1 | Integer grouping cups that should not feature the same teams (e.g. Champions' League and Cup Winners' Cup); those get the same group number. A value of //-1// means there are no restrictions. |
 |  1  | ``last_week`` | integer, >0 | - | The week the last match(es) of the cup are played. Just for convenience so that you can specify the week of the cup final. |
-|  1  | ``add_week`` | integer, >= -1 | 0 | Integer telling the program when the cup 'gets active', ie. when the fixtures should be written (see [HOWTO def_howto.html]). |
+|  1  | ``add_week`` | integer, >= -1 | 0 | Integer telling the program when the cup 'becomes active', ie. when the fixtures should be written (see [HOWTO def_howto.html]). |
 |  1  | ``talent_diff`` | integer, > 0 | 0 | Difference of the average talents in the cup (if it's an international one) compared to the first league of the country in ``percentage * 100`` (e.g. 250 = +2,5%). |
 |  1  | ``cup_rounds`` | - | - | Tag enclosing the cup rounds section. |
 |  2  | ``cup_round`` | - | - | Tag enclosing a cup round section. |
@@ -220,10 +220,28 @@ in league and cup files.
 | 2 | ``cond`` | string | - | NOT A TAG BUT AN ATTRIBUTE. A condition specifying when the commentary may be chosen. |
 | 2 | ``pri`` | string | - | NOT A TAG BUT AN ATTRIBUTE. A priority value. A high value relative to the rest of the commentaries for the given event increases the probability that the commentary gets picked. |
 
-[Here's an archive http://bygfoot.sf.net/misc/bygfoot-1.9-commentaries.tar.bz2]
+[Here's an archive http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/lg_commentary.tar.gz?view=tar]
 of current commentary files.
 
 ======================================================================
+
+==Tags used in news files==
+
+|| Depth | Name | Possible values | Default value | Description |
+| 0 | ``news`` | - | - | Root tag. |
+| 1 | ``news_article`` | - | - | Tag enclosing an article. |
+| 2 | ``type`` | string | - | The article type. Currently, only ``match`` is supported, for news articles about matches. |
+| 2 | ``condition`` | string | - | A condition ensuring the article is used when most fitting. |
+| 2 | ``priority`` | integer, > 0 | 1 | Priority for the article. The bigger, relative to the other articles, the higher the probability of the article being picked. |
+| 2 | ``title`` | string | - | A newspaper article title. Several titles can (and should) exist in an article. |
+| 2 | ``subtitle`` | string | - | A newspaper article subtitle (usually longer than a title). Several subtitles can (and should) exist in an article. |
+| 2 | ``condition`` | string | - | NOT A TAG BUT AN ATTRIBUTE TO ``<title>`` AND ``<subtitle>``. A condition to the title/subtitle. |
+| 2 | ``priority`` | integer, > 0 | 1 | NOT A TAG BUT AN ATTRIBUTE TO ``<title>`` AND ``<subtitle>``. Priority of title/subtitle. |
+
+You can get the current news files [here http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/news.tar.gz?view=tar].
+
+======================================================================
+
 
 ==Tags used in CPU strategy files==
 

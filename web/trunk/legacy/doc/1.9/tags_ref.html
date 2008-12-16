@@ -23,20 +23,21 @@
     <LI><A HREF="#toc7">Tags used in player names files</A>
     <LI><A HREF="#toc8">Tags used in team definition files</A>
     <LI><A HREF="#toc9">Tags used in live game commentary files</A>
-    <LI><A HREF="#toc10">Tags used in CPU strategy files</A>
+    <LI><A HREF="#toc10">Tags used in news files</A>
+    <LI><A HREF="#toc11">Tags used in CPU strategy files</A>
     </UL>
 
 <P></P>
 <div class=hr></div>
 <P></P>
 <P>
-Last updated: 12/15/2008
+Last updated: 12/16/2008
 </P>
 <P>
 Here you can find a (hopefully) complete list of the available XML tags
 used in <B>Bygfoot</B> definition files. See also the
 <A HREF="def_howto.html">HOWTO</A> and the
-<A HREF="http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/definitions.tar.gz?view=tar">current definitions</A>
+<A HREF="http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/definitions.tar.gz?view=tar">current country definitions</A>
 (Gzipped archive).
 </P>
 <P>
@@ -450,7 +451,7 @@ in league and cup files.
 <TD><CODE>add_week</CODE></TD>
 <TD>integer, &gt;= -1</TD>
 <TD>0</TD>
-<TD>Integer telling the program when the cup 'gets active', ie. when the fixtures should be written (see <A HREF="def_howto.html">HOWTO</A>).</TD>
+<TD>Integer telling the program when the cup 'becomes active', ie. when the fixtures should be written (see <A HREF="def_howto.html">HOWTO</A>).</TD>
 </TR>
 <TR>
 <TD ALIGN="center">1</TD>
@@ -877,12 +878,92 @@ in league and cup files.
 </TABLE>
 
 <P>
-<A HREF="http://bygfoot.sf.net/misc/bygfoot-1.9-commentaries.tar.bz2">Here's an archive</A>
+<A HREF="http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/lg_commentary.tar.gz?view=tar">Here's an archive</A>
 of current commentary files.
 </P>
 <HR NOSHADE SIZE=5>
 <P></P>
 <A NAME="toc10"></A>
+<H2>Tags used in news files</H2>
+<TABLE BORDER="1" CELLPADDING="4">
+<TR>
+<TH>Depth</TH>
+<TH>Name</TH>
+<TH>Possible values</TH>
+<TH>Default value</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>0</TD>
+<TD><CODE>news</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Root tag.</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD><CODE>news_article</CODE></TD>
+<TD>-</TD>
+<TD>-</TD>
+<TD>Tag enclosing an article.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>type</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>The article type. Currently, only <CODE>match</CODE> is supported, for news articles about matches.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>condition</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>A condition ensuring the article is used when most fitting.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>priority</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>1</TD>
+<TD>Priority for the article. The bigger, relative to the other articles, the higher the probability of the article being picked.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>title</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>A newspaper article title. Several titles can (and should) exist in an article.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>subtitle</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>A newspaper article subtitle (usually longer than a title). Several subtitles can (and should) exist in an article.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>condition</CODE></TD>
+<TD>string</TD>
+<TD>-</TD>
+<TD>NOT A TAG BUT AN ATTRIBUTE TO <CODE>&lt;title&gt;</CODE> AND <CODE>&lt;subtitle&gt;</CODE>. A condition to the title/subtitle.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD><CODE>priority</CODE></TD>
+<TD>integer, &gt; 0</TD>
+<TD>1</TD>
+<TD>NOT A TAG BUT AN ATTRIBUTE TO <CODE>&lt;title&gt;</CODE> AND <CODE>&lt;subtitle&gt;</CODE>. Priority of title/subtitle.</TD>
+</TR>
+</TABLE>
+
+<P>
+You can get the current news files <A HREF="http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/news.tar.gz?view=tar">here</A>.
+</P>
+<HR NOSHADE SIZE=5>
+<P></P>
+<A NAME="toc11"></A>
 <H2>Tags used in CPU strategy files</H2>
 <TABLE BORDER="1" CELLPADDING="4">
 <TR>
