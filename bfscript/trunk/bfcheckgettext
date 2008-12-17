@@ -54,6 +54,7 @@ for cfile in *c; do
 			! grep "g_warning($longstring" $cfile &> /dev/null &&
 			! grep "_($longstring)" $cfile &> /dev/null; then
 			echo "**bfcheckgettext: string '$longstring' not macroed."
+			echo "**bfcheckgettext: press RETURN to add to ignore list, or enter anything else to skip."
 			read a
 			
 			if [ -z $a ]; then
