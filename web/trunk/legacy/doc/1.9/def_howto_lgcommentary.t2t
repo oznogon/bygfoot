@@ -98,10 +98,10 @@ To be able to write this kind of commentary you need to specify a condition in t
 tag. You can use all numeric tokens from the token list (ie. tokens with integer value). To
 write a commentary like the one above you'd write
 ```
-<commentary cond="_G0_ + _G1_ >= 6">_P0_ scores! We have incredible [_G0_ + _G1_] goals in this match!</commentary>
+<commentary cond="_GOALS0_ + _GOALS1_ >= 6">_P0_ scores! We have incredible [_GOALS0_ + _GOALS1_] goals in this match!</commentary>
 ```
 As you can see, if you want the program to perform some arithmetic operation in the commentary text,
-you have to enclose the expression in square brackets: ``[_G0_ + _G1]``.
+you have to enclose the expression in square brackets: ``[_GOALS0_ + _GOALS1]``.
 
 Now this is a very simple condition. Not only ``>=``, ``>``, ``<``, ``=`` and ``!=`` may be used, but also
 ``and`` and ``or`` to create more complex expressions. ``and`` bind stronger than ''or'', so

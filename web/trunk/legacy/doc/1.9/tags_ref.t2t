@@ -172,8 +172,8 @@ in league and cup files.
   returns an error. This is useful for cups that don't always take place,
   e.g. if there's a double winner so that a Supercup isn't necessary.
 : omit_from_history
-  No entry is written for the league in the season history.
-  Useful for auxiliary leagues that are not terribly important.
+  No entry is written for the cup in the season history.
+  Useful for auxiliary cups that are not terribly important.
 
 
 ======================================================================

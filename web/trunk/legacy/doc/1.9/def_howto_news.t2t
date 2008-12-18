@@ -138,6 +138,7 @@ There is always an analogous token ending with 1 for the away team.
 | _TWN_ | Team winning (number, 0 or 1). |
 | _TLN_ | Team losing (number, 0 or 1). |
 | _TLAYER0_ | League layer of home team, e.g. 1 for the first league. |
+| _TLAYERDIFF_ | Difference between the layers (absolute value). |
 | _TAVSKILL0_ | Average skill of home team, e.g. 75. |
 | _TAVSKILLDIFF_ | Difference between the average skills (absolute value). |
 
@@ -158,6 +159,11 @@ There is always an analogous token ending with 1 for the away team.
 || Token | Meaning |
 | _CUP_ | Whether it's a cup match; 0 or 1. |
 | _CUPKO_ | Whether it's a cup KO stage (or round robin); 0 or 1. |
+| _CUPNEUTRAL_ | Whether the cup match is on neutral ground; 0 or 1. |
+| _CUPNATIONAL_ | Whether it's a national cup; 0 or 1. |
+| _CUPINTERNATIONAL_ | Whether it's an international cup; 0 or 1. |
+| _CUPPROMREL_ | Whether it's a promotion/relegation cup; 0 or 1. |
+| _CUPAUX_ | Whether it's an auxiliary cup (ie. it gets hidden after finished, or omitted from history; 0 or 1. |
 | _CUPSTAGE_ | 1 for final, 2 for semi final etc. |
 | _CUPMATCHWINNER_ | The team that won the cup match-up overall, not only the game. |
 | _MULTIPLESCORERS0_ | Whether more than one player scored for team 0. |

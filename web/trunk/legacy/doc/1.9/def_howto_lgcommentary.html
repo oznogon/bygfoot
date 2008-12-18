@@ -37,7 +37,7 @@
 <div class=hr></div>
 <P></P>
 <P>
-Last updated: 12/15/2008
+Last updated: 12/18/2008
 </P>
 <P>
 Howtos:
@@ -159,11 +159,11 @@ tag. You can use all numeric tokens from the token list (ie. tokens with integer
 write a commentary like the one above you'd write
 </P>
 <PRE>
-  &lt;commentary cond="_G0_ + _G1_ &gt;= 6"&gt;_P0_ scores! We have incredible [_G0_ + _G1_] goals in this match!&lt;/commentary&gt;
+  &lt;commentary cond="_GOALS0_ + _GOALS1_ &gt;= 6"&gt;_P0_ scores! We have incredible [_GOALS0_ + _GOALS1_] goals in this match!&lt;/commentary&gt;
 </PRE>
 <P>
 As you can see, if you want the program to perform some arithmetic operation in the commentary text,
-you have to enclose the expression in square brackets: <CODE>[_G0_ + _G1]</CODE>.
+you have to enclose the expression in square brackets: <CODE>[_GOALS0_ + _GOALS1]</CODE>.
 </P>
 <P>
 Now this is a very simple condition. Not only <CODE>&gt;=</CODE>, <CODE>&gt;</CODE>, <CODE>&lt;</CODE>, <CODE>=</CODE> and <CODE>!=</CODE> may be used, but also

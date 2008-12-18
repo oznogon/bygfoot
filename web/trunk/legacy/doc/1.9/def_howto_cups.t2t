@@ -82,7 +82,7 @@ is from the file ``cup_europe_uefa.xml``.
   # There are four possibilities here:
 
   # 1. Specify 0 (which is also the default
-  # value, so we could as well leave out the
+  # value, so we could just as well leave out the
   # tag here). The cup gets loaded at the beginning
   # of a season after the promotions/relegations
   # have taken place.
