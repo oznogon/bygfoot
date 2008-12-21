@@ -1,0 +1,23 @@
+#!/bin/bash
+. scripts.cfg
+
+echo "BFCOPYGMOS: copying gmo files from $bygfoot_source/po to $bygfoot_source/locale..."
+
+pushd $bygfoot_source
+
+for i in po/*gmo; do
+
+    lang=$(basename $i | sed "s/\.gmo//g")
+
+    mkdir -p locale/$lang
+    mkdir -p locale/$lang/LC_MESSAGES
+    cp -f $i locale/$lang/LC_MESSAGES/bygfoot.mo
+
+    echo "BFCOPYGMOS: $lang copied..."
+    
+done
+
+popd
+
+echo
+echo "BFCOPYGMOS: done."
