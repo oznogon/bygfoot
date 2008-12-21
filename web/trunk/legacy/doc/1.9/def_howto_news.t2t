@@ -125,7 +125,9 @@ There is always an analogous token ending with 1 for the away team.
 | _LEAGUECUPNAME_ | Name of the competition, e.g. 'FA Cup'. |
 | _CUPROUNDNAME_ | Name of the cup round, e.g. 'Final'. |
 | _AT_ | Attendance, e.g. '50 204'. |
-| _RE_ | Current result, e.g. '1 : 2'. |
+| _RE_ | Result, e.g. '1 : 2'. |
+| _REW_ | Result formatted so that it starts with the higher number (so that you can write "Liverpool wins 2:1" even if it was a 1:2 away win). |
+| _REL_ | Result formatted so that it starts with the lower number. |
 | _GOALS0_ | Goals the home team scored. |
 | _GD_ | Goal difference (absolute value). | 
 
