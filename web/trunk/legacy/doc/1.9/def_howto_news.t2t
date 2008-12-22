@@ -167,11 +167,18 @@ There is always an analogous token ending with 1 for the away team.
 | _CUPPROMREL_ | Whether it's a promotion/relegation cup; 0 or 1. |
 | _CUPAUX_ | Whether it's an auxiliary cup (ie. it gets hidden after finished, or omitted from history; 0 or 1. |
 | _CUPSTAGE_ | 1 for final, 2 for semi final etc. |
-| _CUPMATCHWINNER_ | The team that won the cup match-up overall, not only the game. |
+| _CUPSECONDLEG_ | Whether we have the second leg of a home/away match; 0 or 1. |
+| _CUPMATCHWINNER_ | The team that won the cup match-up overall (but not necessarily the game). |
+| _CUPMATCHLOSER_ | The team that lost the cup match-up overall. |
+| _CUPMATCHWINNERN_ | The number of the team that won the cup match-up overall; 0 or 1. |
+| _CUPMATCHLOSERN_ | The team that lost the cup match-up overall; 0 or 1. |
+| _CUPPEN_ | Whether the match was decided with penalties. |
+| _CUPET_ | Whether the match was decided in extra time. |
 | _MULTIPLESCORERS0_ | Whether more than one player scored for team 0. |
 | _SCORERS0_ | The scorers, e.g. "Jameson" or "Jameson (2) and Bryant". |
 | _HIGHSCORER0_ | The player who scored most goals in the match (this token is always filled if there is at least one scorer). |
 | _HIGHGOALS0_ | The number of goals the player with most goals scored. |
+| _GDAGG_ | The aggregate goal difference (equals _GD_ except in the second leg of a home/away match). |
 | _RANK0_ | The rank in the tables after the match. |
 | _OLDRANK0_ | The rank in the tables before the match. |
 | _WON0_ | Matches won in a row. |
