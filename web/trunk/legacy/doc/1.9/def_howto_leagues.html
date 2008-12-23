@@ -27,7 +27,7 @@
 <div class=hr></div>
 <P></P>
 <P>
-Last updated: 12/15/2008
+Last updated: 12/23/2008
 </P>
 <P>
 Howtos:
@@ -167,14 +167,15 @@ still in the `league_england3.xml` file.
   
       &lt;prom_games&gt;
   
-    # This is a specialty of English leagues (as far
-    # as I know): at the end of a season a couple of
-    # teams that haven't finished at the very top,
-    # eg.  those ranked 4th to 7th play a cup
-    # (eg. two rounds of knock-out, if we have 4
-    # teams) and the winner(s) gets promoted (this
-    # of course only holds in lower leagues, not
-    # Premiership).
+    # Sometimes, promotion and relegation has to be
+    # decided in a promotion/relegation cup, and that's
+    # what this section is for. You specify the cup sid
+    # (the cup itself is defined in a regular cup definion file)
+    # and a couple of more things, and you're good.
+    # If a league contains more than one such cup
+    # (e.g. one for promotion to a higher league and
+    # one for relegation to a lower league), you have to
+    # create additional &lt;prom_games&gt; sections for those.
   
         &lt;prom_games_dest_sid&gt;england2&lt;/prom_games_dest_sid&gt;
   
@@ -196,6 +197,7 @@ still in the `league_england3.xml` file.
          # 'number_of_advance' (see below) to the
          # league with the specified string id. You can give
          # a space-separated list of sids here, too.
+         # This is often needed for relegation games.
   
         &lt;prom_games_number_of_advance&gt;1&lt;/prom_games_number_of_advance&gt;
   
