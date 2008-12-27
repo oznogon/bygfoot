@@ -1,3 +1,0 @@
-#!/bin/bash
-
-grep"$*"`echo$PWD`/src/*h
