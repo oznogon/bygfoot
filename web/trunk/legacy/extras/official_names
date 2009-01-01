@@ -881,22 +881,19 @@ League: denmark
     Viborg II: Viborg FF II
     Fredericia K.: Fredericia KFUM
 League: england
-    C. London: Chelsea
     Manchester U.: Manchester United
     A. London: Arsenal
     A. V. Birmingham: Aston Villa
     Blackburn: Blackburn Rovers
     Bolton: Bolton Wanderers
-    E. Liverpool: Everton
-    F. London: Fulham
     Hull: Hull City
     Manchester C.: Manchester City
     Newcastle: Newcastle United
     Stoke: Stoke City
     Sunderland: AFC Sunderland
-    T. London: Tottenham Hotspur
+    Tottenham: Tottenham Hotspur
     W. B. Birmingham: West Bromwich Albion
-    W. H. London: West Ham United
+    West Ham: West Ham United
     Wigan: Wigan Athletic
     Barnsley: Barnsley FC
     Birmingham: Birmingham City
@@ -1435,7 +1432,7 @@ League: fyr_macedonia
 League: georgia
     Borjomi: FC Borjomi
     D. Tbilisi: FC Dinamo Tbilisi
-    Gagra: FC Gagra
+    G. Tbilisi: FC Gagra
     L. Tbilisi: FC Lokomotiv Tbilisi
     M. Tbilisi: FC Meskheti Tbilisi
     M. Zugdidi: FC Mglebi Zugdidi
@@ -1443,12 +1440,34 @@ League: georgia
     S. Bolnisi: FC Sioni Bolnisi
     S. Tskhinvali: FC Spartaki Tskhinvali
     W. G. Tbilisi: FC WIT Georgia Tbilisi
-    Zestaponi: FC Zestaponi
+    Zestafoni: FC Zestafoni
+    C. Satchkhere: Chikhura Satchkhere
+    A. Tbilisi: FC Ameri Tbilisi
+    D. Tbilisi II: FC Dinamo Tbilisi II
+    F. Tbilisi: FC Tbilisi
+    G. Tbilisi II: FC Gagra Tbilisi II
+    D. Gori: FC Dila Gori
+    K. Telavi: FC Kakheti
+    S. Bolnisi II: FC Sioni Bolnisi II
+    N. D. Tbilisi: Norchi Dinamo Tbilisi
+    H. Lagodekhi: Hereti Lagodekhi
+    W. G. Tbilisi II: WIT Georgia Tbilisi II
+    B. Zugdidi: FC Baia Zugdidi
+    Samtredia: FC Samtredia
+    Martvili: FC Martvili
+    K. Poti: FC Kolkheti 1913 Poti
+    K. Khobi: FC Kolkheti Khobi
+    Tchaitura: FC Tchatura
+    T. Kutaisi: Torpedo 2008 Kutaisi
+    G. Lantchkhuti: FC Guria Lantchkhuti
+    Batumi: FC Batumi
+    M. Tkibuli: FC Meshakhte Tkibuli
+    Zestafoni II: FC Zestafoni II
 League: germany
     Schalke: FC Schalke 04
     W. Bremen: Werder Bremen
     B. München: Bayern München
-    Leverkusen: Bayer Leverkusen
+    B. Leverkusen: Bayer Leverkusen
     Bielefeld: Arminia Bielefeld
     Stuttgart: VfB Stuttgart
     Hamburg: Hamburger SV
@@ -1479,7 +1498,7 @@ League: germany
     Oberhausen: Rot-Weiß Oberhausen
     Osnabrück: VfL Osnabrück
     Rostock: Hansa Rostock
-    S. P. Hamburg: FC St. Pauli
+    St. Pauli: FC St. Pauli
     W. Wiesbaden: SV Wehen Wiesbaden
     Paderborn: SC Paderborn 07 
     F. Düsseldorf: Fortuna Düsseldorf
@@ -1648,7 +1667,7 @@ League: germany
     E. Norderstedt: FC Eintracht Norderstedt
     Bergedorf: ASV Bergedorf Lohbrügge
     Egenbüttel: SC Egenbüttel
-    S. P. Hamburg II: FC St. Pauli II
+    St. Pauli II: FC St. Pauli II
     V. Ohe: FC Voran 1949 Ohe
     Buchholz: TSV Buchholz
     Meiendorf: Meiendorfer SV
@@ -1791,23 +1810,27 @@ League: greece
     P. Katerini: Pierikos
     A. Dimitrios: Agios Dimitrios
     A. Paraskevi: Agia Paraskevi
-    A. Salamina: Aias Salamina
+    A. Salaminas: Aias Salaminas
+    F. Tavros: Fostiras
     K. Keratea: Keravnos Keratea
-    N. Asteras Rethymno: Neos Asteras Rethymno
+    P. Agros: Panargiakos
+    A. Rethymno: Neos Asteras Rethymno
     E. Mytilini: Eolikos Mytilini
-    A. Arta: Anagennisi Arta
+    A. Artas: Anagennisi Artas
     A. Giannitsa: Anagennisi Giannitsa
     E. Katerini: Ethnikos Katerini
-    D. Drama: Doxa Drama
-    Eordaikos: Eordaikos 2007
+    D. Dramas: Doxa Dramas
+    E. Ptolemaida: Eordaikos 2007
     E. Alexandroupoli: Enossi Alexandroupoli
-    E. Filippiada: Ethnikos Filippiada
+    E. Filippiades: Ethnikos Filippiades
     N. Volos: Niki Volos
     O. Anagennisi: Odysseas Anagennisi
+    M. Neapolis: Makedonikos
     N. Epivates: Neoi Epivates
+    P. Agrinio: Panetolikos
     P. Grevena: Pyrsos Grevena
     P. Preveza: PAS Preveza
-    T. Thermi: Thermaikos Thermi
+    T. Thermis: Thermaikos Thermis
 League: hungary
     M. H. Budapest: MTK Hungária FC Budapest
     H. Budapest: Budapest Honvéd FC
@@ -2474,32 +2497,54 @@ League: netherlands
     Haarlem: HFC Haarlem
     Helmond: Helmond Sport
     Maastricht: MVV
-    F. Omniworld: FC Omniworld
+    O. Almere: FC Omniworld
     Roosendaal: RBC Roosendaal
     R. Waalwijk: RKC Waalwijk
     T. Oss: TOP Oss
     Veendam: BV Veendam
     Venlo: VVV-Venlo
     Zwolle: FC Zwolle
-    Argon: SV Argon
+    V. Noordwijkerhout: VVSB
+    A. Mijdrecht: SV Argon
     Hilversum: Hilversum FC
-    Omniworld Am.: FC Omniworld Amateurs
-    Westlandia: RKVV Westlandia
-    Elinkwijk: USV Elinkwijk
+    D. Amsterdam: DWV
+    O. Almere II: FC Omniworld II
+    W. Naaldwijk: RKVV Westlandia
+    A. Heemskerk: ADO'20
+    E. Utrecht: USV Elinkwijk
+    H. Den Haag: HBS
     T. Amsterdam: Turkiyemspor Amsterdam FC
-    Hollandia: HVV Hollandia
+    H. Hoorn: HVV Hollandia
+    H. Rijswijk: Haaglandia
+    V. Den Haag: VUC
+    AF. Amsterdam: AFC
+    D. Kaatsheuvel: DESK
     Deurne: SV Deurne
+    Gemert: VV Gemert
+    B. Breda: VV Baronie
     Schijndel: RKSV Schijndel
-    Dijkse B.: Dijkse Boys
+    U. Veldhoven: UNA
+    D. B. Helmond: Dijkse Boys
+    L. Tilburg: TSV LONGA
     Rosmalen: OJC Rosmalen
     Cuijk: JVC Cuijk
     Meerssen: SV Meerssen
-    Papendrecht: Papendrecht
+    Papendrecht: VV Papendrecht
+    E. Echt: EVV
     Venray: SV Venray
     Sneek: Sneek Wit Zwart
-    B. Quick: Be Quick 1887
+    Q. Oldenzaal: Quick '20
+    A. Groesbeek: Achilles'29
+    A. Meppel: Alcides
+    W. Apeldoorn: WSV
+    H. Haaksbergen: HSC '21
+    D. B. Gendt: de Bataven
+    B. Q. Haren gn: Be Quick 1887
     Babberich: RKSV Babberich
+    W. Emmen: WKE
+    D. T. Groesbeek: De Treffers
     Lienden: FC Lienden
+    G. Groesbeek: Germania
     Joure: SC Joure
 League: n_ireland
     Ballymena: Ballymena United
