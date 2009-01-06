@@ -963,7 +963,6 @@ League: england
     Rotherham: Rotherham United
     Shrewsbury: Shrewsbury Town
     Wycombe: Wycombe Wanderers
-    Altrincham: Altrincham
     Burton: Burton Albion
     Cambridge: Cambridge United
     Crawley: Crawley Town
@@ -1787,7 +1786,7 @@ League: germany
     Rotenburg: Rotenburger SV
     Vorsfelde: SSV Vorsfelde
 League: greece
-    A. Athena: AEK Athinai
+    A. Athena: AEK
     P. Athena: Panathinaikos
     I. Thessaloniki: Iraklis
     O. Piraeus: Olympiacos
@@ -2336,6 +2335,19 @@ League: lithuania
     S. Marijampole: Suduva Marijampole
     V. Vilnius: Vetra Vilnius
     Ž. Vilnius: Zalgiris Vilnius
+    A. Alytus: Alytis Alytus
+    F. Anyksciai: FK Anyksciai
+    B. Gargzdai: Banga Gargzdai
+    L. Jonava: Lietava Jonava
+    K. j. Kaunas: Kauno jegeriai Kaunas
+    R. Kaunas: Rodiklis Kaunas
+    L. T. Kaunas: LKKA Teledema Kaunas
+    N. Kedainiai: Nevezis Kedainiai
+    G. Klaipeda: Glestum Klaipeda
+    K. Pakruojis: Kruoja Pakruojis
+    T. Taurage: FK Tauras Taurage
+    U. Utena: Utenis Utena
+    F. Vilnius: FC Vilnius
 League: luxembourg
     A. Beggen: FC Avenir Beggen
     Differdange: FC Differdange 03
@@ -2504,6 +2516,47 @@ League: netherlands
     Veendam: BV Veendam
     Venlo: VVV-Venlo
     Zwolle: FC Zwolle
+    Alphen a. d. Rijn: SV ARC
+    A. Hendrik Ido Ambacht: ASWH
+    Barendrecht: VV Barendrecht
+    Capelle a. d. IJssel: vv Capelle
+    D. Pernis: DOTO
+    E. Maassluis: Excelsior Maassluis
+    Heerjansdam: VV Heerjansdam
+    Katwijk: vv Katwijk
+    Lisse: FC Lisse
+    Noordwijk: VV Noordwijk
+    Q. B. Katwijk: Quick Boys
+    Rijnsburg B.: Rijnsburgse Boys
+    S. Den Haag: sv Scheveningen
+    T. L. Sassenheim: Ter Leede
+    A. Amsterdam II: Ajax Amsterdam II
+    Bennekom: VV Bennekom
+    D. Veenendaal: DOVO
+    G. Nieuwegein: SV Geinoord
+    G. Veenendaal: GVVV
+    Hoek: HSV Hoek
+    J. B. Gouda: Jodan Boys
+    K. B. Werkendam: Kozakken Boys
+    Putten: SDC Putten
+    Bunschoten-Spakenburg: SV Spakenburg
+    S. Nijkerk: Sparta Nijkerk
+    R. Volendam: RKAV Volendam
+    I. Bunschoten-Spakenburg: IJsselmeervogels
+    Z. Hoorn: Zwaluwen '30
+    B. Q. Zwolle: Be Quick '28
+    B. Zwolle: VV Berkum
+    E. Rijssen: Excelsior '31
+    F. B. Emmeloord: Flevo Boys
+    Genemuiden: SC Genemuiden
+    G. A. Kampen: Go-Ahead Kampen
+    Harkema B.: Harkemase Boys
+    Hardenberg: HHC Hardenberg
+    O. Sneek: ONS Sneek
+    O. N. Groningen: Oranje Nassau
+    P. Groningen: PKC'83
+    Staphorst: VV Staphorst
+    Wezep: WHC
     V. Noordwijkerhout: VVSB
     A. Mijdrecht: SV Argon
     Hilversum: Hilversum FC
@@ -2920,7 +2973,6 @@ League: romania
     Târgovişte: FC Târgovişte
     Târgu Mureş: FCM Târgu Mureş
     J. Petroşani: Jiul Petroşani
-    U. Cluj:
     A. Turda: FC Arieşul Turda
     A. Arad: ACU Arad
     C. Timişoara: CFR Timişoara
