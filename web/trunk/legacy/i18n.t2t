@@ -2,6 +2,7 @@ How to translate Bygfoot
 
 
 %!Style: green.css
+%! Target  : html
 %!Encoding(html): iso8859-15
 %!Encoding(tex): latin1
 %!PostProc: <H1> <IMG ALIGN="center" SRC="bygfoot-logo.png" BORDER="0"></center><H1>
@@ -50,6 +51,14 @@ for Hungarian, ``pt`` and ``BR`` for Brazilian Portuguese.
   Make sure you use ``UTF-8`` encoding; this way you can use any
   special characters your language contains.
 
++ Create a live game commentary file, either from scratch or
+  by translating one of the existing files. [See the howto. http://bygfoot.sourceforge.net/doc/1.9/def_howto_lgcommentary.html]
+  The existing files can be found [here. http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/lg_commentary/]
+
++ Create a news file, either from scratch or
+  by translating one of the existing files. [See the howto. http://bygfoot.sourceforge.net/doc/1.9/def_howto_news.html]
+  The existing files can be found [here. http://bygfoot.svn.sourceforge.net/viewvc/bygfoot/bygfoot/trunk/support_files/news/]
+
 + Here's how to test your translation:
   + get a CVS version of **Bygfoot**
   (e.g. using the [bygfoot-update script http://bygfoot.sf.net/revisions/bygfoot-update])
@@ -60,7 +69,7 @@ for Hungarian, ``pt`` and ``BR`` for Brazilian Portuguese.
   + run ``make`` and ``make install``
   + test the game and your translation
 
-+ After finishing the work on your ``lang.po`` file, please send it to
++ After finishing the work on your files, please send it to
   gyboth_at_bygfoot_dot_com. Currently the game contains about 700 translatable
   strings. Feel free to email me if you have any questions or are not sure how to 
   translate something. There's also a
