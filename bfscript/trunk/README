@@ -150,3 +150,5 @@ sav
 A convenient script for saving the current local development in
 enumerated archives.
 
+bfpo_statistics
+get the po statistics of all languages

@@ -1,0 +1,9 @@
+#!/bin/bash
+. scripts.cfg
+pushd $bygfoot_source
+pushd po
+for file in *.po;do
+   echo $file
+   msgfmt --statistics $file
+done
+
