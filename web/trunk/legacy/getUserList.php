@@ -1,6 +1,6 @@
 <?php
 include('../config.php');
-if (isset($_POST["u_password"]) && ($_POST["u_password"]=="4l3fz3r0") && (isset($_POST["u_name"])) && ($_POST["u_name"]=="gunnar")) {
+if (isset($_POST["u_password"]) && ($_POST["u_password"]=="<fill_IN>") && (isset($_POST["u_name"])) && ($_POST["u_name"]=="<FILL_IN>")) {
 $phpbb_root_path = '../';
 // Connect to the database
 $link = mysql_connect($dbhost, $dbuser, $dbpasswd);
