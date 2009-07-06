@@ -1,0 +1,5 @@
+get_csv.pl:  Reads the csv file from the web interface, output this to the file phpbb_users.csv
+mailUsers.pl: takes the file phpbb_users.csv and makes a script that will send the mails
+testEmailAddress: will check the emialaddresses defined in phpbb_users.csv and will only show the good addresses (no spambots)
+
+In time these scripts will have to be merged into 1
