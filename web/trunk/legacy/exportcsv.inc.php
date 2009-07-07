@@ -6,7 +6,7 @@ function exportMysqlToCsv($filename = 'export.csv')
     $csv_separator = ";";
     $csv_enclosed = '';
     $csv_escaped = "\\";
-    $sql_query = "SELECT user_id,user_actkey, user_email, user_regdate FROM `phpbb_users` where user_active=0 AND user_id<>-1 order by user_id";
+    $sql_query = "SELECT user_id,user_actkey, user_email, from_unixtime(user_regdate) FROM `phpbb_users` where user_active=0 AND user_id<>-1 order by user_id";
  
     // Gets the data from the database
     $result = mysql_query($sql_query);
