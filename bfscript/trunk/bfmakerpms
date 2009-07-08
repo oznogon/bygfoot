@@ -14,7 +14,7 @@ cp -R $bygfoot_base_release/bygfoot-$ver $bygfoot_base_release/bygfoot-$version
 echo "tar cfj $bygfoot_base_release/bygfoot-$version-$release.tar.bz2 $bygfoot_base_release/bygfoot-$version"
 pushd $bygfoot_base_release
 tar cfj bygfoot-$version-$release.tar.bz2 bygfoot-$version
-cp bygfoot-$version-$release.tar.bz2 $source_rpm
+sudo cp bygfoot-$version-$release.tar.bz2 $source_rpm
 popd
 rm -rf $bygfoot_base_release/bygfoot-$version
 
